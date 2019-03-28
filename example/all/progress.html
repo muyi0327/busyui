@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui toast demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+    .abcd{
+        transform: rotate(-90deg);
+        width: 85px;
+        height: 85px;
+    }
+    </style>
+</head>
+
+<body>
+    <section class="wrap">
+        <section id="app" class="app">
+
+        </section>
+    </section>
+    <script type="text/vue" id="tpl">
+        <div @click="handle">
+            <w-progress :percent="val" :track-width="stroke"></w-progress>
+            <p></p>
+            <w-progress direction="1" class="abcd" :percent="val" :track-width="stroke" type="ring"></w-progress>
+             <p></p>
+            <w-progress :percent="val" :track-width="10" track-color="#00bdd9" :bar-color="['90deg', '#74ffea 4%', '#a1f9fb 88%', '#ffffff 100%']" ></w-progress>
+        </div>
+    </script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    val: 0,
+                    stroke: 2
+                }
+            },
+            template: document.querySelector('#tpl').innerHTML,
+            methods: {
+                handle: function () {
+                    this.val = Math.min(100, Math.max(0, this.val + 10));
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

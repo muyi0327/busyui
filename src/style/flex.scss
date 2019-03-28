@@ -1,0 +1,183 @@
+.wui-al-h-l{
+    justify-content: flex-start;
+}
+
+.wui-al-h-c{
+    justify-content: center;
+}
+
+.wui-al-h-r{
+    justify-content: flex-end;
+}
+
+.wui-al-h-sb{
+    justify-content: space-between;
+}
+
+.wui-al-v-t{
+    align-items: flex-start;
+}
+
+.wui-al-v-m{
+    align-items: center;
+}
+
+.wui-al-v-b{
+    align-items: flex-end;
+}
+
+.wui-al-v-sb{
+    align-items: space-between;
+}
+
+.wui-al-v-sa{
+    align-items: space-around;
+}
+
+.wui-al-v-st{
+    align-items:  stretch;
+}
+
+.wui-al-lt {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.wui-al-lm {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.wui-al-lb {
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.wui-al-lsb {
+    justify-content: flex-start;
+    align-items: space-between;
+}
+
+.wui-al-lsa {
+    justify-content: flex-start;
+    align-items: space-around;
+}
+
+.wui-al-lst {
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.wui-al-ct {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.wui-al-cm {
+    justify-content: center;
+    align-items: center;
+}
+
+.wui-al-cb {
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.wui-al-csb {
+    justify-content: center;
+    align-items: space-between;
+}
+
+.wui-al-csa {
+    justify-content: center;
+    align-items: space-around;
+}
+
+.wui-al-cst {
+    justify-content: center;
+    align-items: stretch;
+}
+
+.wui-al-rt {
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.wui-al-rm {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.wui-al-rb {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.wui-al-rsb {
+    justify-content: flex-end;
+    align-items: space-between;
+}
+
+.wui-al-rsa {
+    justify-content: flex-end;
+    align-items: space-around;
+}
+
+.wui-al-rsa {
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.wui-al-sbt {
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.wui-al-sbm {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wui-al-sbb {
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.wui-al-sat {
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.wui-al-sac {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.wui-al-sbb {
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.wui-flex-dir-row{
+    flex-direction: row;
+}
+
+.wui-flex-dir-row-re{
+    flex-direction: row-reverse;
+}
+
+.wui-flex-dir-column{
+    flex-direction: column;
+}
+
+.wui-flex-dir-column-re{
+    flex-direction: column-reverse;
+}
+
+.flex-basis{
+    flex:0 0 100px;
+}
+
+.wui-inline-flex{
+    display: inline-flex;
+}

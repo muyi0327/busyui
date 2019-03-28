@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <script src="../mock.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        html,
+        body {
+            font-size: 14px;
+            background-color: #f2f5f7;
+        }
+        
+        
+        .header {
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            background: #f7f7f7;
+            text-align: center;
+            color: blueviolet;
+        }
+        
+        .scrolling {
+            -webkit-overflow-scrolling: touch;   
+        }
+
+        .product{
+            background: #fff;
+            margin: 12px 0;
+            overflow: hidden;
+            padding: 10px;
+            color: #646464;
+            line-height: 1.5
+        }
+
+        .title{
+            line-height: 2
+        }
+
+        .desc{
+            padding: 10px 0 0 0;
+        }
+
+        .product img{
+            width: 100%;
+            height: auto;
+        }
+
+        .main{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 52px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <header class="header">
+            <w-row>
+                <w-cell @click="refresh" height="100%" align="center">tab1</w-cell>
+                <w-cell height="100%" align="center">tab2</w-cell>
+            </w-row>
+        </header>
+        <div class="main" style="overflow: hidden;">
+            <w-loadmore ref="loadmore" 
+                :on-infinite="loadBtm" 
+                :on-refresh="loadTop">
+                <ul class="data-list">
+                    <li v-for="d in datas">
+                        <article class="product">
+                            <w-col>
+                                <w-cell class="title">{{d.title}}</w-cell>
+                                <w-cell><img :src="d.pic" alt=""></w-cell>
+                                <w-cell class="desc">{{d.desc}}</w-cell>
+                            </w-col>
+                        </article>
+                    </li>
+                </ul>
+
+                <div slot="no-more" style="height: 40px; line-height: 40px; text-align: center;">
+                    --数据加载完毕--
+                </div>
+            </w-loadmore>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            function getDatas() {
+                return Mock.mock({
+                    'list|10': [{
+                        'id': '@guiid()',
+                        'title': '@csentence(15,20)',
+                        "desc": "@cparagraph",
+                        'pic': '@image("600x400", "@color", "#fff", "png", "IMAGE")'
+                    }]
+                }).list;
+            }
+            var vm = new Vue({
+                el: '#app',
+                data: function () {
+                    return {
+                        datas: [],
+                        totalPage: 3,
+                        curpage: 0
+                    }
+                },
+                methods: {
+                    loadBtm:function(done) {
+                        this.curpage++;
+                        if (this.curpage>this.totalPage){
+                            return;
+                        }
+                        setTimeout(function() {
+                            var list = getDatas();
+                            this.datas = this.datas.concat(list);
+                            done(this.curpage==3 ? 'no-more':'');
+                        }.bind(this), 2000);
+                    },
+                    loadTop: function(done) {
+                        setTimeout(function() {
+                            var list = getDatas();
+                            this.datas = list;
+                            this.curpage = 1;
+                            done()
+                        }.bind(this), 2000);
+                    },
+                    refresh(){
+                        this.$refs.loadmore.doneRefresh();
+                    }
+                },
+                mounted:function() {
+                    this.$refs.loadmore.doneRefresh();
+                }
+            })
+        }, false);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+    "name": "cui-icon",
+    "description": "icon component of cui library",
+    "main": "index.js",
+    "bugs": {
+        "url": "https://github.com/muyi0327/cui/issues"
+    },
+    "homepage": "https://github.com/muyi0327/cui",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:muyi0327/cui.git"
+    },
+    "keywords": [
+        "cui-icon",
+        "cui",
+        "vue"
+    ],
+    "author": "",
+    "license": "MIT",
+    "version": "0.3.0"
+}

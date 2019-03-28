@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui toast demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+</head>
+<body>
+    <section class="wrap">
+         <section id="app" class="app">
+             <w-button :plain="true" @click="showToast">动态创建</w-button>
+             <w-button :plain="true" @click="showTagToast">Tag创建</w-button>
+             <w-toast @visiable-change="visiableChange" pos="bottom" :is-show="isShow" content="aa"></w-toast>
+         </section>
+    </section>
+   
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data:function(){
+                return {
+                    isShow: false
+                }
+            },
+            methods:{
+                showToast: function(){
+                    //Wui.Toast.show('只设置内容和显示时间', 5000);
+                    //Wui.Toast.show('设置显示时间和位置', 'top', 5000)
+                    //Wui.Toast.show('设置显示内容和位置设置显示内容和位置', 'top')
+                    Wui.Toast.show('设置显示时间和内容及icon设置显示时间和内容及icon设置显示时间和内容及icon', 'top', 3000, function(){
+                        console.log('complete')
+                    });
+                },
+                showTagToast: function(){
+                    this.isShow = true;
+                },
+                visiableChange: function(visiable){
+                    this.isShow = visiable;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

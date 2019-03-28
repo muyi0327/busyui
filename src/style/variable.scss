@@ -1,0 +1,65 @@
+$prefix:cui !default;
+$prefixClass: cui !default;
+/* Color */
+$color-blue: #478df5 !default;
+$color-orange: #ff6331 !default;
+$color-white: #fff !default;
+$color-gray: #d9d9d9 !default;
+$border-color: #c8c8cd !default;
+$success-color: #4caf50 !default;
+$error-color: #f44336 !default;
+$warning-color: #ffc107 !default;
+$primary-color: #478df5 !default;
+
+/** global **/
+$global-default-border-color: #e7e7e7 !default;
+
+/* Button Component */
+$button-default-border-radius: 4px !default;
+$button-size-normal-height: 32px !default;
+$button-size-large-height: 44px !default;
+$button-size-small-height: 22px !default;
+
+$button-default-background-color: #fff !default;
+$button-default-text-color: #666 !default;
+$button-default-border-color: #c0c0c0 !default;
+$button-default-text-color: #666 !default;
+
+$button-primary-background-color: #478df5 !default;
+$button-primary-text-color: #fff !default;
+$button-primary-border-color: #478df5 !default;
+$button-primary-text-color: #478df5 !default;
+
+$button-warning-background-color: #ff6331 !default;
+$button-warning-text-color: #fff !default;
+$button-warning-border-color: #ff6331 !default;
+$button-warning-text-color: #ff6331 !default;
+
+
+/* Field Component */
+$field-value-color: #888888 !default;
+
+/** Message Component **/
+$message-info-icon-color: #478df5 !default;
+$message-success-icon-color: #4caf50 !default;
+$message-wraning-icon-color: #ffc107 !default;
+$message-error-icon-color: #f44336 !default;
+
+/** Dialog Component **/
+$dialog-default-button-text-color: #0076ff !default;
+$dialog-default-button-font-size: 17px !default;
+$dialog-default-content-text-color: #030303 !default;
+$dialog-default-content-font-size: 13px !default;
+$dialog-default-button-height: 44px !default;
+$dialog-dfault-width: 240 !default;
+$dialog-dfault-height: 160 !default;
+
+
+/** Swipe Component **/
+$swipe-active-dot-color: #fff !default;
+$swipe-normal-dot-color: #d9d9d9 !default;
+
+/** progress Component **/
+$progress-background-color: #d9d9d9 !default;
+$progress-line-color: #ff6331 !default;
+$progress-line-width: 6 !default;

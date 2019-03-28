@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui spinner demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        html, body{
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        .wrap{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .loadings{
+            display: flex;
+        }
+
+        .loadings li{
+            flex-grow: 1;
+            width: 25%;
+            flex-wrap: wrap;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .box1{
+            height: 150px;
+            position: relative;
+            border:1px solid #efefef;
+        }
+
+        .box2{
+            height: 150px;
+            position: relative;
+            border:1px solid #efefef;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <section class="wrap">
+         <section id="app" class="app">
+             <w-button :plain="true" @click="show">显示</w-button>
+             <w-button :plain="true" @click="fullpage">全屏</w-button>
+             <w-button :plain="true" @click="hide">隐 藏</w-button>
+             <w-button :plain="true" @click="create">动态创建</w-button>
+             <div class="box2">
+                 看到某些网站的动画效果很棒，特别是有一种动画，像是一点一点画出来的那种，经过仔细查看源代码和自己实验，发现其实是利用SVG制作的描边动画，感觉非常的神奇，现在分享给大家制作方法，希望您也能通过本文的介绍，制作出绚丽的SVG描边动画。
+                 <w-loading :is-show="visiable" :full-page="fullPage">客官请稍等，马上就来</w-loading>
+             </div>
+         </section>
+    </section>
+   
+    <script>
+        window.addEventListener('DOMContentLoaded', function(){
+            var vm = new Vue({
+                el: '#app',
+                data: function(){
+                    return {
+                        visiable: false,
+                        fullPage: false
+                    }
+                },
+                methods:{
+                    show: function(){
+                        this.visiable = true;
+                        // Wui.Loading.show({
+                        //     color: '#999',
+                        //     spinnerWidth: 30,
+                        //     spinnerHeight: 30,
+                        //     fontSize:14,
+                        //     text: '正在加载...',
+                        //     bgColor: 'transparent',
+                        //     spinnerType: 0
+                        // });
+                    },
+                    hide: function(){
+                        this.visiable = false;
+                        //Wui.Loading.show({direction: 'row'});
+                    },
+                    fullpage: function(){
+                        this.visiable = true;
+                        this.fullPage = true;
+                        //Wui.Loading.hide();
+                    },
+                    create: function(){
+                        Wui.Loading.show({fullPage: true})
+                    }
+                }
+            });
+        }, false);
+        
+    </script>
+</body>
+</html>

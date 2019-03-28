@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>wui Popup demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+        section {
+            margin: 5px;
+            border-radius: 3px;
+            border: 1px solid #d3d3d3;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        p {
+            margin: 0;
+        }
+        
+        section>div {
+            margin: 5px;
+        }
+        
+        section::before {
+            content: attr(title);
+            position: absolute;
+            background-color: #c6c6c6;
+            color: #fff;
+            left: 0;
+            top: 0;
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            border-bottom-right-radius: 5px;
+            padding: 0 5px;
+        }
+        
+        .wui-popup-bottom-default {
+            width: 100%;
+        }
+        
+        .wui-popup {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        .picker-wrapper {
+            border: 1px solid #d3d3d3;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        
+        .picker-selector-hightlight {
+            height: 33px;
+            box-sizing: border-box;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 50%;
+            margin-top: -16.5px;
+            z-index: 1;
+        }
+        
+        .picker-selector-hightlight:before {
+            left: 0;
+            top: 0;
+            bottom: auto;
+            right: auto;
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background-color: #eaeaea;
+            display: block;
+            z-index: 15;
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+        }
+        
+        .picker-selector-hightlight:after {
+            left: 0;
+            bottom: 0;
+            top: auto;
+            right: auto;
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background-color: #eaeaea;
+            display: block;
+            z-index: 15;
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+        }
+        
+        .picker-body {
+            display: block;
+            height: 99px;
+            text-align: center;
+            transform: translate(0px, 33px) translateZ(0px);
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;
+            user-select: none;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .picker-body.dragging {
+            transition-duration: 0s;
+        }
+        
+        .picker-item {
+            box-sizing: border-box;
+            height: 33px;
+            line-height: 33px;
+            padding-left: 10px;
+            padding-right: 10px;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="app" class="app"></div>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var vm = new Vue({
+                el: '#app',
+                template: document.getElementById('tpl').innerHTML,
+                data() {
+                    return {
+                        pickValue: '',
+                        pickValue2: '',
+                        pickValue3: '',
+                        pickValue4: '',
+                        popupVisible: false,
+                        popupVisible2: false,
+                        popupVisible3: false,
+                        popupVisible4: false,
+                        items: [{
+                            options: [1000, 21000, 31000, 41000, 51000]
+                        }],
+                        items2: [{
+                            options: [{
+                                name: '键值对AAA',
+                                value: 'aaa'
+                            }, {
+                                name: '键值对BBB',
+                                value: 'bbb'
+                            }, {
+                                name: '键值对CCC',
+                                value: 'ccc'
+                            }, {
+                                name: '键值对DDD',
+                                value: 'ddd'
+                            }]
+                        }],
+                        items3: [{
+                            options: [{
+                                name2: '自定义键值对AAA',
+                                value: 'aaa'
+                            }, {
+                                name2: '自定义键值对BBB',
+                                value: 'bbb'
+                            }],
+                            textKey: "name2"
+                        }],
+                        items4: [{
+                            options: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+                        }]
+                    }
+                },
+                methods: {
+                    click1($event) {
+                        $event.preventDefault();
+                    },
+                    click2($event) {
+                        $event.preventDefault();
+                    },
+                    onItemSelect(index, val, item) {
+                        //  this.pickValue = val;
+                    },
+                    onItemSelect2(index, val, item) {
+                        //  this.pickValue2 = val;
+                    },
+                    onItemSelect3(index, val, item) {
+                        this.pickValue3 = val + "|" + item.name2;
+                    },
+                    onItemSelect4(index, val, item) {
+                        this.pickValue4 = val;
+                    }
+
+                }
+            });
+        }, false);
+    </script>
+    <script type="text/vue" id="tpl">
+        <article>
+            <section title="Picker">
+                <div>
+                    当前选中:{{pickValue}}
+                    <w-checkbox v-model="popupVisible" label="pop开关"></w-checkbox>
+                    <w-picker v-model="pickValue" :show="popupVisible" @select="onItemSelect" :options="items" @hide="popupVisible= arguments[0]"></w-picker>
+                </div>
+            </section>
+            <section title="键值对Option的Picker">
+                <div>
+                    当前选中:{{pickValue2}}
+                    <w-checkbox v-model="popupVisible2" label="pop开关"></w-checkbox>
+                    <w-picker v-model="pickValue2" :show="popupVisible2" @select="onItemSelect2" :options="items2" @hide="popupVisible2= arguments[0]"></w-picker>
+                </div>
+            </section>
+            <section title="自定义键值对Option的Picker">
+                <div>
+                    当前选中:{{pickValue3}}
+                    <w-checkbox v-model="popupVisible3" label="pop开关"></w-checkbox>
+                    <w-picker :show="popupVisible3" @select="onItemSelect3" :options="items3" @hide="popupVisible3= arguments[0]"></w-picker>
+                </div>
+            </section>
+            <section title="指定显示个数">
+                <div>
+                    当前选中:{{pickValue4}}
+                    <w-checkbox v-model="popupVisible4" label="pop开关"></w-checkbox>
+                    <w-picker :show="popupVisible4" @select="onItemSelect4" :options="items4" :visibleCount="5" @hide="popupVisible4= arguments[0]"></w-picker>
+                </div>
+            </section>
+        </article>
+    </script>
+</body>
+
+</html>

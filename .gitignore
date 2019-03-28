@@ -1,0 +1,16 @@
+node_modules/
+.sass-cache/
+.vscode/
+packages/**/node_modules/
+coverage/
+reporter/
+output/
+rollup/
+TESTS-**/
+.DS_Store
+**/.DS_Store
+themes/
+example/**/node_modules/
+npm-debug.log
+reports/
+packages/border/

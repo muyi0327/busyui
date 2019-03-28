@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui spinner demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            background-color: #000;
+        }
+        
+        .wrap {
+            height: 100%;
+            width: 100%;
+            
+            overflow: hidden;
+        }
+        
+        .loadings {
+            display: flex;
+        }
+        
+        .loadings li {
+            flex-grow: 1;
+            width: 25%;
+            flex-wrap: wrap;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        
+        
+        
+    </style>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <section class="wrap">
+        <section id="app" class="app"></section>
+    </section>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var vm = new Vue({
+                el: '#app',
+                template: document.getElementById('app-tpl').innerHTML
+            });
+        }, false);
+    </script>
+    <script type="text/vue" id="app-tpl">
+        <ul class="loadings">
+            <li>
+                <w-line-spin-fade :width="20" :height="20"></w-line-spin-fade>
+            </li>
+            <li>
+                <w-ball-scale-multiple></w-ball-scale-multiple>
+            </li>
+            <li>
+                <w-line-scale-pulse-out :item-width="2" :item-height="20"></w-line-scale-pulse-out>
+            </li>
+            <li>
+                <w-ball-beat></w-ball-beat>
+            </li>
+            <li>
+                <w-ball-clip-rotate-pulse></w-ball-clip-rotate-pulse>
+            </li>
+            <li>
+                <w-circle-rotate></w-circle-rotate>
+            </li>
+            <li>
+                <w-spinner :type="0"></w-spinner>
+            </li>
+            <li>
+                <w-spinner :type="7" :width="30" :height="30" :stroke-width="3"></w-spinner>
+            </li>
+        </ul>
+    </script>
+</body>
+
+</html>

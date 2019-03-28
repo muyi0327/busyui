@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui spinner demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wui-dialog .btn-cutom-blue{
+            color: blue;
+        }
+        
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        
+        .wrap {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .loadings {
+            display: flex;
+        }
+        
+        .loadings li {
+            flex-grow: 1;
+            width: 25%;
+            flex-wrap: wrap;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wrap">
+        <section id="app" class="app">
+            <w-button :plain="true" class="dlg" @click="showDefault">默 认</w-button>
+            <w-button :plain="true" class="alt" @click="shwoAlert">Alert</w-button>
+            <w-button :plain="true" class="cfm" @click="showConfirm">confirm</w-button>
+            <w-button :plain="true" class="prompt" @click="showPrompt">prompt</w-button>
+            <w-button :plain="true" class="custom" @click="showCustom">自定义</w-button>
+            <w-confirm @visiable-change="handleConfirmStatus" :is-show="isShowConfirm" :content="confirmContent" :callback="handleConfirm"></w-confirm>
+            <w-prompt @visiable-change="handlePromptStatus" :is-show="isShowPrompt" :content="propmtContent" :callback="handlePrompt"></w-prompt>
+            <w-alert @visiable-change="handleAlertStatus" :is-show="isShowAlert" :content="alertContent"></w-alert>
+        </section>
+    </section>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var vm = new Vue({
+                el: '#app',
+                data: function () {
+                    return {
+                        content: '内容测试',
+                        confirmContent: '是不是要跳转？',
+                        propmtContent: '请填写你要跳转的url',
+                        alertContent: '111111',
+                        isShowConfirm: false,
+                        isShowPrompt: false,
+                        isShowAlert: false
+                    }
+                },
+                methods: {
+                    handleConfirm: function (rst) {
+                        if (rst === true) {
+                            console.log('ok')
+                        } else {
+                            console.log('no ok')
+                        }
+                    },
+                    handlePrompt: function (text) {
+                        console.log(text)
+                    },
+                    showDefault: function () {
+                        Wui.Dialog.show({
+                            content: '<div style="color: red;">'+this.content+'</div>',
+                            title: '对话'
+                        });
+                    },
+                    shwoAlert: function () {
+                        this.isShowAlert = true;
+                        //Wui.Alert.show('11111');
+                    },
+                    showConfirm: function () {
+                        this.isShowConfirm = true;
+                         //var c = Wui.Confirm.show(this.confirmContent,  this.handleConfirm);
+
+                        // setTimeout(function(){
+                        //     c.hide();
+                        // }, 2000)
+                    },
+                    showPrompt: function () {
+                        this.isShowPrompt = true;
+                        // Wui.Prompt.show(this.propmtContent, function(text){
+                        //     console.log(text)
+                        // });
+                    },
+                    showCustom: function () {
+                        Wui.Dialog.show({
+                            
+                            content: '确认要发出100000万元红包？',
+                            buttonDirection:'col',
+                            height: 300,
+                            buttons: [{
+                                text: 'Click me please!'
+                            },{
+                                text: '我错了！'
+                            }, {
+                                text: '有钱，就是任性',
+                                class: 'btn-cutom-blue',
+                                action() {
+                                    console.log('撒钱啦！！')
+                                }
+                            }]
+                        }, function (text) {
+                            console.log(text)
+                        });
+                    },
+                    handleConfirmStatus:function(val){
+                        this.isShowConfirm = val;
+                    },
+                    handlePromptStatus:function(val){
+                        this.isShowPrompt = val;
+                    },
+                    handleAlertStatus:function(val){
+                        this.isShowAlert = val;
+                    }
+                },
+                mounted(){
+
+                }
+            });
+
+
+        }, false);
+    </script>
+</body>
+
+</html>

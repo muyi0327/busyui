@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui spinner demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        body{
+            overflow: scroll
+        }
+        
+        .wrap {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .swipe {
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .btn-bars{
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .orange {
+            background-color: orange;
+        }
+        
+        .green {
+            background-color: mediumseagreen;
+        }
+        
+        .blue {
+            background-color: cornflowerblue;
+        }
+
+        .red {
+            background-color: indianred;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wrap">
+        <section id="app" class="app">
+            <article class="btn-bars">
+                <w-button @click="showHorizontal">横向</w-button>
+                <w-button @click="showVertical">纵向</w-button>
+                <w-button @click="showFullpage">全屏</w-button>
+                <w-button @click="startPlay">播放</w-button>
+                <w-button @click="stopPlay">停止</w-button>
+            </article>
+            <w-swipe :interval="interval" :dotes-pos="dotesPos" :auto-play="autoplay" :width="width"  :height="height" :dir-type="direction">
+                <w-swipe-item class="swipe orange">1</w-swipe-item>
+                <w-swipe-item class="swipe green">2</w-swipe-item>
+                <w-swipe-item class="swipe blue">3</w-swipe-item>
+                <w-swipe-item class="swipe red">4</w-swipe-item>
+            </w-swipe>
+        </section>
+    </section>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var vm = new Vue({
+                el: '#app',
+                data(){
+                    return {
+                        height: 200,
+                        width: document.body.offsetWidth || document.documentElement.offsetWidth,
+                        direction: 'horizontal',
+                        autoplay: false,
+                        interval: 3500,
+                        dotesPos: 'bottom'
+                    }
+                },
+                methods:{
+                    showVertical: function(){
+                        this.height = 300;
+                        this.direction = 'vertical';
+                        this.dotesPos = 'right';
+                    },
+                    showHorizontal: function(){
+                        this.height = 200;
+                        this.direction = 'horizontal';
+                        this.dotesPos = 'bottom';
+                    },
+                    showFullpage: function(){
+                        this.height = document.body.offsetHeight || document.documentElement.offsetHeight;
+                        this.direction = 'vertical';
+                        this.dotesPos = 'right';
+                    },
+                    startPlay: function(){
+                        this.autoplay = true;
+                    },
+                    stopPlay: function(){
+                        this.autoplay = false;
+                    }
+                }
+            });
+
+            // default
+        }, false);
+    </script>
+</body>
+
+</html>

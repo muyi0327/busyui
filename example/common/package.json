@@ -1,0 +1,15 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "yangfei <yangfei44@wanda.cn> (https://github.wanda-group.net/WDF)",
+  "license": "ISC",
+  "devDependencies": {
+    "vue": "^2.1.10"
+  }
+}

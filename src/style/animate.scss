@@ -1,0 +1,87 @@
+@import './variable.scss';
+
+.#{$prefixClass}-animate {
+
+    &_fade-enter,
+    &_fade-leave-active {
+        opacity: 0;
+    }
+
+    /*上进上出*/
+    &_tito-enter,
+    &_tito-leave-active {
+        opacity: 0;
+        margin-top: -50px;
+    }
+
+
+    /*上进下出*/
+    &_tibo-enter,
+    &_tibo-leave-active {
+        opacity: 0;
+        margin-top: -50px;
+    }
+
+    &_tibo-leave-active {
+        margin-top: 50px;
+    }
+
+    /*下进下出*/
+    &_bibo-enter,
+    &_bibo-leave-active {
+        opacity: 0;
+        margin-bottom: -50px;
+    }
+
+    /*左进左出*/
+    &_lilo-enter,
+    &_lilo-leave-active {
+        opacity: 0;
+        margin-left: -50px;
+    }
+
+
+    /*右进右出*/
+    &_riro-enter,
+    &_riro-leave-active {
+        opacity: 0;
+        margin-right: -50px;
+    }
+
+    /*左进右出*/
+    &_liro-enter,
+    &_liro-leave-active {
+        opacity: 0;
+        margin-left: -50px;
+    }
+
+    &_liro-leave-active {
+        margin-right: -50px;
+    }
+
+    /*slide down*/
+    &_slide-down-enter,
+    &_slide-down-leave-active {
+        opacity: 0;
+        height: 0;
+    }
+
+    &_tito-leave-active,
+    &_tito-enter-active,
+    &_tibo-leave-active,
+    &_tibo-enter-active,
+    &_bibo-leave-active,
+    &_bibo-enter-active,
+    &_riro-leave-active,
+    &_riro-enter-active,
+    &_lilo-leave-active,
+    &_lilo-enter-active,
+    &_liro-leave-active,
+    &_liro-enter-active,
+    &_fade-leave-active,
+    &_fade-enter-active,
+    &_slide-down-leave-active,
+    &_slide-down-enter-active {
+        transition: all 0.5s ease;
+    }
+}

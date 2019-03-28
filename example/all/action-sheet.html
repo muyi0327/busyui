@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui toast demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style type="text/css">
+        html,body{
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .wrap, .app{
+            height:500%;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="wrap">
+         <section id="app" class="app">
+             <div class="buttons">
+                 <w-row>
+                     <w-cell><w-button :plain="true" width="100%" @click.stop="showActionSheet">动态</w-button></w-cell>
+                     <w-cell><w-button :plain="true" width="100%" @click.stop="show">Tag显示</w-button></w-cell>
+                     <w-cell><w-button :plain="true" width="100%" @click.stop="hide">Tag隐藏</w-button></w-cell>
+                 </w-row>
+             </div>
+             <w-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></w-action-sheet>
+
+             <w-action-sheet :is-show="true">
+                 <w-action-sheet-item @click="()=>{$wui.Toast.show('1111')}">slot动作一</w-action-sheet-item>
+                 <w-action-sheet-item @click="()=>{$wui.Toast.show('2222')}">slot动作二</w-action-sheet-item>
+                 <w-action-sheet-item @click="()=>{$wui.Toast.show('3333')}">slot动作三</w-action-sheet-item>
+             </w-action-sheet>
+         </section>
+    </section>
+   
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data:function(){
+                return {
+                    isShow: false,
+                    actions:[{
+                        text:'执行动作一',
+                        action(){
+                            console.log('执行动作一')
+                        }
+                    },{
+                        text:'执行动作二',
+                        action(){
+                            console.log('执行动作二')
+                        }
+                    },{
+                        text:'执行动作三',
+                        action(){
+                            console.log('执行动作三')
+                        }
+                    },{
+                        text:'执行动作四',
+                        action(){
+                            console.log('执行动作四')
+                        }
+                    },{
+                        text:'执行动作五',
+                        action(){
+                            console.log('执行动作五')
+                        }
+                    }]
+                }
+            },
+            methods:{
+                show: function(){
+                    this.isShow = true;
+                },
+                hide: function(){
+                    this.isShow = false;
+                },
+                visiableChange: function(visiable){
+                    this.isShow = visiable;
+                },
+                showActionSheet:function(){
+                    Wui.ActionSheet.show({
+                        actions: this.actions
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

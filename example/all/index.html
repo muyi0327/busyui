@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>WUI-Mobile</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: left;
+            padding: 5px 20px;
+            position: relative;
+        }
+
+        li:active {
+            background-color: #eeeeee;
+        }
+
+        li:before {
+            top: 0;
+            left: 0;
+            content: "";
+            position: absolute;
+            width: 200%;
+            transform: scale(0.5);
+            transform-origin: 0 0;
+            border-top: 1px solid #d6d6d6;
+        }
+
+        li:after {
+            bottom: 0;
+            left: 0;
+            content: "";
+            position: absolute;
+            width: 200%;
+            transform: scale(0.5);
+            transform-origin: 0 0;
+            border-bottom: 1px solid #d6d6d6;
+        }
+
+        a {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+            color: #222;
+        }
+
+        .index-wrapper {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="index-wrapper">
+        <p>WUI-MOBILE</p>
+        <ul>
+            <li>
+                <a href="border1px.html">1像素边框</a>
+            </li>
+            <li>
+                <a href="button.html">按钮</a>
+            </li>
+            <li>
+                <a href="list.html">list</a>
+            </li>
+            <li>
+                <a href="input.html">input</a>
+            </li>
+            <li>
+                <a href="checkbox.html">复选框</a>
+            </li>
+            <li>
+                <a href="progress.html">进度条</a>
+            </li>
+            <li>
+                <a href="spinner.html">Spinner</a>
+            </li>
+            <li>
+                <a href="message.html">信息提示</a>
+            </li>
+            <li>
+                <a href="icons.html">icon</a>
+            </li>
+            <li>
+                <a href="popup.html">弹出层</a>
+            </li>
+            <li>
+                <a href="picker.html">弹出选择</a>
+            </li>
+            <li>
+                <a href="swipe.html">切换效果</a>
+            </li>
+            <li>
+                <a href="loading.html">loading</a>
+            </li>
+            <li>
+                <a href="action-sheet.html">action-sheet</a>
+            </li>
+            <li>
+                <a href="toast-loading.html">toast-loading</a>
+            </li>
+            <li>
+                <a href="loadmore.html">加载更多</a>
+            </li>
+            <li>
+                <a href="flex.html">布局</a>
+            </li>
+            <li>
+                <a href="flexbox.html">flexbox布局</a>
+            </li>
+            <li>
+                <a href="field.html">表单项</a>
+            </li>
+            <li>
+                <a href="dialog.html">对话框</a>
+            </li>
+            <li>
+                <a href="toast.html">toast</a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

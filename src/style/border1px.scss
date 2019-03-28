@@ -1,0 +1,76 @@
+@import './variable.scss';
+
+.#{$prefixClass}-border-1px {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        border: 1px solid $global-default-border-color;
+        transform-origin: 0 0;
+        pointer-events: none;
+    }
+}
+
+.#{$prefixClass}-border-l {
+    &::after {
+        border-width: 0 0 0 1px;
+    }
+}
+
+.#{$prefixClass}-border-r {
+    &::after {
+        border-width: 0 1px 0 0;
+    }
+}
+
+.#{$prefixClass}-border-t {
+    &::after {
+        border-width: 1px 0 0;
+    }
+}
+
+.#{$prefixClass}-border-b {
+    &::after {
+        border-width: 0 0 1px;
+    }
+}
+
+.#{$prefixClass}-border-lr {
+    &::after {
+        border-width: 0 1px;
+    }
+}
+
+.#{$prefixClass}-border-tb {
+    &::after {
+        border-width: 1px 0;
+    }
+}
+
+.#{$prefixClass}-border-no-t {
+    &::after {
+        border-width: 0 1px 1px;
+    }
+}
+
+.#{$prefixClass}-border-no-b {
+    &::after {
+        border-width: 1px 1px 0;
+    }
+}
+
+.#{$prefixClass}-border-no-r {
+    &::after {
+        border-width: 1px 0 1px 1px;
+    }
+}
+
+.#{$prefixClass}-border-no-l {
+    &::after {
+        border-width: 1px 1px 1px 0;
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "wui-spinner",
+    "description": "",
+    "main": "index.js",
+    "bugs": {
+        "url": "http://git.wdjr.local/wdf/wui-mobile/issues"
+    },
+    "homepage": "http://git.wdjr.local/wdf/wui-mobile",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://git.wdjr.local/wdf/wui-mobile/tree/master/packages/spinner"
+    },
+    "keywords": [
+        "wui-spinner",
+        "wui",
+        "vue"
+    ],
+    "author": "",
+    "dependencies": {
+        "wui-util": "*"
+    },
+    "license": "MIT",
+    "version": "0.3.0"
+}

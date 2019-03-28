@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>xui flex demo</title>
+    <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+        body {
+            background: #f7f7f7;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .box {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        .row {
+            background: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .row2 {
+            height: 100px;
+            margin: 10px 5px;
+        }
+        
+        .label1 {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="display: flex;">
+        <div style="flex: 1; height: 30px; flex-basis: 90px; flex-grow: 0;">afafafaf</div>
+        <div style="flex: 1; ">aa</div>
+    </div>
+    <section class="box">
+        <section id="app" class="app"></section>
+    </section>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var vm = new Vue({
+                el: '#app',
+                template: document.getElementById('tpl').innerHTML,
+                methods:{
+                    handle(){
+                        Wui.Toast.show('row click')
+                    }
+                }
+            });
+        }, false);
+    </script>
+    <script type="text/vue" id="tpl">
+        <article class="wrap">
+                
+                <w-row class="row" :height="50">
+                    <w-cell class="label1" :width="90" align="center" v-on:click="handle">选项一</w-cell>
+                    <w-cell align="center" :height="30">c</w-cell>
+                    <w-cell :width="45">
+                        <w-icon type="wenhao" fill="#ff0000"></w-icon>
+                    </w-cell>
+                </w-row>
+                <w-row class="row wui-al-ctm">
+                    <w-cell class="label1" width="90" align="center">选项二</w-cell>
+                    <w-cell align="center">
+                        <w-col>
+                            <w-cell>a</w-cell>
+                            <w-cell>b</w-cell>
+                            <w-cell>c</w-cell>
+                        </w-col>
+                        <w-col>
+                            <w-cell>a</w-cell>
+                            <w-cell>b</w-cell>
+                            <w-cell>c</w-cell>
+                        </w-col>
+                    </w-cell>
+                </w-row>
+                <w-row class="row">
+                    <w-cell class="label1" :width="90" :height="240" align="center">选项三</w-cell>
+                    <w-cell align="center">
+                        <w-col>
+                            <w-cell :height="50" align="center">
+                                <w-row height="100%">
+                                    <w-cell>a</w-cell>
+                                    <w-cell>b</w-cell>
+                                    <w-cell>c</w-cell>
+                                </w-row>
+                            </w-cell>
+                            <w-cell :height="100" direction="column">
+                                <div style="width:100%">1</div>
+                                <div style="width:100%">2</div>
+                            </w-cell>
+                            <w-cell align="center">
+                                <div style="flex:1; height:100%;">3</div>
+                                <div style="flex:1;height:100%;">4</div>
+                            </w-cell>
+                        </w-col>
+                    </w-cell>
+                </w-row>
+        </article>
+    </script>
+</body>
+
+</html>

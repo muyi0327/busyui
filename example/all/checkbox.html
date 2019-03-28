@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>wui Checkbox demo</title>
+     <link rel="stylesheet" href="../../dist/wui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/wui.js"></script>
+    <style>
+        section {
+            margin: 5px;
+            border-radius: 3px;
+            border: 1px solid #d3d3d3;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        p {
+            margin: 0;
+        }
+        
+        section>div {
+            margin: 5px;
+        }
+        
+        section::before {
+            content: attr(title);
+            position: absolute;
+            background-color: #c6c6c6;
+            color: #fff;
+            left: 0;
+            top: 0;
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            border-bottom-right-radius: 5px;
+            padding: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="app" class="app"></div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var vm = new Vue({
+                el: '#app',
+                template: document.getElementById('tpl').innerHTML,
+                data() {
+                    return {
+                        checked: true,
+                        checked2: false,
+                        checked3: true,
+                        disable: false
+                    }
+                },
+                watch:{
+                    checked(){
+                        console.log(arguments)
+                    }
+                },
+                methods: {
+                    click1($event) {
+                        $event.preventDefault();
+                        console.log("你点击了一个连接")
+                    },
+                    click2($event) {
+                        $event.preventDefault();
+                        console.log("你点击了另一个连接")
+                    }
+                }
+            });
+        }, false);
+    </script>
+
+    <script type="text/vue" id="tpl">
+        <article>
+            <section title="选择框">
+                <div>
+                    <w-checkbox :size="50" color="orange" v-model="checked" label="这个位置是标签1"></w-checkbox>
+                </div>
+                <div>
+                    <w-checkbox :size="30" v-model="checked2" label="这个位置是标签2"></w-checkbox>
+                </div>
+                <div>
+                    <w-checkbox :size="18" color="#00c2f0" v-model="checked3" label="这个位置是标签3"></w-checkbox>
+                </div>
+                <div>标签1:{{checked}}</div>
+                <div>标签2:{{checked2}}</div>
+                <div>标签3:{{checked3}}</div>
+            </section>
+            <section title="自定义内容">
+                <div>
+                    <w-checkbox v-model="checked">
+                        <span><a href="" @click="click1">[[这里是一个连接]]</a></span>
+                    </w-checkbox>
+                </div>
+                <div>
+                    <w-checkbox v-model="checked">
+                        <span style="display:inline-block;width:220px;">
+                            <p><a href="" @click="click1">[[这里是一个连接]]</a></p>        
+                            <p><a href="" @click="click2">[[这里是另一个连接]]</a></p> 
+                            <p><a href="" @click="click2">[[这里是另一个连接]]</a></p> 
+                            <p><a href="" @click="click2">[[这里是另一个连接]]</a></p> 
+                            <p><a href="" @click="click2">[[这里是另一个连接]]</a></p> 
+                            <p><a href="" @click="click2">[[这里是另一个连接]]</a></p> 
+                        </span>
+                    </w-checkbox>
+                </div>
+            </section>
+            <section title="禁用">
+                <div>
+                    <w-checkbox v-model="disable" label="是否禁用下面的按钮"></w-checkbox>
+                </div>
+                <div>
+                    <w-checkbox label="禁用我!" :disabled="disable"></w-checkbox>
+                </div>
+                <div>
+                    <w-checkbox label="禁用我!!" :disabled="disable"></w-checkbox>
+                </div>
+            </section>
+        </article>
+    </script>
+</body>
+
+</html>
