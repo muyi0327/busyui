@@ -8287,7 +8287,7 @@ var Wui = (function (exports, Vue) {
     //
     //
     var script$z = {
-      name: 'w-action-sheet-item',
+      name: 'bee-action-sheet-item',
       props: {
         action: Function
       },
@@ -8310,7 +8310,7 @@ var Wui = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        staticClass: "cui-action-sheet__item cui-border-1px cui-border-b",
+        staticClass: "bee-action-sheet__item bee-border-1px bee-border-b",
         on: {
           click: _vm.handleClick
         }
@@ -8341,7 +8341,7 @@ var Wui = (function (exports, Vue) {
     }, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, undefined, undefined);
 
     var script$A = {
-      name: 'w-action-sheet',
+      name: 'bee-action-sheet',
       props: {
         isShow: {
           type: Boolean,
@@ -8364,7 +8364,7 @@ var Wui = (function (exports, Vue) {
         };
       },
       components: _defineProperty({
-        'w-mask': Mask
+        'bee-mask': Mask
       }, ActionSheetItem.name, ActionSheetItem),
       watch: {
         isShow: function isShow(val) {
@@ -8433,7 +8433,7 @@ var Wui = (function (exports, Vue) {
         }
       }, [_c("transition", {
         attrs: {
-          name: "cui-animate_bibo"
+          name: "bee-animate_bibo"
         },
         on: {
           "after-enter": _vm._enter,
@@ -8447,12 +8447,12 @@ var Wui = (function (exports, Vue) {
           expression: "visiable"
         }],
         ref: "oel",
-        staticClass: "cui-action-sheet",
+        staticClass: "bee-action-sheet",
         style: _vm.styles
       }, [_c("div", {
-        staticClass: "cui-action-sheet__box"
+        staticClass: "bee-action-sheet__box"
       }, [_c("div", {
-        staticClass: "cui-action-sheet__list"
+        staticClass: "bee-action-sheet__list"
       }, [_vm._t("default", _vm._l(_vm.actions, function (ac, $i) {
         return _c("w-action-sheet-item", {
           key: "as-" + $i,
@@ -8461,7 +8461,7 @@ var Wui = (function (exports, Vue) {
           }
         }, [_vm._v(_vm._s(ac.text))]);
       }))], 2), _vm._v(" "), _c("div", {
-        staticClass: "cui-action-sheet__button",
+        staticClass: "bee-action-sheet__button",
         on: {
           click: _vm.hide
         }

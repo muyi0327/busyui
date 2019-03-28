@@ -39,16 +39,16 @@
 
 <template>
     <w-mask :is-show="visiable" @click.stop="hide" :is-remove="isRemove">
-        <transition name="cui-animate_bibo" v-on:after-enter="_enter" v-on:after-leave="_leave">
-            <div ref="oel" v-show="visiable" class="cui-action-sheet" :style="styles">
-                <div class="cui-action-sheet__box">
-                    <div class="cui-action-sheet__list">
+        <transition name="bee-animate_bibo" v-on:after-enter="_enter" v-on:after-leave="_leave">
+            <div ref="oel" v-show="visiable" class="bee-action-sheet" :style="styles">
+                <div class="bee-action-sheet__box">
+                    <div class="bee-action-sheet__list">
                         <slot>
                             <w-action-sheet-item :key="'as-'+$i" v-for="(ac,$i) in actions" @click="ac.action">{{ac.text}}</w-action-sheet-item>
                         </slot>
                     </div>
 
-                    <div class="cui-action-sheet__button" @click="hide">取消</div>
+                    <div class="bee-action-sheet__button" @click="hide">取消</div>
                 </div>
             </div>
         </transition>
@@ -60,7 +60,7 @@
     import ActionSheetItem from './action-sheet-item.vue'
 
     export default {
-        name: 'w-action-sheet',
+        name: 'bee-action-sheet',
         props: {
             isShow: {
                 type: Boolean,
@@ -83,7 +83,7 @@
             }
         },
         components: {
-            'w-mask': Mask,
+            'bee-mask': Mask,
             [ActionSheetItem.name]: ActionSheetItem
         },
         watch: {

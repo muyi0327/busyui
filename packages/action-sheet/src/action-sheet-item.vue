@@ -23,14 +23,14 @@
 
 
 <template>
-    <div class="cui-action-sheet__item cui-border-1px cui-border-b" @click="handleClick">
+    <div class="bee-action-sheet__item bee-border-1px bee-border-b" @click="handleClick">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'w-action-sheet-item',
+        name: 'bee-action-sheet-item',
         props: {
             action: Function
         },
