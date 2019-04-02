@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{prefixClass}-select {
+    .#{$prefixClass}-select {
         width: inherit;
         &__content {
             height: inherit;

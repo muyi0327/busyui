@@ -89,14 +89,14 @@
                         console.log(text)
                     },
                     showDefault: function () {
-                        bee.Dialog.show({
+                        Bee.Dialog.show({
                             content: '<div style="color: red;">' + this.content + '</div>',
                             title: '对话'
                         });
                     },
                     shwoAlert: function () {
                         this.isShowAlert = true;
-                        //bee.Alert.show('11111');
+                        //Bee.Alert.show('11111');
                     },
                     showConfirm: function () {
                         this.isShowConfirm = true;
@@ -108,12 +108,12 @@
                     },
                     showPrompt: function () {
                         this.isShowPrompt = true;
-                        // bee.Prompt.show(this.propmtContent, function(text){
+                        // Bee.Prompt.show(this.propmtContent, function(text){
                         //     console.log(text)
                         // });
                     },
                     showCustom: function () {
-                        bee.Dialog.show({
+                        Bee.Dialog.show({
 
                             content: '确认要发出100000万元红包？',
                             buttonDirection: 'col',

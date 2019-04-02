@@ -2071,7 +2071,7 @@ var BallBeat = normalizeComponent_1({
 }, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, undefined, undefined);
 
 BallBeat.install = function (vue) {
-  return vue.component('w-ball-beat', BallBeat);
+  return vue.component(BallBeat.name, BallBeat);
 };
 
 //
@@ -2782,7 +2782,7 @@ var __vue_render__$b = function __vue_render__() {
       value: _vm.visiable,
       expression: "visiable"
     }],
-    staticClass: "beeloading",
+    staticClass: "bee-loading",
     style: _vm.styles
   }, [_c('div', {
     staticClass: "bee-loading__spinner"
@@ -5904,7 +5904,7 @@ var script$r = {
       return ["bee-swipe__dots--pos-".concat(this.dotesPos)];
     },
     classes: function classes() {
-      return [this.status == "transition" ? 'bee-swipe--transition' : '', this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : ''];
+      return [this.status == "transition" ? 'bee-swipe--transition' : '', this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : 'bee-swipe--vertical'];
     }
   },
   watch: {
@@ -7017,6 +7017,8 @@ Input.install = function (vue) {
 //
 //
 //
+//
+//
 var script$w = {
   name: 'bee-switch',
   props: {
@@ -7840,4 +7842,26 @@ if (window.Vue) {
   window.Vue.use(Bee);
 }
 
+exports.Border = Border;
+exports.Toast = Toast$1;
+exports.ToastLoading = ToastLoading$1;
+exports.Loading = Loading;
+exports.Icons = Icon;
+exports.FlexBox = FlexBox;
+exports.Button = Button;
+exports.Checkbox = Checkbox;
+exports.Dialog = Dialog$1;
+exports.Alert = Alert$1;
+exports.Confirm = Confirm$1;
+exports.Prompt = Prompt$1;
+exports.Mask = Mask;
+exports.Message = Message$1;
+exports.Progress = Progress;
+exports.LoadMore = LoadMore;
+exports.Swipe = Swipe;
+exports.ActionSheet = ActionSheet;
+exports.List = List;
+exports.ListItem = ListItem;
+exports.Input = Input;
+exports.Switch = Switch;
 exports.default = Bee;

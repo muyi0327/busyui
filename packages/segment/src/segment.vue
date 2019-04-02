@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
     @import "../../../src/style/variable";
-    .#{prefixClass}-segment {
+    .#{$prefixClass}-segment {
         display: flex;
         &__item {
         }

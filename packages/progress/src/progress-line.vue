@@ -5,7 +5,7 @@
         font-size: 0;
     }
 
-    .#{prefixClass}-progress-line {
+    .#{$prefixClass}-progress-line {
         border-radius: 3px;
         height: #{$progress-line-width}px;
         position: relative;

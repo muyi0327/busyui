@@ -1,6 +1,6 @@
 <style lang="scss">
     @import "../../../src/style/variable.scss";
-    .#{prefixClass}-swipe {
+    .#{$prefixClass}-swipe {
         overflow: hidden;
         position: relative;
         -moz-user-select: none;
@@ -9,13 +9,15 @@
 
         &__wrap {
             height: 100%;
-            &--horizontal {
-                white-space: nowrap;
-                font-size: 0;
-            }
-            &--transition {
-                transition: transform 0.3s cubic-bezier(0.6, 0.07, 1, 1);
-            }
+        }
+
+        &--horizontal {
+            white-space: nowrap;
+            font-size: 0;
+        }
+
+        &--transition {
+            transition: transform 0.3s cubic-bezier(0.6, 0.07, 1, 1);
         }
 
         &__item {
@@ -196,7 +198,7 @@
             classes() {
                 return [
                     this.status == "transition" ? 'bee-swipe--transition' : '',
-                    this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : ''
+                    this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : 'bee-swipe--vertical'
                 ]
             }
         },

@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable.scss";
 
-    .#{prefixClass}-progress-ring {
+    .#{$prefixClass}-progress-ring {
         position: relative;
         svg &__bar {
             transition-property: stroke-dashoffset;

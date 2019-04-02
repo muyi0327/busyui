@@ -86,4 +86,29 @@ if (window.Vue) {
     window.Vue.use(Bee);
 }
 
+export {
+    Border,
+    Toast,
+    ToastLoading,
+    Loading,
+    Icons,
+    FlexBox,
+    Button,
+    Checkbox,
+    Dialog,
+    Alert,
+    Confirm,
+    Prompt,
+    Mask,
+    Message,
+    Progress,
+    LoadMore,
+    Swipe,
+    ActionSheet,
+    List,
+    ListItem,
+    Input,
+    Switch
+}
+
 export default Bee;

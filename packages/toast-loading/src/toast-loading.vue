@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{prefixClass}-toast-loading {
+    .#{$prefixClass}-toast-loading {
         display: flex;
         border-radius: 10px;
         position: absolute;

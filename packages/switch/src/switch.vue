@@ -12,7 +12,7 @@
     $duration: 0.4s;
     $checkedColor: #44db5e;
 
-    .#{prefixClass}-switch {
+    .#{$prefixClass}-switch {
         width: 52px;
         height: 31px;
         position: relative;
@@ -25,6 +25,7 @@
         -webkit-appearance: none;
         user-select: none;
         outline: none;
+
         &:before {
             content: "";
             width: 29px;
@@ -36,6 +37,7 @@
             background-color: #fff;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
+
         &:checked {
             border-color: $checkedColor;
             box-shadow: $checkedColor 0 0 0 16px inset;

@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{prefixClass}-loading {
+    .#{$prefixClass}-loading {
         position: absolute;
         left: 0;
         right: 0;
@@ -35,7 +35,7 @@
 </style>
 <template>
     <transition name="loading-fade" v-on:after-leave="_leave">
-        <div class="beeloading" :style="styles" v-show="visiable">
+        <div class="bee-loading" :style="styles" v-show="visiable">
             <div class="bee-loading__spinner">
                 <bee-spinner :type="spinnerType" :color="color" :width="spinnerWidth" :height="spinnerHeight" :size="spinnerSize" :stroke-width="spinnerStroke"></bee-spinner>
             </div>

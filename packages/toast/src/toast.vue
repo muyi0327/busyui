@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{prefixClass}-toast {
+    .#{$prefixClass}-toast {
         position: fixed;
         z-index: 1000;
         width: 100%;

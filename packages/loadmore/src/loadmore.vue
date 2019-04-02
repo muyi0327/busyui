@@ -2,7 +2,7 @@
     @import "../../../src/style/variable";
     @import "../../../src/style/flex";
 
-    .#{prefixClass}-loadmore {
+    .#{$prefixClass}-loadmore {
         -webkit-overflow-scrolling: touch;
         overflow: auto;
         position: relative;

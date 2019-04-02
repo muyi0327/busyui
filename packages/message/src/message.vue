@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{prefixClass}-message {
+    .#{$prefixClass}-message {
         position: fixed;
         z-index: 10001;
         border-radius: 5px;
