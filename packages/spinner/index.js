@@ -17,7 +17,7 @@ Spinner.install = function (vue) {
     vue.use(ballBeat);
     vue.use(circleRotate);
     //vue.use(svgCircleRotate);
-    vue.component('w-spinner', Spinner);
+    vue.component(Spinner.name, Spinner);
 }
 
 export default Spinner;

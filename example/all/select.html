@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/wui.css" />
+    <link rel="stylesheet" href="../../dist/bee.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/wui.js"></script>
+    <script src="../../dist/bee.js"></script>
     <style>
         * {
             padding: 0;
@@ -19,17 +19,17 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <w-list>
-                <w-list-item>
-                    <w-select width="100%" height="24" v-model="selectedWorkder" slot="content" :options="wokers" placeholder="请选择wokers"></w-select>
-                </w-list-item>
+            <bee-list>
+                <bee-list-item>
+                    <bee-select width="100%" height="24" v-model="selectedWorkder" slot="content" :options="wokers" placeholder="请选择wokers"></bee-select>
+                </bee-list-item>
 
-                <w-list-item>
-                    <w-select width="100%" height="24" v-model="selectedOpt" slot="content"  placeholder="请选择个人信息">
-                        <w-option :value="option" v-for="option in options">{{option.label}}</w-option>
-                    </w-select>
-                </w-list-item>
-            </w-list>
+                <bee-list-item>
+                    <bee-select width="100%" height="24" v-model="selectedOpt" slot="content" placeholder="请选择个人信息">
+                        <bee-option :value="option" v-for="option in options">{{option.label}}</bee-option>
+                    </bee-select>
+                </bee-list-item>
+            </bee-list>
 
         </section>
     </section>
@@ -39,17 +39,23 @@
             el: '#app',
             data() {
                 return {
-                    options: [{ val: 'a', label: '张三' }, { val: 'b', label: '李四' }],
-                    wokers:['Lily','Lucy','Tom','Sophia'],
+                    options: [{
+                        val: 'a',
+                        label: '张三'
+                    }, {
+                        val: 'b',
+                        label: '李四'
+                    }],
+                    wokers: ['Lily', 'Lucy', 'Tom', 'Sophia'],
                     selectedOpt: null,
-                    selectedWorkder:'Lily'
+                    selectedWorkder: 'Lily'
                 }
             },
-            watch:{
-                selectedWorkder(val, oldVal){
+            watch: {
+                selectedWorkder(val, oldVal) {
                     console.log(val)
                 },
-                selectedOpt(val, oldVal){
+                selectedOpt(val, oldVal) {
                     console.log(val)
                 }
             },

@@ -1,5 +1,5 @@
 import BallClipRotatePulse from './src/ball-clip-rotate-pulse.vue';
 
-BallClipRotatePulse.install = (vue)=>vue.component('w-ball-clip-rotate-pulse', BallClipRotatePulse);
+BallClipRotatePulse.install = (vue) => vue.component(BallClipRotatePulse.name, BallClipRotatePulse);
 
 export default BallClipRotatePulse;

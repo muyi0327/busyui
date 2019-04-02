@@ -5,7 +5,7 @@ import Alert from './Alert.vue';
 const AlertClass = Vue.extend(Alert);
 
 /**
- * bee-alert
+ * @bee/alert
  * @module Alert
  * @see {@link ../example/all/dialog.html 实例}
  * @desc alert对话框组件
@@ -21,8 +21,8 @@ const AlertClass = Vue.extend(Alert);
  * Bee.Alert.show('提交申请成功');
  *
  * // use it in webpack or browserify, rollup
- * import {Alert} from 'bee/packages/dialog';
- * // var Aler = require('bee/packages/dialog/alert.js');
+ * import {Alert} from '@bee/dialog';
+ * // var Aler = require('@bee/dialog/alert.js');
  *
  * Alert.show('提交申请成功');
  *
@@ -30,7 +30,7 @@ const AlertClass = Vue.extend(Alert);
 export default Object.assign(Alert, {
     $type: 'alert',
     install(vue) {
-        vue.component('w-alert', Alert);
+        vue.component(Alert.name, Alert);
     },
     /**
      * 显示Alert对话框

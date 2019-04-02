@@ -14,24 +14,24 @@
             margin: 0;
             list-style: none;
         }
-        
+
         html,
         body {
             padding: 0;
             margin: 0;
             height: 100%;
         }
-        
+
         .wrap {
             height: 100%;
             width: 100%;
             overflow: hidden;
         }
-        
+
         .loadings {
             display: flex;
         }
-        
+
         .loadings li {
             flex-grow: 1;
             width: 25%;
@@ -47,35 +47,34 @@
 
 <body>
     <section class="wrap">
-        <section id="app" class="app"></section>
+        <section id="app" class="app">
+            <div>
+                <bee-button :plain="true" class="default" @click="showDefault">默认</bee-button>
+                <bee-button :plain="true" class="success" @click="showSuccess">成功</bee-button>
+                <bee-button :plain="true" class="warning" @click="showWarning">警告</bee-button>
+                <bee-button :plain="true" class="error" @click="showError">错误</bee-button>
+            </div>
+        </section>
     </section>
-    <script type="text/vue" id="app-tpl">
-        <div>
-            <w-button :plain="true" class="default" @click="showDefault">默认</w-button>
-            <w-button :plain="true" class="success" @click="showSuccess">成功</w-button>
-            <w-button :plain="true" class="warning" @click="showWarning">警告</w-button>
-            <w-button :plain="true" class="error" @click="showError">错误</w-button>
-        </div>
-    </script>
+
     <script>
         window.addEventListener('DOMContentLoaded', function () {
             var vm = new Vue({
                 el: '#app',
-                template: document.getElementById('app-tpl').innerHTML,
                 methods: {
-                    showDefault: function() {
-                        //Wui.Message.info('普通信息提示');
+                    showDefault: function () {
+                        //Bee.Message.info('普通信息提示');
                         this.$wui.Message.info('普通信息提示');
                     },
-                    showSuccess: function(){
-                        Wui.Message.success('操作成功信息');
+                    showSuccess: function () {
+                        Bee.Message.success('操作成功信息');
                     },
-                    showWarning: function() {
-                        Wui.Message.warning('警告信息');
+                    showWarning: function () {
+                        Bee.Message.warning('警告信息');
                     },
-                    showError: function() {
-                        Wui.Message.error('错误信息');
-                    } 
+                    showError: function () {
+                        Bee.Message.error('错误信息');
+                    }
                 }
             });
         }, false);

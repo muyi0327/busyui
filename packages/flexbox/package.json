@@ -1,5 +1,5 @@
 {
-  "name": "bee-flexbox",
+  "name": "@bee/flexbox",
   "version": "1.0.0",
   "description": "flexbox component",
   "main": "index.js",

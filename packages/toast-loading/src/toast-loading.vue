@@ -67,18 +67,18 @@
 </style>
 
 <template>
-    <w-mask v-show="visiable">
+    <bee-mask v-show="visiable">
         <transition name="loading-opacity-fade">
             <div v-show="visiable" class="bee-toast-loading" :class="classes" :style="styles">
                 <div class="bee-toast-loading__icon">
-                    <w-spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color"></w-spinner>
+                    <bee-spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color"></bee-spinner>
                 </div>
                 <div v-if="text" class="bee-toast-loading__text" :style="{color: color,fontSize: fontSize+'px'}">
                     <slot>{{text}}</slot>
                 </div>
             </div>
         </transition>
-    </w-mask>
+    </bee-mask>
 </template>
 
 <script>
@@ -132,7 +132,7 @@
             }
         },
         components: {
-            'w-spinner': Spinner
+            [Spinner.name]: Spinner
         },
         data() {
             return {

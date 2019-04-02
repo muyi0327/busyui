@@ -80,13 +80,13 @@
     <div class="bee-loadmore">
         <div class="bee-loadmore__content" :style="styles">
             <slot name="top">
-                <w-loadmore-bar class="bee-loadmore__top" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></w-loadmore-bar>
+                <bee-loadmore-bar class="bee-loadmore__top" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></bee-loadmore-bar>
             </slot>
             <div class="bee-loadmore__content">
                 <slot></slot>
             </div>
             <slot name="bottom" v-if="onInfinite">
-                <w-loadmore-bar class="bee-loadmore__bottom" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></w-loadmore-bar>
+                <bee-loadmore-bar class="bee-loadmore__bottom" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></bee-loadmore-bar>
             </slot>
             <slot name="no-more" v-if="noMore">
                 <div class="bee-loadmore__nomore">{{noMoreText}}</div>
@@ -101,7 +101,7 @@
     import loadMoreBar from './loadmore-bar.vue';
 
     /**
-     * bee-loadmore
+     * @bee/loadmore
      * @module Loadmore
      * @see {@link ../example/all/loadmore.html 实例}
      * @desc 加载更多组件
@@ -121,7 +121,7 @@
      * @param {Boolean} listenScroll - 是否监听scroll
      * 
      * @example
-     *  <w-loadmore>content list</w-loadmore>
+     *  <bee-loadmore>content list</bee-loadmore>
      */
     export default {
         name: 'bee-loadmore',

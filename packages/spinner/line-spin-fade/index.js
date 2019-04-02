@@ -1,5 +1,5 @@
 import LineSpinFade from './src/line-spin-fade.vue';
 
-LineSpinFade.install = (vue) => vue.component('w-line-spin-fade', LineSpinFade);
+LineSpinFade.install = (vue) => vue.component(LineSpinFade.name, LineSpinFade);
 
 export default LineSpinFade;

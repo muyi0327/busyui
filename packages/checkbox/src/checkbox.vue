@@ -80,7 +80,7 @@
 </template>
 <script>
     /**
-     * bee-checkbox
+     * @bee/checkbox
      * @desc 勾选框  <bee-checkbox />
      * @module Checkbox
      * @see {@link ../example/all/checkbox.html 实例}

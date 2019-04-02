@@ -120,11 +120,11 @@
 </style>
 
 <template>
-    <w-mask v-show="visiable" :is-remove="isRemove" color="rgba(0,0,0,.5)">
+    <bee-mask v-show="visiable" :is-remove="isRemove" color="rgba(0,0,0,.5)">
         <transition name="fade-scale">
             <div class="bee-dialog" v-if="visiable" :style="styles">
                 <p v-if="showClose" class="bee-dialog__close" @click.stop="hide">
-                    <w-icon type="close" :width="20" :height="20" fill="#8a8a8a"></w-icon>
+                    <bee-icon type="close" :width="20" :height="20" fill="#8a8a8a"></bee-icon>
                 </p>
                 <header class="bee-dialog__header" v-if="title">
                     <slot name="header">
@@ -145,7 +145,7 @@
                 </footer>
             </div>
         </transition>
-    </w-mask>
+    </bee-mask>
 </template>
 <script>
     import Icon from '../../icon';

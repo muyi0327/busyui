@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,48 +9,47 @@
     <script src="../vue.js"></script>
     <script src="../../dist/wui.js"></script>
     <style>
-        html, body{
+        html,
+        body {
             padding: 0;
             margin: 0;
             height: 100%;
         }
-        .wrap{
+
+        .wrap {
             height: 100%;
             width: 100%;
         }
     </style>
 </head>
+
 <body>
     <section class="wrap">
-         <section id="app" class="app"></section>
-    </section>
-   
-    <script>
-    window.addEventListener('DOMContentLoaded', function(){
-        var vm = new Vue({
-            el: '#app',
-            template: document.getElementById('tpl').innerHTML
-        });
-    }, false)
-        
-    </script>
-
-
-    <script type="text/wui" id="tpl">
-        <section>
-            <w-icon type="roundcheck" fill="#000" :width="36" :height="36"></w-icon>
-            <w-icon type="move" fill="orange" :width="36" :height="36"></w-icon>
-            <w-icon type="add" fill="green" :width="36" :height="36"></w-icon>
-            <w-icon type="refresharrow" fill="blue" :width="36" :height="36"></w-icon>
-            <w-icon type="info" fill="gray" :width="36" :height="36"></w-icon>
-            <w-icon type="infofill" fill="green" :width="36" :height="36"></w-icon>
-            <w-icon type="question" fill="green" :width="36" :height="36"></w-icon>
-            <w-icon type="questionfill" fill="green"></w-icon>
-            <w-icon type="back" fill="green" :width="36" :height="36"></w-icon>
-            <w-icon type="warn" fill="green" :width="36" :height="36"></w-icon>
-            <w-icon type="warnfill" fill="green" :width="36" :height="36"></w-icon>
-            <w-icon type="roundclose" fill="green" :width="36" :height="36"></w-icon>
+        <section id="app" class="app">
+            <section>
+                <bee-icon type="roundcheck" fill="#000" :width="36" :height="36"></bee-icon>
+                <bee-icon type="move" fill="orange" :width="36" :height="36"></bee-icon>
+                <bee-icon type="add" fill="green" :width="36" :height="36"></bee-icon>
+                <bee-icon type="refresharrow" fill="blue" :width="36" :height="36"></bee-icon>
+                <bee-icon type="info" fill="gray" :width="36" :height="36"></bee-icon>
+                <bee-icon type="infofill" fill="green" :width="36" :height="36"></bee-icon>
+                <bee-icon type="question" fill="green" :width="36" :height="36"></bee-icon>
+                <bee-icon type="questionfill" fill="green"></bee-icon>
+                <bee-icon type="back" fill="green" :width="36" :height="36"></bee-icon>
+                <bee-icon type="warn" fill="green" :width="36" :height="36"></bee-icon>
+                <bee-icon type="warnfill" fill="green" :width="36" :height="36"></bee-icon>
+                <bee-icon type="roundclose" fill="green" :width="36" :height="36"></bee-icon>
+            </section>
         </section>
+    </section>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var vm = new Vue({
+                el: '#app'
+            });
+        }, false)
     </script>
 </body>
+
 </html>

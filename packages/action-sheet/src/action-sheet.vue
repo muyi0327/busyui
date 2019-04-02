@@ -38,13 +38,13 @@
 </style>
 
 <template>
-    <w-mask :is-show="visiable" @click.stop="hide" :is-remove="isRemove">
+    <bee-mask :is-show="visiable" @click.stop="hide" :is-remove="isRemove">
         <transition name="bee-animate_bibo" v-on:after-enter="_enter" v-on:after-leave="_leave">
             <div ref="oel" v-show="visiable" class="bee-action-sheet" :style="styles">
                 <div class="bee-action-sheet__box">
                     <div class="bee-action-sheet__list">
                         <slot>
-                            <w-action-sheet-item :key="'as-'+$i" v-for="(ac,$i) in actions" @click="ac.action">{{ac.text}}</w-action-sheet-item>
+                            <bee-action-sheet-item :key="'as-'+$i" v-for="(ac,$i) in actions" @click="ac.action">{{ac.text}}</bee-action-sheet-item>
                         </slot>
                     </div>
 
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </transition>
-    </w-mask>
+    </bee-mask>
 </template>
 
 <script>

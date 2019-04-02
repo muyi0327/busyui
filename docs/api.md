@@ -13,13 +13,13 @@
 </td>
     </tr>
 <tr>
-    <td><a href="#module_Border1px">Border1px</a></td>
+    <td><a href="#module_@bee/border">@bee/border</a></td>
     <td><p>1像素边框样式</p>
 </td>
     </tr>
 <tr>
-    <td><a href="#module_Button">Button</a></td>
-    <td><p>按钮组件 <w-button /></p>
+    <td><a href="#module_@bee/button">@bee/button</a></td>
+    <td><p>按钮组件 <bee-button /></p>
 </td>
     </tr>
 <tr>
@@ -124,6 +124,7 @@
 ## ActionSheet
 ActionSheet框组件 <bee-action-sheet />
 
+**Bee/action-sheet**:   
 **See**: [实例](../example/all/action-sheet.html)  
 
 | Param | Type | Default | Description |
@@ -140,7 +141,7 @@ ActionSheet框组件 <bee-action-sheet />
 
 **Example**  
 ```js
-import {ActionSheet} from 'bee/packages/action-sheet';
+import ActionSheet from '@bee/action-sheet'
 
 // 动态创建
 ActionSheet.show({
@@ -160,7 +161,7 @@ ActionSheet.show({
 // 标签方式
 vue.use(ActionSheet);
 
-<w-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></w-action-sheet>
+<bee-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></bee-action-sheet>
 
 
 new Vue({
@@ -240,9 +241,9 @@ if （Bee.ActionSheet.isVisiable(){
     console.log('done something')
   }
 ```
-<a name="module_Border1px"></a>
+<a name="module_@bee/border"></a>
 
-## Border1px
+## @bee/border
 1像素边框样式
 
 **See**: [实例](../example/all/border1px.html)  
@@ -281,11 +282,12 @@ if （Bee.ActionSheet.isVisiable(){
 // 百分比圆角
 <div class="bee-border-1px" style="border-radius: 50%;">圆角</div>
 ```
-<a name="module_Button"></a>
+<a name="module_@bee/button"></a>
 
-## Button
-按钮组件 <w-button />
+## @bee/button
+按钮组件 <bee-button />
 
+**Bee/button**:   
 **See**: [实例](../example/all/button.html)  
 
 | Param | Type | Default | Description |
@@ -332,6 +334,7 @@ if （Bee.ActionSheet.isVisiable(){
 ## Alert
 alert对话框组件
 
+**Bee/alert**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -349,8 +352,8 @@ alert对话框组件
 Bee.Alert.show('提交申请成功');
 
 // use it in webpack or browserify, rollup
-import {Alert} from 'bee/packages/dialog';
-// var Aler = require('bee/packages/dialog/alert.js');
+import {Alert} from '@bee/dialog';
+// var Aler = require('@bee/dialog/alert.js');
 
 Alert.show('提交申请成功');
 ```
@@ -393,8 +396,8 @@ confirm对话框组件
 Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 
 // use it in webpack or browserify, rollup
-import {Confirm} from 'bee/packages/dialog';
-// var Confirm = require('bee/packages/dialog/confirm.js');
+import {Confirm} from '@bee/dialog';
+// var Confirm = require('@bee/dialog/confirm.js');
 
 Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 ```
@@ -438,7 +441,7 @@ confirm.doClose();
 
 **Example**  
 ```js
-import {Dialog} from 'bee/packages/dialog';
+import {Dialog} from '@bee/dialog';
 
 Dialog.show({
      title: '提交信息',
@@ -488,8 +491,8 @@ prompt对话框组件
 Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
 
 // use it in webpack or browserify, rollup
-import {Prompt} from 'bee/packages/dialog';
-// var Prompt = require('bee/packages/dialog/prompt.js');
+import {Prompt} from '@bee/dialog';
+// var Prompt = require('@bee/dialog/prompt.js');
 
 Prompt.show('请填写信息？', (val)=>{console.log(val)});
 ```
@@ -884,7 +887,7 @@ Toast组件 <bee-toast></bee-toast>
 **Example**  
 ```js
 // use it in module tools
-  import Toast from 'bee/packages/toast';
+  import Toast from '@bee/toast';
   1, Toast.show('内容')
   2, Toast.show('内容', 5000)
   3, Toast.show('内容', 'top', 5000)

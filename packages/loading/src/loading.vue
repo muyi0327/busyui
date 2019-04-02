@@ -37,7 +37,7 @@
     <transition name="loading-fade" v-on:after-leave="_leave">
         <div class="beeloading" :style="styles" v-show="visiable">
             <div class="bee-loading__spinner">
-                <w-spinner :type="spinnerType" :color="color" :width="spinnerWidth" :height="spinnerHeight" :size="spinnerSize" :stroke-width="spinnerStroke"></w-spinner>
+                <bee-spinner :type="spinnerType" :color="color" :width="spinnerWidth" :height="spinnerHeight" :size="spinnerSize" :stroke-width="spinnerStroke"></bee-spinner>
             </div>
             <div class="bee-loading__text" :style="{color:color,fontSize:fontSize+'px'}">
                 <slot>{{text}}</slot>
@@ -66,7 +66,7 @@
      * @param {Boolean} isRemove=false - 隐藏后是否清除
      * 
      * @example
-     *  <w-loading>正在加载...</w-loading>
+     *  <bee-loading>正在加载...</bee-loading>
      */
     export default {
         name: 'bee-loading',

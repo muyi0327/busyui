@@ -22,8 +22,8 @@ const ConfirmClass = Vue.extend(Confirm);
  * Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  * 
  * // use it in webpack or browserify, rollup
- * import {Confirm} from 'bee/packages/dialog';
- * // var Confirm = require('bee/packages/dialog/confirm.js');
+ * import {Confirm} from '@bee/dialog';
+ * // var Confirm = require('@bee/dialog/confirm.js');
  *
  * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  *
@@ -31,7 +31,7 @@ const ConfirmClass = Vue.extend(Confirm);
 export default Object.assign(Confirm, {
     $type: 'confirm',
     install(vue) {
-        vue.component('w-confirm', Confirm);
+        vue.component(Confirm.name, Confirm);
     },
     /**
      * 显示Alert对话框

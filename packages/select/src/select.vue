@@ -51,18 +51,18 @@
             <input v-if="Object(currentValue).hasOwnProperty('label')" class="bee-select__input" type="text" :style="inputStyles" readonly v-model="currentValue.label" :placeholder="placeholder">
             <input v-else class="bee-select__input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
         </div>
-        <w-mask :is-show="visiable" @click.stop="closeOptions">
+        <bee-mask :is-show="visiable" @click.stop="closeOptions">
             <transition name="bee-animate--bibo">
                 <div v-show="visiable" class="bee-select__options" :style="optionStyles">
                     <ul class="bee-select__options__list" @touchmove.stop="e=>{}" :class="['bee-select__options__list-' + _uid]">
                         <slot>
-                            <w-option :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</w-option>
+                            <bee-option :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</bee-option>
                         </slot>
                     </ul>
                 </div>
             </transition>
 
-        </w-mask>
+        </bee-mask>
     </div>
 </template>
 

@@ -153,10 +153,10 @@
     }, 0);
 
     /**
-     * bee-button
+     * @bee/button
      * @module Button
      * @see {@link ../example/all/button.html 实例}
-     * @desc 按钮组件 <w-button />
+     * @desc 按钮组件 <bee-button />
      * @param {string} type=default - 显示类型，接受 default, primary, warning
      * @param {string} nativeType=button - 按钮类型， button, reset, submit
      * @param {boolean} disabled=false - 禁用

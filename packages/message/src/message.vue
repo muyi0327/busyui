@@ -66,7 +66,7 @@
     <transition name="msg-scale" v-on:after-leave="_leave">
         <div v-show="visiable" class="bee-message" :class="_posClass" :style="styles">
             <div class="bee-message__icon" v-if="type">
-                <w-icon :type="_iconStyles.t" :fill="_iconStyles.c"></w-icon>
+                <bee-icon :type="_iconStyles.t" :fill="_iconStyles.c"></bee-icon>
             </div>
             <div class="bee-message__text">
                 <slot>{{text}}</slot>

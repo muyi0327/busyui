@@ -69,7 +69,7 @@
         <article v-show="visiable" class="bee-toast" :class="posClass">
             <div class="bee-toast__wrap">
                 <p v-if="type" class="bee-toast__icon">
-                    <w-icon :type="type" :width="iconWidth" :height="iconHeight" :fill="color"></w-icon>
+                    <bee-icon :type="type" :width="iconWidth" :height="iconHeight" :fill="color"></bee-icon>
                 </p>
                 <p class="bee-toast__text">
                     <slot>

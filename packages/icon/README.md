@@ -16,7 +16,7 @@ Then use it in vue;
         el: '#app',
         template: '<div><bee-icon></bee-icon></div>',
         components:{
-            'w-icon': Icon
+            'bee-icon': Icon
         }
     });
 

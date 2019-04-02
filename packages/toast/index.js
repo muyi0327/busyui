@@ -30,7 +30,7 @@ var ToastClass = Vue.extend(Toast),
  * 
  * @example
  *  // use it in module tools
- *   import Toast from 'bee/packages/toast';
+ *   import Toast from '@bee/toast';
  *   1, Toast.show('内容')
  *   2, Toast.show('内容', 5000)
  *   3, Toast.show('内容', 'top', 5000)

@@ -4,7 +4,7 @@ import ActionSheetItem from './src/action-sheet-item.vue';
 var ActionSheetClass, instance, vm;
 
 /**
- * bee-action-sheet
+ * @bee/action-sheet
  * @module ActionSheet
  * @see {@link ../example/all/action-sheet.html 实例}
  * @desc ActionSheet框组件 <bee-action-sheet />
@@ -18,7 +18,7 @@ var ActionSheetClass, instance, vm;
  * @param {Event} visiable-change - 显示隐藏时都会触发
  * @param {Slot} slot - default - 组件slot
  * @example
- * import {ActionSheet} from 'bee/packages/action-sheet';
+ * import ActionSheet from '@bee/action-sheet'
  * 
  * // 动态创建
  * ActionSheet.show({
@@ -38,7 +38,7 @@ var ActionSheetClass, instance, vm;
  * // 标签方式
  * vue.use(ActionSheet);
  * 
- * <w-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></w-action-sheet>
+ * <bee-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></bee-action-sheet>
  * 
  * 
  * new Vue({

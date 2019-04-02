@@ -1,11 +1,11 @@
 # bee-dialog
-bee-dialog <w-dialog /> is a mobile dialog component for bee library
+bee-dialog <bee-dialog /> is a mobile dialog component for bee library
 
 ## Installation
 
-First, install bee-dialog from wanda npm
+First, install @bee/dialog from bee npm
 
-    npm install bee-dialog --save -d  or npm install bee --save -d
+    npm install @bee/dialog --save -d  or npm install bee --save -d
 
 Then use it:
 

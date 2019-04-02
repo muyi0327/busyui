@@ -2,7 +2,7 @@
 <template>
     <div class="bee-loadmore__bar bee-al-cm" v-show="pos=='top' || pos=='bottom' && status=='loading'">
         <p class="bee-loadmore__spinner">
-            <w-spinner :style="{verticalAlign: 'middle'}" v-show="status==='loading'" :size="size" :type="6" color="#aaa"></w-spinner>
+            <bee-spinner :style="{verticalAlign: 'middle'}" v-show="status==='loading'" :size="size" :type="6" color="#aaa"></bee-spinner>
         </p>
         <p class="bee-loadmore__text" :class="['bee-loadmore--' + status]">
             <span v-if="pos=='top'" class="bee-loadmore__arrow">

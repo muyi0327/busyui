@@ -1,5 +1,5 @@
 import CircleRotate from './src/circle-rotate.vue';
 
-CircleRotate.install = (vue)=>vue.component('w-circle-rotate', CircleRotate);
+CircleRotate.install = (vue) => vue.component(CircleRotate.name, CircleRotate);
 
 export default CircleRotate;

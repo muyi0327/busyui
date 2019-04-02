@@ -5,7 +5,7 @@ import Prompt from './prompt.vue';
 const PromptClass = Vue.extend(Prompt);
 
 /**
- * bee-prompt
+ * @bee/prompt
  * @module Prompt
  * @see {@link ../example/all/dialog.html 实例}
  * @desc prompt对话框组件
@@ -22,8 +22,8 @@ const PromptClass = Vue.extend(Prompt);
  * Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
  * 
  * // use it in webpack or browserify, rollup
- * import {Prompt} from 'bee/packages/dialog';
- * // var Prompt = require('bee/packages/dialog/prompt.js');
+ * import {Prompt} from '@bee/dialog';
+ * // var Prompt = require('@bee/dialog/prompt.js');
  *
  * Prompt.show('请填写信息？', (val)=>{console.log(val)});
  *

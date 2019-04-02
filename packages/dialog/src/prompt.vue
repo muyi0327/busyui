@@ -17,13 +17,13 @@
 </style>
 
 <template>
-    <w-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" @visiable-change="handleVisiable">
+    <bee-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" @visiable-change="handleVisiable">
         <div slot="body">
             <div class="bee-prompt__text">
                 <input type="text" v-model="content" :placeholder="placeholder" class="bee-prompt__input" />
             </div>
         </div>
-    </w-dialog>
+    </bee-dialog>
 </template>
 <script>
     import Dialog from './dialog.vue';

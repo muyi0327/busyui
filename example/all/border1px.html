@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,83 +9,87 @@
     <script src="../vue.js"></script>
     <script src="../../dist/wui.js"></script>
     <style type="text/css">
-        html,body{
+        html,
+        body {
             height: 100%;
             padding: 0;
             margin: 0;
         }
-        .wrap, .app{
-            height:100%;
-            width:100%;
+
+        .wrap,
+        .app {
+            height: 100%;
+            width: 100%;
             text-align: center;
         }
 
-        .border-red:after{
-            border-color: orangered; 
+        .border-red:after {
+            border-color: orangered;
         }
 
-        .border-green:after{
-            border-color: green; 
+        .border-green:after {
+            border-color: green;
         }
 
-        .box{
-            width:90%;
-            margin:20px auto;
+        .box {
+            width: 90%;
+            margin: 20px auto;
             height: 30px;
-            text-align:center;
-            line-height:30px;
+            text-align: center;
+            line-height: 30px;
             color: #999;
         }
 
-        .border-radius-half:after{
+        .border-radius-half:after {
             border-radius: 10%;
         }
 
-        .inline-flex{
+        .inline-flex {
             display: inline-flex;
-            margin:0 auto;
+            margin: 0 auto;
         }
 
-        .border-r-4px{
+        .border-r-4px {
             border-radius: 12px;
-            
+
         }
 
-        .border-r-4px::after{
+        .border-r-4px::after {
             border-radius: 12px;
         }
-
     </style>
 </head>
+
 <body>
     <section class="wrap">
-         <section id="app" class="app">
-             <div class="inline-flex">
-                 <div style="width:50px;">一</div>
-                 <div>二二二二二二二</div>
-             </div>
-             <div class="box" v-wui-border-1px="{radius:0,side:'lr', color:'red'}">1像素边框</div>
-             <div class="box" v-wui-border-1px="{radius:10, color:'#dd3'}">1像素上边框</div>
-             <div class="box" v-wui-border-1px="{radius:'10rem', color:'orange'}">1像素下边框</div>
-             <div class="box" v-wui-border-1px="{radius:'50%', color:'orange'}">1像素下边框</div>
-             <div class="box">1像素左边框</div>
-             <div class="box wui-border-1px wui-border-r">1像素右边框</div>
-             <div class="box wui-border-1px wui-border-lr">1像素左右边框</div>
-             <div class="box wui-border-1px wui-border-tb">1像素上下边框</div>
-             <div class="box wui-border-1px wui-border-no-t">1像素无上边框</div>
-             <div class="box wui-border-1px wui-border-no-b">1像素无下边框</div>
-             <div class="box wui-border-1px wui-border-no-l">1像素无左边框</div>
-             <div class="box wui-border-1px wui-border-no-r">1像素无右边框</div>
-             <div class="box wui-border-1px border-red border-r-4px">1像素红边框</div>
-             <div class="box wui-border-1px border-green">1像素绿边框</div>
-             <div class="box wui-border-1px">圆角取值1-10px</div>
-         </section>
+        <section id="app" class="app">
+            <div class="inline-flex">
+                <div style="width:50px;">一</div>
+                <div>二二二二二二二</div>
+            </div>
+            <div class="box" v-bee-border-1px="{radius:0,side:'lr', color:'red'}">1像素边框</div>
+            <div class="box" v-bee-border-1px="{radius:10, color:'#dd3'}">1像素上边框</div>
+            <div class="box" v-bee-border-1px="{radius:'10rem', color:'orange'}">1像素下边框</div>
+            <div class="box" v-bee-border-1px="{radius:'50%', color:'orange'}">1像素下边框</div>
+            <div class="box">1像素左边框</div>
+            <div class="box bee-border-1px bee-border-r">1像素右边框</div>
+            <div class="box bee-border-1px bee-border-lr">1像素左右边框</div>
+            <div class="box bee-border-1px bee-border-tb">1像素上下边框</div>
+            <div class="box bee-border-1px bee-border-no-t">1像素无上边框</div>
+            <div class="box bee-border-1px bee-border-no-b">1像素无下边框</div>
+            <div class="box bee-border-1px bee-border-no-l">1像素无左边框</div>
+            <div class="box bee-border-1px bee-border-no-r">1像素无右边框</div>
+            <div class="box bee-border-1px border-red border-r-4px">1像素红边框</div>
+            <div class="box bee-border-1px border-green">1像素绿边框</div>
+            <div class="box bee-border-1px">圆角取值1-10px</div>
+        </section>
     </section>
-   
+
     <script>
         var vm = new Vue({
             el: '#app'
         });
     </script>
 </body>
+
 </html>

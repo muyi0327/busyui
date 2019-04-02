@@ -1,5 +1,5 @@
 import BallScaleMultiple from './src/ball-scale-multiple.vue';
 
-BallScaleMultiple.install = (vue)=>vue.component('w-ball-scale-multiple',BallScaleMultiple);
+BallScaleMultiple.install = (vue) => vue.component(BallScaleMultiple.name, BallScaleMultiple);
 
 export default BallScaleMultiple;

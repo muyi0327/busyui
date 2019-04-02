@@ -124,7 +124,7 @@ function validateUnit(u) {
 
 /**
  * 1像素边框
- * @module Border1px
+ * @module @bee/border
  * @see {@link ../example/all/border1px.html 实例}
  * @desc 1像素边框样式
  * @param {String} side = '', 设置哪个边框, t=上,b=下,r=右,l=左, lr=左右,tb=上下,no-r=无右,no-l=无左,no-t=无上,no-b=无下
@@ -337,7 +337,7 @@ function _defineProperty(obj, key, value) {
 
 //
 /**
- * bee-icon
+ * @bee/icon
  * @module Icon
  * @see {@link ../example/all/icons.html 实例}
  * @desc icon图标组件
@@ -667,7 +667,7 @@ var __vue_render__$1 = function __vue_render__() {
     staticClass: "bee-toast__wrap"
   }, [_vm.type ? _c('p', {
     staticClass: "bee-toast__icon"
-  }, [_c('w-icon', {
+  }, [_c('bee-icon', {
     attrs: {
       "type": _vm.type,
       "width": _vm.iconWidth,
@@ -757,7 +757,7 @@ var ToastClass = Vue.extend(Toast),
  * 
  * @example
  *  // use it in module tools
- *   import Toast from 'bee/packages/toast';
+ *   import Toast from '@bee/toast';
  *   1, Toast.show('内容')
  *   2, Toast.show('内容', 5000)
  *   3, Toast.show('内容', 'top', 5000)
@@ -1120,7 +1120,7 @@ var LineSpinFade = normalizeComponent_1({
 }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, undefined, undefined);
 
 LineSpinFade.install = function (vue) {
-  return vue.component('w-line-spin-fade', LineSpinFade);
+  return vue.component(LineSpinFade.name, LineSpinFade);
 };
 
 //
@@ -1294,7 +1294,7 @@ var BallScaleMultiple = normalizeComponent_1({
 }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, undefined, undefined);
 
 BallScaleMultiple.install = function (vue) {
-  return vue.component('w-ball-scale-multiple', BallScaleMultiple);
+  return vue.component(BallScaleMultiple.name, BallScaleMultiple);
 };
 
 //
@@ -1485,7 +1485,7 @@ var BallClipRotatePulse = normalizeComponent_1({
 }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, undefined, undefined);
 
 BallClipRotatePulse.install = function (vue) {
-  return vue.component('w-ball-clip-rotate-pulse', BallClipRotatePulse);
+  return vue.component(BallClipRotatePulse.name, BallClipRotatePulse);
 };
 
 //
@@ -1675,7 +1675,7 @@ var LineScalePulseOut = normalizeComponent_1({
 }, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, undefined, undefined);
 
 LineScalePulseOut.install = function (vue) {
-  return vue.component('w-line-scale-pulse-out', LineScalePulseOut);
+  return vue.component(LineScalePulseOut.name, LineScalePulseOut);
 };
 
 //
@@ -1904,7 +1904,7 @@ var BallSpinFade = normalizeComponent_1({
 }, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, undefined, undefined);
 
 BallSpinFade.install = function (vue) {
-  return vue.component('w-ball-spin-fade', BallSpinFade);
+  return vue.component(BallSpinFade.name, BallSpinFade);
 };
 
 //
@@ -2226,7 +2226,7 @@ var CircleRotate = normalizeComponent_1({
 }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, undefined, undefined);
 
 CircleRotate.install = function (vue) {
-  return vue.component('w-circle-rotate', CircleRotate);
+  return vue.component(CircleRotate.name, CircleRotate);
 };
 
 //
@@ -2395,10 +2395,9 @@ Spinner.install = function (vue) {
   vue.use(BallBeat);
   vue.use(CircleRotate); //vue.use(svgCircleRotate);
 
-  vue.component('w-spinner', Spinner);
+  vue.component(Spinner.name, Spinner);
 };
 
-//
 var script$a = {
   name: 'bee-toast-loading',
   props: {
@@ -2446,9 +2445,7 @@ var script$a = {
       default: 12
     }
   },
-  components: {
-    'w-spinner': Spinner
-  },
+  components: _defineProperty({}, Spinner.name, Spinner),
   data: function data() {
     return {
       visiable: false
@@ -2502,7 +2499,7 @@ var __vue_render__$a = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('w-mask', {
+  return _c('bee-mask', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -2525,7 +2522,7 @@ var __vue_render__$a = function __vue_render__() {
     style: _vm.styles
   }, [_c('div', {
     staticClass: "bee-toast-loading__icon"
-  }, [_c('w-spinner', {
+  }, [_c('bee-spinner', {
     attrs: {
       "type": _vm.spinner.type,
       "height": _vm.spinner.height,
@@ -2662,7 +2659,7 @@ var ToastLoading$1 = Object.assign(ToastLoading, {
  * @param {Boolean} isRemove=false - 隐藏后是否清除
  * 
  * @example
- *  <w-loading>正在加载...</w-loading>
+ *  <bee-loading>正在加载...</bee-loading>
  */
 
 var script$b = {
@@ -2789,7 +2786,7 @@ var __vue_render__$b = function __vue_render__() {
     style: _vm.styles
   }, [_c('div', {
     staticClass: "bee-loading__spinner"
-  }, [_c('w-spinner', {
+  }, [_c('bee-spinner', {
     attrs: {
       "type": _vm.spinnerType,
       "color": _vm.color,
@@ -3076,10 +3073,10 @@ setTimeout(function () {
 
 }, 0);
 /**
- * bee-button
+ * @bee/button
  * @module Button
  * @see {@link ../example/all/button.html 实例}
- * @desc 按钮组件 <w-button />
+ * @desc 按钮组件 <bee-button />
  * @param {string} type=default - 显示类型，接受 default, primary, warning
  * @param {string} nativeType=button - 按钮类型， button, reset, submit
  * @param {boolean} disabled=false - 禁用
@@ -3359,7 +3356,7 @@ Button.install = function (vue) {
 //
 
 /**
- * bee-checkbox
+ * @bee/checkbox
  * @desc 勾选框  <bee-checkbox />
  * @module Checkbox
  * @see {@link ../example/all/checkbox.html 实例}
@@ -3513,7 +3510,7 @@ Checkbox.install = function (vue) {
 //
 
 /**
- * bee-mask
+ * @bee/mask
  * @module Mask
  * @desc 半透明遮罩层 <bee-mask></bee-mask>
  * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
@@ -3642,7 +3639,7 @@ var Mask = normalizeComponent_1({
 }, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
 
 Mask.install = function (vue) {
-  vue.component('w-mask', Mask);
+  vue.component(Mask.name, Mask);
 };
 
 var _components;
@@ -3780,7 +3777,7 @@ var __vue_render__$h = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('w-mask', {
+  return _c('bee-mask', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -3806,7 +3803,7 @@ var __vue_render__$h = function __vue_render__() {
         return _vm.hide($event);
       }
     }
-  }, [_c('w-icon', {
+  }, [_c('bee-icon', {
     attrs: {
       "type": "close",
       "width": 20,
@@ -3871,7 +3868,7 @@ var Dialog = normalizeComponent_1({
 
 var DialogClass = Vue.extend(Dialog);
 /**
- * cui-dialog
+ * @bee/dialog
  * @module Dialog
  * @see {@link ../example/all/dialog.html 实例}
  * @desc 对话框组件 <bee-dialog />
@@ -3885,7 +3882,7 @@ var DialogClass = Vue.extend(Dialog);
  * @param {Object} contentStyle - 对话框内容样式
  * @param {Boolean} showClose=false - 是否显示关闭按钮
  * @example
- * import {Dialog} from 'bee/packages/dialog';
+ * import {Dialog} from '@bee/dialog';
  * 
  * Dialog.show({
  *      title: '提交信息',
@@ -4009,7 +4006,7 @@ var Alert = normalizeComponent_1({
 
 var AlertClass = Vue.extend(Alert);
 /**
- * bee-alert
+ * @bee/alert
  * @module Alert
  * @see {@link ../example/all/dialog.html 实例}
  * @desc alert对话框组件
@@ -4025,8 +4022,8 @@ var AlertClass = Vue.extend(Alert);
  * Bee.Alert.show('提交申请成功');
  *
  * // use it in webpack or browserify, rollup
- * import {Alert} from 'bee/packages/dialog';
- * // var Aler = require('bee/packages/dialog/alert.js');
+ * import {Alert} from '@bee/dialog';
+ * // var Aler = require('@bee/dialog/alert.js');
  *
  * Alert.show('提交申请成功');
  *
@@ -4035,7 +4032,7 @@ var AlertClass = Vue.extend(Alert);
 var Alert$1 = Object.assign(Alert, {
   $type: 'alert',
   install: function install(vue) {
-    vue.component('w-alert', Alert);
+    vue.component(Alert.name, Alert);
   },
 
   /**
@@ -4185,8 +4182,8 @@ var ConfirmClass = Vue.extend(Confirm);
  * Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  * 
  * // use it in webpack or browserify, rollup
- * import {Confirm} from 'bee/packages/dialog';
- * // var Confirm = require('bee/packages/dialog/confirm.js');
+ * import {Confirm} from '@bee/dialog';
+ * // var Confirm = require('@bee/dialog/confirm.js');
  *
  * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  *
@@ -4195,7 +4192,7 @@ var ConfirmClass = Vue.extend(Confirm);
 var Confirm$1 = Object.assign(Confirm, {
   $type: 'confirm',
   install: function install(vue) {
-    vue.component('w-confirm', Confirm);
+    vue.component(Confirm.name, Confirm);
   },
 
   /**
@@ -4304,7 +4301,7 @@ var __vue_render__$k = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('w-dialog', {
+  return _c('bee-dialog', {
     ref: "dialog",
     attrs: {
       "show-close": false,
@@ -4375,7 +4372,7 @@ var Prompt = normalizeComponent_1({
 
 var PromptClass = Vue.extend(Prompt);
 /**
- * bee-prompt
+ * @bee/prompt
  * @module Prompt
  * @see {@link ../example/all/dialog.html 实例}
  * @desc prompt对话框组件
@@ -4392,8 +4389,8 @@ var PromptClass = Vue.extend(Prompt);
  * Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
  * 
  * // use it in webpack or browserify, rollup
- * import {Prompt} from 'bee/packages/dialog';
- * // var Prompt = require('bee/packages/dialog/prompt.js');
+ * import {Prompt} from '@bee/dialog';
+ * // var Prompt = require('@bee/dialog/prompt.js');
  *
  * Prompt.show('请填写信息？', (val)=>{console.log(val)});
  *
@@ -4614,7 +4611,7 @@ var __vue_render__$l = function __vue_render__() {
     style: _vm.styles
   }, [_vm.type ? _c('div', {
     staticClass: "bee-message__icon"
-  }, [_c('w-icon', {
+  }, [_c('bee-icon', {
     attrs: {
       "type": _vm._iconStyles.t,
       "fill": _vm._iconStyles.c
@@ -4648,7 +4645,7 @@ var Message = normalizeComponent_1({
 
 var MessageClass = Vue.extend(Message);
 /**
- * bee-message
+ * @bee/message
  * @module Message
  * @see {@link ../example/all/message.html 实例}
  * @desc 浮层提示信息组件 <bee-meesage></bee-meesage>
@@ -5407,7 +5404,7 @@ var __vue_render__$p = function __vue_render__() {
     staticClass: "bee-loadmore__bar bee-al-cm"
   }, [_c('p', {
     staticClass: "bee-loadmore__spinner"
-  }, [_c('w-spinner', {
+  }, [_c('bee-spinner', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -5459,7 +5456,7 @@ var loadMoreBar = normalizeComponent_1({
 }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
 
 /**
- * bee-loadmore
+ * @bee/loadmore
  * @module Loadmore
  * @see {@link ../example/all/loadmore.html 实例}
  * @desc 加载更多组件
@@ -5479,7 +5476,7 @@ var loadMoreBar = normalizeComponent_1({
  * @param {Boolean} listenScroll - 是否监听scroll
  * 
  * @example
- *  <w-loadmore>content list</w-loadmore>
+ *  <bee-loadmore>content list</bee-loadmore>
  */
 
 var script$q = {
@@ -5743,7 +5740,7 @@ var __vue_render__$q = function __vue_render__() {
   }, [_c('div', {
     staticClass: "bee-loadmore__content",
     style: _vm.styles
-  }, [_vm._t("top", [_vm.onRefresh ? _c('w-loadmore-bar', {
+  }, [_vm._t("top", [_vm.onRefresh ? _c('bee-loadmore-bar', {
     ref: "top",
     staticClass: "bee-loadmore__top",
     attrs: {
@@ -5755,7 +5752,7 @@ var __vue_render__$q = function __vue_render__() {
     }
   }) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "bee-loadmore__content"
-  }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c('w-loadmore-bar', {
+  }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c('bee-loadmore-bar', {
     ref: "bottom",
     staticClass: "bee-loadmore__bottom",
     attrs: {
@@ -6355,7 +6352,7 @@ var __vue_render__$u = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('w-mask', {
+  return _c('bee-mask', {
     attrs: {
       "is-show": _vm.visiable,
       "is-remove": _vm.isRemove
@@ -6389,7 +6386,7 @@ var __vue_render__$u = function __vue_render__() {
   }, [_c('div', {
     staticClass: "bee-action-sheet__list"
   }, [_vm._t("default", _vm._l(_vm.actions, function (ac, $i) {
-    return _c('w-action-sheet-item', {
+    return _c('bee-action-sheet-item', {
       key: 'as-' + $i,
       on: {
         "click": ac.action
@@ -6427,7 +6424,7 @@ var ActionSheet = normalizeComponent_1({
 
 var ActionSheetClass, instance$2, vm$2;
 /**
- * bee-action-sheet
+ * @bee/action-sheet
  * @module ActionSheet
  * @see {@link ../example/all/action-sheet.html 实例}
  * @desc ActionSheet框组件 <bee-action-sheet />
@@ -6441,7 +6438,7 @@ var ActionSheetClass, instance$2, vm$2;
  * @param {Event} visiable-change - 显示隐藏时都会触发
  * @param {Slot} slot - default - 组件slot
  * @example
- * import {ActionSheet} from 'bee/packages/action-sheet';
+ * import ActionSheet from '@bee/action-sheet'
  * 
  * // 动态创建
  * ActionSheet.show({
@@ -6461,7 +6458,7 @@ var ActionSheetClass, instance$2, vm$2;
  * // 标签方式
  * vue.use(ActionSheet);
  * 
- * <w-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></w-action-sheet>
+ * <bee-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></bee-action-sheet>
  * 
  * 
  * new Vue({
@@ -7400,7 +7397,7 @@ var __vue_render__$y = function __vue_render__() {
         _vm.currentValue = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c('w-mask', {
+  })]), _vm._v(" "), _c('bee-mask', {
     attrs: {
       "is-show": _vm.visiable
     },
@@ -7433,7 +7430,7 @@ var __vue_render__$y = function __vue_render__() {
       }
     }
   }, [_vm._t("default", _vm._l(_vm.options, function (option, $index) {
-    return _c('w-option', {
+    return _c('bee-option', {
       key: 'select_' + $index,
       attrs: {
         "value": option

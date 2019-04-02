@@ -5,7 +5,7 @@ import '../util/src/polyfill';
 const MessageClass = Vue.extend(Message);
 
 /**
- * bee-message
+ * @bee/message
  * @module Message
  * @see {@link ../example/all/message.html 实例}
  * @desc 浮层提示信息组件 <bee-meesage></bee-meesage>
