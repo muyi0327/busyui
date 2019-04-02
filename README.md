@@ -1,29 +1,27 @@
-# Wui
+# Bee
 基于vue2.0开发的一套，手机端组件库
 
 ## 准备工作
-    修改~/.npmrc
-
-    registry = http://nexus.wdjr.local/repository/NPM-COMMON-GROUP/
+    
 
 ## 安装
-    npm install wui-mobile -S
+    npm install bee -S
 
 ## 快速上手
     import Vue from 'vue';
-    import Wui from 'wui-mobile';
+    import Bee from 'bee';
 
-    Vue.use(Wui);
-
-    // or
-    <script src="node_modules/wui-mobile/dist/wui.js"></sciprt>
-    <script src="node_modules/wui-mobile/dist/wui.css"></sciprt>
+    Vue.use(Bee);
 
     // or
-    import Icon from 'wui-mobile/packages/icon';
+    <script src="node_modules/bee-mobile/dist/bee.js"></sciprt>
+    <script src="node_modules/bee-mobile/dist/bee.css"></sciprt>
+
+    // or
+    import Icon from 'bee-mobile/packages/icon';
     Vue.use(Icon);
 
-    <w-icon fill="orange"></w-icon>
+    <bee-icon fill="orange"></bee-icon>
 
 ## 流览器兼容
 

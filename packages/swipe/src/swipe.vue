@@ -1,53 +1,63 @@
 <style lang="scss">
-    @import '../../../src/style/variable.scss';
-    .wui-swipe {
+    @import "../../../src/style/variable.scss";
+    .#{prefixClass}-swipe {
         overflow: hidden;
         position: relative;
         -moz-user-select: none;
         -webkit-user-select: none;
         user-select: none;
-    }
-    
-    .wui-swipe-wrap {
-        height: 100%;
-        &.horizontal {
-            white-space: nowrap;
-            font-size: 0;
-        }
-        &.transition {
-            transition: transform 0.3s cubic-bezier(.60, .07, 1, 1);
-        }
-    }
-    
-    .wui-swpier-dotes {
-        position: absolute;
-        z-index: 1;
-        text-align: center;
-        font-size: 0;
-        &.pos-left {
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            >span {
-                display: block;
+
+        &__wrap {
+            height: 100%;
+            &--horizontal {
+                white-space: nowrap;
+                font-size: 0;
+            }
+            &--transition {
+                transition: transform 0.3s cubic-bezier(0.6, 0.07, 1, 1);
             }
         }
-        &.pos-right {
-            @extend .pos-left;
-            right: 15px;
-            left: auto;
+
+        &__item {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            font-size: 1rem;
         }
-        &.pos-top {
-            left: 50%;
-            top: 15px;
-            transform: translateX(-50%);
+
+        &__dotes {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            font-size: 0;
+
+            &--pos-left {
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                > span {
+                    display: block;
+                }
+            }
+            &--pos-right {
+                top: 50%;
+                transform: translateY(-50%);
+                right: 15px;
+                left: auto;
+            }
+            &--pos-top {
+                left: 50%;
+                top: 15px;
+                transform: translateX(-50%);
+            }
+            &--pos-bottom {
+                left: 50%;
+                bottom: 15px;
+                transform: translateX(-50%);
+            }
         }
-        &.pos-bottom {
-            left: 50%;
-            bottom: 15px;
-            transform: translateX(-50%);
-        }
-        >span {
+
+        &__dot {
             height: 8px;
             width: 8px;
             display: inline-block;
@@ -57,32 +67,29 @@
             transition: all 0.5s linear;
             background-color: $swipe-normal-dot-color;
 
-            &.wui-swipe-dot-cur{
+            &--cur {
                 background-color: $swipe-active-dot-color;
             }
         }
     }
 </style>
 <template>
-    <div class="wui-swipe" :style="styles" v-on:click="handleClick">
-        <div class="wui-swipe-wrap" :class="classes" :style="wrapStyles">
+    <div class="bee-swipe" :style="styles" v-on:click="handleClick">
+        <div class="bee-swipe__wrap" :class="classes" :style="wrapStyles">
             <slot></slot>
         </div>
-        <div class="wui-swpier-dotes" :class="dotesClass" v-if="showDotes">
-            <span :key="'swiper-'+i" v-for="(item, i) in items" 
-                @click.stop="goIndex(i)" 
-                :class="['wui-swipe-dot', i == index ? 'wui-swipe-dot-cur':'']" 
-                :style="[dotStyles, i == index ? {backgroundColor: curDotColor} : {}]"></span>
+        <div class="bee-swpier__dotes" :class="dotesClass" v-if="showDotes">
+            <span :key="'swiper-'+i" v-for="(item, i) in items" @click.stop="goIndex(i)" :class="['bee-swipe__dot', i == index ? 'bee-swipe__dot--cur':'']" :style="[dotStyles, i == index ? {backgroundColor: curDotColor} : {}]"></span>
         </div>
     </div>
 </template>
 <script>
-    import {WNumber} from '../../util';
+    import { BNumber } from '../../util';
     const VERTICAL = 'vertical';
     const HORIZONTAL = 'horizontal';
 
     /**
-     * wui-swipe
+     * bee-swipe
      * @module Swipe
      * @see {@link ../example/all/swipe.html 实例}
      * @desc 切换组件
@@ -97,13 +104,13 @@
      * @param {Number} interval=2000 - 自动播放间隔时间 毫秒
      * 
      * @example
-     *  <w-swipe :interval="3000" :auto-play="true" :height="320">
-     *      <w-swipte-item>内容</w-swipe-item>
-     *      <w-swipte-item>内容</w-swipe-item>
-     * </w-swipe>
+     *  <bee-swipe :interval="3000" :auto-play="true" :height="320">
+     *      <bee-swipe__item>内容</bee-swipe__item>
+     *      <bee-swipe__item>内容</bee-swipe__item>
+     * </bee-swipe>
      */
     export default {
-        name: 'w-swipe',
+        name: 'bee-swipe',
         props: {
             height: {
                 type: Number,
@@ -149,7 +156,7 @@
                 direction: '',
                 items: [],
                 timmer: null,
-                status:'waiting',
+                status: 'waiting',
                 size: 0,
                 itemWidth: this.dirType == HORIZONTAL ? this.width : this.height,
                 distance: 0,
@@ -157,19 +164,19 @@
             }
         },
         computed: {
-            styles(){
+            styles() {
                 return {
                     height: this.height + 'px',
                     width: this.width + 'px'
                 }
             },
             wrapStyles() {
-                var distance=0, transform={};
+                var distance = 0, transform = {};
 
-                if (this.dirType == VERTICAL){
+                if (this.dirType == VERTICAL) {
                     distance = -1 * this.index * this.height + this.distance;
                     transform = 'translate3d(0,' + distance + 'px, 0)';
-                }else if(this.dirType == HORIZONTAL){
+                } else if (this.dirType == HORIZONTAL) {
                     distance = -1 * this.index * this.width + this.distance;
                     transform = 'translate3d(' + distance + 'px, 0, 0)';
                 }
@@ -184,12 +191,12 @@
                 }
             },
             dotesClass() {
-                return [`pos-${this.dotesPos}`]
+                return [`bee-swipe__dots--pos-${this.dotesPos}`]
             },
             classes() {
                 return [
-                    this.status=="transition" ? 'transition' : '',
-                    this.dirType == HORIZONTAL ? 'horizontal' : 'vertical'
+                    this.status == "transition" ? 'bee-swipe--transition' : '',
+                    this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : ''
                 ]
             }
         },
@@ -198,25 +205,25 @@
             index(val, old) {
                 this.$emit('index-change', val);
             },
-            height(val, old){
+            height(val, old) {
                 this._reset();
             },
-            width(){
+            width() {
                 this._reset();
             },
-            status(val){
+            status(val) {
                 this.$emit('status-change', val);
             },
-            autoPlay(val){
-                if (val){
+            autoPlay(val) {
+                if (val) {
                     !this.timmer && this._autoPlay();
-                }else{
+                } else {
                     this._stopPlay();
                 }
             }
         },
         methods: {
-            _reset(){
+            _reset() {
                 this.distance = 0;
                 this.status = 'waiting';
                 this.index = this.defaultIndex;
@@ -228,13 +235,13 @@
                 this.status = 'dragstart';
                 // e.preventDefault();
                 // e.stopPropagation();
-                if (this.timmer){
+                if (this.timmer) {
                     this._stopPlay();
                 }
                 this.originTouches = e.touches[0];
             },
             _handleMove(e) {
-                if (this.status !=='dragstart' && this.status !== 'draging') return;
+                if (this.status !== 'dragstart' && this.status !== 'draging') return;
                 this.status = 'draging';
                 e.preventDefault();
                 e.stopPropagation();
@@ -248,7 +255,7 @@
             },
             _handleEnd(e) {
                 if (this.status == 'dragstart') return this.status = 'waiting';
-                if (this.status !=='draging') return;
+                if (this.status !== 'draging') return;
                 this.status = 'dragend';
                 const touches = e.changedTouches[0];
                 const m = this._computeMove(this.originTouches, touches);
@@ -283,26 +290,26 @@
                 return {
                     dis: distance,
                     // 判断角度
-                    swipeAble: this.dirType == HORIZONTAL 
+                    swipeAble: this.dirType == HORIZONTAL
                         && Math.abs(et.pageX - ot.pageX) >= Math.abs(et.pageY - ot.pageY)
-                        || this.dirType == VERTICAL 
+                        || this.dirType == VERTICAL
                         && Math.abs(et.pageX - ot.pageX) < Math.abs(et.pageY - ot.pageY)
                 };
             },
             goIndex(index) {
                 // 保证不超出0~this.size-1
-                index = WNumber.limit(index, 0, this.size - 1);
+                index = BNumber.limit(index, 0, this.size - 1);
                 // 转页才有动画
-                if (index !== this.index){
+                if (index !== this.index) {
                     this.status = 'transition';
-                }else{
+                } else {
                     this.status = 'waiting';
                 }
-                
+
                 this.distance = 0;
                 this.index = index;
 
-                if(!this.timmer && this.autoPlay){
+                if (!this.timmer && this.autoPlay) {
                     // 保证不重复自动播放
                     this._autoPlay();
                 }
@@ -319,7 +326,7 @@
                     this.goIndex(this.index + i);
                 }, this.interval)
             },
-            _stopPlay(){
+            _stopPlay() {
                 clearInterval(this.timmer);
                 this.timmer = null;
             },
@@ -332,19 +339,19 @@
                 this.$el.addEventListener('transitionstart', this._transitionStart.bind(this), false);
                 this.$el.addEventListener('webkitTransitionStart', this._transitionStart.bind(this), false);
             },
-            handleClick($evt){
+            handleClick($evt) {
                 this.$emit('click', $evt);
             }
         },
         mounted() {
             // 初始化
-            this.items = [].slice.call(this.$el.querySelectorAll('.wui-swipe-item'));
+            this.items = [].slice.call(this.$el.querySelectorAll('.bee-swipe__item'));
             this.size = this.items.length;
             if (this.index < 0 || this.index >= this.size) {
                 this.index = 0;
-                console.warn('[Wui warn]:Index out of range');
+                console.warn('[Bee warn]:Index out of range');
             }
-            
+
             this._bindTouch();
             //this.distance = -1 * this.index * this.itemWidth;
             this.autoPlay && this._autoPlay();

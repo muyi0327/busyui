@@ -1,22 +1,26 @@
 <style lang="scss">
-    .wui-prompt-text {
-      width: 100%;
-    }
-    .wui-prompt-text-input {
-      width: 80%;
-      height: 28px;
-      border: 1px solid #eee;
-      box-sizing: border-box;
-      padding-left: 5px;
-      color: #8a8a8a;
+    @import "../../../src/style/variable";
+    .#{$prefixClass}-prompt {
+        &__text {
+            width: 100%;
+        }
+
+        &__input {
+            width: 80%;
+            height: 28px;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+            padding-left: 5px;
+            color: #8a8a8a;
+        }
     }
 </style>
 
 <template>
     <w-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" @visiable-change="handleVisiable">
         <div slot="body">
-            <div class="wui-prompt-text">
-                <input type="text" v-model="content" :placeholder="placeholder" class="wui-prompt-text-input" />
+            <div class="bee-prompt__text">
+                <input type="text" v-model="content" :placeholder="placeholder" class="bee-prompt__input" />
             </div>
         </div>
     </w-dialog>
@@ -25,10 +29,10 @@
     import Dialog from './dialog.vue';
 
     export default {
-        name: 'w-prompt',
+        name: 'bee-prompt',
         extends: Dialog,
         components: {
-            'w-dialog': Dialog
+            [Dialog.name]: Dialog
         },
         props: {
             placeholder: String,

@@ -1,183 +1,185 @@
-.wui-al-h-l{
+@import './variable.scss';
+
+.#{$prefixClass}-al-h-l {
     justify-content: flex-start;
 }
 
-.wui-al-h-c{
+.#{$prefixClass}-al-h-c {
     justify-content: center;
 }
 
-.wui-al-h-r{
+.#{$prefixClass}-al-h-r {
     justify-content: flex-end;
 }
 
-.wui-al-h-sb{
+.#{$prefixClass}-al-h-sb {
     justify-content: space-between;
 }
 
-.wui-al-v-t{
+.#{$prefixClass}-al-v-t {
     align-items: flex-start;
 }
 
-.wui-al-v-m{
+.#{$prefixClass}-al-v-m {
     align-items: center;
 }
 
-.wui-al-v-b{
+.#{$prefixClass}-al-v-b {
     align-items: flex-end;
 }
 
-.wui-al-v-sb{
+.#{$prefixClass}-al-v-sb {
     align-items: space-between;
 }
 
-.wui-al-v-sa{
+.#{$prefixClass}-al-v-sa {
     align-items: space-around;
 }
 
-.wui-al-v-st{
-    align-items:  stretch;
+.#{$prefixClass}-al-v-st {
+    align-items: stretch;
 }
 
-.wui-al-lt {
+.#{$prefixClass}-al-lt {
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.wui-al-lm {
+.#{$prefixClass}-al-lm {
     justify-content: flex-start;
     align-items: center;
 }
 
-.wui-al-lb {
+.#{$prefixClass}-al-lb {
     justify-content: flex-start;
     align-items: flex-end;
 }
 
-.wui-al-lsb {
+.#{$prefixClass}-al-lsb {
     justify-content: flex-start;
     align-items: space-between;
 }
 
-.wui-al-lsa {
+.#{$prefixClass}-al-lsa {
     justify-content: flex-start;
     align-items: space-around;
 }
 
-.wui-al-lst {
+.#{$prefixClass}-al-lst {
     justify-content: flex-start;
     align-items: stretch;
 }
 
-.wui-al-ct {
+.#{$prefixClass}-al-ct {
     justify-content: center;
     align-items: flex-start;
 }
 
-.wui-al-cm {
+.#{$prefixClass}-al-cm {
     justify-content: center;
     align-items: center;
 }
 
-.wui-al-cb {
+.#{$prefixClass}-al-cb {
     justify-content: center;
     align-items: flex-end;
 }
 
-.wui-al-csb {
+.#{$prefixClass}-al-csb {
     justify-content: center;
     align-items: space-between;
 }
 
-.wui-al-csa {
+.#{$prefixClass}-al-csa {
     justify-content: center;
     align-items: space-around;
 }
 
-.wui-al-cst {
+.#{$prefixClass}-al-cst {
     justify-content: center;
     align-items: stretch;
 }
 
-.wui-al-rt {
+.#{$prefixClass}-al-rt {
     justify-content: flex-end;
     align-items: flex-start;
 }
 
-.wui-al-rm {
+.#{$prefixClass}-al-rm {
     justify-content: flex-end;
     align-items: center;
 }
 
-.wui-al-rb {
+.#{$prefixClass}-al-rb {
     justify-content: flex-end;
     align-items: flex-end;
 }
 
-.wui-al-rsb {
+.#{$prefixClass}-al-rsb {
     justify-content: flex-end;
     align-items: space-between;
 }
 
-.wui-al-rsa {
+.#{$prefixClass}-al-rsa {
     justify-content: flex-end;
     align-items: space-around;
 }
 
-.wui-al-rsa {
+.#{$prefixClass}-al-rsa {
     justify-content: flex-end;
     align-items: stretch;
 }
 
-.wui-al-sbt {
+.#{$prefixClass}-al-sbt {
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.wui-al-sbm {
+.#{$prefixClass}-al-sbm {
     justify-content: space-between;
     align-items: center;
 }
 
-.wui-al-sbb {
+.#{$prefixClass}-al-sbb {
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.wui-al-sat {
+.#{$prefixClass}-al-sat {
     justify-content: space-around;
     align-items: flex-start;
 }
 
-.wui-al-sac {
+.#{$prefixClass}-al-sac {
     justify-content: space-around;
     align-items: center;
 }
 
-.wui-al-sbb {
+.#{$prefixClass}-al-sbb {
     justify-content: space-around;
     align-items: flex-end;
 }
 
-.wui-flex-dir-row{
+.#{$prefixClass}-flex-dir-row {
     flex-direction: row;
 }
 
-.wui-flex-dir-row-re{
+.#{$prefixClass}-flex-dir-row-re {
     flex-direction: row-reverse;
 }
 
-.wui-flex-dir-column{
+.#{$prefixClass}-flex-dir-column {
     flex-direction: column;
 }
 
-.wui-flex-dir-column-re{
+.#{$prefixClass}-flex-dir-column-re {
     flex-direction: column-reverse;
 }
 
-.flex-basis{
-    flex:0 0 100px;
+.#{$prefixClass}-flex-basis {
+    flex: 0 0 100px;
 }
 
-.wui-inline-flex{
+.#{$prefixClass}-inline-flex {
     display: inline-flex;
 }

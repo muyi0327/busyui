@@ -5,10 +5,10 @@ import '../util/src/polyfill';
 var ToastLoadingClass = Vue.extend(ToastLoading);
 var tlInstance, tlVm;
 /**
- * wui-toast-loading
+ * bee-toast-loading
  * @module ToastLoading
  * @see {@link ../example/all/toast-loading.html 实例}
- * @desc 页面toastloading组件 <w-toast-loading />
+ * @desc 页面toastloading组件 <bee-toast-loading />
  * @param {Number} height=100 - 高度(px)
  * @param {Number} width=100 - 宽度(px)
  * @param {String} color='#fff' - spinner和文字颜色, css color
@@ -19,16 +19,16 @@ var tlInstance, tlVm;
  * 
  * @example
  *  //  use it in html
- *  <script src="wui.min.js"><\/script>
- *  <link rel="stylesheet" href="wui.min.css">
+ *  <script src="bee.min.js"><\/script>
+ *  <link rel="stylesheet" href="bee.min.css">
  *
- *  Wui.ToastLoading.show();
+ *  bee.ToastLoading.show();
  *  http.get('url').then(()=>{
- *    Wui.ToastLoading.hide();
+ *    Bee.ToastLoading.hide();
  *  });
  *
  *  // use it in module tools
- *  import ToastLoading from 'wui/packages/toast-loading';
+ *  import ToastLoading from '@bee/toast-loading';
  *  ToastLoading.show({spinner:{type:2}, direction="row"});
  *  http.get('url').then(()=>{
  *    ToastLoading.hide();
@@ -36,7 +36,7 @@ var tlInstance, tlVm;
  **/
 export default Object.assign(ToastLoading, {
     install(vue) {
-        vue.component('w-toast-loading', ToastLoading);
+        vue.component('bee-toast-loading', ToastLoading);
     },
     /**
      * 隐藏loading
@@ -58,7 +58,7 @@ export default Object.assign(ToastLoading, {
      * @returns LoadingClass实例
      * 
      * @example
-     * Wui.ToastLoading.show();
+     * bee.ToastLoading.show();
      * 
      */
     show(opts) {

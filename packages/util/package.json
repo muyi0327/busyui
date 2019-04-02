@@ -1,12 +1,23 @@
 {
-    "name": "wui-util",
-    "description": "",
+    "name": "@bee/util",
+    "version": "1.0.0",
+    "description": "bee util",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "version": "0.3.0"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/muyi0327/bee.git"
+    },
+    "keywords": [
+        "bee",
+        "util"
+    ],
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/muyi0327/bee/issues"
+    },
+    "homepage": "https://github.com/muyi0327/bee#readme"
 }

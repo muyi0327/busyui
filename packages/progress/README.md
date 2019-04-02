@@ -1,1 +1,1 @@
-# wui-progress
+# bee-progress

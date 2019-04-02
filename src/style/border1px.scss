@@ -3,7 +3,7 @@
 .#{$prefixClass}-border-1px {
     position: relative;
 
-    &:after {
+    &::after {
         position: absolute;
         content: "";
         top: 0;

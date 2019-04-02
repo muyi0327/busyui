@@ -1,25 +1,28 @@
 {
-    "name": "wui-dialog",
-    "description": "dialog component of wui library",
-    "main": "index.js",
-    "bugs": {
-        "url": "http://git.wdjr.local/wdf/wui-mobile/issues"
-    },
-    "homepage": "http://git.wdjr.local/wdf/wui-mobile",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "http://git.wdjr.local/wdf/wui-mobile/tree/master/packages/dialog"
-    },
-    "keywords": [
-        "wui-dialog",
-        "wui",
-        "vue"
-    ],
-    "dependencies": {},
-    "author": "",
-    "license": "MIT",
-    "version": "0.3.0"
+  "name": "@bee/dialog",
+  "version": "1.0.0",
+  "description": "bee component dialog alert prompt confirm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muyi0327/bee.git"
+  },
+  "keywords": [
+    "bee",
+    "vue",
+    "component",
+    "dialog",
+    "alert",
+    "prompt",
+    "confirm"
+  ],
+  "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muyi0327/bee/issues"
+  },
+  "homepage": "https://github.com/muyi0327/bee#readme"
 }

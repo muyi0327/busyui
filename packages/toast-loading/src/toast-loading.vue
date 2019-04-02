@@ -1,5 +1,7 @@
 <style lang="scss">
-    .wui-toast-loading {
+    @import "../../../src/style/variable";
+
+    .#{prefixClass}-toast-loading {
         display: flex;
         border-radius: 10px;
         position: absolute;
@@ -7,54 +9,57 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        opacity:1;
+        opacity: 1;
 
-        .icon-wrap{
+        &__icon {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .text-wrap{
+        &__text {
             font-size: 12px;
             display: flex;
         }
 
-        &.dir-row{
+        &--dir-row {
             flex-direction: row;
             width: 160px;
             height: 80px;
             justify-content: center;
-            .icon-wrap{
-                margin-right: 10px;
-            } 
-            .text-wrap{
-                align-items: center;
-                justify-content: flex-start;
-            }
         }
 
-        &.dir-column{
+        &--dir-row &__icon {
+            margin-right: 10px;
+        }
+
+        &--dir-row &__text {
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        &--dir-column {
             flex-direction: column;
             height: 80px;
-            width:80px;
-            .icon-wrap{
-                flex-grow: 2;
-            } 
-            .text-wrap{
-                flex-grow: 1;
-                align-items: flex-start;
-                justify-content: center;
-            }
+            width: 80px;
+        }
+
+        &--dir-column &__icon {
+            flex-grow: 2;
+        }
+
+        &--dir-column &__text {
+            flex-grow: 1;
+            align-items: flex-start;
+            justify-content: center;
         }
     }
 
     .loading-opacity-fade-enter,
     .loading-opacity-fade-leave-active {
         opacity: 0;
-
     }
-    
+
     .loading-opacity-fade-leave-active,
     .loading-opacity-fade-enter-active {
         transition: all 0.5s ease;
@@ -64,11 +69,11 @@
 <template>
     <w-mask v-show="visiable">
         <transition name="loading-opacity-fade">
-            <div v-show="visiable" class="wui-toast-loading" :class="classes" :style="styles">
-                <div class="icon-wrap">
+            <div v-show="visiable" class="bee-toast-loading" :class="classes" :style="styles">
+                <div class="bee-toast-loading__icon">
                     <w-spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color"></w-spinner>
                 </div>
-                <div v-if="text" class="text-wrap" :style="{color: color,fontSize: fontSize+'px'}">
+                <div v-if="text" class="bee-toast-loading__text" :style="{color: color,fontSize: fontSize+'px'}">
                     <slot>{{text}}</slot>
                 </div>
             </div>
@@ -80,7 +85,7 @@
     import Spinner from '../../spinner';
 
     export default {
-        name: 'w-toast-loading',
+        name: 'bee-toast-loading',
         props: {
             width: {
                 type: Number,
@@ -160,7 +165,7 @@
                 return s;
             },
             classes() {
-                return [this.direction == 'row' ? 'dir-row' : 'dir-column']
+                return [this.direction == 'row' ? 'bee-toast-loading--dir-row' : 'bee-toast-loading--dir-column']
             }
         },
         watch: {

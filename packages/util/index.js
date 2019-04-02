@@ -1,7 +1,6 @@
-import * as WColor from './src/color.js';
-import * as WString from './src/string';
-import * as WNumber from './src/number';
-import './src/polyfill.js';
+import * as BColor from './src/color.js';
+import * as BString from './src/string';
+import * as BNumber from './src/number';
 
 
 setTimeout(() => {
@@ -10,7 +9,7 @@ setTimeout(() => {
 }, 0);
 
 export {
-    WColor,
-    WString,
-    WNumber
+    BColor,
+    BString,
+    BNumber
 }

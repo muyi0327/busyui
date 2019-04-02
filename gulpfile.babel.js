@@ -11,7 +11,6 @@ import csso from 'gulp-csso'
 import jdtomk from 'jsdoc-to-markdown'
 import colors from 'colors'
 
-
 import {
     rollup
 } from 'rollup'
@@ -22,13 +21,15 @@ import fs from 'fs'
 
 let buildTasks = [];
 let env = process.env.NODE_ENV;
+let name = 'bee'
+let dist = './dist'
 
 gulp.task('clear', (cb) => {
-    del.sync(['./dist']);
+    del.sync([dist]);
     cb()
 });
 
-// 打包完整 wui.js 和 wui.css
+// 打包完整 bee.js 和 bee.css
 gulp.task('build-dev', series('clear', async function () {
     console.log('build dev...........');
     delete rollupConfig.output
@@ -45,15 +46,15 @@ gulp.task('build-dev', series('clear', async function () {
                 n = '';
                 break;
             default:
-                n = '.' + t;
+                n = `.${t}`;
         }
 
-        fileName = `dist/wui${n}.js`
+        fileName = `${dist}/${name + n}.js`
 
         await bundle.write({
             file: fileName,
             format: t,
-            name: 'Wui',
+            name: 'Bee',
             exports: 'named',
             sourceMap: true,
             globals: {
@@ -65,9 +66,9 @@ gulp.task('build-dev', series('clear', async function () {
     }
 }))
 
-// 压缩 wui.js 到 wui.min.js
+// 压缩 bee.js 到 bee.min.js
 gulp.task('compress', series('build-dev', () => {
-    return gulp.src(['./dist/wui.js', './dist/wui.commonjs.js', './dist/wui.iife.js'])
+    return gulp.src([`${dist}/${name}.js`, `${dist}/${name}.commonjs.js`, `${dist}/${name}.iife.js`])
         .pipe(uglify({
             sourceMap: true
         }))
@@ -75,20 +76,20 @@ gulp.task('compress', series('build-dev', () => {
             dirname: './',
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest(dist))
 }))
 
 // 压缩css
 gulp.task('cssmin', () => {
-    return gulp.src('./dist/wui.css')
+    return gulp.src(`${dist}/${name}.css`)
         .pipe(csso({
             sourceMap: true
         }))
         .pipe(rename({
             dirname: './',
-            basename: 'wui.min'
+            basename: `${name}.min`
         }))
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest(dist))
 })
 
 // 生成文档

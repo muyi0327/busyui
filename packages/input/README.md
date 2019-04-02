@@ -1,1 +1,1 @@
-# wui-input
+# bee-input

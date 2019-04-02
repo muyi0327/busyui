@@ -1,25 +1,25 @@
 {
-    "name": "wui-loadmore",
-    "description": "loadmore component of wui library",
+    "name": "@bee/loadmore",
+    "version": "1.0.0",
+    "description": "bee loadmore component",
     "main": "index.js",
-    "bugs": {
-        "url": "http://git.wdjr.local/wdf/wui-mobile/issues"
-    },
-    "homepage": "http://git.wdjr.local/wdf/wui-mobile",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "keywords": [
+        "bee",
+        "vue",
+        "component",
+        "loadmore"
+    ],
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "http://git.wdjr.local/wdf/wui-mobile/tree/master/packages/loadmore"
+        "url": "git+https://github.com/muyi0327/bee.git"
     },
-    "keywords": [
-        "wui-loadmore",
-        "wui",
-        "vue"
-    ],
-    "dependencies": {},
-    "author": "",
-    "license": "MIT",
-    "version": "0.3.0"
+    "bugs": {
+        "url": "https://github.com/muyi0327/bee/issues"
+    },
+    "homepage": "https://github.com/muyi0327/bee#readme"
 }

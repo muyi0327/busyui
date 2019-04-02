@@ -1,3 +1,4 @@
 <style lang="scss">
-    .wui-step-item{}
+    .bee-step-item {
+    }
 </style>

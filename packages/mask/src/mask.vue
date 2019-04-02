@@ -14,8 +14,8 @@
 </style>
 
 <template>
-    <transition name="cui-animate_fade" v-on:after-leave="_leave">
-        <div v-show="visiable" @touchmove="handleTouchmove" class="cui-mask" v-on:click="handleClick" :style="styles">
+    <transition name="bee-animate--fade" v-on:after-leave="_leave">
+        <div v-show="visiable" @touchmove="handleTouchmove" class="bee-mask" v-on:click="handleClick" :style="styles">
             <slot></slot>
         </div>
     </transition>
@@ -23,17 +23,17 @@
 
 <script>
     /**
-     * cui-mask
+     * bee-mask
      * @module Mask
-     * @desc 半透明遮罩层 <c-mask></c-mask>
+     * @desc 半透明遮罩层 <bee-mask></bee-mask>
      * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
      * @param {Boolean} isRemove=false - 是否隐藏动画完成从dom中清除
      * @param {Boolean} isShow=false - 显示隐藏
      * @example 
-     *      <c-mask color="yellow"></c-mask>
+     *      <bee-mask color="yellow"></bee-mask>
      **/
     export default {
-        name: 'c-mask',
+        name: 'bee-mask',
         props: {
             color: {
                 type: String,

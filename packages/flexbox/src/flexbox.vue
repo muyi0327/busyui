@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <div :style="styles" :class="classes">
+    <div :style="styles" :class="classes" @click="handleClick">
         <slot></slot>
     </div>
 </template>
@@ -12,25 +12,32 @@
     import FlexItem from './flex-item.vue'
 
     export default {
-        name: 'w-flexbox',
+        name: 'bee-flexbox',
         props: {
+            inline: {
+                type: Boolean,
+                default: false
+            },
             width: {
                 type: [Number, String]
             },
             height: {
                 type: [Number, String]
             },
+            wrap: {
+                type: String
+            },
             direction: {
                 type: String,
-                default: 'row'
+                validator(val) {
+                    return val && 'row column'.split(/\s/).indexOf(String(val)) > -1
+                }
             },
             alignH: {
-                type: String,
-                default: 'start'
+                type: String
             },
             alignV: {
-                type: String,
-                default: 'start'
+                type: String
             }
         },
         components: {
@@ -43,23 +50,29 @@
         },
         computed: {
             classes() {
+                let ah = this.alignH, av = this.alignV, flag = ah || av;
                 return [
-                    `wui-flex-align-${this.alignH}-${this.alignV}`,
-                    this.direction == 'column' ? `wui-${this.direction}-flexbox` : 'wui-flexbox'
+                    this.inline ? `bee-flex--inline` : `bee-flex`,
+                    flag ? `bee-flex--${ah || 'start'}-${av || 'start'}` : null,
+                    !this.direction ? '' : `bee-flex--${this.direction}`
                 ]
             },
             styles() {
-                let o = {}, h = this.height, w = this.width
+                let h = this.height, w = this.width
 
-                if (h || h === 0) {
-                    o.height = /^\d+$/.test(h) ? h + 'px' : h
+                h = /^\d+$/.test(h) ? h + 'px' : h
+                w = /^\d+$/.test(w) ? w + 'px' : w
+
+                return {
+                    height: h,
+                    width: w,
+                    flexWrap: this.wrap,
                 }
-
-                if (w || w === 0) {
-                    o.width = /^\d+$/.test(w) ? w + 'px' : w
-                }
-
-                return o
+            }
+        },
+        methods: {
+            handleClick(e) {
+                this.$emit('click', e)
             }
         }
     }

@@ -20,7 +20,7 @@
         margin: 0;
         &.is-sharp {
             border-radius: 0;
-            .cui-button__border {
+            .bee-button__border {
                 border-radius: 0;
             }
         }
@@ -59,46 +59,46 @@
             background-color: rgba(255, 255, 255, 0.6);
         }
 
-        &__type_default {
+        &--default {
             background-color: $button-default-background-color;
             color: $button-default-text-color;
         }
 
-        &__type_default &__border {
+        &--default &__border {
             border-color: $button-default-border-color;
         }
 
-        &__type_primary {
+        &--primary {
             background-color: $button-primary-background-color;
             color: $button-primary-text-color;
         }
 
-        &__type_primary &__border {
+        &--primary &__border {
             border-color: $button-primary-border-color;
         }
 
-        &__type_warning {
+        &--warning {
             background-color: $button-warning-background-color;
             color: $button-warning-text-color;
         }
 
-        &__type_warning &__border {
+        &--warning &__border {
             border-color: $button-warning-border-color;
         }
 
-        &__size_large {
+        &--large {
             height: $button-size-large-height;
             line-height: $button-size-large-height;
             font-size: 18px;
         }
 
-        &__size_normal {
+        &--normal {
             height: $button-size-normal-height;
             line-height: $button-size-normal-height;
             font-size: 14px;
         }
 
-        &__size_small {
+        &--small {
             height: $button-size-small-height;
             line-height: $button-size-small-height;
             font-size: 14px;
@@ -107,29 +107,29 @@
 </style>
 
 <template>
-    <button :data-key="'cui-button-' + _uid" :type="nativeType" class="cui-button" :class="['cui-button__type_' + type, size ? 'cui-button__size_' + size : '', {
+    <button :data-key="'bee-button-' + _uid" :type="nativeType" class="bee-button" :class="['bee-button--' + type, size ? 'bee-button--' + size : '', {
       'is-disabled': disabled,
       'is-block': block
     }]" :style="styles" @click="handleClick" :disabled="disabled">
-        <label class="cui-button__text">
+        <label class="bee-button__text">
             <slot>{{content}}</slot>
         </label>
-        <span class="cui-button__border" :style="borderStyles"></span>
+        <span class="bee-button__border" :style="borderStyles"></span>
     </button>
 </template>
 
 <script>
-    import { WNumber } from '../../util'
+    import { BNumber } from '../../util'
 
     setTimeout(() => {
         let dpr = window.devicePixelRatio;
 
         //if (this.borderColor) {
-        var styleTag = document.getElementById('cui-button-border-1px');
+        var styleTag = document.getElementById('bee-button-border-1px');
         var sheet = styleTag ? (styleTag.sheet || styleTag.styleSheet) : null;
         if (!sheet) {
             var style = document.createElement("style");
-            style.id = 'cui-button-border-1px';
+            style.id = 'bee-button-border-1px';
             style.type = 'text/css';
             style.appendChild(document.createTextNode(""));
             document.head.appendChild(style);
@@ -137,13 +137,13 @@
         }
 
         if (sheet.addRule) {
-            sheet.addRule('button > .cui-button-border',
+            sheet.addRule('button > .bee-button-border',
                 'width: ' + dpr * 100 + '%;' +
                 'height: ' + dpr * 100 + '%;' +
                 'transform: scale(' + 1 / dpr + ');'
             );
         } else if (sheet.insertRule) {
-            sheet.insertRule('button > .cui-button-border' +
+            sheet.insertRule('button > .bee-button-border' +
                 'width: ' + dpr * 100 + '%;' +
                 'height: ' + dpr * 100 + '%;' +
                 'transform: scale(' + 1 / dpr + ');', 0);
@@ -153,7 +153,7 @@
     }, 0);
 
     /**
-     * cui-button
+     * bee-button
      * @module Button
      * @see {@link ../example/all/button.html 实例}
      * @desc 按钮组件 <w-button />
@@ -172,13 +172,13 @@
      * @param {String} fontColor - 字体颜色
      *
      * @example
-     *  <w-button size="large" type="primary">按钮</w-button>
+     *  <bee-button size="large" type="primary">按钮</bee-button>
      *
-     *  <w-button size="small" type="warning">删除</w-button>
+     *  <bee-button size="small" type="warning">删除</bee-button>
      *
      */
     export default {
-        name: 'w-button',
+        name: 'bee-button',
 
         props: {
             disabled: Boolean,
@@ -195,7 +195,7 @@
             fontSize: {
                 type: [Number, String],
                 default: 14,
-                validator: WNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             bgColor: String,
             borderColor: String,
@@ -207,13 +207,13 @@
                 default() {
                     return this.plain ? 1 : 0
                 },
-                validator: WNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             fontColor: String,
             borderRadius: {
                 type: [Number, String],
                 default: 4,
-                validator: WNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             type: {
                 type: String,
@@ -232,11 +232,11 @@
             },
             height: {
                 type: [String, Number],
-                validator: WNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             width: {
                 type: [String, Number],
-                validator: WNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             size: {
                 type: String,
@@ -281,14 +281,15 @@
                 }
             },
             styles() {
-                let h = WNumber.cmpUnit(this.height),
-                    w = WNumber.cmpUnit(this.width),
+                let h = BNumber.cmpUnit(this.height),
+                    w = BNumber.cmpUnit(this.width),
                     br = this.sharp ? 0 : this.borderRadius,
                     fs = this.fontSize,
                     size = this.size
 
                 let o = {
                     height: h,
+                    lineHeight: h,
                     borderWidth: !this.isThin ? this.borderWidth || null : null,
                     borderColor: !this.isThin ? this.borderColor : null,
                     width: w,

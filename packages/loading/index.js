@@ -18,7 +18,10 @@ Loading.show = function (opts) {
 
     instance = new LoadingClass({
         el: document.createElement('div'),
-        propsData: Object.assign({}, {fullPage: true, isRemove: true}, opts)
+        propsData: Object.assign({}, {
+            fullPage: true,
+            isRemove: true
+        }, opts)
     });
 
     Vue.nextTick(() => {
@@ -29,8 +32,9 @@ Loading.show = function (opts) {
 }
 
 Loading.hide = function () {
-    instance && instance.$destroy();
-    vm && document.body.removeChild(vm.$el);
+    if (instance) {
+        instance.hide()
+    }
     vm = null;
     instance = null;
 }

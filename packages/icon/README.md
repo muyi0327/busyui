@@ -1,20 +1,20 @@
-# wui-icon
+# bee-icon
 
-wui-icon is a mobile icon component for wui library
+bee-icon is a mobile icon component for bee library
 
 ## Installation
 
-First, install wui-icon from wanda npm
+First, install bee-icon from wanda npm
 
-    npm install wui-icon or npm install wui
+    npm install bee-icon or npm install bee
 
 Then use it in vue;
 
-    import Icon from 'wui/packges/icon';
+    import Icon from 'bee/packges/icon';
 
     var vm = new Vue({
         el: '#app',
-        template: '<div><w-icon></w-icon></div>',
+        template: '<div><bee-icon></bee-icon></div>',
         components:{
             'w-icon': Icon
         }

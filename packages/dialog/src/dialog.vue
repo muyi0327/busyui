@@ -2,6 +2,7 @@
     @import "../../../src/style/variable.scss";
 
     $ml: $dialog-dfault-width * -0.5;
+
     $mt: $dialog-dfault-height * -0.5;
     .#{$prefixClass}-dialog {
         position: fixed;
@@ -121,24 +122,24 @@
 <template>
     <w-mask v-show="visiable" :is-remove="isRemove" color="rgba(0,0,0,.5)">
         <transition name="fade-scale">
-            <div class="cui-dialog" v-if="visiable" :style="styles">
-                <p v-if="showClose" class="cui-dialog__close" @click.stop="hide">
+            <div class="bee-dialog" v-if="visiable" :style="styles">
+                <p v-if="showClose" class="bee-dialog__close" @click.stop="hide">
                     <w-icon type="close" :width="20" :height="20" fill="#8a8a8a"></w-icon>
                 </p>
-                <header class="cui-dialog__header" v-if="title">
+                <header class="bee-dialog__header" v-if="title">
                     <slot name="header">
-                        <div class="cui-dialog__title">{{title}}</div>
+                        <div class="bee-dialog__title">{{title}}</div>
                     </slot>
                 </header>
-                <div class="cui-dialog__body" v-if="content || $slots['body']">
+                <div class="bee-dialog__body" v-if="content || $slots['body']">
                     <slot name="body">
                         <div :style="contentStyle" v-html="content"></div>
                     </slot>
                 </div>
-                <footer class="cui-dialog__footer" :style="footerStyles" :class="{'cui-dialog__footer_row':buttonDirection=='row', 'cui-dialog__footer_col':buttonDirection=='col'}">
+                <footer class="bee-dialog__footer" :style="footerStyles" :class="{'bee-dialog__footer_row':buttonDirection=='row', 'bee-dialog__footer_col':buttonDirection=='col'}">
                     <slot name="footer">
                         <template v-for="(btn,$i) in bindButtons">
-                            <p class="cui-dialog__button" :key="'btn-'+$i" :class="btn.class" :style="btn.style" @click.stop="btn.action">{{btn.text}}</p>
+                            <p class="bee-dialog__button" :key="'btn-'+$i" :class="btn.class" :style="btn.style" @click.stop="btn.action">{{btn.text}}</p>
                         </template>
                     </slot>
                 </footer>
@@ -151,7 +152,7 @@
     import Mask from '../../mask';
 
     export default {
-        name: 'c-dialog',
+        name: 'bee-dialog',
         props: {
             mask: {
                 type: Boolean,
@@ -209,8 +210,8 @@
             }
         },
         components: {
-            'c-icon': Icon,
-            'c-mask': Mask
+            [Icon.name]: Icon,
+            [Mask.name]: Mask
         },
         computed: {
             styles() {

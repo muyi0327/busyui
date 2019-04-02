@@ -1,15 +1,17 @@
 <style lang="scss">
-    .wui-list{
+    @import "../../../src/style/variable";
+
+    .#{$prefixClass}-list {
         display: block;
-        background:#fff;
-        box-sizing:border-box;
-        padding-left:12px;
-        width:100%;
+        background: #fff;
+        box-sizing: border-box;
+        padding-left: 12px;
+        width: 100%;
     }
 </style>
 
 <template>
-    <div class="wui-list wui-border-1px wui-border-tb">
+    <div class="bee-list bee-border-1px bee-border-tb">
         <slot></slot>
     </div>
 </template>
@@ -18,7 +20,7 @@
     import ListItem from './list-item.vue';
 
     export default {
-        name: 'w-list',
+        name: 'bee-list',
         props: {
             items: {
                 type: Array,

@@ -1,24 +1,25 @@
 {
-    "name": "cui-icon",
-    "description": "icon component of cui library",
+    "name": "bee-icon",
+    "version": "1.0.0",
+    "description": "icon component",
     "main": "index.js",
-    "bugs": {
-        "url": "https://github.com/muyi0327/cui/issues"
-    },
-    "homepage": "https://github.com/muyi0327/cui",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com:muyi0327/cui.git"
+        "url": "git+https://github.com/muyi0327/bee.git"
     },
     "keywords": [
-        "cui-icon",
-        "cui",
-        "vue"
+        "bee",
+        "icon",
+        "vue",
+        "component"
     ],
-    "author": "",
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
-    "version": "0.3.0"
+    "bugs": {
+        "url": "https://github.com/muyi0327/bee/issues"
+    },
+    "homepage": "https://github.com/muyi0327/bee#readme"
 }

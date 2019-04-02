@@ -1,9 +1,9 @@
 <style lang="scss">
-    @import '../../../src/style/variable.scss';
-    
-    .wui-progress-ring {
+    @import "../../../src/style/variable.scss";
+
+    .#{prefixClass}-progress-ring {
         position: relative;
-        svg .wui-progress-bar{
+        svg &__bar {
             transition-property: stroke-dashoffset;
             transition-duration: 1s;
             transition-timing-function: linear;
@@ -11,45 +11,26 @@
             stroke-width: #{$progress-line-width}px;
         }
 
-        svg .wui-progress-track{
+        svg &__track {
             stroke: $progress-background-color;
             stroke-width: #{$progress-line-width}px;
         }
     }
-    
 </style>
 <template>
-    <div class="wui-progress-ring" v-on:click="handleClick">
+    <div class="bee-progress-ring" v-on:click="handleClick">
         <svg :width="size" :height="size" :viewport="viewport" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <circle 
-                class="wui-progress-track"
-                :cx="radius" 
-                :cy="radius" 
-                :r="sRdius" 
-                :style="trackStyles"
-                fill="transparent" 
-                :stroke-linecap="linecap"
-                :stroke-dasharray="dasharray" 
-                :stroke-dashoffset="0">
+            <circle class="bee-progress-ring__track" :cx="radius" :cy="radius" :r="sRdius" :style="trackStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="0">
             </circle>
 
-            <circle 
-                class="wui-progress-bar"
-                :cx="radius" 
-                :cy="radius" 
-                :r="sRdius" 
-                :style="barStyles"
-                fill="transparent" 
-                :stroke-linecap="linecap"
-                :stroke-dasharray="dasharray" 
-                :stroke-dashoffset="dashoffset">
+            <circle class="bee-progress-ring__bar" :cx="radius" :cy="radius" :r="sRdius" :style="barStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="dashoffset">
             </circle>
         </svg>
     </div>
 </template>
 <script>
     /**
-     * wui-progress-ring
+     * bee-progress-ring
      * @des 环形进度条组件
      * @param {Number} size - 组件直径大小,默认 100<px>
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
@@ -60,10 +41,10 @@
      * @param {String} direction = '1' - 顺时针还是逆时针, 取值范围 '1','-1'
      * @param {String} content - 显示内容，this.percent + '%'
      * @example
-     *      <w-progress-ring :size="50" :track-width="10"></w-progress-ring>
+     *      <bee-progress-ring :size="50" :track-width="10"></bee-progress-ring>
      **/
     export default {
-        name: 'w-progress-ring',
+        name: 'bee-progress-ring',
         props: {
             size: {
                 type: Number,
@@ -86,11 +67,11 @@
                 type: Boolean,
                 default: false
             },
-            direction:{
+            direction: {
                 type: [Number, String],
                 default: 1
             },
-            linecap:{
+            linecap: {
                 type: String,
                 default: 'round'
             },
@@ -103,42 +84,42 @@
         },
 
         computed: {
-            dasharray(){
+            dasharray() {
                 return (this.size - 2 * this.trackWidth) * Math.PI;
             },
-            dashoffset(){
+            dashoffset() {
                 var d = Number(this.direction);
-                var p = (100 + (-1*d) * this.percent) / 100;
+                var p = (100 + (-1 * d) * this.percent) / 100;
                 return (this.size - 2 * this.trackWidth) * Math.PI * p;
             },
-            radius(){
+            radius() {
                 return this.size * 0.5;
             },
-            sRdius(){
+            sRdius() {
                 return this.size * 0.5 - this.trackWidth;
             },
-            viewport(){
+            viewport() {
                 return '0 0 ' + this.size + ' ' + this.size;
             },
-            trackStyles(){
+            trackStyles() {
                 var s = {};
-                if (this.trackWidth){
+                if (this.trackWidth) {
                     s.strokeWidth = this.trackWidth + 'px';
                 }
 
-                if (this.trackColor){
+                if (this.trackColor) {
                     s.stroke = this.trackColor;
                 }
 
                 return s;
             },
-            barStyles(){
+            barStyles() {
                 var s = {};
-                if (this.trackWidth){
+                if (this.trackWidth) {
                     s.strokeWidth = this.trackWidth + 'px';
                 }
 
-                if (this.barColor){
+                if (this.barColor) {
                     s.stroke = this.barColor;
                 }
 

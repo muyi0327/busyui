@@ -1,25 +1,25 @@
 {
-    "name": "wui-steps",
-    "description": "steps component of wui library",
+    "name": "bee-steps",
+    "description": "steps component of bee library",
     "main": "index.js",
     "bugs": {
-        "url": "http://git.wdjr.local/wdf/wui-mobile/issues"
+        "url": "http://git.wdjr.local/wdf/bee-mobile/issues"
     },
-    "homepage": "http://git.wdjr.local/wdf/wui-mobile",
+    "homepage": "http://git.wdjr.local/wdf/bee-mobile",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "http://git.wdjr.local/wdf/wui-mobile/tree/master/packages/steps"
+        "url": "http://git.wdjr.local/wdf/bee-mobile/tree/master/packages/steps"
     },
     "keywords": [
-        "wui-steps",
-        "wui",
+        "bee-steps",
+        "bee",
         "vue"
     ],
     "dependencies": {},
-    "author": "yangfei <yangfei44@wanda.cn> (http://git.wdjr.local/wdf)",
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
     "version": "0.3.0"
 }

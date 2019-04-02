@@ -1,25 +1,24 @@
 {
-    "name": "wui-message",
-    "description": "message component of wui library",
+    "name": "@bee/message",
+    "version": "1.0.0",
+    "description": "bee vue component message",
     "main": "index.js",
-    "bugs": {
-        "url": "http://git.wdjr.local/wdf/wui-mobile/issues"
-    },
-    "homepage": "http://git.wdjr.local/wdf/wui-mobile",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "http://git.wdjr.local/wdf/wui-mobile/tree/master/packages/message"
+        "url": "git+https://github.com/muyi0327/bee.git"
     },
     "keywords": [
-        "wui-message",
-        "wui",
-        "vue"
+        "bee",
+        "vue",
+        "component",
+        "message"
     ],
-    "dependencies": {},
-    "author": "",
-    "license": "MIT",
-    "version": "0.3.0"
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "bugs": {
+        "url": "https://github.com/muyi0327/bee/issues"
+    },
+    "homepage": "https://github.com/muyi0327/bee#readme"
 }

@@ -5,10 +5,10 @@ import '../util/src/polyfill';
 const MessageClass = Vue.extend(Message);
 
 /**
- * wui-message
+ * bee-message
  * @module Message
  * @see {@link ../example/all/message.html 实例}
- * @desc 浮层提示信息组件 <w-message></w-message>
+ * @desc 浮层提示信息组件 <bee-meesage></bee-meesage>
  * @param {String} pos='top' - 显示位置,可取值 'top', 'middle', 'bottom'
  * @param {String} type='info' - 提示框类型, 可取值 'info', 'success', 'error', 'warning'
  * @param {String} text - 提示信息内容, 也可以slot方式传入
@@ -18,24 +18,24 @@ const MessageClass = Vue.extend(Message);
  * @example
  * 
  *  // use it in module tools
- *  import Message from 'wui/packages/message';
+ *  import Message from '@bee/message';
  *  Message.show('有新信息了');
  *  Message.info('有新信息了');
  *  Message.success('信息提交成功');
  *  Message.warning('内容包含非法词');
  * 
  *  // use it in html
- *  <script src="wui.min.js"><\/script>
- *  <link rel="stylesheet" href="wui.min.css">
- *  Wui.Message.show('有新信息了');
- *  Wui.Message.info('有新信息了');
- *  Wui.Message.success('信息提交成功');
- *  Wui.Message.warning('内容包含非法词');
+ *  <script src="bee.min.js"><\/script>
+ *  <link rel="stylesheet" href="Bee.min.css">
+ *  Bee.Message.show('有新信息了');
+ *  Bee.Message.info('有新信息了');
+ *  Bee.Message.success('信息提交成功');
+ *  Bee.Message.warning('内容包含非法词');
  * 
  */
 export default Object.assign(Message, {
     install(vue) {
-        vue.component('w-message', Message)
+        vue.component(Message.name, Message)
     },
     /**
      * 显示提示信息
@@ -45,7 +45,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     * Wui.Message.show('有新信息了');
+     * Bee.Message.show('有新信息了');
      * 
      */
     show(opts) {
@@ -76,7 +76,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Wui.Message.info('收到一个优惠券');
+     *  Bee.Message.info('收到一个优惠券');
      * 
      */
     info(text, opts) {
@@ -94,7 +94,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Wui.Message.success('提交成功');
+     *  Bee.Message.success('提交成功');
      * 
      */
     success(text, opts) {
@@ -112,7 +112,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Wui.Message.warning('内容包含非法词');
+     *  Bee.Message.warning('内容包含非法词');
      * 
      */
     warning(text, opts) {
@@ -130,7 +130,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Wui.Message.error('内容包含非法词');
+     *  Bee.Message.error('内容包含非法词');
      * 
      */
     error(text, opts) {

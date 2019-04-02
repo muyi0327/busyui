@@ -1,15 +1,15 @@
 <template>
-    <c-dialog ref="dialog" class="cui-alert" :show-close="false" :width="width" :height="height" :buttons="[{text:'确定'}]" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
-    </c-dialog>
+    <bee-dialog ref="dialog" class="bee-alert" :show-close="false" :width="width" :height="height" :buttons="[{text:'确定'}]" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
+    </bee-dialog>
 </template>
 <script>
     import Dialog from './dialog.vue';
 
     export default {
-        name: 'c-alert',
+        name: 'bee-alert',
         extends: Dialog,
         components: {
-            'c-dialog': Dialog
+            [Dialog.name]: Dialog
         },
         props: {
             width: {

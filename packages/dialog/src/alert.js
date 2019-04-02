@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Alert from './Alert.vue';
-import '../../util/src/polyfill';
+
 
 const AlertClass = Vue.extend(Alert);
 
 /**
- * wui-alert
+ * bee-alert
  * @module Alert
  * @see {@link ../example/all/dialog.html 实例}
  * @desc alert对话框组件
@@ -15,14 +15,14 @@ const AlertClass = Vue.extend(Alert);
  * 
  * @example
  * // use it in html
- * <script src="wui.min.js"><\/script>
- * <link rel="stylesheet" href="wui.min.css" />
+ * <script src="bee.min.js"><\/script>
+ * <link rel="stylesheet" href="bee.min.css" />
  * 
- * Wui.Alert.show('提交申请成功');
+ * Bee.Alert.show('提交申请成功');
  *
  * // use it in webpack or browserify, rollup
- * import {Alert} from 'wui/packages/dialog';
- * // var Aler = require('wui/packages/dialog/alert.js');
+ * import {Alert} from 'bee/packages/dialog';
+ * // var Aler = require('bee/packages/dialog/alert.js');
  *
  * Alert.show('提交申请成功');
  *
@@ -42,7 +42,7 @@ export default Object.assign(Alert, {
      * @returns AlertClass实例
      * 
      * @example
-     * Wui.Alert.show('提交申请成功');
+     * Bee.Alert.show('提交申请成功');
      */
     show(text, opts) {
         if (typeof text === 'object') {

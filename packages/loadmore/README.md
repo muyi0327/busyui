@@ -1,1 +1,1 @@
-# wui-loadmore
+# bee-loadmore

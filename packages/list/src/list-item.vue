@@ -1,57 +1,49 @@
 <style lang="scss">
-    .wui-list-item {
-        display: block;
+    @import "../../../src/style/variable";
+
+    .#{$prefixClass}-list-item {
         font-size: 14px;
         color: #666;
-        .wui-list-item-wrap {
-            width: 100%;
+        width: inherit;
+
+        &__label,
+        &__icon,
+        &__content {
+            height: inherit;
         }
 
-        .wui-field-label {
+        &__label_text {
             font-weight: 500;
         }
 
-        .list-item-content-text {
+        &__content_text {
             color: #999;
         }
-
-        /* &:active::after{
-            content:' ';
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            background-color:rgba(#000, 0.1);
-        } */
     }
 </style>
 
 <template>
-    <div class="wui-list-item wui-border-1px wui-border-b" @click="handleClick">
-        <w-row class="wui-list-item-wrap" :style="styles">
-            <w-cell v-if="showLabel" :style="labelStyle" :width="labelWidth" :align="labelAlign" :vertical="labelVertical" @click="handleLabelClick" class="wui-list-item-label-wrap">
-                <slot name="label"><label class="wui-field-label">{{label}}</label></slot>
-            </w-cell>
-            <w-cell class="wui-list-item-content" vertical="middle">
-                <slot name="content">
-                    <div class="list-item-content-text">{{content}}</div>
-                </slot>
-            </w-cell>
-            <w-cell v-if="showIcon" :style="iconStyle" :width="iconWidth" :vertical="iconVertical" :align="iconAlign" @click="handleIconClick">
-                <slot name="icon">
-                    <w-icon v-show="icon.type" :type="icon.type" :fill="icon.fill" :width="icon.width" :height="icon.height" :style="iconStyle"></w-icon>
-                </slot>
-            </w-cell>
-        </w-row>
-    </div>
+    <bee-flexbox class="bee-list-item bee-border-1px bee-border-b" :style="styles" @click="handleClick">
+        <bee-flexitem v-if="showLabel" :style="labelStyle" :flex="labelFlex" @click="handleLabelClick" :class="labelClass">
+            <slot name="label"><label class="bee-list-item__label_text">{{label}}</label></slot>
+        </bee-flexitem>
+        <bee-flexitem class="bee-list-item__content bee-flex bee-flex--start-center">
+            <slot>
+                <div class="bee-list-item__content_text">{{content}}</div>
+            </slot>
+        </bee-flexitem>
+        <bee-flexitem v-if="showIcon" :style="iconStyle" :flex="iconFlex" @click="handleIconClick" :class="iconClass">
+            <slot name="icon">
+                <bee-icon v-show="icon.type" :type="icon.type" :fill="icon.fill" :width="icon.width" :height="icon.height" :style="iconStyle"></bee-icon>
+            </slot>
+        </bee-flexitem>
+    </bee-flexbox>
 </template>
 
 <script>
-    import {
-        Cell,
-        Row
-    } from '../../layout';
+    import { FlexBox, FlexItem } from '../../flexbox';
+    import Icon from '../../icon';
+
 
     var iconProps = {
         fill: '#c0c0c0',
@@ -61,7 +53,7 @@
     }
 
     export default {
-        name: 'w-list-item',
+        name: 'bee-list-item',
         props: {
             height: {
                 type: [Number, String],
@@ -73,29 +65,37 @@
                 type: [Number, String],
                 default: 80
             },
-            labelAlign: {
+            labelAlignH: {
                 type: String,
-                default: 'left'
+                default: 'start'
             },
-            labelVertical: {
+            labelAlignV: {
                 type: String,
-                default: 'middle'
+                default: 'center'
             },
+
             labelStyle: Object,
+
             showLabel: {
                 type: Boolean,
                 default: true
             },
+
             iconWidth: {
                 type: [Number, String],
                 default: 28
             },
-            iconAlign: {
+            iconAlignH: {
                 type: String,
                 default: 'center'
             },
+            iconAlignV: {
+                type: String,
+                default: 'center'
+            },
+
             iconStyle: Object,
-            iconVertical: String,
+
             showIcon: {
                 type: Boolean,
                 default: true
@@ -107,25 +107,40 @@
                 }
             },
         },
-        data(){
+        data() {
             return {
                 _icon: this.icon
             }
         },
         components: {
-            'w-row': Row,
-            'w-cell': Cell
+            [FlexBox.name]: FlexBox,
+            [FlexItem.name]: FlexItem,
+            [Icon.name]: Icon
         },
         computed: {
             styles() {
                 return {
                     height: /^\d+$/.test(String(this.height)) ? this.height + 'px' : this.height
                 }
+            },
+            labelFlex() {
+                return `0 0 ${this.labelWidth}px`
+            },
+            iconFlex() {
+                return `0 0 ${this.iconWidth}px`
+            },
+            labelClass() {
+                let ah = this.labelAlignH, av = this.labelAlignV;
+                return ['bee-list-item__label', `bee-flex bee-flex--${ah}-${av}`]
+            },
+            iconClass() {
+                let ah = this.iconAlignH, av = this.iconAlignV;
+                return ['bee-list-item__icon', `bee-flex bee-flex--${ah}-${av}`]
             }
         },
-        watch:{
-            icon(val){
-                this._icon = Object.assign(iconProps, val||{})
+        watch: {
+            icon(val) {
+                this._icon = Object.assign(iconProps, val || {})
             }
         },
         methods: {

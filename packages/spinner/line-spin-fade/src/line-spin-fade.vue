@@ -1,8 +1,8 @@
 <style lang="scss">
-    @import '../../../../src/style/variable.scss';
+    @import "../../../../src/style/variable.scss";
     @-webkit-keyframes line-spin-fade-loader {
         0% {
-            opacity:1;
+            opacity: 1;
         }
         50% {
             opacity: 0.6;
@@ -11,7 +11,7 @@
             opacity: 0.1;
         }
     }
-    
+
     @keyframes line-spin-fade-loader {
         0% {
             opacity: 1;
@@ -23,76 +23,76 @@
             opacity: 0.1;
         }
     }
-    
-    .wui-line-spin-fade-loader {
+
+    .bee-line-spin-fade-loader {
         position: relative;
         display: inline-block;
-        >div{
+        > div {
             opacity: 0.1;
         }
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(1) {
+
+    .bee-line-spin-fade-loader > div:nth-child(1) {
         -webkit-animation: line-spin-fade-loader 1.32s 0s infinite ease;
         animation: line-spin-fade-loader 1.32s 0s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(2) {
+
+    .bee-line-spin-fade-loader > div:nth-child(2) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.12s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.12s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(3) {
+
+    .bee-line-spin-fade-loader > div:nth-child(3) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.24s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.24s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(4) {
+
+    .bee-line-spin-fade-loader > div:nth-child(4) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.36s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.36s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(5) {
+
+    .bee-line-spin-fade-loader > div:nth-child(5) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.48s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.48s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(6) {
+
+    .bee-line-spin-fade-loader > div:nth-child(6) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.6s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.6s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(7) {
+
+    .bee-line-spin-fade-loader > div:nth-child(7) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.72s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.72s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div:nth-child(8) {
+
+    .bee-line-spin-fade-loader > div:nth-child(8) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.84s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.84s infinite ease;
     }
 
-    .wui-line-spin-fade-loader>div:nth-child(9) {
+    .bee-line-spin-fade-loader > div:nth-child(9) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.96s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.96s infinite ease;
     }
 
-    .wui-line-spin-fade-loader>div:nth-child(10) {
+    .bee-line-spin-fade-loader > div:nth-child(10) {
         -webkit-animation: line-spin-fade-loader 1.32s 1.08s infinite ease;
         animation: line-spin-fade-loader 1.32s 1.08s infinite ease;
     }
 
-    .wui-line-spin-fade-loader>div:nth-child(11) {
-        -webkit-animation: line-spin-fade-loader 1.32s 1.20s infinite ease;
-        animation: line-spin-fade-loader 1.32s 1.20s infinite ease;
+    .bee-line-spin-fade-loader > div:nth-child(11) {
+        -webkit-animation: line-spin-fade-loader 1.32s 1.2s infinite ease;
+        animation: line-spin-fade-loader 1.32s 1.2s infinite ease;
     }
 
-    .wui-line-spin-fade-loader>div:nth-child(12) {
+    .bee-line-spin-fade-loader > div:nth-child(12) {
         -webkit-animation: line-spin-fade-loader 1.32s 1.32s infinite ease;
         animation: line-spin-fade-loader 1.32s 1.32s infinite ease;
     }
-    
-    .wui-line-spin-fade-loader>div {
+
+    .bee-line-spin-fade-loader > div {
         border-radius: 1px;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
@@ -102,7 +102,7 @@
     }
 </style>
 <template>
-    <div v-if="visiable" class="wui-line-spin-fade-loader" :style="{width: width+'px', height: height+'px'}">
+    <div v-if="visiable" class="bee-line-spin-fade-loader" :style="{width: width+'px', height: height+'px'}">
         <div :key="'lsf-'+$i" v-for="(ps, $i) in positions" :style="[
         color ? {backgroundColor: color}:{},
         {height: itemSize.height, width: itemSize.width,webkitTransform: ps.rotate, top: ps.x, left: ps.y}]"></div>
@@ -120,7 +120,7 @@
      *      <line-spin-fade :color="#ff0000" :width="20" :height="20"></line-spin-fade>
      **/
     export default {
-        name: 'w-line-spin-fade',
+        name: 'bee-line-spin-fade',
         props: {
             color: {
                 type: String,
@@ -151,8 +151,8 @@
                     const rotate = k * 30;
                     return {
                         rotate: 'rotate(' + rotate + 'deg)',
-                        x: this.width * 5/10 + (this.width * 300 * ((Math.sin(rotate / 180 * Math.PI)).toFixed(2)*100)/100000) + 'px',
-                        y: this.height * 5/10 + (this.height * 300 * ((Math.cos(rotate / 180 * Math.PI)).toFixed(2)*100)/100000) + 'px'
+                        x: this.width * 5 / 10 + (this.width * 300 * ((Math.sin(rotate / 180 * Math.PI)).toFixed(2) * 100) / 100000) + 'px',
+                        y: this.height * 5 / 10 + (this.height * 300 * ((Math.cos(rotate / 180 * Math.PI)).toFixed(2) * 100) / 100000) + 'px'
                     }
                 });
             },

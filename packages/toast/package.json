@@ -1,25 +1,25 @@
 {
-    "name": "wui-toast",
-    "description": "toast component of wui library",
+    "name": "@bee/toast",
+    "version": "1.0.0",
+    "description": "bee vue component toast",
     "main": "index.js",
-    "bugs": {
-        "url": "http://git.wdjr.local/wdf/wui-mobile/issues"
-    },
-    "homepage": "http://git.wdjr.local/wdf/wui-mobile",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "http://git.wdjr.local/wdf/wui-mobile/tree/master/packages/toast"
+        "url": "git+https://github.com/muyi0327/bee.git"
     },
     "keywords": [
-        "wui-toast",
-        "wui",
-        "vue"
+        "bee",
+        "vue",
+        "component",
+        "toast"
     ],
-    "dependencies": {},
-    "author": "",
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
-    "version": "0.3.0"
+    "bugs": {
+        "url": "https://github.com/muyi0327/bee/issues"
+    },
+    "homepage": "https://github.com/muyi0327/bee#readme"
 }

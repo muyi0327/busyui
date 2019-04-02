@@ -1,19 +1,14 @@
-<style lang="scss">
-    .wui-select-options-item {
-        height: 40px;
-        line-height: 40px;
-    }
-</style>
+
 
 <template>
-    <li class="wui-select-options-item" @click.stop="handleClick">
+    <li class="bee-select__options__item" @click.stop="handleClick">
         <slot></slot>
     </li>
 </template>
 
 <script>
     export default {
-        name: 'w-option',
+        name: 'bee-option',
         props: {
             value: [Array, String, Object, Number],
             checked: {

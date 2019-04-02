@@ -1,10 +1,7 @@
-<style lang="scss">
-    .wui-segement-item {
-    }
-</style>
+
 
 <template>
-    <div class="wui-segement-item"></div>
+    <div class="bee-segement__item"></div>
 </template>
 
 <script>

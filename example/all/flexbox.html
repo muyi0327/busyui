@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../../dist/wui.css" />
+    <link rel="stylesheet" href="../../dist/bee.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/wui.js"></script>
+    <script src="../../dist/bee.js"></script>
 
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             font: 12px;
         }
 
-        .flex-box{
-           border: 1px solid orange;
-           height: 200px;
+        .flex-box {
+            border: 1px solid orange;
+            height: 600px;
         }
 
-        .flex-item{
-            background:orange;
-            width: 80px;
-            height: 50px;
-            margin-right: 10px;
-            flex:0 0 25%;
+        .flex-item {
+            background: orange;
+            margin-right: 1px;
         }
 
-        .flex-item:last-child{
+        .flex-item:last-child {
             margin-right: 0;
         }
     </style>
 </head>
+
 <body>
     <section id="app">
+        <bee-flexbox height="100" width="100%" align-v="center" align-h="center">
+            内容
+        </bee-flexbox>
         <div class="flex-box">
-            <w-flexbox height="100%" align-h="center" align-v="center">
-                <div style="width: 90px;height: 50px;">123</div>
-                <w-flex-item class="flex-item">你们</w-flex-item>
-                <w-flex-item class="flex-item">你们你们</w-flex-item>
-                <w-flex-item class="flex-item">你们你们</w-flex-item>
-                <w-flex-item class="flex-item">你们你们</w-flex-item>
-                <w-flex-item class="flex-item">你们你们</w-flex-item>
-                <w-flex-item class="flex-item">你们你们</w-flex-item>
-                <w-flex-item class="flex-item">你们</w-flex-item>
-            </w-flexbox>
+            <bee-flexbox height="100%" align-h="center" align-v="center" wrap="wrap">
+                <bee-flexitem flex="0 0 90px" class="flex-item bee-flex bee-flex--center-center">你们</bee-flexitem>
+                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
+                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
+                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
+                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
+                <bee-flexitem flex="0 0 90px" class="flex-item  bee-flex bee-flex--center-start">你们你们</bee-flexitem>
+            </bee-flexbox>
         </div>
     </section>
-    
+
     <script>
         var vm = new Vue({
-            el:'#app'
+            el: '#app'
         })
     </script>
 </body>
+
 </html>

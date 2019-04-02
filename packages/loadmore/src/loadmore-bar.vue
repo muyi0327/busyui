@@ -1,63 +1,12 @@
-<style lang="scss">
-    @import "../../../src/style/flex.scss";
 
-    .wui-loadmore-bar {
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-    }
-
-    .wui-loadmore-spinner {
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 20px;
-      height: 20px;
-    }
-
-    .wui-loadmore-text {
-      display: inline-block;
-      margin-left: 12px;
-      vertical-align: middle;
-      line-height: 30px;
-      height: 30px;
-
-      > span {
-        display: inline-block;
-        vertical-align: middle;
-      }
-      .status-arrow {
-        margin-right: 10px;
-        height: 30px;
-        line-height: 30px;
-        transition: transform 0.2s linear;
-      }
-      &.loadmore-pull {
-        .status-arrow {
-          transform: rotate(0deg);
-        }
-      }
-      &.loadmore-drop {
-        .status-arrow {
-          transform: rotate(180deg);
-        }
-      }
-
-      &.loadmore-loading,
-      &.loadmore-init {
-        .status-arrow {
-          display: none;
-        }
-      }
-    }
-</style>
 <template>
-    <div class="wui-loadmore-bar wui-al-cm" v-show="pos=='top' || pos=='bottom' && status=='loading'">
-        <p class="wui-loadmore-spinner">
+    <div class="bee-loadmore__bar bee-al-cm" v-show="pos=='top' || pos=='bottom' && status=='loading'">
+        <p class="bee-loadmore__spinner">
             <w-spinner :style="{verticalAlign: 'middle'}" v-show="status==='loading'" :size="size" :type="6" color="#aaa"></w-spinner>
         </p>
-        <p class="wui-loadmore-text" :class="['loadmore-' + status]">
-            <span v-if="pos=='top'" class="status-arrow">
-                <w-icon :height="30" type="refresharrow" fill="#000"></w-icon>
+        <p class="bee-loadmore__text" :class="['bee-loadmore--' + status]">
+            <span v-if="pos=='top'" class="bee-loadmore__arrow">
+                <bee-icon :height="30" type="refresharrow" fill="#000"></bee-icon>
             </span>
             <span>{{loadText}}</span>
         </p>
@@ -68,6 +17,7 @@
     import Spinner from '../../spinner';
     import Icon from '../../icon';
     export default {
+        name: 'bee-loadmore-bar',
         props: {
             size: {
                 type: Number,
@@ -100,8 +50,8 @@
             }
         },
         components: {
-            'w-spinner': Spinner,
-            'w-icon': Icon
+            [Spinner.name]: Spinner,
+            [Icon.name]: Icon
         },
         computed: {
             loadText() {

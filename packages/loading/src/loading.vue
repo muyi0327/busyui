@@ -1,6 +1,7 @@
 <style lang="scss">
-    @import '../../../src/style/variable.scss';
-    .wui-loading {
+    @import "../../../src/style/variable";
+
+    .#{prefixClass}-loading {
         position: absolute;
         left: 0;
         right: 0;
@@ -14,18 +15,19 @@
         opacity: 1;
         transform-origin: center center;
         transform: scale(1, 1);
-        .wui-loading-text {
+
+        &__text {
             margin-top: 12px;
             color: $color-blue;
             font-size: 12px;
         }
     }
-    
+
     .loading-fade-enter,
     .loading-fade-leave-active {
         opacity: 0;
     }
-    
+
     .loading-fade-leave-active,
     .loading-fade-enter-active {
         transition: all 0.3s ease;
@@ -33,11 +35,11 @@
 </style>
 <template>
     <transition name="loading-fade" v-on:after-leave="_leave">
-        <div class="wui-loading" :style="styles" v-show="visiable">
-            <div class="wui-loading-spinner">
+        <div class="beeloading" :style="styles" v-show="visiable">
+            <div class="bee-loading__spinner">
                 <w-spinner :type="spinnerType" :color="color" :width="spinnerWidth" :height="spinnerHeight" :size="spinnerSize" :stroke-width="spinnerStroke"></w-spinner>
             </div>
-            <div class="wui-loading-text" :style="{color:color,fontSize:fontSize+'px'}">
+            <div class="bee-loading__text" :style="{color:color,fontSize:fontSize+'px'}">
                 <slot>{{text}}</slot>
             </div>
         </div>
@@ -67,7 +69,7 @@
      *  <w-loading>正在加载...</w-loading>
      */
     export default {
-        name: 'w-loading',
+        name: 'bee-loading',
         props: {
             spinnerSize: {
                 type: Number,
@@ -77,27 +79,27 @@
                 type: Number,
                 default: 3
             },
-            spinnerType:{
-                type:Number,
-                default:6
+            spinnerType: {
+                type: Number,
+                default: 6
             },
-            spinnerWidth:{
+            spinnerWidth: {
                 type: [String, Number]
             },
-            spinnerHeight:{
+            spinnerHeight: {
                 type: [String, Number]
             },
             color: {
                 type: String,
                 default: ''
             },
-            text:{
+            text: {
                 type: String,
-                default:''
+                default: ''
             },
             fontSize: {
                 type: Number,
-                default:12
+                default: 12
             },
             bgColor: {
                 type: String,
@@ -121,24 +123,24 @@
                 visiable: this.isShow
             }
         },
-        components:{
-            'w-spinner': Spinner
+        components: {
+            [Spinner.name]: Spinner
         },
-        methods:{
-            show(){
+        methods: {
+            show() {
                 this.visiable = true;
                 this.$emit('show');
             },
-            hide(){
+            hide() {
                 this.visiable = false;
                 this.$emit('hide');
             },
-            _leave(){
+            _leave() {
                 // 动画结束，清除元素
-                if (this.isRemove){
+                if (this.isRemove) {
                     this.$destroy();
                     this.$el.parentNode.removeChild(this.$el);
-                } 
+                }
             }
         },
         computed: {
@@ -159,7 +161,7 @@
                 this.$emit('visiable-change', val);
             }
         },
-        mounted(){
+        mounted() {
 
         }
     }

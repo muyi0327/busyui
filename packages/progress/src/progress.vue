@@ -1,22 +1,7 @@
 <template>
-    <div class="wui-progress" v-on:click="handleClick">
-        <w-progress-line ref="child-line" v-if="type==='line'"
-            :width="width"
-            :bar-color="barColor"
-            :track-color="trackColor"
-            :track-width="trackWidth" 
-            :percent="percent"
-            :show-text="showText"
-            :duration="duration"></w-progress-line>
-        <w-progress-ring ref="child-ring" v-if="type==='ring'" 
-            :size="size" 
-            :bar-color="barColor"
-            :track-color="trackColor"
-            :track-width="trackWidth" 
-            :percent="percent"
-            :direction="direction"
-            :show-text="showText"
-            :duration="duration">{{mycontent}}</w-progress-ring>
+    <div class="bee-progress" v-on:click="handleClick">
+        <bee-progress-line ref="child-line" v-if="type==='line'" :width="width" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :show-text="showText" :duration="duration"></bee-progress-line>
+        <bee-progress-ring ref="child-ring" v-if="type==='ring'" :size="size" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :direction="direction" :show-text="showText" :duration="duration">{{mycontent}}</bee-progress-ring>
     </div>
 </template>
 
@@ -25,7 +10,7 @@
     import ProgressRing from './progress-ring.vue';
 
     /**
-     * wui-progress
+     * bee-progress
      * @module Progress
      * @see {@link ../example/all/progress.html 实例}
      * @des 进度条组件
@@ -36,13 +21,13 @@
      * @param {String} trackColor - 进度槽颜色, 取值范围 css color <hex, rgb, rgba>
      * @param {String} barColor - 进度条颜色, 取值范围 css color <hex, rgb, rgba>
      * @param {String} content - 显示内容, 默认''
-     * @param {String} type - 进度条组件类型, 可取值 'line' [<w-progress-line />], 'ring' [<w-progress-ring />], 默认 'line'
+     * @param {String} type - 进度条组件类型, 可取值 'line' [<bee-progress-line />], 'ring' [<bee-progress-ring />], 默认 'line'
      * @example
-     *      <w-progress type="ring" :size="50" :track-width="5"></w-progress>
+     *      <bee-progress type="ring" :size="50" :track-width="5"></bee-progress>
      **/
     export default {
-        name: 'w-progress',
-        props:{
+        name: 'bee-progress',
+        props: {
             size: {
                 type: Number,
                 default: 80
@@ -52,12 +37,12 @@
                 default: '100%'
             },
             trackColor: {
-                type: [Array,String],
-                default:''
+                type: [Array, String],
+                default: ''
             },
             barColor: {
-                type: [Array,String],
-                default:''
+                type: [Array, String],
+                default: ''
             },
             trackWidth: {
                 type: Number,
@@ -72,10 +57,10 @@
                 default: ''
             },
             direction: String,
-            percent:{
-                default:0,
-                validator(val){
-                    return typeof val === 'number' && val >=0 && val <= 100;
+            percent: {
+                default: 0,
+                validator(val) {
+                    return typeof val === 'number' && val >= 0 && val <= 100;
                 }
             },
             type: {
@@ -87,20 +72,20 @@
                 default: false
             }
         },
-        component:{
-            'w-progress-line': ProgressLine,
-            'w-progress-ring': ProgressRing
+        component: {
+            [ProgressLine.name]: ProgressLine,
+            [ProgressRing.name]: ProgressRing
         },
-        watch:{
-            percent(){
+        watch: {
+            percent() {
                 this.$emit('percent-change', this.percent);
             }
         },
-        mounted(){
+        mounted() {
             this.$emit('percent-change', this.percent);
         },
-        methods:{
-            handleClick($evt){
+        methods: {
+            handleClick($evt) {
                 this.$emit('click', $evt);
             }
         }

@@ -1,5 +1,7 @@
 <style lang="scss">
-    @mixin borderRadius($radius:20px) {
+    @import "../../../src/style/variable";
+
+    @mixin borderRadius($radius: 20px) {
         border-radius: $radius;
         border-top-left-radius: $radius;
         border-top-right-radius: $radius;
@@ -7,10 +9,10 @@
         border-bottom-right-radius: $radius;
     }
 
-    $duration: .4s;
-    $checkedColor: #44DB5E;
+    $duration: 0.4s;
+    $checkedColor: #44db5e;
 
-    .wui-switch {
+    .#{prefixClass}-switch {
         width: 52px;
         height: 31px;
         position: relative;
@@ -24,7 +26,7 @@
         user-select: none;
         outline: none;
         &:before {
-            content: '';
+            content: "";
             width: 29px;
             height: 29px;
             position: absolute;
@@ -42,7 +44,8 @@
                 left: 21px;
             }
         }
-        &.wui-switch-animbg {
+
+        &__animbg {
             transition: background-color ease $duration;
             &:before {
                 transition: left 0.3s;
@@ -56,15 +59,18 @@
                 }
             }
         }
-        &.wui-switch-anim {
-            transition: border cubic-bezier(0, 0, 0, 1) $duration, box-shadow cubic-bezier(0, 0, 0, 1) $duration;
+
+        &__anim {
+            transition: border cubic-bezier(0, 0, 0, 1) $duration,
+                box-shadow cubic-bezier(0, 0, 0, 1) $duration;
             &:before {
                 transition: left 0.3s;
             }
             &:checked {
                 box-shadow: $checkedColor 0 0 0 16px inset;
                 background-color: $checkedColor;
-                transition: border ease $duration, box-shadow ease $duration, background-color ease $duration*3;
+                transition: border ease $duration, box-shadow ease $duration,
+                    background-color ease $duration * 3;
                 &:before {
                     transition: left 0.3s;
                 }
@@ -74,12 +80,12 @@
 </style>
 
 <template>
-    <label><input type="checkbox" v-model="currentValue" class="wui-switch wui-switch-animbg"></label>
+    <label><input type="checkbox" v-model="currentValue" class="bee-switch bee-switch__animbg"></label>
 </template>
 
 <script>
     export default {
-        name: 'w-switch',
+        name: 'bee-switch',
         props: {
             value: Boolean,
             disabled: {

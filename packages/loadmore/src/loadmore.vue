@@ -1,59 +1,107 @@
 <style lang="scss">
-    .wui-loadmore {
-      -webkit-overflow-scrolling: touch;
-      overflow: auto;
-      position: relative;
-      height: 100%;
-      transform: translate3d(0, 0, 0);
-    }
+    @import "../../../src/style/variable";
+    @import "../../../src/style/flex";
 
-    .wui-loadmore-top,
-    .wui-loadmore-bottom {
-      text-align: center;
-      height: 50px;
-      height: 50px;
-    }
+    .#{prefixClass}-loadmore {
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        position: relative;
+        height: 100%;
+        transform: translate3d(0, 0, 0);
 
-    .wui-loadmore-top {
-      margin-top: -50px;
-    }
+        &__top,
+        &__bottom {
+            text-align: center;
+            height: 50px;
+            height: 50px;
+        }
 
-    .wui-loadmore-content {
-    }
+        &__top {
+            margin-top: -50px;
+        }
 
-    .wui-loadmore-nomore {
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      font-size: 14px;
+        &__content {
+        }
+
+        &__nomore {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        &__bar {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        &__spinner {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 20px;
+            height: 20px;
+        }
+
+        &__text {
+            display: inline-block;
+            margin-left: 12px;
+            vertical-align: middle;
+            line-height: 30px;
+            height: 30px;
+
+            > span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        &__arrow {
+            margin-right: 10px;
+            height: 30px;
+            line-height: 30px;
+            transition: transform 0.2s linear;
+        }
+
+        &--pull &__arrow {
+            transform: rotate(0deg);
+        }
+        &--drop &__arrow {
+            transform: rotate(180deg);
+        }
+
+        &--loading &__arrow,
+        &--init &__arrow {
+            display: none;
+        }
     }
 </style>
 <template>
-    <div class="wui-loadmore">
-        <div class="wui-loadmore-content" :style="styles">
+    <div class="bee-loadmore">
+        <div class="bee-loadmore__content" :style="styles">
             <slot name="top">
-                <w-loadmore-bar class="wui-loadmore-top" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></w-loadmore-bar>
+                <w-loadmore-bar class="bee-loadmore__top" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></w-loadmore-bar>
             </slot>
-            <div class="wui-loadmore-content">
+            <div class="bee-loadmore__content">
                 <slot></slot>
             </div>
             <slot name="bottom" v-if="onInfinite">
-                <w-loadmore-bar class="wui-loadmore-bottom" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></w-loadmore-bar>
+                <w-loadmore-bar class="bee-loadmore__bottom" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></w-loadmore-bar>
             </slot>
             <slot name="no-more" v-if="noMore">
-                <div class="wui-loadmore-nomore">{{noMoreText}}</div>
+                <div class="bee-loadmore__nomore">{{noMoreText}}</div>
             </slot>
         </div>
     </div>
 </template>
 <script>
     import {
-        WString
+        BString
     } from '../../util';
     import loadMoreBar from './loadmore-bar.vue';
 
     /**
-     * wui-loadmore
+     * bee-loadmore
      * @module Loadmore
      * @see {@link ../example/all/loadmore.html 实例}
      * @desc 加载更多组件
@@ -76,7 +124,7 @@
      *  <w-loadmore>content list</w-loadmore>
      */
     export default {
-        name: 'w-loadmore',
+        name: 'bee-loadmore',
         props: {
             topPullText: {
                 type: String,
@@ -151,7 +199,7 @@
             }
         },
         components: {
-            'w-loadmore-bar': loadMoreBar
+            [loadMoreBar.name]: loadMoreBar
         },
         computed: {
             styles() {

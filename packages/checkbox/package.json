@@ -1,0 +1,25 @@
+{
+  "name": "@bee/checkbox",
+  "version": "1.0.0",
+  "description": "checkbox component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muyi0327/bee.git"
+  },
+  "keywords": [
+    "checkbox",
+    "component",
+    "vue",
+    "bee"
+  ],
+  "author": "muyi0327 <yfdezhuye@163.com> (http://git.wdjr.local/wdf)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muyi0327/bee/issues"
+  },
+  "homepage": "https://github.com/muyi0327/bee#readme"
+}

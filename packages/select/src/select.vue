@@ -1,7 +1,9 @@
 <style lang="scss">
-    .wui-select {
+    @import "../../../src/style/variable";
+
+    .#{prefixClass}-select {
         width: inherit;
-        .wui-select-content {
+        &__content {
             height: inherit;
             width: inherit;
             display: flex;
@@ -10,7 +12,7 @@
             border-radius: 4px;
         }
 
-        .wui-select-input {
+        &__input {
             width: inherit;
             border: 0;
             font-size: inherit;
@@ -19,7 +21,7 @@
             }
         }
 
-        .wui-select-options-con {
+        &__options {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -29,25 +31,30 @@
             text-align: center;
         }
 
-        .wui-select-options {
+        &__options__list {
             background: #fff;
             overflow: auto;
             -webkit-overflow-scrolling: touch;
             color: #999;
         }
+
+        &__options__item {
+            height: 40px;
+            line-height: 40px;
+        }
     }
 </style>
 
 <template>
-    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" class="wui-select" :style="styles">
-        <div class="wui-select-content">
-            <input v-if="Object(currentValue).hasOwnProperty('label')" class="wui-select-input" type="text" :style="inputStyles" readonly v-model="currentValue.label" :placeholder="placeholder">
-            <input v-else class="wui-select-input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
+    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" class="bee-select" :style="styles">
+        <div class="bee-select__content">
+            <input v-if="Object(currentValue).hasOwnProperty('label')" class="bee-select__input" type="text" :style="inputStyles" readonly v-model="currentValue.label" :placeholder="placeholder">
+            <input v-else class="bee-select__input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
         </div>
         <w-mask :is-show="visiable" @click.stop="closeOptions">
-            <transition name="wui-bibo">
-                <div v-show="visiable" class="wui-select-options-con" :style="optionStyles">
-                    <ul class="wui-select-options" @touchmove.stop="e=>{}" :class="['c-select-options-list-' + _uid]">
+            <transition name="bee-animate--bibo">
+                <div v-show="visiable" class="bee-select__options" :style="optionStyles">
+                    <ul class="bee-select__options__list" @touchmove.stop="e=>{}" :class="['bee-select__options__list-' + _uid]">
                         <slot>
                             <w-option :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</w-option>
                         </slot>
@@ -62,14 +69,10 @@
 <script>
     import Mask from '../../mask'
     import Input from '../../input'
-    import {
-        Cell,
-        Row
-    } from '../../layout';
     import Option from './option.vue'
 
     export default {
-        name: 'w-select',
+        name: 'bee-select',
         props: {
             width: {
                 type: [Number, String],
@@ -113,8 +116,6 @@
         },
         components: {
             [Mask.name]: Mask,
-            [Cell.name]: Cell,
-            [Row.name]: Row,
             [Input.name]: Input,
             [Option.name]: Option
         },

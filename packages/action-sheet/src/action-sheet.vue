@@ -83,7 +83,7 @@
             }
         },
         components: {
-            'bee-mask': Mask,
+            [Mask.name]: Mask,
             [ActionSheetItem.name]: ActionSheetItem
         },
         watch: {

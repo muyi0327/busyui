@@ -1,6 +1,6 @@
 <style lang="scss">
-    @import '../../../../src/style/variable.scss';
-    
+    @import "../../../../src/style/variable.scss";
+
     @keyframes circle-rotate {
         0% {
             -webkit-transform: rotate(0deg);
@@ -15,39 +15,39 @@
             transform: rotate(360deg);
         }
     }
-    
-    .wui-circle-rotate {
+
+    .bee-circle-rotate {
         display: inline-block;
     }
-    
-    .wui-circle-rotate>div {
+
+    .bee-circle-rotate > div {
         border-radius: 50%;
         -webkit-animation: circle-rotate 0.5s linear infinite;
         animation: circle-rotate 0.5s linear infinite;
         box-sizing: border-box;
         border: 3px solid $color-blue;
-        border-left: 3px solid rgba(0,0,0, 0);
+        border-left: 3px solid rgba(0, 0, 0, 0);
     }
 </style>
 <template>
-    <div v-if="visiable" class="wui-circle-rotate">
-        <div class="wui-circle-circle" :style="styles"></div>
+    <div v-if="visiable" class="bee-circle-rotate">
+        <div class="bee-circle-circle" :style="styles"></div>
     </div>
 </template>
 <script>
 
     /**
-     * wui-circle-rotate
+     * bee-circle-rotate
      * @desc 旋转圆环动画
      * @param {Number} width=24 - 组件宽度
      * @param {Number} height=24 - 组件高度
      * @param {String} color="#ffffff" - 组件颜色
      * @param {Number} strokeWidth=3 - 描边宽度
      * @example
-     *      <w-circle-rotate color="red"></w-circle-rotate>
+     *      <bee-circle-rotate color="red"></bee-circle-rotate>
      **/
     export default {
-        name: 'w-circle-rotate',
+        name: 'bee-circle-rotate',
         props: {
             height: {
                 type: Number,
@@ -61,8 +61,8 @@
                 type: String,
                 default: ''
             },
-            strokeWidth:{
-                type:Number,
+            strokeWidth: {
+                type: Number,
                 default: 3
             }
         },
@@ -78,13 +78,13 @@
                     height: this.height + 'px'
                 }
 
-                if (this.color){
+                if (this.color) {
                     s.borderColor = this.color;
                 }
 
-                if (this.strokeWidth){
+                if (this.strokeWidth) {
                     s.borderWidth = this.strokeWidth + 'px';
-                    s.borderLeft = 'solid '+this.strokeWidth+'px rgba(0, 0, 0, 0)';
+                    s.borderLeft = 'solid ' + this.strokeWidth + 'px rgba(0, 0, 0, 0)';
                 }
 
                 return s;

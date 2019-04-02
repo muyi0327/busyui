@@ -1,15 +1,15 @@
 <template>
-    <w-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
-    </w-dialog>
+    <bee-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
+    </bee-dialog>
 </template>
 <script>
     import Dialog from './dialog.vue';
 
     export default {
-        name: 'w-confirm',
+        name: 'bee-confirm',
         extends: Dialog,
         components: {
-            'w-dialog': Dialog
+            [Dialog.name]: Dialog
         },
 
         props: {

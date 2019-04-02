@@ -1,5 +1,7 @@
 <style lang="scss">
-    .wui-msg-box {
+    @import "../../../src/style/variable";
+
+    .#{prefixClass}-message {
         position: fixed;
         z-index: 10001;
         border-radius: 5px;
@@ -10,28 +12,32 @@
         padding: 6px 0px;
         color: #646464;
         font-size: 12px;
-        &.pos-top {
+
+        &--pos-top {
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
         }
-        &.pos-middle {
+
+        &--pos-middle {
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
         }
-        &.pos-bottom {
+
+        &--pos-bottom {
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
         }
-        .icon-wrap {
+
+        &__icon {
             justify-content: center;
             align-items: center;
             display: flex;
             padding: 0 15px;
         }
-        .text-wrap {
+        &__text {
             flex-grow: 1;
             text-align: left;
             padding: 0 15px 0 0;
@@ -39,17 +45,17 @@
             justify-content: flex-start;
             align-items: center;
         }
-        .wui-msg-box-close {
+        &__close {
             position: absolute;
             z-index: 10;
         }
     }
-    
+
     .msg-scale-enter-active,
     .msg-scale-leave-active {
-        transition: all .25s linear;
+        transition: all 0.25s linear;
     }
-    
+
     .msg-scale-enter,
     .msg-scale-leave-active {
         opacity: 0.3;
@@ -58,11 +64,11 @@
 
 <template>
     <transition name="msg-scale" v-on:after-leave="_leave">
-        <div v-show="visiable" class="wui-msg-box" :class="_posClass" :style="styles">
-            <div class="icon-wrap" v-if="type">
+        <div v-show="visiable" class="bee-message" :class="_posClass" :style="styles">
+            <div class="bee-message__icon" v-if="type">
                 <w-icon :type="_iconStyles.t" :fill="_iconStyles.c"></w-icon>
             </div>
-            <div class="text-wrap">
+            <div class="bee-message__text">
                 <slot>{{text}}</slot>
             </div>
         </div>
@@ -72,7 +78,7 @@
     import Icon from '../../icon';
 
     export default {
-        name: 'w-message',
+        name: 'bee-message',
         props: {
             pos: {
                 type: String,
@@ -98,11 +104,11 @@
                 type: Boolean,
                 default: false
             },
-            isRemove:{
+            isRemove: {
                 type: Boolean,
                 default: false
             },
-            autoHide:{
+            autoHide: {
                 type: Boolean,
                 default: true
             }
@@ -114,14 +120,14 @@
             }
         },
         components: {
-            'w-icon': Icon
+            [Icon.name]: Icon
         },
-        watch:{
-            isShow(val){
+        watch: {
+            isShow(val) {
                 this.visiable = val;
             },
-            visiable(val){
-                if (!val){
+            visiable(val) {
+                if (!val) {
                     this.timmer && clearTimeout(this.timmer);
                     this.timmer = null;
                 }
@@ -136,12 +142,12 @@
                 this.visiable = false;
                 this.$emit('hide');
             },
-            _leave(){
+            _leave() {
                 // 动画结束，清除元素
-                if (this.isRemove){
+                if (this.isRemove) {
                     this.$destroy();
                     this.$el.parentNode.removeChild(this.$el);
-                } 
+                }
             }
         },
         computed: {
@@ -152,7 +158,7 @@
             },
 
             _posClass() {
-                return 'pos-' + this.pos;
+                return 'bee-message--pos-' + this.pos;
             },
 
             _iconStyles() {
@@ -186,8 +192,8 @@
                 };
             }
         },
-        mounted(){
-            if (this.autoHide){
+        mounted() {
+            if (this.autoHide) {
                 this.timmer = setTimeout(() => this.hide(), this.delay);
             }
         }

@@ -1,3 +1,3 @@
-# wui-util
+# bee-util
 
 ##

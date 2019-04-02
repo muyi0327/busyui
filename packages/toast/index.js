@@ -2,13 +2,14 @@ import Vue from 'vue';
 import Toast from './src/toast.vue';
 import '../util/src/polyfill';
 
-var ToastClass = Vue.extend(Toast), instance, vm;
+var ToastClass = Vue.extend(Toast),
+    instance, vm;
 
 /**
  * Toast component
  * @module Toast
  * @see {@link ../example/all/toast.html 实例}
- * @desc Toast组件 <w-toast></w-toast>
+ * @desc Toast组件 <bee-toast></bee-toast>
  * @param {Object} opts - 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'}
  * @param {String} content - 显示内容
  * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
@@ -29,27 +30,27 @@ var ToastClass = Vue.extend(Toast), instance, vm;
  * 
  * @example
  *  // use it in module tools
- *   import Toast from 'wui/packages/toast';
+ *   import Toast from 'bee/packages/toast';
  *   1, Toast.show('内容')
  *   2, Toast.show('内容', 5000)
  *   3, Toast.show('内容', 'top', 5000)
  *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
  * 
  *   // use it in html
- *   <script src="wui.min.js"><\/script>
- *   <link href="wui.min.css" rel="stylesheet" />
+ *   <script src="bee.min.js"><\/script>
+ *   <link href="bee.min.css" rel="stylesheet" />
  * 
- *   1, Wui.Toast.show('内容')
- *   2, Wui.Toast.show('内容', 5000)
- *   3, Wui.Toast.show('内容', 'top', 5000)
- *   4, Wui.Toast.show({content:'内容', pos: 'top', delay: 5000})
+ *   1, bee.Toast.show('内容')
+ *   2, bee.Toast.show('内容', 5000)
+ *   3, bee.Toast.show('内容', 'top', 5000)
+ *   4, bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
  * 
  * 
  */
 
 export default Object.assign(Toast, {
     install(vue) {
-        vue.component('w-toast', Toast);
+        vue.component(Toast.name, Toast);
     },
     /**
      * @method show
@@ -58,12 +59,12 @@ export default Object.assign(Toast, {
      * @returns ToastClass实例
      * 
      * @example
-     * Wui.Toast.show({content:'内容', pos: 'top', delay: 5000})
+     * Bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
      * 
      */
     show(opts) {
         opts = opts || {};
-        
+
         let content, type, delay, pos, complete, len = arguments.length;
         // case toast('content info')
         if (typeof opts == 'string' || typeof opts == 'number' || Array.isArray(opts)) {
@@ -95,17 +96,17 @@ export default Object.assign(Toast, {
             type = arguments[3];
         }
 
-        if (typeof arguments[len-1] == 'function'){
-            complete = arguments[len-1]
+        if (typeof arguments[len - 1] == 'function') {
+            complete = arguments[len - 1]
         }
 
-        if (instance){
+        if (instance) {
             this.hide();
         }
 
         instance = new ToastClass({
             el: document.createElement('div'),
-            propsData:Object.assign({}, {
+            propsData: Object.assign({}, {
                 type: type,
                 content: content,
                 pos: pos,
@@ -118,7 +119,7 @@ export default Object.assign(Toast, {
         Vue.nextTick(() => {
             vm = instance.$mount();
             document.body.appendChild(vm.$el);
-            if (complete){
+            if (complete) {
                 instance.$on('hide', complete)
             }
             instance.show();
@@ -126,7 +127,7 @@ export default Object.assign(Toast, {
 
         return instance;
     },
-    hide(){
+    hide() {
         instance && instance.hide();
         instance.$off('hide')
         instance = null;

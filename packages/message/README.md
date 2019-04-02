@@ -1,1 +1,1 @@
-# wui-message
+# bee-message

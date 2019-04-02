@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/wui.css" />
+    <link rel="stylesheet" href="../../dist/bee.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/wui.js"></script>
+    <script src="../../dist/bee.js"></script>
     <style type="text/css">
         * {
             padding: 0;
@@ -20,7 +20,7 @@
             padding: 0;
             margin: 0;
             font-size: 14px;
-            
+
         }
 
         .wrap,
@@ -48,33 +48,29 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <w-row height="40" class="wui-border-1px wui-border-tb">
-                <w-cell width="100" align="center">用户名</w-cell>
-                <w-cell>
-                    <w-input maxlength="11" v-model="name" :de-format="deFormat" :en-format="enFormat" placeholder="请输入用户名,6-16个字符"></w-input>
-                </w-cell>
-            </w-row>
+            <bee-list height="40" class="bee-border-1px bee-border-tb">
+                <bee-list-item label-width="100" label="用户名">
+                    <bee-input maxlength="11" v-model="name" :de-format="deFormat" :en-format="enFormat" placeholder="请输入用户名,6-16个字符"></bee-input>
+                </bee-list-item>
+            </bee-list>
 
-            <w-row height="40" class="wui-border-1px wui-border-tb">
-                <w-cell width="100" align="center">价格</w-cell>
-                <w-cell>
-                    <w-input :autofocus="true" pattern="[0-9]*" v-model="price" format="numberic" placeholder="请输入价格"></w-input>
-                </w-cell>
-            </w-row>
-            <w-row height="40" class="wui-border-1px wui-border-tb">
-                <w-cell width="100" align="center">绑定银行卡</w-cell>
-                <w-cell>
-                    <w-input v-model="cardNo" format="bankcard" placeholder="请输入价格"></w-input>
-                </w-cell>
-            </w-row>
-            <w-row height="40" class="wui-border-1px wui-border-tb">
-                <w-cell width="100" align="center">自定义分隔</w-cell>
-                <w-cell>
-                    <w-input v-model="code" pattern="[A-Z]*" :format="[[4,2,3],'-']" placeholder="请输入大写字母"></w-input>
-                </w-cell>
-            </w-row>
+            <bee-list height="40" class="bee-border-1px bee-border-tb">
+                <bee-list-item label-width="100" label="价格">
+                    <bee-input :autofocus="true" pattern="[0-9]*" v-model="price" format="numberic" placeholder="请输入价格"></bee-input>
+                </bee-list-item>
+            </bee-list>
 
-            </w-col>
+            <bee-list height="40" class="bee-border-1px bee-border-tb">
+                <bee-list-item label-width="100" label="绑定银行卡">
+                    <bee-input v-model="cardNo" format="bankcard" placeholder="请输入银行卡号"></bee-input>
+                </bee-list-item>
+            </bee-list>
+
+            <bee-list height="40" class="bee-border-1px bee-border-tb">
+                <bee-list-item label-width="100" label="自定义分隔">
+                    <bee-input v-model="code" pattern="[A-Z]*" :format="[[4,2,3],'-']" placeholder="请输入大写字母"></bee-input>
+                </bee-list-item>
+            </bee-list>
         </section>
     </section>
 
@@ -86,7 +82,7 @@
                     name: '',
                     price: 0,
                     cardNo: '',
-                    code:''
+                    code: ''
                 }
             },
             methods: {

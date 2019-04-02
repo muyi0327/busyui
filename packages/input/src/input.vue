@@ -1,76 +1,58 @@
 <style lang="scss">
-    .wui-input-wrap{
-        display: flex;
-        width:100%;
+    @import "../../../src/style/variable";
 
-        .wui-input-content{
-            flex:1;
+    .#{$prefixClass}-input {
+        display: flex;
+        width: 100%;
+
+        &__content {
+            flex: 1;
         }
 
-        .wui-input-clear{
-            flex:0 0 24px;
+        &__clear {
+            flex: 0 0 24px;
             display: flex;
-            align-items:center;
+            align-items: center;
             justify-content: center;
         }
-        input.wui-input {
+
+        &__input {
             width: 100%;
             height: 24px;
             -webkit-appearance: none;
             appearance: none;
             outline: 0;
             border: 0;
-            font-size:inherit;
+            font-size: inherit;
             &::-webkit-input-placeholder {
                 color: #b2b2b2;
             }
         }
     }
-    
 </style>
 
 <template>
-    <div class="wui-input-wrap" v-clickoutside="unActive">
-        <div class="wui-input-content">
-            <input 
-                :placeholder="placeholder" 
-                :disabled="disabled" 
-                :readonly="readonly" 
-                :type="type" 
-                :name="name" 
-                :maxlength="maxlength"
-                class="wui-input" 
-                :style="styles"
-                :pattern="pattern" 
-                v-model="currentValue" 
-                @keyup.enter="handleEnter" 
-                @focus="handleFocus" 
-                @blur="handleBlur"
-                @input="handleInput" 
-                @change="handleChange" />
+    <div class="bee-input" v-clickoutside="unActive">
+        <div class="bee-input__content">
+            <input :placeholder="placeholder" :disabled="disabled" :readonly="readonly" :type="type" :name="name" :maxlength="maxlength" class="bee-input__input" :style="styles" :pattern="pattern" v-model="currentValue" @keyup.enter="handleEnter" @focus="handleFocus" @blur="handleBlur" @input="handleInput" @change="handleChange" />
         </div>
-        <div class="wui-input-clear" v-show="active && currentValue" @click="handleClear">
-            <w-icon type="roundclosefill" fill="#d8d8d8" :width="16" :height="16"></w-icon>
+        <div class="bee-input__clear" v-show="active && currentValue" @click="handleClear">
+            <bee-icon type="roundclosefill" fill="#d8d8d8" :width="16" :height="16"></bee-icon>
         </div>
     </div>
-    
+
 </template>
 
 <script>
     import Clickoutside from '../../../src/directives/clickoutside.js';
-    import {
-        Cell,
-        Row,
-        Col
-    } from '../../layout';
     import Icon from '../../icon';
     import {
-        WNumber
+        BNumber
     } from '../../util';
 
 
     export default {
-        name: 'w-input',
+        name: 'bee-input',
         props: {
             placeholder: String,
             disabled: Boolean,
@@ -81,11 +63,11 @@
             },
             name: String,
             maxlength: {
-                type: [Number,String],
+                type: [Number, String],
                 default: 50
             },
             pattern: String,
-            format: [String,Array],
+            format: [String, Array],
             value: [String, Number],
             deFormat: Function,
             enFormat: Function,
@@ -104,29 +86,29 @@
         directives: {
             Clickoutside
         },
-        watch:{
+        watch: {
             value(val) {
                 this.currentValue = this.hanleFormat(val);
             },
             currentValue(val) {
-                if (val === ''){
+                if (val === '') {
                     return this.$emit('input', val);
                 }
 
                 if (this.deFormatFunction) {
                     val = this.deFormatFunction(val);
 
-                    if(val == this.value){
+                    if (val == this.value) {
                         this.currentValue = this.hanleFormat(val);
                     }
                 }
-                
+
                 this.$emit('input', val);
             },
-            autofocus(val){
-                if (val){
+            autofocus(val) {
+                if (val) {
                     //this.$nextTick(()=>{
-                        this.$el.querySelector('.wui-input').focus();
+                    this.$el.querySelector('input').focus();
                     //})
                 }
             }
@@ -149,7 +131,7 @@
             handleInput($evt) {
                 //this.$emit('input', $evt);
             },
-            handleChange() {},
+            handleChange() { },
             hanleFormat(val) {
                 if (typeof this.enFormatFunction === 'function') {
                     return this.enFormatFunction(val);
@@ -162,42 +144,42 @@
                 this.currentValue = '';
             }
         },
-        mounted(){
-            if (this.value){
+        mounted() {
+            if (this.value) {
                 this.currentValue = this.hanleFormat(this.value)
             }
 
-            if (this.format){
-                switch(this.format){
+            if (this.format) {
+                switch (this.format) {
                     case 'numberic':
-                        this.enFormatFunction = WNumber.enFormatNumberic;
-                        this.deFormatFunction = WNumber.deFormatNumberic;
+                        this.enFormatFunction = BNumber.enFormatNumberic;
+                        this.deFormatFunction = BNumber.deFormatNumberic;
                         break;
                     case 'bankcard':
-                        this.deFormatFunction = WNumber.deFormatBankCard;
-                        this.enFormatFunction = WNumber.enFormatBankCard;
+                        this.deFormatFunction = BNumber.deFormatBankCard;
+                        this.enFormatFunction = BNumber.enFormatBankCard;
                         this.dms = ' ';
                         break;
                     default:
-                        if(Array.isArray(this.format)){
+                        if (Array.isArray(this.format)) {
                             let dms = this.format[1] || ' ';
                             let blocks = this.format[0];
-                            this.enFormatFunction = function(n){
-                                return WNumber.formatBlocks(n, blocks, dms)
+                            this.enFormatFunction = function (n) {
+                                return BNumber.formatBlocks(n, blocks, dms)
                             }.bind(this);
 
-                            this.deFormatFunction = function(n){
+                            this.deFormatFunction = function (n) {
                                 return String(n).replace(new RegExp('\\' + dms, 'g'), '');
                             }.bind(this);
                         }
-                        
+
                         break;
                 }
             }
 
-            if (this.autofocus){
+            if (this.autofocus) {
                 //this.$nextTick(()=>{
-                    this.$el.querySelector('.wui-input').focus();
+                this.$el.querySelector('input').focus();
                 //})
             }
         }

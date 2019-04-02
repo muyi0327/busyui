@@ -1,5 +1,5 @@
 <style lang="scss">
-    @import '../../../../src/style/variable.scss';
+    @import "../../../../src/style/variable.scss";
     @-webkit-keyframes ball-scale-multiple {
         0% {
             -webkit-transform: scale(0);
@@ -15,7 +15,7 @@
             opacity: 0;
         }
     }
-    
+
     @keyframes ball-scale-multiple {
         0% {
             -webkit-transform: scale(0);
@@ -31,23 +31,23 @@
             opacity: 0;
         }
     }
-    
-    .wui-ball-scale-multiple {
+
+    .bee-ball-scale-multiple {
         position: relative;
         display: inline-block;
     }
-    
-    .wui-ball-scale-multiple>div:nth-child(2) {
+
+    .bee-ball-scale-multiple > div:nth-child(2) {
         -webkit-animation-delay: 0.2s;
         animation-delay: 0.2s;
     }
-    
-    .wui-ball-scale-multiple>div:nth-child(3) {
+
+    .bee-ball-scale-multiple > div:nth-child(3) {
         -webkit-animation-delay: 0.4s;
         animation-delay: 0.4s;
     }
-    
-    .wui-ball-scale-multiple>div {
+
+    .bee-ball-scale-multiple > div {
         background-color: $color-blue;
         border-radius: 100%;
         margin: 2px;
@@ -58,7 +58,7 @@
         top: 0px;
         opacity: 0;
         margin: 0;
-        height:100%;
+        height: 100%;
         width: 100%;
         -webkit-animation: ball-scale-multiple 1s 0s linear infinite;
         animation: ball-scale-multiple 1s 0s linear infinite;
@@ -66,7 +66,7 @@
 </style>
 
 <template>
-    <div v-if="visiable" class="wui-ball-scale-multiple" :style="{width: this.width + 'px', height: this.height + 'px'}">
+    <div v-if="visiable" class="bee-ball-scale-multiple" :style="{width: this.width + 'px', height: this.height + 'px'}">
         <div :style="stylesObj"></div>
         <div :style="stylesObj"></div>
         <div :style="stylesObj"></div>
@@ -75,7 +75,7 @@
 
 <script>
     export default {
-        name: 'w-ball-scale-multiple',
+        name: 'bee-ball-scale-multiple',
         props: {
             color: {
                 type: String,

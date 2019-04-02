@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="../../dist/wui.css" />
+    <link rel="stylesheet" href="../../dist/bee.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/wui.js"></script>
+    <script src="../../dist/bee.js"></script>
     <script src="../mock.js"></script>
     <style>
         * {
@@ -15,14 +15,14 @@
             margin: 0;
             list-style: none;
         }
-        
+
         html,
         body {
             font-size: 14px;
             background-color: #f2f5f7;
         }
-        
-        
+
+
         .header {
             height: 50px;
             line-height: 50px;
@@ -31,12 +31,12 @@
             text-align: center;
             color: blueviolet;
         }
-        
+
         .scrolling {
-            -webkit-overflow-scrolling: touch;   
+            -webkit-overflow-scrolling: touch;
         }
 
-        .product{
+        .product {
             background: #fff;
             margin: 12px 0;
             overflow: hidden;
@@ -45,20 +45,20 @@
             line-height: 1.5
         }
 
-        .title{
+        .title {
             line-height: 2
         }
 
-        .desc{
+        .desc {
             padding: 10px 0 0 0;
         }
 
-        .product img{
+        .product img {
             width: 100%;
             height: auto;
         }
 
-        .main{
+        .main {
             position: absolute;
             left: 0;
             bottom: 0;
@@ -71,23 +71,21 @@
 <body>
     <div class="container" id="app">
         <header class="header">
-            <w-row>
-                <w-cell @click="refresh" height="100%" align="center">tab1</w-cell>
-                <w-cell height="100%" align="center">tab2</w-cell>
-            </w-row>
+            <bee-flexbox>
+                <bee-flexitem @click="refresh" height="100%" align="center">tab1</bee-flexitem>
+                <bee-flexitem height="100%" align="center">tab2</bee-flexitem>
+            </bee-flexbox>
         </header>
         <div class="main" style="overflow: hidden;">
-            <w-loadmore ref="loadmore" 
-                :on-infinite="loadBtm" 
-                :on-refresh="loadTop">
+            <bee-loadmore ref="loadmore" :on-infinite="loadBtm" :on-refresh="loadTop">
                 <ul class="data-list">
                     <li v-for="d in datas">
                         <article class="product">
-                            <w-col>
-                                <w-cell class="title">{{d.title}}</w-cell>
-                                <w-cell><img :src="d.pic" alt=""></w-cell>
-                                <w-cell class="desc">{{d.desc}}</w-cell>
-                            </w-col>
+                            <div>
+                                <div class="title">{{d.title}}</div>
+                                <div><img :src="d.pic" alt=""></div>
+                                <div class="desc">{{d.desc}}</div>
+                            </div>
                         </article>
                     </li>
                 </ul>
@@ -95,7 +93,7 @@
                 <div slot="no-more" style="height: 40px; line-height: 40px; text-align: center;">
                     --数据加载完毕--
                 </div>
-            </w-loadmore>
+            </bee-loadmore>
         </div>
     </div>
     <script>
@@ -120,30 +118,30 @@
                     }
                 },
                 methods: {
-                    loadBtm:function(done) {
+                    loadBtm: function (done) {
                         this.curpage++;
-                        if (this.curpage>this.totalPage){
+                        if (this.curpage > this.totalPage) {
                             return;
                         }
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var list = getDatas();
                             this.datas = this.datas.concat(list);
-                            done(this.curpage==3 ? 'no-more':'');
+                            done(this.curpage == 3 ? 'no-more' : '');
                         }.bind(this), 2000);
                     },
-                    loadTop: function(done) {
-                        setTimeout(function() {
+                    loadTop: function (done) {
+                        setTimeout(function () {
                             var list = getDatas();
                             this.datas = list;
                             this.curpage = 1;
                             done()
                         }.bind(this), 2000);
                     },
-                    refresh(){
+                    refresh() {
                         this.$refs.loadmore.doneRefresh();
                     }
                 },
-                mounted:function() {
+                mounted: function () {
                     this.$refs.loadmore.doneRefresh();
                 }
             })

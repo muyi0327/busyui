@@ -1,5 +1,5 @@
 <style lang="scss">
-    @import '../../../../src/style/variable.scss';
+    @import "../../../../src/style/variable.scss";
 
     @-webkit-keyframes ball-beat {
         50% {
@@ -13,7 +13,7 @@
             transform: scale(1);
         }
     }
-    
+
     @keyframes ball-beat {
         50% {
             opacity: 0.2;
@@ -26,13 +26,13 @@
             transform: scale(1);
         }
     }
-    
-    .wui-ball-beat{
+
+    .bee-ball-beat {
         display: flex;
         justify-content: space-around;
     }
 
-    .wui-ball-beat>div {
+    .bee-ball-beat > div {
         background-color: $color-blue;
         border-radius: 100%;
         -webkit-animation-fill-mode: both;
@@ -41,15 +41,15 @@
         -webkit-animation: ball-beat 0.7s 0s infinite linear;
         animation: ball-beat 0.7s 0s infinite linear;
     }
-    
-    .wui-ball-beat>div:nth-child(2n-1) {
+
+    .bee-ball-beat > div:nth-child(2n-1) {
         -webkit-animation-delay: 0.35s !important;
         animation-delay: 0.35s !important;
     }
 </style>
 
 <template>
-    <div v-if="visiable" class="wui-ball-beat" :style="{width: width+'px'}">
+    <div v-if="visiable" class="bee-ball-beat" :style="{width: width+'px'}">
         <div :style="styles"></div>
         <div :style="styles"></div>
         <div :style="styles"></div>
@@ -58,15 +58,15 @@
 
 <script>
     /**
-     * wui-ball-beat
+     * bee-ball-beat
      * @desc 圆形跳动动画
      * @param {Number} width=24 - 组件宽度
      * @param {String} color=#ffffff - 组件颜色, css color
      * @example
-     *      <w-ball-beat></w-ball-beat>
+     *      <bee-ball-beat></bee-ball-beat>
      **/
     export default {
-        name: 'w-ball-beat',
+        name: 'bee-ball-beat',
         props: {
             width: {
                 type: Number,
@@ -90,7 +90,7 @@
                     height: w + 'px'
                 }
 
-                if (this.color){
+                if (this.color) {
                     s.backgroundColor = this.color;
                 }
 
@@ -109,7 +109,7 @@
         },
         mounted() {
             this.$parent && this.$parent.$on('visiable-change', function (vis) {
-                this[vis? 'show' : 'hide']();
+                this[vis ? 'show' : 'hide']();
             }.bind(this));
         }
     }

@@ -1,0 +1,26 @@
+{
+  "name": "@bee/input",
+  "version": "1.0.0",
+  "description": "compoent input",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muyi0327/bee.git"
+  },
+  "keywords": [
+    "bee",
+    "input",
+    "vue",
+    "component",
+    "ui"
+  ],
+  "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muyi0327/bee/issues"
+  },
+  "homepage": "https://github.com/muyi0327/bee#readme"
+}

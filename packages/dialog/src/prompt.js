@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Prompt from './prompt.vue';
-import '../../util/src/polyfill';
+
 
 const PromptClass = Vue.extend(Prompt);
 
 /**
- * wui-prompt
+ * bee-prompt
  * @module Prompt
  * @see {@link ../example/all/dialog.html 实例}
  * @desc prompt对话框组件
@@ -16,14 +16,14 @@ const PromptClass = Vue.extend(Prompt);
  * @example
  *
  * // use it in html
- * <script src="wui.min.js"><\/script>
- * <link rel="stylesheet" href="wui.min.css" />
+ * <script src="bee.min.js"><\/script>
+ * <link rel="stylesheet" href="bee.min.css" />
  * 
- * Wui.Prompt.show('请填写信息？', (val)=>{console.log(val)});
+ * Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
  * 
  * // use it in webpack or browserify, rollup
- * import {Prompt} from 'wui/packages/dialog';
- * // var Prompt = require('wui/packages/dialog/prompt.js');
+ * import {Prompt} from 'bee/packages/dialog';
+ * // var Prompt = require('bee/packages/dialog/prompt.js');
  *
  * Prompt.show('请填写信息？', (val)=>{console.log(val)});
  *
@@ -31,7 +31,7 @@ const PromptClass = Vue.extend(Prompt);
 export default Object.assign(Prompt, {
     $type: 'prompt',
     install(vue) {
-        vue.component('w-prompt', Prompt);
+        vue.component(Prompt.name, Prompt);
     },
     /**
      * 显示Prompt对话框
@@ -44,7 +44,7 @@ export default Object.assign(Prompt, {
      * @returns PromptClass实例
      * 
      * @example
-     * const confirm = Wui.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
+     * const confirm = Bee.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
      * prompt.doClose();
      * 
      */

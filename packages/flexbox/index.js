@@ -6,4 +6,9 @@ FlexBox.install = (vue) => {
     vue.component(FlexBox.name, FlexBox)
 }
 
+export {
+    FlexBox,
+    FlexItem
+}
+
 export default FlexBox

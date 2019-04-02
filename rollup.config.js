@@ -1,3 +1,4 @@
+import path from 'path'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
@@ -12,8 +13,13 @@ import pkg from './package.json'
 // 自定义样式
 import variables from './themes/variables.js'
 
-let banner = `/**\n * Wui.js framework version ${pkg.version} \n **/`;
-let destCss = 'dist/wui.css';
+let name = 'bee'
+let globalName = 'Bee'
+let banner = `/**\n * Bee.js framework version ${pkg.version} \n **/`;
+let dist = './dist'
+let src = './src'
+let destCss = `${dist}/${name}.css`
+let destJs = `${dist}/${name}.js`
 
 
 // format json to sass varible
@@ -29,9 +35,9 @@ const parseJsonToSass = (data) => {
 export default {
     input: 'src/index.js',
     output: {
-        file: 'dist/wui.js',
+        file: destJs,
         format: 'iife',
-        name: 'Wui',
+        name: globalName,
         banner: banner,
         sourceMap: true,
         globals: {

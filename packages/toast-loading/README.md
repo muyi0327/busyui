@@ -1,1 +1,1 @@
-# w-loading
+# bee-toast-loading

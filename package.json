@@ -1,11 +1,11 @@
 {
-    "name": "wui-mobile",
-    "description": "wanda mobile front end framework",
-    "main": "dist/wui.commonjs.js",
+    "name": "bee",
+    "description": "vue components ui library",
+    "main": "dist/bee.commonjs.js",
     "bugs": {
-        "url": "http://git.wdjr.local/wdf/wui-mobile/issues"
+        "url": "https://github.com/muyi0327/bee/issues"
     },
-    "homepage": "http://git.wdjr.local/wdf/wui-mobile",
+    "homepage": "https://github.com/muyi0327/bee",
     "directories": {
         "test": "karma start"
     },
@@ -22,19 +22,17 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@10.215.4.103:wdf/wui-mobile.git"
+        "url": "git+https://github.com/muyi0327/bee.git"
     },
     "keywords": [
         "vue",
-        "wui"
+        "bee",
+        "component"
     ],
     "author": "",
     "license": "MIT",
     "dependencies": {
         "vue": "^2.6.9"
-    },
-    "publishConfig": {
-        "registry": "http://10.215.4.166:8081/repository/npm-private/"
     },
     "devDependencies": {
         "@babel/cli": "^7.2.3",
@@ -127,5 +125,5 @@
         "vue-template-compiler": "^2.6.9",
         "webpack": "^4.29.6"
     },
-    "version": "0.3.0"
+    "version": "1.0.0"
 }

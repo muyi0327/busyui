@@ -1,27 +1,34 @@
 
 <template>
-    <div class="wui-flex-item">
+    <div class="bee-flex__item" :style="styles" @click="handleClick">
         <slot></slot>
     </div>
 </template>
 
-
 <script>
     export default {
-        name: 'w-flex-item',
+        name: 'bee-flexitem',
         props: {
-            height: {
-                type: [String, Number],
-                default: 'auto'
-            },
-            width: {
-                type: [String, Number],
-                default: 'auto'
+            basis: [String, Number],
+            shrink: [String, Number],
+            grow: [String, Number],
+            flex: [String, Number],
+            alginSelf: String,
+            order: Number
+        },
+        computed: {
+            styles() {
+                return {
+
+                    flex: this.flex,
+                    order: this.order,
+                    alginSelf: this.alginSelf
+                }
             }
         },
-        computed:{
-            styles(){
-                return {}
+        methods: {
+            handleClick(e) {
+                this.$emit('click', e)
             }
         }
     }

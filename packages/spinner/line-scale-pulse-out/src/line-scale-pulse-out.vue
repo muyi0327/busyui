@@ -1,5 +1,5 @@
 <style lang="scss">
-    @import '../../../../src/style/variable.scss';
+    @import "../../../../src/style/variable.scss";
     @-webkit-keyframes line-scale-pulse-out {
         0% {
             -webkit-transform: scaley(1);
@@ -14,7 +14,7 @@
             transform: scaley(1);
         }
     }
-    
+
     @keyframes line-scale-pulse-out {
         0% {
             -webkit-transform: scaley(1);
@@ -29,37 +29,39 @@
             transform: scaley(1);
         }
     }
-    
-    .wui-line-scale-pulse-out {
+
+    .bee-line-scale-pulse-out {
         text-align: center;
         display: inline-block;
     }
-    
-    .wui-line-scale-pulse-out>div {
+
+    .bee-line-scale-pulse-out > div {
         background-color: $color-blue;
         border-radius: 2px;
         margin: 2px;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
         display: inline-block;
-        -webkit-animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85);
-        animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85);
+        -webkit-animation: line-scale-pulse-out 0.9s 0s infinite
+            cubic-bezier(0.85, 0.25, 0.37, 0.85);
+        animation: line-scale-pulse-out 0.9s 0s infinite
+            cubic-bezier(0.85, 0.25, 0.37, 0.85);
     }
-    
-    .wui-line-scale-pulse-out>div:nth-child(2),
-    .wui-line-scale-pulse-out>div:nth-child(4) {
+
+    .bee-line-scale-pulse-out > div:nth-child(2),
+    .bee-line-scale-pulse-out > div:nth-child(4) {
         -webkit-animation-delay: 0.2s !important;
         animation-delay: 0.2s !important;
     }
-    
-    .wui-line-scale-pulse-out>div:nth-child(1),
-    .wui-line-scale-pulse-out>div:nth-child(5) {
+
+    .bee-line-scale-pulse-out > div:nth-child(1),
+    .bee-line-scale-pulse-out > div:nth-child(5) {
         -webkit-animation-delay: 0.4s !important;
         animation-delay: 0.4s !important;
     }
 </style>
 <template>
-    <div v-if="visiable" class="wui-line-scale-pulse-out">
+    <div v-if="visiable" class="bee-line-scale-pulse-out">
         <div :style="itemStyles"></div>
         <div :style="itemStyles"></div>
         <div :style="itemStyles"></div>
@@ -69,17 +71,17 @@
 </template>
 <script>
     /**
-     * w-line-scale-pulse-out
+     * bee-line-scale-pulse-out
      * @desc 跳动线条动画组件
      * @param {String} color - 组件颜色, css color [hex, rgb, rgba], 默认 #ffffff
      * @param {Number} width - 组件宽度, 默认 30 <px>
      * @param {Number} height - 组件高度, 默认 10 <px>
      * @param {Boolean} visiable - 是否可见, 默认 true
      * @example
-     *      <w-line-scale-pulse-out></w-line-scale-pulse-out>
+     *      <bee-line-scale-pulse-out></bee-line-scale-pulse-out>
      **/
     export default {
-        name: 'w-line-scale-pulse-out',
+        name: 'bee-line-scale-pulse-out',
         props: {
             color: {
                 type: String,
@@ -108,7 +110,7 @@
                     height: this.height + 'px'
                 }
 
-                if (this.color){
+                if (this.color) {
                     s['background-color'] = this.color
                 }
 

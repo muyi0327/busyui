@@ -131,46 +131,46 @@ function validateUnit(u) {
  * 
  * @example
  * 
- *  <div class="wui-border-1px">四边框</div>
+ *  <div class="bee-border-1px">四边框</div>
  *
- *  <div class="wui-border-1px wui-border-t">上边框</div>
+ *  <div class="bee-border-1px bee-border-t">上边框</div>
  *
- *  <div class="wui-border-1px wui-border-b">下边框</div>
+ *  <div class="bee-border-1px bee-border-b">下边框</div>
  *
- *  <div class="wui-border-1px wui-border-tb">上下边框</div>
+ *  <div class="bee-border-1px bee-border-tb">上下边框</div>
  *
- *  <div class="wui-border-1px wui-border-l">左边框</div>
+ *  <div class="bee-border-1px bee-border-l">左边框</div>
  *
- *  <div class="wui-border-1px wui-border-r">右边框</div>
+ *  <div class="bee-border-1px bee-border-r">右边框</div>
  *
- *  <div class="wui-border-1px wui-border-lr">左右边框</div>
+ *  <div class="bee-border-1px bee-border-lr">左右边框</div>
  *
- * <div class="wui-border-1px wui-border-no-r">无右边框</div>
+ * <div class="bee-border-1px bee-border-no-r">无右边框</div>
  *
- * <div class="wui-border-1px wui-border-no-l">无左边框</div>
+ * <div class="bee-border-1px bee-border-no-l">无左边框</div>
  *
- * <div class="wui-border-1px wui-border-no-t">无上边框</div>
+ * <div class="bee-border-1px bee-border-no-t">无上边框</div>
  *
- * <div class="wui-border-1px wui-border-no-b">无下边框</div>
+ * <div class="bee-border-1px bee-border-no-b">无下边框</div>
  *
  * // 取值1~10px
- * <div class="wui-border-1px wui-border-radius-4px">圆角</div>
+ * <div class="bee-border-1px bee-border-radius-4px">圆角</div>
  *
  * // 百分比圆角
- * <div class="wui-border-1px" style="border-radius: 50%;">圆角</div>
+ * <div class="bee-border-1px" style="border-radius: 50%;">圆角</div>
  * 
  */
 
 var Border = {
   prepare: function prepare() {
     var dpr = window.devicePixelRatio;
-    var styleTag = document.getElementById('wui-border-1px-style-sheet');
+    var styleTag = document.getElementById('bee-border-1px-style-sheet');
     var sheet = styleTag ? styleTag.sheet || styleTag.styleSheet : null;
     this.sheet = sheet;
     this.dpr = dpr;
     if (sheet) return;
     var style = document.createElement("style");
-    style.id = 'wui-border-1px-style-sheet';
+    style.id = 'bee-border-1px-style-sheet';
     style.type = 'text/css';
     style.appendChild(document.createTextNode(""));
     document.head.appendChild(style);
@@ -178,9 +178,9 @@ var Border = {
     this.sheet = sheet;
 
     if (sheet.insertRule) {
-      sheet.insertRule('.wui-border-1px::after{ ' + 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');' + '}', 0);
+      sheet.insertRule('.bee-border-1px::after{ ' + 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');' + '}', 0);
     } else if (sheet.addRule) {
-      sheet.addRule('.wui-border-1px::after', 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
+      sheet.addRule('.bee-border-1px::after', 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
     }
   },
   addStyleRule: function addStyleRule(name, content) {
@@ -204,27 +204,27 @@ var Border = {
     var _this = this;
 
     this.prepare();
-    vue.directive('wui-border-1px', {
+    vue.directive('bee-border-1px', {
       bind: function bind(el, binding) {
         var datas = binding.value;
         var radius = datas.radius,
             side = datas.side,
             color = datas.color;
-        var classes = ["wui-border-1px"];
+        var classes = ["bee-border-1px"];
 
         if (side) {
-          classes.push("wui-border-1px-".concat(side));
+          classes.push("bee-border-1px-".concat(side));
         }
 
         if (radius) {
-          var name = "wui-border-1px-r-".concat(String(radius).replace('%', 'percent'));
+          var name = "bee-border-1px-r-".concat(String(radius).replace('%', 'percent'));
           classes.push(name);
 
           _this.addStyleRule(name, "\n                        border-radius:".concat(getDPRUnit(radius), ";\n                    "));
         }
 
         if (color) {
-          var _name = "wui-border-1px-c-".concat(color.replace('#', ''));
+          var _name = "bee-border-1px-c-".concat(color.replace('#', ''));
 
           classes.push(_name);
 
@@ -337,7 +337,7 @@ function _defineProperty(obj, key, value) {
 
 //
 /**
- * cui-icon
+ * bee-icon
  * @module Icon
  * @see {@link ../example/all/icons.html 实例}
  * @desc icon图标组件
@@ -347,12 +347,12 @@ function _defineProperty(obj, key, value) {
  * @param {String} fill='#fff' - 组件颜色,css color
  * 
  * @example
- *  <c-icon type="guanbi" fill="#8a8a8a"></c-icon>
+ *  <bee-icon type="guanbi" fill="#8a8a8a"></bee-icon>
  * 
  */
 
 var script = {
-  name: 'c-icon',
+  name: 'bee-icon',
   props: {
     type: {
       type: String,
@@ -486,13 +486,13 @@ var __vue_render__ = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("svg", {
-    staticClass: "cui-icon",
+  return _c('svg', {
+    staticClass: "bee-icon",
     style: _vm.styles,
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
-  }, [_c("use", {
+  }, [_c('use', {
     attrs: {
       "xlink:href": _vm.itype
     }
@@ -500,7 +500,6 @@ var __vue_render__ = function __vue_render__() {
 };
 
 var __vue_staticRenderFns__ = [];
-__vue_render__._withStripped = true;
 /* style */
 
 var __vue_inject_styles__ = undefined;
@@ -527,6 +526,7 @@ Icon.install = function (vue) {
 };
 
 var script$1 = {
+  name: 'bee-toast',
   props: {
     type: {
       type: String,
@@ -575,12 +575,10 @@ var script$1 = {
       timmer: null
     };
   },
-  components: {
-    'w-icon': Icon
-  },
+  components: _defineProperty({}, Icon.name, Icon),
   computed: {
     posClass: function posClass() {
-      return ["pos-".concat(this.pos)];
+      return ["bee-toast--pos-".concat(this.pos)];
     },
     contentString: function contentString() {
       var content = this.content,
@@ -649,40 +647,39 @@ var __vue_render__$1 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("transition", {
+  return _c('transition', {
     attrs: {
-      name: "fade-top"
+      "name": "fade-top"
     },
     on: {
       "after-leave": _vm._leave
     }
-  }, [_c("article", {
+  }, [_c('article', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.visiable,
       expression: "visiable"
     }],
-    staticClass: "wui-toast",
+    staticClass: "bee-toast",
     class: _vm.posClass
-  }, [_c("div", {
-    staticClass: "wui-toast-wrap"
-  }, [_vm.type ? _c("p", {
-    staticClass: "icon-wrap"
-  }, [_c("w-icon", {
+  }, [_c('div', {
+    staticClass: "bee-toast__wrap"
+  }, [_vm.type ? _c('p', {
+    staticClass: "bee-toast__icon"
+  }, [_c('w-icon', {
     attrs: {
-      type: _vm.type,
-      width: _vm.iconWidth,
-      height: _vm.iconHeight,
-      fill: _vm.color
+      "type": _vm.type,
+      "width": _vm.iconWidth,
+      "height": _vm.iconHeight,
+      "fill": _vm.color
     }
-  })], 1) : _vm._e(), _vm._v(" "), _c("p", {
-    staticClass: "wui-toast-text"
+  })], 1) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "bee-toast__text"
   }, [_vm._t("default", [_vm._v("\n                    " + _vm._s(_vm.contentString) + "\n                ")])], 2)])])]);
 };
 
 var __vue_staticRenderFns__$1 = [];
-__vue_render__$1._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$1 = undefined;
@@ -739,7 +736,7 @@ var ToastClass = Vue.extend(Toast),
  * Toast component
  * @module Toast
  * @see {@link ../example/all/toast.html 实例}
- * @desc Toast组件 <w-toast></w-toast>
+ * @desc Toast组件 <bee-toast></bee-toast>
  * @param {Object} opts - 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'}
  * @param {String} content - 显示内容
  * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
@@ -760,27 +757,27 @@ var ToastClass = Vue.extend(Toast),
  * 
  * @example
  *  // use it in module tools
- *   import Toast from 'wui/packages/toast';
+ *   import Toast from 'bee/packages/toast';
  *   1, Toast.show('内容')
  *   2, Toast.show('内容', 5000)
  *   3, Toast.show('内容', 'top', 5000)
  *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
  * 
  *   // use it in html
- *   <script src="wui.min.js"><\/script>
- *   <link href="wui.min.css" rel="stylesheet" />
+ *   <script src="bee.min.js"><\/script>
+ *   <link href="bee.min.css" rel="stylesheet" />
  * 
- *   1, Wui.Toast.show('内容')
- *   2, Wui.Toast.show('内容', 5000)
- *   3, Wui.Toast.show('内容', 'top', 5000)
- *   4, Wui.Toast.show({content:'内容', pos: 'top', delay: 5000})
+ *   1, bee.Toast.show('内容')
+ *   2, bee.Toast.show('内容', 5000)
+ *   3, bee.Toast.show('内容', 'top', 5000)
+ *   4, bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
  * 
  * 
  */
 
 var Toast$1 = Object.assign(Toast, {
   install: function install(vue) {
-    vue.component('w-toast', Toast);
+    vue.component(Toast.name, Toast);
   },
 
   /**
@@ -790,7 +787,7 @@ var Toast$1 = Object.assign(Toast, {
    * @returns ToastClass实例
    * 
    * @example
-   * Wui.Toast.show({content:'内容', pos: 'top', delay: 5000})
+   * Bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
    * 
    */
   show: function show(opts) {
@@ -992,7 +989,7 @@ var Toast$1 = Object.assign(Toast, {
  *      <line-spin-fade :color="#ff0000" :width="20" :height="20"></line-spin-fade>
  **/
 var script$2 = {
-  name: 'w-line-spin-fade',
+  name: 'bee-line-spin-fade',
   props: {
     color: {
       type: String,
@@ -1078,15 +1075,15 @@ var __vue_render__$2 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _vm.visiable ? _c("div", {
-    staticClass: "wui-line-spin-fade-loader",
+  return _vm.visiable ? _c('div', {
+    staticClass: "bee-line-spin-fade-loader",
     style: {
-      width: _vm.width + "px",
-      height: _vm.height + "px"
+      width: _vm.width + 'px',
+      height: _vm.height + 'px'
     }
   }, _vm._l(_vm.positions, function (ps, $i) {
-    return _c("div", {
-      key: "lsf-" + $i,
+    return _c('div', {
+      key: 'lsf-' + $i,
       style: [_vm.color ? {
         backgroundColor: _vm.color
       } : {}, {
@@ -1101,7 +1098,6 @@ var __vue_render__$2 = function __vue_render__() {
 };
 
 var __vue_staticRenderFns__$2 = [];
-__vue_render__$2._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$2 = undefined;
@@ -1203,7 +1199,7 @@ LineSpinFade.install = function (vue) {
 //
 //
 var script$3 = {
-  name: 'w-ball-scale-multiple',
+  name: 'bee-ball-scale-multiple',
   props: {
     color: {
       type: String,
@@ -1260,23 +1256,22 @@ var __vue_render__$3 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _vm.visiable ? _c("div", {
-    staticClass: "wui-ball-scale-multiple",
+  return _vm.visiable ? _c('div', {
+    staticClass: "bee-ball-scale-multiple",
     style: {
-      width: this.width + "px",
-      height: this.height + "px"
+      width: this.width + 'px',
+      height: this.height + 'px'
     }
-  }, [_c("div", {
+  }, [_c('div', {
     style: _vm.stylesObj
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.stylesObj
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.stylesObj
   })]) : _vm._e();
 };
 
 var __vue_staticRenderFns__$3 = [];
-__vue_render__$3._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$3 = undefined;
@@ -1378,7 +1373,7 @@ BallScaleMultiple.install = function (vue) {
 //
 //
 var script$4 = {
-  name: 'w-ball-clip-rotate-pulse',
+  name: 'bee-ball-clip-rotate-pulse',
   props: {
     color: {
       type: String,
@@ -1454,21 +1449,20 @@ var __vue_render__$4 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _vm.visiable ? _c("div", {
-    staticClass: "wui-ball-clip-rotate-pulse",
+  return _vm.visiable ? _c('div', {
+    staticClass: "bee-ball-clip-rotate-pulse",
     style: {
-      width: _vm.width + "px",
-      height: _vm.width + "px"
+      width: _vm.width + 'px',
+      height: _vm.width + 'px'
     }
-  }, [_c("div", {
+  }, [_c('div', {
     style: _vm.smallStyles
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.bigStyles
   })]) : _vm._e();
 };
 
 var __vue_staticRenderFns__$4 = [];
-__vue_render__$4._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$4 = undefined;
@@ -1563,19 +1557,21 @@ BallClipRotatePulse.install = function (vue) {
 //
 //
 //
+//
+//
 
 /**
- * w-line-scale-pulse-out
+ * bee-line-scale-pulse-out
  * @desc 跳动线条动画组件
  * @param {String} color - 组件颜色, css color [hex, rgb, rgba], 默认 #ffffff
  * @param {Number} width - 组件宽度, 默认 30 <px>
  * @param {Number} height - 组件高度, 默认 10 <px>
  * @param {Boolean} visiable - 是否可见, 默认 true
  * @example
- *      <w-line-scale-pulse-out></w-line-scale-pulse-out>
+ *      <bee-line-scale-pulse-out></bee-line-scale-pulse-out>
  **/
 var script$5 = {
-  name: 'w-line-scale-pulse-out',
+  name: 'bee-line-scale-pulse-out',
   props: {
     color: {
       type: String,
@@ -1641,23 +1637,22 @@ var __vue_render__$5 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _vm.visiable ? _c("div", {
-    staticClass: "wui-line-scale-pulse-out"
-  }, [_c("div", {
+  return _vm.visiable ? _c('div', {
+    staticClass: "bee-line-scale-pulse-out"
+  }, [_c('div', {
     style: _vm.itemStyles
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.itemStyles
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.itemStyles
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.itemStyles
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.itemStyles
   })]) : _vm._e();
 };
 
 var __vue_staticRenderFns__$5 = [];
-__vue_render__$5._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$5 = undefined;
@@ -1793,15 +1788,15 @@ LineScalePulseOut.install = function (vue) {
 //
 
 /**
- * wui-ball-spin-fade
+ * bee-ball-spin-fade
  * @desc ball 动画
  * @param {Number} width - 组件宽度和高度
  * @param {String} color - 组件颜色, css color
  * @example
- *      <w-ball-spin-fade></w-ball-spin-fade>
+ *      <bee-ball-spin-fade></bee-ball-spin-fade>
  **/
 var script$6 = {
-  name: 'w-ball-spin-fade',
+  name: 'bee-ball-spin-fade',
   props: {
     width: {
       type: Number,
@@ -1868,11 +1863,11 @@ var __vue_render__$6 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _vm.visiable ? _c("div", {
-    staticClass: "wui-ball-spin-fade-loader",
+  return _vm.visiable ? _c('div', {
+    staticClass: "bee-ball-spin-fade-loader",
     style: _vm.styles
   }, _vm._l(_vm.items, function (item, $i) {
-    return _c("div", {
+    return _c('div', {
       key: $i,
       style: [_vm.color ? {
         backgroundColor: _vm.color
@@ -1887,7 +1882,6 @@ var __vue_render__$6 = function __vue_render__() {
 };
 
 var __vue_staticRenderFns__$6 = [];
-__vue_render__$6._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$6 = undefined;
@@ -1973,15 +1967,15 @@ BallSpinFade.install = function (vue) {
 //
 
 /**
- * wui-ball-beat
+ * bee-ball-beat
  * @desc 圆形跳动动画
  * @param {Number} width=24 - 组件宽度
  * @param {String} color=#ffffff - 组件颜色, css color
  * @example
- *      <w-ball-beat></w-ball-beat>
+ *      <bee-ball-beat></bee-ball-beat>
  **/
 var script$7 = {
-  name: 'w-ball-beat',
+  name: 'bee-ball-beat',
   props: {
     width: {
       type: Number,
@@ -2040,22 +2034,21 @@ var __vue_render__$7 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _vm.visiable ? _c("div", {
-    staticClass: "wui-ball-beat",
+  return _vm.visiable ? _c('div', {
+    staticClass: "bee-ball-beat",
     style: {
-      width: _vm.width + "px"
+      width: _vm.width + 'px'
     }
-  }, [_c("div", {
+  }, [_c('div', {
     style: _vm.styles
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.styles
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c('div', {
     style: _vm.styles
   })]) : _vm._e();
 };
 
 var __vue_staticRenderFns__$7 = [];
-__vue_render__$7._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$7 = undefined;
@@ -2119,17 +2112,17 @@ BallBeat.install = function (vue) {
 //
 
 /**
- * wui-circle-rotate
+ * bee-circle-rotate
  * @desc 旋转圆环动画
  * @param {Number} width=24 - 组件宽度
  * @param {Number} height=24 - 组件高度
  * @param {String} color="#ffffff" - 组件颜色
  * @param {Number} strokeWidth=3 - 描边宽度
  * @example
- *      <w-circle-rotate color="red"></w-circle-rotate>
+ *      <bee-circle-rotate color="red"></bee-circle-rotate>
  **/
 var script$8 = {
-  name: 'w-circle-rotate',
+  name: 'bee-circle-rotate',
   props: {
     height: {
       type: Number,
@@ -2202,16 +2195,15 @@ var __vue_render__$8 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _vm.visiable ? _c("div", {
-    staticClass: "wui-circle-rotate"
-  }, [_c("div", {
-    staticClass: "wui-circle-circle",
+  return _vm.visiable ? _c('div', {
+    staticClass: "bee-circle-rotate"
+  }, [_c('div', {
+    staticClass: "bee-circle-circle",
     style: _vm.styles
   })]) : _vm._e();
 };
 
 var __vue_staticRenderFns__$8 = [];
-__vue_render__$8._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$8 = undefined;
@@ -2257,7 +2249,7 @@ CircleRotate.install = function (vue) {
 //
 
 /**
- * w-spinner
+ * bee-spinner
  * @module Spinner
  * @see {@link ../example/all/spinner.html 实例}
  * @desc spinner组件
@@ -2270,11 +2262,11 @@ CircleRotate.install = function (vue) {
  * 
  * @example
  *
- *  <w-spinner :type="3" color="#666" :width="12"></w-spinner>
+ *  <bee-spinner :type="3" color="#666" :width="12"></bee-spinner>
  *
  */
 var script$9 = {
-  name: 'w-spinner',
+  name: 'bee-spinner',
   props: {
     type: {
       type: Number,
@@ -2324,56 +2316,55 @@ var __vue_render__$9 = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-spinner"
-  }, [_vm.type === 0 ? _c("w-line-spin-fade", {
+  return _c('div', {
+    staticClass: "bee-spinner"
+  }, [_vm.type === 0 ? _c('bee-line-spin-fade', {
     attrs: {
-      color: _vm.color,
-      width: _vm.width,
-      height: _vm.height
+      "color": _vm.color,
+      "width": _vm.width,
+      "height": _vm.height
     }
-  }) : _vm._e(), _vm._v(" "), _vm.type === 1 ? _c("w-line-scale-pulse-out", {
+  }) : _vm._e(), _vm._v(" "), _vm.type === 1 ? _c('bee-line-scale-pulse-out', {
     attrs: {
-      color: _vm.color,
-      width: _vm.width,
-      height: _vm.height
+      "color": _vm.color,
+      "width": _vm.width,
+      "height": _vm.height
     }
-  }) : _vm._e(), _vm._v(" "), _vm.type === 2 ? _c("w-ball-spin-fade", {
+  }) : _vm._e(), _vm._v(" "), _vm.type === 2 ? _c('bee-ball-spin-fade', {
     attrs: {
-      color: _vm.color,
-      width: _vm.width,
-      height: _vm.height
+      "color": _vm.color,
+      "width": _vm.width,
+      "height": _vm.height
     }
-  }) : _vm._e(), _vm._v(" "), _vm.type === 3 ? _c("w-ball-scale-multiple", {
+  }) : _vm._e(), _vm._v(" "), _vm.type === 3 ? _c('bee-ball-scale-multiple', {
     attrs: {
-      color: _vm.color,
-      width: _vm.width,
-      height: _vm.height
+      "color": _vm.color,
+      "width": _vm.width,
+      "height": _vm.height
     }
-  }) : _vm._e(), _vm._v(" "), _vm.type === 4 ? _c("w-ball-beat", {
+  }) : _vm._e(), _vm._v(" "), _vm.type === 4 ? _c('bee-ball-beat', {
     attrs: {
-      color: _vm.color,
-      width: _vm.width,
-      height: _vm.height
+      "color": _vm.color,
+      "width": _vm.width,
+      "height": _vm.height
     }
-  }) : _vm._e(), _vm._v(" "), _vm.type === 5 ? _c("w-ball-clip-rotate-pulse", {
+  }) : _vm._e(), _vm._v(" "), _vm.type === 5 ? _c('bee-ball-clip-rotate-pulse', {
     attrs: {
-      color: _vm.color,
-      width: _vm.width,
-      height: _vm.width
+      "color": _vm.color,
+      "width": _vm.width,
+      "height": _vm.width
     }
-  }) : _vm._e(), _vm._v(" "), _vm.type === 6 ? _c("w-circle-rotate", {
+  }) : _vm._e(), _vm._v(" "), _vm.type === 6 ? _c('bee-circle-rotate', {
     attrs: {
-      color: _vm.color,
-      height: _vm.height,
-      width: _vm.width,
+      "color": _vm.color,
+      "height": _vm.height,
+      "width": _vm.width,
       "stroke-width": _vm.strokeWidth
     }
   }) : _vm._e()], 1);
 };
 
 var __vue_staticRenderFns__$9 = [];
-__vue_render__$9._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$9 = undefined;
@@ -2409,7 +2400,7 @@ Spinner.install = function (vue) {
 
 //
 var script$a = {
-  name: 'w-toast-loading',
+  name: 'bee-toast-loading',
   props: {
     width: {
       type: Number,
@@ -2490,7 +2481,7 @@ var script$a = {
       return s;
     },
     classes: function classes() {
-      return [this.direction == 'row' ? 'dir-row' : 'dir-column'];
+      return [this.direction == 'row' ? 'bee-toast-loading--dir-row' : 'bee-toast-loading--dir-column'];
     }
   },
   watch: {
@@ -2511,47 +2502,46 @@ var __vue_render__$a = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("w-mask", {
+  return _c('w-mask', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.visiable,
       expression: "visiable"
     }]
-  }, [_c("transition", {
+  }, [_c('transition', {
     attrs: {
-      name: "loading-opacity-fade"
+      "name": "loading-opacity-fade"
     }
-  }, [_c("div", {
+  }, [_c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.visiable,
       expression: "visiable"
     }],
-    staticClass: "wui-toast-loading",
+    staticClass: "bee-toast-loading",
     class: _vm.classes,
     style: _vm.styles
-  }, [_c("div", {
-    staticClass: "icon-wrap"
-  }, [_c("w-spinner", {
+  }, [_c('div', {
+    staticClass: "bee-toast-loading__icon"
+  }, [_c('w-spinner', {
     attrs: {
-      type: _vm.spinner.type,
-      height: _vm.spinner.height,
-      width: _vm.spinner.width,
-      color: _vm.spinner.color
+      "type": _vm.spinner.type,
+      "height": _vm.spinner.height,
+      "width": _vm.spinner.width,
+      "color": _vm.spinner.color
     }
-  })], 1), _vm._v(" "), _vm.text ? _c("div", {
-    staticClass: "text-wrap",
+  })], 1), _vm._v(" "), _vm.text ? _c('div', {
+    staticClass: "bee-toast-loading__text",
     style: {
       color: _vm.color,
-      fontSize: _vm.fontSize + "px"
+      fontSize: _vm.fontSize + 'px'
     }
   }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2) : _vm._e()])])], 1);
 };
 
 var __vue_staticRenderFns__$a = [];
-__vue_render__$a._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$a = undefined;
@@ -2576,10 +2566,10 @@ var ToastLoading = normalizeComponent_1({
 var ToastLoadingClass = Vue.extend(ToastLoading);
 var tlInstance, tlVm;
 /**
- * wui-toast-loading
+ * bee-toast-loading
  * @module ToastLoading
  * @see {@link ../example/all/toast-loading.html 实例}
- * @desc 页面toastloading组件 <w-toast-loading />
+ * @desc 页面toastloading组件 <bee-toast-loading />
  * @param {Number} height=100 - 高度(px)
  * @param {Number} width=100 - 宽度(px)
  * @param {String} color='#fff' - spinner和文字颜色, css color
@@ -2590,16 +2580,16 @@ var tlInstance, tlVm;
  * 
  * @example
  *  //  use it in html
- *  <script src="wui.min.js"><\/script>
- *  <link rel="stylesheet" href="wui.min.css">
+ *  <script src="bee.min.js"><\/script>
+ *  <link rel="stylesheet" href="bee.min.css">
  *
- *  Wui.ToastLoading.show();
+ *  bee.ToastLoading.show();
  *  http.get('url').then(()=>{
- *    Wui.ToastLoading.hide();
+ *    Bee.ToastLoading.hide();
  *  });
  *
  *  // use it in module tools
- *  import ToastLoading from 'wui/packages/toast-loading';
+ *  import ToastLoading from '@bee/toast-loading';
  *  ToastLoading.show({spinner:{type:2}, direction="row"});
  *  http.get('url').then(()=>{
  *    ToastLoading.hide();
@@ -2608,7 +2598,7 @@ var tlInstance, tlVm;
 
 var ToastLoading$1 = Object.assign(ToastLoading, {
   install: function install(vue) {
-    vue.component('w-toast-loading', ToastLoading);
+    vue.component('bee-toast-loading', ToastLoading);
   },
 
   /**
@@ -2632,7 +2622,7 @@ var ToastLoading$1 = Object.assign(ToastLoading, {
    * @returns LoadingClass实例
    * 
    * @example
-   * Wui.ToastLoading.show();
+   * bee.ToastLoading.show();
    * 
    */
   show: function show(opts) {
@@ -2654,7 +2644,6 @@ var ToastLoading$1 = Object.assign(ToastLoading, {
   }
 });
 
-//
 /**
  * loading component
  * @module Loading
@@ -2677,7 +2666,7 @@ var ToastLoading$1 = Object.assign(ToastLoading, {
  */
 
 var script$b = {
-  name: 'w-loading',
+  name: 'bee-loading',
   props: {
     spinnerSize: {
       type: Number,
@@ -2731,9 +2720,7 @@ var script$b = {
       visiable: this.isShow
     };
   },
-  components: {
-    'w-spinner': Spinner
-  },
+  components: _defineProperty({}, Spinner.name, Spinner),
   methods: {
     show: function show() {
       this.visiable = true;
@@ -2784,44 +2771,43 @@ var __vue_render__$b = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("transition", {
+  return _c('transition', {
     attrs: {
-      name: "loading-fade"
+      "name": "loading-fade"
     },
     on: {
       "after-leave": _vm._leave
     }
-  }, [_c("div", {
+  }, [_c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.visiable,
       expression: "visiable"
     }],
-    staticClass: "wui-loading",
+    staticClass: "beeloading",
     style: _vm.styles
-  }, [_c("div", {
-    staticClass: "wui-loading-spinner"
-  }, [_c("w-spinner", {
+  }, [_c('div', {
+    staticClass: "bee-loading__spinner"
+  }, [_c('w-spinner', {
     attrs: {
-      type: _vm.spinnerType,
-      color: _vm.color,
-      width: _vm.spinnerWidth,
-      height: _vm.spinnerHeight,
-      size: _vm.spinnerSize,
+      "type": _vm.spinnerType,
+      "color": _vm.color,
+      "width": _vm.spinnerWidth,
+      "height": _vm.spinnerHeight,
+      "size": _vm.spinnerSize,
       "stroke-width": _vm.spinnerStroke
     }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "wui-loading-text",
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "bee-loading__text",
     style: {
       color: _vm.color,
-      fontSize: _vm.fontSize + "px"
+      fontSize: _vm.fontSize + 'px'
     }
   }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
 };
 
 var __vue_staticRenderFns__$b = [];
-__vue_render__$b._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$b = undefined;
@@ -2872,8 +2858,10 @@ Loading.show = function (opts) {
 };
 
 Loading.hide = function () {
-  instance$1 && instance$1.$destroy();
-  vm$1 && document.body.removeChild(vm$1.$el);
+  if (instance$1) {
+    instance$1.hide();
+  }
+
   vm$1 = null;
   instance$1 = null;
 };
@@ -2885,100 +2873,28 @@ Loading.hide = function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/**
- * wui-row
- * @module Row
- * @see {@link ../example/all/flex.html 实例}
- * @desc 行组件 <w-row></w-row>, w-row里面只能放w-cell
- * @param height='auto' - 列高, 数字, 百分比, auto
- * @param isItems=false - 是否flex-item
- * @param direction='row' - 方向, 'row' -> flex-direction: row, 'reverse' -> flex-direction: row-reverse;
- *
- * @example
- * 
- * <w-row>
- *      <w-cell :width="90">手机号</w-cell>
- *      <w-cell>
- *          <w-col>
- *              <w-cell><input type="number" name="phone" placehoder="请填写手机号码"></w-cell>
- *              <w-cell>请填写正确手机号码，确保能收到验证短信</w-cell>
- *          </w-col>
- *      </w-cell>
- *      <w-cell :width="40"><w-icon type＝"fankui"></w-icon></w-cell>
- * </w-row>
- */
 var script$c = {
-  name: 'w-row',
+  name: 'bee-flexitem',
   props: {
-    height: {
-      type: [Number, String],
-      default: 'auto',
-      validator: function validator(val) {
-        var t = _typeof(val);
-
-        return t === 'number' || t === 'string' && (/^\d+/.test(val) || val === 'auto');
-      }
-    },
-    align: {
-      type: String,
-      default: 'left'
-    },
-    direction: {
-      type: String,
-      default: 'row'
-    },
-    isItems: {
-      type: Boolean,
-      default: false
-    }
+    basis: [String, Number],
+    shrink: [String, Number],
+    grow: [String, Number],
+    flex: [String, Number],
+    alginSelf: String,
+    order: Number
   },
   computed: {
     styles: function styles() {
-      var o = {},
-          h;
-
-      if (this.height !== 'auto') {
-        h = /^\d+$/.test(this.height) ? this.height + 'px' : this.height;
-
-        if (this.isItems) {
-          o.flex = '0 0 ' + h;
-          o['-webkit-flex'] = '0 0 ' + h;
-          o['-webkit-box-flex'] = 0;
-        } else {
-          o.height = h;
-        }
-      }
-
-      return o;
-    },
-    classes: function classes() {
-      var c = {};
-
-      if (this.direction == 'reverse') {
-        c['wui-flex-dir-row-re'] = true;
-      } else if (this.direction == 'row') {
-        c['wui-flex-dir-row'] = true;
-      }
-
-      return c;
+      return {
+        flex: this.flex,
+        order: this.order,
+        alginSelf: this.alginSelf
+      };
     }
   },
   methods: {
-    handleClick: function handleClick($evt) {
-      this.$emit('click', $evt);
+    handleClick: function handleClick(e) {
+      this.$emit('click', e);
     }
   }
 };
@@ -2994,18 +2910,16 @@ var __vue_render__$c = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-flex-row",
-    class: _vm.classes,
+  return _c('div', {
+    staticClass: "bee-flex__item",
     style: _vm.styles,
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
   }, [_vm._t("default")], 2);
 };
 
 var __vue_staticRenderFns__$c = [];
-__vue_render__$c._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$c = undefined;
@@ -3022,98 +2936,66 @@ var __vue_is_functional_template__$c = false;
 
 /* style inject SSR */
 
-var Row = normalizeComponent_1({
+var FlexItem = normalizeComponent_1({
   render: __vue_render__$c,
   staticRenderFns: __vue_staticRenderFns__$c
 }, __vue_inject_styles__$c, __vue_script__$c, __vue_scope_id__$c, __vue_is_functional_template__$c, __vue_module_identifier__$c, undefined, undefined);
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/**
- * wui-col
- * @module Col
- * @see {@link ../example/all/flex.html 实例}
- * @desc 列组件 <w-col></w-col> w-col里面只能放w-cell
- * @param width='auto' - 列宽, 数字, 百分比, auto
- * @param direction='column' - 方向, 'normal' flex-direction: column, 'reverse' flex-direction: column-reverse;
- *
- * @example
- * 
- * <w-row>
- *      <w-cell :width="90">手机号</w-cell>
- *      <w-cell>
- *          <w-col>
- *              <w-cell><input type="number" name="phone" placehoder="请填写手机号码"></w-cell>
- *              <w-cell>请填写正确手机号码，确保能收到验证短信</w-cell>
- *          </w-col>
- *      </w-cell>
- *      <w-cell :width="40"><w-icon type＝"fankui"></w-icon></w-cell>
- * </w-row>
- */
 var script$d = {
-  name: 'w-col',
+  name: 'bee-flexbox',
   props: {
+    inline: {
+      type: Boolean,
+      default: false
+    },
     width: {
-      type: [Number, String],
-      default: 'inherit',
-      validator: function validator(val) {
-        var t = _typeof(val);
-
-        return t === 'number' || t === 'string' && (/^\d+/.test(val) || val === 'inherit');
-      }
+      type: [Number, String]
+    },
+    height: {
+      type: [Number, String]
+    },
+    wrap: {
+      type: String
     },
     direction: {
       type: String,
-      default: 'column'
+      validator: function validator(val) {
+        return val && 'row column'.split(/\s/).indexOf(String(val)) > -1;
+      }
+    },
+    alignH: {
+      type: String
+    },
+    alignV: {
+      type: String
     }
   },
+  components: _defineProperty({}, FlexItem.name, FlexItem),
+  data: function data() {
+    return {};
+  },
   computed: {
-    styles: function styles() {
-      var o = {};
-
-      if (this.width !== 'inherit') {
-        o.flexGrow = 0;
-        o.width = /^\d+$/.test(this.width) ? this.width + 'px' : this.width;
-        o.height = '100%';
-      }
-
-      return o;
-    },
     classes: function classes() {
-      var c = {};
-
-      if (this.direction === 'reverse') {
-        c['wui-flex-dir-column-re'] = true;
-      }
-
-      if (this.direction === 'column') {
-        c['wui-flex-dir-column'] = true;
-      }
-
-      return c;
+      var ah = this.alignH,
+          av = this.alignV,
+          flag = ah || av;
+      return [this.inline ? "bee-flex--inline" : "bee-flex", flag ? "bee-flex--".concat(ah || 'start', "-").concat(av || 'start') : null, !this.direction ? '' : "bee-flex--".concat(this.direction)];
+    },
+    styles: function styles() {
+      var h = this.height,
+          w = this.width;
+      h = /^\d+$/.test(h) ? h + 'px' : h;
+      w = /^\d+$/.test(w) ? w + 'px' : w;
+      return {
+        height: h,
+        width: w,
+        flexWrap: this.wrap
+      };
     }
   },
   methods: {
-    handleClick: function handleClick($evt) {
-      this.$emit('click', $evt);
+    handleClick: function handleClick(e) {
+      this.$emit('click', e);
     }
   }
 };
@@ -3129,18 +3011,16 @@ var __vue_render__$d = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-flex-col",
+  return _c('div', {
     class: _vm.classes,
     style: _vm.styles,
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
   }, [_vm._t("default")], 2);
 };
 
 var __vue_staticRenderFns__$d = [];
-__vue_render__$d._withStripped = true;
 /* style */
 
 var __vue_inject_styles__$d = undefined;
@@ -3157,372 +3037,10 @@ var __vue_is_functional_template__$d = false;
 
 /* style inject SSR */
 
-var Col = normalizeComponent_1({
+var FlexBox = normalizeComponent_1({
   render: __vue_render__$d,
   staticRenderFns: __vue_staticRenderFns__$d
 }, __vue_inject_styles__$d, __vue_script__$d, __vue_scope_id__$d, __vue_is_functional_template__$d, __vue_module_identifier__$d, undefined, undefined);
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _aligns = {
-  left: 'l',
-  right: 'r',
-  center: 'c',
-  between: 'sb',
-  around: 'sa'
-};
-var _varticals = {
-  top: 't',
-  bottom: 'b',
-  middle: 'm',
-  between: 'sb',
-  around: 'sa',
-  stretch: 'st'
-};
-var reg = /^\d+(px|rem|em|%)?/;
-/**
- * wui-cell
- * @module Cell
- * @see {@link ../example/all/flex.html 实例}
- * @desc 单元组件 <w-cell></w-cell>, w-cell只能放在w-row或者w-row内
- * @param width='auto' - 列宽, 数字, 百分比, auto
- * @param height='auto' - 列高, 数字, 百分比, auto
- * @param align='left' - 水平对齐, left 居左, right 居右, center 居中, between 等间距, around 
- * @param vertical='middle' - 垂直对齐, top 居顶, bottom 居底, middle 居中, between 等间距, around, stretch
- *
- * @example
- * 
- * <w-row>
- *      <w-cell :width="90">手机号</w-cell>
- *      <w-cell><input type="number" name="phone" placehoder="请填写手机号码"></w-cell>
- *      <w-cell :width="40"><w-icon type＝"fankui"></w-icon></w-cell>
- * </w-row>
- */
-
-var script$e = {
-  name: 'w-cell',
-  props: {
-    width: {
-      type: [Number, String],
-      default: 'auto',
-      validator: function validator(val) {
-        var t = _typeof(val);
-
-        return t === 'number' || t === 'string' && (reg.test(val) || val === 'auto');
-      }
-    },
-    height: {
-      type: [Number, String],
-      default: 'auto',
-      validator: function validator(val) {
-        var t = _typeof(val);
-
-        return t === 'number' || t === 'string' && (reg.test(val) || val === 'auto');
-      }
-    },
-    align: {
-      type: String,
-      default: 'left'
-    },
-    vertical: {
-      type: String,
-      default: 'middle'
-    },
-    direction: String
-  },
-  data: function data() {
-    return {
-      cellStyles: {}
-    };
-  },
-
-  /**
-   * TODO 视情况处理flexGrow
-   */
-  computed: {
-    styles: function styles() {
-      var _styles = {};
-      this.$nextTick(function () {
-        var $el = this.$parent.$el;
-        var isRow = $el.classList.contains('wui-flex-row');
-        var isCol = $el.classList.contains('wui-flex-col');
-
-        if (this.width !== 'auto') {
-          var w = /^\d+$/.test(this.width) ? this.width + 'px' : this.width;
-
-          if (isRow) {
-            _styles['flex'] = '0 0 ' + w;
-            _styles['-webkit-flex'] = '0 0 ' + w;
-            _styles['-webkit-box-flex'] = 0;
-          } else {
-            _styles.width = w;
-          }
-        }
-
-        if (this.height !== 'auto') {
-          var h = /^\d+$/.test(this.height) ? this.height + 'px' : this.height;
-
-          if (isCol) {
-            _styles['flex'] = '0 0 ' + h;
-            _styles['-webkit-flex'] = '0 0 ' + h;
-            _styles['-webkit-box-flex'] = 0;
-          } else {
-            _styles.height = h;
-          }
-        }
-
-        if (this.direction) {
-          _styles.flexDirection = this.direction;
-        }
-
-        this.cellStyles = _styles;
-      });
-      return null;
-    },
-    classes: function classes() {
-      var c = {};
-      var ah = '',
-          av = '';
-      ah = _aligns[this.align];
-      av = _varticals[this.vertical];
-      c['wui-al-' + ah + av] = true;
-      return c;
-    }
-  },
-  methods: {
-    handleClick: function handleClick($evt) {
-      this.$emit('click', $evt);
-    }
-  },
-  mounted: function mounted() {}
-};
-
-/* script */
-var __vue_script__$e = script$e;
-/* template */
-
-var __vue_render__$e = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c("div", {
-    staticClass: "wui-flex-cell",
-    class: _vm.classes,
-    style: [_vm.styles, _vm.cellStyles],
-    on: {
-      click: _vm.handleClick
-    }
-  }, [_vm._t("default")], 2);
-};
-
-var __vue_staticRenderFns__$e = [];
-__vue_render__$e._withStripped = true;
-/* style */
-
-var __vue_inject_styles__$e = undefined;
-/* scoped */
-
-var __vue_scope_id__$e = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$e = undefined;
-/* functional template */
-
-var __vue_is_functional_template__$e = false;
-/* style inject */
-
-/* style inject SSR */
-
-var Cell = normalizeComponent_1({
-  render: __vue_render__$e,
-  staticRenderFns: __vue_staticRenderFns__$e
-}, __vue_inject_styles__$e, __vue_script__$e, __vue_scope_id__$e, __vue_is_functional_template__$e, __vue_module_identifier__$e, undefined, undefined);
-
-var Flex = {
-  install: function install(vue) {
-    vue.component('w-row', Row);
-    vue.component('w-col', Col);
-    vue.component('w-cell', Cell);
-  }
-};
-
-//
-//
-//
-//
-//
-//
-//
-//
-var script$f = {
-  name: 'w-flex-item',
-  props: {
-    height: {
-      type: [String, Number],
-      default: 'auto'
-    },
-    width: {
-      type: [String, Number],
-      default: 'auto'
-    }
-  },
-  computed: {
-    styles: function styles() {
-      return {};
-    }
-  }
-};
-
-/* script */
-var __vue_script__$f = script$f;
-/* template */
-
-var __vue_render__$f = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c("div", {
-    staticClass: "wui-flex-item"
-  }, [_vm._t("default")], 2);
-};
-
-var __vue_staticRenderFns__$f = [];
-__vue_render__$f._withStripped = true;
-/* style */
-
-var __vue_inject_styles__$f = undefined;
-/* scoped */
-
-var __vue_scope_id__$f = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$f = undefined;
-/* functional template */
-
-var __vue_is_functional_template__$f = false;
-/* style inject */
-
-/* style inject SSR */
-
-var FlexItem = normalizeComponent_1({
-  render: __vue_render__$f,
-  staticRenderFns: __vue_staticRenderFns__$f
-}, __vue_inject_styles__$f, __vue_script__$f, __vue_scope_id__$f, __vue_is_functional_template__$f, __vue_module_identifier__$f, undefined, undefined);
-
-var script$g = {
-  name: 'w-flexbox',
-  props: {
-    width: {
-      type: [Number, String]
-    },
-    height: {
-      type: [Number, String]
-    },
-    direction: {
-      type: String,
-      default: 'row'
-    },
-    alignH: {
-      type: String,
-      default: 'start'
-    },
-    alignV: {
-      type: String,
-      default: 'start'
-    }
-  },
-  components: _defineProperty({}, FlexItem.name, FlexItem),
-  data: function data() {
-    return {};
-  },
-  computed: {
-    classes: function classes() {
-      return ["wui-flex-align-".concat(this.alignH, "-").concat(this.alignV), this.direction == 'column' ? "wui-".concat(this.direction, "-flexbox") : 'wui-flexbox'];
-    },
-    styles: function styles() {
-      var o = {},
-          h = this.height,
-          w = this.width;
-
-      if (h || h === 0) {
-        o.height = /^\d+$/.test(h) ? h + 'px' : h;
-      }
-
-      if (w || w === 0) {
-        o.width = /^\d+$/.test(w) ? w + 'px' : w;
-      }
-
-      return o;
-    }
-  }
-};
-
-/* script */
-var __vue_script__$g = script$g;
-/* template */
-
-var __vue_render__$g = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c("div", {
-    class: _vm.classes,
-    style: _vm.styles
-  }, [_vm._t("default")], 2);
-};
-
-var __vue_staticRenderFns__$g = [];
-__vue_render__$g._withStripped = true;
-/* style */
-
-var __vue_inject_styles__$g = undefined;
-/* scoped */
-
-var __vue_scope_id__$g = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$g = undefined;
-/* functional template */
-
-var __vue_is_functional_template__$g = false;
-/* style inject */
-
-/* style inject SSR */
-
-var FlexBox = normalizeComponent_1({
-  render: __vue_render__$g,
-  staticRenderFns: __vue_staticRenderFns__$g
-}, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
 
 FlexBox.install = function (vue) {
   vue.component(FlexItem.name, FlexItem);
@@ -3538,12 +3056,12 @@ setTimeout(function () {
 setTimeout(function () {
   var dpr = window.devicePixelRatio; //if (this.borderColor) {
 
-  var styleTag = document.getElementById('cui-button-border-1px');
+  var styleTag = document.getElementById('bee-button-border-1px');
   var sheet = styleTag ? styleTag.sheet || styleTag.styleSheet : null;
 
   if (!sheet) {
     var style = document.createElement("style");
-    style.id = 'cui-button-border-1px';
+    style.id = 'bee-button-border-1px';
     style.type = 'text/css';
     style.appendChild(document.createTextNode(""));
     document.head.appendChild(style);
@@ -3551,14 +3069,14 @@ setTimeout(function () {
   }
 
   if (sheet.addRule) {
-    sheet.addRule('button > .cui-button-border', 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
+    sheet.addRule('button > .bee-button-border', 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
   } else if (sheet.insertRule) {
-    sheet.insertRule('button > .cui-button-border' + 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');', 0);
+    sheet.insertRule('button > .bee-button-border' + 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');', 0);
   } //}
 
 }, 0);
 /**
- * cui-button
+ * bee-button
  * @module Button
  * @see {@link ../example/all/button.html 实例}
  * @desc 按钮组件 <w-button />
@@ -3577,14 +3095,14 @@ setTimeout(function () {
  * @param {String} fontColor - 字体颜色
  *
  * @example
- *  <w-button size="large" type="primary">按钮</w-button>
+ *  <bee-button size="large" type="primary">按钮</bee-button>
  *
- *  <w-button size="small" type="warning">删除</w-button>
+ *  <bee-button size="small" type="warning">删除</bee-button>
  *
  */
 
-var script$h = {
-  name: 'w-button',
+var script$e = {
+  name: 'bee-button',
   props: {
     disabled: Boolean,
     nativeType: {
@@ -3684,6 +3202,7 @@ var script$h = {
           size = this.size;
       var o = {
         height: h,
+        lineHeight: h,
         borderWidth: !this.isThin ? this.borderWidth || null : null,
         borderColor: !this.isThin ? this.borderColor : null,
         width: w,
@@ -3699,672 +3218,134 @@ var script$h = {
 };
 
 /* script */
-var __vue_script__$h = script$h;
+var __vue_script__$e = script$e;
 /* template */
 
-var __vue_render__$h = function __vue_render__() {
+var __vue_render__$e = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("button", {
-    staticClass: "cui-button",
-    class: ["cui-button__type_" + _vm.type, _vm.size ? "cui-button__size_" + _vm.size : "", {
-      "is-disabled": _vm.disabled,
-      "is-block": _vm.block
+  return _c('button', {
+    staticClass: "bee-button",
+    class: ['bee-button--' + _vm.type, _vm.size ? 'bee-button--' + _vm.size : '', {
+      'is-disabled': _vm.disabled,
+      'is-block': _vm.block
     }],
     style: _vm.styles,
     attrs: {
-      "data-key": "cui-button-" + _vm._uid,
-      type: _vm.nativeType,
-      disabled: _vm.disabled
+      "data-key": 'bee-button-' + _vm._uid,
+      "type": _vm.nativeType,
+      "disabled": _vm.disabled
     },
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
-  }, [_c("label", {
-    staticClass: "cui-button__text"
-  }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2), _vm._v(" "), _c("span", {
-    staticClass: "cui-button__border",
+  }, [_c('label', {
+    staticClass: "bee-button__text"
+  }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2), _vm._v(" "), _c('span', {
+    staticClass: "bee-button__border",
     style: _vm.borderStyles
   })]);
 };
 
-var __vue_staticRenderFns__$h = [];
-__vue_render__$h._withStripped = true;
+var __vue_staticRenderFns__$e = [];
 /* style */
 
-var __vue_inject_styles__$h = undefined;
+var __vue_inject_styles__$e = undefined;
 /* scoped */
 
-var __vue_scope_id__$h = undefined;
+var __vue_scope_id__$e = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$h = undefined;
+var __vue_module_identifier__$e = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$h = false;
+var __vue_is_functional_template__$e = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Button = normalizeComponent_1({
-  render: __vue_render__$h,
-  staticRenderFns: __vue_staticRenderFns__$h
-}, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
+  render: __vue_render__$e,
+  staticRenderFns: __vue_staticRenderFns__$e
+}, __vue_inject_styles__$e, __vue_script__$e, __vue_scope_id__$e, __vue_is_functional_template__$e, __vue_module_identifier__$e, undefined, undefined);
 
 Button.install = function (vue) {
-  vue.component('w-button', Button);
-};
-
-var clickoutsideContext = '@@clickoutsideContext';
-var Clickoutside = {
-  bind: function bind(el, binding, vnode) {
-    var documentHandler = function documentHandler(e) {
-      if (vnode.context && !el.contains(e.target)) {
-        vnode.context[el[clickoutsideContext].methodName]();
-      }
-    };
-
-    el[clickoutsideContext] = {
-      documentHandler: documentHandler,
-      methodName: binding.expression,
-      arg: binding.arg || 'click'
-    };
-    document.addEventListener(el[clickoutsideContext].arg, documentHandler);
-  },
-  update: function update(el, binding) {
-    el[clickoutsideContext].methodName = binding.expression;
-  },
-  unbind: function unbind(el) {
-    document.removeEventListener(el[clickoutsideContext].arg, el[clickoutsideContext].documentHandler);
-  },
-  install: function install(Vue) {
-    Vue.directive('clickoutside', {
-      bind: this.bind,
-      unbind: this.unbind
-    });
-  }
+  vue.component(Button.name, Button);
 };
 
 //
-var script$i = {
-  name: 'w-field',
-  directives: {
-    Clickoutside: Clickoutside
-  },
-  data: function data() {
-    return {
-      active: false,
-      dms: ' ',
-      blocks: [],
-      howDms: 0,
-      selectionStart: 0,
-      currentValue: this.value,
-      deFormatFunction: this.deFormat,
-      enFormatFunction: this.enFormat
-    };
-  },
-  props: {
-    type: {
-      type: String,
-      default: 'text'
-    },
-    name: String,
-    rows: String,
-    label: String,
-    showLabel: {
-      type: Boolean,
-      default: true
-    },
-    labelWidth: {
-      type: [Number, String],
-      default: 80
-    },
-    labelAlign: {
-      type: String,
-      default: 'left'
-    },
-    labelVertical: {
-      type: String,
-      default: 'middle'
-    },
-    showIcon: {
-      type: Boolean,
-      default: false
-    },
-    iconWidth: {
-      type: [Number, String],
-      default: 28
-    },
-    iconAlign: {
-      type: String,
-      default: 'center'
-    },
-    iconVertical: String,
-    iconStyle: Object,
-    icon: {
-      type: Object,
-      default: function _default() {
-        return {
-          fill: '#c0c0c0',
-          width: 18,
-          height: 18,
-          type: 'right'
-        };
-      }
-    },
-    placeholder: String,
-    readonly: Boolean,
-    pattern: String,
-    disabled: Boolean,
-    disableClear: Boolean,
-    state: {
-      type: String,
-      default: 'default'
-    },
-    value: {},
-    attr: Object,
-    error: String,
-    height: [Number, String],
-    format: {
-      type: [String, Array],
-      default: ''
-    },
-    deFormat: Function,
-    enFormat: Function,
-    maxlength: [Number, String]
-  },
-  components: {
-    'w-cell': Cell,
-    'w-col': Col,
-    'w-row': Row,
-    'w-icon': Icon
-  },
-  computed: {
-    styles: function styles() {
-      var s = {};
-
-      if (this.height) {
-        s.height = this.height + 'px';
-      }
-
-      return s;
-    },
-    errorStyle: function errorStyle() {
-      var s = {};
-      var h = parseInt(this.height || 50);
-
-      if (this.type !== 'textarea' && h > 40) {
-        s.marginTop = ((h - 14) * 0.5 - 8) * -1 + 'px';
-      }
-
-      return s;
-    },
-    rootStyles: function rootStyles() {
-      var s = {};
-
-      if (this.height) {
-        s.minHeight = this.height + 'px';
-      }
-
-      return s;
-    }
-  },
-  methods: {
-    unActive: function unActive() {
-      this.active = false;
-    },
-    handleBlur: function handleBlur($evtnt) {
-      this.$emit('blur', this.currentValue);
-    },
-    handleFocus: function handleFocus($event) {
-      if (this.disabled || this.readonly) return;
-      this.active = true;
-      this.$emit('focus', this.currentValue);
-    },
-    handleEnter: function handleEnter($event) {
-      this.$emit('enter', this.currentValue);
-    },
-    handleIconClick: function handleIconClick() {
-      this.$emit('icon-click');
-    },
-    handleInput: function handleInput($event) {
-      if (this.enFormatFunction) {
-        var ary = String(this.currentValue).match(new RegExp('\\' + this.dms, 'g'));
-        this.howDms = ary ? ary.length : 0;
-      }
-
-      this.currentValue = this.hanleFormat($event.target.value); // 记录光标位置
-
-      if (this.enFormatFunction) {
-        try {
-          this.selectionStart = this.$el.querySelector('.wui-field-input').selectionStart;
-        } catch (e) {
-          this.selectionStart = 0;
-        }
-      }
-    },
-    handleClear: function handleClear() {
-      if (this.disabled || this.readonly) return;
-      this.currentValue = '';
-    },
-    handleChange: function handleChange() {
-      this.$emit('change', this.currentValue);
-    },
-    handleLabelClick: function handleLabelClick() {
-      this.$emit('label-click', this.currentValue);
-    },
-    hanleFormat: function hanleFormat(val) {
-      var rst = '';
-
-      if (typeof this.enFormatFunction === 'function') {
-        rst = this.enFormatFunction(val);
-      } else {
-        rst = val;
-      }
-
-      return rst;
-    }
-  },
-  watch: {
-    value: function value(val) {
-      var _this = this;
-
-      this.currentValue = this.hanleFormat(val); // 格式化后需要处理光标位置
-
-      if (this.enFormatFunction) {
-        this.$nextTick(function () {
-          if (_this.selectionStart) {
-            var ary = String(_this.currentValue).match(new RegExp('\\' + _this.dms, 'g'));
-
-            if (ary) {
-              var howDms = ary.length;
-            }
-
-            var pos = _this.selectionStart;
-
-            if (_this.howDms < howDms) {
-              pos += 1;
-            } else if (_this.howDms > howDms) {
-              pos -= 1;
-            }
-
-            _this.$el.querySelector('.wui-field-input').setSelectionRange(pos, pos);
-
-            _this.selectionStart = 0;
-          }
-        });
-      }
-    },
-    currentValue: function currentValue(val) {
-      if (this.deFormatFunction) {
-        val = this.deFormatFunction(val);
-      }
-
-      this.$emit('input', val);
-    },
-    //原生控件的一些属性
-    attr: {
-      immediate: true,
-      handler: function handler(attrs) {
-        var _this2 = this;
-
-        this.$nextTick(function () {
-          var target = [_this2.$refs.input, _this2.$refs.textarea];
-          target.forEach(function (el) {
-            if (!el || !attrs) return;
-            Object.keys(attrs).map(function (name) {
-              return el.setAttribute(name, attrs[name]);
-            });
-          });
-        });
-      }
-    }
-  },
-  created: function created() {
-    if (this.format) {
-      if (Array.isArray(this.format)) {
-        this.dms = this.format[1] || ' ';
-        this.blocks = this.format[0];
-      }
-
-      switch (this.format) {
-        case 'numberic':
-          this.deFormatFunction = deFormatNumberic;
-          this.enFormatFunction = enFormatNumberic;
-          this.dms = ',';
-          break;
-
-        case 'bankcard':
-          this.deFormatFunction = deFormatBankCard;
-          this.enFormatFunction = enFormatBankCard;
-          this.dms = ' ';
-          break;
-
-        default:
-          this.enFormatFunction = function (n) {
-            return formatBlocks(n, this.blocks, this.dms);
-          }.bind(this);
-
-          this.deFormatFunction = function (n) {
-            return String(n).replace(new RegExp('\\' + this.dms, 'g'), '');
-          }.bind(this);
-
-          break;
-      }
-    }
-
-    this.currentValue = this.hanleFormat(this.value);
-  }
-};
-
-/* script */
-var __vue_script__$i = script$i;
-/* template */
-
-var __vue_render__$i = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c("div", {
-    directives: [{
-      name: "clickoutside",
-      rawName: "v-clickoutside",
-      value: _vm.unActive,
-      expression: "unActive"
-    }],
-    staticClass: "wui-field wui-border-1px wui-border-b",
-    class: {
-      "type-is-input": _vm.type !== "textarea",
-      "type-is-textarea": _vm.type == "textarea",
-      "is-has-error": !!_vm.error
-    },
-    style: _vm.rootStyles
-  }, [_c("w-row", {
-    staticClass: "wui-field-wrap",
-    style: _vm.styles
-  }, [_vm.showLabel ? _c("w-cell", {
-    staticClass: "wui-field-label-wrap",
-    attrs: {
-      width: _vm.labelWidth,
-      align: _vm.labelAlign,
-      vertical: _vm.labelVertical
-    },
-    on: {
-      click: _vm.handleLabelClick
-    }
-  }, [_vm._t("label", [_c("label", {
-    staticClass: "wui-field-label",
-    attrs: {
-      for: _vm.name
-    }
-  }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c("w-cell", {
-    staticClass: "wui-field-content",
-    attrs: {
-      vertical: "middle"
-    }
-  }, [_vm._t("content", [_c("w-row", {
-    staticClass: "wui-field-box"
-  }, [_c("w-cell", {
-    staticClass: "wui-filed-value"
-  }, [_vm.type === "textarea" ? _c("textarea", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.currentValue,
-      expression: "currentValue"
-    }],
-    staticClass: "wui-field-textarea",
-    attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      rows: _vm.rows,
-      name: _vm.name,
-      maxlength: _vm.maxlength
-    },
-    domProps: {
-      value: _vm.currentValue
-    },
-    on: {
-      keyup: function keyup($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
-          return null;
-        }
-
-        return _vm.handleEnter($event);
-      },
-      focus: _vm.handleFocus,
-      blur: _vm.handleBlur,
-      input: [function ($event) {
-        if ($event.target.composing) {
-          return;
-        }
-
-        _vm.currentValue = $event.target.value;
-      }, _vm.handleInput],
-      change: _vm.handleChange
-    }
-  }) : _vm.type === "checkbox" ? _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.currentValue,
-      expression: "currentValue"
-    }],
-    staticClass: "wui-field-input",
-    attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      name: _vm.name,
-      maxlength: _vm.maxlength,
-      pattern: _vm.pattern,
-      type: "checkbox"
-    },
-    domProps: {
-      checked: Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
-    },
-    on: {
-      keyup: function keyup($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
-          return null;
-        }
-
-        return _vm.handleEnter($event);
-      },
-      focus: _vm.handleFocus,
-      blur: _vm.handleBlur,
-      input: _vm.handleInput,
-      change: [function ($event) {
-        var $$a = _vm.currentValue,
-            $$el = $event.target,
-            $$c = $$el.checked ? true : false;
-
-        if (Array.isArray($$a)) {
-          var $$v = null,
-              $$i = _vm._i($$a, $$v);
-
-          if ($$el.checked) {
-            $$i < 0 && (_vm.currentValue = $$a.concat([$$v]));
-          } else {
-            $$i > -1 && (_vm.currentValue = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
-          }
-        } else {
-          _vm.currentValue = $$c;
-        }
-      }, _vm.handleChange]
-    }
-  }) : _vm.type === "radio" ? _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.currentValue,
-      expression: "currentValue"
-    }],
-    staticClass: "wui-field-input",
-    attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      name: _vm.name,
-      maxlength: _vm.maxlength,
-      pattern: _vm.pattern,
-      type: "radio"
-    },
-    domProps: {
-      checked: _vm._q(_vm.currentValue, null)
-    },
-    on: {
-      keyup: function keyup($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
-          return null;
-        }
-
-        return _vm.handleEnter($event);
-      },
-      focus: _vm.handleFocus,
-      blur: _vm.handleBlur,
-      input: _vm.handleInput,
-      change: [function ($event) {
-        _vm.currentValue = null;
-      }, _vm.handleChange]
-    }
-  }) : _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.currentValue,
-      expression: "currentValue"
-    }],
-    staticClass: "wui-field-input",
-    attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      name: _vm.name,
-      maxlength: _vm.maxlength,
-      pattern: _vm.pattern,
-      type: _vm.type
-    },
-    domProps: {
-      value: _vm.currentValue
-    },
-    on: {
-      keyup: function keyup($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
-          return null;
-        }
-
-        return _vm.handleEnter($event);
-      },
-      focus: _vm.handleFocus,
-      blur: _vm.handleBlur,
-      input: [function ($event) {
-        if ($event.target.composing) {
-          return;
-        }
-
-        _vm.currentValue = $event.target.value;
-      }, _vm.handleInput],
-      change: _vm.handleChange
-    }
-  })]), _vm._v(" "), _c("w-cell", {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: _vm.active && _vm.currentValue,
-      expression: "active && currentValue"
-    }],
-    staticClass: "wui-field-clear",
-    attrs: {
-      align: "center",
-      width: 28
-    },
-    on: {
-      click: _vm.handleClear
-    }
-  }, [_c("w-icon", {
-    attrs: {
-      type: "roundclosefill",
-      fill: "#d8d8d8",
-      width: 16,
-      height: 16
-    }
-  })], 1)], 1)])], 2), _vm._v(" "), _vm.showIcon ? _c("w-cell", {
-    attrs: {
-      width: _vm.iconWidth,
-      vertical: _vm.iconVertical,
-      align: _vm.iconAlign
-    },
-    on: {
-      click: _vm.handleIconClick
-    }
-  }, [_vm._t("icon", [_c("w-icon", {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: _vm.icon.type,
-      expression: "icon.type"
-    }],
-    style: _vm.iconStyle,
-    attrs: {
-      type: _vm.icon.type,
-      fill: _vm.icon.fill,
-      width: _vm.icon.width,
-      height: _vm.icon.height
-    }
-  })])], 2) : _vm._e()], 1), _vm._v(" "), _vm.error ? _c("w-row", {
-    style: _vm.errorStyle,
-    attrs: {
-      height: 22
-    }
-  }, [_c("w-cell", {
-    attrs: {
-      width: _vm.labelWidth
-    }
-  }), _vm._v(" "), _c("w-cell", {
-    staticClass: "wui-field-error",
-    attrs: {
-      align: "left",
-      vertical: "top"
-    }
-  }, [_vm._v(_vm._s(_vm.error))])], 1) : _vm._e()], 1);
-};
-
-var __vue_staticRenderFns__$i = [];
-__vue_render__$i._withStripped = true;
-/* style */
-
-var __vue_inject_styles__$i = undefined;
-/* scoped */
-
-var __vue_scope_id__$i = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$i = undefined;
-/* functional template */
-
-var __vue_is_functional_template__$i = false;
-/* style inject */
-
-/* style inject SSR */
-
-var Field = normalizeComponent_1({
-  render: __vue_render__$i,
-  staticRenderFns: __vue_staticRenderFns__$i
-}, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
-
-Field.install = function (vue) {
-  vue.component('w-field', Field);
-};
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4378,19 +3359,19 @@ Field.install = function (vue) {
 //
 
 /**
- * wui-checkbox
- * @desc 勾选框  <w-checkbox />
+ * bee-checkbox
+ * @desc 勾选框  <bee-checkbox />
  * @module Checkbox
  * @see {@link ../example/all/checkbox.html 实例}
  * @param {string} label 显示在右侧的内容
  * @param {boolean} disabled 是否禁用
  *
  * @example
- * <w-checkbox v-model="checked" label="这个位置是标签1"></w-checkbox>
- * <w-checkbox v-model="disable" label="是否禁用下面的按钮"></w-checkbox>
+ * <bee-checkbox v-model="checked" label="这个位置是标签1"></bee-checkbox>
+ * <bee-checkbox v-model="disable" label="是否禁用下面的按钮"></bee-checkbox>
  */
-var script$j = {
-  name: 'w-checkbox',
+var script$f = {
+  name: 'bee-checkbox',
   props: {
     label: String,
     value: Boolean,
@@ -4424,37 +3405,37 @@ var script$j = {
 };
 
 /* script */
-var __vue_script__$j = script$j;
+var __vue_script__$f = script$f;
 /* template */
 
-var __vue_render__$j = function __vue_render__() {
+var __vue_render__$f = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-checkbox"
-  }, [_c("label", {
-    staticClass: "wui-checkbox-label"
-  }, [_c("input", {
+  return _c('div', {
+    staticClass: "bee-checkbox"
+  }, [_c('label', {
+    staticClass: "bee-checkbox__label"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentValue,
       expression: "currentValue"
     }],
-    staticClass: "wui-checkbox-input",
+    staticClass: "bee-checkbox__input",
     attrs: {
-      type: "checkbox",
-      disabled: _vm.disabled
+      "type": "checkbox",
+      "disabled": _vm.disabled
     },
     domProps: {
-      checked: Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
+      "checked": Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
     },
     on: {
-      change: function change($event) {
+      "change": function change($event) {
         var $$a = _vm.currentValue,
             $$el = $event.target,
             $$c = $$el.checked ? true : false;
@@ -4473,656 +3454,38 @@ var __vue_render__$j = function __vue_render__() {
         }
       }
     }
-  }), _vm._v(" "), _c("span", {
-    staticClass: "wui-checkbox-core",
+  }), _vm._v(" "), _c('span', {
+    staticClass: "bee-checkbox__core",
     style: _vm.styles
-  }), _vm._v(" "), _vm.label || _vm.$slots.default ? _c("span", {
-    staticClass: "wui-checkbox-content"
+  }), _vm._v(" "), _vm.label || _vm.$slots.default ? _c('span', {
+    staticClass: "bee-checkbox__content"
   }, [_vm._t("default", [_vm._v(_vm._s(_vm.label))])], 2) : _vm._e()])]);
 };
 
-var __vue_staticRenderFns__$j = [];
-__vue_render__$j._withStripped = true;
+var __vue_staticRenderFns__$f = [];
 /* style */
 
-var __vue_inject_styles__$j = undefined;
+var __vue_inject_styles__$f = undefined;
 /* scoped */
 
-var __vue_scope_id__$j = undefined;
+var __vue_scope_id__$f = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$j = undefined;
+var __vue_module_identifier__$f = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$j = false;
+var __vue_is_functional_template__$f = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Checkbox = normalizeComponent_1({
-  render: __vue_render__$j,
-  staticRenderFns: __vue_staticRenderFns__$j
-}, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
+  render: __vue_render__$f,
+  staticRenderFns: __vue_staticRenderFns__$f
+}, __vue_inject_styles__$f, __vue_script__$f, __vue_scope_id__$f, __vue_is_functional_template__$f, __vue_module_identifier__$f, undefined, undefined);
 
 Checkbox.install = function (vue) {
-  vue.component('w-checkbox', Checkbox);
-};
-
-var trim = function trim(string) {
-  return (string || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '');
-}; //是否有样式类
-
-
-var hasClass = function hasClass(el, cls) {
-  if (!el || !cls) return false;
-  if (cls.indexOf(' ') != -1) throw new Error('className should not contain space.');
-
-  if (el.classList) {
-    return el.classList.contains(cls);
-  } else {
-    return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1;
-  }
-}; //添加样式类
-
-
-var addClass = function addClass(el, cls) {
-  if (!el) return;
-  var curClass = el.className;
-  var classes = (cls || '').split(' ');
-
-  for (var i = 0, j = classes.length; i < j; i++) {
-    var clsName = classes[i];
-    if (!clsName) continue;
-
-    if (el.classList) {
-      el.classList.add(clsName);
-    } else {
-      if (!hasClass(el, clsName)) {
-        curClass += ' ' + clsName;
-      }
-    }
-  }
-
-  if (!el.classList) {
-    el.className = curClass;
-  }
-}; //移除样式类
-
-
-var removeClass = function removeClass(el, cls) {
-  if (!el || !cls) return;
-  var classes = cls.split(' ');
-  var curClass = ' ' + el.className + ' ';
-
-  for (var i = 0, j = classes.length; i < j; i++) {
-    var clsName = classes[i];
-    if (!clsName) continue;
-
-    if (el.classList) {
-      el.classList.remove(clsName);
-    } else {
-      if (hasClass(el, clsName)) {
-        curClass = curClass.replace(' ' + clsName + ' ', ' ');
-      }
-    }
-  }
-
-  if (!el.classList) {
-    el.className = trim(curClass);
-  }
-};
-
-var hasModal = false; //初始化模态背景.
-
-var getModal = function getModal() {
-  var modalDom = PopupManager.modalDom;
-
-  if (modalDom) {
-    hasModal = true;
-  } else {
-    hasModal = false;
-    modalDom = document.createElement('div');
-    PopupManager.modalDom = modalDom; //遮罩屏蔽滚动
-
-    modalDom.addEventListener('touchmove', function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }); //模态点击事件
-
-    modalDom.addEventListener('click', function () {
-      PopupManager.doOnModalClick && PopupManager.doOnModalClick();
-    });
-  }
-
-  return modalDom;
-};
-
-var instances = {};
-var PopupManager = {
-  zIndex: 2000,
-  modalFade: true,
-  getInstance: function getInstance(id) {
-    return instances[id];
-  },
-  register: function register(id, instance) {
-    if (id && instance) {
-      instances[id] = instance;
-    }
-  },
-  deregister: function deregister(id) {
-    if (id) {
-      instances[id] = null;
-      delete instances[id];
-    }
-  },
-  nextZIndex: function nextZIndex() {
-    return PopupManager.zIndex++;
-  },
-  modalStack: [],
-  doOnModalClick: function doOnModalClick() {
-    var topItem = PopupManager.modalStack[PopupManager.modalStack.length - 1];
-    if (!topItem) return;
-    var instance = PopupManager.getInstance(topItem.id);
-
-    if (instance && instance.closeOnClickModal) {
-      instance.close();
-    }
-  },
-  openModal: function openModal(id, zIndex, dom, modalClass, modalFade) {
-    if (Vue.prototype.$isServer) return;
-    if (!id || zIndex === undefined) return;
-    this.modalFade = modalFade;
-    var modalStack = this.modalStack;
-
-    for (var i = 0, j = modalStack.length; i < j; i++) {
-      var item = modalStack[i];
-
-      if (item.id === id) {
-        return;
-      }
-    }
-
-    var modalDom = getModal();
-    addClass(modalDom, 'v-modal');
-
-    if (this.modalFade && !hasModal) {
-      addClass(modalDom, 'v-modal-enter');
-    }
-
-    if (modalClass) {
-      var classArr = modalClass.trim().split(/\s+/);
-      classArr.forEach(function (item) {
-        return addClass(modalDom, item);
-      });
-    }
-
-    setTimeout(function () {
-      removeClass(modalDom, 'v-modal-enter');
-    }, 200);
-
-    if (dom && dom.parentNode && dom.parentNode.nodeType !== 11) {
-      dom.parentNode.appendChild(modalDom);
-    } else {
-      document.body.appendChild(modalDom);
-    }
-
-    if (zIndex) {
-      modalDom.style.zIndex = zIndex;
-    }
-
-    modalDom.style.display = '';
-    this.modalStack.push({
-      id: id,
-      zIndex: zIndex,
-      modalClass: modalClass
-    });
-  },
-  closeModal: function closeModal(id) {
-    var modalStack = this.modalStack;
-    var modalDom = getModal();
-
-    if (modalStack.length > 0) {
-      var topItem = modalStack[modalStack.length - 1];
-
-      if (topItem.id === id) {
-        if (topItem.modalClass) {
-          var classArr = topItem.modalClass.trim().split(/\s+/);
-          classArr.forEach(function (item) {
-            return removeClass(modalDom, item);
-          });
-        }
-
-        modalStack.pop();
-
-        if (modalStack.length > 0) {
-          modalDom.style.zIndex = modalStack[modalStack.length - 1].zIndex;
-        }
-      } else {
-        for (var i = modalStack.length - 1; i >= 0; i--) {
-          if (modalStack[i].id === id) {
-            modalStack.splice(i, 1);
-            break;
-          }
-        }
-      }
-    }
-
-    if (modalStack.length === 0) {
-      if (this.modalFade) {
-        addClass(modalDom, 'v-modal-leave');
-      }
-
-      setTimeout(function () {
-        if (modalStack.length === 0) {
-          if (modalDom.parentNode) modalDom.parentNode.removeChild(modalDom);
-          modalDom.style.display = 'none';
-          PopupManager.modalDom = undefined;
-        }
-
-        removeClass(modalDom, 'v-modal-leave');
-      }, 200);
-    }
-  }
-};
-
-var idSeed = 1;
-var transitions = [];
-
-var hookTransition = function hookTransition(transition) {
-  if (transitions.indexOf(transition) !== -1) return;
-
-  var getVueInstance = function getVueInstance(element) {
-    var instance = element.__vue__;
-
-    if (!instance) {
-      var textNode = element.previousSibling;
-
-      if (textNode.__vue__) {
-        instance = textNode.__vue__;
-      }
-    }
-
-    return instance;
-  };
-
-  Vue.transition(transition, {
-    afterEnter: function afterEnter(el) {
-      var instance = getVueInstance(el);
-
-      if (instance) {
-        instance.doAfterOpen && instance.doAfterOpen();
-      }
-    },
-    afterLeave: function afterLeave(el) {
-      var instance = getVueInstance(el);
-
-      if (instance) {
-        instance.doAfterClose && instance.doAfterClose();
-      }
-    }
-  });
-};
-
-var scrollBarWidth;
-
-var getScrollBarWidth = function getScrollBarWidth() {
-  if (Vue.prototype.$isServer) return;
-  if (scrollBarWidth !== undefined) return scrollBarWidth;
-  var outer = document.createElement('div');
-  outer.style.visibility = 'hidden';
-  outer.style.width = '100px';
-  outer.style.position = 'absolute';
-  outer.style.top = '-9999px';
-  document.body.appendChild(outer);
-  var widthNoScroll = outer.offsetWidth;
-  outer.style.overflow = 'scroll';
-  var inner = document.createElement('div');
-  inner.style.width = '100%';
-  outer.appendChild(inner);
-  var widthWithScroll = inner.offsetWidth;
-  outer.parentNode.removeChild(outer);
-  return widthNoScroll - widthWithScroll;
-};
-
-var getDOM = function getDOM(dom) {
-  if (dom.nodeType === 3) {
-    dom = dom.nextElementSibling || dom.nextSibling;
-    getDOM(dom);
-  }
-
-  return dom;
-};
-
-var Popup = {
-  props: {
-    value: {
-      type: Boolean,
-      default: false
-    },
-    transition: {
-      type: String,
-      default: ''
-    },
-    openDelay: {},
-    closeDelay: {},
-    zIndex: {},
-    modal: {
-      type: Boolean,
-      default: false
-    },
-    modalFade: {
-      type: Boolean,
-      default: true
-    },
-    modalClass: {},
-    lockScroll: {
-      type: Boolean,
-      default: true
-    },
-    closeOnClickModal: {
-      type: Boolean,
-      default: false
-    }
-  },
-  created: function created() {
-    if (this.transition) {
-      hookTransition(this.transition);
-    }
-
-    console.log("mixin:" + this.closeOnClickModal);
-  },
-  beforeMount: function beforeMount() {
-    this._popupId = 'popup-' + idSeed++;
-    PopupManager.register(this._popupId, this);
-  },
-  beforeDestroy: function beforeDestroy() {
-    PopupManager.deregister(this._popupId);
-    PopupManager.closeModal(this._popupId);
-
-    if (this.modal && this.bodyOverflow !== null && this.bodyOverflow !== 'hidden') {
-      document.body.style.overflow = this.bodyOverflow;
-      document.body.style.paddingRight = this.bodyPaddingRight;
-    }
-
-    this.bodyOverflow = null;
-    this.bodyPaddingRight = null;
-  },
-  data: function data() {
-    return {
-      opened: false,
-      bodyOverflow: null,
-      bodyPaddingRight: null,
-      rendered: false
-    };
-  },
-  watch: {
-    value: function value(val) {
-      var _this = this;
-
-      if (val) {
-        if (this._opening) return;
-
-        if (!this.rendered) {
-          this.rendered = true;
-          Vue.nextTick(function () {
-            _this.open();
-          });
-        } else {
-          this.open();
-        }
-      } else {
-        this.close();
-      }
-    }
-  },
-  methods: {
-    open: function open(options) {
-      var _this2 = this;
-
-      if (!this.rendered) {
-        this.rendered = true;
-        this.$emit('input', true);
-      }
-
-      var props = Object.assign({}, this, this.$props, options);
-
-      if (this._closeTimer) {
-        clearTimeout(this._closeTimer);
-        this._closeTimer = null;
-      }
-
-      clearTimeout(this._openTimer);
-      var openDelay = Number(props.openDelay);
-
-      if (openDelay > 0) {
-        this._openTimer = setTimeout(function () {
-          _this2._openTimer = null;
-
-          _this2.doOpen(props);
-        }, openDelay);
-      } else {
-        this.doOpen(props);
-      }
-    },
-    doOpen: function doOpen(props) {
-      if (this.$isServer) return;
-      if (this.willOpen && !this.willOpen()) return;
-      if (this.opened) return;
-      this._opening = true; // 使用 vue-popup 的组件，如果需要和父组件通信显示的状态，应该使用 value，它是一个 prop，
-      // 这样在父组件中用 v-model 即可；否则可以使用 visible，它是一个 data
-
-      this.visible = true;
-      this.$emit('input', true);
-      var dom = getDOM(this.$el);
-      var modal = props.modal;
-      var zIndex = props.zIndex;
-
-      if (zIndex) {
-        PopupManager.zIndex = zIndex;
-      }
-
-      if (modal) {
-        if (this._closing) {
-          PopupManager.closeModal(this._popupId);
-          this._closing = false;
-        }
-
-        PopupManager.openModal(this._popupId, PopupManager.nextZIndex(), dom, props.modalClass, props.modalFade);
-
-        if (props.lockScroll) {
-          if (!this.bodyOverflow) {
-            this.bodyPaddingRight = document.body.style.paddingRight;
-            this.bodyOverflow = document.body.style.overflow;
-          }
-
-          scrollBarWidth = getScrollBarWidth();
-          var bodyHasOverflow = document.documentElement.clientHeight < document.body.scrollHeight;
-
-          if (scrollBarWidth > 0 && bodyHasOverflow) {
-            document.body.style.paddingRight = scrollBarWidth + 'px';
-          }
-
-          document.body.style.overflow = 'hidden';
-        }
-      }
-
-      if (getComputedStyle(dom).position === 'static') {
-        dom.style.position = 'absolute';
-      }
-
-      dom.style.zIndex = PopupManager.nextZIndex();
-      this.opened = true;
-      this.onOpen && this.onOpen();
-
-      if (!this.transition) {
-        this.doAfterOpen();
-      }
-    },
-    doAfterOpen: function doAfterOpen() {
-      this._opening = false;
-    },
-    close: function close() {
-      var _this3 = this;
-
-      if (this.willClose && !this.willClose()) return;
-
-      if (this._openTimer !== null) {
-        clearTimeout(this._openTimer);
-        this._openTimer = null;
-      }
-
-      clearTimeout(this._closeTimer);
-      var closeDelay = Number(this.closeDelay);
-
-      if (closeDelay > 0) {
-        this._closeTimer = setTimeout(function () {
-          _this3._closeTimer = null;
-
-          _this3.doClose();
-        }, closeDelay);
-      } else {
-        this.doClose();
-      }
-    },
-    doClose: function doClose() {
-      var _this4 = this;
-
-      this.visible = false;
-      this.$emit('input', false);
-      this._closing = true;
-      this.onClose && this.onClose();
-
-      if (this.lockScroll) {
-        setTimeout(function () {
-          if (_this4.modal && _this4.bodyOverflow !== 'hidden') {
-            document.body.style.overflow = _this4.bodyOverflow;
-            document.body.style.paddingRight = _this4.bodyPaddingRight;
-          }
-
-          _this4.bodyOverflow = null;
-          _this4.bodyPaddingRight = null;
-        }, 200);
-      }
-
-      this.opened = false;
-
-      if (!this.transition) {
-        this.doAfterClose();
-      }
-    },
-    doAfterClose: function doAfterClose() {
-      PopupManager.closeModal(this._popupId);
-      this._closing = false;
-    }
-  }
-};
-
-//
-var script$k = {
-  name: 'w-popup',
-  mixins: [Popup],
-  props: {
-    modal: {
-      default: true
-    },
-    modalFade: {
-      default: false
-    },
-    lockScroll: {
-      default: false
-    },
-    closeOnClickModal: {
-      default: true
-    },
-    popupTransition: {
-      type: String,
-      default: 'popup-slide'
-    },
-    position: {
-      type: String,
-      default: 'bottom'
-    }
-  },
-  data: function data() {
-    return {
-      currentValue: false,
-      currentTransition: this.popupTransition
-    };
-  },
-  watch: {
-    currentValue: function currentValue(val) {
-      this.$emit('input', val);
-    },
-    value: function value(val) {
-      this.currentValue = val;
-    }
-  },
-  beforeMount: function beforeMount() {
-    if (this.popupTransition !== 'popup-fade') {
-      this.currentTransition = "popup-slide-".concat(this.position);
-    }
-  },
-  mounted: function mounted() {
-    if (this.value) {
-      this.rendered = true;
-      this.currentValue = true;
-      this.open();
-    }
-  }
-};
-
-/* script */
-var __vue_script__$k = script$k;
-/* template */
-
-var __vue_render__$k = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c("transition", {
-    attrs: {
-      name: _vm.currentTransition
-    }
-  }, [_c("div", {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: _vm.currentValue,
-      expression: "currentValue"
-    }],
-    staticClass: "wui-popup",
-    class: [_vm.position ? "wui-popup-" + _vm.position : ""]
-  }, [_vm._t("default")], 2)]);
-};
-
-var __vue_staticRenderFns__$k = [];
-__vue_render__$k._withStripped = true;
-/* style */
-
-var __vue_inject_styles__$k = undefined;
-/* scoped */
-
-var __vue_scope_id__$k = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$k = undefined;
-/* functional template */
-
-var __vue_is_functional_template__$k = false;
-/* style inject */
-
-/* style inject SSR */
-
-var popup = normalizeComponent_1({
-  render: __vue_render__$k,
-  staticRenderFns: __vue_staticRenderFns__$k
-}, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
-
-popup.install = function (vue) {
-  vue.component('w-popup', popup);
+  vue.component(Checkbox.name, Checkbox);
 };
 
 //
@@ -5150,17 +3513,17 @@ popup.install = function (vue) {
 //
 
 /**
- * cui-mask
+ * bee-mask
  * @module Mask
- * @desc 半透明遮罩层 <c-mask></c-mask>
+ * @desc 半透明遮罩层 <bee-mask></bee-mask>
  * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
  * @param {Boolean} isRemove=false - 是否隐藏动画完成从dom中清除
  * @param {Boolean} isShow=false - 显示隐藏
  * @example 
- *      <c-mask color="yellow"></c-mask>
+ *      <bee-mask color="yellow"></bee-mask>
  **/
-var script$l = {
-  name: 'c-mask',
+var script$g = {
+  name: 'bee-mask',
   props: {
     color: {
       type: String,
@@ -5223,69 +3586,68 @@ var script$l = {
 };
 
 /* script */
-var __vue_script__$l = script$l;
+var __vue_script__$g = script$g;
 /* template */
 
-var __vue_render__$l = function __vue_render__() {
+var __vue_render__$g = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("transition", {
+  return _c('transition', {
     attrs: {
-      name: "cui-animate_fade"
+      "name": "bee-animate--fade"
     },
     on: {
       "after-leave": _vm._leave
     }
-  }, [_c("div", {
+  }, [_c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.visiable,
       expression: "visiable"
     }],
-    staticClass: "cui-mask",
+    staticClass: "bee-mask",
     style: _vm.styles,
     on: {
-      touchmove: _vm.handleTouchmove,
-      click: _vm.handleClick
+      "touchmove": _vm.handleTouchmove,
+      "click": _vm.handleClick
     }
   }, [_vm._t("default")], 2)]);
 };
 
-var __vue_staticRenderFns__$l = [];
-__vue_render__$l._withStripped = true;
+var __vue_staticRenderFns__$g = [];
 /* style */
 
-var __vue_inject_styles__$l = undefined;
+var __vue_inject_styles__$g = undefined;
 /* scoped */
 
-var __vue_scope_id__$l = undefined;
+var __vue_scope_id__$g = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$l = undefined;
+var __vue_module_identifier__$g = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$l = false;
+var __vue_is_functional_template__$g = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Mask = normalizeComponent_1({
-  render: __vue_render__$l,
-  staticRenderFns: __vue_staticRenderFns__$l
-}, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
+  render: __vue_render__$g,
+  staticRenderFns: __vue_staticRenderFns__$g
+}, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
 
 Mask.install = function (vue) {
   vue.component('w-mask', Mask);
 };
 
-//
-var script$m = {
-  name: 'c-dialog',
+var _components;
+var script$h = {
+  name: 'bee-dialog',
   props: {
     mask: {
       type: Boolean,
@@ -5342,10 +3704,7 @@ var script$m = {
       visiable: this.isShow
     };
   },
-  components: {
-    'c-icon': Icon,
-    'c-mask': Mask
-  },
+  components: (_components = {}, _defineProperty(_components, Icon.name, Icon), _defineProperty(_components, Mask.name, Mask), _components),
   computed: {
     styles: function styles() {
       var s = {},
@@ -5411,17 +3770,17 @@ var script$m = {
 };
 
 /* script */
-var __vue_script__$m = script$m;
+var __vue_script__$h = script$h;
 /* template */
 
-var __vue_render__$m = function __vue_render__() {
+var __vue_render__$h = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("w-mask", {
+  return _c('w-mask', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -5430,56 +3789,56 @@ var __vue_render__$m = function __vue_render__() {
     }],
     attrs: {
       "is-remove": _vm.isRemove,
-      color: "rgba(0,0,0,.5)"
+      "color": "rgba(0,0,0,.5)"
     }
-  }, [_c("transition", {
+  }, [_c('transition', {
     attrs: {
-      name: "fade-scale"
+      "name": "fade-scale"
     }
-  }, [_vm.visiable ? _c("div", {
-    staticClass: "cui-dialog",
+  }, [_vm.visiable ? _c('div', {
+    staticClass: "bee-dialog",
     style: _vm.styles
-  }, [_vm.showClose ? _c("p", {
-    staticClass: "cui-dialog__close",
+  }, [_vm.showClose ? _c('p', {
+    staticClass: "bee-dialog__close",
     on: {
-      click: function click($event) {
+      "click": function click($event) {
         $event.stopPropagation();
         return _vm.hide($event);
       }
     }
-  }, [_c("w-icon", {
+  }, [_c('w-icon', {
     attrs: {
-      type: "close",
-      width: 20,
-      height: 20,
-      fill: "#8a8a8a"
+      "type": "close",
+      "width": 20,
+      "height": 20,
+      "fill": "#8a8a8a"
     }
-  })], 1) : _vm._e(), _vm._v(" "), _vm.title ? _c("header", {
-    staticClass: "cui-dialog__header"
-  }, [_vm._t("header", [_c("div", {
-    staticClass: "cui-dialog__title"
-  }, [_vm._v(_vm._s(_vm.title))])])], 2) : _vm._e(), _vm._v(" "), _vm.content || _vm.$slots["body"] ? _c("div", {
-    staticClass: "cui-dialog__body"
-  }, [_vm._t("body", [_c("div", {
+  })], 1) : _vm._e(), _vm._v(" "), _vm.title ? _c('header', {
+    staticClass: "bee-dialog__header"
+  }, [_vm._t("header", [_c('div', {
+    staticClass: "bee-dialog__title"
+  }, [_vm._v(_vm._s(_vm.title))])])], 2) : _vm._e(), _vm._v(" "), _vm.content || _vm.$slots['body'] ? _c('div', {
+    staticClass: "bee-dialog__body"
+  }, [_vm._t("body", [_c('div', {
     style: _vm.contentStyle,
     domProps: {
-      innerHTML: _vm._s(_vm.content)
+      "innerHTML": _vm._s(_vm.content)
     }
-  })])], 2) : _vm._e(), _vm._v(" "), _c("footer", {
-    staticClass: "cui-dialog__footer",
+  })])], 2) : _vm._e(), _vm._v(" "), _c('footer', {
+    staticClass: "bee-dialog__footer",
     class: {
-      "cui-dialog__footer_row": _vm.buttonDirection == "row",
-      "cui-dialog__footer_col": _vm.buttonDirection == "col"
+      'bee-dialog__footer_row': _vm.buttonDirection == 'row',
+      'bee-dialog__footer_col': _vm.buttonDirection == 'col'
     },
     style: _vm.footerStyles
   }, [_vm._t("footer", [_vm._l(_vm.bindButtons, function (btn, $i) {
-    return [_c("p", {
-      key: "btn-" + $i,
-      staticClass: "cui-dialog__button",
+    return [_c('p', {
+      key: 'btn-' + $i,
+      staticClass: "bee-dialog__button",
       class: btn.class,
       style: btn.style,
       on: {
-        click: function click($event) {
+        "click": function click($event) {
           $event.stopPropagation();
           return btn.action($event);
         }
@@ -5488,35 +3847,34 @@ var __vue_render__$m = function __vue_render__() {
   })])], 2)]) : _vm._e()])], 1);
 };
 
-var __vue_staticRenderFns__$m = [];
-__vue_render__$m._withStripped = true;
+var __vue_staticRenderFns__$h = [];
 /* style */
 
-var __vue_inject_styles__$m = undefined;
+var __vue_inject_styles__$h = undefined;
 /* scoped */
 
-var __vue_scope_id__$m = undefined;
+var __vue_scope_id__$h = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$m = undefined;
+var __vue_module_identifier__$h = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$m = false;
+var __vue_is_functional_template__$h = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Dialog = normalizeComponent_1({
-  render: __vue_render__$m,
-  staticRenderFns: __vue_staticRenderFns__$m
-}, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
+  render: __vue_render__$h,
+  staticRenderFns: __vue_staticRenderFns__$h
+}, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
 
 var DialogClass = Vue.extend(Dialog);
 /**
  * cui-dialog
  * @module Dialog
  * @see {@link ../example/all/dialog.html 实例}
- * @desc 对话框组件 <w-dialog />
+ * @desc 对话框组件 <bee-dialog />
  * @param {Number} width=240 - 对话框宽度
  * @param {Number} height=160 - 对话框高度
  * @param {String} content - 对话框内容, 必填
@@ -5527,7 +3885,7 @@ var DialogClass = Vue.extend(Dialog);
  * @param {Object} contentStyle - 对话框内容样式
  * @param {Boolean} showClose=false - 是否显示关闭按钮
  * @example
- * import {Dialog} from 'cui/packages/dialog';
+ * import {Dialog} from 'bee/packages/dialog';
  * 
  * Dialog.show({
  *      title: '提交信息',
@@ -5543,7 +3901,7 @@ var DialogClass = Vue.extend(Dialog);
 
 var Dialog$1 = Object.assign(Dialog, {
   install: function install(vue) {
-    vue.component('c-dialog', Dialog);
+    vue.component(Dialog.name, Dialog);
   },
 
   /**
@@ -5555,7 +3913,7 @@ var Dialog$1 = Object.assign(Dialog, {
    * @returns DialogClass实例
    * 
    * @example
-   * Wui.Dialog.show({content:'红包来了!',title:'发红包了'})
+   * Bee.Dialog.show({content:'红包来了!',title:'发红包了'})
    * 
    */
   show: function show(opts) {
@@ -5575,13 +3933,10 @@ var Dialog$1 = Object.assign(Dialog, {
   }
 });
 
-//
-var script$n = {
-  name: 'c-alert',
+var script$i = {
+  name: 'bee-alert',
   extends: Dialog,
-  components: {
-    'c-dialog': Dialog
-  },
+  components: _defineProperty({}, Dialog.name, Dialog),
   props: {
     width: {
       type: [String, Number],
@@ -5600,29 +3955,29 @@ var script$n = {
 };
 
 /* script */
-var __vue_script__$n = script$n;
+var __vue_script__$i = script$i;
 /* template */
 
-var __vue_render__$n = function __vue_render__() {
+var __vue_render__$i = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("c-dialog", {
+  return _c('bee-dialog', {
     ref: "dialog",
-    staticClass: "cui-alert",
+    staticClass: "bee-alert",
     attrs: {
       "show-close": false,
-      width: _vm.width,
-      height: _vm.height,
-      buttons: [{
-        text: "确定"
+      "width": _vm.width,
+      "height": _vm.height,
+      "buttons": [{
+        text: '确定'
       }],
       "is-show": _vm.visiable,
       "is-remove": _vm.isRemove,
-      content: _vm.content
+      "content": _vm.content
     },
     on: {
       "visiable-change": _vm.handleVisiable
@@ -5630,32 +3985,31 @@ var __vue_render__$n = function __vue_render__() {
   });
 };
 
-var __vue_staticRenderFns__$n = [];
-__vue_render__$n._withStripped = true;
+var __vue_staticRenderFns__$i = [];
 /* style */
 
-var __vue_inject_styles__$n = undefined;
+var __vue_inject_styles__$i = undefined;
 /* scoped */
 
-var __vue_scope_id__$n = undefined;
+var __vue_scope_id__$i = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$n = undefined;
+var __vue_module_identifier__$i = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$n = false;
+var __vue_is_functional_template__$i = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Alert = normalizeComponent_1({
-  render: __vue_render__$n,
-  staticRenderFns: __vue_staticRenderFns__$n
-}, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
+  render: __vue_render__$i,
+  staticRenderFns: __vue_staticRenderFns__$i
+}, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
 
 var AlertClass = Vue.extend(Alert);
 /**
- * wui-alert
+ * bee-alert
  * @module Alert
  * @see {@link ../example/all/dialog.html 实例}
  * @desc alert对话框组件
@@ -5665,14 +4019,14 @@ var AlertClass = Vue.extend(Alert);
  * 
  * @example
  * // use it in html
- * <script src="wui.min.js"><\/script>
- * <link rel="stylesheet" href="wui.min.css" />
+ * <script src="bee.min.js"><\/script>
+ * <link rel="stylesheet" href="bee.min.css" />
  * 
- * Wui.Alert.show('提交申请成功');
+ * Bee.Alert.show('提交申请成功');
  *
  * // use it in webpack or browserify, rollup
- * import {Alert} from 'wui/packages/dialog';
- * // var Aler = require('wui/packages/dialog/alert.js');
+ * import {Alert} from 'bee/packages/dialog';
+ * // var Aler = require('bee/packages/dialog/alert.js');
  *
  * Alert.show('提交申请成功');
  *
@@ -5694,7 +4048,7 @@ var Alert$1 = Object.assign(Alert, {
    * @returns AlertClass实例
    * 
    * @example
-   * Wui.Alert.show('提交申请成功');
+   * Bee.Alert.show('提交申请成功');
    */
   show: function show(text, opts) {
     if (_typeof(text) === 'object') {
@@ -5719,13 +4073,10 @@ var Alert$1 = Object.assign(Alert, {
   }
 });
 
-//
-var script$o = {
-  name: 'w-confirm',
+var script$j = {
+  name: 'bee-confirm',
   extends: Dialog,
-  components: {
-    'w-dialog': Dialog
-  },
+  components: _defineProperty({}, Dialog.name, Dialog),
   props: {
     height: {
       type: [String, Number],
@@ -5766,26 +4117,26 @@ var script$o = {
 };
 
 /* script */
-var __vue_script__$o = script$o;
+var __vue_script__$j = script$j;
 /* template */
 
-var __vue_render__$o = function __vue_render__() {
+var __vue_render__$j = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("w-dialog", {
+  return _c('bee-dialog', {
     ref: "dialog",
     attrs: {
       "show-close": false,
-      width: _vm.width,
-      height: _vm.height,
-      buttons: _vm._buttons,
+      "width": _vm.width,
+      "height": _vm.height,
+      "buttons": _vm._buttons,
       "is-show": _vm.visiable,
       "is-remove": _vm.isRemove,
-      content: _vm.content
+      "content": _vm.content
     },
     on: {
       "visiable-change": _vm.handleVisiable
@@ -5793,32 +4144,31 @@ var __vue_render__$o = function __vue_render__() {
   });
 };
 
-var __vue_staticRenderFns__$o = [];
-__vue_render__$o._withStripped = true;
+var __vue_staticRenderFns__$j = [];
 /* style */
 
-var __vue_inject_styles__$o = undefined;
+var __vue_inject_styles__$j = undefined;
 /* scoped */
 
-var __vue_scope_id__$o = undefined;
+var __vue_scope_id__$j = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$o = undefined;
+var __vue_module_identifier__$j = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$o = false;
+var __vue_is_functional_template__$j = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Confirm = normalizeComponent_1({
-  render: __vue_render__$o,
-  staticRenderFns: __vue_staticRenderFns__$o
-}, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
+  render: __vue_render__$j,
+  staticRenderFns: __vue_staticRenderFns__$j
+}, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
 
 var ConfirmClass = Vue.extend(Confirm);
 /**
- * wui-confirm
+ * bee-confirm
  * @module Confirm
  * @see {@link ../example/all/dialog.html 实例}
  * @desc confirm对话框组件
@@ -5829,14 +4179,14 @@ var ConfirmClass = Vue.extend(Confirm);
  * @example
  *
  * // use it in html
- * <script src="wui.min.js"><\/script>
- * <link rel="stylesheet" href="wui.min.css" />
+ * <script src="bee.min.js"><\/script>
+ * <link rel="stylesheet" href="bee.min.css" />
  * 
- * Wui.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+ * Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  * 
  * // use it in webpack or browserify, rollup
- * import {Confirm} from 'wui/packages/dialog';
- * // var Confirm = require('wui/packages/dialog/confirm.js');
+ * import {Confirm} from 'bee/packages/dialog';
+ * // var Confirm = require('bee/packages/dialog/confirm.js');
  *
  * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  *
@@ -5859,7 +4209,7 @@ var Confirm$1 = Object.assign(Confirm, {
    * @returns ConfirmClass实例
    * 
    * @example
-   * const confirm = Wui.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
+   * const confirm = bee.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
    * confirm.doClose();
    * 
    */
@@ -5900,13 +4250,10 @@ var Confirm$1 = Object.assign(Confirm, {
   }
 });
 
-//
-var script$p = {
-  name: 'w-prompt',
+var script$k = {
+  name: 'bee-prompt',
   extends: Dialog,
-  components: {
-    'w-dialog': Dialog
-  },
+  components: _defineProperty({}, Dialog.name, Dialog),
   props: {
     placeholder: String,
     height: {
@@ -5947,53 +4294,53 @@ var script$p = {
 };
 
 /* script */
-var __vue_script__$p = script$p;
+var __vue_script__$k = script$k;
 /* template */
 
-var __vue_render__$p = function __vue_render__() {
+var __vue_render__$k = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("w-dialog", {
+  return _c('w-dialog', {
     ref: "dialog",
     attrs: {
       "show-close": false,
-      width: _vm.width,
-      height: _vm.height,
-      buttons: _vm._buttons,
+      "width": _vm.width,
+      "height": _vm.height,
+      "buttons": _vm._buttons,
       "is-show": _vm.visiable,
       "is-remove": _vm.isRemove
     },
     on: {
       "visiable-change": _vm.handleVisiable
     }
-  }, [_c("div", {
+  }, [_c('div', {
     attrs: {
-      slot: "body"
+      "slot": "body"
     },
     slot: "body"
-  }, [_c("div", {
-    staticClass: "wui-prompt-text"
-  }, [_c("input", {
+  }, [_c('div', {
+    staticClass: "bee-prompt__text"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.content,
       expression: "content"
     }],
-    staticClass: "wui-prompt-text-input",
+    staticClass: "bee-prompt__input",
     attrs: {
-      type: "text",
-      placeholder: _vm.placeholder
+      "type": "text",
+      "placeholder": _vm.placeholder
     },
     domProps: {
-      value: _vm.content
+      "value": _vm.content
     },
     on: {
-      input: function input($event) {
+      "input": function input($event) {
         if ($event.target.composing) {
           return;
         }
@@ -6004,32 +4351,31 @@ var __vue_render__$p = function __vue_render__() {
   })])])]);
 };
 
-var __vue_staticRenderFns__$p = [];
-__vue_render__$p._withStripped = true;
+var __vue_staticRenderFns__$k = [];
 /* style */
 
-var __vue_inject_styles__$p = undefined;
+var __vue_inject_styles__$k = undefined;
 /* scoped */
 
-var __vue_scope_id__$p = undefined;
+var __vue_scope_id__$k = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$p = undefined;
+var __vue_module_identifier__$k = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$p = false;
+var __vue_is_functional_template__$k = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Prompt = normalizeComponent_1({
-  render: __vue_render__$p,
-  staticRenderFns: __vue_staticRenderFns__$p
-}, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
+  render: __vue_render__$k,
+  staticRenderFns: __vue_staticRenderFns__$k
+}, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
 
 var PromptClass = Vue.extend(Prompt);
 /**
- * wui-prompt
+ * bee-prompt
  * @module Prompt
  * @see {@link ../example/all/dialog.html 实例}
  * @desc prompt对话框组件
@@ -6040,14 +4386,14 @@ var PromptClass = Vue.extend(Prompt);
  * @example
  *
  * // use it in html
- * <script src="wui.min.js"><\/script>
- * <link rel="stylesheet" href="wui.min.css" />
+ * <script src="bee.min.js"><\/script>
+ * <link rel="stylesheet" href="bee.min.css" />
  * 
- * Wui.Prompt.show('请填写信息？', (val)=>{console.log(val)});
+ * Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
  * 
  * // use it in webpack or browserify, rollup
- * import {Prompt} from 'wui/packages/dialog';
- * // var Prompt = require('wui/packages/dialog/prompt.js');
+ * import {Prompt} from 'bee/packages/dialog';
+ * // var Prompt = require('bee/packages/dialog/prompt.js');
  *
  * Prompt.show('请填写信息？', (val)=>{console.log(val)});
  *
@@ -6056,7 +4402,7 @@ var PromptClass = Vue.extend(Prompt);
 var Prompt$1 = Object.assign(Prompt, {
   $type: 'prompt',
   install: function install(vue) {
-    vue.component('w-prompt', Prompt);
+    vue.component(Prompt.name, Prompt);
   },
 
   /**
@@ -6070,7 +4416,7 @@ var Prompt$1 = Object.assign(Prompt, {
    * @returns PromptClass实例
    * 
    * @example
-   * const confirm = Wui.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
+   * const confirm = Bee.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
    * prompt.doClose();
    * 
    */
@@ -6111,374 +4457,8 @@ var Prompt$1 = Object.assign(Prompt, {
   }
 });
 
-var OPTION_HEIGHT = 33;
-var script$q = {
-  name: 'w-picker',
-  components: {
-    'w-popup': popup
-  },
-  props: {
-    show: Boolean,
-    value: {},
-    options: Array,
-    visibleCount: {
-      type: Number,
-      default: 3
-    },
-    showCancelButton: {
-      type: Boolean,
-      default: false
-    },
-    showConfirmButton: {
-      type: Boolean,
-      default: true
-    },
-    cancelButtonText: {
-      type: String,
-      default: "取消"
-    },
-    confirmButtonText: {
-      type: String,
-      default: "确认"
-    },
-    buttonsPosition: {
-      type: String,
-      default: 'bottom'
-    }
-  },
-  mounted: function mounted() {
-    var picker = this.$el.firstChild.querySelector('.picker-body');
-    this.resolveOptions();
-    this.initDragRanges();
-    this.initDrag(picker);
-    this.initSelect();
-  },
-  data: function data() {
-    return {
-      dragObj: {
-        startTime: '',
-        startX: 0,
-        startY: 0,
-        startTranslateY: 0
-      },
-      dragRanges: [0, 0],
-      dragging: false,
-      currentValue: this.value,
-      currentShow: this.show,
-      selectedValue: '',
-      resolvedOptions: [{}]
-    };
-  },
-  methods: {
-    resolveOptions: function resolveOptions() {
-      var options = this.options || [];
-      var resolvedOptions = [];
-      var self = this; //将option转换为name:value键值对
-
-      options.forEach(function (option) {
-        var optionKvps = option.options || [];
-        var value = optionKvps[0];
-
-        var valueType = _typeof(value);
-
-        var resolvedOption = {
-          options: []
-        };
-
-        if (valueType !== "object") {
-          //非对象类型的数组
-          optionKvps.forEach(function (val) {
-            var kvpObject = self.constructOptions(val, val);
-            kvpObject._orignal = val;
-            resolvedOption.options.push(kvpObject);
-          });
-        } else {
-          //对象类型数组
-          var valueKey = option.valueKey || "value";
-          var textKey = option.textKey || "name";
-          optionKvps.forEach(function (valObject) {
-            var kvpObject = self.constructOptions(valObject[textKey], valObject[valueKey]);
-            kvpObject._orignal = valObject;
-            resolvedOption.options.push(kvpObject);
-          });
-        }
-
-        resolvedOptions.push(resolvedOption);
-      });
-      this.resolvedOptions = resolvedOptions;
-    },
-    constructOptions: function constructOptions(name, value) {
-      return {
-        name: name,
-        value: value
-      };
-    },
-    getValueByIndex: function getValueByIndex(optionIndex, index) {
-      var option = this.resolvedOptions[optionIndex];
-      return option.options[index].value;
-    },
-    getSelectedOption: function getSelectedOption(optionIndex, val) {
-      var option = this.resolvedOptions[optionIndex].options;
-      var curSelected = {};
-      option.forEach(function (optionItem) {
-        if (optionItem.value == val) {
-          curSelected = optionItem;
-        }
-      });
-      return curSelected._orignal;
-    },
-    //初始化上下滚动界限
-    initDragRanges: function initDragRanges() {
-      var options = this.resolvedOptions[0].options || [];
-      var totalCount = options.length; //向上最多滚动= -(总个数- (显示个数/2)向上取整)*高度
-
-      this.dragRanges[0] = -OPTION_HEIGHT * (totalCount - Math.ceil(this.visibleCount / 2)); //向下最多滚动距离= (显示个数/2)向下取整*高度;
-
-      this.dragRanges[1] = OPTION_HEIGHT * Math.floor(this.visibleCount / 2);
-    },
-    //初始化
-    initDrag: function initDrag(picker) {
-      var self = this;
-      var drag = this.dragObj;
-      var thisMovingY, lastMovedY; //拖拽开始
-
-      picker.addEventListener("touchstart", function ($event) {
-        self.dragging = true;
-        $event.preventDefault();
-        var touch = $event.changedTouches[0] || $event.touches[0];
-        drag.startTime = new Date();
-        drag.startX = touch.pageX;
-        drag.startY = touch.pageY;
-        drag.startTranslateY = self.getElementTranslateInfo(picker).y;
-      }); //拖拽过程中
-
-      picker.addEventListener("touchmove", function ($event) {
-        var touch = $event.changedTouches[0] || $event.touches[0];
-        drag.curX = touch.pageX;
-        drag.curY = touch.pageY; //拖拽的总移动距离
-
-        var deltaY = Math.floor(drag.curY - drag.startY); //拖拽的最终translateY
-
-        var translateY = drag.startTranslateY + deltaY;
-        self.setElementTranslateInfo(picker, null, translateY); //本次移动了距离
-
-        thisMovingY = translateY - lastMovedY || translateY; //上一次的位置
-
-        lastMovedY = translateY;
-      });
-      picker.addEventListener("touchend", function ($event) {
-        self.dragging = false; //处理惯性滑动
-        //本次滑动总耗时
-
-        var duration = new Date() - drag.startTime; //快速滑动最后距离,放大比率
-
-        var inertialMoveY,
-            inertialMoveRadio = 7; //松开手指后的Y位置
-
-        var thisMoveLastY = self.getElementTranslateInfo(picker).y;
-
-        if (duration < 300) {
-          //从滑动结束的位置开始做惯性滑动,惯性距离= <300ms的滑动的滑动距离*7;
-          inertialMoveY = thisMoveLastY + thisMovingY * inertialMoveRadio;
-        }
-
-        self.$nextTick(function () {
-          var avaliableY = inertialMoveY || thisMoveLastY; //保证滑动到刚好的位置
-
-          var finalY = Math.round(avaliableY / 33) * 33; //保证不超过上下界限
-
-          finalY = Math.max(Math.min(finalY, self.dragRanges[1]), self.dragRanges[0]);
-          self.setElementTranslateInfo(picker, null, finalY); //通过translate 来提取当前选中的值
-
-          self.selectedValue = self.getValueByTranslate(finalY);
-        });
-      });
-    },
-    initSelect: function initSelect() {},
-    getValueByTranslate: function getValueByTranslate(translate) {
-      translate = Math.round(translate / OPTION_HEIGHT) * OPTION_HEIGHT;
-      var index = -(translate - Math.floor(this.visibleCount / 2) * OPTION_HEIGHT) / OPTION_HEIGHT;
-      var val = this.getValueByIndex(0, index);
-      return val;
-    },
-    getTranslateByValue: function getTranslateByValue(value) {
-      var offset = Math.floor(this.visibleCount / 2);
-      return (0 - offset) * -OPTION_HEIGHT;
-    },
-    //获取Translate
-    getElementTranslateInfo: function getElementTranslateInfo(element) {
-      var result = {
-        x: 0,
-        y: 0
-      };
-      if (element === null || element.style === null) return result;
-      var transform = element.style["transform"];
-      var matches = /translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/g.exec(transform);
-
-      if (matches) {
-        result.x = +matches[1];
-        result.y = +matches[3];
-      }
-
-      return result;
-    },
-    //设置Translate
-    setElementTranslateInfo: function setElementTranslateInfo(element, x, y) {
-      if (element === null || element === undefined || element.style === null) return; //超过一个单位就卡主
-
-      if (y >= this.dragRanges[1] + OPTION_HEIGHT || y <= this.dragRanges[0] - OPTION_HEIGHT) {
-        return;
-      }
-
-      if (!element.style["transform"] && x === 0 && y === 0) return;
-      var lastTranslate = this.getElementTranslateInfo(element);
-
-      if (x === null) {
-        x = lastTranslate.x;
-      }
-
-      if (y === null) {
-        y = lastTranslate.y;
-      }
-
-      var lastX = x ? x + 'px' : '0px';
-      var lastY = y ? y + 'px' : '0px';
-      this.clearElementTranslateInfo(element);
-      element.style["transform"] += ' translate(' + lastX + ',' + lastY + ') translateZ(0px)';
-    },
-    //清除Translate
-    clearElementTranslateInfo: function clearElementTranslateInfo(element) {
-      if (element === null || element.style === null) return;
-      var transformValue = element.style["transform"];
-
-      if (transformValue) {
-        transformValue = transformValue.replace(/translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/g, '');
-        element.style["transform"] = transformValue;
-      }
-    },
-    confirmSelectValue: function confirmSelectValue() {
-      var optionIndex = 0;
-      var selected = this.getSelectedOption(optionIndex, this.selectedValue);
-      this.$emit("select", optionIndex, this.selectedValue, selected);
-      this.$emit("input", this.selectedValue);
-      this.currentShow = false;
-    }
-  },
-  watch: {
-    show: function show(val) {
-      this.currentShow = val;
-    },
-    currentShow: function currentShow(val) {
-      if (val == false) this.$emit("hide", false);
-    },
-    value: function value(val) {
-      this.currentValue = val;
-    },
-    currentValue: function currentValue(val) {
-      this.$emit("input", val);
-    }
-  },
-  computed: {
-    contentHeight: function contentHeight() {
-      return OPTION_HEIGHT * this.visibleCount;
-    }
-  }
-};
-
-/* script */
-var __vue_script__$q = script$q;
-/* template */
-
-var __vue_render__$q = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c("w-popup", {
-    attrs: {
-      position: "bottom"
-    },
-    model: {
-      value: _vm.currentShow,
-      callback: function callback($$v) {
-        _vm.currentShow = $$v;
-      },
-      expression: "currentShow"
-    }
-  }, [_c("div", {
-    staticClass: "wui-picker picker-wrapper"
-  }, [_c("div", {
-    staticClass: "picker-body",
-    class: {
-      dragging: _vm.dragging
-    },
-    style: {
-      height: _vm.contentHeight + "px"
-    }
-  }, _vm._l(_vm.resolvedOptions[0].options, function (option, $i) {
-    return _c("div", {
-      key: "picker-" + $i,
-      staticClass: "picker-item"
-    }, [_vm._v("\n                " + _vm._s(option.name) + "\n            ")]);
-  }), 0), _vm._v(" "), _c("div", {
-    staticClass: " picker-selector-hightlight "
-  })]), _vm._v(" "), _vm.showConfirmButton ? _c("div", {
-    class: "picker-buttons-" + _vm.buttonsPosition
-  }, [_c("w-button", {
-    attrs: {
-      type: "default",
-      size: "large",
-      sharp: true
-    },
-    on: {
-      click: function click($event) {
-        _vm.currentShow = false;
-      }
-    }
-  }, [_vm._v(_vm._s(_vm.cancelButtonText))]), _vm._v(" "), _c("w-button", {
-    attrs: {
-      type: "primary",
-      size: "large",
-      sharp: true
-    },
-    on: {
-      click: _vm.confirmSelectValue
-    }
-  }, [_vm._v(_vm._s(_vm.confirmButtonText))])], 1) : _vm._e()]);
-};
-
-var __vue_staticRenderFns__$q = [];
-__vue_render__$q._withStripped = true;
-/* style */
-
-var __vue_inject_styles__$q = undefined;
-/* scoped */
-
-var __vue_scope_id__$q = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$q = undefined;
-/* functional template */
-
-var __vue_is_functional_template__$q = false;
-/* style inject */
-
-/* style inject SSR */
-
-var Picker = normalizeComponent_1({
-  render: __vue_render__$q,
-  staticRenderFns: __vue_staticRenderFns__$q
-}, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
-
-Picker.install = function (vue) {
-  vue.component('w-picker', Picker);
-};
-
-//
-var script$r = {
-  name: 'w-message',
+var script$l = {
+  name: 'bee-message',
   props: {
     pos: {
       type: String,
@@ -6519,9 +4499,7 @@ var script$r = {
       timmer: null
     };
   },
-  components: {
-    'w-icon': Icon
-  },
+  components: _defineProperty({}, Icon.name, Icon),
   watch: {
     isShow: function isShow(val) {
       this.visiable = val;
@@ -6557,7 +4535,7 @@ var script$r = {
       };
     },
     _posClass: function _posClass() {
-      return 'pos-' + this.pos;
+      return 'bee-message--pos-' + this.pos;
     },
     _iconStyles: function _iconStyles() {
       var t = '',
@@ -6607,74 +4585,73 @@ var script$r = {
 };
 
 /* script */
-var __vue_script__$r = script$r;
+var __vue_script__$l = script$l;
 /* template */
 
-var __vue_render__$r = function __vue_render__() {
+var __vue_render__$l = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("transition", {
+  return _c('transition', {
     attrs: {
-      name: "msg-scale"
+      "name": "msg-scale"
     },
     on: {
       "after-leave": _vm._leave
     }
-  }, [_c("div", {
+  }, [_c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.visiable,
       expression: "visiable"
     }],
-    staticClass: "wui-msg-box",
+    staticClass: "bee-message",
     class: _vm._posClass,
     style: _vm.styles
-  }, [_vm.type ? _c("div", {
-    staticClass: "icon-wrap"
-  }, [_c("w-icon", {
+  }, [_vm.type ? _c('div', {
+    staticClass: "bee-message__icon"
+  }, [_c('w-icon', {
     attrs: {
-      type: _vm._iconStyles.t,
-      fill: _vm._iconStyles.c
+      "type": _vm._iconStyles.t,
+      "fill": _vm._iconStyles.c
     }
-  })], 1) : _vm._e(), _vm._v(" "), _c("div", {
-    staticClass: "text-wrap"
+  })], 1) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "bee-message__text"
   }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
 };
 
-var __vue_staticRenderFns__$r = [];
-__vue_render__$r._withStripped = true;
+var __vue_staticRenderFns__$l = [];
 /* style */
 
-var __vue_inject_styles__$r = undefined;
+var __vue_inject_styles__$l = undefined;
 /* scoped */
 
-var __vue_scope_id__$r = undefined;
+var __vue_scope_id__$l = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$r = undefined;
+var __vue_module_identifier__$l = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$r = false;
+var __vue_is_functional_template__$l = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Message = normalizeComponent_1({
-  render: __vue_render__$r,
-  staticRenderFns: __vue_staticRenderFns__$r
-}, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
+  render: __vue_render__$l,
+  staticRenderFns: __vue_staticRenderFns__$l
+}, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
 
 var MessageClass = Vue.extend(Message);
 /**
- * wui-message
+ * bee-message
  * @module Message
  * @see {@link ../example/all/message.html 实例}
- * @desc 浮层提示信息组件 <w-message></w-message>
+ * @desc 浮层提示信息组件 <bee-meesage></bee-meesage>
  * @param {String} pos='top' - 显示位置,可取值 'top', 'middle', 'bottom'
  * @param {String} type='info' - 提示框类型, 可取值 'info', 'success', 'error', 'warning'
  * @param {String} text - 提示信息内容, 也可以slot方式传入
@@ -6684,25 +4661,25 @@ var MessageClass = Vue.extend(Message);
  * @example
  * 
  *  // use it in module tools
- *  import Message from 'wui/packages/message';
+ *  import Message from '@bee/message';
  *  Message.show('有新信息了');
  *  Message.info('有新信息了');
  *  Message.success('信息提交成功');
  *  Message.warning('内容包含非法词');
  * 
  *  // use it in html
- *  <script src="wui.min.js"><\/script>
- *  <link rel="stylesheet" href="wui.min.css">
- *  Wui.Message.show('有新信息了');
- *  Wui.Message.info('有新信息了');
- *  Wui.Message.success('信息提交成功');
- *  Wui.Message.warning('内容包含非法词');
+ *  <script src="bee.min.js"><\/script>
+ *  <link rel="stylesheet" href="Bee.min.css">
+ *  Bee.Message.show('有新信息了');
+ *  Bee.Message.info('有新信息了');
+ *  Bee.Message.success('信息提交成功');
+ *  Bee.Message.warning('内容包含非法词');
  * 
  */
 
 var Message$1 = Object.assign(Message, {
   install: function install(vue) {
-    vue.component('w-message', Message);
+    vue.component(Message.name, Message);
   },
 
   /**
@@ -6713,7 +4690,7 @@ var Message$1 = Object.assign(Message, {
    * @returns MessageClass实例
    * 
    * @example
-   * Wui.Message.show('有新信息了');
+   * Bee.Message.show('有新信息了');
    * 
    */
   show: function show(opts) {
@@ -6741,7 +4718,7 @@ var Message$1 = Object.assign(Message, {
    * @returns MessageClass实例
    * 
    * @example
-   *  Wui.Message.info('收到一个优惠券');
+   *  Bee.Message.info('收到一个优惠券');
    * 
    */
   info: function info(text, opts) {
@@ -6760,7 +4737,7 @@ var Message$1 = Object.assign(Message, {
    * @returns MessageClass实例
    * 
    * @example
-   *  Wui.Message.success('提交成功');
+   *  Bee.Message.success('提交成功');
    * 
    */
   success: function success(text, opts) {
@@ -6779,7 +4756,7 @@ var Message$1 = Object.assign(Message, {
    * @returns MessageClass实例
    * 
    * @example
-   *  Wui.Message.warning('内容包含非法词');
+   *  Bee.Message.warning('内容包含非法词');
    * 
    */
   warning: function warning(text, opts) {
@@ -6798,7 +4775,7 @@ var Message$1 = Object.assign(Message, {
    * @returns MessageClass实例
    * 
    * @example
-   *  Wui.Message.error('内容包含非法词');
+   *  Bee.Message.error('内容包含非法词');
    * 
    */
   error: function error(text, opts) {
@@ -6839,28 +4816,9 @@ var Message$1 = Object.assign(Message, {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /**
- * wui-progress-ring
+ * bee-progress-ring
  * @des 环形进度条组件
  * @param {Number} size - 组件直径大小,默认 100<px>
  * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
@@ -6871,10 +4829,10 @@ var Message$1 = Object.assign(Message, {
  * @param {String} direction = '1' - 顺时针还是逆时针, 取值范围 '1','-1'
  * @param {String} content - 显示内容，this.percent + '%'
  * @example
- *      <w-progress-ring :size="50" :track-width="10"></w-progress-ring>
+ *      <bee-progress-ring :size="50" :track-width="10"></bee-progress-ring>
  **/
-var script$s = {
-  name: 'w-progress-ring',
+var script$m = {
+  name: 'bee-progress-ring',
   props: {
     size: {
       type: Number,
@@ -6965,49 +4923,49 @@ var script$s = {
 };
 
 /* script */
-var __vue_script__$s = script$s;
+var __vue_script__$m = script$m;
 /* template */
 
-var __vue_render__$s = function __vue_render__() {
+var __vue_render__$m = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-progress-ring",
+  return _c('div', {
+    staticClass: "bee-progress-ring",
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
-  }, [_c("svg", {
+  }, [_c('svg', {
     attrs: {
-      width: _vm.size,
-      height: _vm.size,
-      viewport: _vm.viewport,
-      version: "1.1",
-      xmlns: "http://www.w3.org/2000/svg"
+      "width": _vm.size,
+      "height": _vm.size,
+      "viewport": _vm.viewport,
+      "version": "1.1",
+      "xmlns": "http://www.w3.org/2000/svg"
     }
-  }, [_c("circle", {
-    staticClass: "wui-progress-track",
+  }, [_c('circle', {
+    staticClass: "bee-progress-ring__track",
     style: _vm.trackStyles,
     attrs: {
-      cx: _vm.radius,
-      cy: _vm.radius,
-      r: _vm.sRdius,
-      fill: "transparent",
+      "cx": _vm.radius,
+      "cy": _vm.radius,
+      "r": _vm.sRdius,
+      "fill": "transparent",
       "stroke-linecap": _vm.linecap,
       "stroke-dasharray": _vm.dasharray,
       "stroke-dashoffset": 0
     }
-  }), _vm._v(" "), _c("circle", {
-    staticClass: "wui-progress-bar",
+  }), _vm._v(" "), _c('circle', {
+    staticClass: "bee-progress-ring__bar",
     style: _vm.barStyles,
     attrs: {
-      cx: _vm.radius,
-      cy: _vm.radius,
-      r: _vm.sRdius,
-      fill: "transparent",
+      "cx": _vm.radius,
+      "cy": _vm.radius,
+      "r": _vm.sRdius,
+      "fill": "transparent",
       "stroke-linecap": _vm.linecap,
       "stroke-dasharray": _vm.dasharray,
       "stroke-dashoffset": _vm.dashoffset
@@ -7015,28 +4973,27 @@ var __vue_render__$s = function __vue_render__() {
   })])]);
 };
 
-var __vue_staticRenderFns__$s = [];
-__vue_render__$s._withStripped = true;
+var __vue_staticRenderFns__$m = [];
 /* style */
 
-var __vue_inject_styles__$s = undefined;
+var __vue_inject_styles__$m = undefined;
 /* scoped */
 
-var __vue_scope_id__$s = undefined;
+var __vue_scope_id__$m = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$s = undefined;
+var __vue_module_identifier__$m = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$s = false;
+var __vue_is_functional_template__$m = false;
 /* style inject */
 
 /* style inject SSR */
 
 var ProgressRing = normalizeComponent_1({
-  render: __vue_render__$s,
-  staticRenderFns: __vue_staticRenderFns__$s
-}, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
+  render: __vue_render__$m,
+  staticRenderFns: __vue_staticRenderFns__$m
+}, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
 
 //
 //
@@ -7078,7 +5035,7 @@ var ProgressRing = normalizeComponent_1({
 //
 
 /**
- * wui-progress-line
+ * bee-progress-line
  * @des 线形进度条组件
  * @param {Number} width - 组件长度,默认 100%
  * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
@@ -7087,11 +5044,11 @@ var ProgressRing = normalizeComponent_1({
  * @param {String} barColor - 进度条颜色, 取值范围 css color
  * @param {String} showText - 是否显示进度数值, 默认 false
  * @example
- *      <w-progress-line :percent="45" :width="150" :track-width="4"></w-progress-line>
- *      <w-progress-ring :percent="45" :width="150" :track-width="4"></w-progress-ring>
+ *      <bee-progress-line :percent="45" :width="150" :track-width="4"></bee-progress-line>
+ *      <bee-progress-ring :percent="45" :width="150" :track-width="4"></bee-progress-ring>
  **/
-var script$t = {
-  name: 'w-progress-line',
+var script$n = {
+  name: 'bee-progress-line',
   props: {
     trackWidth: {
       type: Number,
@@ -7181,57 +5138,56 @@ var script$t = {
 };
 
 /* script */
-var __vue_script__$t = script$t;
+var __vue_script__$n = script$n;
 /* template */
 
-var __vue_render__$t = function __vue_render__() {
+var __vue_render__$n = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-progress-line",
+  return _c('div', {
+    staticClass: "bee-progress-line",
     style: _vm.styles,
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
-  }, [_c("div", {
-    staticClass: "wui-progress-line-bar",
+  }, [_c('div', {
+    staticClass: "bee-progress-line__bar",
     style: _vm.barStyles
-  }), _vm._v(" "), _vm.showText ? _c("div", {
-    staticClass: "wui-progtress-line-text",
+  }), _vm._v(" "), _vm.showText ? _c('div', {
+    staticClass: "bee-progtress-line__text",
     style: _vm.textStyle
   }, [_vm._v(_vm._s(_vm.percent) + "%")]) : _vm._e()]);
 };
 
-var __vue_staticRenderFns__$t = [];
-__vue_render__$t._withStripped = true;
+var __vue_staticRenderFns__$n = [];
 /* style */
 
-var __vue_inject_styles__$t = undefined;
+var __vue_inject_styles__$n = undefined;
 /* scoped */
 
-var __vue_scope_id__$t = undefined;
+var __vue_scope_id__$n = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$t = undefined;
+var __vue_module_identifier__$n = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$t = false;
+var __vue_is_functional_template__$n = false;
 /* style inject */
 
 /* style inject SSR */
 
 var ProgressLine = normalizeComponent_1({
-  render: __vue_render__$t,
-  staticRenderFns: __vue_staticRenderFns__$t
-}, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
+  render: __vue_render__$n,
+  staticRenderFns: __vue_staticRenderFns__$n
+}, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
 
-//
+var _component;
 /**
- * wui-progress
+ * bee-progress
  * @module Progress
  * @see {@link ../example/all/progress.html 实例}
  * @des 进度条组件
@@ -7242,13 +5198,13 @@ var ProgressLine = normalizeComponent_1({
  * @param {String} trackColor - 进度槽颜色, 取值范围 css color <hex, rgb, rgba>
  * @param {String} barColor - 进度条颜色, 取值范围 css color <hex, rgb, rgba>
  * @param {String} content - 显示内容, 默认''
- * @param {String} type - 进度条组件类型, 可取值 'line' [<w-progress-line />], 'ring' [<w-progress-ring />], 默认 'line'
+ * @param {String} type - 进度条组件类型, 可取值 'line' [<bee-progress-line />], 'ring' [<bee-progress-ring />], 默认 'line'
  * @example
- *      <w-progress type="ring" :size="50" :track-width="5"></w-progress>
+ *      <bee-progress type="ring" :size="50" :track-width="5"></bee-progress>
  **/
 
-var script$u = {
-  name: 'w-progress',
+var script$o = {
+  name: 'bee-progress',
   props: {
     size: {
       type: Number,
@@ -7294,10 +5250,7 @@ var script$u = {
       default: false
     }
   },
-  component: {
-    'w-progress-line': ProgressLine,
-    'w-progress-ring': ProgressRing
-  },
+  component: (_component = {}, _defineProperty(_component, ProgressLine.name, ProgressLine), _defineProperty(_component, ProgressRing.name, ProgressRing), _component),
   watch: {
     percent: function percent() {
       this.$emit('percent-change', this.percent);
@@ -7314,78 +5267,78 @@ var script$u = {
 };
 
 /* script */
-var __vue_script__$u = script$u;
+var __vue_script__$o = script$o;
 /* template */
 
-var __vue_render__$u = function __vue_render__() {
+var __vue_render__$o = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-progress",
+  return _c('div', {
+    staticClass: "bee-progress",
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
-  }, [_vm.type === "line" ? _c("w-progress-line", {
+  }, [_vm.type === 'line' ? _c('bee-progress-line', {
     ref: "child-line",
     attrs: {
-      width: _vm.width,
+      "width": _vm.width,
       "bar-color": _vm.barColor,
       "track-color": _vm.trackColor,
       "track-width": _vm.trackWidth,
-      percent: _vm.percent,
+      "percent": _vm.percent,
       "show-text": _vm.showText,
-      duration: _vm.duration
+      "duration": _vm.duration
     }
-  }) : _vm._e(), _vm._v(" "), _vm.type === "ring" ? _c("w-progress-ring", {
+  }) : _vm._e(), _vm._v(" "), _vm.type === 'ring' ? _c('bee-progress-ring', {
     ref: "child-ring",
     attrs: {
-      size: _vm.size,
+      "size": _vm.size,
       "bar-color": _vm.barColor,
       "track-color": _vm.trackColor,
       "track-width": _vm.trackWidth,
-      percent: _vm.percent,
-      direction: _vm.direction,
+      "percent": _vm.percent,
+      "direction": _vm.direction,
       "show-text": _vm.showText,
-      duration: _vm.duration
+      "duration": _vm.duration
     }
   }, [_vm._v(_vm._s(_vm.mycontent))]) : _vm._e()], 1);
 };
 
-var __vue_staticRenderFns__$u = [];
-__vue_render__$u._withStripped = true;
+var __vue_staticRenderFns__$o = [];
 /* style */
 
-var __vue_inject_styles__$u = undefined;
+var __vue_inject_styles__$o = undefined;
 /* scoped */
 
-var __vue_scope_id__$u = undefined;
+var __vue_scope_id__$o = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$u = undefined;
+var __vue_module_identifier__$o = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$u = false;
+var __vue_is_functional_template__$o = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Progress = normalizeComponent_1({
-  render: __vue_render__$u,
-  staticRenderFns: __vue_staticRenderFns__$u
-}, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
+  render: __vue_render__$o,
+  staticRenderFns: __vue_staticRenderFns__$o
+}, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
 
 Progress.install = function (vue) {
-  vue.component('w-progress-ring', ProgressRing);
-  vue.component('w-progress-line', ProgressLine);
-  vue.component('w-progress', Progress);
+  vue.component(ProgressRing.name, ProgressRing);
+  vue.component(ProgressLine.name, ProgressLine);
+  vue.component(Progress.name, Progress);
 };
 
-//
-var script$v = {
+var _components$1;
+var script$p = {
+  name: 'bee-loadmore-bar',
   props: {
     size: {
       type: Number,
@@ -7417,10 +5370,7 @@ var script$v = {
       status: this.showStatus
     };
   },
-  components: {
-    'w-spinner': Spinner,
-    'w-icon': Icon
-  },
+  components: (_components$1 = {}, _defineProperty(_components$1, Spinner.name, Spinner), _defineProperty(_components$1, Icon.name, Icon), _components$1),
   computed: {
     loadText: function loadText() {
       return this.status !== 'init' ? this[this.status + 'Text'] : '';
@@ -7437,81 +5387,79 @@ var script$v = {
 };
 
 /* script */
-var __vue_script__$v = script$v;
+var __vue_script__$p = script$p;
 /* template */
 
-var __vue_render__$v = function __vue_render__() {
+var __vue_render__$p = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
+  return _c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: _vm.pos == "top" || _vm.pos == "bottom" && _vm.status == "loading",
+      value: _vm.pos == 'top' || _vm.pos == 'bottom' && _vm.status == 'loading',
       expression: "pos=='top' || pos=='bottom' && status=='loading'"
     }],
-    staticClass: "wui-loadmore-bar wui-al-cm"
-  }, [_c("p", {
-    staticClass: "wui-loadmore-spinner"
-  }, [_c("w-spinner", {
+    staticClass: "bee-loadmore__bar bee-al-cm"
+  }, [_c('p', {
+    staticClass: "bee-loadmore__spinner"
+  }, [_c('w-spinner', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: _vm.status === "loading",
+      value: _vm.status === 'loading',
       expression: "status==='loading'"
     }],
     style: {
-      verticalAlign: "middle"
+      verticalAlign: 'middle'
     },
     attrs: {
-      size: _vm.size,
-      type: 6,
-      color: "#aaa"
+      "size": _vm.size,
+      "type": 6,
+      "color": "#aaa"
     }
-  })], 1), _vm._v(" "), _c("p", {
-    staticClass: "wui-loadmore-text",
-    class: ["loadmore-" + _vm.status]
-  }, [_vm.pos == "top" ? _c("span", {
-    staticClass: "status-arrow"
-  }, [_c("w-icon", {
+  })], 1), _vm._v(" "), _c('p', {
+    staticClass: "bee-loadmore__text",
+    class: ['bee-loadmore--' + _vm.status]
+  }, [_vm.pos == 'top' ? _c('span', {
+    staticClass: "bee-loadmore__arrow"
+  }, [_c('bee-icon', {
     attrs: {
-      height: 30,
-      type: "refresharrow",
-      fill: "#000"
+      "height": 30,
+      "type": "refresharrow",
+      "fill": "#000"
     }
-  })], 1) : _vm._e(), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.loadText))])])]);
+  })], 1) : _vm._e(), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.loadText))])])]);
 };
 
-var __vue_staticRenderFns__$v = [];
-__vue_render__$v._withStripped = true;
+var __vue_staticRenderFns__$p = [];
 /* style */
 
-var __vue_inject_styles__$v = undefined;
+var __vue_inject_styles__$p = undefined;
 /* scoped */
 
-var __vue_scope_id__$v = undefined;
+var __vue_scope_id__$p = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$v = undefined;
+var __vue_module_identifier__$p = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$v = false;
+var __vue_is_functional_template__$p = false;
 /* style inject */
 
 /* style inject SSR */
 
 var loadMoreBar = normalizeComponent_1({
-  render: __vue_render__$v,
-  staticRenderFns: __vue_staticRenderFns__$v
-}, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
+  render: __vue_render__$p,
+  staticRenderFns: __vue_staticRenderFns__$p
+}, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
 
-//
 /**
- * wui-loadmore
+ * bee-loadmore
  * @module Loadmore
  * @see {@link ../example/all/loadmore.html 实例}
  * @desc 加载更多组件
@@ -7534,8 +5482,8 @@ var loadMoreBar = normalizeComponent_1({
  *  <w-loadmore>content list</w-loadmore>
  */
 
-var script$w = {
-  name: 'w-loadmore',
+var script$q = {
+  name: 'bee-loadmore',
   props: {
     topPullText: {
       type: String,
@@ -7609,9 +5557,7 @@ var script$w = {
       noData: false
     };
   },
-  components: {
-    'w-loadmore-bar': loadMoreBar
-  },
+  components: _defineProperty({}, loadMoreBar.name, loadMoreBar),
   computed: {
     styles: function styles() {
       return {
@@ -7782,80 +5728,79 @@ var script$w = {
 };
 
 /* script */
-var __vue_script__$w = script$w;
+var __vue_script__$q = script$q;
 /* template */
 
-var __vue_render__$w = function __vue_render__() {
+var __vue_render__$q = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-loadmore"
-  }, [_c("div", {
-    staticClass: "wui-loadmore-content",
+  return _c('div', {
+    staticClass: "bee-loadmore"
+  }, [_c('div', {
+    staticClass: "bee-loadmore__content",
     style: _vm.styles
-  }, [_vm._t("top", [_vm.onRefresh ? _c("w-loadmore-bar", {
+  }, [_vm._t("top", [_vm.onRefresh ? _c('w-loadmore-bar', {
     ref: "top",
-    staticClass: "wui-loadmore-top",
+    staticClass: "bee-loadmore__top",
     attrs: {
       "pull-text": _vm.topPullText,
       "loading-text": _vm.topLoadingText,
       "drop-text": _vm.topDropText,
       "show-status": _vm.tStatus,
-      pos: "top"
+      "pos": "top"
     }
-  }) : _vm._e()]), _vm._v(" "), _c("div", {
-    staticClass: "wui-loadmore-content"
-  }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c("w-loadmore-bar", {
+  }) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "bee-loadmore__content"
+  }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c('w-loadmore-bar', {
     ref: "bottom",
-    staticClass: "wui-loadmore-bottom",
+    staticClass: "bee-loadmore__bottom",
     attrs: {
       "pull-text": _vm.bottomPullText,
       "loading-text": _vm.bottomLoadingText,
       "drop-text": _vm.bottomDropText,
       "show-status": _vm.bStatus,
-      pos: "bottom"
+      "pos": "bottom"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.noMore ? _vm._t("no-more", [_c("div", {
-    staticClass: "wui-loadmore-nomore"
+  })]) : _vm._e(), _vm._v(" "), _vm.noMore ? _vm._t("no-more", [_c('div', {
+    staticClass: "bee-loadmore__nomore"
   }, [_vm._v(_vm._s(_vm.noMoreText))])]) : _vm._e()], 2)]);
 };
 
-var __vue_staticRenderFns__$w = [];
-__vue_render__$w._withStripped = true;
+var __vue_staticRenderFns__$q = [];
 /* style */
 
-var __vue_inject_styles__$w = undefined;
+var __vue_inject_styles__$q = undefined;
 /* scoped */
 
-var __vue_scope_id__$w = undefined;
+var __vue_scope_id__$q = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$w = undefined;
+var __vue_module_identifier__$q = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$w = false;
+var __vue_is_functional_template__$q = false;
 /* style inject */
 
 /* style inject SSR */
 
 var LoadMore = normalizeComponent_1({
-  render: __vue_render__$w,
-  staticRenderFns: __vue_staticRenderFns__$w
-}, __vue_inject_styles__$w, __vue_script__$w, __vue_scope_id__$w, __vue_is_functional_template__$w, __vue_module_identifier__$w, undefined, undefined);
+  render: __vue_render__$q,
+  staticRenderFns: __vue_staticRenderFns__$q
+}, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
 
 LoadMore.install = function (vue) {
-  vue.component('w-loadmore', LoadMore);
+  vue.component(LoadMore.name, LoadMore);
 };
 
 //
 var VERTICAL = 'vertical';
 var HORIZONTAL = 'horizontal';
 /**
- * wui-swipe
+ * bee-swipe
  * @module Swipe
  * @see {@link ../example/all/swipe.html 实例}
  * @desc 切换组件
@@ -7870,14 +5815,14 @@ var HORIZONTAL = 'horizontal';
  * @param {Number} interval=2000 - 自动播放间隔时间 毫秒
  * 
  * @example
- *  <w-swipe :interval="3000" :auto-play="true" :height="320">
- *      <w-swipte-item>内容</w-swipe-item>
- *      <w-swipte-item>内容</w-swipe-item>
- * </w-swipe>
+ *  <bee-swipe :interval="3000" :auto-play="true" :height="320">
+ *      <bee-swipe__item>内容</bee-swipe__item>
+ *      <bee-swipe__item>内容</bee-swipe__item>
+ * </bee-swipe>
  */
 
-var script$x = {
-  name: 'w-swipe',
+var script$r = {
+  name: 'bee-swipe',
   props: {
     height: {
       type: Number,
@@ -7959,10 +5904,10 @@ var script$x = {
       };
     },
     dotesClass: function dotesClass() {
-      return ["pos-".concat(this.dotesPos)];
+      return ["bee-swipe__dots--pos-".concat(this.dotesPos)];
     },
     classes: function classes() {
-      return [this.status == "transition" ? 'transition' : '', this.dirType == HORIZONTAL ? 'horizontal' : 'vertical'];
+      return [this.status == "transition" ? 'bee-swipe--transition' : '', this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : ''];
     }
   },
   watch: {
@@ -8117,12 +6062,12 @@ var script$x = {
   },
   mounted: function mounted() {
     // 初始化
-    this.items = [].slice.call(this.$el.querySelectorAll('.wui-swipe-item'));
+    this.items = [].slice.call(this.$el.querySelectorAll('.bee-swipe__item'));
     this.size = this.items.length;
 
     if (this.index < 0 || this.index >= this.size) {
       this.index = 0;
-      console.warn('[Wui warn]:Index out of range');
+      console.warn('[Bee warn]:Index out of range');
     }
 
     this._bindTouch(); //this.distance = -1 * this.index * this.itemWidth;
@@ -8133,38 +6078,38 @@ var script$x = {
 };
 
 /* script */
-var __vue_script__$x = script$x;
+var __vue_script__$r = script$r;
 /* template */
 
-var __vue_render__$x = function __vue_render__() {
+var __vue_render__$r = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-swipe",
+  return _c('div', {
+    staticClass: "bee-swipe",
     style: _vm.styles,
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
-  }, [_c("div", {
-    staticClass: "wui-swipe-wrap",
+  }, [_c('div', {
+    staticClass: "bee-swipe__wrap",
     class: _vm.classes,
     style: _vm.wrapStyles
-  }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c("div", {
-    staticClass: "wui-swpier-dotes",
+  }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c('div', {
+    staticClass: "bee-swpier__dotes",
     class: _vm.dotesClass
   }, _vm._l(_vm.items, function (item, i) {
-    return _c("span", {
-      key: "swiper-" + i,
-      class: ["wui-swipe-dot", i == _vm.index ? "wui-swipe-dot-cur" : ""],
+    return _c('span', {
+      key: 'swiper-' + i,
+      class: ['bee-swipe__dot', i == _vm.index ? 'bee-swipe__dot--cur' : ''],
       style: [_vm.dotStyles, i == _vm.index ? {
         backgroundColor: _vm.curDotColor
       } : {}],
       on: {
-        click: function click($event) {
+        "click": function click($event) {
           $event.stopPropagation();
           return _vm.goIndex(i);
         }
@@ -8173,28 +6118,27 @@ var __vue_render__$x = function __vue_render__() {
   }), 0) : _vm._e()]);
 };
 
-var __vue_staticRenderFns__$x = [];
-__vue_render__$x._withStripped = true;
+var __vue_staticRenderFns__$r = [];
 /* style */
 
-var __vue_inject_styles__$x = undefined;
+var __vue_inject_styles__$r = undefined;
 /* scoped */
 
-var __vue_scope_id__$x = undefined;
+var __vue_scope_id__$r = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$x = undefined;
+var __vue_module_identifier__$r = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$x = false;
+var __vue_is_functional_template__$r = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Swipe = normalizeComponent_1({
-  render: __vue_render__$x,
-  staticRenderFns: __vue_staticRenderFns__$x
-}, __vue_inject_styles__$x, __vue_script__$x, __vue_scope_id__$x, __vue_is_functional_template__$x, __vue_module_identifier__$x, undefined, undefined);
+  render: __vue_render__$r,
+  staticRenderFns: __vue_staticRenderFns__$r
+}, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
 
 //
 //
@@ -8202,61 +6146,51 @@ var Swipe = normalizeComponent_1({
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$y = {
-  name: 'w-swipe'
+var script$s = {
+  name: 'bee-swipe-item'
 };
 
 /* script */
-var __vue_script__$y = script$y;
+var __vue_script__$s = script$s;
 /* template */
 
-var __vue_render__$y = function __vue_render__() {
+var __vue_render__$s = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-swipe-item"
+  return _c('div', {
+    staticClass: "bee-swipe__item"
   }, [_vm._t("default")], 2);
 };
 
-var __vue_staticRenderFns__$y = [];
-__vue_render__$y._withStripped = true;
+var __vue_staticRenderFns__$s = [];
 /* style */
 
-var __vue_inject_styles__$y = undefined;
+var __vue_inject_styles__$s = undefined;
 /* scoped */
 
-var __vue_scope_id__$y = undefined;
+var __vue_scope_id__$s = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$y = undefined;
+var __vue_module_identifier__$s = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$y = false;
+var __vue_is_functional_template__$s = false;
 /* style inject */
 
 /* style inject SSR */
 
 var SwipeItem = normalizeComponent_1({
-  render: __vue_render__$y,
-  staticRenderFns: __vue_staticRenderFns__$y
-}, __vue_inject_styles__$y, __vue_script__$y, __vue_scope_id__$y, __vue_is_functional_template__$y, __vue_module_identifier__$y, undefined, undefined);
+  render: __vue_render__$s,
+  staticRenderFns: __vue_staticRenderFns__$s
+}, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
 
 Swipe.install = function (vue) {
-  vue.component('w-swipe-item', SwipeItem);
-  vue.component('w-swipe', Swipe);
+  vue.component(SwipeItem.name, SwipeItem);
+  vue.component(Swipe.name, Swipe);
 };
 
 //
@@ -8289,7 +6223,7 @@ Swipe.install = function (vue) {
 //
 //
 //
-var script$z = {
+var script$t = {
   name: 'bee-action-sheet-item',
   props: {
     action: Function
@@ -8302,48 +6236,48 @@ var script$z = {
 };
 
 /* script */
-var __vue_script__$z = script$z;
+var __vue_script__$t = script$t;
 /* template */
 
-var __vue_render__$z = function __vue_render__() {
+var __vue_render__$t = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
+  return _c('div', {
     staticClass: "bee-action-sheet__item bee-border-1px bee-border-b",
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
   }, [_vm._t("default")], 2);
 };
 
-var __vue_staticRenderFns__$z = [];
-__vue_render__$z._withStripped = true;
+var __vue_staticRenderFns__$t = [];
 /* style */
 
-var __vue_inject_styles__$z = undefined;
+var __vue_inject_styles__$t = undefined;
 /* scoped */
 
-var __vue_scope_id__$z = undefined;
+var __vue_scope_id__$t = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$z = undefined;
+var __vue_module_identifier__$t = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$z = false;
+var __vue_is_functional_template__$t = false;
 /* style inject */
 
 /* style inject SSR */
 
 var ActionSheetItem = normalizeComponent_1({
-  render: __vue_render__$z,
-  staticRenderFns: __vue_staticRenderFns__$z
-}, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, undefined, undefined);
+  render: __vue_render__$t,
+  staticRenderFns: __vue_staticRenderFns__$t
+}, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
 
-var script$A = {
+var _components$2;
+var script$u = {
   name: 'bee-action-sheet',
   props: {
     isShow: {
@@ -8366,9 +6300,7 @@ var script$A = {
       visiable: this.isShow
     };
   },
-  components: _defineProperty({
-    'bee-mask': Mask
-  }, ActionSheetItem.name, ActionSheetItem),
+  components: (_components$2 = {}, _defineProperty(_components$2, Mask.name, Mask), _defineProperty(_components$2, ActionSheetItem.name, ActionSheetItem), _components$2),
   watch: {
     isShow: function isShow(val) {
       this.visiable = val;
@@ -8413,36 +6345,36 @@ var script$A = {
 };
 
 /* script */
-var __vue_script__$A = script$A;
+var __vue_script__$u = script$u;
 /* template */
 
-var __vue_render__$A = function __vue_render__() {
+var __vue_render__$u = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("w-mask", {
+  return _c('w-mask', {
     attrs: {
       "is-show": _vm.visiable,
       "is-remove": _vm.isRemove
     },
     on: {
-      click: function click($event) {
+      "click": function click($event) {
         $event.stopPropagation();
         return _vm.hide($event);
       }
     }
-  }, [_c("transition", {
+  }, [_c('transition', {
     attrs: {
-      name: "bee-animate_bibo"
+      "name": "bee-animate_bibo"
     },
     on: {
       "after-enter": _vm._enter,
       "after-leave": _vm._leave
     }
-  }, [_c("div", {
+  }, [_c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -8452,54 +6384,53 @@ var __vue_render__$A = function __vue_render__() {
     ref: "oel",
     staticClass: "bee-action-sheet",
     style: _vm.styles
-  }, [_c("div", {
+  }, [_c('div', {
     staticClass: "bee-action-sheet__box"
-  }, [_c("div", {
+  }, [_c('div', {
     staticClass: "bee-action-sheet__list"
   }, [_vm._t("default", _vm._l(_vm.actions, function (ac, $i) {
-    return _c("w-action-sheet-item", {
-      key: "as-" + $i,
+    return _c('w-action-sheet-item', {
+      key: 'as-' + $i,
       on: {
-        click: ac.action
+        "click": ac.action
       }
     }, [_vm._v(_vm._s(ac.text))]);
-  }))], 2), _vm._v(" "), _c("div", {
+  }))], 2), _vm._v(" "), _c('div', {
     staticClass: "bee-action-sheet__button",
     on: {
-      click: _vm.hide
+      "click": _vm.hide
     }
   }, [_vm._v("取消")])])])])], 1);
 };
 
-var __vue_staticRenderFns__$A = [];
-__vue_render__$A._withStripped = true;
+var __vue_staticRenderFns__$u = [];
 /* style */
 
-var __vue_inject_styles__$A = undefined;
+var __vue_inject_styles__$u = undefined;
 /* scoped */
 
-var __vue_scope_id__$A = undefined;
+var __vue_scope_id__$u = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$A = undefined;
+var __vue_module_identifier__$u = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$A = false;
+var __vue_is_functional_template__$u = false;
 /* style inject */
 
 /* style inject SSR */
 
 var ActionSheet = normalizeComponent_1({
-  render: __vue_render__$A,
-  staticRenderFns: __vue_staticRenderFns__$A
-}, __vue_inject_styles__$A, __vue_script__$A, __vue_scope_id__$A, __vue_is_functional_template__$A, __vue_module_identifier__$A, undefined, undefined);
+  render: __vue_render__$u,
+  staticRenderFns: __vue_staticRenderFns__$u
+}, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
 
 var ActionSheetClass, instance$2, vm$2;
 /**
- * w-action-sheet
+ * bee-action-sheet
  * @module ActionSheet
  * @see {@link ../example/all/action-sheet.html 实例}
- * @desc ActionSheet框组件 <w-action-sheet />
+ * @desc ActionSheet框组件 <bee-action-sheet />
  * @param {Array} actions - 动作菜单项
  * @param {Boolean} isShow=false - 是否显示
  * @param {Boolean} isRemove=false - 是否隐藏后删除
@@ -8510,7 +6441,7 @@ var ActionSheetClass, instance$2, vm$2;
  * @param {Event} visiable-change - 显示隐藏时都会触发
  * @param {Slot} slot - default - 组件slot
  * @example
- * import {ActionSheet} from 'wui/packages/action-sheet';
+ * import {ActionSheet} from 'bee/packages/action-sheet';
  * 
  * // 动态创建
  * ActionSheet.show({
@@ -8562,7 +6493,7 @@ var ActionSheetClass, instance$2, vm$2;
  *              this.isShow = visiable;
  *          },
  *          showActionSheet:function(){
- *              Wui.ActionSheet.show({
+ *              Bee.ActionSheet.show({
  *                 actions: this.actions
  *              });
  *          }
@@ -8584,7 +6515,7 @@ ActionSheet.install = function (vue) {
  * 
  * @example
  * 
- *      Wui.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
+ *      Bee.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
  * 
  */
 
@@ -8613,7 +6544,7 @@ ActionSheet.show = function (opts) {
  * 
  * @example
  * 
- *   Wui.ActionSheet.hide()
+ *   Bee.ActionSheet.hide()
  * 
  */
 
@@ -8633,7 +6564,7 @@ ActionSheet.hide = function () {
  * 
  * @example
  * 
- *   if （Wui.ActionSheet.isVisiable(){
+ *   if （Bee.ActionSheet.isVisiable(){
  *     console.log('done something')
  *   }
  * 
@@ -8641,12 +6572,42 @@ ActionSheet.hide = function () {
 
 
 ActionSheet.isVisiable = function () {
-  return instance$2 && instance$2.isShow;
+  return !!instance$2 && instance$2.isShow;
+};
+
+var clickoutsideContext = '@@clickoutsideContext';
+var Clickoutside = {
+  bind: function bind(el, binding, vnode) {
+    var documentHandler = function documentHandler(e) {
+      if (vnode.context && !el.contains(e.target)) {
+        vnode.context[el[clickoutsideContext].methodName]();
+      }
+    };
+
+    el[clickoutsideContext] = {
+      documentHandler: documentHandler,
+      methodName: binding.expression,
+      arg: binding.arg || 'click'
+    };
+    document.addEventListener(el[clickoutsideContext].arg, documentHandler);
+  },
+  update: function update(el, binding) {
+    el[clickoutsideContext].methodName = binding.expression;
+  },
+  unbind: function unbind(el) {
+    document.removeEventListener(el[clickoutsideContext].arg, el[clickoutsideContext].documentHandler);
+  },
+  install: function install(Vue) {
+    Vue.directive('clickoutside', {
+      bind: this.bind,
+      unbind: this.unbind
+    });
+  }
 };
 
 //
-var script$B = {
-  name: 'w-input',
+var script$v = {
+  name: 'bee-input',
   props: {
     placeholder: String,
     disabled: Boolean,
@@ -8702,7 +6663,7 @@ var script$B = {
     autofocus: function autofocus(val) {
       if (val) {
         //this.$nextTick(()=>{
-        this.$el.querySelector('.wui-input').focus(); //})
+        this.$el.querySelector('input').focus(); //})
       }
     }
   },
@@ -8774,65 +6735,65 @@ var script$B = {
 
     if (this.autofocus) {
       //this.$nextTick(()=>{
-      this.$el.querySelector('.wui-input').focus(); //})
+      this.$el.querySelector('input').focus(); //})
     }
   }
 };
 
 /* script */
-var __vue_script__$B = script$B;
+var __vue_script__$v = script$v;
 /* template */
 
-var __vue_render__$B = function __vue_render__() {
+var __vue_render__$v = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
+  return _c('div', {
     directives: [{
       name: "clickoutside",
       rawName: "v-clickoutside",
       value: _vm.unActive,
       expression: "unActive"
     }],
-    staticClass: "wui-input-wrap"
-  }, [_c("div", {
-    staticClass: "wui-input-content"
-  }, [_vm.type === "checkbox" ? _c("input", {
+    staticClass: "bee-input"
+  }, [_c('div', {
+    staticClass: "bee-input__content"
+  }, [_vm.type === 'checkbox' ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentValue,
       expression: "currentValue"
     }],
-    staticClass: "wui-input",
+    staticClass: "bee-input__input",
     style: _vm.styles,
     attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      name: _vm.name,
-      maxlength: _vm.maxlength,
-      pattern: _vm.pattern,
-      type: "checkbox"
+      "placeholder": _vm.placeholder,
+      "disabled": _vm.disabled,
+      "readonly": _vm.readonly,
+      "name": _vm.name,
+      "maxlength": _vm.maxlength,
+      "pattern": _vm.pattern,
+      "type": "checkbox"
     },
     domProps: {
-      checked: Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
+      "checked": Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
     },
     on: {
-      keyup: function keyup($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
+      "keyup": function keyup($event) {
+        if (!$event.type.indexOf('key') && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
           return null;
         }
 
         return _vm.handleEnter($event);
       },
-      focus: _vm.handleFocus,
-      blur: _vm.handleBlur,
-      input: _vm.handleInput,
-      change: [function ($event) {
+      "focus": _vm.handleFocus,
+      "blur": _vm.handleBlur,
+      "input": _vm.handleInput,
+      "change": [function ($event) {
         var $$a = _vm.currentValue,
             $$el = $event.target,
             $$c = $$el.checked ? true : false;
@@ -8851,125 +6812,124 @@ var __vue_render__$B = function __vue_render__() {
         }
       }, _vm.handleChange]
     }
-  }) : _vm.type === "radio" ? _c("input", {
+  }) : _vm.type === 'radio' ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentValue,
       expression: "currentValue"
     }],
-    staticClass: "wui-input",
+    staticClass: "bee-input__input",
     style: _vm.styles,
     attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      name: _vm.name,
-      maxlength: _vm.maxlength,
-      pattern: _vm.pattern,
-      type: "radio"
+      "placeholder": _vm.placeholder,
+      "disabled": _vm.disabled,
+      "readonly": _vm.readonly,
+      "name": _vm.name,
+      "maxlength": _vm.maxlength,
+      "pattern": _vm.pattern,
+      "type": "radio"
     },
     domProps: {
-      checked: _vm._q(_vm.currentValue, null)
+      "checked": _vm._q(_vm.currentValue, null)
     },
     on: {
-      keyup: function keyup($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
+      "keyup": function keyup($event) {
+        if (!$event.type.indexOf('key') && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
           return null;
         }
 
         return _vm.handleEnter($event);
       },
-      focus: _vm.handleFocus,
-      blur: _vm.handleBlur,
-      input: _vm.handleInput,
-      change: [function ($event) {
+      "focus": _vm.handleFocus,
+      "blur": _vm.handleBlur,
+      "input": _vm.handleInput,
+      "change": [function ($event) {
         _vm.currentValue = null;
       }, _vm.handleChange]
     }
-  }) : _c("input", {
+  }) : _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentValue,
       expression: "currentValue"
     }],
-    staticClass: "wui-input",
+    staticClass: "bee-input__input",
     style: _vm.styles,
     attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      name: _vm.name,
-      maxlength: _vm.maxlength,
-      pattern: _vm.pattern,
-      type: _vm.type
+      "placeholder": _vm.placeholder,
+      "disabled": _vm.disabled,
+      "readonly": _vm.readonly,
+      "name": _vm.name,
+      "maxlength": _vm.maxlength,
+      "pattern": _vm.pattern,
+      "type": _vm.type
     },
     domProps: {
-      value: _vm.currentValue
+      "value": _vm.currentValue
     },
     on: {
-      keyup: function keyup($event) {
-        if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
+      "keyup": function keyup($event) {
+        if (!$event.type.indexOf('key') && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
           return null;
         }
 
         return _vm.handleEnter($event);
       },
-      focus: _vm.handleFocus,
-      blur: _vm.handleBlur,
-      input: [function ($event) {
+      "focus": _vm.handleFocus,
+      "blur": _vm.handleBlur,
+      "input": [function ($event) {
         if ($event.target.composing) {
           return;
         }
 
         _vm.currentValue = $event.target.value;
       }, _vm.handleInput],
-      change: _vm.handleChange
+      "change": _vm.handleChange
     }
-  })]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.active && _vm.currentValue,
       expression: "active && currentValue"
     }],
-    staticClass: "wui-input-clear",
+    staticClass: "bee-input__clear",
     on: {
-      click: _vm.handleClear
+      "click": _vm.handleClear
     }
-  }, [_c("w-icon", {
+  }, [_c('bee-icon', {
     attrs: {
-      type: "roundclosefill",
-      fill: "#d8d8d8",
-      width: 16,
-      height: 16
+      "type": "roundclosefill",
+      "fill": "#d8d8d8",
+      "width": 16,
+      "height": 16
     }
   })], 1)]);
 };
 
-var __vue_staticRenderFns__$B = [];
-__vue_render__$B._withStripped = true;
+var __vue_staticRenderFns__$v = [];
 /* style */
 
-var __vue_inject_styles__$B = undefined;
+var __vue_inject_styles__$v = undefined;
 /* scoped */
 
-var __vue_scope_id__$B = undefined;
+var __vue_scope_id__$v = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$B = undefined;
+var __vue_module_identifier__$v = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$B = false;
+var __vue_is_functional_template__$v = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Input = normalizeComponent_1({
-  render: __vue_render__$B,
-  staticRenderFns: __vue_staticRenderFns__$B
-}, __vue_inject_styles__$B, __vue_script__$B, __vue_scope_id__$B, __vue_is_functional_template__$B, __vue_module_identifier__$B, undefined, undefined);
+  render: __vue_render__$v,
+  staticRenderFns: __vue_staticRenderFns__$v
+}, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
 
 Input.install = function (vue) {
   vue.component(Input.name, Input);
@@ -9054,8 +7014,14 @@ Input.install = function (vue) {
 //
 //
 //
-var script$C = {
-  name: 'w-switch',
+//
+//
+//
+//
+//
+//
+var script$w = {
+  name: 'bee-switch',
   props: {
     value: Boolean,
     disabled: {
@@ -9091,32 +7057,32 @@ var script$C = {
 };
 
 /* script */
-var __vue_script__$C = script$C;
+var __vue_script__$w = script$w;
 /* template */
 
-var __vue_render__$C = function __vue_render__() {
+var __vue_render__$w = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("label", [_c("input", {
+  return _c('label', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentValue,
       expression: "currentValue"
     }],
-    staticClass: "wui-switch wui-switch-animbg",
+    staticClass: "bee-switch bee-switch__animbg",
     attrs: {
-      type: "checkbox"
+      "type": "checkbox"
     },
     domProps: {
-      checked: Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
+      "checked": Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
     },
     on: {
-      change: function change($event) {
+      "change": function change($event) {
         var $$a = _vm.currentValue,
             $$el = $event.target,
             $$c = $$el.checked ? true : false;
@@ -9138,28 +7104,27 @@ var __vue_render__$C = function __vue_render__() {
   })]);
 };
 
-var __vue_staticRenderFns__$C = [];
-__vue_render__$C._withStripped = true;
+var __vue_staticRenderFns__$w = [];
 /* style */
 
-var __vue_inject_styles__$C = undefined;
+var __vue_inject_styles__$w = undefined;
 /* scoped */
 
-var __vue_scope_id__$C = undefined;
+var __vue_scope_id__$w = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$C = undefined;
+var __vue_module_identifier__$w = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$C = false;
+var __vue_is_functional_template__$w = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Switch = normalizeComponent_1({
-  render: __vue_render__$C,
-  staticRenderFns: __vue_staticRenderFns__$C
-}, __vue_inject_styles__$C, __vue_script__$C, __vue_scope_id__$C, __vue_is_functional_template__$C, __vue_module_identifier__$C, undefined, undefined);
+  render: __vue_render__$w,
+  staticRenderFns: __vue_staticRenderFns__$w
+}, __vue_inject_styles__$w, __vue_script__$w, __vue_scope_id__$w, __vue_is_functional_template__$w, __vue_module_identifier__$w, undefined, undefined);
 
 Switch.install = function (vue) {
   vue.component(Switch.name, Switch);
@@ -9173,13 +7138,8 @@ Switch.install = function (vue) {
 //
 //
 //
-//
-//
-//
-//
-//
-var script$D = {
-  name: 'w-option',
+var script$x = {
+  name: 'bee-option',
   props: {
     value: [Array, String, Object, Number],
     checked: {
@@ -9204,20 +7164,20 @@ var script$D = {
 };
 
 /* script */
-var __vue_script__$D = script$D;
+var __vue_script__$x = script$x;
 /* template */
 
-var __vue_render__$D = function __vue_render__() {
+var __vue_render__$x = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("li", {
-    staticClass: "wui-select-options-item",
+  return _c('li', {
+    staticClass: "bee-select__options__item",
     on: {
-      click: function click($event) {
+      "click": function click($event) {
         $event.stopPropagation();
         return _vm.handleClick($event);
       }
@@ -9225,32 +7185,31 @@ var __vue_render__$D = function __vue_render__() {
   }, [_vm._t("default")], 2);
 };
 
-var __vue_staticRenderFns__$D = [];
-__vue_render__$D._withStripped = true;
+var __vue_staticRenderFns__$x = [];
 /* style */
 
-var __vue_inject_styles__$D = undefined;
+var __vue_inject_styles__$x = undefined;
 /* scoped */
 
-var __vue_scope_id__$D = undefined;
+var __vue_scope_id__$x = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$D = undefined;
+var __vue_module_identifier__$x = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$D = false;
+var __vue_is_functional_template__$x = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Option = normalizeComponent_1({
-  render: __vue_render__$D,
-  staticRenderFns: __vue_staticRenderFns__$D
-}, __vue_inject_styles__$D, __vue_script__$D, __vue_scope_id__$D, __vue_is_functional_template__$D, __vue_module_identifier__$D, undefined, undefined);
+  render: __vue_render__$x,
+  staticRenderFns: __vue_staticRenderFns__$x
+}, __vue_inject_styles__$x, __vue_script__$x, __vue_scope_id__$x, __vue_is_functional_template__$x, __vue_module_identifier__$x, undefined, undefined);
 
-var _components;
-var script$E = {
-  name: 'w-select',
+var _components$3;
+var script$y = {
+  name: 'bee-select',
   props: {
     width: {
       type: [Number, String],
@@ -9293,7 +7252,7 @@ var script$E = {
       selectedIndex: ''
     };
   },
-  components: (_components = {}, _defineProperty(_components, Mask.name, Mask), _defineProperty(_components, Cell.name, Cell), _defineProperty(_components, Row.name, Row), _defineProperty(_components, Input.name, Input), _defineProperty(_components, Option.name, Option), _components),
+  components: (_components$3 = {}, _defineProperty(_components$3, Mask.name, Mask), _defineProperty(_components$3, Input.name, Input), _defineProperty(_components$3, Option.name, Option), _components$3),
   computed: {
     styles: function styles() {
       var o = {},
@@ -9365,49 +7324,49 @@ var script$E = {
 };
 
 /* script */
-var __vue_script__$E = script$E;
+var __vue_script__$y = script$y;
 /* template */
 
-var __vue_render__$E = function __vue_render__() {
+var __vue_render__$y = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-select",
+  return _c('div', {
+    staticClass: "bee-select",
     style: _vm.styles,
     on: {
       "touch-move": function touchMove($evt) {
         return $evt.preventDefault();
       },
-      click: function click($event) {
+      "click": function click($event) {
         $event.stopPropagation();
         return _vm.handleClick($event);
       }
     }
-  }, [_c("div", {
-    staticClass: "wui-select-content"
-  }, [Object(_vm.currentValue).hasOwnProperty("label") ? _c("input", {
+  }, [_c('div', {
+    staticClass: "bee-select__content"
+  }, [Object(_vm.currentValue).hasOwnProperty('label') ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentValue.label,
       expression: "currentValue.label"
     }],
-    staticClass: "wui-select-input",
+    staticClass: "bee-select__input",
     style: _vm.inputStyles,
     attrs: {
-      type: "text",
-      readonly: "",
-      placeholder: _vm.placeholder
+      "type": "text",
+      "readonly": "",
+      "placeholder": _vm.placeholder
     },
     domProps: {
-      value: _vm.currentValue.label
+      "value": _vm.currentValue.label
     },
     on: {
-      input: function input($event) {
+      "input": function input($event) {
         if ($event.target.composing) {
           return;
         }
@@ -9415,25 +7374,25 @@ var __vue_render__$E = function __vue_render__() {
         _vm.$set(_vm.currentValue, "label", $event.target.value);
       }
     }
-  }) : _c("input", {
+  }) : _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentValue,
       expression: "currentValue"
     }],
-    staticClass: "wui-select-input",
+    staticClass: "bee-select__input",
     style: _vm.inputStyles,
     attrs: {
-      type: "text",
-      readonly: "",
-      placeholder: _vm.placeholder
+      "type": "text",
+      "readonly": "",
+      "placeholder": _vm.placeholder
     },
     domProps: {
-      value: _vm.currentValue
+      "value": _vm.currentValue
     },
     on: {
-      input: function input($event) {
+      "input": function input($event) {
         if ($event.target.composing) {
           return;
         }
@@ -9441,70 +7400,69 @@ var __vue_render__$E = function __vue_render__() {
         _vm.currentValue = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("w-mask", {
+  })]), _vm._v(" "), _c('w-mask', {
     attrs: {
       "is-show": _vm.visiable
     },
     on: {
-      click: function click($event) {
+      "click": function click($event) {
         $event.stopPropagation();
         return _vm.closeOptions($event);
       }
     }
-  }, [_c("transition", {
+  }, [_c('transition', {
     attrs: {
-      name: "wui-bibo"
+      "name": "bee-animate--bibo"
     }
-  }, [_c("div", {
+  }, [_c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.visiable,
       expression: "visiable"
     }],
-    staticClass: "wui-select-options-con",
+    staticClass: "bee-select__options",
     style: _vm.optionStyles
-  }, [_c("ul", {
-    staticClass: "wui-select-options",
-    class: ["c-select-options-list-" + _vm._uid],
+  }, [_c('ul', {
+    staticClass: "bee-select__options__list",
+    class: ['bee-select__options__list-' + _vm._uid],
     on: {
-      touchmove: function touchmove($event) {
+      "touchmove": function touchmove($event) {
         $event.stopPropagation();
         return function (e) {}($event);
       }
     }
   }, [_vm._t("default", _vm._l(_vm.options, function (option, $index) {
-    return _c("w-option", {
-      key: "select_" + $index,
+    return _c('w-option', {
+      key: 'select_' + $index,
       attrs: {
-        value: option
+        "value": option
       }
-    }, [_vm._v(_vm._s(option.hasOwnProperty("label") ? option.label : option))]);
+    }, [_vm._v(_vm._s(option.hasOwnProperty('label') ? option.label : option))]);
   }))], 2)])])], 1)], 1);
 };
 
-var __vue_staticRenderFns__$E = [];
-__vue_render__$E._withStripped = true;
+var __vue_staticRenderFns__$y = [];
 /* style */
 
-var __vue_inject_styles__$E = undefined;
+var __vue_inject_styles__$y = undefined;
 /* scoped */
 
-var __vue_scope_id__$E = undefined;
+var __vue_scope_id__$y = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$E = undefined;
+var __vue_module_identifier__$y = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$E = false;
+var __vue_is_functional_template__$y = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Select = normalizeComponent_1({
-  render: __vue_render__$E,
-  staticRenderFns: __vue_staticRenderFns__$E
-}, __vue_inject_styles__$E, __vue_script__$E, __vue_scope_id__$E, __vue_is_functional_template__$E, __vue_module_identifier__$E, undefined, undefined);
+  render: __vue_render__$y,
+  staticRenderFns: __vue_staticRenderFns__$y
+}, __vue_inject_styles__$y, __vue_script__$y, __vue_scope_id__$y, __vue_is_functional_template__$y, __vue_module_identifier__$y, undefined, undefined);
 
 //
 //
@@ -9514,13 +7472,8 @@ var Select = normalizeComponent_1({
 //
 //
 //
-//
-//
-//
-//
-//
-var script$F = {
-  name: 'w-option',
+var script$z = {
+  name: 'bee-option',
   props: {
     value: [Array, String, Object, Number],
     checked: {
@@ -9545,20 +7498,20 @@ var script$F = {
 };
 
 /* script */
-var __vue_script__$F = script$F;
+var __vue_script__$z = script$z;
 /* template */
 
-var __vue_render__$F = function __vue_render__() {
+var __vue_render__$z = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("li", {
-    staticClass: "wui-select-options-item",
+  return _c('li', {
+    staticClass: "bee-select__options__item",
     on: {
-      click: function click($event) {
+      "click": function click($event) {
         $event.stopPropagation();
         return _vm.handleClick($event);
       }
@@ -9566,43 +7519,42 @@ var __vue_render__$F = function __vue_render__() {
   }, [_vm._t("default")], 2);
 };
 
-var __vue_staticRenderFns__$F = [];
-__vue_render__$F._withStripped = true;
+var __vue_staticRenderFns__$z = [];
 /* style */
 
-var __vue_inject_styles__$F = undefined;
+var __vue_inject_styles__$z = undefined;
 /* scoped */
 
-var __vue_scope_id__$F = undefined;
+var __vue_scope_id__$z = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$F = undefined;
+var __vue_module_identifier__$z = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$F = false;
+var __vue_is_functional_template__$z = false;
 /* style inject */
 
 /* style inject SSR */
 
 var Option$1 = normalizeComponent_1({
-  render: __vue_render__$F,
-  staticRenderFns: __vue_staticRenderFns__$F
-}, __vue_inject_styles__$F, __vue_script__$F, __vue_scope_id__$F, __vue_is_functional_template__$F, __vue_module_identifier__$F, undefined, undefined);
+  render: __vue_render__$z,
+  staticRenderFns: __vue_staticRenderFns__$z
+}, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, undefined, undefined);
 
 Select.install = function (vue) {
   vue.component(Option$1.name, Option$1);
   vue.component(Select.name, Select);
 };
 
-//
+var _components$4;
 var iconProps = {
   fill: '#c0c0c0',
   width: 18,
   height: 18,
   type: 'right'
 };
-var script$G = {
-  name: 'w-list-item',
+var script$A = {
+  name: 'bee-list-item',
   props: {
     height: {
       type: [Number, String],
@@ -9614,13 +7566,13 @@ var script$G = {
       type: [Number, String],
       default: 80
     },
-    labelAlign: {
+    labelAlignH: {
       type: String,
-      default: 'left'
+      default: 'start'
     },
-    labelVertical: {
+    labelAlignV: {
       type: String,
-      default: 'middle'
+      default: 'center'
     },
     labelStyle: Object,
     showLabel: {
@@ -9631,12 +7583,15 @@ var script$G = {
       type: [Number, String],
       default: 28
     },
-    iconAlign: {
+    iconAlignH: {
+      type: String,
+      default: 'center'
+    },
+    iconAlignV: {
       type: String,
       default: 'center'
     },
     iconStyle: Object,
-    iconVertical: String,
     showIcon: {
       type: Boolean,
       default: true
@@ -9653,15 +7608,28 @@ var script$G = {
       _icon: this.icon
     };
   },
-  components: {
-    'w-row': Row,
-    'w-cell': Cell
-  },
+  components: (_components$4 = {}, _defineProperty(_components$4, FlexBox.name, FlexBox), _defineProperty(_components$4, FlexItem.name, FlexItem), _defineProperty(_components$4, Icon.name, Icon), _components$4),
   computed: {
     styles: function styles() {
       return {
         height: /^\d+$/.test(String(this.height)) ? this.height + 'px' : this.height
       };
+    },
+    labelFlex: function labelFlex() {
+      return "0 0 ".concat(this.labelWidth, "px");
+    },
+    iconFlex: function iconFlex() {
+      return "0 0 ".concat(this.iconWidth, "px");
+    },
+    labelClass: function labelClass() {
+      var ah = this.labelAlignH,
+          av = this.labelAlignV;
+      return ['bee-list-item__label', "bee-flex bee-flex--".concat(ah, "-").concat(av)];
+    },
+    iconClass: function iconClass() {
+      var ah = this.iconAlignH,
+          av = this.iconAlignV;
+      return ['bee-list-item__icon', "bee-flex bee-flex--".concat(ah, "-").concat(av)];
     }
   },
   watch: {
@@ -9683,55 +7651,47 @@ var script$G = {
 };
 
 /* script */
-var __vue_script__$G = script$G;
+var __vue_script__$A = script$A;
 /* template */
 
-var __vue_render__$G = function __vue_render__() {
+var __vue_render__$A = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-list-item wui-border-1px wui-border-b",
+  return _c('bee-flexbox', {
+    staticClass: "bee-list-item bee-border-1px bee-border-b",
+    style: _vm.styles,
     on: {
-      click: _vm.handleClick
+      "click": _vm.handleClick
     }
-  }, [_c("w-row", {
-    staticClass: "wui-list-item-wrap",
-    style: _vm.styles
-  }, [_vm.showLabel ? _c("w-cell", {
-    staticClass: "wui-list-item-label-wrap",
+  }, [_vm.showLabel ? _c('bee-flexitem', {
+    class: _vm.labelClass,
     style: _vm.labelStyle,
     attrs: {
-      width: _vm.labelWidth,
-      align: _vm.labelAlign,
-      vertical: _vm.labelVertical
+      "flex": _vm.labelFlex
     },
     on: {
-      click: _vm.handleLabelClick
+      "click": _vm.handleLabelClick
     }
-  }, [_vm._t("label", [_c("label", {
-    staticClass: "wui-field-label"
-  }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c("w-cell", {
-    staticClass: "wui-list-item-content",
-    attrs: {
-      vertical: "middle"
-    }
-  }, [_vm._t("content", [_c("div", {
-    staticClass: "list-item-content-text"
-  }, [_vm._v(_vm._s(_vm.content))])])], 2), _vm._v(" "), _vm.showIcon ? _c("w-cell", {
+  }, [_vm._t("label", [_c('label', {
+    staticClass: "bee-list-item__label_text"
+  }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c('bee-flexitem', {
+    staticClass: "bee-list-item__content bee-flex bee-flex--start-center"
+  }, [_vm._t("default", [_c('div', {
+    staticClass: "bee-list-item__content_text"
+  }, [_vm._v(_vm._s(_vm.content))])])], 2), _vm._v(" "), _vm.showIcon ? _c('bee-flexitem', {
+    class: _vm.iconClass,
     style: _vm.iconStyle,
     attrs: {
-      width: _vm.iconWidth,
-      vertical: _vm.iconVertical,
-      align: _vm.iconAlign
+      "flex": _vm.iconFlex
     },
     on: {
-      click: _vm.handleIconClick
+      "click": _vm.handleIconClick
     }
-  }, [_vm._t("icon", [_c("w-icon", {
+  }, [_vm._t("icon", [_c('bee-icon', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -9740,39 +7700,38 @@ var __vue_render__$G = function __vue_render__() {
     }],
     style: _vm.iconStyle,
     attrs: {
-      type: _vm.icon.type,
-      fill: _vm.icon.fill,
-      width: _vm.icon.width,
-      height: _vm.icon.height
+      "type": _vm.icon.type,
+      "fill": _vm.icon.fill,
+      "width": _vm.icon.width,
+      "height": _vm.icon.height
     }
-  })])], 2) : _vm._e()], 1)], 1);
+  })])], 2) : _vm._e()], 1);
 };
 
-var __vue_staticRenderFns__$G = [];
-__vue_render__$G._withStripped = true;
+var __vue_staticRenderFns__$A = [];
 /* style */
 
-var __vue_inject_styles__$G = undefined;
+var __vue_inject_styles__$A = undefined;
 /* scoped */
 
-var __vue_scope_id__$G = undefined;
+var __vue_scope_id__$A = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$G = undefined;
+var __vue_module_identifier__$A = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$G = false;
+var __vue_is_functional_template__$A = false;
 /* style inject */
 
 /* style inject SSR */
 
 var ListItem = normalizeComponent_1({
-  render: __vue_render__$G,
-  staticRenderFns: __vue_staticRenderFns__$G
-}, __vue_inject_styles__$G, __vue_script__$G, __vue_scope_id__$G, __vue_is_functional_template__$G, __vue_module_identifier__$G, undefined, undefined);
+  render: __vue_render__$A,
+  staticRenderFns: __vue_staticRenderFns__$A
+}, __vue_inject_styles__$A, __vue_script__$A, __vue_scope_id__$A, __vue_is_functional_template__$A, __vue_module_identifier__$A, undefined, undefined);
 
-var script$H = {
-  name: 'w-list',
+var script$B = {
+  name: 'bee-list',
   props: {
     items: {
       type: Array,
@@ -9785,223 +7744,60 @@ var script$H = {
 };
 
 /* script */
-var __vue_script__$H = script$H;
+var __vue_script__$B = script$B;
 /* template */
 
-var __vue_render__$H = function __vue_render__() {
+var __vue_render__$B = function __vue_render__() {
   var _vm = this;
 
   var _h = _vm.$createElement;
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", {
-    staticClass: "wui-list wui-border-1px wui-border-tb"
+  return _c('div', {
+    staticClass: "bee-list bee-border-1px bee-border-tb"
   }, [_vm._t("default")], 2);
 };
 
-var __vue_staticRenderFns__$H = [];
-__vue_render__$H._withStripped = true;
+var __vue_staticRenderFns__$B = [];
 /* style */
 
-var __vue_inject_styles__$H = undefined;
+var __vue_inject_styles__$B = undefined;
 /* scoped */
 
-var __vue_scope_id__$H = undefined;
+var __vue_scope_id__$B = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$H = undefined;
+var __vue_module_identifier__$B = undefined;
 /* functional template */
 
-var __vue_is_functional_template__$H = false;
+var __vue_is_functional_template__$B = false;
 /* style inject */
 
 /* style inject SSR */
 
 var List = normalizeComponent_1({
-  render: __vue_render__$H,
-  staticRenderFns: __vue_staticRenderFns__$H
-}, __vue_inject_styles__$H, __vue_script__$H, __vue_scope_id__$H, __vue_is_functional_template__$H, __vue_module_identifier__$H, undefined, undefined);
-
-var _components$1;
-var script$I = {
-  name: 'w-list-input-item',
-  extends: ListItem,
-  props: {
-    placeholder: String,
-    disabled: Boolean,
-    readonly: Boolean,
-    autofocus: Boolean,
-    type: String,
-    name: String,
-    maxlength: Number,
-    pattern: String,
-    value: String,
-    error: String,
-    inputStyles: Object
-  },
-  data: function data() {
-    return {
-      currentValue: this.value
-    };
-  },
-  components: (_components$1 = {}, _defineProperty(_components$1, ListItem.name, ListItem), _defineProperty(_components$1, Input.name, Input), _components$1),
-  computed: {
-    inputHeight: function inputHeight() {
-      return this.error ? Number(this.height) + 20 : this.height;
-    }
-  },
-  watch: {
-    value: function value(val) {
-      this.currentValue = val;
-    },
-    currentValue: function currentValue(val) {
-      this.$emit('input', val);
-    }
-  },
-  methods: {
-    handleEnter: function handleEnter() {},
-    handleFocus: function handleFocus() {
-      this.$emit('focus', this.currentValue);
-    },
-    handleBlur: function handleBlur() {
-      this.$emit('blur', this.currentValue);
-    },
-    handleInput: function handleInput() {
-      this.$emit('input', this.currentValue);
-    },
-    handleChange: function handleChange() {},
-    handleLabelClick: function handleLabelClick($e) {
-      this.$emit('label-click', $e);
-    },
-    handleIconClick: function handleIconClick($e) {
-      this.$emit('icon-click', $e);
-    }
-  }
-};
-
-/* script */
-var __vue_script__$I = script$I;
-/* template */
-
-var __vue_render__$I = function __vue_render__() {
-  var _vm = this;
-
-  var _h = _vm.$createElement;
-
-  var _c = _vm._self._c || _h;
-
-  return _c("w-list-item", {
-    staticClass: "wui-list-input-item",
-    attrs: {
-      height: _vm.inputHeight,
-      label: _vm.label,
-      "label-width": _vm.labelWidth,
-      "label-align": _vm.labelAlign,
-      "label-vertical": _vm.labelVertical,
-      "label-style": _vm.labelStyle,
-      "show-label": _vm.showLabel,
-      "icon-width": _vm.iconWidth,
-      "icon-align": _vm.iconAlign,
-      "icon-vertical": _vm.iconVertical,
-      "icon-style": _vm.iconStyle,
-      "show-icon": _vm.showIcon
-    },
-    on: {
-      "label-click": _vm.handleLabelClick,
-      "icon-click": _vm.handleIconClick
-    }
-  }, [_vm.$slots["label"] ? _c("div", {
-    attrs: {
-      slot: "label"
-    },
-    slot: "label"
-  }, [_vm._t("label")], 2) : _vm._e(), _vm._v(" "), _c("div", {
-    staticClass: "wui-list-input-content",
-    attrs: {
-      slot: "content"
-    },
-    slot: "content"
-  }, [_c("w-input", {
-    staticClass: "wui-list-input",
-    attrs: {
-      placeholder: _vm.placeholder,
-      disabled: _vm.disabled,
-      readonly: _vm.readonly,
-      type: _vm.type,
-      name: _vm.name,
-      autofocus: _vm.autofocus,
-      maxlength: _vm.maxlength,
-      styles: _vm.inputStyles,
-      pattern: _vm.pattern
-    },
-    on: {
-      blur: _vm.handleBlur,
-      focus: _vm.handleFocus,
-      input: _vm.handleInput
-    },
-    model: {
-      value: _vm.currentValue,
-      callback: function callback($$v) {
-        _vm.currentValue = $$v;
-      },
-      expression: "currentValue"
-    }
-  }), _vm._v(" "), _vm.error ? _c("div", {
-    staticClass: "wui-list-input-error"
-  }, [_vm._v(_vm._s(_vm.error))]) : _vm._e()], 1), _vm._v(" "), _vm.$slots["icon"] ? _c("div", {
-    attrs: {
-      slot: "icon"
-    },
-    slot: "icon"
-  }, [_vm._t("icon")], 2) : _vm._e()]);
-};
-
-var __vue_staticRenderFns__$I = [];
-__vue_render__$I._withStripped = true;
-/* style */
-
-var __vue_inject_styles__$I = undefined;
-/* scoped */
-
-var __vue_scope_id__$I = undefined;
-/* module identifier */
-
-var __vue_module_identifier__$I = undefined;
-/* functional template */
-
-var __vue_is_functional_template__$I = false;
-/* style inject */
-
-/* style inject SSR */
-
-var ListInputItem = normalizeComponent_1({
-  render: __vue_render__$I,
-  staticRenderFns: __vue_staticRenderFns__$I
-}, __vue_inject_styles__$I, __vue_script__$I, __vue_scope_id__$I, __vue_is_functional_template__$I, __vue_module_identifier__$I, undefined, undefined);
+  render: __vue_render__$B,
+  staticRenderFns: __vue_staticRenderFns__$B
+}, __vue_inject_styles__$B, __vue_script__$B, __vue_scope_id__$B, __vue_is_functional_template__$B, __vue_module_identifier__$B, undefined, undefined);
 
 List.install = function (vue) {
   vue.component(ListItem.name, ListItem);
-  vue.component(ListInputItem.name, ListInputItem);
   vue.component(List.name, List);
 };
 
 var install = function install(vue) {
   vue.use(Border);
   vue.use(Toast$1);
-  vue.use(Flex);
   vue.use(FlexBox);
   vue.use(Icon);
   vue.use(Button);
-  vue.use(Field);
   vue.use(Checkbox);
-  vue.use(popup);
   vue.use(Dialog$1);
   vue.use(Alert$1);
   vue.use(Confirm$1);
   vue.use(Prompt$1);
   vue.use(Mask);
-  vue.use(Picker);
   vue.use(Spinner);
   vue.use(ToastLoading$1);
   vue.use(Message$1);
@@ -10014,28 +7810,24 @@ var install = function install(vue) {
   vue.use(Input);
   vue.use(Switch);
   vue.use(Select);
-  vue.prototype.$wui = Wui;
+  vue.prototype.$bee = Bee;
 };
 
-var Wui = {
+var Bee = {
   Border: Border,
   install: install,
   Toast: Toast$1,
   ToastLoading: ToastLoading$1,
   Loading: Loading,
   Icons: Icon,
-  Flex: Flex,
   FlexBox: FlexBox,
   Button: Button,
-  Field: Field,
   Checkbox: Checkbox,
-  Popup: popup,
   Dialog: Dialog$1,
   Alert: Alert$1,
   Confirm: Confirm$1,
   Prompt: Prompt$1,
   Mask: Mask,
-  Picker: Picker,
   Message: Message$1,
   Progress: Progress,
   LoadMore: LoadMore,
@@ -10043,41 +7835,12 @@ var Wui = {
   ActionSheet: ActionSheet,
   List: List,
   ListItem: ListItem,
-  ListInputItem: ListInputItem,
   Input: Input,
   Switch: Switch
 };
 
 if (window.Vue) {
-  window.Vue.use(Wui);
+  window.Vue.use(Bee);
 }
 
-exports.install = install;
-exports.Border = Border;
-exports.Toast = Toast$1;
-exports.ToastLoading = ToastLoading$1;
-exports.Loading = Loading;
-exports.Icons = Icon;
-exports.Flex = Flex;
-exports.FlexBox = FlexBox;
-exports.Button = Button;
-exports.Field = Field;
-exports.Checkbox = Checkbox;
-exports.Popup = popup;
-exports.Dialog = Dialog$1;
-exports.Alert = Alert$1;
-exports.Confirm = Confirm$1;
-exports.Prompt = Prompt$1;
-exports.Mask = Mask;
-exports.Picker = Picker;
-exports.Message = Message$1;
-exports.Progress = Progress;
-exports.LoadMore = LoadMore;
-exports.Swipe = Swipe;
-exports.ActionSheet = ActionSheet;
-exports.List = List;
-exports.ListItem = ListItem;
-exports.ListInputItem = ListInputItem;
-exports.Input = Input;
-exports.Switch = Switch;
-exports.default = Wui;
+exports.default = Bee;

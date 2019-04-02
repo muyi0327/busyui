@@ -1,0 +1,25 @@
+{
+    "name": "@bee/list",
+    "version": "1.0.0",
+    "description": "list component",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/muyi0327/bee.git"
+    },
+    "keywords": [
+        "bee",
+        "list",
+        "component",
+        "vue"
+    ],
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/muyi0327/bee/issues"
+    },
+    "homepage": "https://github.com/muyi0327/bee#readme"
+}

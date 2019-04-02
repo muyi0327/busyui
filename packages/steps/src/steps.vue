@@ -1,35 +1,35 @@
 <style lang="scss">
-    .wui-steps{
-        width:100%;
+    .bee-stepper {
+        width: 100%;
     }
 </style>
 
 <template>
-    <div class="wui-stepper"></div>
+    <div class="bee-stepper"></div>
 </template>
 
 <script>
     export default {
-        name:'w-stepper',
-        props:{
+        name: 'bee-stepper',
+        props: {
             steps: {
-                type:Array,
-                default(){
+                type: Array,
+                default() {
                     return []
                 }
             },
-            width:{
-                type:[Number,String],
+            width: {
+                type: [Number, String],
                 default: '100%'
             },
-            height:{
-                type:[Number,String],
+            height: {
+                type: [Number, String],
                 default: 100
             }
         },
-        computed:{
-            styles(){
-                
+        computed: {
+            styles() {
+
             }
         }
     }

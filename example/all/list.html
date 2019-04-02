@@ -1,107 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/wui.css" />
+    <link rel="stylesheet" href="../../dist/bee.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/wui.js"></script>
+    <script src="../../dist/bee.js"></script>
     <style type="text/css">
-        *{
+        * {
             padding: 0;
             margin: 0;
         }
-        html,body{
+
+        html,
+        body {
             height: 100%;
             padding: 0;
             margin: 0;
             background: #f7f7f7;
         }
-        .wrap, .app{
-            height:500%;
-            width:100%;
+
+        .wrap,
+        .app {
+            height: 100%;
+            width: 100%;
         }
 
-        .t1{
-            font-size:16px;
+        .t1 {
+            font-size: 16px;
             font-weight: 500;
             line-height: 32px;
         }
 
-        .t2{
-            font-size:12px;
+        .t2 {
+            font-size: 12px;
             color: #9a9a9a;
             line-height: 24px;
         }
     </style>
 </head>
+
 <body>
     <section class="wrap">
-         <section id="app" class="app">
-             <w-list>
-                 <w-list-item label="联系方式" content="请填写真实名字"></w-list-item>
-                 <w-list-item content="自定义label">
-                     <div slot="label" style="color:red;">联系方式</div>
-                 </w-list-item>
-                 <w-list-item label="姓名">
-                    <div slot="content" style="color: green;">自定义内容</div>
-                 </w-list-item>
+        <section id="app" class="app">
+            <bee-list>
+                <bee-list-item label="联系方式" content="请填写真实名字"></bee-list-item>
+                <bee-list-item content="自定义label">
+                    <div slot="label" style="color:red;">联系方式</div>
+                </bee-list-item>
+                <bee-list-item label="姓名">
+                    <div style="color: green;">自定义内容</div>
+                </bee-list-item>
 
-                 <w-list-item label="邮箱" content="自定义icon" icon-width="90">
-                    <div slot="icon"><w-button :plain="true" type="primary" height="24">发送</w-button></div>
-                 </w-list-item>
+                <bee-list-item label="邮箱" content="自定义icon" icon-width="90">
+                    <div slot="icon">
+                        <bee-button :plain="true" type="primary" height="24">发送</bee-button>
+                    </div>
+                </bee-list-item>
 
-                  <w-list-item label="隐藏个人信息" label-width="120" icon-width="90">
-                    <w-switch slot="icon" v-model="s">发送</w-switch>
-                    <div slot="content">我想<span style="color:red;">{{!s?'显示':'隐藏'}}</span>个人信息</div>
-                 </w-list-item>
+                <bee-list-item label="隐藏个人信息" label-width="120" icon-width="90">
+                    <bee-switch slot="icon" v-model="s">发送</bee-switch>
+                    <div>我想<span style="color:red;">{{!s?'显示':'隐藏'}}</span>个人信息</div>
+                </bee-list-item>
 
-                 <w-list-item height="70" label="邮箱" content="自定义icon">
+                <bee-list-item height="70" label="邮箱" content="自定义icon">
                     <div slot="label">
                         <h1 class="t1">主标题</h1>
                         <h2 class="t2">次标题</h2>
                     </div>
-                 </w-list-item>
+                </bee-list-item>
 
-                 <w-list-input-item @icon-click="handleIconClick"  @blur="handleBlur" label="地址" error="长度必须大于6且小于16" :input-styles="{fontSize:'14px'}" placeholder="请输入你的住址"></w-list-input-item>
-                 <w-list-input-item :autofocus="autofocus" @focus="handleFocus" v-model="email" :error="emailError" label="邮箱" icon-width="100" placeholder="请输入你邮箱">
-                     <w-button type="primary" slot="icon">获取验证码</w-button>
-                 </w-list-input-item>
-             </w-list>
-         </section>
+
+            </bee-list>
+        </section>
     </section>
-   
+
     <script>
         var vm = new Vue({
             el: '#app',
-            data:function(){
+            data: function () {
                 return {
-                    s:false,
-                    email:'',
-                    autofocus:false
+                    s: false,
+                    email: '',
+                    autofocus: false
                 }
             },
-            computed:{
-                emailError:function(){
+            computed: {
+                emailError: function () {
                     return !this.email || this.email.indexOf('@') > 0 ? '' : '请输入正确的邮箱'
                 }
             },
-            methods:{
-                handleBlur:function(v){
+            methods: {
+                handleBlur: function (v) {
                     console.log(v)
                 },
-                handleFocus:function(v){
+                handleFocus: function (v) {
                     console.log(v)
                 },
-                handleIconClick:function(){
+                handleIconClick: function () {
                     console.log('icon click')
                 }
             },
-            mounted(){
+            mounted() {
                 this.autofocus = true;
             }
         });
     </script>
 </body>
+
 </html>

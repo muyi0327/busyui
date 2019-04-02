@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Confirm from './confirm.vue';
-import '../../util/src/polyfill';
+
 
 const ConfirmClass = Vue.extend(Confirm);
 
 /**
- * wui-confirm
+ * bee-confirm
  * @module Confirm
  * @see {@link ../example/all/dialog.html 实例}
  * @desc confirm对话框组件
@@ -16,14 +16,14 @@ const ConfirmClass = Vue.extend(Confirm);
  * @example
  *
  * // use it in html
- * <script src="wui.min.js"><\/script>
- * <link rel="stylesheet" href="wui.min.css" />
+ * <script src="bee.min.js"><\/script>
+ * <link rel="stylesheet" href="bee.min.css" />
  * 
- * Wui.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+ * Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  * 
  * // use it in webpack or browserify, rollup
- * import {Confirm} from 'wui/packages/dialog';
- * // var Confirm = require('wui/packages/dialog/confirm.js');
+ * import {Confirm} from 'bee/packages/dialog';
+ * // var Confirm = require('bee/packages/dialog/confirm.js');
  *
  * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  *
@@ -44,7 +44,7 @@ export default Object.assign(Confirm, {
      * @returns ConfirmClass实例
      * 
      * @example
-     * const confirm = Wui.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
+     * const confirm = bee.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
      * confirm.doClose();
      * 
      */

@@ -4,10 +4,10 @@ import ActionSheetItem from './src/action-sheet-item.vue';
 var ActionSheetClass, instance, vm;
 
 /**
- * w-action-sheet
+ * bee-action-sheet
  * @module ActionSheet
  * @see {@link ../example/all/action-sheet.html 实例}
- * @desc ActionSheet框组件 <w-action-sheet />
+ * @desc ActionSheet框组件 <bee-action-sheet />
  * @param {Array} actions - 动作菜单项
  * @param {Boolean} isShow=false - 是否显示
  * @param {Boolean} isRemove=false - 是否隐藏后删除
@@ -18,7 +18,7 @@ var ActionSheetClass, instance, vm;
  * @param {Event} visiable-change - 显示隐藏时都会触发
  * @param {Slot} slot - default - 组件slot
  * @example
- * import {ActionSheet} from 'wui/packages/action-sheet';
+ * import {ActionSheet} from 'bee/packages/action-sheet';
  * 
  * // 动态创建
  * ActionSheet.show({
@@ -70,7 +70,7 @@ var ActionSheetClass, instance, vm;
  *              this.isShow = visiable;
  *          },
  *          showActionSheet:function(){
- *              Wui.ActionSheet.show({
+ *              Bee.ActionSheet.show({
  *                 actions: this.actions
  *              });
  *          }
@@ -92,13 +92,14 @@ ActionSheet.install = function (vue) {
  * 
  * @example
  * 
- *      Wui.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
+ *      Bee.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
  * 
  */
 ActionSheet.show = function (opts) {
     if (instance) {
         ActionSheet.hide();
     }
+
     instance = new ActionSheetClass({
         el: document.createElement('div'),
         propsData: Object.assign(opts || {}, {
@@ -121,11 +122,11 @@ ActionSheet.show = function (opts) {
  * 
  * @example
  * 
- *   Wui.ActionSheet.hide()
+ *   Bee.ActionSheet.hide()
  * 
  */
 ActionSheet.hide = function () {
-    if (instance){
+    if (instance) {
         instance.hide();
         vm = null;
         instance = null;
@@ -140,13 +141,13 @@ ActionSheet.hide = function () {
  * 
  * @example
  * 
- *   if （Wui.ActionSheet.isVisiable(){
+ *   if （Bee.ActionSheet.isVisiable(){
  *     console.log('done something')
  *   }
  * 
  */
-ActionSheet.isVisiable = function(){
-    return instance && instance.isShow;
+ActionSheet.isVisiable = function () {
+    return !!instance && instance.isShow;
 }
 
 export default ActionSheet;
