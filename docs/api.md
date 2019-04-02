@@ -9,7 +9,7 @@
   <tbody>
 <tr>
     <td><a href="#module_ActionSheet">ActionSheet</a></td>
-    <td><p>ActionSheet框组件 <w-action-sheet /></p>
+    <td><p>ActionSheet框组件 <bee-action-sheet /></p>
 </td>
     </tr>
 <tr>
@@ -24,7 +24,7 @@
     </tr>
 <tr>
     <td><a href="#module_Checkbox">Checkbox</a></td>
-    <td><p>勾选框  <w-checkbox /></p>
+    <td><p>勾选框  <bee-checkbox /></p>
 </td>
     </tr>
 <tr>
@@ -39,7 +39,7 @@
     </tr>
 <tr>
     <td><a href="#module_Dialog">Dialog</a></td>
-    <td><p>对话框组件 <w-dialog /></p>
+    <td><p>对话框组件 <bee-dialog /></p>
 </td>
     </tr>
 <tr>
@@ -48,28 +48,8 @@
 </td>
     </tr>
 <tr>
-    <td><a href="#module_Field">Field</a></td>
-    <td><p>编辑器</p>
-</td>
-    </tr>
-<tr>
     <td><a href="#module_Icon">Icon</a></td>
     <td><p>icon图标组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Cell">Cell</a></td>
-    <td><p>单元组件 <w-cell></w-cell>, w-cell只能放在w-row或者w-row内</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Col">Col</a></td>
-    <td><p>列组件 <w-col></w-col> w-col里面只能放w-cell</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Row">Row</a></td>
-    <td><p>行组件 <w-row></w-row>, w-row里面只能放w-cell</p>
 </td>
     </tr>
 <tr>
@@ -84,27 +64,17 @@
     </tr>
 <tr>
     <td><a href="#module_Mask">Mask</a></td>
-    <td><p>半透明遮罩层 <w-mask></w-mask></p>
+    <td><p>半透明遮罩层 <bee-mask></bee-mask></p>
 </td>
     </tr>
 <tr>
     <td><a href="#module_Message">Message</a></td>
-    <td><p>浮层提示信息组件 <w-message></w-message></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Picker">Picker</a></td>
-    <td><p>弹出层</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Popup">Popup</a></td>
-    <td><p>弹出层 <a href="../example/all/popup.html"></a></p>
+    <td><p>浮层提示信息组件 <bee-meesage></bee-meesage></p>
 </td>
     </tr>
 <tr>
     <td><a href="#module_Progress">Progress</a></td>
-    <td><p>wui-progress</p>
+    <td><p>bee-progress</p>
 </td>
     </tr>
 <tr>
@@ -119,12 +89,12 @@
     </tr>
 <tr>
     <td><a href="#module_ToastLoading">ToastLoading</a></td>
-    <td><p>页面toastloading组件 <w-toast-loading /></p>
+    <td><p>页面toastloading组件 <bee-toast-loading /></p>
 </td>
     </tr>
 <tr>
     <td><a href="#module_Toast">Toast</a></td>
-    <td><p>Toast组件 <w-toast></w-toast></p>
+    <td><p>Toast组件 <bee-toast></bee-toast></p>
 </td>
     </tr>
 </tbody>
@@ -152,7 +122,7 @@
 <a name="module_ActionSheet"></a>
 
 ## ActionSheet
-ActionSheet框组件 <w-action-sheet />
+ActionSheet框组件 <bee-action-sheet />
 
 **See**: [实例](../example/all/action-sheet.html)  
 
@@ -170,7 +140,7 @@ ActionSheet框组件 <w-action-sheet />
 
 **Example**  
 ```js
-import {ActionSheet} from 'wui/packages/action-sheet';
+import {ActionSheet} from 'bee/packages/action-sheet';
 
 // 动态创建
 ActionSheet.show({
@@ -222,7 +192,7 @@ new Vue({
              this.isShow = visiable;
          },
          showActionSheet:function(){
-             Wui.ActionSheet.show({
+             Bee.ActionSheet.show({
                 actions: this.actions
              });
          }
@@ -247,7 +217,7 @@ new Vue({
 
 **Example**  
 ```js
-Wui.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
+Bee.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
 ```
 <a name="module_ActionSheet.hide"></a>
 
@@ -255,7 +225,7 @@ Wui.ActionSheet.show({actions:{text:'执行动作', action: function(){console.l
 **Kind**: static method of <code>[ActionSheet](#module_ActionSheet)</code>  
 **Example**  
 ```js
-Wui.ActionSheet.hide()
+Bee.ActionSheet.hide()
 ```
 <a name="module_ActionSheet.isVisiable"></a>
 
@@ -266,7 +236,7 @@ Wui.ActionSheet.hide()
 **Returns**: <code>Boolean</code> - - 是否显示  
 **Example**  
 ```js
-if （Wui.ActionSheet.isVisiable(){
+if （Bee.ActionSheet.isVisiable(){
     console.log('done something')
   }
 ```
@@ -283,33 +253,33 @@ if （Wui.ActionSheet.isVisiable(){
 
 **Example**  
 ```js
-<div class="wui-border-1px">四边框</div>
+<div class="bee-border-1px">四边框</div>
 
- <div class="wui-border-1px wui-border-t">上边框</div>
+ <div class="bee-border-1px bee-border-t">上边框</div>
 
- <div class="wui-border-1px wui-border-b">下边框</div>
+ <div class="bee-border-1px bee-border-b">下边框</div>
 
- <div class="wui-border-1px wui-border-tb">上下边框</div>
+ <div class="bee-border-1px bee-border-tb">上下边框</div>
 
- <div class="wui-border-1px wui-border-l">左边框</div>
+ <div class="bee-border-1px bee-border-l">左边框</div>
 
- <div class="wui-border-1px wui-border-r">右边框</div>
+ <div class="bee-border-1px bee-border-r">右边框</div>
 
- <div class="wui-border-1px wui-border-lr">左右边框</div>
+ <div class="bee-border-1px bee-border-lr">左右边框</div>
 
-<div class="wui-border-1px wui-border-no-r">无右边框</div>
+<div class="bee-border-1px bee-border-no-r">无右边框</div>
 
-<div class="wui-border-1px wui-border-no-l">无左边框</div>
+<div class="bee-border-1px bee-border-no-l">无左边框</div>
 
-<div class="wui-border-1px wui-border-no-t">无上边框</div>
+<div class="bee-border-1px bee-border-no-t">无上边框</div>
 
-<div class="wui-border-1px wui-border-no-b">无下边框</div>
+<div class="bee-border-1px bee-border-no-b">无下边框</div>
 
 // 取值1~10px
-<div class="wui-border-1px wui-border-radius-4px">圆角</div>
+<div class="bee-border-1px bee-border-radius-4px">圆角</div>
 
 // 百分比圆角
-<div class="wui-border-1px" style="border-radius: 50%;">圆角</div>
+<div class="bee-border-1px" style="border-radius: 50%;">圆角</div>
 ```
 <a name="module_Button"></a>
 
@@ -320,10 +290,11 @@ if （Wui.ActionSheet.isVisiable(){
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| type | <code>string</code> | <code>&quot;default&quot;</code> | 显示类型，接受 default, primary, highlight |
+| type | <code>string</code> | <code>&quot;default&quot;</code> | 显示类型，接受 default, primary, warning |
 | nativeType | <code>string</code> | <code>&quot;button&quot;</code> | 按钮类型， button, reset, submit |
 | disabled | <code>boolean</code> | <code>false</code> | 禁用 |
 | plain | <code>boolean</code> | <code>false</code> | 镂空按钮 |
+| ghost | <code>ghost</code> | <code>false</code> | 幽灵按钮 |
 | block | <code>boolean</code> | <code>false</code> | 是否100%宽 |
 | size | <code>string</code> | <code>&quot;normal&quot;</code> | 尺寸，接受 normal, small, large |
 | sharp | <code>Boolean</code> | <code>false</code> | 是否尖角 |
@@ -335,14 +306,14 @@ if （Wui.ActionSheet.isVisiable(){
 
 **Example**  
 ```js
-<w-button size="large" type="primary">按钮</w-button>
+<bee-button size="large" type="primary">按钮</bee-button>
 
- <w-button size="small" type="highlight">删除</w-button>
+ <bee-button size="small" type="warning">删除</bee-button>
 ```
 <a name="module_Checkbox"></a>
 
 ## Checkbox
-勾选框  <w-checkbox />
+勾选框  <bee-checkbox />
 
 **See**: [实例](../example/all/checkbox.html)  
 
@@ -353,8 +324,8 @@ if （Wui.ActionSheet.isVisiable(){
 
 **Example**  
 ```js
-<w-checkbox v-model="checked" label="这个位置是标签1"></w-checkbox>
-<w-checkbox v-model="disable" label="是否禁用下面的按钮"></w-checkbox>
+<bee-checkbox v-model="checked" label="这个位置是标签1"></bee-checkbox>
+<bee-checkbox v-model="disable" label="是否禁用下面的按钮"></bee-checkbox>
 ```
 <a name="module_Alert"></a>
 
@@ -372,14 +343,14 @@ alert对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="wui.min.js"><\/script>
-<link rel="stylesheet" href="wui.min.css" />
+<script src="bee.min.js"><\/script>
+<link rel="stylesheet" href="bee.min.css" />
 
-Wui.Alert.show('提交申请成功');
+Bee.Alert.show('提交申请成功');
 
 // use it in webpack or browserify, rollup
-import {Alert} from 'wui/packages/dialog';
-// var Aler = require('wui/packages/dialog/alert.js');
+import {Alert} from 'bee/packages/dialog';
+// var Aler = require('bee/packages/dialog/alert.js');
 
 Alert.show('提交申请成功');
 ```
@@ -398,7 +369,7 @@ Alert.show('提交申请成功');
 
 **Example**  
 ```js
-Wui.Alert.show('提交申请成功');
+Bee.Alert.show('提交申请成功');
 ```
 <a name="module_Confirm"></a>
 
@@ -416,14 +387,14 @@ confirm对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="wui.min.js"><\/script>
-<link rel="stylesheet" href="wui.min.css" />
+<script src="bee.min.js"><\/script>
+<link rel="stylesheet" href="bee.min.css" />
 
-Wui.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 
 // use it in webpack or browserify, rollup
-import {Confirm} from 'wui/packages/dialog';
-// var Confirm = require('wui/packages/dialog/confirm.js');
+import {Confirm} from 'bee/packages/dialog';
+// var Confirm = require('bee/packages/dialog/confirm.js');
 
 Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 ```
@@ -443,13 +414,13 @@ Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提�
 
 **Example**  
 ```js
-const confirm = Wui.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
+const confirm = bee.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
 confirm.doClose();
 ```
 <a name="module_Dialog"></a>
 
 ## Dialog
-对话框组件 <w-dialog />
+对话框组件 <bee-dialog />
 
 **See**: [实例](../example/all/dialog.html)  
 
@@ -467,7 +438,7 @@ confirm.doClose();
 
 **Example**  
 ```js
-import {Dialog} from 'wui/packages/dialog';
+import {Dialog} from 'bee/packages/dialog';
 
 Dialog.show({
      title: '提交信息',
@@ -493,7 +464,7 @@ Dialog.show({
 
 **Example**  
 ```js
-Wui.Dialog.show({content:'红包来了!',title:'发红包了'})
+Bee.Dialog.show({content:'红包来了!',title:'发红包了'})
 ```
 <a name="module_Prompt"></a>
 
@@ -511,14 +482,14 @@ prompt对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="wui.min.js"><\/script>
-<link rel="stylesheet" href="wui.min.css" />
+<script src="bee.min.js"><\/script>
+<link rel="stylesheet" href="bee.min.css" />
 
-Wui.Prompt.show('请填写信息？', (val)=>{console.log(val)});
+Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
 
 // use it in webpack or browserify, rollup
-import {Prompt} from 'wui/packages/dialog';
-// var Prompt = require('wui/packages/dialog/prompt.js');
+import {Prompt} from 'bee/packages/dialog';
+// var Prompt = require('bee/packages/dialog/prompt.js');
 
 Prompt.show('请填写信息？', (val)=>{console.log(val)});
 ```
@@ -538,50 +509,8 @@ Prompt.show('请填写信息？', (val)=>{console.log(val)});
 
 **Example**  
 ```js
-const confirm = Wui.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
+const confirm = Bee.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
 prompt.doClose();
-```
-<a name="module_Field"></a>
-
-## Field
-编辑器
-
-**See**: [实例](../example/all/field.html)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| type | <code>String</code> | <code>&#x27;text&#x27;</code> | field 类型，接受 text, textarea 等 特殊:custom 在custom type下slot=custom生效,无input |
-| label | <code>String</code> |  | 标签 |
-| labelWidth | <code>String</code> &#124; <code>Number</code> |  | 标签 |
-| lableAlign | <code>String</code> | <code>&#x27;center&#x27;</code> | label的对齐方式,见w-cell |
-| lableVertical | <code>String</code> | <code>&#x27;middle&#x27;</code> | label的对齐方式,见w-cell |
-| icon | <code>Object</code> |  | icon设置选项, w-icon |
-| iconWidth | <code>Number</code> | <code>28</code> | icon容器宽度 |
-| iconAlign | <code>String</code> | <code>&#x27;center&#x27;</code> | icon容器水平对齐方式,见w-cell |
-| iconVertical | <code>String</code> | <code>&#x27;center&#x27;</code> | icon容器垂直对齐方式,见w-cell |
-| rows | <code>String</code> |  | textarea 的 rows |
-| placeholder | <code>String</code> |  | placeholder |
-| disabled | <code>String</code> |  | 是否禁用 |
-| readonly | <code>String</code> |  | 是否只读 |
-| error | <code>String</code> |  | 是否发生错误,错误信息通过slot=error 来自定义 |
-| attr | <code>Object</code> |  | 设置input, textarea原生属性 |
-| enFormat | <code>function</code> |  | value格式化 |
-| deFormat | <code>function</code> |  | value反格式化 |
-| icon | <code>Slot</code> |  | right slot内容 |
-| label | <code>Slot</code> |  | left slot内容 |
-| content | <code>Slot</code> |  | center slot内容 |
-| focus | <code>Event</code> |  | 触发focus事件 |
-| blur | <code>Event</code> |  | 触发blur事件 |
-| icon-click | <code>Event</code> |  | 点击icon区域触发 |
-| label-click | <code>Event</code> |  | 点击label区域触发 |
-| format | <code>String</code> |  | 内置格式化方法 numberic:千分位格式化，最多保留两位小数, bankcard:银行卡格式化, [[4,2,3], '-']:按分组格式化 xxxx-xx-xxx |
-
-**Example**  
-```js
-<w-field v-model="value" label="用户名"></w-field>
- <w-field v-model="value" label="密码" placeholder="请输入密码"></w-field>
- <w-field v-model="value" label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></w-field>
- <w-field v-model="value" label="邮箱" placeholder="成功状态" state="success"></w-field>
 ```
 <a name="module_Icon"></a>
 
@@ -599,86 +528,7 @@ icon图标组件
 
 **Example**  
 ```js
-<w-icon type="guanbi" fill="#8a8a8a"></w-icon>
-```
-<a name="module_Cell"></a>
-
-## Cell
-单元组件 <w-cell></w-cell>, w-cell只能放在w-row或者w-row内
-
-**See**: [实例](../example/all/flex.html)  
-
-| Param | Default | Description |
-| --- | --- | --- |
-| width | <code>&#x27;auto&#x27;</code> | 列宽, 数字, 百分比, auto |
-| height | <code>&#x27;auto&#x27;</code> | 列高, 数字, 百分比, auto |
-| align | <code>&#x27;left&#x27;</code> | 水平对齐, left 居左, right 居右, center 居中, between 等间距, around |
-| vertical | <code>&#x27;middle&#x27;</code> | 垂直对齐, top 居顶, bottom 居底, middle 居中, between 等间距, around, stretch |
-
-**Example**  
-```js
-<w-row>
-     <w-cell :width="90">手机号</w-cell>
-     <w-cell><input type="number" name="phone" placehoder="请填写手机号码"></w-cell>
-     <w-cell :width="40"><w-icon type＝"fankui"></w-icon></w-cell>
-</w-row>
-```
-<a name="module_Cell.computed"></a>
-
-### Cell.computed
-TODO 视情况处理flexGrow
-
-**Kind**: static property of <code>[Cell](#module_Cell)</code>  
-<a name="module_Col"></a>
-
-## Col
-列组件 <w-col></w-col> w-col里面只能放w-cell
-
-**See**: [实例](../example/all/flex.html)  
-
-| Param | Default | Description |
-| --- | --- | --- |
-| width | <code>&#x27;auto&#x27;</code> | 列宽, 数字, 百分比, auto |
-| direction | <code>&#x27;column&#x27;</code> | 方向, 'normal' flex-direction: column, 'reverse' flex-direction: column-reverse; |
-
-**Example**  
-```js
-<w-row>
-     <w-cell :width="90">手机号</w-cell>
-     <w-cell>
-         <w-col>
-             <w-cell><input type="number" name="phone" placehoder="请填写手机号码"></w-cell>
-             <w-cell>请填写正确手机号码，确保能收到验证短信</w-cell>
-         </w-col>
-     </w-cell>
-     <w-cell :width="40"><w-icon type＝"fankui"></w-icon></w-cell>
-</w-row>
-```
-<a name="module_Row"></a>
-
-## Row
-行组件 <w-row></w-row>, w-row里面只能放w-cell
-
-**See**: [实例](../example/all/flex.html)  
-
-| Param | Default | Description |
-| --- | --- | --- |
-| height | <code>&#x27;auto&#x27;</code> | 列高, 数字, 百分比, auto |
-| isItems | <code>false</code> | 是否flex-item |
-| direction | <code>&#x27;row&#x27;</code> | 方向, 'row' -> flex-direction: row, 'reverse' -> flex-direction: row-reverse; |
-
-**Example**  
-```js
-<w-row>
-     <w-cell :width="90">手机号</w-cell>
-     <w-cell>
-         <w-col>
-             <w-cell><input type="number" name="phone" placehoder="请填写手机号码"></w-cell>
-             <w-cell>请填写正确手机号码，确保能收到验证短信</w-cell>
-         </w-col>
-     </w-cell>
-     <w-cell :width="40"><w-icon type＝"fankui"></w-icon></w-cell>
-</w-row>
+<bee-icon type="guanbi" fill="#8a8a8a"></bee-icon>
 ```
 <a name="module_Loading"></a>
 
@@ -735,7 +585,7 @@ loading component with mask
 <a name="module_Mask"></a>
 
 ## Mask
-半透明遮罩层 <w-mask></w-mask>
+半透明遮罩层 <bee-mask></bee-mask>
 
 
 | Param | Type | Default | Description |
@@ -746,12 +596,12 @@ loading component with mask
 
 **Example**  
 ```js
-<w-mask color="yellow"></mask>
+<bee-mask color="yellow"></bee-mask>
 ```
 <a name="module_Message"></a>
 
 ## Message
-浮层提示信息组件 <w-message></w-message>
+浮层提示信息组件 <bee-meesage></bee-meesage>
 
 **See**: [实例](../example/all/message.html)  
 
@@ -767,19 +617,19 @@ loading component with mask
 **Example**  
 ```js
 // use it in module tools
- import Message from 'wui/packages/message';
+ import Message from '@bee/message';
  Message.show('有新信息了');
  Message.info('有新信息了');
  Message.success('信息提交成功');
  Message.warning('内容包含非法词');
 
  // use it in html
- <script src="wui.min.js"><\/script>
- <link rel="stylesheet" href="wui.min.css">
- Wui.Message.show('有新信息了');
- Wui.Message.info('有新信息了');
- Wui.Message.success('信息提交成功');
- Wui.Message.warning('内容包含非法词');
+ <script src="bee.min.js"><\/script>
+ <link rel="stylesheet" href="Bee.min.css">
+ Bee.Message.show('有新信息了');
+ Bee.Message.info('有新信息了');
+ Bee.Message.success('信息提交成功');
+ Bee.Message.warning('内容包含非法词');
 ```
 
 * [Message](#module_Message)
@@ -803,7 +653,7 @@ loading component with mask
 
 **Example**  
 ```js
-Wui.Message.show('有新信息了');
+Bee.Message.show('有新信息了');
 ```
 <a name="module_Message.info"></a>
 
@@ -820,7 +670,7 @@ Wui.Message.show('有新信息了');
 
 **Example**  
 ```js
-Wui.Message.info('收到一个优惠券');
+Bee.Message.info('收到一个优惠券');
 ```
 <a name="module_Message.success"></a>
 
@@ -837,7 +687,7 @@ Wui.Message.info('收到一个优惠券');
 
 **Example**  
 ```js
-Wui.Message.success('提交成功');
+Bee.Message.success('提交成功');
 ```
 <a name="module_Message.warning"></a>
 
@@ -854,7 +704,7 @@ Wui.Message.success('提交成功');
 
 **Example**  
 ```js
-Wui.Message.warning('内容包含非法词');
+Bee.Message.warning('内容包含非法词');
 ```
 <a name="module_Message.error"></a>
 
@@ -871,59 +721,12 @@ Wui.Message.warning('内容包含非法词');
 
 **Example**  
 ```js
-Wui.Message.error('内容包含非法词');
-```
-<a name="module_Picker"></a>
-
-## Picker
-弹出层
-
-**See**: [实例](../example/all/picker.html)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| show | <code>Boolean</code> |  | 显示模态背景 |
-| options | <code>Array</code> |  | 下拉列表的数据源 |
-| visibleCount | <code>Number</code> | <code>3</code> | 展示数 |
-| showCancelButton | <code>Boolean</code> |  | 展示取消按钮 |
-| showConfirmButton | <code>Boolean</code> |  | 展示确认按钮 |
-| cancelButtonText | <code>String</code> | <code>&#x27;取消&#x27;</code> | 取消按钮的显示 |
-| confirmButtonText | <code>String</code> | <code>&#x27;确认&#x27;</code> | 确认按钮的显示,默认 确认 |
-| buttonsPosition＝'button' | <code>String</code> |  | 按钮组的位置[button,top];现在暂不支持top |
-| select | <code>function</code> |  | 选择回调,回调参数(下标,值,对象(原始)) |
-| hide | <code>function</code> |  |  |
-
-**Example**  
-```js
-<w-picker v-model="pickValue" :show="popupVisible" @select="onItemSelect" :options="items" @hide="popupVisible= arguments[0]"></w-picker>
-     <w-picker v-model="pickValue2" :show="popupVisible2" @select="onItemSelect2" :options="items2" @hide="popupVisible2= arguments[0]"></w-picker>
-     <w-picker :show="popupVisible3" @select="onItemSelect3" :options="items3" @hide="popupVisible3= arguments[0]"></w-picker>
-     <w-picker :show="popupVisible4" @select="onItemSelect4" :options="items4" :visibleCount="5" @hide="popupVisible4= arguments[0]"></w-picker>
-```
-<a name="module_Popup"></a>
-
-## Popup
-弹出层 <a href="../example/all/popup.html"></a>
-
-**See**: [实例](../example/all/popup.html)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| modal | <code>bool</code> | <code>true</code> | 显示模态背景 |
-| closeOnClickModal | <code>bool</code> |  | 点击模态背景时是否关闭popup |
-| popupTransition | <code>string</code> |  | 效果,目前只有popup-slide,为默认 |
-| position | <code>string</code> |  | popup位置,目前只有bottom |
-
-**Example**  
-```js
-<w-popup v-model="popupShow" position="bottom"></w-popup>
- <w-popup v-model="popup2Show" position="bottom" :modal="false"></w-popup>
- <w-popup v-model="popup3Show" :closeOnClickModal="false"></w-popup>
+Bee.Message.error('内容包含非法词');
 ```
 <a name="module_Progress"></a>
 
 ## Progress
-wui-progress
+bee-progress
 
 **Des**: 进度条组件  
 **See**: [实例](../example/all/progress.html)  
@@ -937,11 +740,11 @@ wui-progress
 | trackColor | <code>String</code> | 进度槽颜色, 取值范围 css color <hex, rgb, rgba> |
 | barColor | <code>String</code> | 进度条颜色, 取值范围 css color <hex, rgb, rgba> |
 | content | <code>String</code> | 显示内容, 默认'' |
-| type | <code>String</code> | 进度条组件类型, 可取值 'line' [<w-progress-line />], 'ring' [<w-progress-ring />], 默认 'line' |
+| type | <code>String</code> | 进度条组件类型, 可取值 'line' [<bee-progress-line />], 'ring' [<bee-progress-ring />], 默认 'line' |
 
 **Example**  
 ```js
-<w-progress type="ring" :size="50" :track-width="5"></w-progress>
+<bee-progress type="ring" :size="50" :track-width="5"></bee-progress>
 ```
 <a name="module_Spinner"></a>
 
@@ -961,7 +764,7 @@ spinner组件
 
 **Example**  
 ```js
-<w-spinner :type="3" color="#666" :width="12"></w-spinner>
+<bee-spinner :type="3" color="#666" :width="12"></bee-spinner>
 ```
 <a name="module_Swipe"></a>
 
@@ -984,15 +787,15 @@ spinner组件
 
 **Example**  
 ```js
-<w-swipe :interval="3000" :auto-play="true" :height="320">
-     <w-swipte-item>内容</w-swipe-item>
-     <w-swipte-item>内容</w-swipe-item>
-</w-swipe>
+<bee-swipe :interval="3000" :auto-play="true" :height="320">
+     <bee-swipe__item>内容</bee-swipe__item>
+     <bee-swipe__item>内容</bee-swipe__item>
+</bee-swipe>
 ```
 <a name="module_ToastLoading"></a>
 
 ## ToastLoading
-页面toastloading组件 <w-toast-loading />
+页面toastloading组件 <bee-toast-loading />
 
 **See**: [实例](../example/all/toast-loading.html)  
 
@@ -1009,16 +812,16 @@ spinner组件
 **Example**  
 ```js
 //  use it in html
- <script src="wui.min.js"><\/script>
- <link rel="stylesheet" href="wui.min.css">
+ <script src="bee.min.js"><\/script>
+ <link rel="stylesheet" href="bee.min.css">
 
- Wui.ToastLoading.show();
+ bee.ToastLoading.show();
  http.get('url').then(()=>{
-   Wui.ToastLoading.hide();
+   Bee.ToastLoading.hide();
  });
 
  // use it in module tools
- import ToastLoading from 'wui/packages/toast-loading';
+ import ToastLoading from '@bee/toast-loading';
  ToastLoading.show({spinner:{type:2}, direction="row"});
  http.get('url').then(()=>{
    ToastLoading.hide();
@@ -1049,12 +852,12 @@ spinner组件
 
 **Example**  
 ```js
-Wui.ToastLoading.show();
+bee.ToastLoading.show();
 ```
 <a name="module_Toast"></a>
 
 ## Toast
-Toast组件 <w-toast></w-toast>
+Toast组件 <bee-toast></bee-toast>
 
 **See**: [实例](../example/all/toast.html)  
 
@@ -1081,20 +884,20 @@ Toast组件 <w-toast></w-toast>
 **Example**  
 ```js
 // use it in module tools
-  import Toast from 'wui/packages/toast';
+  import Toast from 'bee/packages/toast';
   1, Toast.show('内容')
   2, Toast.show('内容', 5000)
   3, Toast.show('内容', 'top', 5000)
   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
 
   // use it in html
-  <script src="wui.min.js"><\/script>
-  <link href="wui.min.css" rel="stylesheet" />
+  <script src="bee.min.js"><\/script>
+  <link href="bee.min.css" rel="stylesheet" />
 
-  1, Wui.Toast.show('内容')
-  2, Wui.Toast.show('内容', 5000)
-  3, Wui.Toast.show('内容', 'top', 5000)
-  4, Wui.Toast.show({content:'内容', pos: 'top', delay: 5000})
+  1, bee.Toast.show('内容')
+  2, bee.Toast.show('内容', 5000)
+  3, bee.Toast.show('内容', 'top', 5000)
+  4, bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
 ```
 <a name="module_Toast.show"></a>
 
@@ -1108,7 +911,7 @@ Toast组件 <w-toast></w-toast>
 
 **Example**  
 ```js
-Wui.Toast.show({content:'内容', pos: 'top', delay: 5000})
+Bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
 ```
 <a name="enFormatNumberic"></a>
 
