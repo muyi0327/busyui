@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="bee-segement__item"></div>
+    <div class="busy-segement__item"></div>
 </template>
 
 <script>

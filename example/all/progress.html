@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <style>
         .abcd {
             transform: rotate(-90deg);
@@ -21,11 +21,11 @@
     <section class="wrap">
         <section id="app" class="app">
             <div @click="handle">
-                <bee-progress :percent="val" :track-width="stroke"></bee-progress>
+                <busy-progress :percent="val" :track-width="stroke"></busy-progress>
                 <p></p>
-                <bee-progress direction="1" class="abcd" :percent="val" :track-width="stroke" type="ring"></bee-progress>
+                <busy-progress direction="1" class="abcd" :percent="val" :track-width="stroke" type="ring"></busy-progress>
                 <p></p>
-                <bee-progress :percent="val" :track-width="10" track-color="#00bdd9" :bar-color="['90deg', '#74ffea 4%', '#a1f9fb 88%', '#ffffff 100%']"></bee-progress>
+                <busy-progress :percent="val" :track-width="10" track-color="#00bdd9" :bar-color="['90deg', '#74ffea 4%', '#a1f9fb 88%', '#ffffff 100%']"></busy-progress>
             </div>
         </section>
     </section>

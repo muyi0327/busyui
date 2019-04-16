@@ -38,21 +38,21 @@
 </style>
 
 <template>
-    <bee-mask :is-show="visiable" @click.stop="hide" :is-remove="isRemove">
-        <transition name="bee-animate_bibo" v-on:after-enter="_enter" v-on:after-leave="_leave">
-            <div ref="oel" v-show="visiable" class="bee-action-sheet" :style="styles">
-                <div class="bee-action-sheet__box">
-                    <div class="bee-action-sheet__list">
+    <busy-mask :is-show="visiable" @click.stop="hide" :is-remove="isRemove">
+        <transition name="busy-animate_bibo" v-on:after-enter="_enter" v-on:after-leave="_leave">
+            <div ref="oel" v-show="visiable" class="busy-action-sheet" :style="styles">
+                <div class="busy-action-sheet__box">
+                    <div class="busy-action-sheet__list">
                         <slot>
-                            <bee-action-sheet-item :key="'as-'+$i" v-for="(ac,$i) in actions" @click="ac.action">{{ac.text}}</bee-action-sheet-item>
+                            <busy-action-sheet-item :key="'as-'+$i" v-for="(ac,$i) in actions" @click="ac.action">{{ac.text}}</busy-action-sheet-item>
                         </slot>
                     </div>
 
-                    <div class="bee-action-sheet__button" @click="hide">取消</div>
+                    <div class="busy-action-sheet__button" @click="hide">取消</div>
                 </div>
             </div>
         </transition>
-    </bee-mask>
+    </busy-mask>
 </template>
 
 <script>
@@ -60,7 +60,7 @@
     import ActionSheetItem from './action-sheet-item.vue'
 
     export default {
-        name: 'bee-action-sheet',
+        name: 'busy-action-sheet',
         props: {
             isShow: {
                 type: Boolean,

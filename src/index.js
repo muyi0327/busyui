@@ -1,11 +1,13 @@
 import Border from '../packages/border/index.js'
 import Toast from '../packages/toast/index.js';
+import Busyjs from '../packages/busyjs';
 import ToastLoading from '../packages/toast-loading/index.js';
 import Loading from '../packages/loading/index.js';
 import Icons from '../packages/icon/index.js';
 import FlexBox from '../packages/flexbox/index.js';
 import Button from '../packages/button/index.js';
 import Checkbox from '../packages/checkbox/index.js';
+import Picker from '../packages/picker/index.js';
 import {
     Dialog,
     Alert,
@@ -35,6 +37,7 @@ var install = function (vue) {
     vue.use(Icons);
     vue.use(Button);
     vue.use(Checkbox);
+    vue.use(Picker);
     vue.use(Dialog);
     vue.use(Alert);
     vue.use(Confirm);
@@ -52,11 +55,11 @@ var install = function (vue) {
     vue.use(Input);
     vue.use(Switch);
     vue.use(Select);
-    vue.prototype.$bee = Bee;
+    vue.prototype.$busy = Busy;
 }
 
 
-var Bee = {
+var Busy = {
     Border,
     install,
     Toast,
@@ -66,6 +69,7 @@ var Bee = {
     FlexBox,
     Button,
     Checkbox,
+    Picker,
     Dialog,
     Alert,
     Confirm,
@@ -79,11 +83,12 @@ var Bee = {
     List,
     ListItem,
     Input,
-    Switch
+    Switch,
+    Busyjs
 }
 
 if (window.Vue) {
-    window.Vue.use(Bee);
+    window.Vue.use(Busy);
 }
 
 export {
@@ -95,6 +100,7 @@ export {
     FlexBox,
     Button,
     Checkbox,
+    Picker,
     Dialog,
     Alert,
     Confirm,
@@ -108,7 +114,8 @@ export {
     List,
     ListItem,
     Input,
-    Switch
+    Switch,
+    Busyjs
 }
 
-export default Bee;
+export default Busy;

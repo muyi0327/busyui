@@ -27,13 +27,13 @@
         }
     }
 
-    .bee-ball-clip-rotate-pulse {
+    .busy-ball-clip-rotate-pulse {
         position: relative;
         display: inline-block;
         box-sizing: border-box;
     }
 
-    .bee-ball-clip-rotate-pulse > div {
+    .busy-ball-clip-rotate-pulse > div {
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
         position: absolute;
@@ -44,7 +44,7 @@
         box-sizing: border-box;
     }
 
-    .bee-ball-clip-rotate-pulse > div:first-child {
+    .busy-ball-clip-rotate-pulse > div:first-child {
         background: $color-blue;
         top: 50%;
         left: 50%;
@@ -52,7 +52,7 @@
         transform-origin: 50% 50%;
     }
 
-    .bee-ball-clip-rotate-pulse > div:last-child {
+    .busy-ball-clip-rotate-pulse > div:last-child {
         position: absolute;
         border-width: 2px;
         border-style: solid;
@@ -68,14 +68,14 @@
     }
 </style>
 <template>
-    <div v-if="visiable" class="bee-ball-clip-rotate-pulse" :style="{width: width + 'px', height: width + 'px'}">
+    <div v-if="visiable" class="busy-ball-clip-rotate-pulse" :style="{width: width + 'px', height: width + 'px'}">
         <div :style="smallStyles"></div>
         <div :style="bigStyles"></div>
     </div>
 </template>
 <script>
     export default {
-        name: 'bee-ball-clip-rotate-pulse',
+        name: 'busy-ball-clip-rotate-pulse',
         props: {
             color: {
                 type: String,

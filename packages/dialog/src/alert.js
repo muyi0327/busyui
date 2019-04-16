@@ -5,7 +5,7 @@ import Alert from './Alert.vue';
 const AlertClass = Vue.extend(Alert);
 
 /**
- * @bee/alert
+ * @busy/alert
  * @module Alert
  * @see {@link ../example/all/dialog.html 实例}
  * @desc alert对话框组件
@@ -15,14 +15,14 @@ const AlertClass = Vue.extend(Alert);
  * 
  * @example
  * // use it in html
- * <script src="bee.min.js"><\/script>
- * <link rel="stylesheet" href="bee.min.css" />
+ * <script src="busy.min.js"><\/script>
+ * <link rel="stylesheet" href="busy.min.css" />
  * 
- * Bee.Alert.show('提交申请成功');
+ * Busy.Alert.show('提交申请成功');
  *
  * // use it in webpack or browserify, rollup
- * import {Alert} from '@bee/dialog';
- * // var Aler = require('@bee/dialog/alert.js');
+ * import {Alert} from '@busy/dialog';
+ * // var Aler = require('@busy/dialog/alert.js');
  *
  * Alert.show('提交申请成功');
  *
@@ -42,7 +42,7 @@ export default Object.assign(Alert, {
      * @returns AlertClass实例
      * 
      * @example
-     * Bee.Alert.show('提交申请成功');
+     * busy.Alert.show('提交申请成功');
      */
     show(text, opts) {
         if (typeof text === 'object') {

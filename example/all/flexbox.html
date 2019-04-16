@@ -6,48 +6,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
 
     <style>
         * {
             margin: 0;
             padding: 0;
-            font: 12px;
+            font-size: 14px;
         }
 
-        .flex-box {
-            border: 1px solid orange;
-            height: 600px;
+        #app {
+            padding: 20px;
         }
 
-        .flex-item {
-            background: orange;
-            margin-right: 1px;
+        .box {
+            margin-bottom: 20px;
+
         }
 
-        .flex-item:last-child {
-            margin-right: 0;
+        .border-r {
+            border-right: 1px solid #fff;
+        }
+
+        .border-b {
+            border-bottom: 1px solid #fff;
+        }
+
+        .bg-eee {
+            background: #eee;
+        }
+
+        .border-eee {
+            border: 1px solid #eee;
         }
     </style>
 </head>
 
 <body>
     <section id="app">
-        <bee-flexbox height="100" width="100%" align-v="center" align-h="center">
-            内容
-        </bee-flexbox>
-        <div class="flex-box">
-            <bee-flexbox height="100%" align-h="center" align-v="center" wrap="wrap">
-                <bee-flexitem flex="0 0 90px" class="flex-item bee-flex bee-flex--center-center">你们</bee-flexitem>
-                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
-                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
-                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
-                <bee-flexitem class="flex-item">你们你们</bee-flexitem>
-                <bee-flexitem flex="0 0 90px" class="flex-item  bee-flex bee-flex--center-start">你们你们</bee-flexitem>
-            </bee-flexbox>
+        <div class="box">
+            <busy-flexbox height="100" width="100%" align-v="center" align-h="center" class="bg-eee">
+                内容水平垂直居中
+            </busy-flexbox>
         </div>
+
+        <div class="box bg-eee">
+            <busy-flexbox align-h="center" align-v="center" wrap="wrap" height="90" style="line-height:90px;text-align: center;">
+                <busy-flexitem flex="none" height="inherit" width="90px" class="border-r">90px</busy-flexitem>
+                <busy-flexitem flex="1" height="inherit" class="border-r">自适应宽度</busy-flexitem>
+                <busy-flexitem flex="none" height="inherit" width="90px">90px</busy-flexitem>
+            </busy-flexbox>
+        </div>
+
+        <div class="box bg-eee">
+            <busy-flexbox height="150" direction="column" style="line-height:30px;text-align: center;">
+                <busy-flexitem flex="none" height="30" class="border-b">30px</busy-flexitem>
+                <busy-flexitem flex="1" class="border-b">自适应高度</busy-flexitem>
+                <busy-flexitem flex="none" height="30">30px</busy-flexitem>
+            </busy-flexbox>
+        </div>
+
+        <div class="box border-eee">
+            <busy-flexbox align-h="center" align-v="around" wrap="wrap" height="120" style="line-height: 45px">
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平居中</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平居中</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
+            </busy-flexbox>
+        </div>
+
+        <div class="box border-eee">
+            <busy-flexbox align-h="start" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平居左</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
+
+            </busy-flexbox>
+        </div>
+
+        <div class="box border-eee">
+            <busy-flexbox align-h="end" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平居右</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
+            </busy-flexbox>
+        </div>
+
+        <div class="box border-eee">
+            <busy-flexbox align-h="between" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平between</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
+            </busy-flexbox>
+        </div>
+
+        <div class="box border-eee">
+            <busy-flexbox align-h="around" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平around</busy-flexitem>
+                <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
+            </busy-flexbox>
+        </div>
+
+
     </section>
 
     <script>

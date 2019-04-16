@@ -32,22 +32,22 @@
         }
     }
 
-    .bee-ball-scale-multiple {
+    .busy-ball-scale-multiple {
         position: relative;
         display: inline-block;
     }
 
-    .bee-ball-scale-multiple > div:nth-child(2) {
+    .busy-ball-scale-multiple > div:nth-child(2) {
         -webkit-animation-delay: 0.2s;
         animation-delay: 0.2s;
     }
 
-    .bee-ball-scale-multiple > div:nth-child(3) {
+    .busy-ball-scale-multiple > div:nth-child(3) {
         -webkit-animation-delay: 0.4s;
         animation-delay: 0.4s;
     }
 
-    .bee-ball-scale-multiple > div {
+    .busy-ball-scale-multiple > div {
         background-color: $color-blue;
         border-radius: 100%;
         margin: 2px;
@@ -66,7 +66,7 @@
 </style>
 
 <template>
-    <div v-if="visiable" class="bee-ball-scale-multiple" :style="{width: this.width + 'px', height: this.height + 'px'}">
+    <div v-if="visiable" class="busy-ball-scale-multiple" :style="{width: this.width + 'px', height: this.height + 'px'}">
         <div :style="stylesObj"></div>
         <div :style="stylesObj"></div>
         <div :style="stylesObj"></div>
@@ -75,7 +75,7 @@
 
 <script>
     export default {
-        name: 'bee-ball-scale-multiple',
+        name: 'busy-ball-scale-multiple',
         props: {
             color: {
                 type: String,

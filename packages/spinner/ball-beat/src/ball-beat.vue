@@ -27,12 +27,12 @@
         }
     }
 
-    .bee-ball-beat {
+    .busy-ball-beat {
         display: flex;
         justify-content: space-around;
     }
 
-    .bee-ball-beat > div {
+    .busy-ball-beat > div {
         background-color: $color-blue;
         border-radius: 100%;
         -webkit-animation-fill-mode: both;
@@ -42,14 +42,14 @@
         animation: ball-beat 0.7s 0s infinite linear;
     }
 
-    .bee-ball-beat > div:nth-child(2n-1) {
+    .busy-ball-beat > div:nth-child(2n-1) {
         -webkit-animation-delay: 0.35s !important;
         animation-delay: 0.35s !important;
     }
 </style>
 
 <template>
-    <div v-if="visiable" class="bee-ball-beat" :style="{width: width+'px'}">
+    <div v-if="visiable" class="busy-ball-beat" :style="{width: width+'px'}">
         <div :style="styles"></div>
         <div :style="styles"></div>
         <div :style="styles"></div>
@@ -58,15 +58,15 @@
 
 <script>
     /**
-     * bee-ball-beat
+     * busy-ball-beat
      * @desc 圆形跳动动画
      * @param {Number} width=24 - 组件宽度
      * @param {String} color=#ffffff - 组件颜色, css color
      * @example
-     *      <bee-ball-beat></bee-ball-beat>
+     *      <busy-ball-beat></busy-ball-beat>
      **/
     export default {
-        name: 'bee-ball-beat',
+        name: 'busy-ball-beat',
         props: {
             width: {
                 type: Number,

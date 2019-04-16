@@ -18,19 +18,19 @@
     }
 </style>
 <template>
-    <div class="bee-progress-ring" v-on:click="handleClick">
+    <div class="busy-progress-ring" v-on:click="handleClick">
         <svg :width="size" :height="size" :viewport="viewport" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <circle class="bee-progress-ring__track" :cx="radius" :cy="radius" :r="sRdius" :style="trackStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="0">
+            <circle class="busy-progress-ring__track" :cx="radius" :cy="radius" :r="sRdius" :style="trackStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="0">
             </circle>
 
-            <circle class="bee-progress-ring__bar" :cx="radius" :cy="radius" :r="sRdius" :style="barStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="dashoffset">
+            <circle class="busy-progress-ring__bar" :cx="radius" :cy="radius" :r="sRdius" :style="barStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="dashoffset">
             </circle>
         </svg>
     </div>
 </template>
 <script>
     /**
-     * bee-progress-ring
+     * busy-progress-ring
      * @des 环形进度条组件
      * @param {Number} size - 组件直径大小,默认 100<px>
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
@@ -41,10 +41,10 @@
      * @param {String} direction = '1' - 顺时针还是逆时针, 取值范围 '1','-1'
      * @param {String} content - 显示内容，this.percent + '%'
      * @example
-     *      <bee-progress-ring :size="50" :track-width="10"></bee-progress-ring>
+     *      <busy-progress-ring :size="50" :track-width="10"></busy-progress-ring>
      **/
     export default {
-        name: 'bee-progress-ring',
+        name: 'busy-progress-ring',
         props: {
             size: {
                 type: Number,

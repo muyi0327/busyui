@@ -1,25 +1,25 @@
 {
-  "name": "@bee/spinner",
-  "version": "1.0.0",
-  "description": "bee vue component spinner",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/muyi0327/bee.git"
-  },
-  "keywords": [
-    "bee",
-    "vue",
-    "component",
-    "spinner"
-  ],
-  "author": "yangfei <yangfei44@wanda.cn> (http://git.wdjr.local/wdf)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/muyi0327/bee/issues"
-  },
-  "homepage": "https://github.com/muyi0327/bee#readme"
+    "name": "@busy/spinner",
+    "description": "busyui vue component spinner",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/muyi0327/busyui.git"
+    },
+    "keywords": [
+        "busyui",
+        "vue",
+        "component",
+        "spinner"
+    ],
+    "author": "yangfei <yangfei44@wanda.cn> (http://git.wdjr.local/wdf)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/muyi0327/busyui/issues"
+    },
+    "homepage": "https://github.com/muyi0327/busyui#readme",
+    "version": "1.0.3"
 }

@@ -6,6 +6,7 @@
         z-index: 1000;
         width: 100%;
         text-align: center;
+        pointer-events: none;
 
         &--pos-top {
             top: 50px;
@@ -25,7 +26,7 @@
 
         &__wrap {
             background-color: #262728;
-            border-radius: 12px;
+            border-radius: 4px;
             overflow: hidden;
             display: inline-flex;
             margin: 0 auto;
@@ -33,8 +34,6 @@
             justify-content: center;
             padding: 10px 20px;
             box-sizing: border-box;
-            max-width: 260px;
-            min-width: 120px;
         }
 
         &__icon {
@@ -66,12 +65,12 @@
 
 <template>
     <transition name="fade-top" v-on:after-leave="_leave">
-        <article v-show="visiable" class="bee-toast" :class="posClass">
-            <div class="bee-toast__wrap">
-                <p v-if="type" class="bee-toast__icon">
-                    <bee-icon :type="type" :width="iconWidth" :height="iconHeight" :fill="color"></bee-icon>
+        <article v-show="visiable" class="busy-toast" :class="posClass">
+            <div class="busy-toast__wrap">
+                <p v-if="type" class="busy-toast__icon">
+                    <busy-icon :type="type" :width="iconWidth" :height="iconHeight" :fill="color"></busy-icon>
                 </p>
-                <p class="bee-toast__text">
+                <p class="busy-toast__text">
                     <slot>
                         {{contentString}}
                     </slot>
@@ -85,7 +84,7 @@
     import Icon from '../../icon';
 
     export default {
-        name: 'bee-toast',
+        name: 'busy-toast',
         props: {
             type: {
                 type: String,
@@ -93,7 +92,7 @@
             },
             delay: {
                 type: Number,
-                default: 2000
+                default: 2500
             },
             iconHeight: {
                 type: Number,
@@ -108,7 +107,7 @@
                 default: '#fff'
             },
             content: {
-                type: [String, Number, Array],
+                type: [String, Number],
                 default: ''
             },
             pos: {
@@ -125,7 +124,7 @@
             },
             autoHide: {
                 type: Boolean,
-                default: true
+                default: false
             }
         },
         data() {
@@ -139,7 +138,7 @@
         },
         computed: {
             posClass() {
-                return [`bee-toast--pos-${this.pos}`];
+                return [`busy-toast--pos-${this.pos}`];
             },
             contentString() {
                 var content = this.content, t = typeof content;
@@ -168,23 +167,27 @@
                 if (this.isRemove) {
                     this.$destroy();
                     this.$el.parentNode.removeChild(this.$el);
+                    this.$emit('destroy', this)
                 }
-                this.$emit('after-leave', this)
+                this.$emit('hide-end', this)
+            },
+            clearTimmer() {
+                if (this.timmer) {
+                    clearTimeout(this.timmer);
+                    this.timmer = null;
+                }
             }
         },
         watch: {
             isShow(val) {
                 this.visiable = val;
-
             },
             visiable(val) {
-                if (!val) {
-                    clearTimeout(this.timmer);
-                    this.timmer = null;
-                } else if (this.autoHide) {
-                    !this.timmer && (this.timmer = setTimeout(this.hide, this.delay));
-                }
                 this.$emit('visiable-change', val);
+                this.clearTimmer();
+                if (val === true && this.autoHide) {
+                    this.timmer = setTimeout(this.hide, this.delay)
+                }
             }
         },
         mounted() {

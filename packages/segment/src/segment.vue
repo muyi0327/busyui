@@ -8,14 +8,14 @@
 </style>
 
 <template>
-    <div class="bee-segment">
+    <div class="busy-segment">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'bee-segment',
+        name: 'busy-segment',
         props: {
             color: {
                 type: String

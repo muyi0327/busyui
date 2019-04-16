@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Toast from './src/toast.vue';
-import '../util/src/polyfill';
 
 var ToastClass = Vue.extend(Toast),
     instance, vm;
@@ -9,7 +8,7 @@ var ToastClass = Vue.extend(Toast),
  * Toast component
  * @module Toast
  * @see {@link ../example/all/toast.html 实例}
- * @desc Toast组件 <bee-toast></bee-toast>
+ * @desc Toast组件 <busy-toast></busy-toast>
  * @param {Object} opts - 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'}
  * @param {String} content - 显示内容
  * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
@@ -30,20 +29,20 @@ var ToastClass = Vue.extend(Toast),
  * 
  * @example
  *  // use it in module tools
- *   import Toast from '@bee/toast';
+ *   import Toast from '@busy/toast';
  *   1, Toast.show('内容')
  *   2, Toast.show('内容', 5000)
  *   3, Toast.show('内容', 'top', 5000)
  *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
  * 
  *   // use it in html
- *   <script src="bee.min.js"><\/script>
- *   <link href="bee.min.css" rel="stylesheet" />
+ *   <script src="busy.min.js"><\/script>
+ *   <link href="busy.min.css" rel="stylesheet" />
  * 
- *   1, bee.Toast.show('内容')
- *   2, bee.Toast.show('内容', 5000)
- *   3, bee.Toast.show('内容', 'top', 5000)
- *   4, bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
+ *   1, Busy.Toast.show('内容')
+ *   2, Busy.Toast.show('内容', 5000)
+ *   3, Busy.Toast.show('内容', 'top', 5000)
+ *   4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
  * 
  * 
  */
@@ -59,7 +58,7 @@ export default Object.assign(Toast, {
      * @returns ToastClass实例
      * 
      * @example
-     * Bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
+     * Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
      * 
      */
     show(opts) {

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui spinner demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
 
     <style>
         * {
@@ -61,13 +61,13 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <bee-button :plain="true" @click="show">显示</bee-button>
-            <bee-button :plain="true" @click="fullpage">全屏</bee-button>
-            <bee-button :plain="true" @click="hide">隐 藏</bee-button>
-            <bee-button :plain="true" @click="create">动态创建</bee-button>
+            <busy-button :plain="true" @click="show">显示</busy-button>
+            <busy-button :plain="true" @click="fullpage">全屏</busy-button>
+            <busy-button :plain="true" @click="hide">隐 藏</busy-button>
+            <busy-button :plain="true" @click="create">动态创建</busy-button>
             <div class="box2">
                 看到某些网站的动画效果很棒，特别是有一种动画，像是一点一点画出来的那种，经过仔细查看源代码和自己实验，发现其实是利用SVG制作的描边动画，感觉非常的神奇，现在分享给大家制作方法，希望您也能通过本文的介绍，制作出绚丽的SVG描边动画。
-                <bee-loading :is-show="visiable" :full-page="fullPage">客官请稍等，马上就来</bee-loading>
+                <busy-loading :is-show="visiable" :full-page="fullPage">客官请稍等，马上就来</busy-loading>
             </div>
         </section>
     </section>
@@ -85,7 +85,7 @@
                 methods: {
                     show: function () {
                         this.visiable = true;
-                        // Bee.Loading.show({
+                        // Busy.Loading.show({
                         //     color: '#999',
                         //     spinnerWidth: 30,
                         //     spinnerHeight: 30,
@@ -97,15 +97,15 @@
                     },
                     hide: function () {
                         this.visiable = false;
-                        //Bee.Loading.show({direction: 'row'});
+                        //Busy.Loading.show({direction: 'row'});
                     },
                     fullpage: function () {
                         this.visiable = true;
                         this.fullPage = true;
-                        //Bee.Loading.hide();
+                        //Busy.Loading.hide();
                     },
                     create: function () {
-                        Bee.Loading.show({
+                        Busy.Loading.show({
                             fullPage: true
                         })
                     }

@@ -1,5 +1,5 @@
-$prefix:bee !default;
-$prefixClass: bee !default;
+$prefix:busy !default;
+$prefixClass: busy !default;
 /* Color */
 $color-blue: #478df5 !default;
 $color-orange: #ff6331 !default;
@@ -15,25 +15,22 @@ $primary-color: #478df5 !default;
 $global-default-border-color: #e7e7e7 !default;
 
 /* Button Component */
-$button-default-border-radius: 4px !default;
-$button-size-normal-height: 32px !default;
-$button-size-large-height: 44px !default;
-$button-size-small-height: 22px !default;
+$button-default-border-radius: 8px !default;
+$button-size-normal-height: 36px !default;
+$button-size-large-height: 48px !default;
+$button-size-small-height: 24px !default;
 
-$button-default-background-color: #fff !default;
-$button-default-text-color: #666 !default;
-$button-default-border-color: #c0c0c0 !default;
-$button-default-text-color: #666 !default;
+$button-default-background-color: #f8f8f8 !default;
+$button-default-text-color: #333 !default;
+$button-default-border-color: #999 !default;
 
 $button-primary-background-color: #478df5 !default;
-$button-primary-text-color: #fff !default;
 $button-primary-border-color: #478df5 !default;
-$button-primary-text-color: #478df5 !default;
+$button-primary-text-color: #ffffff !default;
 
 $button-warning-background-color: #ff6331 !default;
-$button-warning-text-color: #fff !default;
 $button-warning-border-color: #ff6331 !default;
-$button-warning-text-color: #ff6331 !default;
+$button-warning-text-color: #ffffff !default;
 
 
 /* Field Component */

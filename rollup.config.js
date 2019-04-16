@@ -13,9 +13,9 @@ import pkg from './package.json'
 // 自定义样式
 import variables from './themes/variables.js'
 
-let name = 'bee'
-let globalName = 'Bee'
-let banner = `/**\n * Bee.js framework version ${pkg.version} \n **/`;
+let name = 'busy'
+let globalName = 'Busy'
+let banner = `/**\n * Busy.js framework version ${pkg.version} \n **/`;
 let dist = './dist'
 let src = './src'
 let destCss = `${dist}/${name}.css`
@@ -77,7 +77,7 @@ export default {
             style: {
                 preprocessOptions: {
                     scss: {
-                        data: parseJsonToSass(variables)
+                        //data: parseJsonToSass(variables)
                     }
                 },
                 postcssPlugins: [

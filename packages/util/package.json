@@ -1,23 +1,23 @@
 {
-    "name": "@bee/util",
-    "version": "1.0.0",
-    "description": "bee util",
+    "name": "@busy/util",
+    "description": "busyui util",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/muyi0327/bee.git"
+        "url": "git+https://github.com/muyi0327/busyui.git"
     },
     "keywords": [
-        "bee",
+        "busyui",
         "util"
     ],
     "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/muyi0327/bee/issues"
+        "url": "https://github.com/muyi0327/busyui/issues"
     },
-    "homepage": "https://github.com/muyi0327/bee#readme"
+    "homepage": "https://github.com/muyi0327/busyui#readme",
+    "version": "1.0.3"
 }

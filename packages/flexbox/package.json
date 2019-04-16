@@ -1,25 +1,25 @@
 {
-  "name": "@bee/flexbox",
-  "version": "1.0.0",
-  "description": "flexbox component",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/muyi0327/bee.git"
-  },
-  "keywords": [
-    "flex",
-    "vue",
-    "bee",
-    "component"
-  ],
-  "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/muyi0327/bee/issues"
-  },
-  "homepage": "https://github.com/muyi0327/bee#readme"
+    "name": "@busy/flexbox",
+    "description": "flexbox component",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/muyi0327/busyui.git"
+    },
+    "keywords": [
+        "flex",
+        "vue",
+        "busyui",
+        "component"
+    ],
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/muyi0327/busyui/issues"
+    },
+    "homepage": "https://github.com/muyi0327/busyui#readme",
+    "version": "1.0.3"
 }

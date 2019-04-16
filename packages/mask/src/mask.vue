@@ -14,8 +14,8 @@
 </style>
 
 <template>
-    <transition name="bee-animate--fade" v-on:after-leave="_leave">
-        <div v-show="visiable" @touchmove="handleTouchmove" class="bee-mask" v-on:click="handleClick" :style="styles">
+    <transition name="busy-animate--fade" v-on:after-leave="_leave">
+        <div v-show="visiable" @touchmove="handleTouchmove" class="busy-mask" v-on:click="handleClick" :style="styles">
             <slot></slot>
         </div>
     </transition>
@@ -23,17 +23,17 @@
 
 <script>
     /**
-     * @bee/mask
+     * @busy/mask
      * @module Mask
-     * @desc 半透明遮罩层 <bee-mask></bee-mask>
+     * @desc 半透明遮罩层 <busy-mask></busy-mask>
      * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
      * @param {Boolean} isRemove=false - 是否隐藏动画完成从dom中清除
      * @param {Boolean} isShow=false - 显示隐藏
      * @example 
-     *      <bee-mask color="yellow"></bee-mask>
+     *      <busy-mask color="yellow"></busy-mask>
      **/
     export default {
-        name: 'bee-mask',
+        name: 'busy-mask',
         props: {
             color: {
                 type: String,

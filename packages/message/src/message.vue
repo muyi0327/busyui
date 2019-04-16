@@ -64,11 +64,11 @@
 
 <template>
     <transition name="msg-scale" v-on:after-leave="_leave">
-        <div v-show="visiable" class="bee-message" :class="_posClass" :style="styles">
-            <div class="bee-message__icon" v-if="type">
-                <bee-icon :type="_iconStyles.t" :fill="_iconStyles.c"></bee-icon>
+        <div v-show="visiable" class="busy-message" :class="_posClass" :style="styles">
+            <div class="busy-message__icon" v-if="type">
+                <busy-icon :type="_iconStyles.t" :fill="_iconStyles.c"></busy-icon>
             </div>
-            <div class="bee-message__text">
+            <div class="busy-message__text">
                 <slot>{{text}}</slot>
             </div>
         </div>
@@ -78,7 +78,7 @@
     import Icon from '../../icon';
 
     export default {
-        name: 'bee-message',
+        name: 'busy-message',
         props: {
             pos: {
                 type: String,
@@ -158,7 +158,7 @@
             },
 
             _posClass() {
-                return 'bee-message--pos-' + this.pos;
+                return 'busy-message--pos-' + this.pos;
             },
 
             _iconStyles() {

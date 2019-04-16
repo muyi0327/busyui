@@ -8,7 +8,7 @@
         user-select: none;
         border-width: 0;
         border-style: solid;
-        box-sizing: border-box;
+        box-sizing: content-box;
         color: inherit;
         display: inline-block;
         outline: 0;
@@ -20,7 +20,7 @@
         margin: 0;
         &.is-sharp {
             border-radius: 0;
-            .bee-button__border {
+            .busy-button__border {
                 border-radius: 0;
             }
         }
@@ -62,6 +62,10 @@
         &--default {
             background-color: $button-default-background-color;
             color: $button-default-text-color;
+            border-color: $button-default-border-color;
+            &.is-ghost {
+                color: $button-default-border-color;
+            }
         }
 
         &--default &__border {
@@ -71,6 +75,10 @@
         &--primary {
             background-color: $button-primary-background-color;
             color: $button-primary-text-color;
+            border-color: $button-primary-border-color;
+            &.is-ghost {
+                color: $button-primary-border-color;
+            }
         }
 
         &--primary &__border {
@@ -80,6 +88,10 @@
         &--warning {
             background-color: $button-warning-background-color;
             color: $button-warning-text-color;
+            border-color: $button-warning-border-color;
+            &.is-ghost {
+                color: $button-warning-border-color;
+            }
         }
 
         &--warning &__border {
@@ -107,29 +119,30 @@
 </style>
 
 <template>
-    <button :data-key="'bee-button-' + _uid" :type="nativeType" class="bee-button" :class="['bee-button--' + type, size ? 'bee-button--' + size : '', {
+    <button :data-key="'busy-button-' + _uid" :type="nativeType" class="busy-button" :class="['busy-button--' + type, size ? 'busy-button--' + size : '', {
       'is-disabled': disabled,
-      'is-block': block
+      'is-block': block,
+      'is-ghost': ghost
     }]" :style="styles" @click="handleClick" :disabled="disabled">
-        <label class="bee-button__text">
+        <label class="busy-button__text">
             <slot>{{content}}</slot>
         </label>
-        <span class="bee-button__border" :style="borderStyles"></span>
+        <span v-if="isThin" class="busy-button__border" :style="thinBorder"></span>
     </button>
 </template>
 
 <script>
-    import { BNumber } from '../../util'
+    import { MNumber } from '../../util'
 
     setTimeout(() => {
         let dpr = window.devicePixelRatio;
 
         //if (this.borderColor) {
-        var styleTag = document.getElementById('bee-button-border-1px');
+        var styleTag = document.getElementById('busy-button-border-1px');
         var sheet = styleTag ? (styleTag.sheet || styleTag.styleSheet) : null;
         if (!sheet) {
             var style = document.createElement("style");
-            style.id = 'bee-button-border-1px';
+            style.id = 'busy-button-border-1px';
             style.type = 'text/css';
             style.appendChild(document.createTextNode(""));
             document.head.appendChild(style);
@@ -137,13 +150,13 @@
         }
 
         if (sheet.addRule) {
-            sheet.addRule('button > .bee-button-border',
+            sheet.addRule('button > .busy-button__border',
                 'width: ' + dpr * 100 + '%;' +
                 'height: ' + dpr * 100 + '%;' +
                 'transform: scale(' + 1 / dpr + ');'
             );
         } else if (sheet.insertRule) {
-            sheet.insertRule('button > .bee-button-border' +
+            sheet.insertRule('button > .busy-button__border' +
                 'width: ' + dpr * 100 + '%;' +
                 'height: ' + dpr * 100 + '%;' +
                 'transform: scale(' + 1 / dpr + ');', 0);
@@ -153,10 +166,10 @@
     }, 0);
 
     /**
-     * @bee/button
+     * @busy/button
      * @module Button
      * @see {@link ../example/all/button.html 实例}
-     * @desc 按钮组件 <bee-button />
+     * @desc 按钮组件 <busy-button />
      * @param {string} type=default - 显示类型，接受 default, primary, warning
      * @param {string} nativeType=button - 按钮类型， button, reset, submit
      * @param {boolean} disabled=false - 禁用
@@ -170,15 +183,18 @@
      * @param {String} slot - 显示文本
      * @param {String} bgColor - 按钮背景色
      * @param {String} fontColor - 字体颜色
+     * @param {String} borderColor - 边框颜色
+     * @param {String} borderWidth - 边框宽度
+     * @param {String} borderRadius - 圆角
      *
      * @example
-     *  <bee-button size="large" type="primary">按钮</bee-button>
+     *  <busy-button size="large" type="primary">按钮</busy-button>
      *
-     *  <bee-button size="small" type="warning">删除</bee-button>
+     *  <busy-button size="small" type="warning">删除</busy-button>
      *
      */
     export default {
-        name: 'bee-button',
+        name: 'busy-button',
 
         props: {
             disabled: Boolean,
@@ -195,7 +211,7 @@
             fontSize: {
                 type: [Number, String],
                 default: 14,
-                validator: BNumber.validateUnit
+                validator: MNumber.validateUnit
             },
             bgColor: String,
             borderColor: String,
@@ -204,16 +220,14 @@
             },
             borderWidth: {
                 type: [Number, String],
-                default() {
-                    return this.plain ? 1 : 0
-                },
-                validator: BNumber.validateUnit
+                default: 1,
+                validator: MNumber.validateUnit
             },
             fontColor: String,
             borderRadius: {
                 type: [Number, String],
                 default: 4,
-                validator: BNumber.validateUnit
+                validator: MNumber.validateUnit
             },
             type: {
                 type: String,
@@ -232,11 +246,11 @@
             },
             height: {
                 type: [String, Number],
-                validator: BNumber.validateUnit
+                validator: MNumber.validateUnit
             },
             width: {
                 type: [String, Number],
-                validator: BNumber.validateUnit
+                validator: MNumber.validateUnit
             },
             size: {
                 type: String,
@@ -261,7 +275,7 @@
             }
         },
         computed: {
-            borderStyles() {
+            thinBorder() {
                 if (!(this.borderWidth === 1 || this.borderWidth === '1px')) return null;
 
                 let br = this.sharp ? 0 : this.borderRadius, regBr;
@@ -281,8 +295,8 @@
                 }
             },
             styles() {
-                let h = BNumber.cmpUnit(this.height),
-                    w = BNumber.cmpUnit(this.width),
+                let h = MNumber.cmpUnit(this.height),
+                    w = MNumber.cmpUnit(this.width),
                     br = this.sharp ? 0 : this.borderRadius,
                     fs = this.fontSize,
                     size = this.size
@@ -294,7 +308,7 @@
                     borderColor: !this.isThin ? this.borderColor : null,
                     width: w,
                     fontSize: /^\d+$/.test(fs) ? fs + 'px' : (fs || null),
-                    backgroundColor: this.bgColor,
+                    backgroundColor: this.ghost ? 'transparent' : this.bgColor,
                     color: this.fontColor,
                     borderRadius: /^\d+$/.test(br) ? br + 'px' : br
                 }

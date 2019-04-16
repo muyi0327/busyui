@@ -67,25 +67,25 @@
 </style>
 
 <template>
-    <bee-mask v-show="visiable">
+    <busy-mask v-show="visiable">
         <transition name="loading-opacity-fade">
-            <div v-show="visiable" class="bee-toast-loading" :class="classes" :style="styles">
-                <div class="bee-toast-loading__icon">
-                    <bee-spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color"></bee-spinner>
+            <div v-show="visiable" class="busy-toast-loading" :class="classes" :style="styles">
+                <div class="busy-toast-loading__icon">
+                    <busy-spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color"></busy-spinner>
                 </div>
-                <div v-if="text" class="bee-toast-loading__text" :style="{color: color,fontSize: fontSize+'px'}">
+                <div v-if="text" class="busy-toast-loading__text" :style="{color: color,fontSize: fontSize+'px'}">
                     <slot>{{text}}</slot>
                 </div>
             </div>
         </transition>
-    </bee-mask>
+    </busy-mask>
 </template>
 
 <script>
     import Spinner from '../../spinner';
 
     export default {
-        name: 'bee-toast-loading',
+        name: 'busy-toast-loading',
         props: {
             width: {
                 type: Number,
@@ -165,7 +165,7 @@
                 return s;
             },
             classes() {
-                return [this.direction == 'row' ? 'bee-toast-loading--dir-row' : 'bee-toast-loading--dir-column']
+                return [this.direction == 'row' ? 'busy-toast-loading--dir-row' : 'busy-toast-loading--dir-column']
             }
         },
         watch: {

@@ -1,12 +1,12 @@
 <style lang="scss">
-    .bee-svg-circle {
+    .busy-svg-circle {
         width: 50px;
         height: 50px;
         position: relative;
         margin: 0 auto;
     }
 
-    .bee-svg-circle-circular {
+    .busy-svg-circle-circular {
         -webkit-animation: spinner-rotate 2s linear infinite;
         animation: spinner-rotate 2s linear infinite;
         height: 100%;
@@ -21,7 +21,7 @@
         margin: auto;
     }
 
-    .bee-svg-circle-path {
+    .busy-svg-circle-path {
         stroke-dasharray: 5, 200;
         stroke-dashoffset: 0;
         -webkit-animation: spinner-rotate-dash 1.5s ease-in-out infinite;
@@ -74,9 +74,9 @@
     }
 </style>
 <template>
-    <div class="bee-svg-circle">
-        <svg class="bee-svg-circle-circular" :viewBox="viewbox">
-            <circle class="bee-svg-circle-path" :cx="this.size*0.5" :cy="this.size*0.5" :r="radius" fill="none" :stroke="color" :stroke-width="strokeWidth" stroke-miterlimit="10">
+    <div class="busy-svg-circle">
+        <svg class="busy-svg-circle-circular" :viewBox="viewbox">
+            <circle class="busy-svg-circle-path" :cx="this.size*0.5" :cy="this.size*0.5" :r="radius" fill="none" :stroke="color" :stroke-width="strokeWidth" stroke-miterlimit="10">
             </circle>
         </svg>
     </div>
@@ -84,7 +84,7 @@
 
 <script>
     export default {
-        name: 'bee-svg-circle-rotate',
+        name: 'busy-svg-circle-rotate',
         props: {
             size: {
                 type: Number,

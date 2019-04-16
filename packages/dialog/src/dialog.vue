@@ -1,25 +1,31 @@
 <style lang="scss">
-    @import "../../../src/style/variable.scss";
+    @import "../../../src/style/variable";
+    @import "../../../src/style/animate";
 
-    $ml: $dialog-dfault-width * -0.5;
-
-    $mt: $dialog-dfault-height * -0.5;
     .#{$prefixClass}-dialog {
         position: fixed;
-        border-radius: 12px;
         overflow: hidden;
-        background-color: #f7f7f7;
+        z-index: 1000;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
         display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        z-index: 1002;
-        left: 50%;
-        top: 50%;
-        opacity: 1;
-        transform: scale(1, 1) translate3d(-50%, -50%, 0);
-        transform-origin: 50% 50%;
-        width: #{$dialog-dfault-width}px;
-        height: #{$dialog-dfault-height}px;
+        justify-content: center;
+        align-items: center;
+
+        &__wrap {
+            border-radius: 12px;
+            background-color: #f7f7f7;
+            box-sizing: border-box;
+            width: #{$dialog-dfault-width}px;
+            height: #{$dialog-dfault-height}px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1001;
+            overflow: hidden;
+        }
 
         &__close {
             position: absolute;
@@ -106,53 +112,44 @@
             }
         }
     }
-
-    .fade-scale-enter,
-    .fade-scale-leave-active {
-        opacity: 0;
-        transform: scale(0.8, 0.8) translate3d(-50%, -50%, 0);
-    }
-
-    .fade-scale-leave-active,
-    .fade-scale-enter-active {
-        transition: all 0.3s ease;
-    }
 </style>
 
 <template>
-    <bee-mask v-show="visiable" :is-remove="isRemove" color="rgba(0,0,0,.5)">
-        <transition name="fade-scale">
-            <div class="bee-dialog" v-if="visiable" :style="styles">
-                <p v-if="showClose" class="bee-dialog__close" @click.stop="hide">
-                    <bee-icon type="close" :width="20" :height="20" fill="#8a8a8a"></bee-icon>
+    <div class="busy-dialog" v-show="!leave">
+        <transition name="busy-animate--scale" @after-leave="_leave">
+            <div class="busy-dialog__wrap" v-show="visiable" :style="styles">
+                <p v-if="showClose" class="busy-dialog__close" @click.stop="hide">
+                    <busy-icon type="close" :width="20" :height="20" fill="#8a8a8a"></busy-icon>
                 </p>
-                <header class="bee-dialog__header" v-if="title">
+                <header class="busy-dialog__header" v-if="title">
                     <slot name="header">
-                        <div class="bee-dialog__title">{{title}}</div>
+                        <div class="busy-dialog__title">{{title}}</div>
                     </slot>
                 </header>
-                <div class="bee-dialog__body" v-if="content || $slots['body']">
+                <div class="busy-dialog__body" v-if="content || $slots['body']">
                     <slot name="body">
                         <div :style="contentStyle" v-html="content"></div>
                     </slot>
                 </div>
-                <footer class="bee-dialog__footer" :style="footerStyles" :class="{'bee-dialog__footer_row':buttonDirection=='row', 'bee-dialog__footer_col':buttonDirection=='col'}">
+                <footer class="busy-dialog__footer" :style="footerStyles" :class="{'busy-dialog__footer_row':buttonDirection=='row', 'busy-dialog__footer_col':buttonDirection=='col'}">
                     <slot name="footer">
                         <template v-for="(btn,$i) in bindButtons">
-                            <p class="bee-dialog__button" :key="'btn-'+$i" :class="btn.class" :style="btn.style" @click.stop="btn.action">{{btn.text}}</p>
+                            <p class="busy-dialog__button" :key="'btn-'+$i" :class="btn.class" :style="btn.style" @click.stop="btn.action">{{btn.text}}</p>
                         </template>
                     </slot>
                 </footer>
             </div>
         </transition>
-    </bee-mask>
+        <busy-mask :is-show="visiable" :is-remove="isRemove" color="rgba(0,0,0,.5)"> </busy-mask>
+    </div>
+
 </template>
 <script>
     import Icon from '../../icon';
     import Mask from '../../mask';
 
     export default {
-        name: 'bee-dialog',
+        name: 'busy-dialog',
         props: {
             mask: {
                 type: Boolean,
@@ -206,7 +203,8 @@
         },
         data() {
             return {
-                visiable: this.isShow
+                visiable: this.isShow,
+                leave: true
             }
         },
         components: {
@@ -254,6 +252,9 @@
                 this.visiable = val;
             },
             visiable(val) {
+                if (val === true) {
+                    this.leave = false
+                }
                 this.$emit('visiable-change', val);
             }
         },
@@ -268,7 +269,18 @@
                 this.visiable = true;
                 this.$emit('show');
                 return this;
-            }
+            },
+
+            _leave() {
+                this.leave = true
+                // 动画结束，清除元素
+                if (this.isRemove) {
+                    this.$destroy();
+                    this.$el.parentNode.removeChild(this.$el);
+                    this.$emit('destroy', this)
+                }
+                this.$emit('hide-end', this)
+            },
         }
     }
 </script>    

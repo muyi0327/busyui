@@ -1,18 +1,13 @@
+import Dialog from './src/dialog.js';
+import Alert from './src/alert.js';
+import Confirm from './src/confirm.js';
+import Prompt from './src/prompt.js';
+
 export {
-    default as Dialog
+    Dialog,
+    Alert,
+    Confirm,
+    Prompt
 }
-from './src/dialog.js';
-export {
-    default as Alert
-}
-from './src/alert.js';
-export {
-    default as Confirm
-}
-from './src/confirm.js';
-export {
-    default as Prompt
-}
-from './src/prompt.js';
 
 export default Dialog;

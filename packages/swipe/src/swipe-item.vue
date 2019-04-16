@@ -1,11 +1,11 @@
 <template>
-    <div class="bee-swipe__item">
+    <div class="busy-swipe__item">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'bee-swipe-item'
+        name: 'busy-swipe__item'
     }
 </script>

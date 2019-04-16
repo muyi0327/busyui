@@ -11,7 +11,7 @@
 </style>
 
 <template>
-    <div class="bee-list bee-border-1px bee-border-tb">
+    <div class="busy-list busy-border-1px busy-border-tb">
         <slot></slot>
     </div>
 </template>
@@ -20,7 +20,7 @@
     import ListItem from './list-item.vue';
 
     export default {
-        name: 'bee-list',
+        name: 'busy-list',
         props: {
             items: {
                 type: Array,

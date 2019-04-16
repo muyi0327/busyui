@@ -1,1 +1,1 @@
-# w-spinner
+# busy-spinner

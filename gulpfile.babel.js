@@ -18,10 +18,13 @@ import {
     exec
 } from 'child_process'
 import fs from 'fs'
+import {
+    connectLogger
+} from 'log4js';
 
 let buildTasks = [];
 let env = process.env.NODE_ENV;
-let name = 'bee'
+let name = 'busy'
 let dist = './dist'
 
 gulp.task('clear', (cb) => {
@@ -29,7 +32,7 @@ gulp.task('clear', (cb) => {
     cb()
 });
 
-// 打包完整 bee.js 和 bee.css
+// 打包完整 busy.js 和 busy.css
 gulp.task('build-dev', series('clear', async function () {
     console.log('build dev...........');
     delete rollupConfig.output
@@ -54,7 +57,7 @@ gulp.task('build-dev', series('clear', async function () {
         await bundle.write({
             file: fileName,
             format: t,
-            name: 'Bee',
+            name: 'Busy',
             exports: 'named',
             sourceMap: true,
             globals: {
@@ -66,7 +69,7 @@ gulp.task('build-dev', series('clear', async function () {
     }
 }))
 
-// 压缩 bee.js 到 bee.min.js
+// 压缩 busy.js 到 busy.min.js
 gulp.task('compress', series('build-dev', () => {
     return gulp.src([`${dist}/${name}.js`, `${dist}/${name}.commonjs.js`, `${dist}/${name}.iife.js`])
         .pipe(uglify({
@@ -99,6 +102,14 @@ gulp.task('api', (cb) => {
         configure: './jsdoc.conf.json',
         'module-index-format': 'table'
     });
+
+
+    jdtomk.getJsdocData({
+        files: './packages/**/*.{vue,js}',
+        configure: './jsdoc.conf.json',
+    }).then(rst => {
+        console.log(rst)
+    })
 
     fs.writeFileSync('./docs/api.md', output);
 
@@ -137,11 +148,12 @@ gulp.task('test', function (cb) {
 
 // execute gulp version --version 0.x.x
 gulp.task('vs', (cb) => {
+    console.log(process.argv.slice(2))
     let version = process.argv.slice(2)[2];
     let pkgs = glob.sync('./packages/**/package.json');
     pkgs.unshift('./package.json');
 
-    console.log(pkgs)
+    //console.log(pkgs)
 
     pkgs.forEach(p => {
         let pkgString = fs.readFileSync(p);

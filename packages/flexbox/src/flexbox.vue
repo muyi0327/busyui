@@ -12,7 +12,7 @@
     import FlexItem from './flex-item.vue'
 
     export default {
-        name: 'bee-flexbox',
+        name: 'busy-flexbox',
         props: {
             inline: {
                 type: Boolean,
@@ -52,9 +52,9 @@
             classes() {
                 let ah = this.alignH, av = this.alignV, flag = ah || av;
                 return [
-                    this.inline ? `bee-flex--inline` : `bee-flex`,
-                    flag ? `bee-flex--${ah || 'start'}-${av || 'start'}` : null,
-                    !this.direction ? '' : `bee-flex--${this.direction}`
+                    this.inline ? `busy-flex--inline` : `busy-flex`,
+                    flag ? `busy-flex--${ah || 'start'}-${av || 'start'}` : null,
+                    !this.direction ? '' : `busy-flex--${this.direction}`
                 ]
             },
             styles() {

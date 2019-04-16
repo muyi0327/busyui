@@ -17,19 +17,19 @@
 </style>
 
 <template>
-    <bee-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" @visiable-change="handleVisiable">
+    <busy-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" @visiable-change="handleVisiable">
         <div slot="body">
-            <div class="bee-prompt__text">
-                <input type="text" v-model="content" :placeholder="placeholder" class="bee-prompt__input" />
+            <div class="busy-prompt__text">
+                <input type="text" v-model="content" :placeholder="placeholder" class="busy-prompt__input" />
             </div>
         </div>
-    </bee-dialog>
+    </busy-dialog>
 </template>
 <script>
     import Dialog from './dialog.vue';
 
     export default {
-        name: 'bee-prompt',
+        name: 'busy-prompt',
         extends: Dialog,
         components: {
             [Dialog.name]: Dialog

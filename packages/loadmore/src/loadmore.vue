@@ -77,31 +77,31 @@
     }
 </style>
 <template>
-    <div class="bee-loadmore">
-        <div class="bee-loadmore__content" :style="styles">
+    <div class="busy-loadmore">
+        <div class="busy-loadmore__content" :style="styles">
             <slot name="top">
-                <bee-loadmore-bar class="bee-loadmore__top" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></bee-loadmore-bar>
+                <busy-loadmore-bar class="busy-loadmore__top" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></busy-loadmore-bar>
             </slot>
-            <div class="bee-loadmore__content">
+            <div class="busy-loadmore__content">
                 <slot></slot>
             </div>
             <slot name="bottom" v-if="onInfinite">
-                <bee-loadmore-bar class="bee-loadmore__bottom" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></bee-loadmore-bar>
+                <busy-loadmore-bar class="busy-loadmore__bottom" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></busy-loadmore-bar>
             </slot>
             <slot name="no-more" v-if="noMore">
-                <div class="bee-loadmore__nomore">{{noMoreText}}</div>
+                <div class="busy-loadmore__nomore">{{noMoreText}}</div>
             </slot>
         </div>
     </div>
 </template>
 <script>
     import {
-        BString
+        MString
     } from '../../util';
     import loadMoreBar from './loadmore-bar.vue';
 
     /**
-     * @bee/loadmore
+     * @busy/loadmore
      * @module Loadmore
      * @see {@link ../example/all/loadmore.html 实例}
      * @desc 加载更多组件
@@ -121,10 +121,10 @@
      * @param {Boolean} listenScroll - 是否监听scroll
      * 
      * @example
-     *  <bee-loadmore>content list</bee-loadmore>
+     *  <busy-loadmore>content list</busy-loadmore>
      */
     export default {
-        name: 'bee-loadmore',
+        name: 'busy-loadmore',
         props: {
             topPullText: {
                 type: String,

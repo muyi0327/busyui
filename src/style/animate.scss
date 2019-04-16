@@ -3,38 +3,48 @@
 .#{$prefixClass}-animate {
 
     &--fade-enter,
-    &--fade-leave-active {
+    &--fade-leave-to {
         opacity: 0;
+    }
+
+    &--scale-enter {
+        opacity: 0;
+        transform: scale(1.5) !important;
+    }
+
+    &--scale-leave-to {
+        opacity: 0;
+        transform: scale(0.7) !important;
     }
 
     /*上进上出*/
     &--tito-enter,
-    &--tito-leave-active {
+    &--tito-leave-to {
         opacity: 0;
         margin-top: -50px;
     }
 
     /*上进下出*/
-    &--tibo-enter,
-    &--tibo-leave-active {
+    &--tibo-enter {
         opacity: 0;
         margin-top: -50px;
     }
 
-    &--tibo-leave-active {
+    &--tibo-leave-to {
+        opacity: 0;
         margin-top: 50px;
     }
 
     /*下进下出*/
     &--bibo-enter,
-    &--bibo-leave-active {
+    &--bibo-leave-to {
         opacity: 0;
         margin-bottom: -50px;
     }
 
     /*左进左出*/
     &--lilo-enter,
-    &--lilo-leave-active {
+    &--lilo-leave-to {
         opacity: 0;
         margin-left: -50px;
     }
@@ -42,25 +52,25 @@
 
     /*右进右出*/
     &--riro-enter,
-    &--riro-leave-active {
+    &--riro-leave-to {
         opacity: 0;
         margin-right: -50px;
     }
 
     /*左进右出*/
     &--liro-enter,
-    &--liro-leave-active {
+    &--liro-leave-to {
         opacity: 0;
         margin-left: -50px;
     }
 
-    &--liro-leave-active {
+    &--liro-leave-to {
         margin-right: -50px;
     }
 
     /*slide down*/
     &--slide-down-enter,
-    &--slide-down-leave-active {
+    &--slide-down-leave-to {
         opacity: 0;
         height: 0;
     }
@@ -79,6 +89,8 @@
     &--liro-enter-active,
     &--fade-leave-active,
     &--fade-enter-active,
+    &--scale-leave-active,
+    &--scale-enter-active,
     &--slide-down-leave-active,
     &--slide-down-enter-active {
         transition: all 0.5s ease;

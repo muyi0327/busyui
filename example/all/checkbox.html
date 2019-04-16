@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>bee Checkbox demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <title>busy Checkbox demo</title>
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <style>
         section {
             margin: 5px;
@@ -47,13 +47,13 @@
             <article>
                 <section title="选择框">
                     <div>
-                        <bee-checkbox :size="50" color="orange" v-model="checked" label="这个位置是标签1"></bee-checkbox>
+                        <busy-checkbox :size="50" color="orange" v-model="checked" label="这个位置是标签1"></busy-checkbox>
                     </div>
                     <div>
-                        <bee-checkbox :size="30" v-model="checked2" label="这个位置是标签2"></bee-checkbox>
+                        <busy-checkbox :size="30" v-model="checked2" label="这个位置是标签2"></busy-checkbox>
                     </div>
                     <div>
-                        <bee-checkbox :size="18" color="#00c2f0" v-model="checked3" label="这个位置是标签3"></bee-checkbox>
+                        <busy-checkbox :size="18" color="#00c2f0" v-model="checked3" label="这个位置是标签3"></busy-checkbox>
                     </div>
                     <div>标签1:{{checked}}</div>
                     <div>标签2:{{checked2}}</div>
@@ -61,12 +61,12 @@
                 </section>
                 <section title="自定义内容">
                     <div>
-                        <bee-checkbox v-model="checked">
+                        <busy-checkbox v-model="checked">
                             <span><a href="" @click="click1">[[这里是一个连接]]</a></span>
-                        </bee-checkbox>
+                        </busy-checkbox>
                     </div>
                     <div>
-                        <bee-checkbox v-model="checked">
+                        <busy-checkbox v-model="checked">
                             <span style="display:inline-block;width:220px;">
                                 <p><a href="" @click="click1">[[这里是一个连接]]</a></p>
                                 <p><a href="" @click="click2">[[这里是另一个连接]]</a></p>
@@ -75,18 +75,18 @@
                                 <p><a href="" @click="click2">[[这里是另一个连接]]</a></p>
                                 <p><a href="" @click="click2">[[这里是另一个连接]]</a></p>
                             </span>
-                        </bee-checkbox>
+                        </busy-checkbox>
                     </div>
                 </section>
                 <section title="禁用">
                     <div>
-                        <bee-checkbox v-model="disable" label="是否禁用下面的按钮"></bee-checkbox>
+                        <busy-checkbox v-model="disable" label="是否禁用下面的按钮"></busy-checkbox>
                     </div>
                     <div>
-                        <bee-checkbox label="禁用我!" :disabled="disable"></bee-checkbox>
+                        <busy-checkbox label="禁用我!" :disabled="disable"></busy-checkbox>
                     </div>
                     <div>
-                        <bee-checkbox label="禁用我!!" :disabled="disable"></bee-checkbox>
+                        <busy-checkbox label="禁用我!!" :disabled="disable"></busy-checkbox>
                     </div>
                 </section>
             </article>

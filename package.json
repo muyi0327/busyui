@@ -1,11 +1,11 @@
 {
-    "name": "bee",
+    "name": "busyui",
     "description": "vue components ui library",
-    "main": "dist/bee.commonjs.js",
+    "main": "dist/busyui.commonjs.js",
     "bugs": {
-        "url": "https://github.com/muyi0327/bee/issues"
+        "url": "https://github.com/muyi0327/busyui/issues"
     },
-    "homepage": "https://github.com/muyi0327/bee",
+    "homepage": "https://github.com/muyi0327/busyui",
     "directories": {
         "test": "karma start"
     },
@@ -14,22 +14,21 @@
         "dev": "rollup -c -w",
         "build": "cross-env NODE_ENV=development gulp build",
         "build-all": "cross-env NODE_ENV=production gulp build && gulp watch",
-        "install-all": "npm install karma-cli lerna rollup browserify -gd",
-        "lint": "eslint -f checkstyle --ext .js,.vue src test > reports/eslint-report.xml",
-        "fix": "eslint --fix --ext .js,.vue src test",
+        "lint": "node_modelues/.bin/eslint -f checkstyle --ext .js,.vue src test > reports/eslint-report.xml",
+        "fix": "node_modelues/.bin/eslint --fix --ext .js,.vue src test",
         "docs": "gulp api",
-        "start": "http-server -p 3029 -o"
+        "start": "http-server -p 3022 -o"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/muyi0327/bee.git"
+        "url": "git+https://github.com/muyi0327/busyui.git"
     },
     "keywords": [
         "vue",
-        "bee",
+        "busyui",
         "component"
     ],
-    "author": "",
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
     "dependencies": {
         "vue": "^2.6.9"
@@ -62,15 +61,16 @@
         "cross-env": "^5.2.0",
         "css-loader": "^2.1.1",
         "del": "^4.0.0",
-        "eslint": "^5.15.3",
+        "eslint": "^5.16.0",
         "eslint-config-standard": "^12.0.0",
         "eslint-loader": "^2.1.2",
         "eslint-plugin-html": "^5.0.3",
         "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-node": "^8.0.1",
-        "eslint-plugin-promise": "^4.0.1",
+        "eslint-plugin-promise": "^4.1.1",
         "eslint-plugin-standard": "^4.0.0",
         "eslint-plugin-vue": "^5.2.2",
+        "eslint-plugin-vuefix": "^0.2.1",
         "glob": "^7.1.3",
         "gulp": "4.0.0",
         "gulp-babel": "^8.0.0",
@@ -125,5 +125,5 @@
         "vue-template-compiler": "^2.6.9",
         "webpack": "^4.29.6"
     },
-    "version": "1.0.0"
+    "version": "1.0.3"
 }

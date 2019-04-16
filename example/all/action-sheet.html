@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <style type="text/css">
         html,
         body {
@@ -18,7 +18,7 @@
 
         .wrap,
         .app {
-            height: 500%;
+            height: 100%;
             width: 100%;
         }
     </style>
@@ -27,26 +27,36 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <div class="buttons">
-                <bee-flexbox>
-                    <bee-flexitem>
-                        <bee-button :plain="true" width="100%" @click.stop="showActionSheet">动态</bee-button>
-                    </bee-flexitem>
-                    <bee-flexitem>
-                        <bee-button :plain="true" width="100%" @click.stop="show">Tag显示</bee-button>
-                    </bee-flexitem>
-                    <bee-flexitem>
-                        <bee-button :plain="true" width="100%" @click.stop="hide">Tag隐藏</bee-button>
-                    </bee-flexitem>
-                </bee-flexbox>
-            </div>
-            <bee-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></bee-action-sheet>
+            <div>
 
-            <bee-action-sheet :is-show="true">
-                <bee-action-sheet-item @click="()=>{$bee.Toast.show('1111')}">slot动作一</bee-action-sheet-item>
-                <bee-action-sheet-item @click="()=>{$bee.Toast.show('2222')}">slot动作二</bee-action-sheet-item>
-                <bee-action-sheet-item @click="()=>{$bee.Toast.show('3333')}">slot动作三</bee-action-sheet-item>
-            </bee-action-sheet>
+            </div>
+            <div class="buttons">
+                <busy-flexbox>
+                    <busy-flexitem>
+                        <busy-button :plain="true" width="100%" @click.stop="showActionSheet">动态</busy-button>
+                    </busy-flexitem>
+                    <busy-flexitem>
+                        <busy-button :plain="true" width="100%" @click.stop="show">Tag显示</busy-button>
+                    </busy-flexitem>
+                    <busy-flexitem>
+                        <busy-button :plain="true" width="100%" @click.stop="hide">Tag隐藏</busy-button>
+                    </busy-flexitem>
+                </busy-flexbox>
+            </div>
+            <busy-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></busy-action-sheet>
+
+            <busy-action-sheet :is-show="true">
+                <busy-action-sheet-item @click="()=>{$busy.Toast.show('1111')}">
+                    <busy-flexbox :inline="false" align-v="center" align-h="center" height="inherit" style="line-height:18px;">
+                        <busy-icon type="info" fill="#000000"></busy-icon>
+                        <span style="margin-left:10px;">
+                            slot动作一
+                        </span>
+                    </busy-flexbox>
+                </busy-action-sheet-item>
+                <busy-action-sheet-item @click="()=>{$busy.Toast.show('2222')}">slot动作二</busy-action-sheet-item>
+                <busy-action-sheet-item @click="()=>{$busy.Toast.show('3333')}">slot动作三</busy-action-sheet-item>
+            </busy-action-sheet>
         </section>
     </section>
 
@@ -95,7 +105,7 @@
                     this.isShow = visiable;
                 },
                 showActionSheet: function () {
-                    Bee.ActionSheet.show({
+                    Busy.ActionSheet.show({
                         actions: this.actions
                     });
                 }

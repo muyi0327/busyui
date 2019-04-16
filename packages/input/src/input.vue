@@ -32,12 +32,12 @@
 </style>
 
 <template>
-    <div class="bee-input" v-clickoutside="unActive">
-        <div class="bee-input__content">
-            <input :placeholder="placeholder" :disabled="disabled" :readonly="readonly" :type="type" :name="name" :maxlength="maxlength" class="bee-input__input" :style="styles" :pattern="pattern" v-model="currentValue" @keyup.enter="handleEnter" @focus="handleFocus" @blur="handleBlur" @input="handleInput" @change="handleChange" />
+    <div class="busy-input" v-clickoutside="unActive">
+        <div class="busy-input__content">
+            <input :placeholder="placeholder" :disabled="disabled" :readonly="readonly" :type="type" :name="name" :maxlength="maxlength" class="busy-input__input" :style="styles" :pattern="pattern" v-model="currentValue" @keyup.enter="handleEnter" @focus="handleFocus" @blur="handleBlur" @input="handleInput" @change="handleChange" />
         </div>
-        <div class="bee-input__clear" v-show="active && currentValue" @click="handleClear">
-            <bee-icon type="roundclosefill" fill="#d8d8d8" :width="16" :height="16"></bee-icon>
+        <div class="busy-input__clear" v-show="active && currentValue" @click="handleClear">
+            <busy-icon type="roundclosefill" fill="#d8d8d8" :width="16" :height="16"></busy-icon>
         </div>
     </div>
 
@@ -47,12 +47,12 @@
     import Clickoutside from '../../../src/directives/clickoutside.js';
     import Icon from '../../icon';
     import {
-        BNumber
+        MNumber
     } from '../../util';
 
 
     export default {
-        name: 'bee-input',
+        name: 'busy-input',
         props: {
             placeholder: String,
             disabled: Boolean,
@@ -152,12 +152,12 @@
             if (this.format) {
                 switch (this.format) {
                     case 'numberic':
-                        this.enFormatFunction = BNumber.enFormatNumberic;
-                        this.deFormatFunction = BNumber.deFormatNumberic;
+                        this.enFormatFunction = MNumber.enFormatNumberic;
+                        this.deFormatFunction = MNumber.deFormatNumberic;
                         break;
                     case 'bankcard':
-                        this.deFormatFunction = BNumber.deFormatBankCard;
-                        this.enFormatFunction = BNumber.enFormatBankCard;
+                        this.deFormatFunction = MNumber.deFormatBankCard;
+                        this.enFormatFunction = MNumber.enFormatBankCard;
                         this.dms = ' ';
                         break;
                     default:
@@ -165,7 +165,7 @@
                             let dms = this.format[1] || ' ';
                             let blocks = this.format[0];
                             this.enFormatFunction = function (n) {
-                                return BNumber.formatBlocks(n, blocks, dms)
+                                return MNumber.formatBlocks(n, blocks, dms)
                             }.bind(this);
 
                             this.deFormatFunction = function (n) {

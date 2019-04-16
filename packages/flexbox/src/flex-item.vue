@@ -1,27 +1,36 @@
 
 <template>
-    <div class="bee-flex__item" :style="styles" @click="handleClick">
+    <div class="busy-flex__item" :style="styles" @click="handleClick">
         <slot></slot>
     </div>
 </template>
 
 <script>
+    import { MNumber } from '../../util'
+
     export default {
-        name: 'bee-flexitem',
+        name: 'busy-flexitem',
         props: {
             basis: [String, Number],
             shrink: [String, Number],
             grow: [String, Number],
             flex: [String, Number],
             alginSelf: String,
-            order: Number
+            order: Number,
+            width: [String, Number],
+            height: [String, Number]
         },
         computed: {
             styles() {
-                return {
+                let w = this.width, h = this.height;
+                w = MNumber.cmpUnit(w)
+                h = MNumber.cmpUnit(h)
 
+                return {
                     flex: this.flex,
                     order: this.order,
+                    width: w,
+                    height: h,
                     alginSelf: this.alginSelf
                 }
             }

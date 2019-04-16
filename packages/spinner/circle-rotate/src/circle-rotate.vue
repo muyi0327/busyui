@@ -16,11 +16,11 @@
         }
     }
 
-    .bee-circle-rotate {
+    .busy-circle-rotate {
         display: inline-block;
     }
 
-    .bee-circle-rotate > div {
+    .busy-circle-rotate__circle {
         border-radius: 50%;
         -webkit-animation: circle-rotate 0.5s linear infinite;
         animation: circle-rotate 0.5s linear infinite;
@@ -30,24 +30,24 @@
     }
 </style>
 <template>
-    <div v-if="visiable" class="bee-circle-rotate">
-        <div class="bee-circle-circle" :style="styles"></div>
+    <div v-if="visiable" class="busy-circle-rotate">
+        <div class="busy-circle-rotate__circle" :style="styles"></div>
     </div>
 </template>
 <script>
 
     /**
-     * bee-circle-rotate
+     * busy-circle-rotate
      * @desc 旋转圆环动画
      * @param {Number} width=24 - 组件宽度
      * @param {Number} height=24 - 组件高度
      * @param {String} color="#ffffff" - 组件颜色
      * @param {Number} strokeWidth=3 - 描边宽度
      * @example
-     *      <bee-circle-rotate color="red"></bee-circle-rotate>
+     *      <busy-circle-rotate color="red"></busy-circle-rotate>
      **/
     export default {
-        name: 'bee-circle-rotate',
+        name: 'busy-circle-rotate',
         props: {
             height: {
                 type: Number,

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>bee toast demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <title>busy toast demo</title>
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <style type="text/css">
         * {
             padding: 0;
@@ -48,29 +48,29 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <bee-list height="40" class="bee-border-1px bee-border-tb">
-                <bee-list-item label-width="100" label="用户名">
-                    <bee-input maxlength="11" v-model="name" :de-format="deFormat" :en-format="enFormat" placeholder="请输入用户名,6-16个字符"></bee-input>
-                </bee-list-item>
-            </bee-list>
+            <busy-list height="40" class="busy-border-1px busy-border-tb">
+                <busy-list-item label-width="100" label="用户名">
+                    <busy-input maxlength="11" v-model="name" :de-format="deFormat" :en-format="enFormat" placeholder="请输入用户名,6-16个字符"></busy-input>
+                </busy-list-item>
+            </busy-list>
 
-            <bee-list height="40" class="bee-border-1px bee-border-tb">
-                <bee-list-item label-width="100" label="价格">
-                    <bee-input :autofocus="true" pattern="[0-9]*" v-model="price" format="numberic" placeholder="请输入价格"></bee-input>
-                </bee-list-item>
-            </bee-list>
+            <busy-list height="40" class="busy-border-1px busy-border-tb">
+                <busy-list-item label-width="100" label="价格">
+                    <busy-input :autofocus="true" pattern="[0-9]*" v-model="price" format="numberic" placeholder="请输入价格"></busy-input>
+                </busy-list-item>
+            </busy-list>
 
-            <bee-list height="40" class="bee-border-1px bee-border-tb">
-                <bee-list-item label-width="100" label="绑定银行卡">
-                    <bee-input v-model="cardNo" format="bankcard" placeholder="请输入银行卡号"></bee-input>
-                </bee-list-item>
-            </bee-list>
+            <busy-list height="40" class="busy-border-1px busy-border-tb">
+                <busy-list-item label-width="100" label="绑定银行卡">
+                    <busy-input v-model="cardNo" format="bankcard" placeholder="请输入银行卡号"></busy-input>
+                </busy-list-item>
+            </busy-list>
 
-            <bee-list height="40" class="bee-border-1px bee-border-tb">
-                <bee-list-item label-width="100" label="自定义分隔">
-                    <bee-input v-model="code" pattern="[A-Z]*" :format="[[4,2,3],'-']" placeholder="请输入大写字母"></bee-input>
-                </bee-list-item>
-            </bee-list>
+            <busy-list height="40" class="busy-border-1px busy-border-tb">
+                <busy-list-item label-width="100" label="自定义分隔">
+                    <busy-input v-model="code" pattern="[A-Z]*" :format="[[4,2,3],'-']" placeholder="请输入大写字母"></busy-input>
+                </busy-list-item>
+            </busy-list>
         </section>
     </section>
 

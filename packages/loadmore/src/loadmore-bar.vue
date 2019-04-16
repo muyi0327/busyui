@@ -1,12 +1,12 @@
 
 <template>
-    <div class="bee-loadmore__bar bee-al-cm" v-show="pos=='top' || pos=='bottom' && status=='loading'">
-        <p class="bee-loadmore__spinner">
-            <bee-spinner :style="{verticalAlign: 'middle'}" v-show="status==='loading'" :size="size" :type="6" color="#aaa"></bee-spinner>
+    <div class="busy-loadmore__bar busy-al-cm" v-show="pos=='top' || pos=='bottom' && status=='loading'">
+        <p class="busy-loadmore__spinner">
+            <busy-spinner :style="{verticalAlign: 'middle'}" v-show="status==='loading'" :size="size" :type="6" color="#aaa"></busy-spinner>
         </p>
-        <p class="bee-loadmore__text" :class="['bee-loadmore--' + status]">
-            <span v-if="pos=='top'" class="bee-loadmore__arrow">
-                <bee-icon :height="30" type="refresharrow" fill="#000"></bee-icon>
+        <p class="busy-loadmore__text" :class="['busy-loadmore--' + status]">
+            <span v-if="pos=='top'" class="busy-loadmore__arrow">
+                <busy-icon :height="30" type="refresharrow" fill="#000"></busy-icon>
             </span>
             <span>{{loadText}}</span>
         </p>
@@ -17,7 +17,7 @@
     import Spinner from '../../spinner';
     import Icon from '../../icon';
     export default {
-        name: 'bee-loadmore-bar',
+        name: 'busy-loadmore-bar',
         props: {
             size: {
                 type: Number,

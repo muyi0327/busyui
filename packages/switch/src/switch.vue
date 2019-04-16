@@ -82,12 +82,12 @@
 </style>
 
 <template>
-    <label><input type="checkbox" v-model="currentValue" class="bee-switch bee-switch__animbg"></label>
+    <label><input type="checkbox" v-model="currentValue" class="busy-switch busy-switch__animbg"></label>
 </template>
 
 <script>
     export default {
-        name: 'bee-switch',
+        name: 'busy-switch',
         props: {
             value: Boolean,
             disabled: {

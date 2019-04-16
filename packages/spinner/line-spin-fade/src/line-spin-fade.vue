@@ -24,7 +24,7 @@
         }
     }
 
-    .bee-line-spin-fade-loader {
+    .busy-line-spin-fade-loader {
         position: relative;
         display: inline-block;
         > div {
@@ -32,67 +32,67 @@
         }
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(1) {
+    .busy-line-spin-fade-loader > div:nth-child(1) {
         -webkit-animation: line-spin-fade-loader 1.32s 0s infinite ease;
         animation: line-spin-fade-loader 1.32s 0s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(2) {
+    .busy-line-spin-fade-loader > div:nth-child(2) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.12s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.12s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(3) {
+    .busy-line-spin-fade-loader > div:nth-child(3) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.24s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.24s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(4) {
+    .busy-line-spin-fade-loader > div:nth-child(4) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.36s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.36s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(5) {
+    .busy-line-spin-fade-loader > div:nth-child(5) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.48s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.48s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(6) {
+    .busy-line-spin-fade-loader > div:nth-child(6) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.6s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.6s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(7) {
+    .busy-line-spin-fade-loader > div:nth-child(7) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.72s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.72s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(8) {
+    .busy-line-spin-fade-loader > div:nth-child(8) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.84s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.84s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(9) {
+    .busy-line-spin-fade-loader > div:nth-child(9) {
         -webkit-animation: line-spin-fade-loader 1.32s 0.96s infinite ease;
         animation: line-spin-fade-loader 1.32s 0.96s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(10) {
+    .busy-line-spin-fade-loader > div:nth-child(10) {
         -webkit-animation: line-spin-fade-loader 1.32s 1.08s infinite ease;
         animation: line-spin-fade-loader 1.32s 1.08s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(11) {
+    .busy-line-spin-fade-loader > div:nth-child(11) {
         -webkit-animation: line-spin-fade-loader 1.32s 1.2s infinite ease;
         animation: line-spin-fade-loader 1.32s 1.2s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div:nth-child(12) {
+    .busy-line-spin-fade-loader > div:nth-child(12) {
         -webkit-animation: line-spin-fade-loader 1.32s 1.32s infinite ease;
         animation: line-spin-fade-loader 1.32s 1.32s infinite ease;
     }
 
-    .bee-line-spin-fade-loader > div {
+    .busy-line-spin-fade-loader > div {
         border-radius: 1px;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
@@ -102,7 +102,7 @@
     }
 </style>
 <template>
-    <div v-if="visiable" class="bee-line-spin-fade-loader" :style="{width: width+'px', height: height+'px'}">
+    <div v-if="visiable" class="busy-line-spin-fade-loader" :style="{width: width+'px', height: height+'px'}">
         <div :key="'lsf-'+$i" v-for="(ps, $i) in positions" :style="[
         color ? {backgroundColor: color}:{},
         {height: itemSize.height, width: itemSize.width,webkitTransform: ps.rotate, top: ps.x, left: ps.y}]"></div>
@@ -120,7 +120,7 @@
      *      <line-spin-fade :color="#ff0000" :width="20" :height="20"></line-spin-fade>
      **/
     export default {
-        name: 'bee-line-spin-fade',
+        name: 'busy-line-spin-fade',
         props: {
             color: {
                 type: String,

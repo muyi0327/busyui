@@ -4,11 +4,11 @@
     .#{$prefixClass}-action-sheet__item {
         height: 48px;
         line-height: 48px;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.9);
         text-align: center;
         position: relative;
         font-size: 18px;
-        color: #222;
+        color: #000;
         font-size: 14px;
 
         &:active {
@@ -23,14 +23,14 @@
 
 
 <template>
-    <div class="bee-action-sheet__item bee-border-1px bee-border-b" @click="handleClick">
+    <div class="busy-action-sheet__item busy-border-1px busy-border-b" @click="handleClick">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'bee-action-sheet-item',
+        name: 'busy-action-sheet-item',
         props: {
             action: Function
         },

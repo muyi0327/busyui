@@ -8,7 +8,7 @@
 </style>
 
 <template>
-    <svg class="bee-icon" :style="styles" @click="handleClick">
+    <svg class="busy-icon" :style="styles" @click="handleClick">
         <use :xlink:href="itype"></use>
     </svg>
 </template>
@@ -17,7 +17,7 @@
     import './iconfont.js';
 
     /**
-     * @bee/icon
+     * @busy/icon
      * @module Icon
      * @see {@link ../example/all/icons.html 实例}
      * @desc icon图标组件
@@ -27,11 +27,11 @@
      * @param {String} fill='#fff' - 组件颜色,css color
      * 
      * @example
-     *  <bee-icon type="guanbi" fill="#8a8a8a"></bee-icon>
+     *  <busy-icon type="guanbi" fill="#8a8a8a"></busy-icon>
      * 
      */
     export default {
-        name: 'bee-icon',
+        name: 'busy-icon',
         props: {
             type: {
                 type: String,

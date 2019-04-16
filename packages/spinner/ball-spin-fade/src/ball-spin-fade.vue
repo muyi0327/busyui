@@ -26,68 +26,68 @@
         }
     }
 
-    .bee-ball-spin-fade-loader {
+    .busy-ball-spin-fade-loader {
         position: relative;
         display: inline-block;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(1) {
+    .busy-ball-spin-fade-loader > div:nth-child(1) {
         top: 25px;
         left: 0;
         -webkit-animation: ball-spin-fade-loader 1s 0s infinite linear;
         animation: ball-spin-fade-loader 1s 0s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(2) {
+    .busy-ball-spin-fade-loader > div:nth-child(2) {
         top: 17.04545px;
         left: 17.04545px;
         -webkit-animation: ball-spin-fade-loader 1s 0.12s infinite linear;
         animation: ball-spin-fade-loader 1s 0.12s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(3) {
+    .busy-ball-spin-fade-loader > div:nth-child(3) {
         top: 0;
         left: 25px;
         -webkit-animation: ball-spin-fade-loader 1s 0.24s infinite linear;
         animation: ball-spin-fade-loader 1s 0.24s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(4) {
+    .busy-ball-spin-fade-loader > div:nth-child(4) {
         top: -17.04545px;
         left: 17.04545px;
         -webkit-animation: ball-spin-fade-loader 1s 0.36s infinite linear;
         animation: ball-spin-fade-loader 1s 0.36s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(5) {
+    .busy-ball-spin-fade-loader > div:nth-child(5) {
         top: -25px;
         left: 0;
         -webkit-animation: ball-spin-fade-loader 1s 0.48s infinite linear;
         animation: ball-spin-fade-loader 1s 0.48s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(6) {
+    .busy-ball-spin-fade-loader > div:nth-child(6) {
         top: -17.04545px;
         left: -17.04545px;
         -webkit-animation: ball-spin-fade-loader 1s 0.6s infinite linear;
         animation: ball-spin-fade-loader 1s 0.6s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(7) {
+    .busy-ball-spin-fade-loader > div:nth-child(7) {
         top: 0;
         left: -25px;
         -webkit-animation: ball-spin-fade-loader 1s 0.72s infinite linear;
         animation: ball-spin-fade-loader 1s 0.72s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div:nth-child(8) {
+    .busy-ball-spin-fade-loader > div:nth-child(8) {
         top: 17.04545px;
         left: -17.04545px;
         -webkit-animation: ball-spin-fade-loader 1s 0.84s infinite linear;
         animation: ball-spin-fade-loader 1s 0.84s infinite linear;
     }
 
-    .bee-ball-spin-fade-loader > div {
+    .busy-ball-spin-fade-loader > div {
         width: 15px;
         height: 15px;
         border-radius: 100%;
@@ -99,7 +99,7 @@
     }
 </style>
 <template>
-    <div v-if="visiable" class="bee-ball-spin-fade-loader" :style="styles">
+    <div v-if="visiable" class="busy-ball-spin-fade-loader" :style="styles">
         <div v-for="(item,$i) in items" :key="$i" :style="[
             color ? {backgroundColor: color} : {},
             { width: item.w, height: item.w, left: item.x, top: item.y}]"></div>
@@ -108,15 +108,15 @@
 
 <script>
     /**
-     * bee-ball-spin-fade
+     * busy-ball-spin-fade
      * @desc ball 动画
      * @param {Number} width - 组件宽度和高度
      * @param {String} color - 组件颜色, css color
      * @example
-     *      <bee-ball-spin-fade></bee-ball-spin-fade>
+     *      <busy-ball-spin-fade></busy-ball-spin-fade>
      **/
     export default {
-        name: 'bee-ball-spin-fade',
+        name: 'busy-ball-spin-fade',
         props: {
             width: {
                 type: Number,

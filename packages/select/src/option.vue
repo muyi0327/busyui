@@ -1,14 +1,14 @@
 
 
 <template>
-    <li class="bee-select__options__item" @click.stop="handleClick">
+    <li class="busy-select__options__item" @click.stop="handleClick">
         <slot></slot>
     </li>
 </template>
 
 <script>
     export default {
-        name: 'bee-option',
+        name: 'busy-option',
         props: {
             value: [Array, String, Object, Number],
             checked: {

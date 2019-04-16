@@ -1,25 +1,25 @@
 {
-    "name": "bee-steps",
-    "description": "steps component of bee library",
+    "name": "@busy/steps",
+    "description": "busyui vue component steps",
     "main": "index.js",
-    "bugs": {
-        "url": "http://git.wdjr.local/wdf/bee-mobile/issues"
-    },
-    "homepage": "http://git.wdjr.local/wdf/bee-mobile",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "http://git.wdjr.local/wdf/bee-mobile/tree/master/packages/steps"
+        "url": "git+https://github.com/muyi0327/busyui.git"
     },
     "keywords": [
-        "bee-steps",
-        "bee",
-        "vue"
+        "busyui",
+        "vue",
+        "component",
+        "steps"
     ],
-    "dependencies": {},
-    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "author": "yangfei <yangfei44@wanda.cn> (http://git.wdjr.local/wdf)",
     "license": "MIT",
-    "version": "0.3.0"
+    "bugs": {
+        "url": "https://github.com/muyi0327/busyui/issues"
+    },
+    "homepage": "https://github.com/muyi0327/busyui#readme",
+    "version": "1.0.3"
 }

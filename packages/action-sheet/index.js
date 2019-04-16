@@ -4,10 +4,10 @@ import ActionSheetItem from './src/action-sheet-item.vue';
 var ActionSheetClass, instance, vm;
 
 /**
- * @bee/action-sheet
+ * @busy/action-sheet
  * @module ActionSheet
  * @see {@link ../example/all/action-sheet.html 实例}
- * @desc ActionSheet框组件 <bee-action-sheet />
+ * @desc ActionSheet框组件 <busy-action-sheet />
  * @param {Array} actions - 动作菜单项
  * @param {Boolean} isShow=false - 是否显示
  * @param {Boolean} isRemove=false - 是否隐藏后删除
@@ -18,7 +18,7 @@ var ActionSheetClass, instance, vm;
  * @param {Event} visiable-change - 显示隐藏时都会触发
  * @param {Slot} slot - default - 组件slot
  * @example
- * import ActionSheet from '@bee/action-sheet'
+ * import ActionSheet from '@busy/action-sheet'
  * 
  * // 动态创建
  * ActionSheet.show({
@@ -38,7 +38,7 @@ var ActionSheetClass, instance, vm;
  * // 标签方式
  * vue.use(ActionSheet);
  * 
- * <bee-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></bee-action-sheet>
+ * <busy-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></busy-action-sheet>
  * 
  * 
  * new Vue({
@@ -70,7 +70,7 @@ var ActionSheetClass, instance, vm;
  *              this.isShow = visiable;
  *          },
  *          showActionSheet:function(){
- *              Bee.ActionSheet.show({
+ *              Busy.ActionSheet.show({
  *                 actions: this.actions
  *              });
  *          }
@@ -92,7 +92,7 @@ ActionSheet.install = function (vue) {
  * 
  * @example
  * 
- *      Bee.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
+ *      Busy.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
  * 
  */
 ActionSheet.show = function (opts) {
@@ -122,7 +122,7 @@ ActionSheet.show = function (opts) {
  * 
  * @example
  * 
- *   Bee.ActionSheet.hide()
+ *   Busy.ActionSheet.hide()
  * 
  */
 ActionSheet.hide = function () {
@@ -141,7 +141,7 @@ ActionSheet.hide = function () {
  * 
  * @example
  * 
- *   if （Bee.ActionSheet.isVisiable(){
+ *   if （Busy.ActionSheet.isVisiable(){
  *     console.log('done something')
  *   }
  * 

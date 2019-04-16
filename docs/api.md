@@ -9,22 +9,32 @@
   <tbody>
 <tr>
     <td><a href="#module_ActionSheet">ActionSheet</a></td>
-    <td><p>ActionSheet框组件 <bee-action-sheet /></p>
+    <td><p>ActionSheet框组件 <busy-action-sheet /></p>
 </td>
     </tr>
 <tr>
-    <td><a href="#module_@bee/border">@bee/border</a></td>
+    <td><a href="#module_@busy/border">@busy/border</a></td>
     <td><p>1像素边框样式</p>
 </td>
     </tr>
 <tr>
-    <td><a href="#module_@bee/button">@bee/button</a></td>
-    <td><p>按钮组件 <bee-button /></p>
+    <td><a href="#module_Dialog">Dialog</a></td>
+    <td><p>对话框组件11111 <busy-dialog /></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Toast">Toast</a></td>
+    <td><p>Toast组件 <busy-toast></busy-toast></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Button">Button</a></td>
+    <td><p>按钮组件 <busy-button /></p>
 </td>
     </tr>
 <tr>
     <td><a href="#module_Checkbox">Checkbox</a></td>
-    <td><p>勾选框  <bee-checkbox /></p>
+    <td><p>勾选框  <busy-checkbox /></p>
 </td>
     </tr>
 <tr>
@@ -39,7 +49,7 @@
     </tr>
 <tr>
     <td><a href="#module_Dialog">Dialog</a></td>
-    <td><p>对话框组件 <bee-dialog /></p>
+    <td><p>对话框组件22222 <busy-dialog /></p>
 </td>
     </tr>
 <tr>
@@ -64,17 +74,17 @@
     </tr>
 <tr>
     <td><a href="#module_Mask">Mask</a></td>
-    <td><p>半透明遮罩层 <bee-mask></bee-mask></p>
+    <td><p>半透明遮罩层 <busy-mask></busy-mask></p>
 </td>
     </tr>
 <tr>
     <td><a href="#module_Message">Message</a></td>
-    <td><p>浮层提示信息组件 <bee-meesage></bee-meesage></p>
+    <td><p>浮层提示信息组件 <busy-meesage></busy-meesage></p>
 </td>
     </tr>
 <tr>
     <td><a href="#module_Progress">Progress</a></td>
-    <td><p>bee-progress</p>
+    <td><p>busy-progress</p>
 </td>
     </tr>
 <tr>
@@ -89,12 +99,12 @@
     </tr>
 <tr>
     <td><a href="#module_ToastLoading">ToastLoading</a></td>
-    <td><p>页面toastloading组件 <bee-toast-loading /></p>
+    <td><p>页面toastloading组件 <busy-toast-loading /></p>
 </td>
     </tr>
 <tr>
     <td><a href="#module_Toast">Toast</a></td>
-    <td><p>Toast组件 <bee-toast></bee-toast></p>
+    <td><p>Toast组件 <busy-toast></busy-toast></p>
 </td>
     </tr>
 </tbody>
@@ -122,9 +132,9 @@
 <a name="module_ActionSheet"></a>
 
 ## ActionSheet
-ActionSheet框组件 <bee-action-sheet />
+ActionSheet框组件 <busy-action-sheet />
 
-**Bee/action-sheet**:   
+**Busy/action-sheet**:   
 **See**: [实例](../example/all/action-sheet.html)  
 
 | Param | Type | Default | Description |
@@ -141,7 +151,7 @@ ActionSheet框组件 <bee-action-sheet />
 
 **Example**  
 ```js
-import ActionSheet from '@bee/action-sheet'
+import ActionSheet from '@busy/action-sheet'
 
 // 动态创建
 ActionSheet.show({
@@ -161,7 +171,7 @@ ActionSheet.show({
 // 标签方式
 vue.use(ActionSheet);
 
-<bee-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></bee-action-sheet>
+<busy-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></busy-action-sheet>
 
 
 new Vue({
@@ -193,7 +203,7 @@ new Vue({
              this.isShow = visiable;
          },
          showActionSheet:function(){
-             Bee.ActionSheet.show({
+             Busy.ActionSheet.show({
                 actions: this.actions
              });
          }
@@ -218,7 +228,7 @@ new Vue({
 
 **Example**  
 ```js
-Bee.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
+Busy.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
 ```
 <a name="module_ActionSheet.hide"></a>
 
@@ -226,7 +236,7 @@ Bee.ActionSheet.show({actions:{text:'执行动作', action: function(){console.l
 **Kind**: static method of <code>[ActionSheet](#module_ActionSheet)</code>  
 **Example**  
 ```js
-Bee.ActionSheet.hide()
+Busy.ActionSheet.hide()
 ```
 <a name="module_ActionSheet.isVisiable"></a>
 
@@ -237,13 +247,13 @@ Bee.ActionSheet.hide()
 **Returns**: <code>Boolean</code> - - 是否显示  
 **Example**  
 ```js
-if （Bee.ActionSheet.isVisiable(){
+if （Busy.ActionSheet.isVisiable(){
     console.log('done something')
   }
 ```
-<a name="module_@bee/border"></a>
+<a name="module_@busy/border"></a>
 
-## @bee/border
+## @busy/border
 1像素边框样式
 
 **See**: [实例](../example/all/border1px.html)  
@@ -254,40 +264,198 @@ if （Bee.ActionSheet.isVisiable(){
 
 **Example**  
 ```js
-<div class="bee-border-1px">四边框</div>
+<div class="busy-border-1px">四边框</div>
 
- <div class="bee-border-1px bee-border-t">上边框</div>
+ <div class="busy-border-1px busy-border-t">上边框</div>
 
- <div class="bee-border-1px bee-border-b">下边框</div>
+ <div class="busy-border-1px busy-border-b">下边框</div>
 
- <div class="bee-border-1px bee-border-tb">上下边框</div>
+ <div class="busy-border-1px busy-border-tb">上下边框</div>
 
- <div class="bee-border-1px bee-border-l">左边框</div>
+ <div class="busy-border-1px busy-border-l">左边框</div>
 
- <div class="bee-border-1px bee-border-r">右边框</div>
+ <div class="busy-border-1px busy-border-r">右边框</div>
 
- <div class="bee-border-1px bee-border-lr">左右边框</div>
+ <div class="busy-border-1px busy-border-lr">左右边框</div>
 
-<div class="bee-border-1px bee-border-no-r">无右边框</div>
+<div class="busy-border-1px busy-border-no-r">无右边框</div>
 
-<div class="bee-border-1px bee-border-no-l">无左边框</div>
+<div class="busy-border-1px busy-border-no-l">无左边框</div>
 
-<div class="bee-border-1px bee-border-no-t">无上边框</div>
+<div class="busy-border-1px busy-border-no-t">无上边框</div>
 
-<div class="bee-border-1px bee-border-no-b">无下边框</div>
+<div class="busy-border-1px busy-border-no-b">无下边框</div>
 
 // 取值1~10px
-<div class="bee-border-1px bee-border-radius-4px">圆角</div>
+<div class="busy-border-1px busy-border-radius-4px">圆角</div>
 
 // 百分比圆角
-<div class="bee-border-1px" style="border-radius: 50%;">圆角</div>
+<div class="busy-border-1px" style="border-radius: 50%;">圆角</div>
 ```
-<a name="module_@bee/button"></a>
+<a name="module_Dialog"></a>
 
-## @bee/button
-按钮组件 <bee-button />
+## Dialog
+对话框组件11111 <busy-dialog />
 
-**Bee/button**:   
+**Busy/dialog**:   
+**See**: [实例](../example/all/dialog.html)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| width | <code>Number</code> | <code>240</code> | 对话框宽度 |
+| height | <code>Number</code> | <code>160</code> | 对话框高度 |
+| content | <code>String</code> |  | 对话框内容, 必填 |
+| title＝'' | <code>String</code> |  | 对话框标题 |
+| show | <code>function</code> |  | 对话框标题 |
+| hide | <code>function</code> |  | 对话框标题 |
+| buttons | <code>Array.&lt;Object&gt;</code> | <code>[{text:&#x27;确定&#x27;},{text:&#x27;取消&#x27;}</code> | 对话框标题 |
+| contentStyle | <code>Object</code> |  | 对话框内容样式 |
+| showClose | <code>Boolean</code> | <code>false</code> | 是否显示关闭按钮 |
+
+**Example**  
+```js
+import {Dialog} from '@busy/dialog';
+
+Dialog.show({
+     title: '提交信息',
+     content: '确定要提交吗？', 
+     buttons:[{text:'确定', action:function(){
+         // 确认提交
+     }},{text:'取消', action: function(){
+         // 不提交
+     }}]
+});
+```
+
+* [Dialog](#module_Dialog)
+    * _static_
+        * [.show(opts)](#module_Dialog.show) ⇒
+        * [.show(opts)](#module_Dialog.show) ⇒
+    * _inner_
+        * [~hide()](#module_Dialog..hide)
+
+<a name="module_Dialog.show"></a>
+
+### Dialog.show(opts) ⇒
+显示对话框Dialog
+
+**Kind**: static method of <code>[Dialog](#module_Dialog)</code>  
+**Returns**: DialogClass实例  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>Object</code> | 配置项, <a href="#module_Dialog">参见</a> |
+
+**Example**  
+```js
+Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
+```
+<a name="module_Dialog.show"></a>
+
+### Dialog.show(opts) ⇒
+显示对话框Dialog
+
+**Kind**: static method of <code>[Dialog](#module_Dialog)</code>  
+**Returns**: DialogClass实例  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>Object</code> | 配置项, <a href="#module_Dialog">参见</a> |
+
+**Example**  
+```js
+Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
+```
+<a name="module_Dialog..hide"></a>
+
+### Dialog~hide()
+隐藏对话框
+
+**Kind**: inner method of <code>[Dialog](#module_Dialog)</code>  
+<a name="module_Toast"></a>
+
+## Toast
+Toast组件 <busy-toast></busy-toast>
+
+**See**: [实例](../example/all/toast.html)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| opts | <code>Object</code> |  | 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'} |
+| content | <code>String</code> |  | 显示内容 |
+| pos | <code>String</code> | <code>&#x27;middle&#x27;</code> | 显示位置,可以是 'top', 'middle', 'bottom' |
+| delay | <code>Number</code> | <code>2000</code> | 显示时间，单位毫秒 |
+| type | <code>String</code> |  | icon类型 |
+| isShow | <code>Boolean</code> | <code>false</code> | 是否显示 |
+| isRemove | <code>Boolean</code> | <code>false</code> | 是否隐藏移除dom |
+| autoHide | <code>Boolean</code> | <code>true</code> | 是否自动隐藏 |
+| iconHeight | <code>Number</code> | <code>28</code> | 设置图标的高度 |
+| iconWidth | <code>Number</code> | <code>28</code> | 设置图标的宽度 |
+| color | <code>Number</code> | <code>#fff</code> | 设置图标的颜色 |
+| hide | <code>function</code> |  | 隐藏 |
+| show | <code>function</code> |  | 显示 |
+| hide | <code>Event</code> |  | 隐藏时触发 |
+| show | <code>Event</code> |  | 显示时触发 |
+| visiable-change | <code>Event</code> |  | 显示,隐藏都会触发 |
+| after-leave | <code>Event</code> |  | 隐藏动画结束时触发 |
+
+**Example**  
+```js
+// use it in module tools
+  import Toast from '@busy/toast';
+  1, Toast.show('内容')
+  2, Toast.show('内容', 5000)
+  3, Toast.show('内容', 'top', 5000)
+  4, Toast.show({content:'内容', pos: 'top', delay: 5000})
+
+  // use it in html
+  <script src="busy.min.js"><\/script>
+  <link href="busy.min.css" rel="stylesheet" />
+
+  1, Busy.Toast.show('内容')
+  2, Busy.Toast.show('内容', 5000)
+  3, Busy.Toast.show('内容', 'top', 5000)
+  4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
+```
+
+* [Toast](#module_Toast)
+    * [.show(opts)](#module_Toast.show) ⇒
+    * [.show(opts)](#module_Toast.show) ⇒
+
+<a name="module_Toast.show"></a>
+
+### Toast.show(opts) ⇒
+**Kind**: static method of <code>[Toast](#module_Toast)</code>  
+**Returns**: ToastClass实例  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>Object</code> | 配置项, <a href="#module_Toast">参见</a> |
+
+**Example**  
+```js
+Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
+```
+<a name="module_Toast.show"></a>
+
+### Toast.show(opts) ⇒
+**Kind**: static method of <code>[Toast](#module_Toast)</code>  
+**Returns**: ToastClass实例  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>Object</code> | 配置项, <a href="#module_Toast">参见</a> |
+
+**Example**  
+```js
+Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
+```
+<a name="module_Button"></a>
+
+## Button
+按钮组件 <busy-button />
+
+**Busy/button**:   
 **See**: [实例](../example/all/button.html)  
 
 | Param | Type | Default | Description |
@@ -305,18 +473,22 @@ if （Bee.ActionSheet.isVisiable(){
 | slot | <code>String</code> |  | 显示文本 |
 | bgColor | <code>String</code> |  | 按钮背景色 |
 | fontColor | <code>String</code> |  | 字体颜色 |
+| borderColor | <code>String</code> |  | 边框颜色 |
+| borderWidth | <code>String</code> |  | 边框宽度 |
+| borderRadius | <code>String</code> |  | 圆角 |
 
 **Example**  
 ```js
-<bee-button size="large" type="primary">按钮</bee-button>
+<busy-button size="large" type="primary">按钮</busy-button>
 
- <bee-button size="small" type="warning">删除</bee-button>
+ <busy-button size="small" type="warning">删除</busy-button>
 ```
 <a name="module_Checkbox"></a>
 
 ## Checkbox
-勾选框  <bee-checkbox />
+勾选框  <busy-checkbox />
 
+**Busy/checkbox**:   
 **See**: [实例](../example/all/checkbox.html)  
 
 | Param | Type | Description |
@@ -326,15 +498,15 @@ if （Bee.ActionSheet.isVisiable(){
 
 **Example**  
 ```js
-<bee-checkbox v-model="checked" label="这个位置是标签1"></bee-checkbox>
-<bee-checkbox v-model="disable" label="是否禁用下面的按钮"></bee-checkbox>
+<busy-checkbox v-model="checked" label="这个位置是标签1"></busy-checkbox>
+<busy-checkbox v-model="disable" label="是否禁用下面的按钮"></busy-checkbox>
 ```
 <a name="module_Alert"></a>
 
 ## Alert
 alert对话框组件
 
-**Bee/alert**:   
+**Busy/alert**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -346,14 +518,14 @@ alert对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="bee.min.js"><\/script>
-<link rel="stylesheet" href="bee.min.css" />
+<script src="busy.min.js"><\/script>
+<link rel="stylesheet" href="busy.min.css" />
 
-Bee.Alert.show('提交申请成功');
+Busy.Alert.show('提交申请成功');
 
 // use it in webpack or browserify, rollup
-import {Alert} from '@bee/dialog';
-// var Aler = require('@bee/dialog/alert.js');
+import {Alert} from '@busy/dialog';
+// var Aler = require('@busy/dialog/alert.js');
 
 Alert.show('提交申请成功');
 ```
@@ -372,7 +544,7 @@ Alert.show('提交申请成功');
 
 **Example**  
 ```js
-Bee.Alert.show('提交申请成功');
+busy.Alert.show('提交申请成功');
 ```
 <a name="module_Confirm"></a>
 
@@ -390,14 +562,14 @@ confirm对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="bee.min.js"><\/script>
-<link rel="stylesheet" href="bee.min.css" />
+<script src="busy.min.js"><\/script>
+<link rel="stylesheet" href="busy.min.css" />
 
-Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 
 // use it in webpack or browserify, rollup
-import {Confirm} from '@bee/dialog';
-// var Confirm = require('@bee/dialog/confirm.js');
+import {Confirm} from '@busy/dialog';
+// var Confirm = require('@busy/dialog/confirm.js');
 
 Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 ```
@@ -417,14 +589,15 @@ Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提�
 
 **Example**  
 ```js
-const confirm = bee.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
+const confirm = Busy.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
 confirm.doClose();
 ```
 <a name="module_Dialog"></a>
 
 ## Dialog
-对话框组件 <bee-dialog />
+对话框组件22222 <busy-dialog />
 
+**Busy/dialog**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -441,7 +614,7 @@ confirm.doClose();
 
 **Example**  
 ```js
-import {Dialog} from '@bee/dialog';
+import {Dialog} from '@busy/dialog';
 
 Dialog.show({
      title: '提交信息',
@@ -452,6 +625,30 @@ Dialog.show({
          // 不提交
      }}]
 });
+```
+
+* [Dialog](#module_Dialog)
+    * _static_
+        * [.show(opts)](#module_Dialog.show) ⇒
+        * [.show(opts)](#module_Dialog.show) ⇒
+    * _inner_
+        * [~hide()](#module_Dialog..hide)
+
+<a name="module_Dialog.show"></a>
+
+### Dialog.show(opts) ⇒
+显示对话框Dialog
+
+**Kind**: static method of <code>[Dialog](#module_Dialog)</code>  
+**Returns**: DialogClass实例  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>Object</code> | 配置项, <a href="#module_Dialog">参见</a> |
+
+**Example**  
+```js
+Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
 ```
 <a name="module_Dialog.show"></a>
 
@@ -467,13 +664,20 @@ Dialog.show({
 
 **Example**  
 ```js
-Bee.Dialog.show({content:'红包来了!',title:'发红包了'})
+Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
 ```
+<a name="module_Dialog..hide"></a>
+
+### Dialog~hide()
+隐藏对话框
+
+**Kind**: inner method of <code>[Dialog](#module_Dialog)</code>  
 <a name="module_Prompt"></a>
 
 ## Prompt
 prompt对话框组件
 
+**Busy/prompt**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -485,14 +689,14 @@ prompt对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="bee.min.js"><\/script>
-<link rel="stylesheet" href="bee.min.css" />
+<script src="busy.min.js"><\/script>
+<link rel="stylesheet" href="busy.min.css" />
 
-Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
+Busy.Prompt.show('请填写信息？', (val)=>{console.log(val)});
 
 // use it in webpack or browserify, rollup
-import {Prompt} from '@bee/dialog';
-// var Prompt = require('@bee/dialog/prompt.js');
+import {Prompt} from '@busy/dialog';
+// var Prompt = require('@busy/dialog/prompt.js');
 
 Prompt.show('请填写信息？', (val)=>{console.log(val)});
 ```
@@ -512,7 +716,7 @@ Prompt.show('请填写信息？', (val)=>{console.log(val)});
 
 **Example**  
 ```js
-const confirm = Bee.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
+const confirm = Busy.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
 prompt.doClose();
 ```
 <a name="module_Icon"></a>
@@ -520,6 +724,7 @@ prompt.doClose();
 ## Icon
 icon图标组件
 
+**Busy/icon**:   
 **See**: [实例](../example/all/icons.html)  
 
 | Param | Type | Default | Description |
@@ -531,7 +736,7 @@ icon图标组件
 
 **Example**  
 ```js
-<bee-icon type="guanbi" fill="#8a8a8a"></bee-icon>
+<busy-icon type="guanbi" fill="#8a8a8a"></busy-icon>
 ```
 <a name="module_Loading"></a>
 
@@ -556,13 +761,14 @@ loading component with mask
 
 **Example**  
 ```js
-<w-loading>正在加载...</w-loading>
+<busy-loading>正在加载...</busy-loading>
 ```
 <a name="module_Loadmore"></a>
 
 ## Loadmore
 加载更多组件
 
+**Busy/loadmore**:   
 **See**: [实例](../example/all/loadmore.html)  
 
 | Param | Type | Description |
@@ -583,13 +789,14 @@ loading component with mask
 
 **Example**  
 ```js
-<w-loadmore>content list</w-loadmore>
+<busy-loadmore>content list</busy-loadmore>
 ```
 <a name="module_Mask"></a>
 
 ## Mask
-半透明遮罩层 <bee-mask></bee-mask>
+半透明遮罩层 <busy-mask></busy-mask>
 
+**Busy/mask**:   
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -599,13 +806,14 @@ loading component with mask
 
 **Example**  
 ```js
-<bee-mask color="yellow"></bee-mask>
+<busy-mask color="yellow"></busy-mask>
 ```
 <a name="module_Message"></a>
 
 ## Message
-浮层提示信息组件 <bee-meesage></bee-meesage>
+浮层提示信息组件 <busy-meesage></busy-meesage>
 
+**Busy/message**:   
 **See**: [实例](../example/all/message.html)  
 
 | Param | Type | Default | Description |
@@ -620,19 +828,19 @@ loading component with mask
 **Example**  
 ```js
 // use it in module tools
- import Message from '@bee/message';
+ import Message from '@busy/message';
  Message.show('有新信息了');
  Message.info('有新信息了');
  Message.success('信息提交成功');
  Message.warning('内容包含非法词');
 
  // use it in html
- <script src="bee.min.js"><\/script>
- <link rel="stylesheet" href="Bee.min.css">
- Bee.Message.show('有新信息了');
- Bee.Message.info('有新信息了');
- Bee.Message.success('信息提交成功');
- Bee.Message.warning('内容包含非法词');
+ <script src="busy.min.js"><\/script>
+ <link rel="stylesheet" href="Busy.min.css">
+ Busy.Message.show('有新信息了');
+ Busy.Message.info('有新信息了');
+ Busy.Message.success('信息提交成功');
+ Busy.Message.warning('内容包含非法词');
 ```
 
 * [Message](#module_Message)
@@ -656,7 +864,7 @@ loading component with mask
 
 **Example**  
 ```js
-Bee.Message.show('有新信息了');
+Busy.Message.show('有新信息了');
 ```
 <a name="module_Message.info"></a>
 
@@ -673,7 +881,7 @@ Bee.Message.show('有新信息了');
 
 **Example**  
 ```js
-Bee.Message.info('收到一个优惠券');
+Busy.Message.info('收到一个优惠券');
 ```
 <a name="module_Message.success"></a>
 
@@ -690,7 +898,7 @@ Bee.Message.info('收到一个优惠券');
 
 **Example**  
 ```js
-Bee.Message.success('提交成功');
+Busy.Message.success('提交成功');
 ```
 <a name="module_Message.warning"></a>
 
@@ -707,7 +915,7 @@ Bee.Message.success('提交成功');
 
 **Example**  
 ```js
-Bee.Message.warning('内容包含非法词');
+Busy.Message.warning('内容包含非法词');
 ```
 <a name="module_Message.error"></a>
 
@@ -724,12 +932,12 @@ Bee.Message.warning('内容包含非法词');
 
 **Example**  
 ```js
-Bee.Message.error('内容包含非法词');
+Busy.Message.error('内容包含非法词');
 ```
 <a name="module_Progress"></a>
 
 ## Progress
-bee-progress
+busy-progress
 
 **Des**: 进度条组件  
 **See**: [实例](../example/all/progress.html)  
@@ -743,11 +951,11 @@ bee-progress
 | trackColor | <code>String</code> | 进度槽颜色, 取值范围 css color <hex, rgb, rgba> |
 | barColor | <code>String</code> | 进度条颜色, 取值范围 css color <hex, rgb, rgba> |
 | content | <code>String</code> | 显示内容, 默认'' |
-| type | <code>String</code> | 进度条组件类型, 可取值 'line' [<bee-progress-line />], 'ring' [<bee-progress-ring />], 默认 'line' |
+| type | <code>String</code> | 进度条组件类型, 可取值 'line' [<busy-progress-line />], 'ring' [<busy-progress-ring />], 默认 'line' |
 
 **Example**  
 ```js
-<bee-progress type="ring" :size="50" :track-width="5"></bee-progress>
+<busy-progress type="ring" :size="50" :track-width="5"></busy-progress>
 ```
 <a name="module_Spinner"></a>
 
@@ -767,7 +975,7 @@ spinner组件
 
 **Example**  
 ```js
-<bee-spinner :type="3" color="#666" :width="12"></bee-spinner>
+<busy-spinner :type="3" color="#666" :width="12"></busy-spinner>
 ```
 <a name="module_Swipe"></a>
 
@@ -790,15 +998,15 @@ spinner组件
 
 **Example**  
 ```js
-<bee-swipe :interval="3000" :auto-play="true" :height="320">
-     <bee-swipe__item>内容</bee-swipe__item>
-     <bee-swipe__item>内容</bee-swipe__item>
-</bee-swipe>
+<busy-swipe :interval="3000" :auto-play="true" :height="320">
+     <busy-swipe__item>内容</busy-swipe__item>
+     <busy-swipe__item>内容</busy-swipe__item>
+</busy-swipe>
 ```
 <a name="module_ToastLoading"></a>
 
 ## ToastLoading
-页面toastloading组件 <bee-toast-loading />
+页面toastloading组件 <busy-toast-loading />
 
 **See**: [实例](../example/all/toast-loading.html)  
 
@@ -815,16 +1023,16 @@ spinner组件
 **Example**  
 ```js
 //  use it in html
- <script src="bee.min.js"><\/script>
- <link rel="stylesheet" href="bee.min.css">
+ <script src="busy.min.js"><\/script>
+ <link rel="stylesheet" href="busy.min.css">
 
- bee.ToastLoading.show();
+ Busy.ToastLoading.show();
  http.get('url').then(()=>{
-   Bee.ToastLoading.hide();
+   Busy.ToastLoading.hide();
  });
 
  // use it in module tools
- import ToastLoading from '@bee/toast-loading';
+ import ToastLoading from '@busy/toast-loading';
  ToastLoading.show({spinner:{type:2}, direction="row"});
  http.get('url').then(()=>{
    ToastLoading.hide();
@@ -855,12 +1063,12 @@ spinner组件
 
 **Example**  
 ```js
-bee.ToastLoading.show();
+Busy.ToastLoading.show();
 ```
 <a name="module_Toast"></a>
 
 ## Toast
-Toast组件 <bee-toast></bee-toast>
+Toast组件 <busy-toast></busy-toast>
 
 **See**: [实例](../example/all/toast.html)  
 
@@ -887,20 +1095,39 @@ Toast组件 <bee-toast></bee-toast>
 **Example**  
 ```js
 // use it in module tools
-  import Toast from '@bee/toast';
+  import Toast from '@busy/toast';
   1, Toast.show('内容')
   2, Toast.show('内容', 5000)
   3, Toast.show('内容', 'top', 5000)
   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
 
   // use it in html
-  <script src="bee.min.js"><\/script>
-  <link href="bee.min.css" rel="stylesheet" />
+  <script src="busy.min.js"><\/script>
+  <link href="busy.min.css" rel="stylesheet" />
 
-  1, bee.Toast.show('内容')
-  2, bee.Toast.show('内容', 5000)
-  3, bee.Toast.show('内容', 'top', 5000)
-  4, bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
+  1, Busy.Toast.show('内容')
+  2, Busy.Toast.show('内容', 5000)
+  3, Busy.Toast.show('内容', 'top', 5000)
+  4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
+```
+
+* [Toast](#module_Toast)
+    * [.show(opts)](#module_Toast.show) ⇒
+    * [.show(opts)](#module_Toast.show) ⇒
+
+<a name="module_Toast.show"></a>
+
+### Toast.show(opts) ⇒
+**Kind**: static method of <code>[Toast](#module_Toast)</code>  
+**Returns**: ToastClass实例  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | <code>Object</code> | 配置项, <a href="#module_Toast">参见</a> |
+
+**Example**  
+```js
+Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
 ```
 <a name="module_Toast.show"></a>
 
@@ -914,7 +1141,7 @@ Toast组件 <bee-toast></bee-toast>
 
 **Example**  
 ```js
-Bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
+Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
 ```
 <a name="enFormatNumberic"></a>
 

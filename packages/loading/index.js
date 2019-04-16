@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Loading from './src/Loading.vue';
-import '../util/src/polyfill';
 
 const LoadingClass = Vue.extend(Loading);
 var instance, vm;

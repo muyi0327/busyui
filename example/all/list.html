@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <style type="text/css">
         * {
             padding: 0;
@@ -45,33 +45,33 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <bee-list>
-                <bee-list-item label="联系方式" content="请填写真实名字"></bee-list-item>
-                <bee-list-item content="自定义label">
+            <busy-list>
+                <busy-list-item label="联系方式" content="请填写真实名字"></busy-list-item>
+                <busy-list-item content="自定义label">
                     <div slot="label" style="color:red;">联系方式</div>
-                </bee-list-item>
-                <bee-list-item label="姓名">
+                </busy-list-item>
+                <busy-list-item label="姓名">
                     <div style="color: green;">自定义内容</div>
-                </bee-list-item>
+                </busy-list-item>
 
-                <bee-list-item label="邮箱" content="自定义icon" icon-width="90">
+                <busy-list-item label="邮箱" content="自定义icon" icon-width="90">
                     <div slot="icon">
-                        <bee-button :plain="true" type="primary" height="24">发送</bee-button>
+                        <busy-button :plain="true" type="primary" height="24">发送</busy-button>
                     </div>
-                </bee-list-item>
+                </busy-list-item>
 
-                <bee-list-item label="隐藏个人信息" label-width="120" icon-width="90">
-                    <bee-switch slot="icon" v-model="s">发送</bee-switch>
+                <busy-list-item label="隐藏个人信息" label-width="120" icon-width="90">
+                    <busy-switch slot="icon" v-model="s">发送</busy-switch>
                     <div>我想<span style="color:red;">{{!s?'显示':'隐藏'}}</span>个人信息</div>
-                </bee-list-item>
+                </busy-list-item>
 
-                <bee-list-item height="70" label="邮箱" content="自定义icon">
+                <busy-list-item height="70" label="邮箱" content="自定义icon">
                     <div slot="label">
                         <h1 class="t1">主标题</h1>
                         <h2 class="t2">次标题</h2>
                     </div>
-                </bee-list-item>
-            </bee-list>
+                </busy-list-item>
+            </busy-list>
         </section>
     </section>
 

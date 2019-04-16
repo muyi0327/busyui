@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui spinner demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
 
     <style>
         * {
@@ -49,9 +49,9 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <bee-button :plain="true" @click="showDefault">默 认</bee-button>
-            <bee-button :plain="true" @click="showV">纵 向</bee-button>
-            <bee-button :plain="true" @click="hide">隐 藏</bee-button>
+            <busy-button :plain="true" @click="showDefault">默 认</busy-button>
+            <busy-button :plain="true" @click="showV">纵 向</busy-button>
+            <busy-button :plain="true" @click="hide">隐 藏</busy-button>
         </section>
     </section>
 
@@ -61,15 +61,15 @@
                 el: '#app',
                 methods: {
                     showDefault: function () {
-                        Bee.ToastLoading.show();
+                        Busy.ToastLoading.show();
                     },
                     showV: function () {
-                        Bee.ToastLoading.show({
+                        Busy.ToastLoading.show({
                             direction: 'row'
                         });
                     },
                     hide: function () {
-                        Bee.ToastLoading.hide();
+                        Busy.ToastLoading.hide();
                     }
                 }
             });

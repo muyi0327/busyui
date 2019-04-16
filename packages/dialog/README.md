@@ -1,48 +1,48 @@
-# bee-dialog
-bee-dialog <bee-dialog /> is a mobile dialog component for bee library
+# busy-dialog
+busy-dialog <busy-dialog /> is a mobile dialog component for busy library
 
 ## Installation
 
-First, install @bee/dialog from bee npm
+First, install @busy/dialog from busy npm
 
-    npm install @bee/dialog --save -d  or npm install bee --save -d
+    npm install @busy/dialog --save -d  or npm install busy --save -d
 
 Then use it:
 
-    import BeeDialog from '@bee/dialog';
+    import BusyDialog from '@busy/dialog';
 
     // alert
-    BeeDialog.Aler.show('submit sccess!');
+    BusyDialog.Aler.show('submit sccess!');
 
     // confirm
-    BeeDialog.Confirm.show('submit?', function(rst){
+    BusyDialog.Confirm.show('submit?', function(rst){
         console.log(rst); // true or false
     });
 
 Or use it in html:
 
-    <script src = 'node_modules/bee/dist/bee.min.js'></script>
-    <link rel="stylesheet" href="node_modules/bee/dist/bee.min.css" />
+    <script src = 'node_modules/busy/dist/busy.min.js'></script>
+    <link rel="stylesheet" href="node_modules/busy/dist/busy.min.css" />
 
     // alert
-    Bee.Alert.show('submit sccess!');
+    Busy.Alert.show('submit sccess!');
 
     // prompt
-    Bee.Prompt.show('your name?', function(name){
+    Busy.Prompt.show('your name?', function(name){
         console.log(name); // prompt info
     });
 
 ## options
 
-The arguments form method show of components Bee.Dialog, Bee.Alert, Bee.Confirm, Bee.Prompt
+The arguments form method show of components Busy.Dialog, Busy.Alert, Busy.Confirm, Busy.Prompt
 
-    Bee.Dialog.show(options);
+    Busy.Dialog.show(options);
 
-    Bee.Alert.show([text,]options);
+    Busy.Alert.show([text,]options);
 
-    Bee.Confirm.show([text,]options, callback);
+    Busy.Confirm.show([text,]options, callback);
 
-    Bee.Prompt.show([text,]options, callback);
+    Busy.Prompt.show([text,]options, callback);
 
 # License
 

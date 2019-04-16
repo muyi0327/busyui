@@ -5,7 +5,7 @@ import Prompt from './prompt.vue';
 const PromptClass = Vue.extend(Prompt);
 
 /**
- * @bee/prompt
+ * @busy/prompt
  * @module Prompt
  * @see {@link ../example/all/dialog.html 实例}
  * @desc prompt对话框组件
@@ -16,14 +16,14 @@ const PromptClass = Vue.extend(Prompt);
  * @example
  *
  * // use it in html
- * <script src="bee.min.js"><\/script>
- * <link rel="stylesheet" href="bee.min.css" />
+ * <script src="busy.min.js"><\/script>
+ * <link rel="stylesheet" href="busy.min.css" />
  * 
- * Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
+ * Busy.Prompt.show('请填写信息？', (val)=>{console.log(val)});
  * 
  * // use it in webpack or browserify, rollup
- * import {Prompt} from '@bee/dialog';
- * // var Prompt = require('@bee/dialog/prompt.js');
+ * import {Prompt} from '@busy/dialog';
+ * // var Prompt = require('@busy/dialog/prompt.js');
  *
  * Prompt.show('请填写信息？', (val)=>{console.log(val)});
  *
@@ -44,7 +44,7 @@ export default Object.assign(Prompt, {
      * @returns PromptClass实例
      * 
      * @example
-     * const confirm = Bee.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
+     * const confirm = Busy.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
      * prompt.doClose();
      * 
      */

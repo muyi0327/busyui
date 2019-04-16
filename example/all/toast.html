@@ -5,17 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
+    <link rel="stylesheet" href="../index.css">
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
 </head>
 
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <bee-button :plain="true" @click="showToast">动态创建</bee-button>
-            <bee-button :plain="true" @click="showTagToast">Tag创建</bee-button>
-            <bee-toast @visiable-change="visiableChange" pos="bottom" :is-show="isShow" content="aa"></bee-toast>
+            <busy-flexbox direction="column">
+                <busy-button type="primary" size="large" @click="showToast">动态创建</busy-button>
+                <busy-button type="primary" class="mt-12" size="large" @click="hideToast">动态隐藏</busy-button>
+                <busy-button type="primary" class="mt-12" size="large" @click="showTagToast">Tag创建</busy-button>
+                <busy-toast :auto-hide="true" @visiable-change="visiableChange" pos="bottom" :is-show="isShow" content="aa"></busy-toast>
+            </busy-flexbox>
+
         </section>
     </section>
 
@@ -29,12 +34,15 @@
             },
             methods: {
                 showToast: function () {
-                    //Bee.Toast.show('只设置内容和显示时间', 5000);
-                    //Bee.Toast.show('设置显示时间和位置', 'top', 5000)
-                    //Bee.Toast.show('设置显示内容和位置设置显示内容和位置', 'top')
-                    Bee.Toast.show('设置显示时间和内容及icon设置显示时间和内容及icon设置显示时间和内容及icon', 'top', 3000, function () {
-                        console.log('complete')
-                    });
+                    Busy.Busyjs.Toast.show('测试内容', {
+                        pos: 'top',
+                        delay: 3000
+                    }).then(toast => {
+                        console.log('toast hide')
+                    })
+                },
+                hideToast() {
+                    Busy.Busyjs.Toast.hide()
                 },
                 showTagToast: function () {
                     this.isShow = true;

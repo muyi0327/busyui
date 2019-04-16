@@ -76,22 +76,22 @@
     }
 </style>
 <template>
-    <div class="bee-swipe" :style="styles" v-on:click="handleClick">
-        <div class="bee-swipe__wrap" :class="classes" :style="wrapStyles">
+    <div class="busy-swipe" :style="styles" v-on:click="handleClick">
+        <div class="busy-swipe__wrap" :class="classes" :style="wrapStyles">
             <slot></slot>
         </div>
-        <div class="bee-swpier__dotes" :class="dotesClass" v-if="showDotes">
-            <span :key="'swiper-'+i" v-for="(item, i) in items" @click.stop="goIndex(i)" :class="['bee-swipe__dot', i == index ? 'bee-swipe__dot--cur':'']" :style="[dotStyles, i == index ? {backgroundColor: curDotColor} : {}]"></span>
+        <div class="busy-swpier__dotes" :class="dotesClass" v-if="showDotes">
+            <span :key="'swiper-'+i" v-for="(item, i) in items" @click.stop="goIndex(i)" :class="['busy-swipe__dot', i == index ? 'busy-swipe__dot--cur':'']" :style="[dotStyles, i == index ? {backgroundColor: curDotColor} : {}]"></span>
         </div>
     </div>
 </template>
 <script>
-    import { BNumber } from '../../util';
+    import { MNumber } from '../../util';
     const VERTICAL = 'vertical';
     const HORIZONTAL = 'horizontal';
 
     /**
-     * bee-swipe
+     * busy-swipe
      * @module Swipe
      * @see {@link ../example/all/swipe.html 实例}
      * @desc 切换组件
@@ -106,13 +106,13 @@
      * @param {Number} interval=2000 - 自动播放间隔时间 毫秒
      * 
      * @example
-     *  <bee-swipe :interval="3000" :auto-play="true" :height="320">
-     *      <bee-swipe__item>内容</bee-swipe__item>
-     *      <bee-swipe__item>内容</bee-swipe__item>
-     * </bee-swipe>
+     *  <busy-swipe :interval="3000" :auto-play="true" :height="320">
+     *      <busy-swipe__item>内容</busy-swipe__item>
+     *      <busy-swipe__item>内容</busy-swipe__item>
+     * </busy-swipe>
      */
     export default {
-        name: 'bee-swipe',
+        name: 'busy-swipe',
         props: {
             height: {
                 type: Number,
@@ -193,12 +193,12 @@
                 }
             },
             dotesClass() {
-                return [`bee-swipe__dots--pos-${this.dotesPos}`]
+                return [`busy-swipe__dots--pos-${this.dotesPos}`]
             },
             classes() {
                 return [
-                    this.status == "transition" ? 'bee-swipe--transition' : '',
-                    this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : 'bee-swipe--vertical'
+                    this.status == "transition" ? 'busy-swipe--transition' : '',
+                    this.dirType == HORIZONTAL ? 'busy-swipe--horizontal' : 'busy-swipe--vertical'
                 ]
             }
         },
@@ -300,7 +300,7 @@
             },
             goIndex(index) {
                 // 保证不超出0~this.size-1
-                index = BNumber.limit(index, 0, this.size - 1);
+                index = MNumber.limit(index, 0, this.size - 1);
                 // 转页才有动画
                 if (index !== this.index) {
                     this.status = 'transition';
@@ -347,11 +347,11 @@
         },
         mounted() {
             // 初始化
-            this.items = [].slice.call(this.$el.querySelectorAll('.bee-swipe__item'));
+            this.items = [].slice.call(this.$el.querySelectorAll('.busy-swipe__item'));
             this.size = this.items.length;
             if (this.index < 0 || this.index >= this.size) {
                 this.index = 0;
-                console.warn('[Bee warn]:Index out of range');
+                console.warn('[Busy warn]:Index out of range');
             }
 
             this._bindTouch();

@@ -1,4 +1,4 @@
-var Bee = (function (exports, Vue) {
+var Busy = (function (exports, Vue) {
     'use strict';
 
     Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
@@ -121,53 +121,53 @@ var Bee = (function (exports, Vue) {
 
     /**
      * 1像素边框
-     * @module @bee/border
+     * @module @busy/border
      * @see {@link ../example/all/border1px.html 实例}
      * @desc 1像素边框样式
      * @param {String} side = '', 设置哪个边框, t=上,b=下,r=右,l=左, lr=左右,tb=上下,no-r=无右,no-l=无左,no-t=无上,no-b=无下
      * 
      * @example
      * 
-     *  <div class="bee-border-1px">四边框</div>
+     *  <div class="busy-border-1px">四边框</div>
      *
-     *  <div class="bee-border-1px bee-border-t">上边框</div>
+     *  <div class="busy-border-1px busy-border-t">上边框</div>
      *
-     *  <div class="bee-border-1px bee-border-b">下边框</div>
+     *  <div class="busy-border-1px busy-border-b">下边框</div>
      *
-     *  <div class="bee-border-1px bee-border-tb">上下边框</div>
+     *  <div class="busy-border-1px busy-border-tb">上下边框</div>
      *
-     *  <div class="bee-border-1px bee-border-l">左边框</div>
+     *  <div class="busy-border-1px busy-border-l">左边框</div>
      *
-     *  <div class="bee-border-1px bee-border-r">右边框</div>
+     *  <div class="busy-border-1px busy-border-r">右边框</div>
      *
-     *  <div class="bee-border-1px bee-border-lr">左右边框</div>
+     *  <div class="busy-border-1px busy-border-lr">左右边框</div>
      *
-     * <div class="bee-border-1px bee-border-no-r">无右边框</div>
+     * <div class="busy-border-1px busy-border-no-r">无右边框</div>
      *
-     * <div class="bee-border-1px bee-border-no-l">无左边框</div>
+     * <div class="busy-border-1px busy-border-no-l">无左边框</div>
      *
-     * <div class="bee-border-1px bee-border-no-t">无上边框</div>
+     * <div class="busy-border-1px busy-border-no-t">无上边框</div>
      *
-     * <div class="bee-border-1px bee-border-no-b">无下边框</div>
+     * <div class="busy-border-1px busy-border-no-b">无下边框</div>
      *
      * // 取值1~10px
-     * <div class="bee-border-1px bee-border-radius-4px">圆角</div>
+     * <div class="busy-border-1px busy-border-radius-4px">圆角</div>
      *
      * // 百分比圆角
-     * <div class="bee-border-1px" style="border-radius: 50%;">圆角</div>
+     * <div class="busy-border-1px" style="border-radius: 50%;">圆角</div>
      * 
      */
 
     var Border = {
       prepare: function prepare() {
         var dpr = window.devicePixelRatio;
-        var styleTag = document.getElementById('bee-border-1px-style-sheet');
+        var styleTag = document.getElementById('busy-border-1px-style-sheet');
         var sheet = styleTag ? styleTag.sheet || styleTag.styleSheet : null;
         this.sheet = sheet;
         this.dpr = dpr;
         if (sheet) return;
         var style = document.createElement("style");
-        style.id = 'bee-border-1px-style-sheet';
+        style.id = 'busy-border-1px-style-sheet';
         style.type = 'text/css';
         style.appendChild(document.createTextNode(""));
         document.head.appendChild(style);
@@ -175,9 +175,9 @@ var Bee = (function (exports, Vue) {
         this.sheet = sheet;
 
         if (sheet.insertRule) {
-          sheet.insertRule('.bee-border-1px::after{ ' + 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');' + '}', 0);
+          sheet.insertRule('.busy-border-1px::after{ ' + 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');' + '}', 0);
         } else if (sheet.addRule) {
-          sheet.addRule('.bee-border-1px::after', 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
+          sheet.addRule('.busy-border-1px::after', 'width: ' + Number(dpr) * 100 + '%;' + 'height:' + Number(dpr) * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
         }
       },
       addStyleRule: function addStyleRule(name, content) {
@@ -201,27 +201,27 @@ var Bee = (function (exports, Vue) {
         var _this = this;
 
         this.prepare();
-        vue.directive('bee-border-1px', {
+        vue.directive('busy-border-1px', {
           bind: function bind(el, binding) {
             var datas = binding.value;
             var radius = datas.radius,
                 side = datas.side,
                 color = datas.color;
-            var classes = ["bee-border-1px"];
+            var classes = ["busy-border-1px"];
 
             if (side) {
-              classes.push("bee-border-1px-".concat(side));
+              classes.push("busy-border-1px-".concat(side));
             }
 
             if (radius) {
-              var name = "bee-border-1px-r-".concat(String(radius).replace('%', 'percent'));
+              var name = "busy-border-1px-r-".concat(String(radius).replace('%', 'percent'));
               classes.push(name);
 
               _this.addStyleRule(name, "\n                        border-radius:".concat(getDPRUnit(radius), ";\n                    "));
             }
 
             if (color) {
-              var _name = "bee-border-1px-c-".concat(color.replace('#', ''));
+              var _name = "busy-border-1px-c-".concat(color.replace('#', ''));
 
               classes.push(_name);
 
@@ -250,6 +250,28 @@ var Bee = (function (exports, Vue) {
       return _typeof(obj);
     }
 
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+      }
+    }
+
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    function _createClass(Constructor, protoProps, staticProps) {
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) _defineProperties(Constructor, staticProps);
+      return Constructor;
+    }
+
     function _defineProperty(obj, key, value) {
       if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -263,6 +285,25 @@ var Bee = (function (exports, Vue) {
       }
 
       return obj;
+    }
+
+    function _objectSpread(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+
+        if (typeof Object.getOwnPropertySymbols === 'function') {
+          ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+            return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+          }));
+        }
+
+        ownKeys.forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      }
+
+      return target;
     }
 
     ((function (window) {
@@ -334,7 +375,7 @@ var Bee = (function (exports, Vue) {
 
     //
     /**
-     * @bee/icon
+     * @busy/icon
      * @module Icon
      * @see {@link ../example/all/icons.html 实例}
      * @desc icon图标组件
@@ -344,12 +385,12 @@ var Bee = (function (exports, Vue) {
      * @param {String} fill='#fff' - 组件颜色,css color
      * 
      * @example
-     *  <bee-icon type="guanbi" fill="#8a8a8a"></bee-icon>
+     *  <busy-icon type="guanbi" fill="#8a8a8a"></busy-icon>
      * 
      */
 
     var script = {
-      name: 'bee-icon',
+      name: 'busy-icon',
       props: {
         type: {
           type: String,
@@ -484,7 +525,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('svg', {
-        staticClass: "bee-icon",
+        staticClass: "busy-icon",
         style: _vm.styles,
         on: {
           "click": _vm.handleClick
@@ -523,7 +564,7 @@ var Bee = (function (exports, Vue) {
     };
 
     var script$1 = {
-      name: 'bee-toast',
+      name: 'busy-toast',
       props: {
         type: {
           type: String,
@@ -531,7 +572,7 @@ var Bee = (function (exports, Vue) {
         },
         delay: {
           type: Number,
-          default: 2000
+          default: 2500
         },
         iconHeight: {
           type: Number,
@@ -546,7 +587,7 @@ var Bee = (function (exports, Vue) {
           default: '#fff'
         },
         content: {
-          type: [String, Number, Array],
+          type: [String, Number],
           default: ''
         },
         pos: {
@@ -563,7 +604,7 @@ var Bee = (function (exports, Vue) {
         },
         autoHide: {
           type: Boolean,
-          default: true
+          default: false
         }
       },
       data: function data() {
@@ -575,7 +616,7 @@ var Bee = (function (exports, Vue) {
       components: _defineProperty({}, Icon.name, Icon),
       computed: {
         posClass: function posClass() {
-          return ["bee-toast--pos-".concat(this.pos)];
+          return ["busy-toast--pos-".concat(this.pos)];
         },
         contentString: function contentString() {
           var content = this.content,
@@ -606,9 +647,16 @@ var Bee = (function (exports, Vue) {
           if (this.isRemove) {
             this.$destroy();
             this.$el.parentNode.removeChild(this.$el);
+            this.$emit('destroy', this);
           }
 
-          this.$emit('after-leave', this);
+          this.$emit('hide-end', this);
+        },
+        clearTimmer: function clearTimmer() {
+          if (this.timmer) {
+            clearTimeout(this.timmer);
+            this.timmer = null;
+          }
         }
       },
       watch: {
@@ -616,14 +664,12 @@ var Bee = (function (exports, Vue) {
           this.visiable = val;
         },
         visiable: function visiable(val) {
-          if (!val) {
-            clearTimeout(this.timmer);
-            this.timmer = null;
-          } else if (this.autoHide) {
-            !this.timmer && (this.timmer = setTimeout(this.hide, this.delay));
-          }
-
           this.$emit('visiable-change', val);
+          this.clearTimmer();
+
+          if (val === true && this.autoHide) {
+            this.timmer = setTimeout(this.hide, this.delay);
+          }
         }
       },
       mounted: function mounted() {
@@ -658,13 +704,13 @@ var Bee = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        staticClass: "bee-toast",
+        staticClass: "busy-toast",
         class: _vm.posClass
       }, [_c('div', {
-        staticClass: "bee-toast__wrap"
+        staticClass: "busy-toast__wrap"
       }, [_vm.type ? _c('p', {
-        staticClass: "bee-toast__icon"
-      }, [_c('bee-icon', {
+        staticClass: "busy-toast__icon"
+      }, [_c('busy-icon', {
         attrs: {
           "type": _vm.type,
           "width": _vm.iconWidth,
@@ -672,7 +718,7 @@ var Bee = (function (exports, Vue) {
           "fill": _vm.color
         }
       })], 1) : _vm._e(), _vm._v(" "), _c('p', {
-        staticClass: "bee-toast__text"
+        staticClass: "busy-toast__text"
       }, [_vm._t("default", [_vm._v("\n                    " + _vm._s(_vm.contentString) + "\n                ")])], 2)])])]);
     };
 
@@ -698,42 +744,14 @@ var Bee = (function (exports, Vue) {
       staticRenderFns: __vue_staticRenderFns__$1
     }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, undefined, undefined);
 
-    if (typeof Object.assign != 'function') {
-      Object.assign = function (target, varArgs) {
-
-        if (target == null) {
-          // TypeError if undefined or null
-          throw new TypeError('Cannot convert undefined or null to object');
-        }
-
-        var to = Object(target);
-
-        for (var index = 1; index < arguments.length; index++) {
-          var nextSource = arguments[index];
-
-          if (nextSource != null) {
-            // Skip over if undefined or null
-            for (var nextKey in nextSource) {
-              // Avoid bugs when hasOwnProperty is shadowed
-              if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-                to[nextKey] = nextSource[nextKey];
-              }
-            }
-          }
-        }
-
-        return to;
-      };
-    }
-
     var ToastClass = Vue.extend(Toast),
-        instance,
+        instance$1,
         vm;
     /**
      * Toast component
      * @module Toast
      * @see {@link ../example/all/toast.html 实例}
-     * @desc Toast组件 <bee-toast></bee-toast>
+     * @desc Toast组件 <busy-toast></busy-toast>
      * @param {Object} opts - 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'}
      * @param {String} content - 显示内容
      * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
@@ -754,25 +772,25 @@ var Bee = (function (exports, Vue) {
      * 
      * @example
      *  // use it in module tools
-     *   import Toast from '@bee/toast';
+     *   import Toast from '@busy/toast';
      *   1, Toast.show('内容')
      *   2, Toast.show('内容', 5000)
      *   3, Toast.show('内容', 'top', 5000)
      *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
      * 
      *   // use it in html
-     *   <script src="bee.min.js"><\/script>
-     *   <link href="bee.min.css" rel="stylesheet" />
+     *   <script src="busy.min.js"><\/script>
+     *   <link href="busy.min.css" rel="stylesheet" />
      * 
-     *   1, bee.Toast.show('内容')
-     *   2, bee.Toast.show('内容', 5000)
-     *   3, bee.Toast.show('内容', 'top', 5000)
-     *   4, bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
+     *   1, Busy.Toast.show('内容')
+     *   2, Busy.Toast.show('内容', 5000)
+     *   3, Busy.Toast.show('内容', 'top', 5000)
+     *   4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
      * 
      * 
      */
 
-    var Toast$1 = Object.assign(Toast, {
+    var ToastComponent = Object.assign(Toast, {
       install: function install(vue) {
         vue.component(Toast.name, Toast);
       },
@@ -784,7 +802,7 @@ var Bee = (function (exports, Vue) {
        * @returns ToastClass实例
        * 
        * @example
-       * Bee.Toast.show({content:'内容', pos: 'top', delay: 5000})
+       * Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
        * 
        */
       show: function show(opts) {
@@ -829,11 +847,11 @@ var Bee = (function (exports, Vue) {
           complete = arguments[len - 1];
         }
 
-        if (instance) {
+        if (instance$1) {
           this.hide();
         }
 
-        instance = new ToastClass({
+        instance$1 = new ToastClass({
           el: document.createElement('div'),
           propsData: Object.assign({}, {
             type: type,
@@ -845,24 +863,1230 @@ var Bee = (function (exports, Vue) {
           }, opts)
         });
         Vue.nextTick(function () {
-          vm = instance.$mount();
+          vm = instance$1.$mount();
           document.body.appendChild(vm.$el);
 
           if (complete) {
-            instance.$on('hide', complete);
+            instance$1.$on('hide', complete);
           }
 
-          instance.show();
+          instance$1.show();
         });
-        return instance;
+        return instance$1;
       },
       hide: function hide() {
-        instance && instance.hide();
-        instance.$off('hide');
-        instance = null;
+        instance$1 && instance$1.hide();
+        instance$1.$off('hide');
+        instance$1 = null;
         vm = null;
       }
     });
+
+    var ToastClass$1 = Vue.extend(ToastComponent);
+    /**
+     * Toast module
+     * @module Toast
+     * @see {@link ../example/all/toast.html 实例}
+     * @desc Toast组件 <busy-toast></busy-toast>
+     * @param {Object} opts - 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'}
+     * @param {String} content - 显示内容
+     * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
+     * @param {Number} delay=2000 - 显示时间，单位毫秒
+     * @param {String} type - icon类型
+     * @param {Boolean} isShow=false - 是否显示
+     * @param {Boolean} isRemove=false - 是否隐藏移除dom
+     * @param {Boolean} autoHide=true - 是否自动隐藏
+     * @param {Number} iconHeight=28 - 设置图标的高度
+     * @param {Number} iconWidth=28 - 设置图标的宽度
+     * @param {Number} color=#fff - 设置图标的颜色
+     * @param {Function} hide - 隐藏
+     * @param {Function} show - 显示
+     * @param {Event} hide - 隐藏时触发
+     * @param {Event} show - 显示时触发
+     * @param {Event} visiable-change - 显示,隐藏都会触发
+     * @param {Event} after-leave - 隐藏动画结束时触发
+     * 
+     * @example
+     *  // use it in module tools
+     *   import Toast from '@busy/toast';
+     *   1, Toast.show('内容')
+     *   2, Toast.show('内容', 5000)
+     *   3, Toast.show('内容', 'top', 5000)
+     *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
+     * 
+     *   // use it in html
+     *   <script src="busy.min.js"><\/script>
+     *   <link href="busy.min.css" rel="stylesheet" />
+     * 
+     *   1, Busy.Toast.show('内容')
+     *   2, Busy.Toast.show('内容', 5000)
+     *   3, Busy.Toast.show('内容', 'top', 5000)
+     *   4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
+     * 
+     * 
+     */
+
+    var Toast$1 =
+    /*#__PURE__*/
+    function () {
+      function Toast() {
+        _classCallCheck(this, Toast);
+
+        this.instance = null;
+      }
+      /**
+       * @method show
+       * @param {Object} opts - 配置项, <a href="#module_Toast">参见</a>
+       * @static
+       * @returns ToastClass实例
+       * 
+       * @example
+       * Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
+       * 
+       */
+
+
+      _createClass(Toast, [{
+        key: "show",
+        value: function show(content, opts) {
+          var _this = this;
+
+          if (this.instance) {
+            this.hide();
+          }
+
+          var type = _typeof(content);
+
+          if (type === 'object') {
+            opts = content;
+            content = opts.content;
+          } else if (type == 'string' || type === 'number') {
+            opts = _objectSpread({}, opts, {
+              content: content
+            });
+          }
+
+          this.instance = new ToastClass$1({
+            el: document.createElement('div'),
+            propsData: _objectSpread({
+              isRemove: true,
+              autoHide: true
+            }, opts)
+          });
+          Vue.nextTick(function () {
+            var vm = _this.instance.$mount();
+
+            document.body.appendChild(vm.$el);
+
+            _this.instance.show();
+          });
+          return new Promise(function (resolve) {
+            _this.instance.$on('hide', function () {
+              return resolve();
+            });
+          });
+        }
+      }, {
+        key: "hide",
+        value: function hide() {
+          this.instance && this.instance.hide();
+          this.instance = null;
+        }
+      }]);
+
+      return Toast;
+    }();
+
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+
+    /**
+     * @busy/mask
+     * @module Mask
+     * @desc 半透明遮罩层 <busy-mask></busy-mask>
+     * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
+     * @param {Boolean} isRemove=false - 是否隐藏动画完成从dom中清除
+     * @param {Boolean} isShow=false - 显示隐藏
+     * @example 
+     *      <busy-mask color="yellow"></busy-mask>
+     **/
+    var script$2 = {
+      name: 'busy-mask',
+      props: {
+        color: {
+          type: String,
+          default: 'rgba(0,0,0, 0.6)'
+        },
+        isRemove: {
+          type: Boolean,
+          default: false
+        },
+        isShow: {
+          type: Boolean,
+          default: false
+        },
+        zIndex: {
+          type: Number,
+          default: 1000
+        }
+      },
+      data: function data() {
+        return {
+          visiable: this.isShow
+        };
+      },
+      computed: {
+        styles: function styles() {
+          return {
+            backgroundColor: this.color,
+            zIndex: this.zIndex
+          };
+        }
+      },
+      watch: {
+        isShow: function isShow(val) {
+          this.visiable = val;
+          this.$emit(val ? 'show' : 'hide');
+        }
+      },
+      methods: {
+        show: function show() {
+          this.visiable = true;
+        },
+        hide: function hide() {
+          this.visiable = false;
+        },
+        _leave: function _leave() {
+          // 动画结束，清除元素
+          if (this.isRemove) {
+            this.$destroy();
+            this.$el.parentNode.removeChild(this.$el);
+          }
+        },
+        handleClick: function handleClick($evt) {
+          this.$emit('click', $evt);
+        },
+        handleTouchmove: function handleTouchmove($evt) {
+          $evt && $evt.preventDefault && $evt.preventDefault();
+          this.$emit('touchmove', $evt);
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$2 = script$2;
+    /* template */
+
+    var __vue_render__$2 = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('transition', {
+        attrs: {
+          "name": "busy-animate--fade"
+        },
+        on: {
+          "after-leave": _vm._leave
+        }
+      }, [_c('div', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: _vm.visiable,
+          expression: "visiable"
+        }],
+        staticClass: "busy-mask",
+        style: _vm.styles,
+        on: {
+          "touchmove": _vm.handleTouchmove,
+          "click": _vm.handleClick
+        }
+      }, [_vm._t("default")], 2)]);
+    };
+
+    var __vue_staticRenderFns__$2 = [];
+    /* style */
+
+    var __vue_inject_styles__$2 = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$2 = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$2 = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$2 = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Mask = normalizeComponent_1({
+      render: __vue_render__$2,
+      staticRenderFns: __vue_staticRenderFns__$2
+    }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, undefined, undefined);
+
+    Mask.install = function (vue) {
+      vue.component(Mask.name, Mask);
+    };
+
+    var _components;
+    var script$3 = {
+      name: 'busy-dialog',
+      props: {
+        mask: {
+          type: Boolean,
+          default: true
+        },
+        width: {
+          type: [Number, String],
+          default: '80%'
+        },
+        content: {
+          type: [String, Number],
+          default: ''
+        },
+        contentStyle: {
+          type: Object
+        },
+        title: {
+          type: String,
+          default: ''
+        },
+        height: {
+          type: [Number, String],
+          default: 0
+        },
+        showClose: {
+          type: Boolean,
+          default: false
+        },
+        buttons: {
+          type: Array,
+          default: function _default() {
+            return [{
+              text: '取消'
+            }, {
+              text: '确定'
+            }];
+          }
+        },
+        buttonDirection: {
+          type: String,
+          default: 'row'
+        },
+        isShow: {
+          type: Boolean,
+          default: false
+        },
+        isRemove: {
+          type: Boolean,
+          default: false
+        }
+      },
+      data: function data() {
+        return {
+          visiable: this.isShow,
+          leave: true
+        };
+      },
+      components: (_components = {}, _defineProperty(_components, Icon.name, Icon), _defineProperty(_components, Mask.name, Mask), _components),
+      computed: {
+        styles: function styles() {
+          var s = {},
+              w = this.width,
+              h = this.height;
+
+          if (this.width) {
+            s.width = /^\d+$/.test(w) ? w + 'px' : w; //s.marginLeft = -1 * this.width * 0.5 + 'px';
+          }
+
+          if (this.height) {
+            s.height = /^\d+$/.test(h) ? h + 'px' : h; //s.marginTop = -1 * this.height * 0.5 + 'px';
+          }
+
+          return s;
+        },
+        footerStyles: function footerStyles() {
+          return {
+            height: (this.buttonDirection == 'row' ? 1 : this.buttons.length) * 44 + 'px'
+          };
+        },
+
+        /**
+         * 格式化button的回调
+         **/
+        bindButtons: function bindButtons() {
+          var _this = this,
+              _arguments = arguments;
+
+          return this.buttons.map(function (button) {
+            var action = button.action;
+
+            button.action = function () {
+              _this.hide();
+
+              return action && typeof action == 'function' && action.apply(_this, [].slice.call(_arguments));
+            };
+
+            return button;
+          });
+        }
+      },
+      watch: {
+        isShow: function isShow(val) {
+          this.visiable = val;
+        },
+        visiable: function visiable(val) {
+          if (val === true) {
+            this.leave = false;
+          }
+
+          this.$emit('visiable-change', val);
+        }
+      },
+      methods: {
+        hide: function hide() {
+          this.visiable = false;
+          this.$emit('close');
+          return this;
+        },
+        show: function show() {
+          this.visiable = true;
+          this.$emit('show');
+          return this;
+        },
+        _leave: function _leave() {
+          this.leave = true; // 动画结束，清除元素
+
+          if (this.isRemove) {
+            this.$destroy();
+            this.$el.parentNode.removeChild(this.$el);
+            this.$emit('destroy', this);
+          }
+
+          this.$emit('hide-end', this);
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$3 = script$3;
+    /* template */
+
+    var __vue_render__$3 = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('div', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: !_vm.leave,
+          expression: "!leave"
+        }],
+        staticClass: "busy-dialog"
+      }, [_c('transition', {
+        attrs: {
+          "name": "busy-animate--scale"
+        },
+        on: {
+          "after-leave": _vm._leave
+        }
+      }, [_c('div', {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: _vm.visiable,
+          expression: "visiable"
+        }],
+        staticClass: "busy-dialog__wrap",
+        style: _vm.styles
+      }, [_vm.showClose ? _c('p', {
+        staticClass: "busy-dialog__close",
+        on: {
+          "click": function click($event) {
+            $event.stopPropagation();
+            return _vm.hide($event);
+          }
+        }
+      }, [_c('busy-icon', {
+        attrs: {
+          "type": "close",
+          "width": 20,
+          "height": 20,
+          "fill": "#8a8a8a"
+        }
+      })], 1) : _vm._e(), _vm._v(" "), _vm.title ? _c('header', {
+        staticClass: "busy-dialog__header"
+      }, [_vm._t("header", [_c('div', {
+        staticClass: "busy-dialog__title"
+      }, [_vm._v(_vm._s(_vm.title))])])], 2) : _vm._e(), _vm._v(" "), _vm.content || _vm.$slots['body'] ? _c('div', {
+        staticClass: "busy-dialog__body"
+      }, [_vm._t("body", [_c('div', {
+        style: _vm.contentStyle,
+        domProps: {
+          "innerHTML": _vm._s(_vm.content)
+        }
+      })])], 2) : _vm._e(), _vm._v(" "), _c('footer', {
+        staticClass: "busy-dialog__footer",
+        class: {
+          'busy-dialog__footer_row': _vm.buttonDirection == 'row',
+          'busy-dialog__footer_col': _vm.buttonDirection == 'col'
+        },
+        style: _vm.footerStyles
+      }, [_vm._t("footer", [_vm._l(_vm.bindButtons, function (btn, $i) {
+        return [_c('p', {
+          key: 'btn-' + $i,
+          staticClass: "busy-dialog__button",
+          class: btn.class,
+          style: btn.style,
+          on: {
+            "click": function click($event) {
+              $event.stopPropagation();
+              return btn.action($event);
+            }
+          }
+        }, [_vm._v(_vm._s(btn.text))])];
+      })])], 2)])]), _vm._v(" "), _c('busy-mask', {
+        attrs: {
+          "is-show": _vm.visiable,
+          "is-remove": _vm.isRemove,
+          "color": "rgba(0,0,0,.5)"
+        }
+      })], 1);
+    };
+
+    var __vue_staticRenderFns__$3 = [];
+    /* style */
+
+    var __vue_inject_styles__$3 = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$3 = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$3 = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$3 = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Dialog = normalizeComponent_1({
+      render: __vue_render__$3,
+      staticRenderFns: __vue_staticRenderFns__$3
+    }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, undefined, undefined);
+
+    var DialogClass = Vue.extend(Dialog);
+    /**
+     * @busy/dialog
+     * @module Dialog
+     * @see {@link ../example/all/dialog.html 实例}
+     * @desc 对话框组件22222 <busy-dialog />
+     * @param {Number} width=240 - 对话框宽度
+     * @param {Number} height=160 - 对话框高度
+     * @param {String} content - 对话框内容, 必填
+     * @param {String} title＝'' - 对话框标题
+     * @param {Function} show - 对话框标题
+     * @param {Function} hide - 对话框标题
+     * @param {Array<Object>} buttons=[{text:'确定'},{text:'取消'}] - 对话框标题
+     * @param {Object} contentStyle - 对话框内容样式
+     * @param {Boolean} showClose=false - 是否显示关闭按钮
+     * @example
+     * import {Dialog} from '@busy/dialog';
+     * 
+     * Dialog.show({
+     *      title: '提交信息',
+     *      content: '确定要提交吗？', 
+     *      buttons:[{text:'确定', action:function(){
+     *          // 确认提交
+     *      }},{text:'取消', action: function(){
+     *          // 不提交
+     *      }}]
+     * });
+     *
+     */
+
+    var Dialog$1 = Object.assign(Dialog, {
+      install: function install(vue) {
+        vue.component(Dialog.name, Dialog);
+      },
+
+      /**
+       * 显示对话框
+       * @method show
+       * @desc 显示对话框Dialog
+       * @param {Object} opts - 配置项, <a href="#module_Dialog">参见</a>
+       * @static
+       * @returns DialogClass实例
+       * 
+       * @example
+       * Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
+       * 
+       */
+      show: function show(opts) {
+        opts = opts || {};
+        var instance = new DialogClass({
+          el: document.createElement('div'),
+          propsData: Object.assign({}, opts, {
+            isRemove: true
+          })
+        });
+        Vue.nextTick(function () {
+          var vm = instance.$mount();
+          document.body.appendChild(vm.$el);
+          instance.show();
+        });
+        return instance;
+      }
+    });
+
+    var script$4 = {
+      name: 'busy-alert',
+      extends: Dialog,
+      components: _defineProperty({}, Dialog.name, Dialog),
+      props: {
+        width: {
+          type: [String, Number],
+          default: '80%'
+        },
+        height: {
+          type: [String, Number],
+          default: 140
+        }
+      },
+      methods: {
+        handleVisiable: function handleVisiable(visiable) {
+          this.visiable = visiable;
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$4 = script$4;
+    /* template */
+
+    var __vue_render__$4 = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('busy-dialog', {
+        ref: "dialog",
+        staticClass: "busy-alert",
+        attrs: {
+          "show-close": false,
+          "width": _vm.width,
+          "height": _vm.height,
+          "buttons": [{
+            text: '确定'
+          }],
+          "is-show": _vm.visiable,
+          "is-remove": _vm.isRemove,
+          "content": _vm.content
+        },
+        on: {
+          "visiable-change": _vm.handleVisiable
+        }
+      });
+    };
+
+    var __vue_staticRenderFns__$4 = [];
+    /* style */
+
+    var __vue_inject_styles__$4 = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$4 = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$4 = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$4 = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Alert = normalizeComponent_1({
+      render: __vue_render__$4,
+      staticRenderFns: __vue_staticRenderFns__$4
+    }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, undefined, undefined);
+
+    var AlertClass = Vue.extend(Alert);
+    /**
+     * @busy/alert
+     * @module Alert
+     * @see {@link ../example/all/dialog.html 实例}
+     * @desc alert对话框组件
+     * @param {String} content - 显示信息
+     * @param {Number} height=140 - 组件高度
+     * @param {Number} width=240 - 组件高度
+     * 
+     * @example
+     * // use it in html
+     * <script src="busy.min.js"><\/script>
+     * <link rel="stylesheet" href="busy.min.css" />
+     * 
+     * Busy.Alert.show('提交申请成功');
+     *
+     * // use it in webpack or browserify, rollup
+     * import {Alert} from '@busy/dialog';
+     * // var Aler = require('@busy/dialog/alert.js');
+     *
+     * Alert.show('提交申请成功');
+     *
+     */
+
+    var Alert$1 = Object.assign(Alert, {
+      $type: 'alert',
+      install: function install(vue) {
+        vue.component(Alert.name, Alert);
+      },
+
+      /**
+       * 显示Alert对话框
+       * @method show
+       * @desc 显示Alert对话框
+       * @param {String} text - 内容信息
+       * @param {Object} opts - 配置项, <a href="#module_Alert">参见</a>
+       * @static
+       * @returns AlertClass实例
+       * 
+       * @example
+       * busy.Alert.show('提交申请成功');
+       */
+      show: function show(text, opts) {
+        if (_typeof(text) === 'object') {
+          opts = text;
+          text = opts.content;
+        }
+
+        opts = opts || {};
+        var instance = new AlertClass({
+          el: document.createElement('div'),
+          propsData: Object.assign(opts, {
+            content: text,
+            isRemove: true
+          })
+        });
+        Vue.nextTick(function () {
+          var vm = instance.$mount();
+          document.body.appendChild(vm.$el);
+          instance.show();
+        });
+        return instance;
+      }
+    });
+
+    var script$5 = {
+      name: 'busy-confirm',
+      extends: Dialog,
+      components: _defineProperty({}, Dialog.name, Dialog),
+      props: {
+        height: {
+          type: [String, Number],
+          default: 140
+        },
+        width: {
+          type: [String, Number],
+          default: '80%'
+        },
+        callback: {
+          type: Function
+        }
+      },
+      computed: {
+        _buttons: function _buttons() {
+          return [{
+            text: '取消',
+            action: this._doCancel
+          }, {
+            text: '确定',
+            action: this._doSure
+          }];
+        }
+      },
+      methods: {
+        _doSure: function _doSure() {
+          typeof this.callback == 'function' && this.callback(true);
+          this.$emit('confirm');
+        },
+        _doCancel: function _doCancel() {
+          typeof this.callback == 'function' && this.callback(false);
+          this.$emit('cancel');
+        },
+        handleVisiable: function handleVisiable(visiable) {
+          this.visiable = visiable;
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$5 = script$5;
+    /* template */
+
+    var __vue_render__$5 = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('busy-dialog', {
+        ref: "dialog",
+        attrs: {
+          "show-close": false,
+          "width": _vm.width,
+          "height": _vm.height,
+          "buttons": _vm._buttons,
+          "is-show": _vm.visiable,
+          "is-remove": _vm.isRemove,
+          "content": _vm.content
+        },
+        on: {
+          "visiable-change": _vm.handleVisiable
+        }
+      });
+    };
+
+    var __vue_staticRenderFns__$5 = [];
+    /* style */
+
+    var __vue_inject_styles__$5 = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$5 = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$5 = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$5 = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Confirm = normalizeComponent_1({
+      render: __vue_render__$5,
+      staticRenderFns: __vue_staticRenderFns__$5
+    }, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, undefined, undefined);
+
+    var ConfirmClass = Vue.extend(Confirm);
+    /**
+     * busy-confirm
+     * @module Confirm
+     * @see {@link ../example/all/dialog.html 实例}
+     * @desc confirm对话框组件
+     * @param {String} content - 显示信息
+     * @param {Number} height=140 - 组件高度
+     * @param {Number} width=260 - 组件高度
+     * 
+     * @example
+     *
+     * // use it in html
+     * <script src="busy.min.js"><\/script>
+     * <link rel="stylesheet" href="busy.min.css" />
+     * 
+     * Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+     * 
+     * // use it in webpack or browserify, rollup
+     * import {Confirm} from '@busy/dialog';
+     * // var Confirm = require('@busy/dialog/confirm.js');
+     *
+     * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+     *
+     */
+
+    var Confirm$1 = Object.assign(Confirm, {
+      $type: 'confirm',
+      install: function install(vue) {
+        vue.component(Confirm.name, Confirm);
+      },
+
+      /**
+       * 显示Alert对话框
+       * @method show
+       * @desc 显示Confirm对话框
+       * @param {String} text - 内容信息
+       * @param {Object} opts - 配置项, <a href="#module_Confirm">参见</a>
+       * @param {Function} callback - 回调函数, 用户选择结果将传参给第一个参数: true of false
+       * @static
+       * @returns ConfirmClass实例
+       * 
+       * @example
+       * const confirm = Busy.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
+       * confirm.doClose();
+       * 
+       */
+      show: function show(text, opts, callback) {
+        if (_typeof(text) === 'object') {
+          callback = opts;
+          opts = text;
+          text = opts.content;
+        }
+
+        if (typeof text === 'function') {
+          opts = {};
+          callback = text;
+          text = '';
+        }
+
+        if (typeof text === 'string' && typeof opts === 'function') {
+          callback = opts;
+          opts = {};
+        }
+
+        callback = callback || function () {};
+
+        var instance = new ConfirmClass({
+          el: document.createElement('div'),
+          propsData: Object.assign(opts, {
+            content: text,
+            callback: callback,
+            isRemove: true
+          })
+        });
+        Vue.nextTick(function () {
+          var vm = instance.$mount();
+          document.body.appendChild(vm.$el);
+          instance.show();
+        });
+        return instance;
+      }
+    });
+
+    var script$6 = {
+      name: 'busy-prompt',
+      extends: Dialog,
+      components: _defineProperty({}, Dialog.name, Dialog),
+      props: {
+        placeholder: String,
+        height: {
+          type: [String, Number],
+          default: 120
+        },
+        width: {
+          type: [String, Number],
+          default: '80%'
+        },
+        callback: {
+          type: Function
+        }
+      },
+      computed: {
+        _buttons: function _buttons() {
+          return [{
+            text: '取消',
+            action: this._doCancel
+          }, {
+            text: '确定',
+            action: this._doSure
+          }];
+        }
+      },
+      methods: {
+        _doSure: function _doSure() {
+          typeof this.callback == 'function' && this.callback(this.content);
+          this.$emit('confirm');
+        },
+        _doCancel: function _doCancel() {
+          this.$emit('cancel');
+        },
+        handleVisiable: function handleVisiable(visiable) {
+          this.visiable = visiable;
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$6 = script$6;
+    /* template */
+
+    var __vue_render__$6 = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('busy-dialog', {
+        ref: "dialog",
+        attrs: {
+          "show-close": false,
+          "width": _vm.width,
+          "height": _vm.height,
+          "buttons": _vm._buttons,
+          "is-show": _vm.visiable,
+          "is-remove": _vm.isRemove
+        },
+        on: {
+          "visiable-change": _vm.handleVisiable
+        }
+      }, [_c('div', {
+        attrs: {
+          "slot": "body"
+        },
+        slot: "body"
+      }, [_c('div', {
+        staticClass: "busy-prompt__text"
+      }, [_c('input', {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: _vm.content,
+          expression: "content"
+        }],
+        staticClass: "busy-prompt__input",
+        attrs: {
+          "type": "text",
+          "placeholder": _vm.placeholder
+        },
+        domProps: {
+          "value": _vm.content
+        },
+        on: {
+          "input": function input($event) {
+            if ($event.target.composing) {
+              return;
+            }
+
+            _vm.content = $event.target.value;
+          }
+        }
+      })])])]);
+    };
+
+    var __vue_staticRenderFns__$6 = [];
+    /* style */
+
+    var __vue_inject_styles__$6 = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$6 = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$6 = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$6 = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Prompt = normalizeComponent_1({
+      render: __vue_render__$6,
+      staticRenderFns: __vue_staticRenderFns__$6
+    }, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, undefined, undefined);
+
+    var PromptClass = Vue.extend(Prompt);
+    /**
+     * @busy/prompt
+     * @module Prompt
+     * @see {@link ../example/all/dialog.html 实例}
+     * @desc prompt对话框组件
+     * @param {String} placeholder - 提示信息
+     * @param {Number} height=140 - 组件高度
+     * @param {Number} width=260 - 组件高度
+     * 
+     * @example
+     *
+     * // use it in html
+     * <script src="busy.min.js"><\/script>
+     * <link rel="stylesheet" href="busy.min.css" />
+     * 
+     * Busy.Prompt.show('请填写信息？', (val)=>{console.log(val)});
+     * 
+     * // use it in webpack or browserify, rollup
+     * import {Prompt} from '@busy/dialog';
+     * // var Prompt = require('@busy/dialog/prompt.js');
+     *
+     * Prompt.show('请填写信息？', (val)=>{console.log(val)});
+     *
+     */
+
+    var Prompt$1 = Object.assign(Prompt, {
+      $type: 'prompt',
+      install: function install(vue) {
+        vue.component(Prompt.name, Prompt);
+      },
+
+      /**
+       * 显示Prompt对话框
+       * @method show
+       * @desc 显示Prompt对话框
+       * @param {String} text - 内容信息
+       * @param {Object} opts - 配置项, <a href="#module_Prompt">参见</a>
+       * @param {Function} callback - 回调函数, 用户输入信息将传参给第一个参数
+       * @static
+       * @returns PromptClass实例
+       * 
+       * @example
+       * const confirm = Busy.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
+       * prompt.doClose();
+       * 
+       */
+      show: function show(text, opts, callback) {
+        if (_typeof(text) === 'object') {
+          callback = opts;
+          opts = text;
+          text = opts.placeholder;
+        }
+
+        if (typeof text === 'function') {
+          opts = {};
+          callback = text;
+          text = '';
+        }
+
+        if (typeof text === 'string' && typeof opts === 'function') {
+          callback = opts;
+          opts = {};
+        }
+
+        callback = callback || function () {};
+
+        var instance = new PromptClass({
+          el: document.createElement('div'),
+          propsData: Object.assign(opts, {
+            placeholder: text,
+            callback: callback,
+            isRemove: true
+          })
+        });
+        Vue.nextTick(function () {
+          var vm = instance.$mount();
+          document.body.appendChild(vm.$el);
+          instance.show();
+        });
+        return instance;
+      }
+    });
+
+    var DialogClass$1 = Vue.extend(Dialog$1);
+    /**
+     * @busy/dialog
+     * @module Dialog
+     * @see {@link ../example/all/dialog.html 实例}
+     * @desc 对话框组件11111 <busy-dialog />
+     * @param {Number} width=240 - 对话框宽度
+     * @param {Number} height=160 - 对话框高度
+     * @param {String} content - 对话框内容, 必填
+     * @param {String} title＝'' - 对话框标题
+     * @param {Function} show - 对话框标题
+     * @param {Function} hide - 对话框标题
+     * @param {Array<Object>} buttons=[{text:'确定'},{text:'取消'}] - 对话框标题
+     * @param {Object} contentStyle - 对话框内容样式
+     * @param {Boolean} showClose=false - 是否显示关闭按钮
+     * @example
+     * import {Dialog} from '@busy/dialog';
+     * 
+     * Dialog.show({
+     *      title: '提交信息',
+     *      content: '确定要提交吗？', 
+     *      buttons:[{text:'确定', action:function(){
+     *          // 确认提交
+     *      }},{text:'取消', action: function(){
+     *          // 不提交
+     *      }}]
+     * });
+     *
+     */
+
+    var Dialog$2 =
+    /*#__PURE__*/
+    function () {
+      function Dialog() {
+        _classCallCheck(this, Dialog);
+
+        this.instance = null;
+      }
+      /**
+       * 显示对话框
+       * @method show
+       * @desc 显示对话框Dialog
+       * @param {Object} opts - 配置项, <a href="#module_Dialog">参见</a>
+       * @static
+       * @returns DialogClass实例
+       * 
+       * @example
+       * Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
+       * 
+       */
+
+
+      _createClass(Dialog, [{
+        key: "show",
+        value: function show(opts) {
+          var _this = this;
+
+          opts = opts || {};
+          instance = new DialogClass$1({
+            el: document.createElement('div'),
+            propsData: _objectSpread({
+              isRemove: true
+            }, opts)
+          });
+          Vue.nextTick(function () {
+            var vm = _this.instance.$mount();
+
+            document.body.appendChild(vm.$el);
+
+            _this.instance.show();
+          });
+          return this.instance;
+        }
+        /**
+         * @method hide
+         * @desc 隐藏对话框
+         */
+
+      }, {
+        key: "hide",
+        value: function hide() {
+          this.instance && this.instance.hide();
+          this.instance = null;
+        }
+      }]);
+
+      return Dialog;
+    }();
+
+    var Busyjs = {
+      Toast: new Toast$1(),
+      Dialog: new Dialog$2()
+    };
 
     //
     //
@@ -985,8 +2209,8 @@ var Bee = (function (exports, Vue) {
      * @example
      *      <line-spin-fade :color="#ff0000" :width="20" :height="20"></line-spin-fade>
      **/
-    var script$2 = {
-      name: 'bee-line-spin-fade',
+    var script$7 = {
+      name: 'busy-line-spin-fade',
       props: {
         color: {
           type: String,
@@ -1062,10 +2286,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$2 = script$2;
+    var __vue_script__$7 = script$7;
     /* template */
 
-    var __vue_render__$2 = function __vue_render__() {
+    var __vue_render__$7 = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -1073,7 +2297,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _vm.visiable ? _c('div', {
-        staticClass: "bee-line-spin-fade-loader",
+        staticClass: "busy-line-spin-fade-loader",
         style: {
           width: _vm.width + 'px',
           height: _vm.height + 'px'
@@ -1094,27 +2318,27 @@ var Bee = (function (exports, Vue) {
       }), 0) : _vm._e();
     };
 
-    var __vue_staticRenderFns__$2 = [];
+    var __vue_staticRenderFns__$7 = [];
     /* style */
 
-    var __vue_inject_styles__$2 = undefined;
+    var __vue_inject_styles__$7 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$2 = undefined;
+    var __vue_scope_id__$7 = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$2 = undefined;
+    var __vue_module_identifier__$7 = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$2 = false;
+    var __vue_is_functional_template__$7 = false;
     /* style inject */
 
     /* style inject SSR */
 
     var LineSpinFade = normalizeComponent_1({
-      render: __vue_render__$2,
-      staticRenderFns: __vue_staticRenderFns__$2
-    }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, undefined, undefined);
+      render: __vue_render__$7,
+      staticRenderFns: __vue_staticRenderFns__$7
+    }, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, undefined, undefined);
 
     LineSpinFade.install = function (vue) {
       return vue.component(LineSpinFade.name, LineSpinFade);
@@ -1195,8 +2419,8 @@ var Bee = (function (exports, Vue) {
     //
     //
     //
-    var script$3 = {
-      name: 'bee-ball-scale-multiple',
+    var script$8 = {
+      name: 'busy-ball-scale-multiple',
       props: {
         color: {
           type: String,
@@ -1243,10 +2467,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$3 = script$3;
+    var __vue_script__$8 = script$8;
     /* template */
 
-    var __vue_render__$3 = function __vue_render__() {
+    var __vue_render__$8 = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -1254,7 +2478,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _vm.visiable ? _c('div', {
-        staticClass: "bee-ball-scale-multiple",
+        staticClass: "busy-ball-scale-multiple",
         style: {
           width: this.width + 'px',
           height: this.height + 'px'
@@ -1268,27 +2492,27 @@ var Bee = (function (exports, Vue) {
       })]) : _vm._e();
     };
 
-    var __vue_staticRenderFns__$3 = [];
+    var __vue_staticRenderFns__$8 = [];
     /* style */
 
-    var __vue_inject_styles__$3 = undefined;
+    var __vue_inject_styles__$8 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$3 = undefined;
+    var __vue_scope_id__$8 = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$3 = undefined;
+    var __vue_module_identifier__$8 = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$3 = false;
+    var __vue_is_functional_template__$8 = false;
     /* style inject */
 
     /* style inject SSR */
 
     var BallScaleMultiple = normalizeComponent_1({
-      render: __vue_render__$3,
-      staticRenderFns: __vue_staticRenderFns__$3
-    }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, undefined, undefined);
+      render: __vue_render__$8,
+      staticRenderFns: __vue_staticRenderFns__$8
+    }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, undefined, undefined);
 
     BallScaleMultiple.install = function (vue) {
       return vue.component(BallScaleMultiple.name, BallScaleMultiple);
@@ -1369,8 +2593,8 @@ var Bee = (function (exports, Vue) {
     //
     //
     //
-    var script$4 = {
-      name: 'bee-ball-clip-rotate-pulse',
+    var script$9 = {
+      name: 'busy-ball-clip-rotate-pulse',
       props: {
         color: {
           type: String,
@@ -1436,10 +2660,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$4 = script$4;
+    var __vue_script__$9 = script$9;
     /* template */
 
-    var __vue_render__$4 = function __vue_render__() {
+    var __vue_render__$9 = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -1447,7 +2671,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _vm.visiable ? _c('div', {
-        staticClass: "bee-ball-clip-rotate-pulse",
+        staticClass: "busy-ball-clip-rotate-pulse",
         style: {
           width: _vm.width + 'px',
           height: _vm.width + 'px'
@@ -1459,27 +2683,27 @@ var Bee = (function (exports, Vue) {
       })]) : _vm._e();
     };
 
-    var __vue_staticRenderFns__$4 = [];
+    var __vue_staticRenderFns__$9 = [];
     /* style */
 
-    var __vue_inject_styles__$4 = undefined;
+    var __vue_inject_styles__$9 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$4 = undefined;
+    var __vue_scope_id__$9 = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$4 = undefined;
+    var __vue_module_identifier__$9 = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$4 = false;
+    var __vue_is_functional_template__$9 = false;
     /* style inject */
 
     /* style inject SSR */
 
     var BallClipRotatePulse = normalizeComponent_1({
-      render: __vue_render__$4,
-      staticRenderFns: __vue_staticRenderFns__$4
-    }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, undefined, undefined);
+      render: __vue_render__$9,
+      staticRenderFns: __vue_staticRenderFns__$9
+    }, __vue_inject_styles__$9, __vue_script__$9, __vue_scope_id__$9, __vue_is_functional_template__$9, __vue_module_identifier__$9, undefined, undefined);
 
     BallClipRotatePulse.install = function (vue) {
       return vue.component(BallClipRotatePulse.name, BallClipRotatePulse);
@@ -1558,17 +2782,17 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * bee-line-scale-pulse-out
+     * busy-line-scale-pulse-out
      * @desc 跳动线条动画组件
      * @param {String} color - 组件颜色, css color [hex, rgb, rgba], 默认 #ffffff
      * @param {Number} width - 组件宽度, 默认 30 <px>
      * @param {Number} height - 组件高度, 默认 10 <px>
      * @param {Boolean} visiable - 是否可见, 默认 true
      * @example
-     *      <bee-line-scale-pulse-out></bee-line-scale-pulse-out>
+     *      <busy-line-scale-pulse-out></busy-line-scale-pulse-out>
      **/
-    var script$5 = {
-      name: 'bee-line-scale-pulse-out',
+    var script$a = {
+      name: 'busy-line-scale-pulse-out',
       props: {
         color: {
           type: String,
@@ -1624,10 +2848,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$5 = script$5;
+    var __vue_script__$a = script$a;
     /* template */
 
-    var __vue_render__$5 = function __vue_render__() {
+    var __vue_render__$a = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -1635,7 +2859,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _vm.visiable ? _c('div', {
-        staticClass: "bee-line-scale-pulse-out"
+        staticClass: "busy-line-scale-pulse-out"
       }, [_c('div', {
         style: _vm.itemStyles
       }), _vm._v(" "), _c('div', {
@@ -1649,27 +2873,27 @@ var Bee = (function (exports, Vue) {
       })]) : _vm._e();
     };
 
-    var __vue_staticRenderFns__$5 = [];
+    var __vue_staticRenderFns__$a = [];
     /* style */
 
-    var __vue_inject_styles__$5 = undefined;
+    var __vue_inject_styles__$a = undefined;
     /* scoped */
 
-    var __vue_scope_id__$5 = undefined;
+    var __vue_scope_id__$a = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$5 = undefined;
+    var __vue_module_identifier__$a = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$5 = false;
+    var __vue_is_functional_template__$a = false;
     /* style inject */
 
     /* style inject SSR */
 
     var LineScalePulseOut = normalizeComponent_1({
-      render: __vue_render__$5,
-      staticRenderFns: __vue_staticRenderFns__$5
-    }, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, undefined, undefined);
+      render: __vue_render__$a,
+      staticRenderFns: __vue_staticRenderFns__$a
+    }, __vue_inject_styles__$a, __vue_script__$a, __vue_scope_id__$a, __vue_is_functional_template__$a, __vue_module_identifier__$a, undefined, undefined);
 
     LineScalePulseOut.install = function (vue) {
       return vue.component(LineScalePulseOut.name, LineScalePulseOut);
@@ -1785,15 +3009,15 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * bee-ball-spin-fade
+     * busy-ball-spin-fade
      * @desc ball 动画
      * @param {Number} width - 组件宽度和高度
      * @param {String} color - 组件颜色, css color
      * @example
-     *      <bee-ball-spin-fade></bee-ball-spin-fade>
+     *      <busy-ball-spin-fade></busy-ball-spin-fade>
      **/
-    var script$6 = {
-      name: 'bee-ball-spin-fade',
+    var script$b = {
+      name: 'busy-ball-spin-fade',
       props: {
         width: {
           type: Number,
@@ -1850,10 +3074,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$6 = script$6;
+    var __vue_script__$b = script$b;
     /* template */
 
-    var __vue_render__$6 = function __vue_render__() {
+    var __vue_render__$b = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -1861,7 +3085,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _vm.visiable ? _c('div', {
-        staticClass: "bee-ball-spin-fade-loader",
+        staticClass: "busy-ball-spin-fade-loader",
         style: _vm.styles
       }, _vm._l(_vm.items, function (item, $i) {
         return _c('div', {
@@ -1878,27 +3102,27 @@ var Bee = (function (exports, Vue) {
       }), 0) : _vm._e();
     };
 
-    var __vue_staticRenderFns__$6 = [];
+    var __vue_staticRenderFns__$b = [];
     /* style */
 
-    var __vue_inject_styles__$6 = undefined;
+    var __vue_inject_styles__$b = undefined;
     /* scoped */
 
-    var __vue_scope_id__$6 = undefined;
+    var __vue_scope_id__$b = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$6 = undefined;
+    var __vue_module_identifier__$b = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$6 = false;
+    var __vue_is_functional_template__$b = false;
     /* style inject */
 
     /* style inject SSR */
 
     var BallSpinFade = normalizeComponent_1({
-      render: __vue_render__$6,
-      staticRenderFns: __vue_staticRenderFns__$6
-    }, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, undefined, undefined);
+      render: __vue_render__$b,
+      staticRenderFns: __vue_staticRenderFns__$b
+    }, __vue_inject_styles__$b, __vue_script__$b, __vue_scope_id__$b, __vue_is_functional_template__$b, __vue_module_identifier__$b, undefined, undefined);
 
     BallSpinFade.install = function (vue) {
       return vue.component(BallSpinFade.name, BallSpinFade);
@@ -1964,15 +3188,15 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * bee-ball-beat
+     * busy-ball-beat
      * @desc 圆形跳动动画
      * @param {Number} width=24 - 组件宽度
      * @param {String} color=#ffffff - 组件颜色, css color
      * @example
-     *      <bee-ball-beat></bee-ball-beat>
+     *      <busy-ball-beat></busy-ball-beat>
      **/
-    var script$7 = {
-      name: 'bee-ball-beat',
+    var script$c = {
+      name: 'busy-ball-beat',
       props: {
         width: {
           type: Number,
@@ -2021,10 +3245,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$7 = script$7;
+    var __vue_script__$c = script$c;
     /* template */
 
-    var __vue_render__$7 = function __vue_render__() {
+    var __vue_render__$c = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -2032,7 +3256,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _vm.visiable ? _c('div', {
-        staticClass: "bee-ball-beat",
+        staticClass: "busy-ball-beat",
         style: {
           width: _vm.width + 'px'
         }
@@ -2045,27 +3269,27 @@ var Bee = (function (exports, Vue) {
       })]) : _vm._e();
     };
 
-    var __vue_staticRenderFns__$7 = [];
+    var __vue_staticRenderFns__$c = [];
     /* style */
 
-    var __vue_inject_styles__$7 = undefined;
+    var __vue_inject_styles__$c = undefined;
     /* scoped */
 
-    var __vue_scope_id__$7 = undefined;
+    var __vue_scope_id__$c = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$7 = undefined;
+    var __vue_module_identifier__$c = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$7 = false;
+    var __vue_is_functional_template__$c = false;
     /* style inject */
 
     /* style inject SSR */
 
     var BallBeat = normalizeComponent_1({
-      render: __vue_render__$7,
-      staticRenderFns: __vue_staticRenderFns__$7
-    }, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, undefined, undefined);
+      render: __vue_render__$c,
+      staticRenderFns: __vue_staticRenderFns__$c
+    }, __vue_inject_styles__$c, __vue_script__$c, __vue_scope_id__$c, __vue_is_functional_template__$c, __vue_module_identifier__$c, undefined, undefined);
 
     BallBeat.install = function (vue) {
       return vue.component(BallBeat.name, BallBeat);
@@ -2109,17 +3333,17 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * bee-circle-rotate
+     * busy-circle-rotate
      * @desc 旋转圆环动画
      * @param {Number} width=24 - 组件宽度
      * @param {Number} height=24 - 组件高度
      * @param {String} color="#ffffff" - 组件颜色
      * @param {Number} strokeWidth=3 - 描边宽度
      * @example
-     *      <bee-circle-rotate color="red"></bee-circle-rotate>
+     *      <busy-circle-rotate color="red"></busy-circle-rotate>
      **/
-    var script$8 = {
-      name: 'bee-circle-rotate',
+    var script$d = {
+      name: 'busy-circle-rotate',
       props: {
         height: {
           type: Number,
@@ -2182,10 +3406,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$8 = script$8;
+    var __vue_script__$d = script$d;
     /* template */
 
-    var __vue_render__$8 = function __vue_render__() {
+    var __vue_render__$d = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -2193,34 +3417,34 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _vm.visiable ? _c('div', {
-        staticClass: "bee-circle-rotate"
+        staticClass: "busy-circle-rotate"
       }, [_c('div', {
-        staticClass: "bee-circle-circle",
+        staticClass: "busy-circle-rotate__circle",
         style: _vm.styles
       })]) : _vm._e();
     };
 
-    var __vue_staticRenderFns__$8 = [];
+    var __vue_staticRenderFns__$d = [];
     /* style */
 
-    var __vue_inject_styles__$8 = undefined;
+    var __vue_inject_styles__$d = undefined;
     /* scoped */
 
-    var __vue_scope_id__$8 = undefined;
+    var __vue_scope_id__$d = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$8 = undefined;
+    var __vue_module_identifier__$d = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$8 = false;
+    var __vue_is_functional_template__$d = false;
     /* style inject */
 
     /* style inject SSR */
 
     var CircleRotate = normalizeComponent_1({
-      render: __vue_render__$8,
-      staticRenderFns: __vue_staticRenderFns__$8
-    }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, undefined, undefined);
+      render: __vue_render__$d,
+      staticRenderFns: __vue_staticRenderFns__$d
+    }, __vue_inject_styles__$d, __vue_script__$d, __vue_scope_id__$d, __vue_is_functional_template__$d, __vue_module_identifier__$d, undefined, undefined);
 
     CircleRotate.install = function (vue) {
       return vue.component(CircleRotate.name, CircleRotate);
@@ -2246,7 +3470,7 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * bee-spinner
+     * busy-spinner
      * @module Spinner
      * @see {@link ../example/all/spinner.html 实例}
      * @desc spinner组件
@@ -2259,11 +3483,11 @@ var Bee = (function (exports, Vue) {
      * 
      * @example
      *
-     *  <bee-spinner :type="3" color="#666" :width="12"></bee-spinner>
+     *  <busy-spinner :type="3" color="#666" :width="12"></busy-spinner>
      *
      */
-    var script$9 = {
-      name: 'bee-spinner',
+    var script$e = {
+      name: 'busy-spinner',
       props: {
         type: {
           type: Number,
@@ -2303,10 +3527,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$9 = script$9;
+    var __vue_script__$e = script$e;
     /* template */
 
-    var __vue_render__$9 = function __vue_render__() {
+    var __vue_render__$e = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -2314,44 +3538,44 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-spinner"
-      }, [_vm.type === 0 ? _c('bee-line-spin-fade', {
+        staticClass: "busy-spinner"
+      }, [_vm.type === 0 ? _c('busy-line-spin-fade', {
         attrs: {
           "color": _vm.color,
           "width": _vm.width,
           "height": _vm.height
         }
-      }) : _vm._e(), _vm._v(" "), _vm.type === 1 ? _c('bee-line-scale-pulse-out', {
+      }) : _vm._e(), _vm._v(" "), _vm.type === 1 ? _c('busy-line-scale-pulse-out', {
         attrs: {
           "color": _vm.color,
           "width": _vm.width,
           "height": _vm.height
         }
-      }) : _vm._e(), _vm._v(" "), _vm.type === 2 ? _c('bee-ball-spin-fade', {
+      }) : _vm._e(), _vm._v(" "), _vm.type === 2 ? _c('busy-ball-spin-fade', {
         attrs: {
           "color": _vm.color,
           "width": _vm.width,
           "height": _vm.height
         }
-      }) : _vm._e(), _vm._v(" "), _vm.type === 3 ? _c('bee-ball-scale-multiple', {
+      }) : _vm._e(), _vm._v(" "), _vm.type === 3 ? _c('busy-ball-scale-multiple', {
         attrs: {
           "color": _vm.color,
           "width": _vm.width,
           "height": _vm.height
         }
-      }) : _vm._e(), _vm._v(" "), _vm.type === 4 ? _c('bee-ball-beat', {
+      }) : _vm._e(), _vm._v(" "), _vm.type === 4 ? _c('busy-ball-beat', {
         attrs: {
           "color": _vm.color,
           "width": _vm.width,
           "height": _vm.height
         }
-      }) : _vm._e(), _vm._v(" "), _vm.type === 5 ? _c('bee-ball-clip-rotate-pulse', {
+      }) : _vm._e(), _vm._v(" "), _vm.type === 5 ? _c('busy-ball-clip-rotate-pulse', {
         attrs: {
           "color": _vm.color,
           "width": _vm.width,
           "height": _vm.width
         }
-      }) : _vm._e(), _vm._v(" "), _vm.type === 6 ? _c('bee-circle-rotate', {
+      }) : _vm._e(), _vm._v(" "), _vm.type === 6 ? _c('busy-circle-rotate', {
         attrs: {
           "color": _vm.color,
           "height": _vm.height,
@@ -2361,27 +3585,27 @@ var Bee = (function (exports, Vue) {
       }) : _vm._e()], 1);
     };
 
-    var __vue_staticRenderFns__$9 = [];
+    var __vue_staticRenderFns__$e = [];
     /* style */
 
-    var __vue_inject_styles__$9 = undefined;
+    var __vue_inject_styles__$e = undefined;
     /* scoped */
 
-    var __vue_scope_id__$9 = undefined;
+    var __vue_scope_id__$e = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$9 = undefined;
+    var __vue_module_identifier__$e = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$9 = false;
+    var __vue_is_functional_template__$e = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Spinner = normalizeComponent_1({
-      render: __vue_render__$9,
-      staticRenderFns: __vue_staticRenderFns__$9
-    }, __vue_inject_styles__$9, __vue_script__$9, __vue_scope_id__$9, __vue_is_functional_template__$9, __vue_module_identifier__$9, undefined, undefined);
+      render: __vue_render__$e,
+      staticRenderFns: __vue_staticRenderFns__$e
+    }, __vue_inject_styles__$e, __vue_script__$e, __vue_scope_id__$e, __vue_is_functional_template__$e, __vue_module_identifier__$e, undefined, undefined);
 
     Spinner.install = function (vue) {
       vue.use(LineSpinFade);
@@ -2395,8 +3619,8 @@ var Bee = (function (exports, Vue) {
       vue.component(Spinner.name, Spinner);
     };
 
-    var script$a = {
-      name: 'bee-toast-loading',
+    var script$f = {
+      name: 'busy-toast-loading',
       props: {
         width: {
           type: Number,
@@ -2475,7 +3699,7 @@ var Bee = (function (exports, Vue) {
           return s;
         },
         classes: function classes() {
-          return [this.direction == 'row' ? 'bee-toast-loading--dir-row' : 'bee-toast-loading--dir-column'];
+          return [this.direction == 'row' ? 'busy-toast-loading--dir-row' : 'busy-toast-loading--dir-column'];
         }
       },
       watch: {
@@ -2486,17 +3710,17 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$a = script$a;
+    var __vue_script__$f = script$f;
     /* template */
 
-    var __vue_render__$a = function __vue_render__() {
+    var __vue_render__$f = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
 
       var _c = _vm._self._c || _h;
 
-      return _c('bee-mask', {
+      return _c('busy-mask', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -2514,12 +3738,12 @@ var Bee = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        staticClass: "bee-toast-loading",
+        staticClass: "busy-toast-loading",
         class: _vm.classes,
         style: _vm.styles
       }, [_c('div', {
-        staticClass: "bee-toast-loading__icon"
-      }, [_c('bee-spinner', {
+        staticClass: "busy-toast-loading__icon"
+      }, [_c('busy-spinner', {
         attrs: {
           "type": _vm.spinner.type,
           "height": _vm.spinner.height,
@@ -2527,7 +3751,7 @@ var Bee = (function (exports, Vue) {
           "color": _vm.spinner.color
         }
       })], 1), _vm._v(" "), _vm.text ? _c('div', {
-        staticClass: "bee-toast-loading__text",
+        staticClass: "busy-toast-loading__text",
         style: {
           color: _vm.color,
           fontSize: _vm.fontSize + 'px'
@@ -2535,35 +3759,35 @@ var Bee = (function (exports, Vue) {
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2) : _vm._e()])])], 1);
     };
 
-    var __vue_staticRenderFns__$a = [];
+    var __vue_staticRenderFns__$f = [];
     /* style */
 
-    var __vue_inject_styles__$a = undefined;
+    var __vue_inject_styles__$f = undefined;
     /* scoped */
 
-    var __vue_scope_id__$a = undefined;
+    var __vue_scope_id__$f = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$a = undefined;
+    var __vue_module_identifier__$f = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$a = false;
+    var __vue_is_functional_template__$f = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ToastLoading = normalizeComponent_1({
-      render: __vue_render__$a,
-      staticRenderFns: __vue_staticRenderFns__$a
-    }, __vue_inject_styles__$a, __vue_script__$a, __vue_scope_id__$a, __vue_is_functional_template__$a, __vue_module_identifier__$a, undefined, undefined);
+      render: __vue_render__$f,
+      staticRenderFns: __vue_staticRenderFns__$f
+    }, __vue_inject_styles__$f, __vue_script__$f, __vue_scope_id__$f, __vue_is_functional_template__$f, __vue_module_identifier__$f, undefined, undefined);
 
     var ToastLoadingClass = Vue.extend(ToastLoading);
     var tlInstance, tlVm;
     /**
-     * bee-toast-loading
+     * busy-toast-loading
      * @module ToastLoading
      * @see {@link ../example/all/toast-loading.html 实例}
-     * @desc 页面toastloading组件 <bee-toast-loading />
+     * @desc 页面toastloading组件 <busy-toast-loading />
      * @param {Number} height=100 - 高度(px)
      * @param {Number} width=100 - 宽度(px)
      * @param {String} color='#fff' - spinner和文字颜色, css color
@@ -2574,16 +3798,16 @@ var Bee = (function (exports, Vue) {
      * 
      * @example
      *  //  use it in html
-     *  <script src="bee.min.js"><\/script>
-     *  <link rel="stylesheet" href="bee.min.css">
+     *  <script src="busy.min.js"><\/script>
+     *  <link rel="stylesheet" href="busy.min.css">
      *
-     *  bee.ToastLoading.show();
+     *  Busy.ToastLoading.show();
      *  http.get('url').then(()=>{
-     *    Bee.ToastLoading.hide();
+     *    Busy.ToastLoading.hide();
      *  });
      *
      *  // use it in module tools
-     *  import ToastLoading from '@bee/toast-loading';
+     *  import ToastLoading from '@busy/toast-loading';
      *  ToastLoading.show({spinner:{type:2}, direction="row"});
      *  http.get('url').then(()=>{
      *    ToastLoading.hide();
@@ -2592,7 +3816,7 @@ var Bee = (function (exports, Vue) {
 
     var ToastLoading$1 = Object.assign(ToastLoading, {
       install: function install(vue) {
-        vue.component('bee-toast-loading', ToastLoading);
+        vue.component('busy-toast-loading', ToastLoading);
       },
 
       /**
@@ -2616,7 +3840,7 @@ var Bee = (function (exports, Vue) {
        * @returns LoadingClass实例
        * 
        * @example
-       * bee.ToastLoading.show();
+       * Busy.ToastLoading.show();
        * 
        */
       show: function show(opts) {
@@ -2656,11 +3880,11 @@ var Bee = (function (exports, Vue) {
      * @param {Boolean} isRemove=false - 隐藏后是否清除
      * 
      * @example
-     *  <bee-loading>正在加载...</bee-loading>
+     *  <busy-loading>正在加载...</busy-loading>
      */
 
-    var script$b = {
-      name: 'bee-loading',
+    var script$g = {
+      name: 'busy-loading',
       props: {
         spinnerSize: {
           type: Number,
@@ -2755,10 +3979,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$b = script$b;
+    var __vue_script__$g = script$g;
     /* template */
 
-    var __vue_render__$b = function __vue_render__() {
+    var __vue_render__$g = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -2779,11 +4003,11 @@ var Bee = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        staticClass: "bee-loading",
+        staticClass: "busy-loading",
         style: _vm.styles
       }, [_c('div', {
-        staticClass: "bee-loading__spinner"
-      }, [_c('bee-spinner', {
+        staticClass: "busy-loading__spinner"
+      }, [_c('busy-spinner', {
         attrs: {
           "type": _vm.spinnerType,
           "color": _vm.color,
@@ -2793,7 +4017,7 @@ var Bee = (function (exports, Vue) {
           "stroke-width": _vm.spinnerStroke
         }
       })], 1), _vm._v(" "), _c('div', {
-        staticClass: "bee-loading__text",
+        staticClass: "busy-loading__text",
         style: {
           color: _vm.color,
           fontSize: _vm.fontSize + 'px'
@@ -2801,30 +4025,30 @@ var Bee = (function (exports, Vue) {
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
     };
 
-    var __vue_staticRenderFns__$b = [];
+    var __vue_staticRenderFns__$g = [];
     /* style */
 
-    var __vue_inject_styles__$b = undefined;
+    var __vue_inject_styles__$g = undefined;
     /* scoped */
 
-    var __vue_scope_id__$b = undefined;
+    var __vue_scope_id__$g = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$b = undefined;
+    var __vue_module_identifier__$g = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$b = false;
+    var __vue_is_functional_template__$g = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Loading = normalizeComponent_1({
-      render: __vue_render__$b,
-      staticRenderFns: __vue_staticRenderFns__$b
-    }, __vue_inject_styles__$b, __vue_script__$b, __vue_scope_id__$b, __vue_is_functional_template__$b, __vue_module_identifier__$b, undefined, undefined);
+      render: __vue_render__$g,
+      staticRenderFns: __vue_staticRenderFns__$g
+    }, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
 
     var LoadingClass = Vue.extend(Loading);
-    var instance$1, vm$1;
+    var instance$2, vm$1;
 
     Loading.install = function (vue) {
       vue.component(Loading.name, Loading);
@@ -2833,11 +4057,11 @@ var Bee = (function (exports, Vue) {
     Loading.show = function (opts) {
       opts = opts || {};
 
-      if (instance$1) {
-        return instance$1;
+      if (instance$2) {
+        return instance$2;
       }
 
-      instance$1 = new LoadingClass({
+      instance$2 = new LoadingClass({
         el: document.createElement('div'),
         propsData: Object.assign({}, {
           fullPage: true,
@@ -2845,43 +4069,50 @@ var Bee = (function (exports, Vue) {
         }, opts)
       });
       Vue.nextTick(function () {
-        vm$1 = instance$1.$mount();
+        vm$1 = instance$2.$mount();
         document.body.appendChild(vm$1.$el);
-        instance$1.show();
+        instance$2.show();
       });
     };
 
     Loading.hide = function () {
-      if (instance$1) {
-        instance$1.hide();
+      if (instance$2) {
+        instance$2.hide();
       }
 
       vm$1 = null;
-      instance$1 = null;
+      instance$2 = null;
     };
 
+    setTimeout(function () {
+      var dpr = window.devicePixelRatio;
+      document.documentElement.dataset && (document.documentElement.dataset.dpr = dpr);
+    }, 0);
+
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    var script$c = {
-      name: 'bee-flexitem',
+    var script$h = {
+      name: 'busy-flexitem',
       props: {
         basis: [String, Number],
         shrink: [String, Number],
         grow: [String, Number],
         flex: [String, Number],
         alginSelf: String,
-        order: Number
+        order: Number,
+        width: [String, Number],
+        height: [String, Number]
       },
       computed: {
         styles: function styles() {
+          var w = this.width,
+              h = this.height;
+          w = cmpUnit(w);
+          h = cmpUnit(h);
           return {
             flex: this.flex,
             order: this.order,
+            width: w,
+            height: h,
             alginSelf: this.alginSelf
           };
         }
@@ -2894,10 +4125,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$c = script$c;
+    var __vue_script__$h = script$h;
     /* template */
 
-    var __vue_render__$c = function __vue_render__() {
+    var __vue_render__$h = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -2905,7 +4136,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-flex__item",
+        staticClass: "busy-flex__item",
         style: _vm.styles,
         on: {
           "click": _vm.handleClick
@@ -2913,30 +4144,30 @@ var Bee = (function (exports, Vue) {
       }, [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$c = [];
+    var __vue_staticRenderFns__$h = [];
     /* style */
 
-    var __vue_inject_styles__$c = undefined;
+    var __vue_inject_styles__$h = undefined;
     /* scoped */
 
-    var __vue_scope_id__$c = undefined;
+    var __vue_scope_id__$h = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$c = undefined;
+    var __vue_module_identifier__$h = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$c = false;
+    var __vue_is_functional_template__$h = false;
     /* style inject */
 
     /* style inject SSR */
 
     var FlexItem = normalizeComponent_1({
-      render: __vue_render__$c,
-      staticRenderFns: __vue_staticRenderFns__$c
-    }, __vue_inject_styles__$c, __vue_script__$c, __vue_scope_id__$c, __vue_is_functional_template__$c, __vue_module_identifier__$c, undefined, undefined);
+      render: __vue_render__$h,
+      staticRenderFns: __vue_staticRenderFns__$h
+    }, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
 
-    var script$d = {
-      name: 'bee-flexbox',
+    var script$i = {
+      name: 'busy-flexbox',
       props: {
         inline: {
           type: Boolean,
@@ -2973,7 +4204,7 @@ var Bee = (function (exports, Vue) {
           var ah = this.alignH,
               av = this.alignV,
               flag = ah || av;
-          return [this.inline ? "bee-flex--inline" : "bee-flex", flag ? "bee-flex--".concat(ah || 'start', "-").concat(av || 'start') : null, !this.direction ? '' : "bee-flex--".concat(this.direction)];
+          return [this.inline ? "busy-flex--inline" : "busy-flex", flag ? "busy-flex--".concat(ah || 'start', "-").concat(av || 'start') : null, !this.direction ? '' : "busy-flex--".concat(this.direction)];
         },
         styles: function styles() {
           var h = this.height,
@@ -2995,10 +4226,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$d = script$d;
+    var __vue_script__$i = script$i;
     /* template */
 
-    var __vue_render__$d = function __vue_render__() {
+    var __vue_render__$i = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -3014,48 +4245,43 @@ var Bee = (function (exports, Vue) {
       }, [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$d = [];
+    var __vue_staticRenderFns__$i = [];
     /* style */
 
-    var __vue_inject_styles__$d = undefined;
+    var __vue_inject_styles__$i = undefined;
     /* scoped */
 
-    var __vue_scope_id__$d = undefined;
+    var __vue_scope_id__$i = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$d = undefined;
+    var __vue_module_identifier__$i = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$d = false;
+    var __vue_is_functional_template__$i = false;
     /* style inject */
 
     /* style inject SSR */
 
     var FlexBox = normalizeComponent_1({
-      render: __vue_render__$d,
-      staticRenderFns: __vue_staticRenderFns__$d
-    }, __vue_inject_styles__$d, __vue_script__$d, __vue_scope_id__$d, __vue_is_functional_template__$d, __vue_module_identifier__$d, undefined, undefined);
+      render: __vue_render__$i,
+      staticRenderFns: __vue_staticRenderFns__$i
+    }, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
 
     FlexBox.install = function (vue) {
       vue.component(FlexItem.name, FlexItem);
       vue.component(FlexBox.name, FlexBox);
     };
 
-    setTimeout(function () {
-      var dpr = window.devicePixelRatio;
-      document.documentElement.dataset && (document.documentElement.dataset.dpr = dpr);
-    }, 0);
-
     //
     setTimeout(function () {
       var dpr = window.devicePixelRatio; //if (this.borderColor) {
 
-      var styleTag = document.getElementById('bee-button-border-1px');
+      var styleTag = document.getElementById('busy-button-border-1px');
       var sheet = styleTag ? styleTag.sheet || styleTag.styleSheet : null;
 
       if (!sheet) {
         var style = document.createElement("style");
-        style.id = 'bee-button-border-1px';
+        style.id = 'busy-button-border-1px';
         style.type = 'text/css';
         style.appendChild(document.createTextNode(""));
         document.head.appendChild(style);
@@ -3063,17 +4289,17 @@ var Bee = (function (exports, Vue) {
       }
 
       if (sheet.addRule) {
-        sheet.addRule('button > .bee-button-border', 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
+        sheet.addRule('button > .busy-button__border', 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');');
       } else if (sheet.insertRule) {
-        sheet.insertRule('button > .bee-button-border' + 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');', 0);
+        sheet.insertRule('button > .busy-button__border' + 'width: ' + dpr * 100 + '%;' + 'height: ' + dpr * 100 + '%;' + 'transform: scale(' + 1 / dpr + ');', 0);
       } //}
 
     }, 0);
     /**
-     * @bee/button
+     * @busy/button
      * @module Button
      * @see {@link ../example/all/button.html 实例}
-     * @desc 按钮组件 <bee-button />
+     * @desc 按钮组件 <busy-button />
      * @param {string} type=default - 显示类型，接受 default, primary, warning
      * @param {string} nativeType=button - 按钮类型， button, reset, submit
      * @param {boolean} disabled=false - 禁用
@@ -3087,16 +4313,19 @@ var Bee = (function (exports, Vue) {
      * @param {String} slot - 显示文本
      * @param {String} bgColor - 按钮背景色
      * @param {String} fontColor - 字体颜色
+     * @param {String} borderColor - 边框颜色
+     * @param {String} borderWidth - 边框宽度
+     * @param {String} borderRadius - 圆角
      *
      * @example
-     *  <bee-button size="large" type="primary">按钮</bee-button>
+     *  <busy-button size="large" type="primary">按钮</busy-button>
      *
-     *  <bee-button size="small" type="warning">删除</bee-button>
+     *  <busy-button size="small" type="warning">删除</busy-button>
      *
      */
 
-    var script$e = {
-      name: 'bee-button',
+    var script$j = {
+      name: 'busy-button',
       props: {
         disabled: Boolean,
         nativeType: {
@@ -3121,9 +4350,7 @@ var Bee = (function (exports, Vue) {
         },
         borderWidth: {
           type: [Number, String],
-          default: function _default() {
-            return this.plain ? 1 : 0;
-          },
+          default: 1,
           validator: validateUnit
         },
         fontColor: String,
@@ -3170,7 +4397,7 @@ var Bee = (function (exports, Vue) {
         }
       },
       computed: {
-        borderStyles: function borderStyles() {
+        thinBorder: function thinBorder() {
           if (!(this.borderWidth === 1 || this.borderWidth === '1px')) return null;
           var br = this.sharp ? 0 : this.borderRadius,
               regBr;
@@ -3201,7 +4428,7 @@ var Bee = (function (exports, Vue) {
             borderColor: !this.isThin ? this.borderColor : null,
             width: w,
             fontSize: /^\d+$/.test(fs) ? fs + 'px' : fs || null,
-            backgroundColor: this.bgColor,
+            backgroundColor: this.ghost ? 'transparent' : this.bgColor,
             color: this.fontColor,
             borderRadius: /^\d+$/.test(br) ? br + 'px' : br
           };
@@ -3212,10 +4439,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$e = script$e;
+    var __vue_script__$j = script$j;
     /* template */
 
-    var __vue_render__$e = function __vue_render__() {
+    var __vue_render__$j = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -3223,14 +4450,15 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('button', {
-        staticClass: "bee-button",
-        class: ['bee-button--' + _vm.type, _vm.size ? 'bee-button--' + _vm.size : '', {
+        staticClass: "busy-button",
+        class: ['busy-button--' + _vm.type, _vm.size ? 'busy-button--' + _vm.size : '', {
           'is-disabled': _vm.disabled,
-          'is-block': _vm.block
+          'is-block': _vm.block,
+          'is-ghost': _vm.ghost
         }],
         style: _vm.styles,
         attrs: {
-          "data-key": 'bee-button-' + _vm._uid,
+          "data-key": 'busy-button-' + _vm._uid,
           "type": _vm.nativeType,
           "disabled": _vm.disabled
         },
@@ -3238,34 +4466,34 @@ var Bee = (function (exports, Vue) {
           "click": _vm.handleClick
         }
       }, [_c('label', {
-        staticClass: "bee-button__text"
-      }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2), _vm._v(" "), _c('span', {
-        staticClass: "bee-button__border",
-        style: _vm.borderStyles
-      })]);
+        staticClass: "busy-button__text"
+      }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2), _vm._v(" "), _vm.isThin ? _c('span', {
+        staticClass: "busy-button__border",
+        style: _vm.thinBorder
+      }) : _vm._e()]);
     };
 
-    var __vue_staticRenderFns__$e = [];
+    var __vue_staticRenderFns__$j = [];
     /* style */
 
-    var __vue_inject_styles__$e = undefined;
+    var __vue_inject_styles__$j = undefined;
     /* scoped */
 
-    var __vue_scope_id__$e = undefined;
+    var __vue_scope_id__$j = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$e = undefined;
+    var __vue_module_identifier__$j = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$e = false;
+    var __vue_is_functional_template__$j = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Button = normalizeComponent_1({
-      render: __vue_render__$e,
-      staticRenderFns: __vue_staticRenderFns__$e
-    }, __vue_inject_styles__$e, __vue_script__$e, __vue_scope_id__$e, __vue_is_functional_template__$e, __vue_module_identifier__$e, undefined, undefined);
+      render: __vue_render__$j,
+      staticRenderFns: __vue_staticRenderFns__$j
+    }, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
 
     Button.install = function (vue) {
       vue.component(Button.name, Button);
@@ -3353,19 +4581,19 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * @bee/checkbox
-     * @desc 勾选框  <bee-checkbox />
+     * @busy/checkbox
+     * @desc 勾选框  <busy-checkbox />
      * @module Checkbox
      * @see {@link ../example/all/checkbox.html 实例}
      * @param {string} label 显示在右侧的内容
      * @param {boolean} disabled 是否禁用
      *
      * @example
-     * <bee-checkbox v-model="checked" label="这个位置是标签1"></bee-checkbox>
-     * <bee-checkbox v-model="disable" label="是否禁用下面的按钮"></bee-checkbox>
+     * <busy-checkbox v-model="checked" label="这个位置是标签1"></busy-checkbox>
+     * <busy-checkbox v-model="disable" label="是否禁用下面的按钮"></busy-checkbox>
      */
-    var script$f = {
-      name: 'bee-checkbox',
+    var script$k = {
+      name: 'busy-checkbox',
       props: {
         label: String,
         value: Boolean,
@@ -3399,10 +4627,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$f = script$f;
+    var __vue_script__$k = script$k;
     /* template */
 
-    var __vue_render__$f = function __vue_render__() {
+    var __vue_render__$k = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -3410,9 +4638,9 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-checkbox"
+        staticClass: "busy-checkbox"
       }, [_c('label', {
-        staticClass: "bee-checkbox__label"
+        staticClass: "busy-checkbox__label"
       }, [_c('input', {
         directives: [{
           name: "model",
@@ -3420,7 +4648,7 @@ var Bee = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "bee-checkbox__input",
+        staticClass: "busy-checkbox__input",
         attrs: {
           "type": "checkbox",
           "disabled": _vm.disabled
@@ -3449,900 +4677,11 @@ var Bee = (function (exports, Vue) {
           }
         }
       }), _vm._v(" "), _c('span', {
-        staticClass: "bee-checkbox__core",
+        staticClass: "busy-checkbox__core",
         style: _vm.styles
       }), _vm._v(" "), _vm.label || _vm.$slots.default ? _c('span', {
-        staticClass: "bee-checkbox__content"
+        staticClass: "busy-checkbox__content"
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.label))])], 2) : _vm._e()])]);
-    };
-
-    var __vue_staticRenderFns__$f = [];
-    /* style */
-
-    var __vue_inject_styles__$f = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$f = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$f = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$f = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Checkbox = normalizeComponent_1({
-      render: __vue_render__$f,
-      staticRenderFns: __vue_staticRenderFns__$f
-    }, __vue_inject_styles__$f, __vue_script__$f, __vue_scope_id__$f, __vue_is_functional_template__$f, __vue_module_identifier__$f, undefined, undefined);
-
-    Checkbox.install = function (vue) {
-      vue.component(Checkbox.name, Checkbox);
-    };
-
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-
-    /**
-     * @bee/mask
-     * @module Mask
-     * @desc 半透明遮罩层 <bee-mask></bee-mask>
-     * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
-     * @param {Boolean} isRemove=false - 是否隐藏动画完成从dom中清除
-     * @param {Boolean} isShow=false - 显示隐藏
-     * @example 
-     *      <bee-mask color="yellow"></bee-mask>
-     **/
-    var script$g = {
-      name: 'bee-mask',
-      props: {
-        color: {
-          type: String,
-          default: 'rgba(0,0,0, 0.6)'
-        },
-        isRemove: {
-          type: Boolean,
-          default: false
-        },
-        isShow: {
-          type: Boolean,
-          default: false
-        },
-        zIndex: {
-          type: Number,
-          default: 1000
-        }
-      },
-      data: function data() {
-        return {
-          visiable: this.isShow
-        };
-      },
-      computed: {
-        styles: function styles() {
-          return {
-            backgroundColor: this.color,
-            zIndex: this.zIndex
-          };
-        }
-      },
-      watch: {
-        isShow: function isShow(val) {
-          this.visiable = val;
-          this.$emit(val ? 'show' : 'hide');
-        }
-      },
-      methods: {
-        show: function show() {
-          this.visiable = true;
-        },
-        hide: function hide() {
-          this.visiable = false;
-        },
-        _leave: function _leave() {
-          // 动画结束，清除元素
-          if (this.isRemove) {
-            this.$destroy();
-            this.$el.parentNode.removeChild(this.$el);
-          }
-        },
-        handleClick: function handleClick($evt) {
-          this.$emit('click', $evt);
-        },
-        handleTouchmove: function handleTouchmove($evt) {
-          $evt && $evt.preventDefault && $evt.preventDefault();
-          this.$emit('touchmove', $evt);
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$g = script$g;
-    /* template */
-
-    var __vue_render__$g = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c('transition', {
-        attrs: {
-          "name": "bee-animate--fade"
-        },
-        on: {
-          "after-leave": _vm._leave
-        }
-      }, [_c('div', {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: _vm.visiable,
-          expression: "visiable"
-        }],
-        staticClass: "bee-mask",
-        style: _vm.styles,
-        on: {
-          "touchmove": _vm.handleTouchmove,
-          "click": _vm.handleClick
-        }
-      }, [_vm._t("default")], 2)]);
-    };
-
-    var __vue_staticRenderFns__$g = [];
-    /* style */
-
-    var __vue_inject_styles__$g = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$g = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$g = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$g = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Mask = normalizeComponent_1({
-      render: __vue_render__$g,
-      staticRenderFns: __vue_staticRenderFns__$g
-    }, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
-
-    Mask.install = function (vue) {
-      vue.component(Mask.name, Mask);
-    };
-
-    var _components;
-    var script$h = {
-      name: 'bee-dialog',
-      props: {
-        mask: {
-          type: Boolean,
-          default: true
-        },
-        width: {
-          type: [Number, String],
-          default: '80%'
-        },
-        content: {
-          type: [String, Number],
-          default: ''
-        },
-        contentStyle: {
-          type: Object
-        },
-        title: {
-          type: String,
-          default: ''
-        },
-        height: {
-          type: [Number, String],
-          default: 0
-        },
-        showClose: {
-          type: Boolean,
-          default: false
-        },
-        buttons: {
-          type: Array,
-          default: function _default() {
-            return [{
-              text: '取消'
-            }, {
-              text: '确定'
-            }];
-          }
-        },
-        buttonDirection: {
-          type: String,
-          default: 'row'
-        },
-        isShow: {
-          type: Boolean,
-          default: false
-        },
-        isRemove: {
-          type: Boolean,
-          default: false
-        }
-      },
-      data: function data() {
-        return {
-          visiable: this.isShow
-        };
-      },
-      components: (_components = {}, _defineProperty(_components, Icon.name, Icon), _defineProperty(_components, Mask.name, Mask), _components),
-      computed: {
-        styles: function styles() {
-          var s = {},
-              w = this.width,
-              h = this.height;
-
-          if (this.width) {
-            s.width = /^\d+$/.test(w) ? w + 'px' : w; //s.marginLeft = -1 * this.width * 0.5 + 'px';
-          }
-
-          if (this.height) {
-            s.height = /^\d+$/.test(h) ? h + 'px' : h; //s.marginTop = -1 * this.height * 0.5 + 'px';
-          }
-
-          return s;
-        },
-        footerStyles: function footerStyles() {
-          return {
-            height: (this.buttonDirection == 'row' ? 1 : this.buttons.length) * 44 + 'px'
-          };
-        },
-
-        /**
-         * 格式化button的回调
-         **/
-        bindButtons: function bindButtons() {
-          var _this = this,
-              _arguments = arguments;
-
-          return this.buttons.map(function (button) {
-            var action = button.action;
-
-            button.action = function () {
-              _this.hide();
-
-              return action && typeof action == 'function' && action.apply(_this, [].slice.call(_arguments));
-            };
-
-            return button;
-          });
-        }
-      },
-      watch: {
-        isShow: function isShow(val) {
-          this.visiable = val;
-        },
-        visiable: function visiable(val) {
-          this.$emit('visiable-change', val);
-        }
-      },
-      methods: {
-        hide: function hide() {
-          this.visiable = false;
-          this.$emit('close');
-          return this;
-        },
-        show: function show() {
-          this.visiable = true;
-          this.$emit('show');
-          return this;
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$h = script$h;
-    /* template */
-
-    var __vue_render__$h = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c('bee-mask', {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: _vm.visiable,
-          expression: "visiable"
-        }],
-        attrs: {
-          "is-remove": _vm.isRemove,
-          "color": "rgba(0,0,0,.5)"
-        }
-      }, [_c('transition', {
-        attrs: {
-          "name": "fade-scale"
-        }
-      }, [_vm.visiable ? _c('div', {
-        staticClass: "bee-dialog",
-        style: _vm.styles
-      }, [_vm.showClose ? _c('p', {
-        staticClass: "bee-dialog__close",
-        on: {
-          "click": function click($event) {
-            $event.stopPropagation();
-            return _vm.hide($event);
-          }
-        }
-      }, [_c('bee-icon', {
-        attrs: {
-          "type": "close",
-          "width": 20,
-          "height": 20,
-          "fill": "#8a8a8a"
-        }
-      })], 1) : _vm._e(), _vm._v(" "), _vm.title ? _c('header', {
-        staticClass: "bee-dialog__header"
-      }, [_vm._t("header", [_c('div', {
-        staticClass: "bee-dialog__title"
-      }, [_vm._v(_vm._s(_vm.title))])])], 2) : _vm._e(), _vm._v(" "), _vm.content || _vm.$slots['body'] ? _c('div', {
-        staticClass: "bee-dialog__body"
-      }, [_vm._t("body", [_c('div', {
-        style: _vm.contentStyle,
-        domProps: {
-          "innerHTML": _vm._s(_vm.content)
-        }
-      })])], 2) : _vm._e(), _vm._v(" "), _c('footer', {
-        staticClass: "bee-dialog__footer",
-        class: {
-          'bee-dialog__footer_row': _vm.buttonDirection == 'row',
-          'bee-dialog__footer_col': _vm.buttonDirection == 'col'
-        },
-        style: _vm.footerStyles
-      }, [_vm._t("footer", [_vm._l(_vm.bindButtons, function (btn, $i) {
-        return [_c('p', {
-          key: 'btn-' + $i,
-          staticClass: "bee-dialog__button",
-          class: btn.class,
-          style: btn.style,
-          on: {
-            "click": function click($event) {
-              $event.stopPropagation();
-              return btn.action($event);
-            }
-          }
-        }, [_vm._v(_vm._s(btn.text))])];
-      })])], 2)]) : _vm._e()])], 1);
-    };
-
-    var __vue_staticRenderFns__$h = [];
-    /* style */
-
-    var __vue_inject_styles__$h = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$h = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$h = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$h = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Dialog = normalizeComponent_1({
-      render: __vue_render__$h,
-      staticRenderFns: __vue_staticRenderFns__$h
-    }, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
-
-    var DialogClass = Vue.extend(Dialog);
-    /**
-     * @bee/dialog
-     * @module Dialog
-     * @see {@link ../example/all/dialog.html 实例}
-     * @desc 对话框组件 <bee-dialog />
-     * @param {Number} width=240 - 对话框宽度
-     * @param {Number} height=160 - 对话框高度
-     * @param {String} content - 对话框内容, 必填
-     * @param {String} title＝'' - 对话框标题
-     * @param {Function} show - 对话框标题
-     * @param {Function} hide - 对话框标题
-     * @param {Array<Object>} buttons=[{text:'确定'},{text:'取消'}] - 对话框标题
-     * @param {Object} contentStyle - 对话框内容样式
-     * @param {Boolean} showClose=false - 是否显示关闭按钮
-     * @example
-     * import {Dialog} from '@bee/dialog';
-     * 
-     * Dialog.show({
-     *      title: '提交信息',
-     *      content: '确定要提交吗？', 
-     *      buttons:[{text:'确定', action:function(){
-     *          // 确认提交
-     *      }},{text:'取消', action: function(){
-     *          // 不提交
-     *      }}]
-     * });
-     *
-     */
-
-    var Dialog$1 = Object.assign(Dialog, {
-      install: function install(vue) {
-        vue.component(Dialog.name, Dialog);
-      },
-
-      /**
-       * 显示对话框
-       * @method show
-       * @desc 显示对话框Dialog
-       * @param {Object} opts - 配置项, <a href="#module_Dialog">参见</a>
-       * @static
-       * @returns DialogClass实例
-       * 
-       * @example
-       * Bee.Dialog.show({content:'红包来了!',title:'发红包了'})
-       * 
-       */
-      show: function show(opts) {
-        opts = opts || {};
-        var instance = new DialogClass({
-          el: document.createElement('div'),
-          propsData: Object.assign({}, opts, {
-            isRemove: true
-          })
-        });
-        Vue.nextTick(function () {
-          var vm = instance.$mount();
-          document.body.appendChild(vm.$el);
-          instance.show();
-        });
-        return instance;
-      }
-    });
-
-    var script$i = {
-      name: 'bee-alert',
-      extends: Dialog,
-      components: _defineProperty({}, Dialog.name, Dialog),
-      props: {
-        width: {
-          type: [String, Number],
-          default: '80%'
-        },
-        height: {
-          type: [String, Number],
-          default: 140
-        }
-      },
-      methods: {
-        handleVisiable: function handleVisiable(visiable) {
-          this.visiable = visiable;
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$i = script$i;
-    /* template */
-
-    var __vue_render__$i = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c('bee-dialog', {
-        ref: "dialog",
-        staticClass: "bee-alert",
-        attrs: {
-          "show-close": false,
-          "width": _vm.width,
-          "height": _vm.height,
-          "buttons": [{
-            text: '确定'
-          }],
-          "is-show": _vm.visiable,
-          "is-remove": _vm.isRemove,
-          "content": _vm.content
-        },
-        on: {
-          "visiable-change": _vm.handleVisiable
-        }
-      });
-    };
-
-    var __vue_staticRenderFns__$i = [];
-    /* style */
-
-    var __vue_inject_styles__$i = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$i = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$i = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$i = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Alert = normalizeComponent_1({
-      render: __vue_render__$i,
-      staticRenderFns: __vue_staticRenderFns__$i
-    }, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
-
-    var AlertClass = Vue.extend(Alert);
-    /**
-     * @bee/alert
-     * @module Alert
-     * @see {@link ../example/all/dialog.html 实例}
-     * @desc alert对话框组件
-     * @param {String} content - 显示信息
-     * @param {Number} height=140 - 组件高度
-     * @param {Number} width=240 - 组件高度
-     * 
-     * @example
-     * // use it in html
-     * <script src="bee.min.js"><\/script>
-     * <link rel="stylesheet" href="bee.min.css" />
-     * 
-     * Bee.Alert.show('提交申请成功');
-     *
-     * // use it in webpack or browserify, rollup
-     * import {Alert} from '@bee/dialog';
-     * // var Aler = require('@bee/dialog/alert.js');
-     *
-     * Alert.show('提交申请成功');
-     *
-     */
-
-    var Alert$1 = Object.assign(Alert, {
-      $type: 'alert',
-      install: function install(vue) {
-        vue.component(Alert.name, Alert);
-      },
-
-      /**
-       * 显示Alert对话框
-       * @method show
-       * @desc 显示Alert对话框
-       * @param {String} text - 内容信息
-       * @param {Object} opts - 配置项, <a href="#module_Alert">参见</a>
-       * @static
-       * @returns AlertClass实例
-       * 
-       * @example
-       * Bee.Alert.show('提交申请成功');
-       */
-      show: function show(text, opts) {
-        if (_typeof(text) === 'object') {
-          opts = text;
-          text = opts.content;
-        }
-
-        opts = opts || {};
-        var instance = new AlertClass({
-          el: document.createElement('div'),
-          propsData: Object.assign(opts, {
-            content: text,
-            isRemove: true
-          })
-        });
-        Vue.nextTick(function () {
-          var vm = instance.$mount();
-          document.body.appendChild(vm.$el);
-          instance.show();
-        });
-        return instance;
-      }
-    });
-
-    var script$j = {
-      name: 'bee-confirm',
-      extends: Dialog,
-      components: _defineProperty({}, Dialog.name, Dialog),
-      props: {
-        height: {
-          type: [String, Number],
-          default: 140
-        },
-        width: {
-          type: [String, Number],
-          default: '80%'
-        },
-        callback: {
-          type: Function
-        }
-      },
-      computed: {
-        _buttons: function _buttons() {
-          return [{
-            text: '取消',
-            action: this._doCancel
-          }, {
-            text: '确定',
-            action: this._doSure
-          }];
-        }
-      },
-      methods: {
-        _doSure: function _doSure() {
-          typeof this.callback == 'function' && this.callback(true);
-          this.$emit('confirm');
-        },
-        _doCancel: function _doCancel() {
-          typeof this.callback == 'function' && this.callback(false);
-          this.$emit('cancel');
-        },
-        handleVisiable: function handleVisiable(visiable) {
-          this.visiable = visiable;
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$j = script$j;
-    /* template */
-
-    var __vue_render__$j = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c('bee-dialog', {
-        ref: "dialog",
-        attrs: {
-          "show-close": false,
-          "width": _vm.width,
-          "height": _vm.height,
-          "buttons": _vm._buttons,
-          "is-show": _vm.visiable,
-          "is-remove": _vm.isRemove,
-          "content": _vm.content
-        },
-        on: {
-          "visiable-change": _vm.handleVisiable
-        }
-      });
-    };
-
-    var __vue_staticRenderFns__$j = [];
-    /* style */
-
-    var __vue_inject_styles__$j = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$j = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$j = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$j = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Confirm = normalizeComponent_1({
-      render: __vue_render__$j,
-      staticRenderFns: __vue_staticRenderFns__$j
-    }, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
-
-    var ConfirmClass = Vue.extend(Confirm);
-    /**
-     * bee-confirm
-     * @module Confirm
-     * @see {@link ../example/all/dialog.html 实例}
-     * @desc confirm对话框组件
-     * @param {String} content - 显示信息
-     * @param {Number} height=140 - 组件高度
-     * @param {Number} width=260 - 组件高度
-     * 
-     * @example
-     *
-     * // use it in html
-     * <script src="bee.min.js"><\/script>
-     * <link rel="stylesheet" href="bee.min.css" />
-     * 
-     * Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
-     * 
-     * // use it in webpack or browserify, rollup
-     * import {Confirm} from '@bee/dialog';
-     * // var Confirm = require('@bee/dialog/confirm.js');
-     *
-     * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
-     *
-     */
-
-    var Confirm$1 = Object.assign(Confirm, {
-      $type: 'confirm',
-      install: function install(vue) {
-        vue.component(Confirm.name, Confirm);
-      },
-
-      /**
-       * 显示Alert对话框
-       * @method show
-       * @desc 显示Confirm对话框
-       * @param {String} text - 内容信息
-       * @param {Object} opts - 配置项, <a href="#module_Confirm">参见</a>
-       * @param {Function} callback - 回调函数, 用户选择结果将传参给第一个参数: true of false
-       * @static
-       * @returns ConfirmClass实例
-       * 
-       * @example
-       * const confirm = bee.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
-       * confirm.doClose();
-       * 
-       */
-      show: function show(text, opts, callback) {
-        if (_typeof(text) === 'object') {
-          callback = opts;
-          opts = text;
-          text = opts.content;
-        }
-
-        if (typeof text === 'function') {
-          opts = {};
-          callback = text;
-          text = '';
-        }
-
-        if (typeof text === 'string' && typeof opts === 'function') {
-          callback = opts;
-          opts = {};
-        }
-
-        callback = callback || function () {};
-
-        var instance = new ConfirmClass({
-          el: document.createElement('div'),
-          propsData: Object.assign(opts, {
-            content: text,
-            callback: callback,
-            isRemove: true
-          })
-        });
-        Vue.nextTick(function () {
-          var vm = instance.$mount();
-          document.body.appendChild(vm.$el);
-          instance.show();
-        });
-        return instance;
-      }
-    });
-
-    var script$k = {
-      name: 'bee-prompt',
-      extends: Dialog,
-      components: _defineProperty({}, Dialog.name, Dialog),
-      props: {
-        placeholder: String,
-        height: {
-          type: [String, Number],
-          default: 120
-        },
-        width: {
-          type: [String, Number],
-          default: '80%'
-        },
-        callback: {
-          type: Function
-        }
-      },
-      computed: {
-        _buttons: function _buttons() {
-          return [{
-            text: '取消',
-            action: this._doCancel
-          }, {
-            text: '确定',
-            action: this._doSure
-          }];
-        }
-      },
-      methods: {
-        _doSure: function _doSure() {
-          typeof this.callback == 'function' && this.callback(this.content);
-          this.$emit('confirm');
-        },
-        _doCancel: function _doCancel() {
-          this.$emit('cancel');
-        },
-        handleVisiable: function handleVisiable(visiable) {
-          this.visiable = visiable;
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$k = script$k;
-    /* template */
-
-    var __vue_render__$k = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c('bee-dialog', {
-        ref: "dialog",
-        attrs: {
-          "show-close": false,
-          "width": _vm.width,
-          "height": _vm.height,
-          "buttons": _vm._buttons,
-          "is-show": _vm.visiable,
-          "is-remove": _vm.isRemove
-        },
-        on: {
-          "visiable-change": _vm.handleVisiable
-        }
-      }, [_c('div', {
-        attrs: {
-          "slot": "body"
-        },
-        slot: "body"
-      }, [_c('div', {
-        staticClass: "bee-prompt__text"
-      }, [_c('input', {
-        directives: [{
-          name: "model",
-          rawName: "v-model",
-          value: _vm.content,
-          expression: "content"
-        }],
-        staticClass: "bee-prompt__input",
-        attrs: {
-          "type": "text",
-          "placeholder": _vm.placeholder
-        },
-        domProps: {
-          "value": _vm.content
-        },
-        on: {
-          "input": function input($event) {
-            if ($event.target.composing) {
-              return;
-            }
-
-            _vm.content = $event.target.value;
-          }
-        }
-      })])])]);
     };
 
     var __vue_staticRenderFns__$k = [];
@@ -4362,97 +4701,574 @@ var Bee = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var Prompt = normalizeComponent_1({
+    var Checkbox = normalizeComponent_1({
       render: __vue_render__$k,
       staticRenderFns: __vue_staticRenderFns__$k
     }, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
 
-    var PromptClass = Vue.extend(Prompt);
-    /**
-     * @bee/prompt
-     * @module Prompt
-     * @see {@link ../example/all/dialog.html 实例}
-     * @desc prompt对话框组件
-     * @param {String} placeholder - 提示信息
-     * @param {Number} height=140 - 组件高度
-     * @param {Number} width=260 - 组件高度
-     * 
-     * @example
-     *
-     * // use it in html
-     * <script src="bee.min.js"><\/script>
-     * <link rel="stylesheet" href="bee.min.css" />
-     * 
-     * Bee.Prompt.show('请填写信息？', (val)=>{console.log(val)});
-     * 
-     * // use it in webpack or browserify, rollup
-     * import {Prompt} from '@bee/dialog';
-     * // var Prompt = require('@bee/dialog/prompt.js');
-     *
-     * Prompt.show('请填写信息？', (val)=>{console.log(val)});
-     *
-     */
+    Checkbox.install = function (vue) {
+      vue.component(Checkbox.name, Checkbox);
+    };
 
-    var Prompt$1 = Object.assign(Prompt, {
-      $type: 'prompt',
-      install: function install(vue) {
-        vue.component(Prompt.name, Prompt);
-      },
+    function createCommonjsModule(fn, module) {
+    	return module = { exports: {} }, fn(module, module.exports), module.exports;
+    }
 
-      /**
-       * 显示Prompt对话框
-       * @method show
-       * @desc 显示Prompt对话框
-       * @param {String} text - 内容信息
-       * @param {Object} opts - 配置项, <a href="#module_Prompt">参见</a>
-       * @param {Function} callback - 回调函数, 用户输入信息将传参给第一个参数
-       * @static
-       * @returns PromptClass实例
-       * 
-       * @example
-       * const confirm = Bee.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
-       * prompt.doClose();
-       * 
-       */
-      show: function show(text, opts, callback) {
-        if (_typeof(text) === 'object') {
-          callback = opts;
-          opts = text;
-          text = opts.placeholder;
+    var alloytouch = createCommonjsModule(function (module, exports) {
+
+      (function () {
+
+        if (!Date.now) Date.now = function () {
+          return new Date().getTime();
+        };
+        var vendors = ['webkit', 'moz'];
+
+        for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+          var vp = vendors[i];
+          window.requestAnimationFrame = window[vp + 'RequestAnimationFrame'];
+          window.cancelAnimationFrame = window[vp + 'CancelAnimationFrame'] || window[vp + 'CancelRequestAnimationFrame'];
         }
 
-        if (typeof text === 'function') {
-          opts = {};
-          callback = text;
-          text = '';
+        if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) // iOS6 is buggy
+        || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+          var lastTime = 0;
+
+          window.requestAnimationFrame = function (callback) {
+            var now = Date.now();
+            var nextTime = Math.max(lastTime + 16, now);
+            return setTimeout(function () {
+              callback(lastTime = nextTime);
+            }, nextTime - now);
+          };
+
+          window.cancelAnimationFrame = clearTimeout;
+        }
+      })();
+
+      (function () {
+        function bind(element, type, callback) {
+          element.addEventListener(type, callback, false);
         }
 
-        if (typeof text === 'string' && typeof opts === 'function') {
-          callback = opts;
-          opts = {};
+        function ease(x) {
+          return Math.sqrt(1 - Math.pow(x - 1, 2));
         }
 
-        callback = callback || function () {};
+        function reverseEase(y) {
+          return 1 - Math.sqrt(1 - y * y);
+        }
 
-        var instance = new PromptClass({
-          el: document.createElement('div'),
-          propsData: Object.assign(opts, {
-            placeholder: text,
-            callback: callback,
-            isRemove: true
-          })
-        });
-        Vue.nextTick(function () {
-          var vm = instance.$mount();
-          document.body.appendChild(vm.$el);
-          instance.show();
-        });
-        return instance;
-      }
+        function preventDefaultTest(el, exceptions) {
+          for (var i in exceptions) {
+            if (exceptions[i].test(el[i])) {
+              return true;
+            }
+          }
+
+          return false;
+        }
+
+        var AlloyTouch = function AlloyTouch(option) {
+          this.reverse = this._getValue(option.reverse, false);
+          this.element = typeof option.touch === "string" ? document.querySelector(option.touch) : option.touch;
+          this.target = this._getValue(option.target, this.element);
+
+          var followersArr = this._getValue(option.followers, []);
+
+          this.followers = followersArr.map(function (follower) {
+            return {
+              element: typeof follower.element === 'string' ? document.querySelector(follower.element) : follower.element,
+              offset: follower.offset
+            };
+          });
+          this.vertical = this._getValue(option.vertical, true);
+          this.property = option.property;
+          this.tickID = 0;
+          this.initialValue = this._getValue(option.initialValue, this.target[this.property]);
+          this.target[this.property] = this.initialValue;
+          this.followers.forEach(function (follower) {
+            follower.element[this.property] = this.initialValue + follower.offset;
+          }.bind(this));
+          this.fixed = this._getValue(option.fixed, false);
+          this.sensitivity = this._getValue(option.sensitivity, 1);
+          this.moveFactor = this._getValue(option.moveFactor, 1);
+          this.factor = this._getValue(option.factor, 1);
+          this.outFactor = this._getValue(option.outFactor, 0.3);
+
+          this.min = function () {
+            if (option.min === undefined || option.min === null) return void 0;
+
+            if (typeof option.min === 'function') {
+              return option.min();
+            } else {
+              return option.min;
+            }
+          };
+
+          this.max = function () {
+            if (option.max === undefined || option.max === null) return void 0;
+
+            if (typeof option.max === 'function') {
+              return option.max();
+            } else {
+              return option.max;
+            }
+          };
+
+          this.deceleration = this._getValue(option.deceleration, 0.0006);
+          this.maxRegion = this._getValue(option.maxRegion, 600);
+          this.springMaxRegion = this._getValue(option.springMaxRegion, 60);
+          this.maxSpeed = option.maxSpeed;
+          this.hasMaxSpeed = !(this.maxSpeed === void 0);
+          this.lockDirection = this._getValue(option.lockDirection, true);
+
+          var noop = function noop() {};
+
+          var alwaysTrue = function alwaysTrue() {
+            return true;
+          };
+
+          this.change = option.change || noop;
+          this.touchEnd = option.touchEnd || noop;
+          this.touchStart = option.touchStart || noop;
+          this.touchMove = option.touchMove || noop;
+          this.touchCancel = option.touchCancel || noop;
+          this.reboundEnd = option.reboundEnd || noop;
+          this.animationEnd = option.animationEnd || noop;
+          this.correctionEnd = option.correctionEnd || noop;
+          this.tap = option.tap || noop;
+          this.pressMove = option.pressMove || noop;
+          this.shouldRebound = option.shouldRebound || alwaysTrue;
+          this.preventDefault = this._getValue(option.preventDefault, true);
+          this.preventDefaultException = {
+            tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/
+          };
+          this.hasMin = !(this.min() === void 0);
+          this.hasMax = !(this.max() === void 0);
+          this.isTouchStart = false;
+          this.step = option.step;
+          this.inertia = this._getValue(option.inertia, true);
+
+          this._calculateIndex();
+
+          this.eventTarget = window;
+
+          if (option.bindSelf) {
+            this.eventTarget = this.element;
+          }
+
+          this._moveHandler = this._move.bind(this);
+          bind(this.element, "touchstart", this._start.bind(this));
+          bind(this.eventTarget, "touchend", this._end.bind(this));
+          bind(this.eventTarget, "touchcancel", this._cancel.bind(this));
+          this.eventTarget.addEventListener("touchmove", this._moveHandler, {
+            passive: false,
+            capture: false
+          });
+          this.x1 = this.x2 = this.y1 = this.y2 = null;
+        };
+
+        AlloyTouch.prototype = {
+          isAtMax: function isAtMax() {
+            return this.hasMax && this.target[this.property] >= this.max();
+          },
+          isAtMin: function isAtMin() {
+            return this.hasMin && this.target[this.property] <= this.min();
+          },
+          _getValue: function _getValue(obj, defaultValue) {
+            return obj === void 0 ? defaultValue : obj;
+          },
+          stop: function stop() {
+            cancelAnimationFrame(this.tickID);
+
+            this._calculateIndex();
+          },
+          _start: function _start(evt) {
+            this.isTouchStart = true;
+            this.touchStart.call(this, evt, this.target[this.property]);
+            cancelAnimationFrame(this.tickID);
+
+            this._calculateIndex();
+
+            this.startTime = new Date().getTime();
+            this.x1 = this.preX = evt.touches[0].pageX;
+            this.y1 = this.preY = evt.touches[0].pageY;
+            this.start = this.vertical ? this.preY : this.preX;
+            this._firstTouchMove = true;
+            this._preventMove = false;
+          },
+          _move: function _move(evt) {
+            if (this.isTouchStart) {
+              var len = evt.touches.length,
+                  currentX = evt.touches[0].pageX,
+                  currentY = evt.touches[0].pageY;
+
+              if (this._firstTouchMove && this.lockDirection) {
+                var dDis = Math.abs(currentX - this.x1) - Math.abs(currentY - this.y1);
+
+                if (dDis > 0 && this.vertical) {
+                  this._preventMove = true;
+                } else if (dDis < 0 && !this.vertical) {
+                  this._preventMove = true;
+                }
+
+                this._firstTouchMove = false;
+              }
+
+              if (!this._preventMove) {
+                var d = (this.vertical ? currentY - this.preY : currentX - this.preX) * this.sensitivity;
+                var f = this.moveFactor;
+
+                if (this.isAtMax() && (this.reverse ? -d : d) > 0) {
+                  f = this.outFactor;
+                } else if (this.isAtMin() && (this.reverse ? -d : d) < 0) {
+                  f = this.outFactor;
+                }
+
+                d *= f;
+                this.preX = currentX;
+                this.preY = currentY;
+
+                if (!this.fixed) {
+                  var detalD = this.reverse ? -d : d;
+                  this.target[this.property] += detalD;
+                  this.followers.forEach(function (follower) {
+                    follower.element[this.property] += detalD;
+                  }.bind(this));
+                }
+
+                this.change.call(this, this.target[this.property]);
+                var timestamp = new Date().getTime();
+
+                if (timestamp - this.startTime > 300) {
+                  this.startTime = timestamp;
+                  this.start = this.vertical ? this.preY : this.preX;
+                }
+
+                this.touchMove.call(this, evt, this.target[this.property]);
+              }
+
+              if (this.preventDefault && !preventDefaultTest(evt.target, this.preventDefaultException)) {
+                evt.preventDefault();
+              }
+
+              if (len === 1) {
+                if (this.x2 !== null) {
+                  evt.deltaX = currentX - this.x2;
+                  evt.deltaY = currentY - this.y2;
+                } else {
+                  evt.deltaX = 0;
+                  evt.deltaY = 0;
+                }
+
+                this.pressMove.call(this, evt, this.target[this.property]);
+              }
+
+              this.x2 = currentX;
+              this.y2 = currentY;
+            }
+          },
+          _cancel: function _cancel(evt) {
+            var current = this.target[this.property];
+            this.touchCancel.call(this, evt, current);
+
+            this._end(evt);
+          },
+          to: function to(v, time, user_ease, callback) {
+            this._to(v, this._getValue(time, 600), user_ease || ease, this.change, function (value) {
+              this._calculateIndex();
+
+              this.reboundEnd.call(this, value);
+              this.animationEnd.call(this, value);
+              callback && callback.call(this, value);
+            }.bind(this));
+          },
+          _calculateIndex: function _calculateIndex() {
+            if (this.hasMax && this.hasMin) {
+              this.currentPage = Math.round((this.max() - this.target[this.property]) / this.step);
+            }
+          },
+          _end: function _end(evt) {
+            if (this.isTouchStart) {
+              this.isTouchStart = false;
+              var self = this,
+                  current = this.target[this.property],
+                  triggerTap = Math.abs(evt.changedTouches[0].pageX - this.x1) < 30 && Math.abs(evt.changedTouches[0].pageY - this.y1) < 30;
+
+              if (triggerTap) {
+                this.tap.call(this, evt, current);
+              }
+
+              if (this.touchEnd.call(this, evt, current, this.currentPage) === false) return;
+
+              if (this.hasMax && current > this.max()) {
+                if (!this.shouldRebound(current)) {
+                  return;
+                }
+
+                this._to(this.max(), 200, ease, this.change, function (value) {
+                  this.reboundEnd.call(this, value);
+                  this.animationEnd.call(this, value);
+                }.bind(this));
+              } else if (this.hasMin && current < this.min()) {
+                if (!this.shouldRebound(current)) {
+                  return;
+                }
+
+                this._to(this.min(), 200, ease, this.change, function (value) {
+                  this.reboundEnd.call(this, value);
+                  this.animationEnd.call(this, value);
+                }.bind(this));
+              } else if (this.inertia && !triggerTap && !this._preventMove && !this.fixed) {
+                var dt = new Date().getTime() - this.startTime;
+
+                if (dt < 300) {
+                  var distance = ((this.vertical ? evt.changedTouches[0].pageY : evt.changedTouches[0].pageX) - this.start) * this.sensitivity,
+                      speed = Math.abs(distance) / dt,
+                      actualSpeed = this.factor * speed;
+
+                  if (this.hasMaxSpeed && actualSpeed > this.maxSpeed) {
+                    actualSpeed = this.maxSpeed;
+                  }
+
+                  var direction = distance < 0 ? -1 : 1;
+
+                  if (this.reverse) {
+                    direction = -direction;
+                  }
+
+                  var destination = current + actualSpeed * actualSpeed / (2 * this.deceleration) * direction;
+                  var tRatio = 1;
+
+                  if (destination < this.min()) {
+                    if (destination < this.min() - this.maxRegion) {
+                      tRatio = reverseEase((current - this.min() + this.springMaxRegion) / (current - destination));
+                      destination = this.min() - this.springMaxRegion;
+                    } else {
+                      tRatio = reverseEase((current - this.min() + this.springMaxRegion * (this.min() - destination) / this.maxRegion) / (current - destination));
+                      destination = this.min() - this.springMaxRegion * (this.min() - destination) / this.maxRegion;
+                    }
+                  } else if (destination > this.max()) {
+                    if (destination > this.max() + this.maxRegion) {
+                      tRatio = reverseEase((this.max() + this.springMaxRegion - current) / (destination - current));
+                      destination = this.max() + this.springMaxRegion;
+                    } else {
+                      tRatio = reverseEase((this.max() + this.springMaxRegion * (destination - this.max()) / this.maxRegion - current) / (destination - current));
+                      destination = this.max() + this.springMaxRegion * (destination - this.max()) / this.maxRegion;
+                    }
+                  }
+
+                  var duration = Math.round(speed / self.deceleration) * tRatio;
+
+                  self._to(Math.round(destination), duration, ease, self.change, function (value) {
+                    if (self.hasMax && self.target[self.property] > self.max()) {
+                      if (!this.shouldRebound(self.target[self.property])) {
+                        return;
+                      }
+
+                      cancelAnimationFrame(self.tickID);
+
+                      self._to(self.max(), 600, ease, self.change, self.animationEnd);
+                    } else if (self.hasMin && self.target[self.property] < self.min()) {
+                      if (!this.shouldRebound(self.target[self.property])) {
+                        return;
+                      }
+
+                      cancelAnimationFrame(self.tickID);
+
+                      self._to(self.min(), 600, ease, self.change, self.animationEnd);
+                    } else {
+                      if (self.step) {
+                        self._correction();
+                      } else {
+                        self.animationEnd.call(self, value);
+                      }
+                    }
+
+                    self.change.call(this, value);
+                  });
+                } else {
+                  self._correction();
+                }
+              } else {
+                self._correction();
+              }
+            }
+
+            this.x1 = this.x2 = this.y1 = this.y2 = null;
+          },
+          _to: function _to(value, time, ease, onChange, onEnd) {
+            var el = this.target,
+                property = this.property;
+            var followers = this.followers;
+            var current = el[property];
+            var dv = value - current;
+            var beginTime = +new Date();
+            var self = this;
+
+            var toTick = function toTick() {
+              var dt = +new Date() - beginTime;
+
+              if (dt >= time) {
+                el[property] = value;
+                onChange && onChange.call(self, value);
+                onEnd && onEnd.call(self, value);
+                return;
+              }
+
+              var nextPosition = dv * ease(dt / time) + current;
+              el[property] = nextPosition;
+              followers.forEach(function (follower) {
+                follower.element[property] = nextPosition + follower.offset;
+              });
+              self.tickID = requestAnimationFrame(toTick);
+              onChange && onChange.call(self, el[property]);
+            };
+
+            toTick();
+          },
+          _correction: function _correction() {
+            if (this.step === void 0) return;
+            var el = this.target,
+                property = this.property;
+            var value = el[property];
+            var rpt = Math.floor(Math.abs(value / this.step));
+            var dy = value % this.step;
+
+            if (Math.abs(dy) > this.step / 2) {
+              this._to((value < 0 ? -1 : 1) * (rpt + 1) * this.step, 400, ease, this.change, function (value) {
+                this._calculateIndex();
+
+                this.correctionEnd.call(this, value);
+                this.animationEnd.call(this, value);
+              }.bind(this));
+            } else {
+              this._to((value < 0 ? -1 : 1) * rpt * this.step, 400, ease, this.change, function (value) {
+                this._calculateIndex();
+
+                this.correctionEnd.call(this, value);
+                this.animationEnd.call(this, value);
+              }.bind(this));
+            }
+          }
+        };
+
+        {
+          module.exports = AlloyTouch;
+        }
+      })();
     });
 
     var script$l = {
-      name: 'bee-message',
+      name: 'busy-picker',
+      props: {
+        columns: {
+          type: Array
+        }
+      },
+      data: function data() {
+        return {
+          cols: ['选项xx', '选项xx', '选项xx', '选项xx', '选项xx', '选项xx', '选项xx']
+        };
+      },
+      components: _defineProperty({}, Mask.name, Mask),
+      mounted: function mounted() {
+        var at = new alloytouch({
+          touch: "#wrapper",
+          //反馈触摸的dom
+          vertical: true,
+          //不必需，默认是true代表监听竖直方向touch
+          target: document.getElementById('aa'),
+          //运动的对象
+          property: "translateY",
+          //被滚动的属性
+          step: 5,
+          animationEnd: function animationEnd(value) {//console.log(value);
+          },
+          pressMove: function pressMove(evt, value) {//console.log(evt.deltaX + "_" + evt.deltaY + "__" + value);
+          }
+        });
+      }
+    };
+
+    /* script */
+    var __vue_script__$l = script$l;
+    /* template */
+
+    var __vue_render__$l = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('busy-mask', {
+        attrs: {
+          "is-show": true
+        }
+      }, [_c('div', {
+        staticClass: "busy-picker"
+      }, [_c('div', {
+        staticClass: "busy-picker__title"
+      }), _vm._v(" "), _c('div', {
+        staticClass: "busy-picker__wrap",
+        attrs: {
+          "id": "wrapper"
+        }
+      }, [_c('div', {
+        staticClass: "busy-picker__box"
+      }, [_c('div', {
+        staticClass: "busy-picker__column"
+      }, [_c('div', {
+        staticClass: "busy-picker_scoll",
+        attrs: {
+          "id": "aa"
+        }
+      }, _vm._l(_vm.cols, function (col) {
+        return _c('div', {
+          key: col,
+          staticClass: "busy-picker__item"
+        }, [_c('span', [_vm._v(_vm._s(col))])]);
+      }), 0)]), _vm._v(" "), _c('div', {
+        staticClass: "busy-picker__column"
+      }, _vm._l(_vm.cols, function (col) {
+        return _c('div', {
+          key: col,
+          staticClass: "busy-picker__item"
+        }, [_c('span', [_vm._v(_vm._s(col))])]);
+      }), 0)]), _vm._v(" "), _c('div', {
+        staticClass: "busy-picker__mask"
+      })])])]);
+    };
+
+    var __vue_staticRenderFns__$l = [];
+    /* style */
+
+    var __vue_inject_styles__$l = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$l = "data-v-c03c3f6e";
+    /* module identifier */
+
+    var __vue_module_identifier__$l = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$l = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Picker = normalizeComponent_1({
+      render: __vue_render__$l,
+      staticRenderFns: __vue_staticRenderFns__$l
+    }, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
+
+    Picker.install = function (vue) {
+      vue.component(Picker.name, Picker);
+    };
+
+    var script$m = {
+      name: 'busy-message',
       props: {
         pos: {
           type: String,
@@ -4529,7 +5345,7 @@ var Bee = (function (exports, Vue) {
           };
         },
         _posClass: function _posClass() {
-          return 'bee-message--pos-' + this.pos;
+          return 'busy-message--pos-' + this.pos;
         },
         _iconStyles: function _iconStyles() {
           var t = '',
@@ -4579,10 +5395,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$l = script$l;
+    var __vue_script__$m = script$m;
     /* template */
 
-    var __vue_render__$l = function __vue_render__() {
+    var __vue_render__$m = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -4603,49 +5419,49 @@ var Bee = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        staticClass: "bee-message",
+        staticClass: "busy-message",
         class: _vm._posClass,
         style: _vm.styles
       }, [_vm.type ? _c('div', {
-        staticClass: "bee-message__icon"
-      }, [_c('bee-icon', {
+        staticClass: "busy-message__icon"
+      }, [_c('busy-icon', {
         attrs: {
           "type": _vm._iconStyles.t,
           "fill": _vm._iconStyles.c
         }
       })], 1) : _vm._e(), _vm._v(" "), _c('div', {
-        staticClass: "bee-message__text"
+        staticClass: "busy-message__text"
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
     };
 
-    var __vue_staticRenderFns__$l = [];
+    var __vue_staticRenderFns__$m = [];
     /* style */
 
-    var __vue_inject_styles__$l = undefined;
+    var __vue_inject_styles__$m = undefined;
     /* scoped */
 
-    var __vue_scope_id__$l = undefined;
+    var __vue_scope_id__$m = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$l = undefined;
+    var __vue_module_identifier__$m = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$l = false;
+    var __vue_is_functional_template__$m = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Message = normalizeComponent_1({
-      render: __vue_render__$l,
-      staticRenderFns: __vue_staticRenderFns__$l
-    }, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
+      render: __vue_render__$m,
+      staticRenderFns: __vue_staticRenderFns__$m
+    }, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
 
     var MessageClass = Vue.extend(Message);
     /**
-     * @bee/message
+     * @busy/message
      * @module Message
      * @see {@link ../example/all/message.html 实例}
-     * @desc 浮层提示信息组件 <bee-meesage></bee-meesage>
+     * @desc 浮层提示信息组件 <busy-meesage></busy-meesage>
      * @param {String} pos='top' - 显示位置,可取值 'top', 'middle', 'bottom'
      * @param {String} type='info' - 提示框类型, 可取值 'info', 'success', 'error', 'warning'
      * @param {String} text - 提示信息内容, 也可以slot方式传入
@@ -4655,19 +5471,19 @@ var Bee = (function (exports, Vue) {
      * @example
      * 
      *  // use it in module tools
-     *  import Message from '@bee/message';
+     *  import Message from '@busy/message';
      *  Message.show('有新信息了');
      *  Message.info('有新信息了');
      *  Message.success('信息提交成功');
      *  Message.warning('内容包含非法词');
      * 
      *  // use it in html
-     *  <script src="bee.min.js"><\/script>
-     *  <link rel="stylesheet" href="Bee.min.css">
-     *  Bee.Message.show('有新信息了');
-     *  Bee.Message.info('有新信息了');
-     *  Bee.Message.success('信息提交成功');
-     *  Bee.Message.warning('内容包含非法词');
+     *  <script src="busy.min.js"><\/script>
+     *  <link rel="stylesheet" href="Busy.min.css">
+     *  Busy.Message.show('有新信息了');
+     *  Busy.Message.info('有新信息了');
+     *  Busy.Message.success('信息提交成功');
+     *  Busy.Message.warning('内容包含非法词');
      * 
      */
 
@@ -4684,7 +5500,7 @@ var Bee = (function (exports, Vue) {
        * @returns MessageClass实例
        * 
        * @example
-       * Bee.Message.show('有新信息了');
+       * Busy.Message.show('有新信息了');
        * 
        */
       show: function show(opts) {
@@ -4712,7 +5528,7 @@ var Bee = (function (exports, Vue) {
        * @returns MessageClass实例
        * 
        * @example
-       *  Bee.Message.info('收到一个优惠券');
+       *  Busy.Message.info('收到一个优惠券');
        * 
        */
       info: function info(text, opts) {
@@ -4731,7 +5547,7 @@ var Bee = (function (exports, Vue) {
        * @returns MessageClass实例
        * 
        * @example
-       *  Bee.Message.success('提交成功');
+       *  Busy.Message.success('提交成功');
        * 
        */
       success: function success(text, opts) {
@@ -4750,7 +5566,7 @@ var Bee = (function (exports, Vue) {
        * @returns MessageClass实例
        * 
        * @example
-       *  Bee.Message.warning('内容包含非法词');
+       *  Busy.Message.warning('内容包含非法词');
        * 
        */
       warning: function warning(text, opts) {
@@ -4769,7 +5585,7 @@ var Bee = (function (exports, Vue) {
        * @returns MessageClass实例
        * 
        * @example
-       *  Bee.Message.error('内容包含非法词');
+       *  Busy.Message.error('内容包含非法词');
        * 
        */
       error: function error(text, opts) {
@@ -4812,7 +5628,7 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * bee-progress-ring
+     * busy-progress-ring
      * @des 环形进度条组件
      * @param {Number} size - 组件直径大小,默认 100<px>
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
@@ -4823,10 +5639,10 @@ var Bee = (function (exports, Vue) {
      * @param {String} direction = '1' - 顺时针还是逆时针, 取值范围 '1','-1'
      * @param {String} content - 显示内容，this.percent + '%'
      * @example
-     *      <bee-progress-ring :size="50" :track-width="10"></bee-progress-ring>
+     *      <busy-progress-ring :size="50" :track-width="10"></busy-progress-ring>
      **/
-    var script$m = {
-      name: 'bee-progress-ring',
+    var script$n = {
+      name: 'busy-progress-ring',
       props: {
         size: {
           type: Number,
@@ -4917,10 +5733,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$m = script$m;
+    var __vue_script__$n = script$n;
     /* template */
 
-    var __vue_render__$m = function __vue_render__() {
+    var __vue_render__$n = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -4928,7 +5744,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-progress-ring",
+        staticClass: "busy-progress-ring",
         on: {
           "click": _vm.handleClick
         }
@@ -4941,7 +5757,7 @@ var Bee = (function (exports, Vue) {
           "xmlns": "http://www.w3.org/2000/svg"
         }
       }, [_c('circle', {
-        staticClass: "bee-progress-ring__track",
+        staticClass: "busy-progress-ring__track",
         style: _vm.trackStyles,
         attrs: {
           "cx": _vm.radius,
@@ -4953,7 +5769,7 @@ var Bee = (function (exports, Vue) {
           "stroke-dashoffset": 0
         }
       }), _vm._v(" "), _c('circle', {
-        staticClass: "bee-progress-ring__bar",
+        staticClass: "busy-progress-ring__bar",
         style: _vm.barStyles,
         attrs: {
           "cx": _vm.radius,
@@ -4967,27 +5783,27 @@ var Bee = (function (exports, Vue) {
       })])]);
     };
 
-    var __vue_staticRenderFns__$m = [];
+    var __vue_staticRenderFns__$n = [];
     /* style */
 
-    var __vue_inject_styles__$m = undefined;
+    var __vue_inject_styles__$n = undefined;
     /* scoped */
 
-    var __vue_scope_id__$m = undefined;
+    var __vue_scope_id__$n = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$m = undefined;
+    var __vue_module_identifier__$n = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$m = false;
+    var __vue_is_functional_template__$n = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ProgressRing = normalizeComponent_1({
-      render: __vue_render__$m,
-      staticRenderFns: __vue_staticRenderFns__$m
-    }, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
+      render: __vue_render__$n,
+      staticRenderFns: __vue_staticRenderFns__$n
+    }, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
 
     //
     //
@@ -5029,7 +5845,7 @@ var Bee = (function (exports, Vue) {
     //
 
     /**
-     * bee-progress-line
+     * busy-progress-line
      * @des 线形进度条组件
      * @param {Number} width - 组件长度,默认 100%
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
@@ -5038,11 +5854,11 @@ var Bee = (function (exports, Vue) {
      * @param {String} barColor - 进度条颜色, 取值范围 css color
      * @param {String} showText - 是否显示进度数值, 默认 false
      * @example
-     *      <bee-progress-line :percent="45" :width="150" :track-width="4"></bee-progress-line>
-     *      <bee-progress-ring :percent="45" :width="150" :track-width="4"></bee-progress-ring>
+     *      <busy-progress-line :percent="45" :width="150" :track-width="4"></busy-progress-line>
+     *      <busy-progress-ring :percent="45" :width="150" :track-width="4"></busy-progress-ring>
      **/
-    var script$n = {
-      name: 'bee-progress-line',
+    var script$o = {
+      name: 'busy-progress-line',
       props: {
         trackWidth: {
           type: Number,
@@ -5132,10 +5948,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$n = script$n;
+    var __vue_script__$o = script$o;
     /* template */
 
-    var __vue_render__$n = function __vue_render__() {
+    var __vue_render__$o = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -5143,45 +5959,45 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-progress-line",
+        staticClass: "busy-progress-line",
         style: _vm.styles,
         on: {
           "click": _vm.handleClick
         }
       }, [_c('div', {
-        staticClass: "bee-progress-line__bar",
+        staticClass: "busy-progress-line__bar",
         style: _vm.barStyles
       }), _vm._v(" "), _vm.showText ? _c('div', {
-        staticClass: "bee-progtress-line__text",
+        staticClass: "busy-progtress-line__text",
         style: _vm.textStyle
       }, [_vm._v(_vm._s(_vm.percent) + "%")]) : _vm._e()]);
     };
 
-    var __vue_staticRenderFns__$n = [];
+    var __vue_staticRenderFns__$o = [];
     /* style */
 
-    var __vue_inject_styles__$n = undefined;
+    var __vue_inject_styles__$o = undefined;
     /* scoped */
 
-    var __vue_scope_id__$n = undefined;
+    var __vue_scope_id__$o = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$n = undefined;
+    var __vue_module_identifier__$o = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$n = false;
+    var __vue_is_functional_template__$o = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ProgressLine = normalizeComponent_1({
-      render: __vue_render__$n,
-      staticRenderFns: __vue_staticRenderFns__$n
-    }, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
+      render: __vue_render__$o,
+      staticRenderFns: __vue_staticRenderFns__$o
+    }, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
 
     var _component;
     /**
-     * bee-progress
+     * busy-progress
      * @module Progress
      * @see {@link ../example/all/progress.html 实例}
      * @des 进度条组件
@@ -5192,13 +6008,13 @@ var Bee = (function (exports, Vue) {
      * @param {String} trackColor - 进度槽颜色, 取值范围 css color <hex, rgb, rgba>
      * @param {String} barColor - 进度条颜色, 取值范围 css color <hex, rgb, rgba>
      * @param {String} content - 显示内容, 默认''
-     * @param {String} type - 进度条组件类型, 可取值 'line' [<bee-progress-line />], 'ring' [<bee-progress-ring />], 默认 'line'
+     * @param {String} type - 进度条组件类型, 可取值 'line' [<busy-progress-line />], 'ring' [<busy-progress-ring />], 默认 'line'
      * @example
-     *      <bee-progress type="ring" :size="50" :track-width="5"></bee-progress>
+     *      <busy-progress type="ring" :size="50" :track-width="5"></busy-progress>
      **/
 
-    var script$o = {
-      name: 'bee-progress',
+    var script$p = {
+      name: 'busy-progress',
       props: {
         size: {
           type: Number,
@@ -5261,10 +6077,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$o = script$o;
+    var __vue_script__$p = script$p;
     /* template */
 
-    var __vue_render__$o = function __vue_render__() {
+    var __vue_render__$p = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -5272,11 +6088,11 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-progress",
+        staticClass: "busy-progress",
         on: {
           "click": _vm.handleClick
         }
-      }, [_vm.type === 'line' ? _c('bee-progress-line', {
+      }, [_vm.type === 'line' ? _c('busy-progress-line', {
         ref: "child-line",
         attrs: {
           "width": _vm.width,
@@ -5287,7 +6103,7 @@ var Bee = (function (exports, Vue) {
           "show-text": _vm.showText,
           "duration": _vm.duration
         }
-      }) : _vm._e(), _vm._v(" "), _vm.type === 'ring' ? _c('bee-progress-ring', {
+      }) : _vm._e(), _vm._v(" "), _vm.type === 'ring' ? _c('busy-progress-ring', {
         ref: "child-ring",
         attrs: {
           "size": _vm.size,
@@ -5302,27 +6118,27 @@ var Bee = (function (exports, Vue) {
       }, [_vm._v(_vm._s(_vm.mycontent))]) : _vm._e()], 1);
     };
 
-    var __vue_staticRenderFns__$o = [];
+    var __vue_staticRenderFns__$p = [];
     /* style */
 
-    var __vue_inject_styles__$o = undefined;
+    var __vue_inject_styles__$p = undefined;
     /* scoped */
 
-    var __vue_scope_id__$o = undefined;
+    var __vue_scope_id__$p = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$o = undefined;
+    var __vue_module_identifier__$p = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$o = false;
+    var __vue_is_functional_template__$p = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Progress = normalizeComponent_1({
-      render: __vue_render__$o,
-      staticRenderFns: __vue_staticRenderFns__$o
-    }, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
+      render: __vue_render__$p,
+      staticRenderFns: __vue_staticRenderFns__$p
+    }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
 
     Progress.install = function (vue) {
       vue.component(ProgressRing.name, ProgressRing);
@@ -5331,8 +6147,8 @@ var Bee = (function (exports, Vue) {
     };
 
     var _components$1;
-    var script$p = {
-      name: 'bee-loadmore-bar',
+    var script$q = {
+      name: 'busy-loadmore-bar',
       props: {
         size: {
           type: Number,
@@ -5381,10 +6197,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$p = script$p;
+    var __vue_script__$q = script$q;
     /* template */
 
-    var __vue_render__$p = function __vue_render__() {
+    var __vue_render__$q = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -5398,10 +6214,10 @@ var Bee = (function (exports, Vue) {
           value: _vm.pos == 'top' || _vm.pos == 'bottom' && _vm.status == 'loading',
           expression: "pos=='top' || pos=='bottom' && status=='loading'"
         }],
-        staticClass: "bee-loadmore__bar bee-al-cm"
+        staticClass: "busy-loadmore__bar busy-al-cm"
       }, [_c('p', {
-        staticClass: "bee-loadmore__spinner"
-      }, [_c('bee-spinner', {
+        staticClass: "busy-loadmore__spinner"
+      }, [_c('busy-spinner', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -5417,11 +6233,11 @@ var Bee = (function (exports, Vue) {
           "color": "#aaa"
         }
       })], 1), _vm._v(" "), _c('p', {
-        staticClass: "bee-loadmore__text",
-        class: ['bee-loadmore--' + _vm.status]
+        staticClass: "busy-loadmore__text",
+        class: ['busy-loadmore--' + _vm.status]
       }, [_vm.pos == 'top' ? _c('span', {
-        staticClass: "bee-loadmore__arrow"
-      }, [_c('bee-icon', {
+        staticClass: "busy-loadmore__arrow"
+      }, [_c('busy-icon', {
         attrs: {
           "height": 30,
           "type": "refresharrow",
@@ -5430,30 +6246,30 @@ var Bee = (function (exports, Vue) {
       })], 1) : _vm._e(), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.loadText))])])]);
     };
 
-    var __vue_staticRenderFns__$p = [];
+    var __vue_staticRenderFns__$q = [];
     /* style */
 
-    var __vue_inject_styles__$p = undefined;
+    var __vue_inject_styles__$q = undefined;
     /* scoped */
 
-    var __vue_scope_id__$p = undefined;
+    var __vue_scope_id__$q = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$p = undefined;
+    var __vue_module_identifier__$q = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$p = false;
+    var __vue_is_functional_template__$q = false;
     /* style inject */
 
     /* style inject SSR */
 
     var loadMoreBar = normalizeComponent_1({
-      render: __vue_render__$p,
-      staticRenderFns: __vue_staticRenderFns__$p
-    }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
+      render: __vue_render__$q,
+      staticRenderFns: __vue_staticRenderFns__$q
+    }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
 
     /**
-     * @bee/loadmore
+     * @busy/loadmore
      * @module Loadmore
      * @see {@link ../example/all/loadmore.html 实例}
      * @desc 加载更多组件
@@ -5473,11 +6289,11 @@ var Bee = (function (exports, Vue) {
      * @param {Boolean} listenScroll - 是否监听scroll
      * 
      * @example
-     *  <bee-loadmore>content list</bee-loadmore>
+     *  <busy-loadmore>content list</busy-loadmore>
      */
 
-    var script$q = {
-      name: 'bee-loadmore',
+    var script$r = {
+      name: 'busy-loadmore',
       props: {
         topPullText: {
           type: String,
@@ -5722,10 +6538,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$q = script$q;
+    var __vue_script__$r = script$r;
     /* template */
 
-    var __vue_render__$q = function __vue_render__() {
+    var __vue_render__$r = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -5733,13 +6549,13 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-loadmore"
+        staticClass: "busy-loadmore"
       }, [_c('div', {
-        staticClass: "bee-loadmore__content",
+        staticClass: "busy-loadmore__content",
         style: _vm.styles
-      }, [_vm._t("top", [_vm.onRefresh ? _c('bee-loadmore-bar', {
+      }, [_vm._t("top", [_vm.onRefresh ? _c('busy-loadmore-bar', {
         ref: "top",
-        staticClass: "bee-loadmore__top",
+        staticClass: "busy-loadmore__top",
         attrs: {
           "pull-text": _vm.topPullText,
           "loading-text": _vm.topLoadingText,
@@ -5748,10 +6564,10 @@ var Bee = (function (exports, Vue) {
           "pos": "top"
         }
       }) : _vm._e()]), _vm._v(" "), _c('div', {
-        staticClass: "bee-loadmore__content"
-      }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c('bee-loadmore-bar', {
+        staticClass: "busy-loadmore__content"
+      }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c('busy-loadmore-bar', {
         ref: "bottom",
-        staticClass: "bee-loadmore__bottom",
+        staticClass: "busy-loadmore__bottom",
         attrs: {
           "pull-text": _vm.bottomPullText,
           "loading-text": _vm.bottomLoadingText,
@@ -5760,31 +6576,31 @@ var Bee = (function (exports, Vue) {
           "pos": "bottom"
         }
       })]) : _vm._e(), _vm._v(" "), _vm.noMore ? _vm._t("no-more", [_c('div', {
-        staticClass: "bee-loadmore__nomore"
+        staticClass: "busy-loadmore__nomore"
       }, [_vm._v(_vm._s(_vm.noMoreText))])]) : _vm._e()], 2)]);
     };
 
-    var __vue_staticRenderFns__$q = [];
+    var __vue_staticRenderFns__$r = [];
     /* style */
 
-    var __vue_inject_styles__$q = undefined;
+    var __vue_inject_styles__$r = undefined;
     /* scoped */
 
-    var __vue_scope_id__$q = undefined;
+    var __vue_scope_id__$r = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$q = undefined;
+    var __vue_module_identifier__$r = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$q = false;
+    var __vue_is_functional_template__$r = false;
     /* style inject */
 
     /* style inject SSR */
 
     var LoadMore = normalizeComponent_1({
-      render: __vue_render__$q,
-      staticRenderFns: __vue_staticRenderFns__$q
-    }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
+      render: __vue_render__$r,
+      staticRenderFns: __vue_staticRenderFns__$r
+    }, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
 
     LoadMore.install = function (vue) {
       vue.component(LoadMore.name, LoadMore);
@@ -5794,7 +6610,7 @@ var Bee = (function (exports, Vue) {
     var VERTICAL = 'vertical';
     var HORIZONTAL = 'horizontal';
     /**
-     * bee-swipe
+     * busy-swipe
      * @module Swipe
      * @see {@link ../example/all/swipe.html 实例}
      * @desc 切换组件
@@ -5809,14 +6625,14 @@ var Bee = (function (exports, Vue) {
      * @param {Number} interval=2000 - 自动播放间隔时间 毫秒
      * 
      * @example
-     *  <bee-swipe :interval="3000" :auto-play="true" :height="320">
-     *      <bee-swipe__item>内容</bee-swipe__item>
-     *      <bee-swipe__item>内容</bee-swipe__item>
-     * </bee-swipe>
+     *  <busy-swipe :interval="3000" :auto-play="true" :height="320">
+     *      <busy-swipe__item>内容</busy-swipe__item>
+     *      <busy-swipe__item>内容</busy-swipe__item>
+     * </busy-swipe>
      */
 
-    var script$r = {
-      name: 'bee-swipe',
+    var script$s = {
+      name: 'busy-swipe',
       props: {
         height: {
           type: Number,
@@ -5898,10 +6714,10 @@ var Bee = (function (exports, Vue) {
           };
         },
         dotesClass: function dotesClass() {
-          return ["bee-swipe__dots--pos-".concat(this.dotesPos)];
+          return ["busy-swipe__dots--pos-".concat(this.dotesPos)];
         },
         classes: function classes() {
-          return [this.status == "transition" ? 'bee-swipe--transition' : '', this.dirType == HORIZONTAL ? 'bee-swipe--horizontal' : 'bee-swipe--vertical'];
+          return [this.status == "transition" ? 'busy-swipe--transition' : '', this.dirType == HORIZONTAL ? 'busy-swipe--horizontal' : 'busy-swipe--vertical'];
         }
       },
       watch: {
@@ -6056,12 +6872,12 @@ var Bee = (function (exports, Vue) {
       },
       mounted: function mounted() {
         // 初始化
-        this.items = [].slice.call(this.$el.querySelectorAll('.bee-swipe__item'));
+        this.items = [].slice.call(this.$el.querySelectorAll('.busy-swipe__item'));
         this.size = this.items.length;
 
         if (this.index < 0 || this.index >= this.size) {
           this.index = 0;
-          console.warn('[Bee warn]:Index out of range');
+          console.warn('[Busy warn]:Index out of range');
         }
 
         this._bindTouch(); //this.distance = -1 * this.index * this.itemWidth;
@@ -6069,79 +6885,6 @@ var Bee = (function (exports, Vue) {
 
         this.autoPlay && this._autoPlay();
       }
-    };
-
-    /* script */
-    var __vue_script__$r = script$r;
-    /* template */
-
-    var __vue_render__$r = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c('div', {
-        staticClass: "bee-swipe",
-        style: _vm.styles,
-        on: {
-          "click": _vm.handleClick
-        }
-      }, [_c('div', {
-        staticClass: "bee-swipe__wrap",
-        class: _vm.classes,
-        style: _vm.wrapStyles
-      }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c('div', {
-        staticClass: "bee-swpier__dotes",
-        class: _vm.dotesClass
-      }, _vm._l(_vm.items, function (item, i) {
-        return _c('span', {
-          key: 'swiper-' + i,
-          class: ['bee-swipe__dot', i == _vm.index ? 'bee-swipe__dot--cur' : ''],
-          style: [_vm.dotStyles, i == _vm.index ? {
-            backgroundColor: _vm.curDotColor
-          } : {}],
-          on: {
-            "click": function click($event) {
-              $event.stopPropagation();
-              return _vm.goIndex(i);
-            }
-          }
-        });
-      }), 0) : _vm._e()]);
-    };
-
-    var __vue_staticRenderFns__$r = [];
-    /* style */
-
-    var __vue_inject_styles__$r = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$r = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$r = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$r = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Swipe = normalizeComponent_1({
-      render: __vue_render__$r,
-      staticRenderFns: __vue_staticRenderFns__$r
-    }, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
-
-    //
-    //
-    //
-    //
-    //
-    //
-    var script$s = {
-      name: 'bee-swipe-item'
     };
 
     /* script */
@@ -6156,8 +6899,33 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-swipe__item"
-      }, [_vm._t("default")], 2);
+        staticClass: "busy-swipe",
+        style: _vm.styles,
+        on: {
+          "click": _vm.handleClick
+        }
+      }, [_c('div', {
+        staticClass: "busy-swipe__wrap",
+        class: _vm.classes,
+        style: _vm.wrapStyles
+      }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c('div', {
+        staticClass: "busy-swpier__dotes",
+        class: _vm.dotesClass
+      }, _vm._l(_vm.items, function (item, i) {
+        return _c('span', {
+          key: 'swiper-' + i,
+          class: ['busy-swipe__dot', i == _vm.index ? 'busy-swipe__dot--cur' : ''],
+          style: [_vm.dotStyles, i == _vm.index ? {
+            backgroundColor: _vm.curDotColor
+          } : {}],
+          on: {
+            "click": function click($event) {
+              $event.stopPropagation();
+              return _vm.goIndex(i);
+            }
+          }
+        });
+      }), 0) : _vm._e()]);
     };
 
     var __vue_staticRenderFns__$s = [];
@@ -6177,10 +6945,58 @@ var Bee = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var SwipeItem = normalizeComponent_1({
+    var Swipe = normalizeComponent_1({
       render: __vue_render__$s,
       staticRenderFns: __vue_staticRenderFns__$s
     }, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
+
+    //
+    //
+    //
+    //
+    //
+    //
+    var script$t = {
+      name: 'busy-swipe__item'
+    };
+
+    /* script */
+    var __vue_script__$t = script$t;
+    /* template */
+
+    var __vue_render__$t = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('div', {
+        staticClass: "busy-swipe__item"
+      }, [_vm._t("default")], 2);
+    };
+
+    var __vue_staticRenderFns__$t = [];
+    /* style */
+
+    var __vue_inject_styles__$t = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$t = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$t = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$t = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var SwipeItem = normalizeComponent_1({
+      render: __vue_render__$t,
+      staticRenderFns: __vue_staticRenderFns__$t
+    }, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
 
     Swipe.install = function (vue) {
       vue.component(SwipeItem.name, SwipeItem);
@@ -6217,8 +7033,8 @@ var Bee = (function (exports, Vue) {
     //
     //
     //
-    var script$t = {
-      name: 'bee-action-sheet-item',
+    var script$u = {
+      name: 'busy-action-sheet-item',
       props: {
         action: Function
       },
@@ -6230,10 +7046,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$t = script$t;
+    var __vue_script__$u = script$u;
     /* template */
 
-    var __vue_render__$t = function __vue_render__() {
+    var __vue_render__$u = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -6241,38 +7057,38 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-action-sheet__item bee-border-1px bee-border-b",
+        staticClass: "busy-action-sheet__item busy-border-1px busy-border-b",
         on: {
           "click": _vm.handleClick
         }
       }, [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$t = [];
+    var __vue_staticRenderFns__$u = [];
     /* style */
 
-    var __vue_inject_styles__$t = undefined;
+    var __vue_inject_styles__$u = undefined;
     /* scoped */
 
-    var __vue_scope_id__$t = undefined;
+    var __vue_scope_id__$u = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$t = undefined;
+    var __vue_module_identifier__$u = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$t = false;
+    var __vue_is_functional_template__$u = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ActionSheetItem = normalizeComponent_1({
-      render: __vue_render__$t,
-      staticRenderFns: __vue_staticRenderFns__$t
-    }, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
+      render: __vue_render__$u,
+      staticRenderFns: __vue_staticRenderFns__$u
+    }, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
 
     var _components$2;
-    var script$u = {
-      name: 'bee-action-sheet',
+    var script$v = {
+      name: 'busy-action-sheet',
       props: {
         isShow: {
           type: Boolean,
@@ -6339,17 +7155,17 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$u = script$u;
+    var __vue_script__$v = script$v;
     /* template */
 
-    var __vue_render__$u = function __vue_render__() {
+    var __vue_render__$v = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
 
       var _c = _vm._self._c || _h;
 
-      return _c('bee-mask', {
+      return _c('busy-mask', {
         attrs: {
           "is-show": _vm.visiable,
           "is-remove": _vm.isRemove
@@ -6362,7 +7178,7 @@ var Bee = (function (exports, Vue) {
         }
       }, [_c('transition', {
         attrs: {
-          "name": "bee-animate_bibo"
+          "name": "busy-animate_bibo"
         },
         on: {
           "after-enter": _vm._enter,
@@ -6376,55 +7192,55 @@ var Bee = (function (exports, Vue) {
           expression: "visiable"
         }],
         ref: "oel",
-        staticClass: "bee-action-sheet",
+        staticClass: "busy-action-sheet",
         style: _vm.styles
       }, [_c('div', {
-        staticClass: "bee-action-sheet__box"
+        staticClass: "busy-action-sheet__box"
       }, [_c('div', {
-        staticClass: "bee-action-sheet__list"
+        staticClass: "busy-action-sheet__list"
       }, [_vm._t("default", _vm._l(_vm.actions, function (ac, $i) {
-        return _c('bee-action-sheet-item', {
+        return _c('busy-action-sheet-item', {
           key: 'as-' + $i,
           on: {
             "click": ac.action
           }
         }, [_vm._v(_vm._s(ac.text))]);
       }))], 2), _vm._v(" "), _c('div', {
-        staticClass: "bee-action-sheet__button",
+        staticClass: "busy-action-sheet__button",
         on: {
           "click": _vm.hide
         }
       }, [_vm._v("取消")])])])])], 1);
     };
 
-    var __vue_staticRenderFns__$u = [];
+    var __vue_staticRenderFns__$v = [];
     /* style */
 
-    var __vue_inject_styles__$u = undefined;
+    var __vue_inject_styles__$v = undefined;
     /* scoped */
 
-    var __vue_scope_id__$u = undefined;
+    var __vue_scope_id__$v = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$u = undefined;
+    var __vue_module_identifier__$v = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$u = false;
+    var __vue_is_functional_template__$v = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ActionSheet = normalizeComponent_1({
-      render: __vue_render__$u,
-      staticRenderFns: __vue_staticRenderFns__$u
-    }, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
+      render: __vue_render__$v,
+      staticRenderFns: __vue_staticRenderFns__$v
+    }, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
 
-    var ActionSheetClass, instance$2, vm$2;
+    var ActionSheetClass, instance$3, vm$2;
     /**
-     * @bee/action-sheet
+     * @busy/action-sheet
      * @module ActionSheet
      * @see {@link ../example/all/action-sheet.html 实例}
-     * @desc ActionSheet框组件 <bee-action-sheet />
+     * @desc ActionSheet框组件 <busy-action-sheet />
      * @param {Array} actions - 动作菜单项
      * @param {Boolean} isShow=false - 是否显示
      * @param {Boolean} isRemove=false - 是否隐藏后删除
@@ -6435,7 +7251,7 @@ var Bee = (function (exports, Vue) {
      * @param {Event} visiable-change - 显示隐藏时都会触发
      * @param {Slot} slot - default - 组件slot
      * @example
-     * import ActionSheet from '@bee/action-sheet'
+     * import ActionSheet from '@busy/action-sheet'
      * 
      * // 动态创建
      * ActionSheet.show({
@@ -6455,7 +7271,7 @@ var Bee = (function (exports, Vue) {
      * // 标签方式
      * vue.use(ActionSheet);
      * 
-     * <bee-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></bee-action-sheet>
+     * <busy-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></busy-action-sheet>
      * 
      * 
      * new Vue({
@@ -6487,7 +7303,7 @@ var Bee = (function (exports, Vue) {
      *              this.isShow = visiable;
      *          },
      *          showActionSheet:function(){
-     *              Bee.ActionSheet.show({
+     *              Busy.ActionSheet.show({
      *                 actions: this.actions
      *              });
      *          }
@@ -6509,28 +7325,28 @@ var Bee = (function (exports, Vue) {
      * 
      * @example
      * 
-     *      Bee.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
+     *      Busy.ActionSheet.show({actions:{text:'执行动作', action: function(){console.log('do something')}}})
      * 
      */
 
 
     ActionSheet.show = function (opts) {
-      if (instance$2) {
+      if (instance$3) {
         ActionSheet.hide();
       }
 
-      instance$2 = new ActionSheetClass({
+      instance$3 = new ActionSheetClass({
         el: document.createElement('div'),
         propsData: Object.assign(opts || {}, {
           isRemove: true
         })
       });
-      instance$2.$nextTick(function () {
-        vm$2 = instance$2.$mount();
+      instance$3.$nextTick(function () {
+        vm$2 = instance$3.$mount();
         document.body.appendChild(vm$2.$el);
-        instance$2.show();
+        instance$3.show();
       });
-      return instance$2;
+      return instance$3;
     };
     /**
      * @method hide
@@ -6538,16 +7354,16 @@ var Bee = (function (exports, Vue) {
      * 
      * @example
      * 
-     *   Bee.ActionSheet.hide()
+     *   Busy.ActionSheet.hide()
      * 
      */
 
 
     ActionSheet.hide = function () {
-      if (instance$2) {
-        instance$2.hide();
+      if (instance$3) {
+        instance$3.hide();
         vm$2 = null;
-        instance$2 = null;
+        instance$3 = null;
       }
     };
     /**
@@ -6558,7 +7374,7 @@ var Bee = (function (exports, Vue) {
      * 
      * @example
      * 
-     *   if （Bee.ActionSheet.isVisiable(){
+     *   if （Busy.ActionSheet.isVisiable(){
      *     console.log('done something')
      *   }
      * 
@@ -6566,7 +7382,7 @@ var Bee = (function (exports, Vue) {
 
 
     ActionSheet.isVisiable = function () {
-      return !!instance$2 && instance$2.isShow;
+      return !!instance$3 && instance$3.isShow;
     };
 
     var clickoutsideContext = '@@clickoutsideContext';
@@ -6600,8 +7416,8 @@ var Bee = (function (exports, Vue) {
     };
 
     //
-    var script$v = {
-      name: 'bee-input',
+    var script$w = {
+      name: 'busy-input',
       props: {
         placeholder: String,
         disabled: Boolean,
@@ -6735,10 +7551,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$v = script$v;
+    var __vue_script__$w = script$w;
     /* template */
 
-    var __vue_render__$v = function __vue_render__() {
+    var __vue_render__$w = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -6752,9 +7568,9 @@ var Bee = (function (exports, Vue) {
           value: _vm.unActive,
           expression: "unActive"
         }],
-        staticClass: "bee-input"
+        staticClass: "busy-input"
       }, [_c('div', {
-        staticClass: "bee-input__content"
+        staticClass: "busy-input__content"
       }, [_vm.type === 'checkbox' ? _c('input', {
         directives: [{
           name: "model",
@@ -6762,7 +7578,7 @@ var Bee = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "bee-input__input",
+        staticClass: "busy-input__input",
         style: _vm.styles,
         attrs: {
           "placeholder": _vm.placeholder,
@@ -6813,7 +7629,7 @@ var Bee = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "bee-input__input",
+        staticClass: "busy-input__input",
         style: _vm.styles,
         attrs: {
           "placeholder": _vm.placeholder,
@@ -6849,7 +7665,7 @@ var Bee = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "bee-input__input",
+        staticClass: "busy-input__input",
         style: _vm.styles,
         attrs: {
           "placeholder": _vm.placeholder,
@@ -6889,11 +7705,11 @@ var Bee = (function (exports, Vue) {
           value: _vm.active && _vm.currentValue,
           expression: "active && currentValue"
         }],
-        staticClass: "bee-input__clear",
+        staticClass: "busy-input__clear",
         on: {
           "click": _vm.handleClear
         }
-      }, [_c('bee-icon', {
+      }, [_c('busy-icon', {
         attrs: {
           "type": "roundclosefill",
           "fill": "#d8d8d8",
@@ -6903,27 +7719,27 @@ var Bee = (function (exports, Vue) {
       })], 1)]);
     };
 
-    var __vue_staticRenderFns__$v = [];
+    var __vue_staticRenderFns__$w = [];
     /* style */
 
-    var __vue_inject_styles__$v = undefined;
+    var __vue_inject_styles__$w = undefined;
     /* scoped */
 
-    var __vue_scope_id__$v = undefined;
+    var __vue_scope_id__$w = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$v = undefined;
+    var __vue_module_identifier__$w = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$v = false;
+    var __vue_is_functional_template__$w = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Input = normalizeComponent_1({
-      render: __vue_render__$v,
-      staticRenderFns: __vue_staticRenderFns__$v
-    }, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
+      render: __vue_render__$w,
+      staticRenderFns: __vue_staticRenderFns__$w
+    }, __vue_inject_styles__$w, __vue_script__$w, __vue_scope_id__$w, __vue_is_functional_template__$w, __vue_module_identifier__$w, undefined, undefined);
 
     Input.install = function (vue) {
       vue.component(Input.name, Input);
@@ -7016,8 +7832,8 @@ var Bee = (function (exports, Vue) {
     //
     //
     //
-    var script$w = {
-      name: 'bee-switch',
+    var script$x = {
+      name: 'busy-switch',
       props: {
         value: Boolean,
         disabled: {
@@ -7053,10 +7869,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$w = script$w;
+    var __vue_script__$x = script$x;
     /* template */
 
-    var __vue_render__$w = function __vue_render__() {
+    var __vue_render__$x = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -7070,7 +7886,7 @@ var Bee = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "bee-switch bee-switch__animbg",
+        staticClass: "busy-switch busy-switch__animbg",
         attrs: {
           "type": "checkbox"
         },
@@ -7100,27 +7916,27 @@ var Bee = (function (exports, Vue) {
       })]);
     };
 
-    var __vue_staticRenderFns__$w = [];
+    var __vue_staticRenderFns__$x = [];
     /* style */
 
-    var __vue_inject_styles__$w = undefined;
+    var __vue_inject_styles__$x = undefined;
     /* scoped */
 
-    var __vue_scope_id__$w = undefined;
+    var __vue_scope_id__$x = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$w = undefined;
+    var __vue_module_identifier__$x = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$w = false;
+    var __vue_is_functional_template__$x = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Switch = normalizeComponent_1({
-      render: __vue_render__$w,
-      staticRenderFns: __vue_staticRenderFns__$w
-    }, __vue_inject_styles__$w, __vue_script__$w, __vue_scope_id__$w, __vue_is_functional_template__$w, __vue_module_identifier__$w, undefined, undefined);
+      render: __vue_render__$x,
+      staticRenderFns: __vue_staticRenderFns__$x
+    }, __vue_inject_styles__$x, __vue_script__$x, __vue_scope_id__$x, __vue_is_functional_template__$x, __vue_module_identifier__$x, undefined, undefined);
 
     Switch.install = function (vue) {
       vue.component(Switch.name, Switch);
@@ -7134,8 +7950,8 @@ var Bee = (function (exports, Vue) {
     //
     //
     //
-    var script$x = {
-      name: 'bee-option',
+    var script$y = {
+      name: 'busy-option',
       props: {
         value: [Array, String, Object, Number],
         checked: {
@@ -7160,10 +7976,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$x = script$x;
+    var __vue_script__$y = script$y;
     /* template */
 
-    var __vue_render__$x = function __vue_render__() {
+    var __vue_render__$y = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -7171,7 +7987,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('li', {
-        staticClass: "bee-select__options__item",
+        staticClass: "busy-select__options__item",
         on: {
           "click": function click($event) {
             $event.stopPropagation();
@@ -7181,31 +7997,31 @@ var Bee = (function (exports, Vue) {
       }, [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$x = [];
+    var __vue_staticRenderFns__$y = [];
     /* style */
 
-    var __vue_inject_styles__$x = undefined;
+    var __vue_inject_styles__$y = undefined;
     /* scoped */
 
-    var __vue_scope_id__$x = undefined;
+    var __vue_scope_id__$y = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$x = undefined;
+    var __vue_module_identifier__$y = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$x = false;
+    var __vue_is_functional_template__$y = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Option = normalizeComponent_1({
-      render: __vue_render__$x,
-      staticRenderFns: __vue_staticRenderFns__$x
-    }, __vue_inject_styles__$x, __vue_script__$x, __vue_scope_id__$x, __vue_is_functional_template__$x, __vue_module_identifier__$x, undefined, undefined);
+      render: __vue_render__$y,
+      staticRenderFns: __vue_staticRenderFns__$y
+    }, __vue_inject_styles__$y, __vue_script__$y, __vue_scope_id__$y, __vue_is_functional_template__$y, __vue_module_identifier__$y, undefined, undefined);
 
     var _components$3;
-    var script$y = {
-      name: 'bee-select',
+    var script$z = {
+      name: 'busy-select',
       props: {
         width: {
           type: [Number, String],
@@ -7320,10 +8136,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$y = script$y;
+    var __vue_script__$z = script$z;
     /* template */
 
-    var __vue_render__$y = function __vue_render__() {
+    var __vue_render__$z = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -7331,7 +8147,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('div', {
-        staticClass: "bee-select",
+        staticClass: "busy-select",
         style: _vm.styles,
         on: {
           "touch-move": function touchMove($evt) {
@@ -7343,7 +8159,7 @@ var Bee = (function (exports, Vue) {
           }
         }
       }, [_c('div', {
-        staticClass: "bee-select__content"
+        staticClass: "busy-select__content"
       }, [Object(_vm.currentValue).hasOwnProperty('label') ? _c('input', {
         directives: [{
           name: "model",
@@ -7351,7 +8167,7 @@ var Bee = (function (exports, Vue) {
           value: _vm.currentValue.label,
           expression: "currentValue.label"
         }],
-        staticClass: "bee-select__input",
+        staticClass: "busy-select__input",
         style: _vm.inputStyles,
         attrs: {
           "type": "text",
@@ -7377,7 +8193,7 @@ var Bee = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "bee-select__input",
+        staticClass: "busy-select__input",
         style: _vm.inputStyles,
         attrs: {
           "type": "text",
@@ -7396,7 +8212,7 @@ var Bee = (function (exports, Vue) {
             _vm.currentValue = $event.target.value;
           }
         }
-      })]), _vm._v(" "), _c('bee-mask', {
+      })]), _vm._v(" "), _c('busy-mask', {
         attrs: {
           "is-show": _vm.visiable
         },
@@ -7408,7 +8224,7 @@ var Bee = (function (exports, Vue) {
         }
       }, [_c('transition', {
         attrs: {
-          "name": "bee-animate--bibo"
+          "name": "busy-animate--bibo"
         }
       }, [_c('div', {
         directives: [{
@@ -7417,11 +8233,11 @@ var Bee = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        staticClass: "bee-select__options",
+        staticClass: "busy-select__options",
         style: _vm.optionStyles
       }, [_c('ul', {
-        staticClass: "bee-select__options__list",
-        class: ['bee-select__options__list-' + _vm._uid],
+        staticClass: "busy-select__options__list",
+        class: ['busy-select__options__list-' + _vm._uid],
         on: {
           "touchmove": function touchmove($event) {
             $event.stopPropagation();
@@ -7429,7 +8245,7 @@ var Bee = (function (exports, Vue) {
           }
         }
       }, [_vm._t("default", _vm._l(_vm.options, function (option, $index) {
-        return _c('bee-option', {
+        return _c('busy-option', {
           key: 'select_' + $index,
           attrs: {
             "value": option
@@ -7438,27 +8254,27 @@ var Bee = (function (exports, Vue) {
       }))], 2)])])], 1)], 1);
     };
 
-    var __vue_staticRenderFns__$y = [];
+    var __vue_staticRenderFns__$z = [];
     /* style */
 
-    var __vue_inject_styles__$y = undefined;
+    var __vue_inject_styles__$z = undefined;
     /* scoped */
 
-    var __vue_scope_id__$y = undefined;
+    var __vue_scope_id__$z = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$y = undefined;
+    var __vue_module_identifier__$z = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$y = false;
+    var __vue_is_functional_template__$z = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Select = normalizeComponent_1({
-      render: __vue_render__$y,
-      staticRenderFns: __vue_staticRenderFns__$y
-    }, __vue_inject_styles__$y, __vue_script__$y, __vue_scope_id__$y, __vue_is_functional_template__$y, __vue_module_identifier__$y, undefined, undefined);
+      render: __vue_render__$z,
+      staticRenderFns: __vue_staticRenderFns__$z
+    }, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, undefined, undefined);
 
     //
     //
@@ -7468,8 +8284,8 @@ var Bee = (function (exports, Vue) {
     //
     //
     //
-    var script$z = {
-      name: 'bee-option',
+    var script$A = {
+      name: 'busy-option',
       props: {
         value: [Array, String, Object, Number],
         checked: {
@@ -7494,10 +8310,10 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$z = script$z;
+    var __vue_script__$A = script$A;
     /* template */
 
-    var __vue_render__$z = function __vue_render__() {
+    var __vue_render__$A = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -7505,7 +8321,7 @@ var Bee = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c('li', {
-        staticClass: "bee-select__options__item",
+        staticClass: "busy-select__options__item",
         on: {
           "click": function click($event) {
             $event.stopPropagation();
@@ -7515,27 +8331,27 @@ var Bee = (function (exports, Vue) {
       }, [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$z = [];
+    var __vue_staticRenderFns__$A = [];
     /* style */
 
-    var __vue_inject_styles__$z = undefined;
+    var __vue_inject_styles__$A = undefined;
     /* scoped */
 
-    var __vue_scope_id__$z = undefined;
+    var __vue_scope_id__$A = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$z = undefined;
+    var __vue_module_identifier__$A = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$z = false;
+    var __vue_is_functional_template__$A = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Option$1 = normalizeComponent_1({
-      render: __vue_render__$z,
-      staticRenderFns: __vue_staticRenderFns__$z
-    }, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, undefined, undefined);
+      render: __vue_render__$A,
+      staticRenderFns: __vue_staticRenderFns__$A
+    }, __vue_inject_styles__$A, __vue_script__$A, __vue_scope_id__$A, __vue_is_functional_template__$A, __vue_module_identifier__$A, undefined, undefined);
 
     Select.install = function (vue) {
       vue.component(Option$1.name, Option$1);
@@ -7549,8 +8365,8 @@ var Bee = (function (exports, Vue) {
       height: 18,
       type: 'right'
     };
-    var script$A = {
-      name: 'bee-list-item',
+    var script$B = {
+      name: 'busy-list-item',
       props: {
         height: {
           type: [Number, String],
@@ -7620,12 +8436,12 @@ var Bee = (function (exports, Vue) {
         labelClass: function labelClass() {
           var ah = this.labelAlignH,
               av = this.labelAlignV;
-          return ['bee-list-item__label', "bee-flex bee-flex--".concat(ah, "-").concat(av)];
+          return ['busy-list-item__label', "busy-flex busy-flex--".concat(ah, "-").concat(av)];
         },
         iconClass: function iconClass() {
           var ah = this.iconAlignH,
               av = this.iconAlignV;
-          return ['bee-list-item__icon', "bee-flex bee-flex--".concat(ah, "-").concat(av)];
+          return ['busy-list-item__icon', "busy-flex busy-flex--".concat(ah, "-").concat(av)];
         }
       },
       watch: {
@@ -7647,23 +8463,23 @@ var Bee = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$A = script$A;
+    var __vue_script__$B = script$B;
     /* template */
 
-    var __vue_render__$A = function __vue_render__() {
+    var __vue_render__$B = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
 
       var _c = _vm._self._c || _h;
 
-      return _c('bee-flexbox', {
-        staticClass: "bee-list-item bee-border-1px bee-border-b",
+      return _c('busy-flexbox', {
+        staticClass: "busy-list-item busy-border-1px busy-border-b",
         style: _vm.styles,
         on: {
           "click": _vm.handleClick
         }
-      }, [_vm.showLabel ? _c('bee-flexitem', {
+      }, [_vm.showLabel ? _c('busy-flexitem', {
         class: _vm.labelClass,
         style: _vm.labelStyle,
         attrs: {
@@ -7673,12 +8489,12 @@ var Bee = (function (exports, Vue) {
           "click": _vm.handleLabelClick
         }
       }, [_vm._t("label", [_c('label', {
-        staticClass: "bee-list-item__label_text"
-      }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c('bee-flexitem', {
-        staticClass: "bee-list-item__content bee-flex bee-flex--start-center"
+        staticClass: "busy-list-item__label_text"
+      }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c('busy-flexitem', {
+        staticClass: "busy-list-item__content busy-flex busy-flex--start-center"
       }, [_vm._t("default", [_c('div', {
-        staticClass: "bee-list-item__content_text"
-      }, [_vm._v(_vm._s(_vm.content))])])], 2), _vm._v(" "), _vm.showIcon ? _c('bee-flexitem', {
+        staticClass: "busy-list-item__content_text"
+      }, [_vm._v(_vm._s(_vm.content))])])], 2), _vm._v(" "), _vm.showIcon ? _c('busy-flexitem', {
         class: _vm.iconClass,
         style: _vm.iconStyle,
         attrs: {
@@ -7687,7 +8503,7 @@ var Bee = (function (exports, Vue) {
         on: {
           "click": _vm.handleIconClick
         }
-      }, [_vm._t("icon", [_c('bee-icon', {
+      }, [_vm._t("icon", [_c('busy-icon', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -7702,57 +8518,6 @@ var Bee = (function (exports, Vue) {
           "height": _vm.icon.height
         }
       })])], 2) : _vm._e()], 1);
-    };
-
-    var __vue_staticRenderFns__$A = [];
-    /* style */
-
-    var __vue_inject_styles__$A = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$A = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$A = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$A = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var ListItem = normalizeComponent_1({
-      render: __vue_render__$A,
-      staticRenderFns: __vue_staticRenderFns__$A
-    }, __vue_inject_styles__$A, __vue_script__$A, __vue_scope_id__$A, __vue_is_functional_template__$A, __vue_module_identifier__$A, undefined, undefined);
-
-    var script$B = {
-      name: 'bee-list',
-      props: {
-        items: {
-          type: Array,
-          default: function _default() {
-            return [];
-          }
-        }
-      },
-      components: _defineProperty({}, ListItem.name, ListItem)
-    };
-
-    /* script */
-    var __vue_script__$B = script$B;
-    /* template */
-
-    var __vue_render__$B = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c('div', {
-        staticClass: "bee-list bee-border-1px bee-border-tb"
-      }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$B = [];
@@ -7772,10 +8537,61 @@ var Bee = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var List = normalizeComponent_1({
+    var ListItem = normalizeComponent_1({
       render: __vue_render__$B,
       staticRenderFns: __vue_staticRenderFns__$B
     }, __vue_inject_styles__$B, __vue_script__$B, __vue_scope_id__$B, __vue_is_functional_template__$B, __vue_module_identifier__$B, undefined, undefined);
+
+    var script$C = {
+      name: 'busy-list',
+      props: {
+        items: {
+          type: Array,
+          default: function _default() {
+            return [];
+          }
+        }
+      },
+      components: _defineProperty({}, ListItem.name, ListItem)
+    };
+
+    /* script */
+    var __vue_script__$C = script$C;
+    /* template */
+
+    var __vue_render__$C = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c('div', {
+        staticClass: "busy-list busy-border-1px busy-border-tb"
+      }, [_vm._t("default")], 2);
+    };
+
+    var __vue_staticRenderFns__$C = [];
+    /* style */
+
+    var __vue_inject_styles__$C = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$C = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$C = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$C = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var List = normalizeComponent_1({
+      render: __vue_render__$C,
+      staticRenderFns: __vue_staticRenderFns__$C
+    }, __vue_inject_styles__$C, __vue_script__$C, __vue_scope_id__$C, __vue_is_functional_template__$C, __vue_module_identifier__$C, undefined, undefined);
 
     List.install = function (vue) {
       vue.component(ListItem.name, ListItem);
@@ -7784,11 +8600,12 @@ var Bee = (function (exports, Vue) {
 
     var install = function install(vue) {
       vue.use(Border);
-      vue.use(Toast$1);
+      vue.use(ToastComponent);
       vue.use(FlexBox);
       vue.use(Icon);
       vue.use(Button);
       vue.use(Checkbox);
+      vue.use(Picker);
       vue.use(Dialog$1);
       vue.use(Alert$1);
       vue.use(Confirm$1);
@@ -7806,19 +8623,20 @@ var Bee = (function (exports, Vue) {
       vue.use(Input);
       vue.use(Switch);
       vue.use(Select);
-      vue.prototype.$bee = Bee;
+      vue.prototype.$busy = Busy;
     };
 
-    var Bee = {
+    var Busy = {
       Border: Border,
       install: install,
-      Toast: Toast$1,
+      Toast: ToastComponent,
       ToastLoading: ToastLoading$1,
       Loading: Loading,
       Icons: Icon,
       FlexBox: FlexBox,
       Button: Button,
       Checkbox: Checkbox,
+      Picker: Picker,
       Dialog: Dialog$1,
       Alert: Alert$1,
       Confirm: Confirm$1,
@@ -7832,21 +8650,23 @@ var Bee = (function (exports, Vue) {
       List: List,
       ListItem: ListItem,
       Input: Input,
-      Switch: Switch
+      Switch: Switch,
+      Busyjs: Busyjs
     };
 
     if (window.Vue) {
-      window.Vue.use(Bee);
+      window.Vue.use(Busy);
     }
 
     exports.Border = Border;
-    exports.Toast = Toast$1;
+    exports.Toast = ToastComponent;
     exports.ToastLoading = ToastLoading$1;
     exports.Loading = Loading;
     exports.Icons = Icon;
     exports.FlexBox = FlexBox;
     exports.Button = Button;
     exports.Checkbox = Checkbox;
+    exports.Picker = Picker;
     exports.Dialog = Dialog$1;
     exports.Alert = Alert$1;
     exports.Confirm = Confirm$1;
@@ -7861,7 +8681,8 @@ var Bee = (function (exports, Vue) {
     exports.ListItem = ListItem;
     exports.Input = Input;
     exports.Switch = Switch;
-    exports.default = Bee;
+    exports.Busyjs = Busyjs;
+    exports.default = Busy;
 
     return exports;
 

@@ -30,12 +30,12 @@
         }
     }
 
-    .bee-line-scale-pulse-out {
+    .busy-line-scale-pulse-out {
         text-align: center;
         display: inline-block;
     }
 
-    .bee-line-scale-pulse-out > div {
+    .busy-line-scale-pulse-out > div {
         background-color: $color-blue;
         border-radius: 2px;
         margin: 2px;
@@ -48,20 +48,20 @@
             cubic-bezier(0.85, 0.25, 0.37, 0.85);
     }
 
-    .bee-line-scale-pulse-out > div:nth-child(2),
-    .bee-line-scale-pulse-out > div:nth-child(4) {
+    .busy-line-scale-pulse-out > div:nth-child(2),
+    .busy-line-scale-pulse-out > div:nth-child(4) {
         -webkit-animation-delay: 0.2s !important;
         animation-delay: 0.2s !important;
     }
 
-    .bee-line-scale-pulse-out > div:nth-child(1),
-    .bee-line-scale-pulse-out > div:nth-child(5) {
+    .busy-line-scale-pulse-out > div:nth-child(1),
+    .busy-line-scale-pulse-out > div:nth-child(5) {
         -webkit-animation-delay: 0.4s !important;
         animation-delay: 0.4s !important;
     }
 </style>
 <template>
-    <div v-if="visiable" class="bee-line-scale-pulse-out">
+    <div v-if="visiable" class="busy-line-scale-pulse-out">
         <div :style="itemStyles"></div>
         <div :style="itemStyles"></div>
         <div :style="itemStyles"></div>
@@ -71,17 +71,17 @@
 </template>
 <script>
     /**
-     * bee-line-scale-pulse-out
+     * busy-line-scale-pulse-out
      * @desc 跳动线条动画组件
      * @param {String} color - 组件颜色, css color [hex, rgb, rgba], 默认 #ffffff
      * @param {Number} width - 组件宽度, 默认 30 <px>
      * @param {Number} height - 组件高度, 默认 10 <px>
      * @param {Boolean} visiable - 是否可见, 默认 true
      * @example
-     *      <bee-line-scale-pulse-out></bee-line-scale-pulse-out>
+     *      <busy-line-scale-pulse-out></busy-line-scale-pulse-out>
      **/
     export default {
-        name: 'bee-line-scale-pulse-out',
+        name: 'busy-line-scale-pulse-out',
         props: {
             color: {
                 type: String,

@@ -1,12 +1,12 @@
 <template>
-    <bee-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
-    </bee-dialog>
+    <busy-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
+    </busy-dialog>
 </template>
 <script>
     import Dialog from './dialog.vue';
 
     export default {
-        name: 'bee-confirm',
+        name: 'busy-confirm',
         extends: Dialog,
         components: {
             [Dialog.name]: Dialog

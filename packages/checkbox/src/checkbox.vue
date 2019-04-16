@@ -68,11 +68,11 @@
     }
 </style>
 <template>
-    <div class="bee-checkbox">
-        <label class="bee-checkbox__label">
-            <input v-model="currentValue" class="bee-checkbox__input" type="checkbox" :disabled="disabled">
-            <span class="bee-checkbox__core" :style="styles"></span>
-            <span class="bee-checkbox__content" v-if="label||$slots.default">
+    <div class="busy-checkbox">
+        <label class="busy-checkbox__label">
+            <input v-model="currentValue" class="busy-checkbox__input" type="checkbox" :disabled="disabled">
+            <span class="busy-checkbox__core" :style="styles"></span>
+            <span class="busy-checkbox__content" v-if="label||$slots.default">
                 <slot>{{label}}</slot>
             </span>
         </label>
@@ -80,20 +80,20 @@
 </template>
 <script>
     /**
-     * @bee/checkbox
-     * @desc 勾选框  <bee-checkbox />
+     * @busy/checkbox
+     * @desc 勾选框  <busy-checkbox />
      * @module Checkbox
      * @see {@link ../example/all/checkbox.html 实例}
      * @param {string} label 显示在右侧的内容
      * @param {boolean} disabled 是否禁用
      *
      * @example
-     * <bee-checkbox v-model="checked" label="这个位置是标签1"></bee-checkbox>
-     * <bee-checkbox v-model="disable" label="是否禁用下面的按钮"></bee-checkbox>
+     * <busy-checkbox v-model="checked" label="这个位置是标签1"></busy-checkbox>
+     * <busy-checkbox v-model="disable" label="是否禁用下面的按钮"></busy-checkbox>
      */
 
     export default {
-        name: 'bee-checkbox',
+        name: 'busy-checkbox',
         props: {
             label: String,
             value: Boolean,

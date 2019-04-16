@@ -35,11 +35,11 @@
 </style>
 <template>
     <transition name="loading-fade" v-on:after-leave="_leave">
-        <div class="bee-loading" :style="styles" v-show="visiable">
-            <div class="bee-loading__spinner">
-                <bee-spinner :type="spinnerType" :color="color" :width="spinnerWidth" :height="spinnerHeight" :size="spinnerSize" :stroke-width="spinnerStroke"></bee-spinner>
+        <div class="busy-loading" :style="styles" v-show="visiable">
+            <div class="busy-loading__spinner">
+                <busy-spinner :type="spinnerType" :color="color" :width="spinnerWidth" :height="spinnerHeight" :size="spinnerSize" :stroke-width="spinnerStroke"></busy-spinner>
             </div>
-            <div class="bee-loading__text" :style="{color:color,fontSize:fontSize+'px'}">
+            <div class="busy-loading__text" :style="{color:color,fontSize:fontSize+'px'}">
                 <slot>{{text}}</slot>
             </div>
         </div>
@@ -66,10 +66,10 @@
      * @param {Boolean} isRemove=false - 隐藏后是否清除
      * 
      * @example
-     *  <bee-loading>正在加载...</bee-loading>
+     *  <busy-loading>正在加载...</busy-loading>
      */
     export default {
-        name: 'bee-loading',
+        name: 'busy-loading',
         props: {
             spinnerSize: {
                 type: Number,

@@ -18,8 +18,8 @@ describe('Icon Module:', function () {
     describe('create instance of Icon:', function () {
         const vm = new Vue(Icon).$mount()
 
-        it('is the classList of the instance contain bee-icon', function () {
-            expect(vm.$el.classList.contains('bee-icon')).to.be.true;
+        it('is the classList of the instance contain busy-icon', function () {
+            expect(vm.$el.classList.contains('busy-icon')).to.be.true;
         });
     });
 });

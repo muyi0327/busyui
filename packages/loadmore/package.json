@@ -1,13 +1,12 @@
 {
-    "name": "@bee/loadmore",
-    "version": "1.0.0",
-    "description": "bee loadmore component",
+    "name": "@busy/loadmore",
+    "description": "busyui loadmore component",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
-        "bee",
+        "busyui",
         "vue",
         "component",
         "loadmore"
@@ -16,10 +15,11 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/muyi0327/bee.git"
+        "url": "git+https://github.com/muyi0327/busyui.git"
     },
     "bugs": {
-        "url": "https://github.com/muyi0327/bee/issues"
+        "url": "https://github.com/muyi0327/busyui/issues"
     },
-    "homepage": "https://github.com/muyi0327/bee#readme"
+    "homepage": "https://github.com/muyi0327/busyui#readme",
+    "version": "1.0.3"
 }

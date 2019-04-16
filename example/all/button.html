@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui spinner demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <style>
         * {
             padding: 0;
@@ -17,13 +17,12 @@
 
         html,
         body {
-            background: #f2f5f7;
             height: 100%;
         }
 
         .wrap {
             display: block;
-            height: 100%;
+            height: auto;
             min-height: 100%;
         }
 
@@ -31,11 +30,11 @@
             height: 100%;
         }
 
-        .bee-button {
+        .busy-button {
             margin: 5px 2px;
         }
 
-        .fixed-btm .bee-button {
+        .fixed-btm .busy-button {
             margin: 0;
         }
 
@@ -49,106 +48,26 @@
 
     <section class="wrap">
         <section id="app" class="app">
-            <div class="custom">
-                <bee-button width="150" @click="()=>$bee.Alert.show(123)" border-color="green" border-radius="24px" border-width="5px" bg-color="yellow" font-color="green" width="100%" height="48">
+            <busy-flexbox direction="column">
+                <busy-button>default</busy-button>
+                <busy-button :ghost="true">default ghost</busy-button>
+                <busy-button :ghost="true" font-color="green" border-color="green">default ghost</busy-button>
+                <busy-button :disabled="true">default disabled</busy-button>
+                <busy-button type="primary">primary</busy-button>
+                <busy-button type="primary" :disabled="true">primary disabled</busy-button>
+                <busy-button type="primary" :ghost="true">primary ghost</busy-button>
+                <busy-button type="primary" :ghost="true" :disabled="true">primary ghost disabled</busy-button>
+                <busy-button type="warning">warning</busy-button>
+                <busy-button type="warning" :disabled="true">warning disabled</busy-button>
+                <busy-button type="primary" size="small">small</busy-button>
+                <busy-button type="primary" size="small" :disabled="true">small disabled</busy-button>
+                <busy-button type="primary" size="large">large</busy-button>
+                <busy-button type="primary" size="large" :disabled="true">large disabled</busy-button>
+                <busy-button @click="()=>$busy.Alert.show(123)" border-color="green" border-radius="29px" border-width="5px" bg-color="yellow" font-color="green" height="48">
                     自定义按钮
-                </bee-button>
-                <bee-button width="150" @click="()=>$bee.Alert.show(456)" bg-color="#00c2e0" border-radius="24" font-color="#fff" width="100%" height="48">自定义按钮</bee-button>
-            </div>
-            <bee-flexbox>
-                <bee-flexitem :width="90" align-h="center">默认</bee-flexitem>
-                <bee-flexitem>
-                    <bee-button>default</bee-button>
-                    <bee-button :disabled="true">disabled</bee-button>
-                    <bee-button :plain="true">plain</bee-button>
-                    <bee-button :plain="true" :disabled="true">disabled</bee-button>
-                </bee-flexitem>
-            </bee-flexbox>
-
-            <bee-flexbox>
-                <bee-flexitem :width="90" align-h="center">主色按钮</bee-flexitem>
-                <bee-flexitem>
-                    <bee-button type="primary">primary</bee-button>
-                    <bee-button type="primary" :disabled="true">disabled</bee-button>
-                    <bee-button type="primary" :plain="true">plain</bee-button>
-                    <bee-button type="primary" :plain="true" :disabled="true">disabled</bee-button>
-                </bee-flexitem>
-            </bee-flexbox>
-
-            <bee-flexbox>
-                <bee-flexitem :width="90" align-h="center">高亮按钮</bee-flexitem>
-                <bee-flexitem>
-                    <bee-button type="warning">warning</bee-button>
-                    <bee-button type="warning" :disabled="true">disabled</bee-button>
-                    <bee-button type="warning" :plain="true">plain</bee-button>
-                    <bee-button type="warning" :plain="true" :disabled="true">disabled</bee-button>
-                </bee-flexitem>
-            </bee-flexbox>
-
-            <bee-flexbox>
-                <bee-flexitem :width="90" align-h="center">尺寸</bee-flexitem>
-                <bee-flexitem>
-                    <bee-flexbox>
-                        <bee-flexitem>
-                            <bee-button type="warning" size="small">small</bee-button>
-                            <bee-button type="warning" size="small" :disabled="true">small</bee-button>
-                            <bee-button type="warning" size="small" :plain="true">small</bee-button>
-                            <bee-button type="warning" size="small" :plain="true" :disabled="true">small</bee-button>
-                        </bee-flexitem>
-                    </bee-flexbox>
-                    <bee-flexbox>
-                        <bee-flexitem>
-                            <bee-button type="warning" size="normal">normal</bee-button>
-                            <bee-button type="warning" size="normal" :disabled="true">normal</bee-button>
-                            <bee-button type="warning" size="normal" :plain="true">normal</bee-button>
-                            <bee-button type="warning" size="normal" :plain="true" :disabled="true">normal</bee-button>
-                        </bee-flexitem>
-                    </bee-flexbox>
-                    <bee-flexbox>
-                        <bee-flexitem>
-                            <bee-button type="warning" size="large">large</bee-button>
-                            <bee-button type="warning" size="large" :disabled="true">large</bee-button>
-                            <bee-button type="warning" size="large" :plain="true">large</bee-button>
-                            <bee-button type="warning" size="large" :plain="true" :disabled="true">large</bee-button>
-                        </bee-flexitem>
-                    </bee-flexbox>
-                    <bee-flexbox>
-                        <bee-flexitem>
-                            <bee-button type="primary" size="large" :block="true">primary block</bee-button>
-                            <bee-button type="primary" size="large" :block="true" :disabled="true">primary block disabled</bee-button>
-                            <bee-button type="primary" size="large" :sharp="true" :block="true" :plain="true">primary block plain</bee-button>
-                            <bee-button type="primary" size="large" :block="true" :plain="true" :disabled="true">primary block plain disabled</bee-button>
-                        </bee-flexitem>
-                    </bee-flexbox>
-                </bee-flexitem>
-            </bee-flexbox>
-
-            <bee-flexbox>
-                <bee-flexitem>
-                    <bee-flexbox direction="column">
-                        <bee-flexitem>
-                            <bee-button type="primary" size="large" :block="true">
-                                <div class="bee-inline-flex bee-al-v-m">
-                                    <div style="height:28px;padding:0 12px;">
-                                        <bee-icon type="question" fill="#fff" :width="24" :height="24"></bee-icon>
-                                    </div>
-                                    <div>primary block</div>
-                                </div>
-                            </bee-button>
-
-                            <bee-button type="primary" size="large" :block="true">
-                                <div class="bee-inline-flex bee-al-v-m">
-                                    <div style="height:18px;line-height:18px;padding:0 12px;">
-                                        <bee-spinner :height="18" :width="18" :type="0" color="#fff"></bee-spinner>
-                                    </div>
-                                    <div>primary block</div>
-                                </div>
-                            </bee-button>
-                        </bee-flexitem>
-                    </bee-flexbox>
-                </bee-flexitem>
-            </bee-flexbox>
-
+                </busy-button>
+                <busy-button @click="()=>$busy.Alert.show(456)" bg-color="#00c2e0" border-radius="24" font-color="#fff" height="48">自定义按钮</busy-button>
+            </busy-flexbox>
         </section>
     </section>
     <script>

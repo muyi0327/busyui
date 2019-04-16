@@ -1,27 +1,27 @@
-# Bee
+# Busy
 基于vue2.0开发的一套，手机端组件库
 
 ## 准备工作
     
 
 ## 安装
-    npm install bee -S
+    npm install busyui -S
 
 ## 快速上手
     import Vue from 'vue';
-    import Bee from 'bee';
+    import Busy from 'busyui';
 
-    Vue.use(Bee);
-
-    // or
-    <script src="node_modules/bee-mobile/dist/bee.js"></sciprt>
-    <script src="node_modules/bee-mobile/dist/bee.css"></sciprt>
+    Vue.use(Busy);
 
     // or
-    import Icon from 'bee-mobile/packages/icon';
+    <script src="node_modules/busyui/dist/busy.js"></sciprt>
+    <script src="node_modules/busyui/dist/busy.css"></sciprt>
+
+    // or
+    import Icon from 'busyui/packages/icon';
     Vue.use(Icon);
 
-    <bee-icon fill="orange"></bee-icon>
+    <busy-icon fill="orange"></busy-icon>
 
 ## 流览器兼容
 

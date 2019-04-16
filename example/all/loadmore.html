@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <script src="../mock.js"></script>
     <style>
         * {
@@ -71,13 +71,13 @@
 <body>
     <div class="container" id="app">
         <header class="header">
-            <bee-flexbox>
-                <bee-flexitem @click="refresh" height="100%" class="bee-flex bee-flex--center-center">tab1</bee-flexitem>
-                <bee-flexitem height="100%" class="bee-flex bee-flex--center-center">tab2</bee-flexitem>
-            </bee-flexbox>
+            <busy-flexbox>
+                <busy-flexitem @click="refresh" height="100%" class="busy-flex busy-flex--center-center">tab1</busy-flexitem>
+                <busy-flexitem height="100%" class="busy-flex busy-flex--center-center">tab2</busy-flexitem>
+            </busy-flexbox>
         </header>
         <div class="main" style="overflow: hidden;">
-            <bee-loadmore ref="loadmore" :on-infinite="loadBtm" :on-refresh="loadTop">
+            <busy-loadmore ref="loadmore" :on-infinite="loadBtm" :on-refresh="loadTop">
                 <ul class="data-list">
                     <li v-for="d in datas">
                         <article class="product">
@@ -93,7 +93,7 @@
                 <div slot="no-more" style="height: 40px; line-height: 40px; text-align: center;">
                     --数据加载完毕--
                 </div>
-            </bee-loadmore>
+            </busy-loadmore>
         </div>
     </div>
     <script>

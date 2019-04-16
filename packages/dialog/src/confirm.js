@@ -5,7 +5,7 @@ import Confirm from './confirm.vue';
 const ConfirmClass = Vue.extend(Confirm);
 
 /**
- * bee-confirm
+ * busy-confirm
  * @module Confirm
  * @see {@link ../example/all/dialog.html 实例}
  * @desc confirm对话框组件
@@ -16,14 +16,14 @@ const ConfirmClass = Vue.extend(Confirm);
  * @example
  *
  * // use it in html
- * <script src="bee.min.js"><\/script>
- * <link rel="stylesheet" href="bee.min.css" />
+ * <script src="busy.min.js"><\/script>
+ * <link rel="stylesheet" href="busy.min.css" />
  * 
- * Bee.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+ * Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  * 
  * // use it in webpack or browserify, rollup
- * import {Confirm} from '@bee/dialog';
- * // var Confirm = require('@bee/dialog/confirm.js');
+ * import {Confirm} from '@busy/dialog';
+ * // var Confirm = require('@busy/dialog/confirm.js');
  *
  * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  *
@@ -44,7 +44,7 @@ export default Object.assign(Confirm, {
      * @returns ConfirmClass实例
      * 
      * @example
-     * const confirm = bee.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
+     * const confirm = Busy.Confirm.show('确认要提交吗？', (rst)=>{if (rs) console.log('确认提交')});
      * confirm.doClose();
      * 
      */

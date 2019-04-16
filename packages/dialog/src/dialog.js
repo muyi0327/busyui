@@ -5,10 +5,10 @@ import Dialog from './dialog.vue';
 var DialogClass = Vue.extend(Dialog);
 
 /**
- * @bee/dialog
+ * @busy/dialog
  * @module Dialog
  * @see {@link ../example/all/dialog.html 实例}
- * @desc 对话框组件 <bee-dialog />
+ * @desc 对话框组件22222 <busy-dialog />
  * @param {Number} width=240 - 对话框宽度
  * @param {Number} height=160 - 对话框高度
  * @param {String} content - 对话框内容, 必填
@@ -19,7 +19,7 @@ var DialogClass = Vue.extend(Dialog);
  * @param {Object} contentStyle - 对话框内容样式
  * @param {Boolean} showClose=false - 是否显示关闭按钮
  * @example
- * import {Dialog} from '@bee/dialog';
+ * import {Dialog} from '@busy/dialog';
  * 
  * Dialog.show({
  *      title: '提交信息',
@@ -45,7 +45,7 @@ export default Object.assign(Dialog, {
      * @returns DialogClass实例
      * 
      * @example
-     * Bee.Dialog.show({content:'红包来了!',title:'发红包了'})
+     * Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
      * 
      */
     show(opts) {

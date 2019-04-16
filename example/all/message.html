@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui spinner demo</title>
-    <link rel="stylesheet" href="../../dist/bee.css" />
+    <link rel="stylesheet" href="../../dist/busy.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/bee.js"></script>
+    <script src="../../dist/busy.js"></script>
     <style>
         * {
             padding: 0;
@@ -49,10 +49,10 @@
     <section class="wrap">
         <section id="app" class="app">
             <div>
-                <bee-button :plain="true" class="default" @click="showDefault">默认</bee-button>
-                <bee-button :plain="true" class="success" @click="showSuccess">成功</bee-button>
-                <bee-button :plain="true" class="warning" @click="showWarning">警告</bee-button>
-                <bee-button :plain="true" class="error" @click="showError">错误</bee-button>
+                <busy-button :plain="true" class="default" @click="showDefault">默认</busy-button>
+                <busy-button :plain="true" class="success" @click="showSuccess">成功</busy-button>
+                <busy-button :plain="true" class="warning" @click="showWarning">警告</busy-button>
+                <busy-button :plain="true" class="error" @click="showError">错误</busy-button>
             </div>
         </section>
     </section>
@@ -63,17 +63,17 @@
                 el: '#app',
                 methods: {
                     showDefault: function () {
-                        //Bee.Message.info('普通信息提示');
-                        this.$bee.Message.info('普通信息提示');
+                        //Busy.Message.info('普通信息提示');
+                        this.$busy.Message.info('普通信息提示');
                     },
                     showSuccess: function () {
-                        Bee.Message.success('操作成功信息');
+                        Busy.Message.success('操作成功信息');
                     },
                     showWarning: function () {
-                        Bee.Message.warning('警告信息');
+                        Busy.Message.warning('警告信息');
                     },
                     showError: function () {
-                        Bee.Message.error('错误信息');
+                        Busy.Message.error('错误信息');
                     }
                 }
             });

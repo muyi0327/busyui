@@ -23,21 +23,21 @@
 </style>
 
 <template>
-    <bee-flexbox class="bee-list-item bee-border-1px bee-border-b" :style="styles" @click="handleClick">
-        <bee-flexitem v-if="showLabel" :style="labelStyle" :flex="labelFlex" @click="handleLabelClick" :class="labelClass">
-            <slot name="label"><label class="bee-list-item__label_text">{{label}}</label></slot>
-        </bee-flexitem>
-        <bee-flexitem class="bee-list-item__content bee-flex bee-flex--start-center">
+    <busy-flexbox class="busy-list-item busy-border-1px busy-border-b" :style="styles" @click="handleClick">
+        <busy-flexitem v-if="showLabel" :style="labelStyle" :flex="labelFlex" @click="handleLabelClick" :class="labelClass">
+            <slot name="label"><label class="busy-list-item__label_text">{{label}}</label></slot>
+        </busy-flexitem>
+        <busy-flexitem class="busy-list-item__content busy-flex busy-flex--start-center">
             <slot>
-                <div class="bee-list-item__content_text">{{content}}</div>
+                <div class="busy-list-item__content_text">{{content}}</div>
             </slot>
-        </bee-flexitem>
-        <bee-flexitem v-if="showIcon" :style="iconStyle" :flex="iconFlex" @click="handleIconClick" :class="iconClass">
+        </busy-flexitem>
+        <busy-flexitem v-if="showIcon" :style="iconStyle" :flex="iconFlex" @click="handleIconClick" :class="iconClass">
             <slot name="icon">
-                <bee-icon v-show="icon.type" :type="icon.type" :fill="icon.fill" :width="icon.width" :height="icon.height" :style="iconStyle"></bee-icon>
+                <busy-icon v-show="icon.type" :type="icon.type" :fill="icon.fill" :width="icon.width" :height="icon.height" :style="iconStyle"></busy-icon>
             </slot>
-        </bee-flexitem>
-    </bee-flexbox>
+        </busy-flexitem>
+    </busy-flexbox>
 </template>
 
 <script>
@@ -53,7 +53,7 @@
     }
 
     export default {
-        name: 'bee-list-item',
+        name: 'busy-list-item',
         props: {
             height: {
                 type: [Number, String],
@@ -131,11 +131,11 @@
             },
             labelClass() {
                 let ah = this.labelAlignH, av = this.labelAlignV;
-                return ['bee-list-item__label', `bee-flex bee-flex--${ah}-${av}`]
+                return ['busy-list-item__label', `busy-flex busy-flex--${ah}-${av}`]
             },
             iconClass() {
                 let ah = this.iconAlignH, av = this.iconAlignV;
-                return ['bee-list-item__icon', `bee-flex bee-flex--${ah}-${av}`]
+                return ['busy-list-item__icon', `busy-flex busy-flex--${ah}-${av}`]
             }
         },
         watch: {

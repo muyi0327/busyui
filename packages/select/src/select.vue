@@ -46,23 +46,23 @@
 </style>
 
 <template>
-    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" class="bee-select" :style="styles">
-        <div class="bee-select__content">
-            <input v-if="Object(currentValue).hasOwnProperty('label')" class="bee-select__input" type="text" :style="inputStyles" readonly v-model="currentValue.label" :placeholder="placeholder">
-            <input v-else class="bee-select__input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
+    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" class="busy-select" :style="styles">
+        <div class="busy-select__content">
+            <input v-if="Object(currentValue).hasOwnProperty('label')" class="busy-select__input" type="text" :style="inputStyles" readonly v-model="currentValue.label" :placeholder="placeholder">
+            <input v-else class="busy-select__input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
         </div>
-        <bee-mask :is-show="visiable" @click.stop="closeOptions">
-            <transition name="bee-animate--bibo">
-                <div v-show="visiable" class="bee-select__options" :style="optionStyles">
-                    <ul class="bee-select__options__list" @touchmove.stop="e=>{}" :class="['bee-select__options__list-' + _uid]">
+        <busy-mask :is-show="visiable" @click.stop="closeOptions">
+            <transition name="busy-animate--bibo">
+                <div v-show="visiable" class="busy-select__options" :style="optionStyles">
+                    <ul class="busy-select__options__list" @touchmove.stop="e=>{}" :class="['busy-select__options__list-' + _uid]">
                         <slot>
-                            <bee-option :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</bee-option>
+                            <busy-option :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</busy-option>
                         </slot>
                     </ul>
                 </div>
             </transition>
 
-        </bee-mask>
+        </busy-mask>
     </div>
 </template>
 
@@ -72,7 +72,7 @@
     import Option from './option.vue'
 
     export default {
-        name: 'bee-select',
+        name: 'busy-select',
         props: {
             width: {
                 type: [Number, String],

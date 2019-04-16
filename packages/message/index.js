@@ -1,14 +1,13 @@
 import Vue from 'vue';
 import Message from './src/message.vue';
-import '../util/src/polyfill';
 
 const MessageClass = Vue.extend(Message);
 
 /**
- * @bee/message
+ * @busy/message
  * @module Message
  * @see {@link ../example/all/message.html 实例}
- * @desc 浮层提示信息组件 <bee-meesage></bee-meesage>
+ * @desc 浮层提示信息组件 <busy-meesage></busy-meesage>
  * @param {String} pos='top' - 显示位置,可取值 'top', 'middle', 'bottom'
  * @param {String} type='info' - 提示框类型, 可取值 'info', 'success', 'error', 'warning'
  * @param {String} text - 提示信息内容, 也可以slot方式传入
@@ -18,19 +17,19 @@ const MessageClass = Vue.extend(Message);
  * @example
  * 
  *  // use it in module tools
- *  import Message from '@bee/message';
+ *  import Message from '@busy/message';
  *  Message.show('有新信息了');
  *  Message.info('有新信息了');
  *  Message.success('信息提交成功');
  *  Message.warning('内容包含非法词');
  * 
  *  // use it in html
- *  <script src="bee.min.js"><\/script>
- *  <link rel="stylesheet" href="Bee.min.css">
- *  Bee.Message.show('有新信息了');
- *  Bee.Message.info('有新信息了');
- *  Bee.Message.success('信息提交成功');
- *  Bee.Message.warning('内容包含非法词');
+ *  <script src="busy.min.js"><\/script>
+ *  <link rel="stylesheet" href="Busy.min.css">
+ *  Busy.Message.show('有新信息了');
+ *  Busy.Message.info('有新信息了');
+ *  Busy.Message.success('信息提交成功');
+ *  Busy.Message.warning('内容包含非法词');
  * 
  */
 export default Object.assign(Message, {
@@ -45,7 +44,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     * Bee.Message.show('有新信息了');
+     * Busy.Message.show('有新信息了');
      * 
      */
     show(opts) {
@@ -76,7 +75,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Bee.Message.info('收到一个优惠券');
+     *  Busy.Message.info('收到一个优惠券');
      * 
      */
     info(text, opts) {
@@ -94,7 +93,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Bee.Message.success('提交成功');
+     *  Busy.Message.success('提交成功');
      * 
      */
     success(text, opts) {
@@ -112,7 +111,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Bee.Message.warning('内容包含非法词');
+     *  Busy.Message.warning('内容包含非法词');
      * 
      */
     warning(text, opts) {
@@ -130,7 +129,7 @@ export default Object.assign(Message, {
      * @returns MessageClass实例
      * 
      * @example
-     *  Bee.Message.error('内容包含非法词');
+     *  Busy.Message.error('内容包含非法词');
      * 
      */
     error(text, opts) {

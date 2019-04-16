@@ -1,7 +1,7 @@
 <template>
-    <div class="bee-progress" v-on:click="handleClick">
-        <bee-progress-line ref="child-line" v-if="type==='line'" :width="width" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :show-text="showText" :duration="duration"></bee-progress-line>
-        <bee-progress-ring ref="child-ring" v-if="type==='ring'" :size="size" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :direction="direction" :show-text="showText" :duration="duration">{{mycontent}}</bee-progress-ring>
+    <div class="busy-progress" v-on:click="handleClick">
+        <busy-progress-line ref="child-line" v-if="type==='line'" :width="width" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :show-text="showText" :duration="duration"></busy-progress-line>
+        <busy-progress-ring ref="child-ring" v-if="type==='ring'" :size="size" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :direction="direction" :show-text="showText" :duration="duration">{{mycontent}}</busy-progress-ring>
     </div>
 </template>
 
@@ -10,7 +10,7 @@
     import ProgressRing from './progress-ring.vue';
 
     /**
-     * bee-progress
+     * busy-progress
      * @module Progress
      * @see {@link ../example/all/progress.html 实例}
      * @des 进度条组件
@@ -21,12 +21,12 @@
      * @param {String} trackColor - 进度槽颜色, 取值范围 css color <hex, rgb, rgba>
      * @param {String} barColor - 进度条颜色, 取值范围 css color <hex, rgb, rgba>
      * @param {String} content - 显示内容, 默认''
-     * @param {String} type - 进度条组件类型, 可取值 'line' [<bee-progress-line />], 'ring' [<bee-progress-ring />], 默认 'line'
+     * @param {String} type - 进度条组件类型, 可取值 'line' [<busy-progress-line />], 'ring' [<busy-progress-ring />], 默认 'line'
      * @example
-     *      <bee-progress type="ring" :size="50" :track-width="5"></bee-progress>
+     *      <busy-progress type="ring" :size="50" :track-width="5"></busy-progress>
      **/
     export default {
-        name: 'bee-progress',
+        name: 'busy-progress',
         props: {
             size: {
                 type: Number,

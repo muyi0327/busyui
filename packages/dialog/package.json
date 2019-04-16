@@ -1,28 +1,28 @@
 {
-  "name": "@bee/dialog",
-  "version": "1.0.0",
-  "description": "bee component dialog alert prompt confirm",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/muyi0327/bee.git"
-  },
-  "keywords": [
-    "bee",
-    "vue",
-    "component",
-    "dialog",
-    "alert",
-    "prompt",
-    "confirm"
-  ],
-  "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/muyi0327/bee/issues"
-  },
-  "homepage": "https://github.com/muyi0327/bee#readme"
+    "name": "@busy/dialog",
+    "description": "busyui component dialog alert prompt confirm",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/muyi0327/busyui.git"
+    },
+    "keywords": [
+        "busyui",
+        "vue",
+        "component",
+        "dialog",
+        "alert",
+        "prompt",
+        "confirm"
+    ],
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/muyi0327/busyui/issues"
+    },
+    "homepage": "https://github.com/muyi0327/busyui#readme",
+    "version": "1.0.3"
 }

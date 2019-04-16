@@ -31,14 +31,14 @@
     }
 </style>
 <template>
-    <div class="bee-progress-line" v-on:click="handleClick" :style="styles">
-        <div class="bee-progress-line__bar" :style="barStyles"></div>
-        <div v-if="showText" class="bee-progtress-line__text" :style="textStyle">{{percent}}%</div>
+    <div class="busy-progress-line" v-on:click="handleClick" :style="styles">
+        <div class="busy-progress-line__bar" :style="barStyles"></div>
+        <div v-if="showText" class="busy-progtress-line__text" :style="textStyle">{{percent}}%</div>
     </div>
 </template>
 <script>
     /**
-     * bee-progress-line
+     * busy-progress-line
      * @des 线形进度条组件
      * @param {Number} width - 组件长度,默认 100%
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
@@ -47,11 +47,11 @@
      * @param {String} barColor - 进度条颜色, 取值范围 css color
      * @param {String} showText - 是否显示进度数值, 默认 false
      * @example
-     *      <bee-progress-line :percent="45" :width="150" :track-width="4"></bee-progress-line>
-     *      <bee-progress-ring :percent="45" :width="150" :track-width="4"></bee-progress-ring>
+     *      <busy-progress-line :percent="45" :width="150" :track-width="4"></busy-progress-line>
+     *      <busy-progress-ring :percent="45" :width="150" :track-width="4"></busy-progress-ring>
      **/
     export default {
-        name: 'bee-progress-line',
+        name: 'busy-progress-line',
         props: {
             trackWidth: {
                 type: Number,

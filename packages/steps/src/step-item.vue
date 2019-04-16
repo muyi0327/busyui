@@ -1,4 +1,4 @@
 <style lang="scss">
-    .bee-step-item {
+    .busy-step-item {
     }
 </style>

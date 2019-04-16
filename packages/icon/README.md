@@ -1,22 +1,22 @@
-# bee-icon
+# busy-icon
 
-bee-icon is a mobile icon component for bee library
+busy-icon is a mobile icon component for busy library
 
 ## Installation
 
-First, install bee-icon from wanda npm
+First, install busy-icon from wanda npm
 
-    npm install bee-icon or npm install bee
+    npm install busy-icon or npm install busy
 
 Then use it in vue;
 
-    import Icon from 'bee/packges/icon';
+    import Icon from 'busy/packges/icon';
 
     var vm = new Vue({
         el: '#app',
-        template: '<div><bee-icon></bee-icon></div>',
+        template: '<div><busy-icon></busy-icon></div>',
         components:{
-            'bee-icon': Icon
+            'busy-icon': Icon
         }
     });
 
