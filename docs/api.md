@@ -1,114 +1,52 @@
 ## Modules
 
-<table>
-  <thead>
-    <tr>
-      <th>Module</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-<tr>
-    <td><a href="#module_ActionSheet">ActionSheet</a></td>
-    <td><p>ActionSheet框组件 <busy-action-sheet /></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_@busy/border">@busy/border</a></td>
-    <td><p>1像素边框样式</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Dialog">Dialog</a></td>
-    <td><p>对话框组件11111 <busy-dialog /></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Toast">Toast</a></td>
-    <td><p>Toast组件 <busy-toast></busy-toast></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Button">Button</a></td>
-    <td><p>按钮组件 <busy-button /></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Checkbox">Checkbox</a></td>
-    <td><p>勾选框  <busy-checkbox /></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Alert">Alert</a></td>
-    <td><p>alert对话框组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Confirm">Confirm</a></td>
-    <td><p>confirm对话框组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Dialog">Dialog</a></td>
-    <td><p>对话框组件22222 <busy-dialog /></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Prompt">Prompt</a></td>
-    <td><p>prompt对话框组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Icon">Icon</a></td>
-    <td><p>icon图标组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Loading">Loading</a></td>
-    <td><p>loading component with mask</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Loadmore">Loadmore</a></td>
-    <td><p>加载更多组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Mask">Mask</a></td>
-    <td><p>半透明遮罩层 <busy-mask></busy-mask></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Message">Message</a></td>
-    <td><p>浮层提示信息组件 <busy-meesage></busy-meesage></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Progress">Progress</a></td>
-    <td><p>busy-progress</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Spinner">Spinner</a></td>
-    <td><p>spinner组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Swipe">Swipe</a></td>
-    <td><p>切换组件</p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_ToastLoading">ToastLoading</a></td>
-    <td><p>页面toastloading组件 <busy-toast-loading /></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Toast">Toast</a></td>
-    <td><p>Toast组件 <busy-toast></busy-toast></p>
-</td>
-    </tr>
-</tbody>
-</table>
+* [ActionSheet](#module_ActionSheet)
+    * [.show(opts)](#module_ActionSheet.show) ⇒
+    * [.hide()](#module_ActionSheet.hide)
+    * [.isVisiable()](#module_ActionSheet.isVisiable) ⇒ <code>Boolean</code>
+* [@busy/border](#module_@busy/border)
+* [Dialog](#module_Dialog)
+    * _static_
+        * [.show(opts)](#module_Dialog.show) ⇒
+        * [.show(opts)](#module_Dialog.show) ⇒
+    * _inner_
+        * [~hide()](#module_Dialog..hide)
+* [Toast](#module_Toast)
+    * [.show(opts)](#module_Toast.show) ⇒
+    * [.show(opts)](#module_Toast.show) ⇒
+* [Button](#module_Button)
+* [Checkbox](#module_Checkbox)
+* [Alert](#module_Alert)
+    * [.show(text, opts)](#module_Alert.show) ⇒
+* [Confirm](#module_Confirm)
+    * [.show(text, opts, callback)](#module_Confirm.show) ⇒
+* [Dialog](#module_Dialog)
+    * _static_
+        * [.show(opts)](#module_Dialog.show) ⇒
+        * [.show(opts)](#module_Dialog.show) ⇒
+    * _inner_
+        * [~hide()](#module_Dialog..hide)
+* [Prompt](#module_Prompt)
+    * [.show(text, opts, callback)](#module_Prompt.show) ⇒
+* [Icon](#module_Icon)
+* [Loading](#module_Loading)
+* [Loadmore](#module_Loadmore)
+* [Mask](#module_Mask)
+* [Message](#module_Message)
+    * [.show(opts)](#module_Message.show) ⇒
+    * [.info(text, opts)](#module_Message.info) ⇒
+    * [.success(text, opts)](#module_Message.success) ⇒
+    * [.warning(text, opts)](#module_Message.warning) ⇒
+    * [.error(text, opts)](#module_Message.error) ⇒
+* [Progress](#module_Progress)
+* [Spinner](#module_Spinner)
+* [Swipe](#module_Swipe)
+* [ToastLoading](#module_ToastLoading)
+    * [.hide()](#module_ToastLoading.hide)
+    * [.show(opts)](#module_ToastLoading.show) ⇒
+* [Toast](#module_Toast)
+    * [.show(opts)](#module_Toast.show) ⇒
+    * [.show(opts)](#module_Toast.show) ⇒
 
 ## Functions
 
@@ -606,8 +544,8 @@ confirm.doClose();
 | height | <code>Number</code> | <code>160</code> | 对话框高度 |
 | content | <code>String</code> |  | 对话框内容, 必填 |
 | title＝'' | <code>String</code> |  | 对话框标题 |
-| show | <code>function</code> |  | 对话框标题 |
-| hide | <code>function</code> |  | 对话框标题 |
+| show | <code>function</code> |  | 显示 |
+| hide | <code>function</code> |  | 隐藏 |
 | buttons | <code>Array.&lt;Object&gt;</code> | <code>[{text:&#x27;确定&#x27;},{text:&#x27;取消&#x27;}</code> | 对话框标题 |
 | contentStyle | <code>Object</code> |  | 对话框内容样式 |
 | showClose | <code>Boolean</code> | <code>false</code> | 是否显示关闭按钮 |

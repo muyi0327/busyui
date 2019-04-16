@@ -13,8 +13,8 @@ var DialogClass = Vue.extend(Dialog);
  * @param {Number} height=160 - 对话框高度
  * @param {String} content - 对话框内容, 必填
  * @param {String} title＝'' - 对话框标题
- * @param {Function} show - 对话框标题
- * @param {Function} hide - 对话框标题
+ * @param {Function} show - 显示
+ * @param {Function} hide - 隐藏
  * @param {Array<Object>} buttons=[{text:'确定'},{text:'取消'}] - 对话框标题
  * @param {Object} contentStyle - 对话框内容样式
  * @param {Boolean} showClose=false - 是否显示关闭按钮

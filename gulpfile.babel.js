@@ -100,8 +100,8 @@ gulp.task('api', (cb) => {
     var output = jdtomk.renderSync({
         files: './packages/**/*.{vue,js}',
         configure: './jsdoc.conf.json',
-        'module-index-format': 'table'
-    });
+        'module-index-format': 'grouped'
+    })
 
 
     jdtomk.getJsdocData({
