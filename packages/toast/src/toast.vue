@@ -7,6 +7,7 @@
         width: 100%;
         text-align: center;
         pointer-events: none;
+        font-size: #{$toast-default-font-size};
 
         &--pos-top {
             top: 50px;
@@ -34,42 +35,33 @@
             justify-content: center;
             padding: 10px 20px;
             box-sizing: border-box;
+            max-width: 80%;
         }
 
         &__icon {
             padding: 0;
             margin: 0 10px 0 0;
+            line-height: 1px;
         }
 
         &__text {
             color: #fff;
             text-align: center;
-            font-size: 16px;
             line-height: 1.5;
             font-weight: normal;
             padding: 0;
             margin: 0;
         }
-
-        &.fade-top-enter-active,
-        &.fade-top-leave-active {
-            transition: all 0.3s linear;
-        }
-
-        &.fade-top-enter,
-        &.fade-top-leave-active {
-            opacity: 0.3;
-        }
     }
 </style>
 
 <template>
-    <transition name="fade-top" v-on:after-leave="_leave">
+    <transition name="busy-animate--fade" v-on:after-leave="_leave">
         <article v-show="visiable" class="busy-toast" :class="posClass">
             <div class="busy-toast__wrap">
-                <p v-if="type" class="busy-toast__icon">
-                    <busy-icon :type="type" :width="iconWidth" :height="iconHeight" :fill="color"></busy-icon>
-                </p>
+                <span v-if="iconType" class="busy-toast__icon">
+                    <busy-icon :type="iconType" :width="iconWidth" :height="iconHeight" fill="#ffffff"></busy-icon>
+                </span>
                 <p class="busy-toast__text">
                     <slot>
                         {{contentString}}
@@ -86,25 +78,21 @@
     export default {
         name: 'busy-toast',
         props: {
-            type: {
-                type: String,
-                default: ''
-            },
             delay: {
                 type: Number,
                 default: 2500
             },
+            iconType: {
+                type: String,
+                default: ''
+            },
             iconHeight: {
                 type: Number,
-                default: 28
+                default: 24
             },
             iconWidth: {
                 type: Number,
-                default: 28
-            },
-            color: {
-                type: String,
-                default: '#fff'
+                default: 24
             },
             content: {
                 type: [String, Number],
@@ -163,13 +151,14 @@
                 this.$emit('hide');
             },
             _leave() {
+                this.$emit('after-leave', this)
                 // 动画结束，清除元素
                 if (this.isRemove) {
                     this.$destroy();
-                    this.$el.parentNode.removeChild(this.$el);
                     this.$emit('destroy', this)
+                    this.$el.parentNode.removeChild(this.$el);
                 }
-                this.$emit('hide-end', this)
+
             },
             clearTimmer() {
                 if (this.timmer) {

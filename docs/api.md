@@ -1098,13 +1098,12 @@ Toast组件 <busy-toast></busy-toast>
 | content | <code>String</code> |  | 显示内容 |
 | pos | <code>String</code> | <code>&#x27;middle&#x27;</code> | 显示位置,可以是 'top', 'middle', 'bottom' |
 | delay | <code>Number</code> | <code>2000</code> | 显示时间，单位毫秒 |
-| type | <code>String</code> |  | icon类型 |
+| iconType | <code>String</code> |  | icon类型 |
 | isShow | <code>Boolean</code> | <code>false</code> | 是否显示 |
 | isRemove | <code>Boolean</code> | <code>false</code> | 是否隐藏移除dom |
 | autoHide | <code>Boolean</code> | <code>true</code> | 是否自动隐藏 |
 | iconHeight | <code>Number</code> | <code>28</code> | 设置图标的高度 |
 | iconWidth | <code>Number</code> | <code>28</code> | 设置图标的宽度 |
-| color | <code>Number</code> | <code>#fff</code> | 设置图标的颜色 |
 | hide | <code>function</code> |  | 隐藏 |
 | show | <code>function</code> |  | 显示 |
 | hide | <code>Event</code> |  | 隐藏时触发 |
@@ -1112,24 +1111,6 @@ Toast组件 <busy-toast></busy-toast>
 | visiable-change | <code>Event</code> |  | 显示,隐藏都会触发 |
 | after-leave | <code>Event</code> |  | 隐藏动画结束时触发 |
 
-**Example**  
-```js
-// use it in module tools
-  import Toast from '@busyui/toast';
-  1, Toast.show('内容')
-  2, Toast.show('内容', 5000)
-  3, Toast.show('内容', 'top', 5000)
-  4, Toast.show({content:'内容', pos: 'top', delay: 5000})
-
-  // use it in html
-  <script src="busyui.js"><\/script>
-  <link href="busyui.css" rel="stylesheet" />
-
-  1, Busy.Toast.show('内容')
-  2, Busy.Toast.show('内容', 5000)
-  3, Busy.Toast.show('内容', 'top', 5000)
-  4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
-```
 
 * [Toast](#module_Toast)
     * [.show(opts)](#module_Toast.show) ⇒

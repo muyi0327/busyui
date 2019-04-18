@@ -18,8 +18,8 @@
             border-radius: 12px;
             background-color: #f7f7f7;
             box-sizing: border-box;
-            width: #{$dialog-dfault-width}px;
-            height: #{$dialog-dfault-height}px;
+            width: $dialog-dfault-width;
+            height: $dialog-dfault-height;
             display: flex;
             flex-direction: column;
             position: relative;

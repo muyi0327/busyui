@@ -290,6 +290,24 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
@@ -569,25 +587,21 @@ Icon.install = function (vue) {
 var script$1 = {
   name: 'busy-toast',
   props: {
-    type: {
-      type: String,
-      default: ''
-    },
     delay: {
       type: Number,
       default: 2500
     },
+    iconType: {
+      type: String,
+      default: ''
+    },
     iconHeight: {
       type: Number,
-      default: 28
+      default: 24
     },
     iconWidth: {
       type: Number,
-      default: 28
-    },
-    color: {
-      type: String,
-      default: '#fff'
+      default: 24
     },
     content: {
       type: [String, Number],
@@ -646,14 +660,13 @@ var script$1 = {
       this.$emit('hide');
     },
     _leave: function _leave() {
-      // 动画结束，清除元素
+      this.$emit('after-leave', this); // 动画结束，清除元素
+
       if (this.isRemove) {
         this.$destroy();
-        this.$el.parentNode.removeChild(this.$el);
         this.$emit('destroy', this);
+        this.$el.parentNode.removeChild(this.$el);
       }
-
-      this.$emit('hide-end', this);
     },
     clearTimmer: function clearTimmer() {
       if (this.timmer) {
@@ -695,7 +708,7 @@ var __vue_render__$1 = function __vue_render__() {
 
   return _c('transition', {
     attrs: {
-      "name": "fade-top"
+      "name": "busy-animate--fade"
     },
     on: {
       "after-leave": _vm._leave
@@ -711,14 +724,14 @@ var __vue_render__$1 = function __vue_render__() {
     class: _vm.posClass
   }, [_c('div', {
     staticClass: "busy-toast__wrap"
-  }, [_vm.type ? _c('p', {
+  }, [_vm.iconType ? _c('span', {
     staticClass: "busy-toast__icon"
   }, [_c('busy-icon', {
     attrs: {
-      "type": _vm.type,
+      "type": _vm.iconType,
       "width": _vm.iconWidth,
       "height": _vm.iconHeight,
-      "fill": _vm.color
+      "fill": "#ffffff"
     }
   })], 1) : _vm._e(), _vm._v(" "), _c('p', {
     staticClass: "busy-toast__text"
@@ -748,8 +761,7 @@ var Toast = normalizeComponent_1({
 }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, undefined, undefined);
 
 var ToastClass = Vue.extend(Toast),
-    instance$1,
-    vm;
+    instance$1;
 /**
  * Toast component
  * @module Toast
@@ -759,13 +771,12 @@ var ToastClass = Vue.extend(Toast),
  * @param {String} content - 显示内容
  * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
  * @param {Number} delay=2000 - 显示时间，单位毫秒
- * @param {String} type - icon类型
+ * @param {String} iconType - icon类型
  * @param {Boolean} isShow=false - 是否显示
  * @param {Boolean} isRemove=false - 是否隐藏移除dom
  * @param {Boolean} autoHide=true - 是否自动隐藏
  * @param {Number} iconHeight=28 - 设置图标的高度
  * @param {Number} iconWidth=28 - 设置图标的宽度
- * @param {Number} color=#fff - 设置图标的颜色
  * @param {Function} hide - 隐藏
  * @param {Function} show - 显示
  * @param {Event} hide - 隐藏时触发
@@ -773,27 +784,9 @@ var ToastClass = Vue.extend(Toast),
  * @param {Event} visiable-change - 显示,隐藏都会触发
  * @param {Event} after-leave - 隐藏动画结束时触发
  * 
- * @example
- *  // use it in module tools
- *   import Toast from '@busyui/toast';
- *   1, Toast.show('内容')
- *   2, Toast.show('内容', 5000)
- *   3, Toast.show('内容', 'top', 5000)
- *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
- * 
- *   // use it in html
- *   <script src="busyui.js"><\/script>
- *   <link href="busyui.css" rel="stylesheet" />
- * 
- *   1, Busy.Toast.show('内容')
- *   2, Busy.Toast.show('内容', 5000)
- *   3, Busy.Toast.show('内容', 'top', 5000)
- *   4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
- * 
- * 
  */
 
-var ToastComponent = Object.assign(Toast, {
+var ToastComponent = _extends(Toast, {
   install: function install(vue) {
     vue.component(Toast.name, Toast);
   },
@@ -808,80 +801,41 @@ var ToastComponent = Object.assign(Toast, {
    * Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
    * 
    */
-  show: function show(opts) {
-    opts = opts || {};
-    var content,
-        type,
-        delay,
-        pos,
-        complete,
-        len = arguments.length; // case toast('content info')
-
-    if (typeof opts == 'string' || typeof opts == 'number' || Array.isArray(opts)) {
-      content = opts;
-    } // case toast('content info','position info')
-
-
-    if (typeof arguments[1] == 'string') {
-      pos = arguments[1];
-    } // case toast('content info','delay time')
-
-
-    if (typeof arguments[1] == 'number') {
-      delay = arguments[1];
-    } //  case toast('content info', 'position info', 'delay time')
-
-
-    if (typeof arguments[2] == 'number') {
-      delay = arguments[2];
-    } //  case toast('content info', 'position info', 'type info')
-
-
-    if (typeof arguments[2] == 'string') {
-      type = arguments[2];
-    } //  case toast('content info', 'position info', 'delay time', 'type info')
-
-
-    if (typeof arguments[3] == 'string') {
-      type = arguments[3];
-    }
-
-    if (typeof arguments[len - 1] == 'function') {
-      complete = arguments[len - 1];
-    }
-
+  show: function show(content, opts) {
     if (instance$1) {
       this.hide();
     }
 
+    var type = _typeof(content);
+
+    if (type === 'object') {
+      opts = content;
+      content = opts.content;
+    } else if (type == 'string' || type === 'number') {
+      opts = _objectSpread({}, opts, {
+        content: content
+      });
+    }
+
     instance$1 = new ToastClass({
       el: document.createElement('div'),
-      propsData: Object.assign({}, {
-        type: type,
-        content: content,
-        pos: pos,
-        delay: delay,
+      propsData: _objectSpread({
         isRemove: true,
         autoHide: true
       }, opts)
     });
     Vue.nextTick(function () {
-      vm = instance$1.$mount();
+      var vm = instance$1.$mount();
       document.body.appendChild(vm.$el);
-
-      if (complete) {
-        instance$1.$on('hide', complete);
-      }
-
       instance$1.show();
     });
     return instance$1;
   },
   hide: function hide() {
-    instance$1 && instance$1.hide();
-    instance$1.$off('hide');
-    instance$1 = null;
-    vm = null;
+    if (instance$1) {
+      instance$1.hide();
+      instance$1 = null;
+    }
   }
 });
 
@@ -1439,7 +1393,7 @@ var DialogClass = Vue.extend(Dialog);
  *
  */
 
-var Dialog$1 = Object.assign(Dialog, {
+var Dialog$1 = _extends(Dialog, {
   install: function install(vue) {
     vue.component(Dialog.name, Dialog);
   },
@@ -1460,7 +1414,7 @@ var Dialog$1 = Object.assign(Dialog, {
     opts = opts || {};
     var instance = new DialogClass({
       el: document.createElement('div'),
-      propsData: Object.assign({}, opts, {
+      propsData: _extends({}, opts, {
         isRemove: true
       })
     });
@@ -1572,7 +1526,7 @@ var AlertClass = Vue.extend(Alert);
  *
  */
 
-var Alert$1 = Object.assign(Alert, {
+var Alert$1 = _extends(Alert, {
   $type: 'alert',
   install: function install(vue) {
     vue.component(Alert.name, Alert);
@@ -1599,7 +1553,7 @@ var Alert$1 = Object.assign(Alert, {
     opts = opts || {};
     var instance = new AlertClass({
       el: document.createElement('div'),
-      propsData: Object.assign(opts, {
+      propsData: _extends(opts, {
         content: text,
         isRemove: true
       })
@@ -1732,7 +1686,7 @@ var ConfirmClass = Vue.extend(Confirm);
  *
  */
 
-var Confirm$1 = Object.assign(Confirm, {
+var Confirm$1 = _extends(Confirm, {
   $type: 'confirm',
   install: function install(vue) {
     vue.component(Confirm.name, Confirm);
@@ -1775,7 +1729,7 @@ var Confirm$1 = Object.assign(Confirm, {
 
     var instance = new ConfirmClass({
       el: document.createElement('div'),
-      propsData: Object.assign(opts, {
+      propsData: _extends(opts, {
         content: text,
         callback: callback,
         isRemove: true
@@ -1939,7 +1893,7 @@ var PromptClass = Vue.extend(Prompt);
  *
  */
 
-var Prompt$1 = Object.assign(Prompt, {
+var Prompt$1 = _extends(Prompt, {
   $type: 'prompt',
   install: function install(vue) {
     vue.component(Prompt.name, Prompt);
@@ -1982,7 +1936,7 @@ var Prompt$1 = Object.assign(Prompt, {
 
     var instance = new PromptClass({
       el: document.createElement('div'),
-      propsData: Object.assign(opts, {
+      propsData: _extends(opts, {
         placeholder: text,
         callback: callback,
         isRemove: true
@@ -3817,7 +3771,7 @@ var tlInstance, tlVm;
  *  });
  **/
 
-var ToastLoading$1 = Object.assign(ToastLoading, {
+var ToastLoading$1 = _extends(ToastLoading, {
   install: function install(vue) {
     vue.component('busy-toast-loading', ToastLoading);
   },
@@ -4051,7 +4005,7 @@ var Loading = normalizeComponent_1({
 }, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
 
 var LoadingClass = Vue.extend(Loading);
-var instance$2, vm$1;
+var instance$2, vm;
 
 Loading.install = function (vue) {
   vue.component(Loading.name, Loading);
@@ -4066,14 +4020,14 @@ Loading.show = function (opts) {
 
   instance$2 = new LoadingClass({
     el: document.createElement('div'),
-    propsData: Object.assign({}, {
+    propsData: _extends({}, {
       fullPage: true,
       isRemove: true
     }, opts)
   });
   Vue.nextTick(function () {
-    vm$1 = instance$2.$mount();
-    document.body.appendChild(vm$1.$el);
+    vm = instance$2.$mount();
+    document.body.appendChild(vm.$el);
     instance$2.show();
   });
 };
@@ -4083,7 +4037,7 @@ Loading.hide = function () {
     instance$2.hide();
   }
 
-  vm$1 = null;
+  vm = null;
   instance$2 = null;
 };
 
@@ -4732,455 +4686,6 @@ Checkbox.install = function (vue) {
   vue.component(Checkbox.name, Checkbox);
 };
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-var alloytouch = createCommonjsModule(function (module, exports) {
-
-  (function () {
-
-    if (!Date.now) Date.now = function () {
-      return new Date().getTime();
-    };
-    var vendors = ['webkit', 'moz'];
-
-    for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
-      var vp = vendors[i];
-      window.requestAnimationFrame = window[vp + 'RequestAnimationFrame'];
-      window.cancelAnimationFrame = window[vp + 'CancelAnimationFrame'] || window[vp + 'CancelRequestAnimationFrame'];
-    }
-
-    if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) // iOS6 is buggy
-    || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
-      var lastTime = 0;
-
-      window.requestAnimationFrame = function (callback) {
-        var now = Date.now();
-        var nextTime = Math.max(lastTime + 16, now);
-        return setTimeout(function () {
-          callback(lastTime = nextTime);
-        }, nextTime - now);
-      };
-
-      window.cancelAnimationFrame = clearTimeout;
-    }
-  })();
-
-  (function () {
-    function bind(element, type, callback) {
-      element.addEventListener(type, callback, false);
-    }
-
-    function ease(x) {
-      return Math.sqrt(1 - Math.pow(x - 1, 2));
-    }
-
-    function reverseEase(y) {
-      return 1 - Math.sqrt(1 - y * y);
-    }
-
-    function preventDefaultTest(el, exceptions) {
-      for (var i in exceptions) {
-        if (exceptions[i].test(el[i])) {
-          return true;
-        }
-      }
-
-      return false;
-    }
-
-    var AlloyTouch = function AlloyTouch(option) {
-      this.reverse = this._getValue(option.reverse, false);
-      this.element = typeof option.touch === "string" ? document.querySelector(option.touch) : option.touch;
-      this.target = this._getValue(option.target, this.element);
-
-      var followersArr = this._getValue(option.followers, []);
-
-      this.followers = followersArr.map(function (follower) {
-        return {
-          element: typeof follower.element === 'string' ? document.querySelector(follower.element) : follower.element,
-          offset: follower.offset
-        };
-      });
-      this.vertical = this._getValue(option.vertical, true);
-      this.property = option.property;
-      this.tickID = 0;
-      this.initialValue = this._getValue(option.initialValue, this.target[this.property]);
-      this.target[this.property] = this.initialValue;
-      this.followers.forEach(function (follower) {
-        follower.element[this.property] = this.initialValue + follower.offset;
-      }.bind(this));
-      this.fixed = this._getValue(option.fixed, false);
-      this.sensitivity = this._getValue(option.sensitivity, 1);
-      this.moveFactor = this._getValue(option.moveFactor, 1);
-      this.factor = this._getValue(option.factor, 1);
-      this.outFactor = this._getValue(option.outFactor, 0.3);
-
-      this.min = function () {
-        if (option.min === undefined || option.min === null) return void 0;
-
-        if (typeof option.min === 'function') {
-          return option.min();
-        } else {
-          return option.min;
-        }
-      };
-
-      this.max = function () {
-        if (option.max === undefined || option.max === null) return void 0;
-
-        if (typeof option.max === 'function') {
-          return option.max();
-        } else {
-          return option.max;
-        }
-      };
-
-      this.deceleration = this._getValue(option.deceleration, 0.0006);
-      this.maxRegion = this._getValue(option.maxRegion, 600);
-      this.springMaxRegion = this._getValue(option.springMaxRegion, 60);
-      this.maxSpeed = option.maxSpeed;
-      this.hasMaxSpeed = !(this.maxSpeed === void 0);
-      this.lockDirection = this._getValue(option.lockDirection, true);
-
-      var noop = function noop() {};
-
-      var alwaysTrue = function alwaysTrue() {
-        return true;
-      };
-
-      this.change = option.change || noop;
-      this.touchEnd = option.touchEnd || noop;
-      this.touchStart = option.touchStart || noop;
-      this.touchMove = option.touchMove || noop;
-      this.touchCancel = option.touchCancel || noop;
-      this.reboundEnd = option.reboundEnd || noop;
-      this.animationEnd = option.animationEnd || noop;
-      this.correctionEnd = option.correctionEnd || noop;
-      this.tap = option.tap || noop;
-      this.pressMove = option.pressMove || noop;
-      this.shouldRebound = option.shouldRebound || alwaysTrue;
-      this.preventDefault = this._getValue(option.preventDefault, true);
-      this.preventDefaultException = {
-        tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/
-      };
-      this.hasMin = !(this.min() === void 0);
-      this.hasMax = !(this.max() === void 0);
-      this.isTouchStart = false;
-      this.step = option.step;
-      this.inertia = this._getValue(option.inertia, true);
-
-      this._calculateIndex();
-
-      this.eventTarget = window;
-
-      if (option.bindSelf) {
-        this.eventTarget = this.element;
-      }
-
-      this._moveHandler = this._move.bind(this);
-      bind(this.element, "touchstart", this._start.bind(this));
-      bind(this.eventTarget, "touchend", this._end.bind(this));
-      bind(this.eventTarget, "touchcancel", this._cancel.bind(this));
-      this.eventTarget.addEventListener("touchmove", this._moveHandler, {
-        passive: false,
-        capture: false
-      });
-      this.x1 = this.x2 = this.y1 = this.y2 = null;
-    };
-
-    AlloyTouch.prototype = {
-      isAtMax: function isAtMax() {
-        return this.hasMax && this.target[this.property] >= this.max();
-      },
-      isAtMin: function isAtMin() {
-        return this.hasMin && this.target[this.property] <= this.min();
-      },
-      _getValue: function _getValue(obj, defaultValue) {
-        return obj === void 0 ? defaultValue : obj;
-      },
-      stop: function stop() {
-        cancelAnimationFrame(this.tickID);
-
-        this._calculateIndex();
-      },
-      _start: function _start(evt) {
-        this.isTouchStart = true;
-        this.touchStart.call(this, evt, this.target[this.property]);
-        cancelAnimationFrame(this.tickID);
-
-        this._calculateIndex();
-
-        this.startTime = new Date().getTime();
-        this.x1 = this.preX = evt.touches[0].pageX;
-        this.y1 = this.preY = evt.touches[0].pageY;
-        this.start = this.vertical ? this.preY : this.preX;
-        this._firstTouchMove = true;
-        this._preventMove = false;
-      },
-      _move: function _move(evt) {
-        if (this.isTouchStart) {
-          var len = evt.touches.length,
-              currentX = evt.touches[0].pageX,
-              currentY = evt.touches[0].pageY;
-
-          if (this._firstTouchMove && this.lockDirection) {
-            var dDis = Math.abs(currentX - this.x1) - Math.abs(currentY - this.y1);
-
-            if (dDis > 0 && this.vertical) {
-              this._preventMove = true;
-            } else if (dDis < 0 && !this.vertical) {
-              this._preventMove = true;
-            }
-
-            this._firstTouchMove = false;
-          }
-
-          if (!this._preventMove) {
-            var d = (this.vertical ? currentY - this.preY : currentX - this.preX) * this.sensitivity;
-            var f = this.moveFactor;
-
-            if (this.isAtMax() && (this.reverse ? -d : d) > 0) {
-              f = this.outFactor;
-            } else if (this.isAtMin() && (this.reverse ? -d : d) < 0) {
-              f = this.outFactor;
-            }
-
-            d *= f;
-            this.preX = currentX;
-            this.preY = currentY;
-
-            if (!this.fixed) {
-              var detalD = this.reverse ? -d : d;
-              this.target[this.property] += detalD;
-              this.followers.forEach(function (follower) {
-                follower.element[this.property] += detalD;
-              }.bind(this));
-            }
-
-            this.change.call(this, this.target[this.property]);
-            var timestamp = new Date().getTime();
-
-            if (timestamp - this.startTime > 300) {
-              this.startTime = timestamp;
-              this.start = this.vertical ? this.preY : this.preX;
-            }
-
-            this.touchMove.call(this, evt, this.target[this.property]);
-          }
-
-          if (this.preventDefault && !preventDefaultTest(evt.target, this.preventDefaultException)) {
-            evt.preventDefault();
-          }
-
-          if (len === 1) {
-            if (this.x2 !== null) {
-              evt.deltaX = currentX - this.x2;
-              evt.deltaY = currentY - this.y2;
-            } else {
-              evt.deltaX = 0;
-              evt.deltaY = 0;
-            }
-
-            this.pressMove.call(this, evt, this.target[this.property]);
-          }
-
-          this.x2 = currentX;
-          this.y2 = currentY;
-        }
-      },
-      _cancel: function _cancel(evt) {
-        var current = this.target[this.property];
-        this.touchCancel.call(this, evt, current);
-
-        this._end(evt);
-      },
-      to: function to(v, time, user_ease, callback) {
-        this._to(v, this._getValue(time, 600), user_ease || ease, this.change, function (value) {
-          this._calculateIndex();
-
-          this.reboundEnd.call(this, value);
-          this.animationEnd.call(this, value);
-          callback && callback.call(this, value);
-        }.bind(this));
-      },
-      _calculateIndex: function _calculateIndex() {
-        if (this.hasMax && this.hasMin) {
-          this.currentPage = Math.round((this.max() - this.target[this.property]) / this.step);
-        }
-      },
-      _end: function _end(evt) {
-        if (this.isTouchStart) {
-          this.isTouchStart = false;
-          var self = this,
-              current = this.target[this.property],
-              triggerTap = Math.abs(evt.changedTouches[0].pageX - this.x1) < 30 && Math.abs(evt.changedTouches[0].pageY - this.y1) < 30;
-
-          if (triggerTap) {
-            this.tap.call(this, evt, current);
-          }
-
-          if (this.touchEnd.call(this, evt, current, this.currentPage) === false) return;
-
-          if (this.hasMax && current > this.max()) {
-            if (!this.shouldRebound(current)) {
-              return;
-            }
-
-            this._to(this.max(), 200, ease, this.change, function (value) {
-              this.reboundEnd.call(this, value);
-              this.animationEnd.call(this, value);
-            }.bind(this));
-          } else if (this.hasMin && current < this.min()) {
-            if (!this.shouldRebound(current)) {
-              return;
-            }
-
-            this._to(this.min(), 200, ease, this.change, function (value) {
-              this.reboundEnd.call(this, value);
-              this.animationEnd.call(this, value);
-            }.bind(this));
-          } else if (this.inertia && !triggerTap && !this._preventMove && !this.fixed) {
-            var dt = new Date().getTime() - this.startTime;
-
-            if (dt < 300) {
-              var distance = ((this.vertical ? evt.changedTouches[0].pageY : evt.changedTouches[0].pageX) - this.start) * this.sensitivity,
-                  speed = Math.abs(distance) / dt,
-                  actualSpeed = this.factor * speed;
-
-              if (this.hasMaxSpeed && actualSpeed > this.maxSpeed) {
-                actualSpeed = this.maxSpeed;
-              }
-
-              var direction = distance < 0 ? -1 : 1;
-
-              if (this.reverse) {
-                direction = -direction;
-              }
-
-              var destination = current + actualSpeed * actualSpeed / (2 * this.deceleration) * direction;
-              var tRatio = 1;
-
-              if (destination < this.min()) {
-                if (destination < this.min() - this.maxRegion) {
-                  tRatio = reverseEase((current - this.min() + this.springMaxRegion) / (current - destination));
-                  destination = this.min() - this.springMaxRegion;
-                } else {
-                  tRatio = reverseEase((current - this.min() + this.springMaxRegion * (this.min() - destination) / this.maxRegion) / (current - destination));
-                  destination = this.min() - this.springMaxRegion * (this.min() - destination) / this.maxRegion;
-                }
-              } else if (destination > this.max()) {
-                if (destination > this.max() + this.maxRegion) {
-                  tRatio = reverseEase((this.max() + this.springMaxRegion - current) / (destination - current));
-                  destination = this.max() + this.springMaxRegion;
-                } else {
-                  tRatio = reverseEase((this.max() + this.springMaxRegion * (destination - this.max()) / this.maxRegion - current) / (destination - current));
-                  destination = this.max() + this.springMaxRegion * (destination - this.max()) / this.maxRegion;
-                }
-              }
-
-              var duration = Math.round(speed / self.deceleration) * tRatio;
-
-              self._to(Math.round(destination), duration, ease, self.change, function (value) {
-                if (self.hasMax && self.target[self.property] > self.max()) {
-                  if (!this.shouldRebound(self.target[self.property])) {
-                    return;
-                  }
-
-                  cancelAnimationFrame(self.tickID);
-
-                  self._to(self.max(), 600, ease, self.change, self.animationEnd);
-                } else if (self.hasMin && self.target[self.property] < self.min()) {
-                  if (!this.shouldRebound(self.target[self.property])) {
-                    return;
-                  }
-
-                  cancelAnimationFrame(self.tickID);
-
-                  self._to(self.min(), 600, ease, self.change, self.animationEnd);
-                } else {
-                  if (self.step) {
-                    self._correction();
-                  } else {
-                    self.animationEnd.call(self, value);
-                  }
-                }
-
-                self.change.call(this, value);
-              });
-            } else {
-              self._correction();
-            }
-          } else {
-            self._correction();
-          }
-        }
-
-        this.x1 = this.x2 = this.y1 = this.y2 = null;
-      },
-      _to: function _to(value, time, ease, onChange, onEnd) {
-        var el = this.target,
-            property = this.property;
-        var followers = this.followers;
-        var current = el[property];
-        var dv = value - current;
-        var beginTime = +new Date();
-        var self = this;
-
-        var toTick = function toTick() {
-          var dt = +new Date() - beginTime;
-
-          if (dt >= time) {
-            el[property] = value;
-            onChange && onChange.call(self, value);
-            onEnd && onEnd.call(self, value);
-            return;
-          }
-
-          var nextPosition = dv * ease(dt / time) + current;
-          el[property] = nextPosition;
-          followers.forEach(function (follower) {
-            follower.element[property] = nextPosition + follower.offset;
-          });
-          self.tickID = requestAnimationFrame(toTick);
-          onChange && onChange.call(self, el[property]);
-        };
-
-        toTick();
-      },
-      _correction: function _correction() {
-        if (this.step === void 0) return;
-        var el = this.target,
-            property = this.property;
-        var value = el[property];
-        var rpt = Math.floor(Math.abs(value / this.step));
-        var dy = value % this.step;
-
-        if (Math.abs(dy) > this.step / 2) {
-          this._to((value < 0 ? -1 : 1) * (rpt + 1) * this.step, 400, ease, this.change, function (value) {
-            this._calculateIndex();
-
-            this.correctionEnd.call(this, value);
-            this.animationEnd.call(this, value);
-          }.bind(this));
-        } else {
-          this._to((value < 0 ? -1 : 1) * rpt * this.step, 400, ease, this.change, function (value) {
-            this._calculateIndex();
-
-            this.correctionEnd.call(this, value);
-            this.animationEnd.call(this, value);
-          }.bind(this));
-        }
-      }
-    };
-
-    {
-      module.exports = AlloyTouch;
-    }
-  })();
-});
-
 var script$l = {
   name: 'busy-picker',
   props: {
@@ -5194,23 +4699,7 @@ var script$l = {
     };
   },
   components: _defineProperty({}, Mask.name, Mask),
-  mounted: function mounted() {
-    var at = new alloytouch({
-      touch: "#wrapper",
-      //反馈触摸的dom
-      vertical: true,
-      //不必需，默认是true代表监听竖直方向touch
-      target: document.getElementById('aa'),
-      //运动的对象
-      property: "translateY",
-      //被滚动的属性
-      step: 5,
-      animationEnd: function animationEnd(value) {//console.log(value);
-      },
-      pressMove: function pressMove(evt, value) {//console.log(evt.deltaX + "_" + evt.deltaY + "__" + value);
-      }
-    });
-  }
+  mounted: function mounted() {}
 };
 
 /* script */
@@ -5269,7 +4758,7 @@ var __vue_staticRenderFns__$l = [];
 var __vue_inject_styles__$l = undefined;
 /* scoped */
 
-var __vue_scope_id__$l = "data-v-c03c3f6e";
+var __vue_scope_id__$l = "data-v-8947c9f8";
 /* module identifier */
 
 var __vue_module_identifier__$l = undefined;
@@ -5509,7 +4998,7 @@ var MessageClass = Vue.extend(Message);
  * 
  */
 
-var Message$1 = Object.assign(Message, {
+var Message$1 = _extends(Message, {
   install: function install(vue) {
     vue.component(Message.name, Message);
   },
@@ -5529,7 +5018,7 @@ var Message$1 = Object.assign(Message, {
     opts = opts || {};
     var msg = new MessageClass({
       el: document.createElement('div'),
-      propsData: Object.assign({}, {
+      propsData: _extends({}, {
         isRemove: true
       }, opts)
     });
@@ -5554,7 +5043,7 @@ var Message$1 = Object.assign(Message, {
    * 
    */
   info: function info(text, opts) {
-    return this.show(Object.assign(opts || {}, {
+    return this.show(_extends(opts || {}, {
       type: 'info',
       text: text
     }));
@@ -5573,7 +5062,7 @@ var Message$1 = Object.assign(Message, {
    * 
    */
   success: function success(text, opts) {
-    return this.show(Object.assign(opts || {}, {
+    return this.show(_extends(opts || {}, {
       type: 'success',
       text: text
     }));
@@ -5592,7 +5081,7 @@ var Message$1 = Object.assign(Message, {
    * 
    */
   warning: function warning(text, opts) {
-    return this.show(Object.assign(opts || {}, {
+    return this.show(_extends(opts || {}, {
       type: 'warning',
       text: text
     }));
@@ -5611,7 +5100,7 @@ var Message$1 = Object.assign(Message, {
    * 
    */
   error: function error(text, opts) {
-    return this.show(Object.assign(opts || {}, {
+    return this.show(_extends(opts || {}, {
       type: 'error',
       text: text
     }));
@@ -7257,7 +6746,7 @@ var ActionSheet = normalizeComponent_1({
   staticRenderFns: __vue_staticRenderFns__$v
 }, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
 
-var ActionSheetClass, instance$3, vm$2;
+var ActionSheetClass, instance$3, vm$1;
 /**
  * @busyui/action-sheet
  * @module ActionSheet
@@ -7359,13 +6848,13 @@ ActionSheet.show = function (opts) {
 
   instance$3 = new ActionSheetClass({
     el: document.createElement('div'),
-    propsData: Object.assign(opts || {}, {
+    propsData: _extends(opts || {}, {
       isRemove: true
     })
   });
   instance$3.$nextTick(function () {
-    vm$2 = instance$3.$mount();
-    document.body.appendChild(vm$2.$el);
+    vm$1 = instance$3.$mount();
+    document.body.appendChild(vm$1.$el);
     instance$3.show();
   });
   return instance$3;
@@ -7384,7 +6873,7 @@ ActionSheet.show = function (opts) {
 ActionSheet.hide = function () {
   if (instance$3) {
     instance$3.hide();
-    vm$2 = null;
+    vm$1 = null;
     instance$3 = null;
   }
 };
@@ -8468,7 +7957,7 @@ var script$B = {
   },
   watch: {
     icon: function icon(val) {
-      this._icon = Object.assign(iconProps, val || {});
+      this._icon = _extends(iconProps, val || {});
     }
   },
   methods: {
@@ -8624,6 +8113,7 @@ var install = function install(vue) {
   vue.use(Border);
   vue.use(ToastComponent);
   vue.use(FlexBox);
+  vue.use(FlexItem);
   vue.use(Icon);
   vue.use(Button);
   vue.use(Checkbox);
@@ -8656,6 +8146,7 @@ var Busyui = {
   Loading: Loading,
   Icons: Icon,
   FlexBox: FlexBox,
+  FlexItem: FlexItem,
   Button: Button,
   Checkbox: Checkbox,
   Picker: Picker,
@@ -8677,9 +8168,8 @@ var Busyui = {
 };
 
 if (window && window.Vue) {
-  window.Vue.use(Busy);
+  window.Vue.use(Busyui);
 }
-module.exports = Busyui;
 
 exports.Border = Border;
 exports.install = install;
@@ -8688,6 +8178,7 @@ exports.ToastLoading = ToastLoading$1;
 exports.Loading = Loading;
 exports.Icons = Icon;
 exports.FlexBox = FlexBox;
+exports.FlexItem = FlexItem;
 exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.Picker = Picker;
@@ -8706,3 +8197,4 @@ exports.ListItem = ListItem;
 exports.Input = Input;
 exports.Switch = Switch;
 exports.Busyjs = Busyjs;
+exports.default = Busyui;

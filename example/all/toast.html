@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="../../dist/busyui.css" />
     <link rel="stylesheet" href="../index.css">
     <script src="../vue.js"></script>
-    <script src="../../dist/busyui.js"></script>
+    <script src="../../dist/busyui.iife.js"></script>
 </head>
 
 <body>
     <section class="wrap">
         <section id="app" class="app">
             <busy-flexbox direction="column">
-                <busy-button type="primary" size="large" @click="showToast">动态创建</busy-button>
-                <busy-button type="primary" class="mt-12" size="large" @click="hideToast">动态隐藏</busy-button>
-                <busy-button type="primary" class="mt-12" size="large" @click="showTagToast">Tag创建</busy-button>
+                <busy-button type="primary" @click="showToast">动态创建</busy-button>
+                <busy-button type="primary" class="mt-12" @click="hideToast">动态隐藏</busy-button>
+                <busy-button type="primary" class="mt-12" @click="showTagToast">Tag创建</busy-button>
                 <busy-toast :auto-hide="true" @visiable-change="visiableChange" pos="bottom" :is-show="isShow" content="aa"></busy-toast>
             </busy-flexbox>
 
@@ -34,15 +34,18 @@
             },
             methods: {
                 showToast: function () {
-                    Busyui.Busyuijs.Toast.show('测试内容', {
+                    var toast = Busyui.Toast.show('测试内容测试内容', {
                         pos: 'top',
-                        delay: 3000
-                    }).then(toast => {
-                        console.log('toast hide')
+                        delay: 3000,
+                        iconType: 'info'
+                    })
+
+                    toast.$on('after-leave', () => {
+                        console.log('after leave event')
                     })
                 },
                 hideToast() {
-                    Busyui.Busyuijs.Toast.hide()
+                    Busyui.Toast.hide()
                 },
                 showTagToast: function () {
                     this.isShow = true;

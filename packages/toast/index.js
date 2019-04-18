@@ -13,37 +13,18 @@ var ToastClass = Vue.extend(Toast),
  * @param {String} content - 显示内容
  * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
  * @param {Number} delay=2000 - 显示时间，单位毫秒
- * @param {String} type - icon类型
+ * @param {String} iconType - icon类型
  * @param {Boolean} isShow=false - 是否显示
  * @param {Boolean} isRemove=false - 是否隐藏移除dom
  * @param {Boolean} autoHide=true - 是否自动隐藏
  * @param {Number} iconHeight=28 - 设置图标的高度
  * @param {Number} iconWidth=28 - 设置图标的宽度
- * @param {Number} color=#fff - 设置图标的颜色
  * @param {Function} hide - 隐藏
  * @param {Function} show - 显示
  * @param {Event} hide - 隐藏时触发
  * @param {Event} show - 显示时触发
  * @param {Event} visiable-change - 显示,隐藏都会触发
  * @param {Event} after-leave - 隐藏动画结束时触发
- * 
- * @example
- *  // use it in module tools
- *   import Toast from '@busyui/toast';
- *   1, Toast.show('内容')
- *   2, Toast.show('内容', 5000)
- *   3, Toast.show('内容', 'top', 5000)
- *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
- * 
- *   // use it in html
- *   <script src="busyui.js"><\/script>
- *   <link href="busyui.css" rel="stylesheet" />
- * 
- *   1, Busy.Toast.show('内容')
- *   2, Busy.Toast.show('内容', 5000)
- *   3, Busy.Toast.show('内容', 'top', 5000)
- *   4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
- * 
  * 
  */
 
@@ -61,75 +42,45 @@ export default Object.assign(Toast, {
      * Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
      * 
      */
-    show(opts) {
-        opts = opts || {};
-
-        let content, type, delay, pos, complete, len = arguments.length;
-        // case toast('content info')
-        if (typeof opts == 'string' || typeof opts == 'number' || Array.isArray(opts)) {
-            content = opts;
-        }
-
-        // case toast('content info','position info')
-        if (typeof arguments[1] == 'string') {
-            pos = arguments[1];
-        }
-
-        // case toast('content info','delay time')
-        if (typeof arguments[1] == 'number') {
-            delay = arguments[1];
-        }
-
-        //  case toast('content info', 'position info', 'delay time')
-        if (typeof arguments[2] == 'number') {
-            delay = arguments[2];
-        }
-
-        //  case toast('content info', 'position info', 'type info')
-        if (typeof arguments[2] == 'string') {
-            type = arguments[2];
-        }
-
-        //  case toast('content info', 'position info', 'delay time', 'type info')
-        if (typeof arguments[3] == 'string') {
-            type = arguments[3];
-        }
-
-        if (typeof arguments[len - 1] == 'function') {
-            complete = arguments[len - 1]
-        }
-
+    show(content, opts) {
         if (instance) {
-            this.hide();
+            this.hide()
+        }
+
+        let type = typeof content
+
+        if (type === 'object') {
+            opts = content
+            content = opts.content
+        } else if (type == 'string' || type === 'number') {
+            opts = {
+                ...opts,
+                content
+            }
         }
 
         instance = new ToastClass({
             el: document.createElement('div'),
-            propsData: Object.assign({}, {
-                type: type,
-                content: content,
-                pos: pos,
-                delay: delay,
+            propsData: {
                 isRemove: true,
-                autoHide: true
-            }, opts)
+                autoHide: true,
+                ...opts
+            }
         });
 
         Vue.nextTick(() => {
-            vm = instance.$mount();
+            var vm = instance.$mount();
             document.body.appendChild(vm.$el);
-            if (complete) {
-                instance.$on('hide', complete)
-            }
             instance.show();
-        });
+        })
 
-        return instance;
+        return instance
     },
     hide() {
-        instance && instance.hide();
-        instance.$off('hide')
-        instance = null;
+        if (instance) {
+            instance.hide();
+            instance = null
+        }
         vm = null;
     }
 });

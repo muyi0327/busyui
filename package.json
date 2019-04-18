@@ -7,7 +7,9 @@
     },
     "homepage": "https://github.com/muyi0327/busyui",
     "directories": {
-        "test": "karma start"
+        "doc": "docs",
+        "example": "example",
+        "test": "test"
     },
     "scripts": {
         "test": "karma start",
@@ -31,6 +33,7 @@
     "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
     "dependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
         "vue": "^2.6.9"
     },
     "devDependencies": {
@@ -40,6 +43,7 @@
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@babel/plugin-transform-async-to-generator": "^7.3.4",
         "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+        "@babel/plugin-transform-object-assign": "^7.2.0",
         "@babel/plugin-transform-runtime": "^7.4.0",
         "@babel/preset-env": "^7.3.4",
         "@babel/preset-flow": "^7.0.0",
@@ -125,5 +129,5 @@
         "vue-template-compiler": "^2.6.9",
         "webpack": "^4.29.6"
     },
-    "version": "1.0.13"
+    "version": "1.0.16"
 }

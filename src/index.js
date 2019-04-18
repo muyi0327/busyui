@@ -4,7 +4,10 @@ import Busyjs from '../packages/busyjs';
 import ToastLoading from '../packages/toast-loading/index.js';
 import Loading from '../packages/loading/index.js';
 import Icons from '../packages/icon/index.js';
-import FlexBox from '../packages/flexbox/index.js';
+import {
+    FlexBox,
+    FlexItem
+} from '../packages/flexbox/index.js';
 import Button from '../packages/button/index.js';
 import Checkbox from '../packages/checkbox/index.js';
 import Picker from '../packages/picker/index.js';
@@ -33,6 +36,7 @@ var install = function (vue) {
     vue.use(Border);
     vue.use(Toast);
     vue.use(FlexBox);
+    vue.use(FlexItem);
     vue.use(Icons);
     vue.use(Button);
     vue.use(Checkbox);
@@ -65,6 +69,7 @@ var Busyui = {
     Loading,
     Icons,
     FlexBox,
+    FlexItem,
     Button,
     Checkbox,
     Picker,
@@ -86,7 +91,7 @@ var Busyui = {
 }
 
 if (window && window.Vue) {
-    window.Vue.use(Busy);
+    window.Vue.use(Busyui);
 }
 
 export {
@@ -97,6 +102,7 @@ export {
     Loading,
     Icons,
     FlexBox,
+    FlexItem,
     Button,
     Checkbox,
     Picker,
@@ -117,4 +123,4 @@ export {
     Busyjs
 }
 
-module.exports = Busyui;
+export default Busyui;

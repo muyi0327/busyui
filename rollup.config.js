@@ -104,8 +104,13 @@ export default {
                         "browsers": [">0.25%", "not ie 11", "not op_mini all"]
                     },
                     useBuiltIns: false,
+                    // 强制编译到es5
                     forceAllTransforms: true
                 }]
+            ],
+            plugins: [
+                '@babel/plugin-transform-object-assign',
+                '@babel/plugin-proposal-class-properties'
             ],
             exclude: '/node_modules/**',
             include: ['./src/**', 'packages/**']

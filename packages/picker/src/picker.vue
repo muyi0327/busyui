@@ -118,7 +118,6 @@
 
 
 <script>
-    import AlloyTouch from './alloytouch.js'
     import Mask from '../../mask'
     import { FlexBox, FlexItem } from '../../flexbox'
 
@@ -138,19 +137,7 @@
             [Mask.name]: Mask
         },
         mounted() {
-            var at = new AlloyTouch({
-                touch: "#wrapper",//反馈触摸的dom
-                vertical: true,//不必需，默认是true代表监听竖直方向touch
-                target: document.getElementById('aa'), //运动的对象
-                property: "translateY",  //被滚动的属性
-                step: 5,
-                animationEnd: function (value) {
-                    //console.log(value);
-                },
-                pressMove: function (evt, value) {
-                    //console.log(evt.deltaX + "_" + evt.deltaY + "__" + value);
-                }
-            })
+
         }
     }
 </script>

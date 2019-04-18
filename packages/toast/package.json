@@ -8,7 +8,10 @@
     "publishConfig": {
         "access": "public"
     },
-    "repository": "https://github.com/muyi0327/busyui/tree/master/packages/toast",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/muyi0327/busyui/tree/master/packages/toast"
+    },
     "keywords": [
         "busyui",
         "vue",
@@ -21,5 +24,5 @@
         "url": "https://github.com/muyi0327/busyui/issues"
     },
     "homepage": "https://github.com/muyi0327/busyui#readme",
-    "version": "1.0.13"
+    "version": "1.0.16"
 }

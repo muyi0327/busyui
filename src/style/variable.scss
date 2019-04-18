@@ -48,8 +48,8 @@ $dialog-default-button-font-size: 17px !default;
 $dialog-default-content-text-color: #030303 !default;
 $dialog-default-content-font-size: 13px !default;
 $dialog-default-button-height: 44px !default;
-$dialog-dfault-width: 240 !default;
-$dialog-dfault-height: 160 !default;
+$dialog-dfault-width: 240px !default;
+$dialog-dfault-height: 160px !default;
 
 
 /** Swipe Component **/
@@ -59,4 +59,8 @@ $swipe-normal-dot-color: #d9d9d9 !default;
 /** progress Component **/
 $progress-background-color: #d9d9d9 !default;
 $progress-line-color: #ff6331 !default;
-$progress-line-width: 6 !default;
+$progress-line-width: 6px !default;
+
+/*** toast component **/
+
+$toast-default-font-size:16px !default;
