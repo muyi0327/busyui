@@ -1,4 +1,4 @@
-# Busy
+# Busyui
 基于vue2.0开发的一套，手机端组件库
 
 ## 准备工作
@@ -9,16 +9,16 @@
 
 ## 快速上手
     import Vue from 'vue';
-    import Busy from 'busyui';
+    import Busyui from 'busyui';
 
-    Vue.use(Busy);
-
-    // or
-    <script src="node_modules/busyui/dist/busy.js"></sciprt>
-    <script src="node_modules/busyui/dist/busy.css"></sciprt>
+    Vue.use(Busyui);
 
     // or
-    import Icon from 'busyui/packages/icon';
+    <script src="node_modules/busyui/dist/busyui.js"></sciprt>
+    <script src="node_modules/busyui/dist/busyui.css"></sciprt>
+
+    // or
+    import {Icon} from 'busyui';
     Vue.use(Icon);
 
     <busy-icon fill="orange"></busy-icon>
