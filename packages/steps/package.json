@@ -5,10 +5,10 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/muyi0327/busyui.git"
+    "publishConfig": {
+        "access": "public"
     },
+    "repository": "https://github.com/muyi0327/busyui/tree/master/packages/steps",
     "keywords": [
         "busyui",
         "vue",

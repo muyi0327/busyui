@@ -13,10 +13,10 @@
     ],
     "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/muyi0327/busyui.git"
+    "publishConfig": {
+        "access": "public"
     },
+    "repository": "https://github.com/muyi0327/busyui/tree/master/packages/loadmore",
     "bugs": {
         "url": "https://github.com/muyi0327/busyui/issues"
     },
