@@ -24,7 +24,7 @@ import {
 
 let buildTasks = [];
 let env = process.env.NODE_ENV;
-let name = 'busy'
+let name = 'busyui'
 let dist = './dist'
 
 gulp.task('clear', (cb) => {
@@ -32,7 +32,7 @@ gulp.task('clear', (cb) => {
     cb()
 });
 
-// 打包完整 busy.js 和 busy.css
+// 打包完整 busyui.js 和 busyui.css
 gulp.task('build-dev', series('clear', async function () {
     console.log('build dev...........');
     delete rollupConfig.output
@@ -57,7 +57,7 @@ gulp.task('build-dev', series('clear', async function () {
         await bundle.write({
             file: fileName,
             format: t,
-            name: 'Busy',
+            name: 'Busyui',
             exports: 'named',
             sourceMap: true,
             globals: {
@@ -69,7 +69,7 @@ gulp.task('build-dev', series('clear', async function () {
     }
 }))
 
-// 压缩 busy.js 到 busy.min.js
+// 压缩 busyui.js 到 busyui.min.js
 gulp.task('compress', series('build-dev', () => {
     return gulp.src([`${dist}/${name}.js`, `${dist}/${name}.commonjs.js`, `${dist}/${name}.iife.js`])
         .pipe(uglify({
@@ -97,24 +97,15 @@ gulp.task('cssmin', () => {
 
 // 生成文档
 gulp.task('api', (cb) => {
-    var output = jdtomk.renderSync({
+    jdtomk.render({
         files: './packages/**/*.{vue,js}',
         configure: './jsdoc.conf.json',
-        'module-index-format': 'grouped'
-    })
-
-
-    jdtomk.getJsdocData({
-        files: './packages/**/*.{vue,js}',
-        configure: './jsdoc.conf.json',
+        'module-index-format': 'table'
     }).then(rst => {
-        console.log(rst)
+        fs.writeFileSync('./docs/api.md', rst);
+        cb()
     })
-
-    fs.writeFileSync('./docs/api.md', output);
-
-    cb()
-});
+})
 
 buildTasks.push('build-dev');
 

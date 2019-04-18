@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui spinner demo</title>
-    <link rel="stylesheet" href="../../dist/busy.css" />
+    <link rel="stylesheet" href="../../dist/busyui.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/busy.js"></script>
+    <script src="../../dist/busyui.js"></script>
 
     <style>
         * {
@@ -85,7 +85,7 @@
                 methods: {
                     show: function () {
                         this.visiable = true;
-                        // Busy.Loading.show({
+                        // Busyui.Loading.show({
                         //     color: '#999',
                         //     spinnerWidth: 30,
                         //     spinnerHeight: 30,
@@ -97,15 +97,15 @@
                     },
                     hide: function () {
                         this.visiable = false;
-                        //Busy.Loading.show({direction: 'row'});
+                        //Busyui.Loading.show({direction: 'row'});
                     },
                     fullpage: function () {
                         this.visiable = true;
                         this.fullPage = true;
-                        //Busy.Loading.hide();
+                        //Busyui.Loading.hide();
                     },
                     create: function () {
-                        Busy.Loading.show({
+                        Busyui.Loading.show({
                             fullPage: true
                         })
                     }

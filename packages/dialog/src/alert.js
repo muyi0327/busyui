@@ -5,7 +5,7 @@ import Alert from './Alert.vue';
 const AlertClass = Vue.extend(Alert);
 
 /**
- * @busy/alert
+ * @busyui/alert
  * @module Alert
  * @see {@link ../example/all/dialog.html 实例}
  * @desc alert对话框组件
@@ -15,14 +15,14 @@ const AlertClass = Vue.extend(Alert);
  * 
  * @example
  * // use it in html
- * <script src="busy.min.js"><\/script>
- * <link rel="stylesheet" href="busy.min.css" />
+ * <script src="busyui.js"><\/script>
+ * <link rel="stylesheet" href="busyui.css" />
  * 
  * Busy.Alert.show('提交申请成功');
  *
  * // use it in webpack or browserify, rollup
- * import {Alert} from '@busy/dialog';
- * // var Aler = require('@busy/dialog/alert.js');
+ * import {Alert} from '@busyui/dialog';
+ * // var Aler = require('@busyui/dialog/alert.js');
  *
  * Alert.show('提交申请成功');
  *

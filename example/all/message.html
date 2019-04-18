@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui spinner demo</title>
-    <link rel="stylesheet" href="../../dist/busy.css" />
+    <link rel="stylesheet" href="../../dist/busyui.css" />
     <script src="../vue.js"></script>
-    <script src="../../dist/busy.js"></script>
+    <script src="../../dist/busyui.js"></script>
     <style>
         * {
             padding: 0;
@@ -63,17 +63,17 @@
                 el: '#app',
                 methods: {
                     showDefault: function () {
-                        //Busy.Message.info('普通信息提示');
+                        //Busyui.Message.info('普通信息提示');
                         this.$busy.Message.info('普通信息提示');
                     },
                     showSuccess: function () {
-                        Busy.Message.success('操作成功信息');
+                        Busyui.Message.success('操作成功信息');
                     },
                     showWarning: function () {
-                        Busy.Message.warning('警告信息');
+                        Busyui.Message.warning('警告信息');
                     },
                     showError: function () {
-                        Busy.Message.error('错误信息');
+                        Busyui.Message.error('错误信息');
                     }
                 }
             });

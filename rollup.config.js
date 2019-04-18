@@ -13,9 +13,9 @@ import pkg from './package.json'
 // 自定义样式
 import variables from './themes/variables.js'
 
-let name = 'busy'
-let globalName = 'Busy'
-let banner = `/**\n * Busy.js framework version ${pkg.version} \n **/`;
+let name = 'busyui'
+let globalName = 'Busyui'
+let banner = `/**\n * busyui.js framework version ${pkg.version} \n **/`;
 let dist = './dist'
 let src = './src'
 let destCss = `${dist}/${name}.css`

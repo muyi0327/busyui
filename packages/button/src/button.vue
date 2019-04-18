@@ -166,7 +166,7 @@
     }, 0);
 
     /**
-     * @busy/button
+     * @busyui/button
      * @module Button
      * @see {@link ../example/all/button.html 实例}
      * @desc 按钮组件 <busy-button />

@@ -80,7 +80,7 @@
 </template>
 <script>
     /**
-     * @busy/checkbox
+     * @busyui/checkbox
      * @desc 勾选框  <busy-checkbox />
      * @module Checkbox
      * @see {@link ../example/all/checkbox.html 实例}

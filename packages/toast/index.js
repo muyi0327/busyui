@@ -29,15 +29,15 @@ var ToastClass = Vue.extend(Toast),
  * 
  * @example
  *  // use it in module tools
- *   import Toast from '@busy/toast';
+ *   import Toast from '@busyui/toast';
  *   1, Toast.show('内容')
  *   2, Toast.show('内容', 5000)
  *   3, Toast.show('内容', 'top', 5000)
  *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
  * 
  *   // use it in html
- *   <script src="busy.min.js"><\/script>
- *   <link href="busy.min.css" rel="stylesheet" />
+ *   <script src="busyui.js"><\/script>
+ *   <link href="busyui.css" rel="stylesheet" />
  * 
  *   1, Busy.Toast.show('内容')
  *   2, Busy.Toast.show('内容', 5000)

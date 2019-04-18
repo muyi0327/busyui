@@ -4,7 +4,7 @@ import Message from './src/message.vue';
 const MessageClass = Vue.extend(Message);
 
 /**
- * @busy/message
+ * @busyui/message
  * @module Message
  * @see {@link ../example/all/message.html 实例}
  * @desc 浮层提示信息组件 <busy-meesage></busy-meesage>
@@ -17,14 +17,14 @@ const MessageClass = Vue.extend(Message);
  * @example
  * 
  *  // use it in module tools
- *  import Message from '@busy/message';
+ *  import Message from '@busyui/message';
  *  Message.show('有新信息了');
  *  Message.info('有新信息了');
  *  Message.success('信息提交成功');
  *  Message.warning('内容包含非法词');
  * 
  *  // use it in html
- *  <script src="busy.min.js"><\/script>
+ *  <script src="busyui.js"><\/script>
  *  <link rel="stylesheet" href="Busy.min.css">
  *  Busy.Message.show('有新信息了');
  *  Busy.Message.info('有新信息了');

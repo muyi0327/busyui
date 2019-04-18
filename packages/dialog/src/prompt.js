@@ -5,7 +5,7 @@ import Prompt from './prompt.vue';
 const PromptClass = Vue.extend(Prompt);
 
 /**
- * @busy/prompt
+ * @busyui/prompt
  * @module Prompt
  * @see {@link ../example/all/dialog.html 实例}
  * @desc prompt对话框组件
@@ -16,14 +16,14 @@ const PromptClass = Vue.extend(Prompt);
  * @example
  *
  * // use it in html
- * <script src="busy.min.js"><\/script>
- * <link rel="stylesheet" href="busy.min.css" />
+ * <script src="busyui.js"><\/script>
+ * <link rel="stylesheet" href="busyui.css" />
  * 
  * Busy.Prompt.show('请填写信息？', (val)=>{console.log(val)});
  * 
  * // use it in webpack or browserify, rollup
- * import {Prompt} from '@busy/dialog';
- * // var Prompt = require('@busy/dialog/prompt.js');
+ * import {Prompt} from '@busyui/dialog';
+ * // var Prompt = require('@busyui/dialog/prompt.js');
  *
  * Prompt.show('请填写信息？', (val)=>{console.log(val)});
  *

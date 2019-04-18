@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>xui toast demo</title>
-    <link rel="stylesheet" href="../../dist/busy.css" />
+    <link rel="stylesheet" href="../../dist/busyui.css" />
     <link rel="stylesheet" href="../index.css">
     <script src="../vue.js"></script>
-    <script src="../../dist/busy.js"></script>
+    <script src="../../dist/busyui.js"></script>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             },
             methods: {
                 showToast: function () {
-                    Busy.Busyjs.Toast.show('测试内容', {
+                    Busyui.Busyuijs.Toast.show('测试内容', {
                         pos: 'top',
                         delay: 3000
                     }).then(toast => {
@@ -42,7 +42,7 @@
                     })
                 },
                 hideToast() {
-                    Busy.Busyjs.Toast.hide()
+                    Busyui.Busyuijs.Toast.hide()
                 },
                 showTagToast: function () {
                     this.isShow = true;

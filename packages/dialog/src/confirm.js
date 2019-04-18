@@ -16,14 +16,14 @@ const ConfirmClass = Vue.extend(Confirm);
  * @example
  *
  * // use it in html
- * <script src="busy.min.js"><\/script>
- * <link rel="stylesheet" href="busy.min.css" />
+ * <script src="busyui.js"><\/script>
+ * <link rel="stylesheet" href="busyui.css" />
  * 
  * Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  * 
  * // use it in webpack or browserify, rollup
- * import {Confirm} from '@busy/dialog';
- * // var Confirm = require('@busy/dialog/confirm.js');
+ * import {Confirm} from '@busyui/dialog';
+ * // var Confirm = require('@busyui/dialog/confirm.js');
  *
  * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
  *

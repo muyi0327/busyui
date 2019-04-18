@@ -1,52 +1,119 @@
 ## Modules
 
-* [ActionSheet](#module_ActionSheet)
-    * [.show(opts)](#module_ActionSheet.show) ⇒
-    * [.hide()](#module_ActionSheet.hide)
-    * [.isVisiable()](#module_ActionSheet.isVisiable) ⇒ <code>Boolean</code>
-* [@busy/border](#module_@busy/border)
-* [Dialog](#module_Dialog)
-    * _static_
-        * [.show(opts)](#module_Dialog.show) ⇒
-        * [.show(opts)](#module_Dialog.show) ⇒
-    * _inner_
-        * [~hide()](#module_Dialog..hide)
-* [Toast](#module_Toast)
-    * [.show(opts)](#module_Toast.show) ⇒
-    * [.show(opts)](#module_Toast.show) ⇒
-* [Button](#module_Button)
-* [Checkbox](#module_Checkbox)
-* [Alert](#module_Alert)
-    * [.show(text, opts)](#module_Alert.show) ⇒
-* [Confirm](#module_Confirm)
-    * [.show(text, opts, callback)](#module_Confirm.show) ⇒
-* [Dialog](#module_Dialog)
-    * _static_
-        * [.show(opts)](#module_Dialog.show) ⇒
-        * [.show(opts)](#module_Dialog.show) ⇒
-    * _inner_
-        * [~hide()](#module_Dialog..hide)
-* [Prompt](#module_Prompt)
-    * [.show(text, opts, callback)](#module_Prompt.show) ⇒
-* [Icon](#module_Icon)
-* [Loading](#module_Loading)
-* [Loadmore](#module_Loadmore)
-* [Mask](#module_Mask)
-* [Message](#module_Message)
-    * [.show(opts)](#module_Message.show) ⇒
-    * [.info(text, opts)](#module_Message.info) ⇒
-    * [.success(text, opts)](#module_Message.success) ⇒
-    * [.warning(text, opts)](#module_Message.warning) ⇒
-    * [.error(text, opts)](#module_Message.error) ⇒
-* [Progress](#module_Progress)
-* [Spinner](#module_Spinner)
-* [Swipe](#module_Swipe)
-* [ToastLoading](#module_ToastLoading)
-    * [.hide()](#module_ToastLoading.hide)
-    * [.show(opts)](#module_ToastLoading.show) ⇒
-* [Toast](#module_Toast)
-    * [.show(opts)](#module_Toast.show) ⇒
-    * [.show(opts)](#module_Toast.show) ⇒
+<table>
+  <thead>
+    <tr>
+      <th>Module</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td><a href="#module_ActionSheet">ActionSheet</a></td>
+    <td><p>ActionSheet框组件 <busy-action-sheet /></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_@busyui/border">@busyui/border</a></td>
+    <td><p>1像素边框样式</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Dialog">Dialog</a></td>
+    <td><p>对话框组件11111 <busy-dialog /></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Toast">Toast</a></td>
+    <td><p>Toast组件 <busy-toast></busy-toast></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Button">Button</a></td>
+    <td><p>按钮组件 <busy-button /></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Checkbox">Checkbox</a></td>
+    <td><p>勾选框  <busy-checkbox /></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Alert">Alert</a></td>
+    <td><p>alert对话框组件</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Confirm">Confirm</a></td>
+    <td><p>confirm对话框组件</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Dialog">Dialog</a></td>
+    <td><p>对话框组件22222 <busy-dialog /></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Prompt">Prompt</a></td>
+    <td><p>prompt对话框组件</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Flexbox">Flexbox</a></td>
+    <td><p>Flexbox</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Icon">Icon</a></td>
+    <td><p>icon图标组件</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Loading">Loading</a></td>
+    <td><p>loading component with mask</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Loadmore">Loadmore</a></td>
+    <td><p>加载更多组件</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Mask">Mask</a></td>
+    <td><p>半透明遮罩层 <busy-mask></busy-mask></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Message">Message</a></td>
+    <td><p>浮层提示信息组件 <busy-meesage></busy-meesage></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Progress">Progress</a></td>
+    <td><p>busy-progress</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Spinner">Spinner</a></td>
+    <td><p>spinner组件</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Swipe">Swipe</a></td>
+    <td><p>切换组件</p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_ToastLoading">ToastLoading</a></td>
+    <td><p>页面toastloading组件 <busy-toast-loading /></p>
+</td>
+    </tr>
+<tr>
+    <td><a href="#module_Toast">Toast</a></td>
+    <td><p>Toast组件 <busy-toast></busy-toast></p>
+</td>
+    </tr>
+</tbody>
+</table>
 
 ## Functions
 
@@ -72,7 +139,7 @@
 ## ActionSheet
 ActionSheet框组件 <busy-action-sheet />
 
-**Busy/action-sheet**:   
+**Busyui/action-sheet**:   
 **See**: [实例](../example/all/action-sheet.html)  
 
 | Param | Type | Default | Description |
@@ -89,7 +156,7 @@ ActionSheet框组件 <busy-action-sheet />
 
 **Example**  
 ```js
-import ActionSheet from '@busy/action-sheet'
+import ActionSheet from '@busyui/action-sheet'
 
 // 动态创建
 ActionSheet.show({
@@ -189,9 +256,9 @@ if （Busy.ActionSheet.isVisiable(){
     console.log('done something')
   }
 ```
-<a name="module_@busy/border"></a>
+<a name="module_@busyui/border"></a>
 
-## @busy/border
+## @busyui/border
 1像素边框样式
 
 **See**: [实例](../example/all/border1px.html)  
@@ -235,7 +302,7 @@ if （Busy.ActionSheet.isVisiable(){
 ## Dialog
 对话框组件11111 <busy-dialog />
 
-**Busy/dialog**:   
+**Busyui/dialog**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -252,7 +319,7 @@ if （Busy.ActionSheet.isVisiable(){
 
 **Example**  
 ```js
-import {Dialog} from '@busy/dialog';
+import {Dialog} from '@busyui/dialog';
 
 Dialog.show({
      title: '提交信息',
@@ -340,15 +407,15 @@ Toast组件 <busy-toast></busy-toast>
 **Example**  
 ```js
 // use it in module tools
-  import Toast from '@busy/toast';
+  import Toast from '@busyui/toast';
   1, Toast.show('内容')
   2, Toast.show('内容', 5000)
   3, Toast.show('内容', 'top', 5000)
   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
 
   // use it in html
-  <script src="busy.min.js"><\/script>
-  <link href="busy.min.css" rel="stylesheet" />
+  <script src="busyui.js"><\/script>
+  <link href="busyui.css" rel="stylesheet" />
 
   1, Busy.Toast.show('内容')
   2, Busy.Toast.show('内容', 5000)
@@ -393,7 +460,7 @@ Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
 ## Button
 按钮组件 <busy-button />
 
-**Busy/button**:   
+**Busyui/button**:   
 **See**: [实例](../example/all/button.html)  
 
 | Param | Type | Default | Description |
@@ -426,7 +493,7 @@ Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
 ## Checkbox
 勾选框  <busy-checkbox />
 
-**Busy/checkbox**:   
+**Busyui/checkbox**:   
 **See**: [实例](../example/all/checkbox.html)  
 
 | Param | Type | Description |
@@ -444,7 +511,7 @@ Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
 ## Alert
 alert对话框组件
 
-**Busy/alert**:   
+**Busyui/alert**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -456,14 +523,14 @@ alert对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="busy.min.js"><\/script>
-<link rel="stylesheet" href="busy.min.css" />
+<script src="busyui.js"><\/script>
+<link rel="stylesheet" href="busyui.css" />
 
 Busy.Alert.show('提交申请成功');
 
 // use it in webpack or browserify, rollup
-import {Alert} from '@busy/dialog';
-// var Aler = require('@busy/dialog/alert.js');
+import {Alert} from '@busyui/dialog';
+// var Aler = require('@busyui/dialog/alert.js');
 
 Alert.show('提交申请成功');
 ```
@@ -500,14 +567,14 @@ confirm对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="busy.min.js"><\/script>
-<link rel="stylesheet" href="busy.min.css" />
+<script src="busyui.js"><\/script>
+<link rel="stylesheet" href="busyui.css" />
 
 Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 
 // use it in webpack or browserify, rollup
-import {Confirm} from '@busy/dialog';
-// var Confirm = require('@busy/dialog/confirm.js');
+import {Confirm} from '@busyui/dialog';
+// var Confirm = require('@busyui/dialog/confirm.js');
 
 Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
 ```
@@ -535,7 +602,7 @@ confirm.doClose();
 ## Dialog
 对话框组件22222 <busy-dialog />
 
-**Busy/dialog**:   
+**Busyui/dialog**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -552,7 +619,7 @@ confirm.doClose();
 
 **Example**  
 ```js
-import {Dialog} from '@busy/dialog';
+import {Dialog} from '@busyui/dialog';
 
 Dialog.show({
      title: '提交信息',
@@ -615,7 +682,7 @@ Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
 ## Prompt
 prompt对话框组件
 
-**Busy/prompt**:   
+**Busyui/prompt**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
@@ -627,14 +694,14 @@ prompt对话框组件
 **Example**  
 ```js
 // use it in html
-<script src="busy.min.js"><\/script>
-<link rel="stylesheet" href="busy.min.css" />
+<script src="busyui.js"><\/script>
+<link rel="stylesheet" href="busyui.css" />
 
 Busy.Prompt.show('请填写信息？', (val)=>{console.log(val)});
 
 // use it in webpack or browserify, rollup
-import {Prompt} from '@busy/dialog';
-// var Prompt = require('@busy/dialog/prompt.js');
+import {Prompt} from '@busyui/dialog';
+// var Prompt = require('@busyui/dialog/prompt.js');
 
 Prompt.show('请填写信息？', (val)=>{console.log(val)});
 ```
@@ -657,12 +724,27 @@ Prompt.show('请填写信息？', (val)=>{console.log(val)});
 const confirm = Busy.Prompt.show('请输入要跳转的网址', (url)=>{window.location = url});
 prompt.doClose();
 ```
+<a name="module_Flexbox"></a>
+
+## Flexbox
+Flexbox
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| inline | <code>Boolean</code> | = false - display属性, flex 或者 inline-flex |
+| width | <code>Number</code> &#124; <code>String</code> | 宽度, 取值范围css单位尺寸,数字＋单位,单位限制px、em、rem, 还可以是%,inherit,auto.整数单位默认px |
+| alignMain | <code>String</code> | 主轴(main axis)对齐方式, 取值start,end,around,between,center |
+| alignCross | <code>String</code> | 侧轴(cross axis)对齐方式, 取值start,end,cneter,baseline,stretch,between,around |
+| wrap | <code>String</code> | 换行, 取值nowrap,wrap, wrap-reverse |
+| direction | <code>String</code> | 主轴方向, 取值row,row-reverse,column,column-reverse |
+
 <a name="module_Icon"></a>
 
 ## Icon
 icon图标组件
 
-**Busy/icon**:   
+**Busyui/icon**:   
 **See**: [实例](../example/all/icons.html)  
 
 | Param | Type | Default | Description |
@@ -706,7 +788,7 @@ loading component with mask
 ## Loadmore
 加载更多组件
 
-**Busy/loadmore**:   
+**Busyui/loadmore**:   
 **See**: [实例](../example/all/loadmore.html)  
 
 | Param | Type | Description |
@@ -734,7 +816,7 @@ loading component with mask
 ## Mask
 半透明遮罩层 <busy-mask></busy-mask>
 
-**Busy/mask**:   
+**Busyui/mask**:   
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -751,7 +833,7 @@ loading component with mask
 ## Message
 浮层提示信息组件 <busy-meesage></busy-meesage>
 
-**Busy/message**:   
+**Busyui/message**:   
 **See**: [实例](../example/all/message.html)  
 
 | Param | Type | Default | Description |
@@ -766,14 +848,14 @@ loading component with mask
 **Example**  
 ```js
 // use it in module tools
- import Message from '@busy/message';
+ import Message from '@busyui/message';
  Message.show('有新信息了');
  Message.info('有新信息了');
  Message.success('信息提交成功');
  Message.warning('内容包含非法词');
 
  // use it in html
- <script src="busy.min.js"><\/script>
+ <script src="busyui.js"><\/script>
  <link rel="stylesheet" href="Busy.min.css">
  Busy.Message.show('有新信息了');
  Busy.Message.info('有新信息了');
@@ -961,8 +1043,8 @@ spinner组件
 **Example**  
 ```js
 //  use it in html
- <script src="busy.min.js"><\/script>
- <link rel="stylesheet" href="busy.min.css">
+ <script src="busyui.js"><\/script>
+ <link rel="stylesheet" href="busyui.css">
 
  Busy.ToastLoading.show();
  http.get('url').then(()=>{
@@ -970,7 +1052,7 @@ spinner组件
  });
 
  // use it in module tools
- import ToastLoading from '@busy/toast-loading';
+ import ToastLoading from '@busyui/toast-loading';
  ToastLoading.show({spinner:{type:2}, direction="row"});
  http.get('url').then(()=>{
    ToastLoading.hide();
@@ -1033,15 +1115,15 @@ Toast组件 <busy-toast></busy-toast>
 **Example**  
 ```js
 // use it in module tools
-  import Toast from '@busy/toast';
+  import Toast from '@busyui/toast';
   1, Toast.show('内容')
   2, Toast.show('内容', 5000)
   3, Toast.show('内容', 'top', 5000)
   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
 
   // use it in html
-  <script src="busy.min.js"><\/script>
-  <link href="busy.min.css" rel="stylesheet" />
+  <script src="busyui.js"><\/script>
+  <link href="busyui.css" rel="stylesheet" />
 
   1, Busy.Toast.show('内容')
   2, Busy.Toast.show('内容', 5000)

@@ -1,5 +1,5 @@
 {
-    "name": "@busy/dialog",
+    "name": "@busyui/dialog",
     "description": "busyui component dialog alert prompt confirm",
     "main": "index.js",
     "scripts": {
@@ -24,5 +24,5 @@
         "url": "https://github.com/muyi0327/busyui/issues"
     },
     "homepage": "https://github.com/muyi0327/busyui#readme",
-    "version": "1.0.3"
+    "version": "1.0.13"
 }

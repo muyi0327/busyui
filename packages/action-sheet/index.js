@@ -4,7 +4,7 @@ import ActionSheetItem from './src/action-sheet-item.vue';
 var ActionSheetClass, instance, vm;
 
 /**
- * @busy/action-sheet
+ * @busyui/action-sheet
  * @module ActionSheet
  * @see {@link ../example/all/action-sheet.html 实例}
  * @desc ActionSheet框组件 <busy-action-sheet />
@@ -18,7 +18,7 @@ var ActionSheetClass, instance, vm;
  * @param {Event} visiable-change - 显示隐藏时都会触发
  * @param {Slot} slot - default - 组件slot
  * @example
- * import ActionSheet from '@busy/action-sheet'
+ * import ActionSheet from '@busyui/action-sheet'
  * 
  * // 动态创建
  * ActionSheet.show({

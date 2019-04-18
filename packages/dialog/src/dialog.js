@@ -5,7 +5,7 @@ import Dialog from './dialog.vue';
 var DialogClass = Vue.extend(Dialog);
 
 /**
- * @busy/dialog
+ * @busyui/dialog
  * @module Dialog
  * @see {@link ../example/all/dialog.html 实例}
  * @desc 对话框组件22222 <busy-dialog />
@@ -19,7 +19,7 @@ var DialogClass = Vue.extend(Dialog);
  * @param {Object} contentStyle - 对话框内容样式
  * @param {Boolean} showClose=false - 是否显示关闭按钮
  * @example
- * import {Dialog} from '@busy/dialog';
+ * import {Dialog} from '@busyui/dialog';
  * 
  * Dialog.show({
  *      title: '提交信息',

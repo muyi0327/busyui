@@ -1,6 +1,6 @@
-export default (function(window) {
+export default (function () {
 
-var svgSprite = '<svg>' +
+  var svgSprite = '<svg>' +
     '' +
     '<symbol id="icon-close" viewBox="0 0 1024 1024">' +
     '' +
@@ -123,65 +123,65 @@ var svgSprite = '<svg>' +
     '</svg>'
 
 
-/**
- * document ready
- */
-var ready = function(fn){
-  if(document.addEventListener){
-      document.addEventListener("DOMContentLoaded",function __dom__ready(){
-          document.removeEventListener("DOMContentLoaded", __dom__ready,false)
-          fn()
-      },false)
+  /**
+   * document ready
+   */
+  var ready = function (fn) {
+    if (document.addEventListener) {
+      document.addEventListener("DOMContentLoaded", function __dom__ready() {
+        document.removeEventListener("DOMContentLoaded", __dom__ready, false)
+        fn()
+      }, false)
+    }
   }
-}
 
-/**
- * Insert el before target
- *
- * @param {Element} el
- * @param {Element} target
- */
+  /**
+   * Insert el before target
+   *
+   * @param {Element} el
+   * @param {Element} target
+   */
 
-var before = function (el, target) {
-  target.parentNode.insertBefore(el, target)
-}
-
-/**
- * Prepend el to target
- *
- * @param {Element} el
- * @param {Element} target
- */
-
-var prepend = function (el, target) {
-  if (target.firstChild) {
-    before(el, target.firstChild)
-  } else {
-    target.appendChild(el)
+  var before = function (el, target) {
+    target.parentNode.insertBefore(el, target)
   }
-}
 
-function appendSvg(){
-  var div,svg;
+  /**
+   * Prepend el to target
+   *
+   * @param {Element} el
+   * @param {Element} target
+   */
 
-  div = document.createElement('div')
-  div.innerHTML = svgSprite
-  svg = div.getElementsByTagName('svg')[0]
-  if (svg) {
-    svg.setAttribute('aria-hidden', 'true')
-    svg.style.position = 'absolute'
-    svg.style.width = 0
-    svg.style.height = 0
-    svg.style.overflow = 'hidden'
-    prepend(svg,document.body)
+  var prepend = function (el, target) {
+    if (target.firstChild) {
+      before(el, target.firstChild)
+    } else {
+      target.appendChild(el)
+    }
   }
-}
-if(!window.__iconfont__svg__cssinject__){
-  window.__iconfont__svg__cssinject__ = true
-  ready(appendSvg);
-}
 
-return {
-  svgSprite: svgSprite
-}
-})(window);
+  function appendSvg() {
+    var div, svg;
+
+    div = document.createElement('div')
+    div.innerHTML = svgSprite
+    svg = div.getElementsByTagName('svg')[0]
+    if (svg) {
+      svg.setAttribute('aria-hidden', 'true')
+      svg.style.position = 'absolute'
+      svg.style.width = 0
+      svg.style.height = 0
+      svg.style.overflow = 'hidden'
+      prepend(svg, document.body)
+    }
+  }
+  if (!window.__iconfont__svg__cssinject__) {
+    window.__iconfont__svg__cssinject__ = true
+    ready(appendSvg);
+  }
+
+  return {
+    svgSprite: svgSprite
+  }
+})();

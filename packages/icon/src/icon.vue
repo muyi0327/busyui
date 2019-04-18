@@ -17,7 +17,7 @@
     import './iconfont.js';
 
     /**
-     * @busy/icon
+     * @busyui/icon
      * @module Icon
      * @see {@link ../example/all/icons.html 实例}
      * @desc icon图标组件

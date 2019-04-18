@@ -1,5 +1,8 @@
-var Busy = (function (exports, Vue) {
-    'use strict';
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
+    (global = global || self, factory(global.Busyui = {}, global.Vue));
+}(this, function (exports, Vue) { 'use strict';
 
     Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
 
@@ -121,7 +124,7 @@ var Busy = (function (exports, Vue) {
 
     /**
      * 1像素边框
-     * @module @busy/border
+     * @module @busyui/border
      * @see {@link ../example/all/border1px.html 实例}
      * @desc 1像素边框样式
      * @param {String} side = '', 设置哪个边框, t=上,b=下,r=右,l=左, lr=左右,tb=上下,no-r=无右,no-l=无左,no-t=无上,no-b=无下
@@ -306,7 +309,7 @@ var Busy = (function (exports, Vue) {
       return target;
     }
 
-    ((function (window) {
+    ((function () {
       var svgSprite = '<svg>' + '' + '<symbol id="icon-close" viewBox="0 0 1024 1024">' + '' + '<path d="M557.312 513.248l265.28-263.904c12.544-12.48 12.608-32.704 0.128-45.248-12.512-12.576-32.704-12.608-45.248-0.128l-265.344 263.936-263.04-263.84C236.64 191.584 216.384 191.52 203.84 204 191.328 216.48 191.296 236.736 203.776 249.28l262.976 263.776L201.6 776.8c-12.544 12.48-12.608 32.704-0.128 45.248 6.24 6.272 14.464 9.44 22.688 9.44 8.16 0 16.32-3.104 22.56-9.312l265.216-263.808 265.44 266.24c6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.592-9.344 12.512-12.48 12.544-32.704 0.064-45.248L557.312 513.248z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-roundcheckfill" viewBox="0 0 1024 1024">' + '' + '<path d="M512 65.984C266.08 65.984 65.984 266.08 65.984 512c0 245.952 200.064 446.016 446.016 446.016 245.952 0 446.016-200.064 446.016-446.016C958.016 266.08 757.952 65.984 512 65.984zM727.232 438.432l-256.224 259.008c-0.064 0.064-0.192 0.096-0.256 0.192-0.096 0.064-0.096 0.192-0.192 0.256-2.048 1.984-4.576 3.2-6.944 4.544-1.184 0.672-2.144 1.696-3.392 2.176-3.84 1.536-7.904 2.336-11.968 2.336-4.096 0-8.224-0.8-12.096-2.4-1.28-0.544-2.304-1.632-3.52-2.304-2.368-1.344-4.832-2.528-6.88-4.544-0.064-0.064-0.096-0.192-0.16-0.256-0.064-0.096-0.192-0.096-0.256-0.192l-126.016-129.504c-12.32-12.672-12.032-32.928 0.64-45.248 12.672-12.288 32.896-12.064 45.248 0.64l103.264 106.112 233.28-235.84c12.416-12.576 32.704-12.704 45.248-0.256C739.52 405.6 739.648 425.856 727.232 438.432z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-roundcheck" viewBox="0 0 1024 1024">' + '' + '<path d="M512 960C264.96 960 64 759.04 64 512S264.96 64 512 64s448 200.96 448 448S759.04 960 512 960zM512 128.288C300.416 128.288 128.288 300.416 128.288 512c0 211.552 172.128 383.712 383.712 383.712 211.552 0 383.712-172.16 383.712-383.712C895.712 300.416 723.552 128.288 512 128.288z"  ></path>' + '' + '<path d="M726.976 393.184c-12.544-12.448-32.832-12.32-45.248 0.256l-233.28 235.84-103.264-106.112c-12.352-12.704-32.608-12.928-45.248-0.64-12.672 12.32-12.96 32.608-0.64 45.248l126.016 129.504c0.064 0.096 0.192 0.096 0.256 0.192 0.064 0.064 0.096 0.192 0.16 0.256 2.016 1.984 4.512 3.2 6.88 4.544 1.248 0.672 2.24 1.792 3.52 2.304 3.872 1.6 8 2.4 12.096 2.4 4.064 0 8.128-0.8 11.968-2.336 1.248-0.512 2.208-1.536 3.392-2.176 2.4-1.344 4.896-2.528 6.944-4.544 0.064-0.064 0.096-0.192 0.192-0.256 0.064-0.096 0.16-0.128 0.256-0.192l256.224-259.008C739.648 425.856 739.52 405.6 726.976 393.184z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-roundclosefill" viewBox="0 0 1024 1024">' + '' + '<path d="M512 64C264.992 64 64 264.96 64 512s200.96 448 448 448c247.008 0 448-200.96 448-448S759.04 64 512 64zM694.752 649.984c12.48 12.544 12.448 32.768-0.064 45.248-6.24 6.208-14.4 9.344-22.592 9.344-8.224 0-16.416-3.136-22.656-9.408l-137.6-138.016-138.048 136.576c-6.24 6.144-14.368 9.248-22.496 9.248-8.256 0-16.48-3.168-22.752-9.504-12.416-12.576-12.32-32.8 0.256-45.248l137.888-136.384-137.376-137.824c-12.48-12.512-12.448-32.768 0.064-45.248 12.512-12.512 32.736-12.448 45.248 0.064l137.568 137.984 138.048-136.576c12.544-12.448 32.832-12.32 45.248 0.256 12.448 12.576 12.32 32.832-0.256 45.248l-137.888 136.384L694.752 649.984z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-roundclose" viewBox="0 0 1024 1024">' + '' + '<path d="M512 960C264.96 960 64 759.04 64 512S264.96 64 512 64s448 200.96 448 448S759.04 960 512 960zM512 128.288C300.416 128.288 128.288 300.416 128.288 512c0 211.552 172.128 383.712 383.712 383.712 211.552 0 383.712-172.16 383.712-383.712C895.712 300.416 723.552 128.288 512 128.288z"  ></path>' + '' + '<path d="M557.056 513.376l138.368-136.864c12.576-12.416 12.672-32.672 0.256-45.248-12.416-12.576-32.704-12.672-45.248-0.256l-138.56 137.024-136.448-136.864c-12.512-12.512-32.736-12.576-45.248-0.064-12.512 12.48-12.544 32.736-0.064 45.248l136.256 136.672-137.376 135.904c-12.576 12.448-12.672 32.672-0.256 45.248 6.272 6.336 14.496 9.504 22.752 9.504 8.128 0 16.256-3.104 22.496-9.248l137.568-136.064 138.688 139.136c6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.592-9.344 12.512-12.48 12.544-32.704 0.064-45.248L557.056 513.376z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-warnfill" viewBox="0 0 1024 1024">' + '' + '<path d="M942.656 769.376 602.112 159.584c-22.144-39.712-55.104-62.496-90.304-62.496-35.232 0-68.16 22.784-90.368 62.528L81.312 769.344c-22.016 39.456-24.256 79.456-6.112 110.4C93.344 910.624 129.664 928 174.88 928l674.24 0c45.184 0 81.536-17.376 99.648-48.256C966.944 848.8 964.672 808.832 942.656 769.376zM480 320c0-17.664 14.336-32 32-32s32 14.336 32 32l0 288c0 17.696-14.336 32-32 32s-32-14.304-32-32L480 320zM512 832.128c-26.528 0-48-21.504-48-48s21.472-48 48-48 48 21.504 48 48S538.528 832.128 512 832.128z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-warn" viewBox="0 0 1024 1024">' + '' + '<path d="M849.12 928.704 174.88 928.704c-45.216 0-81.536-17.728-99.68-48.64-18.144-30.912-15.936-71.296 6.08-110.752L421.472 159.648c22.144-39.744 55.072-62.528 90.304-62.528s68.128 22.752 90.336 62.464l340.544 609.792c22.016 39.456 24.288 79.808 6.112 110.72C930.656 911.008 894.304 928.704 849.12 928.704zM511.808 161.12c-11.2 0-24.032 11.104-34.432 29.696L137.184 800.544c-10.656 19.136-13.152 36.32-6.784 47.168 6.368 10.816 22.592 17.024 44.48 17.024l674.24 0c21.92 0 38.112-6.176 44.48-17.024 6.336-10.816 3.872-28-6.816-47.136L546.24 190.816C535.872 172.224 522.976 161.12 511.808 161.12z"  ></path>' + '' + '<path d="M512 640c-17.664 0-32-14.304-32-32l0-288c0-17.664 14.336-32 32-32s32 14.336 32 32l0 288C544 625.696 529.664 640 512 640z"  ></path>' + '' + '<path d="M512 752.128m-48 0a1.5 1.5 0 1 0 96 0 1.5 1.5 0 1 0-96 0Z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-back" viewBox="0 0 1024 1024">' + '' + '<path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-right" viewBox="0 0 1024 1024">' + '' + '<path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-questionfill" viewBox="0 0 1024 1024">' + '' + '<path d="M512 64C264.96 64 64 264.96 64 512s200.96 448 448 448 448-200.96 448-448S759.04 64 512 64zM512 832.352c-26.496 0-48-21.504-48-48s21.504-48 48-48 48 21.504 48 48S538.496 832.352 512 832.352zM600.576 505.184C572.736 532.992 544 561.728 544 587.552l0 54.112c0 17.664-14.336 32-32 32s-32-14.336-32-32l0-54.112c0-52.352 40-92.352 75.328-127.648C581.216 434.016 608 407.264 608 385.92c0-53.344-43.072-96.736-96-96.736-53.824 0-96 41.536-96 94.56 0 17.664-14.336 32-32 32s-32-14.336-32-32c0-87.424 71.776-158.56 160-158.56s160 72.096 160 160.736C672 433.792 635.68 470.08 600.576 505.184z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-question" viewBox="0 0 1024 1024">' + '' + '<path d="M512 784.352m-48 0a1.5 1.5 0 1 0 96 0 1.5 1.5 0 1 0-96 0Z"  ></path>' + '' + '<path d="M512 960C264.96 960 64 759.04 64 512S264.96 64 512 64s448 200.96 448 448S759.04 960 512 960zM512 128.288C300.416 128.288 128.288 300.416 128.288 512c0 211.552 172.128 383.712 383.712 383.712 211.552 0 383.712-172.16 383.712-383.712C895.712 300.416 723.552 128.288 512 128.288z"  ></path>' + '' + '<path d="M512 673.696c-17.664 0-32-14.336-32-32l0-54.112c0-52.352 40-92.352 75.328-127.648C581.216 434.016 608 407.264 608 385.92c0-53.344-43.072-96.736-96-96.736-53.824 0-96 41.536-96 94.56 0 17.664-14.336 32-32 32s-32-14.336-32-32c0-87.424 71.776-158.56 160-158.56s160 72.096 160 160.736c0 47.904-36.32 84.192-71.424 119.296C572.736 532.992 544 561.728 544 587.552l0 54.112C544 659.328 529.664 673.696 512 673.696z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-infofill" viewBox="0 0 1024 1024">' + '' + '<path d="M512 65.984C266.048 65.984 65.984 266.048 65.984 512S266.048 958.016 512 958.016 958.016 757.952 958.016 512 757.952 65.984 512 65.984zM544 736c0 17.696-14.304 32-32 32s-32-14.304-32-32l0-288c0-17.696 14.304-32 32-32s32 14.304 32 32L544 736zM512 352c-26.496 0-48-21.536-48-48C464 277.472 485.504 256 512 256s48 21.472 48 48C560 330.464 538.496 352 512 352z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-info" viewBox="0 0 1024 1024">' + '' + '<path d="M512 958.016C266.08 958.016 65.984 757.952 65.984 512 65.984 266.08 266.08 65.984 512 65.984c245.952 0 446.016 200.064 446.016 446.016C958.016 757.952 757.952 958.016 512 958.016zM512 129.984C301.344 129.984 129.984 301.344 129.984 512c0 210.624 171.36 382.016 382.016 382.016 210.624 0 382.016-171.36 382.016-382.016C894.016 301.344 722.624 129.984 512 129.984z"  ></path>' + '' + '<path d="M512 304m-48 0a1.5 1.5 0 1 0 96 0 1.5 1.5 0 1 0-96 0Z"  ></path>' + '' + '<path d="M512 768c-17.664 0-32-14.304-32-32l0-288c0-17.664 14.336-32 32-32s32 14.336 32 32l0 288C544 753.696 529.664 768 512 768z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-refresharrow" viewBox="0 0 1024 1024">' + '' + '<path d="M822.624 521.376c-12.512-12.512-32.736-12.512-45.248 0L544 754.752 544 192c0-17.664-14.336-32-32-32s-32 14.336-32 32l0 562.752-233.376-233.376c-12.512-12.512-32.736-12.512-45.248 0s-12.512 32.736 0 45.248l288 287.968c2.944 2.976 6.496 5.312 10.432 6.944C503.68 863.168 507.84 864 512 864s8.32-0.832 12.224-2.464c3.936-1.632 7.456-3.968 10.432-6.944l288-287.968C835.136 554.112 835.136 533.888 822.624 521.376z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-add" viewBox="0 0 1024 1024">' + '' + '<path d="M863.328 482.56l-317.344-1.12L545.984 162.816c0-17.664-14.336-32-32-32s-32 14.336-32 32l0 318.4L159.616 480.064c-0.032 0-0.064 0-0.096 0-17.632 0-31.936 14.24-32 31.904C127.424 529.632 141.728 544 159.392 544.064l322.592 1.152 0 319.168c0 17.696 14.336 32 32 32s32-14.304 32-32l0-318.944 317.088 1.12c0.064 0 0.096 0 0.128 0 17.632 0 31.936-14.24 32-31.904C895.264 496.992 880.96 482.624 863.328 482.56z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-move" viewBox="0 0 1024 1024">' + '' + '<path d="M863.744 544 163.424 544c-17.664 0-32-14.336-32-32s14.336-32 32-32l700.32 0c17.696 0 32 14.336 32 32S881.44 544 863.744 544z"  ></path>' + '' + '</symbol>' + '' + '<symbol id="icon-arrow" viewBox="0 0 1024 1024">' + '' + '<path d="M768.128942 540.373804l-471.882513 471.34871a40.195422 40.195422 0 1 1-57.117001-56.583197L683.254146 512.61601 239.129428 68.491291A40.195422 40.195422 0 1 1 296.246429 11.908094l500.174112 500.707916z"  ></path>' + '' + '</symbol>' + '' + '</svg>';
       /**
        * document ready
@@ -371,11 +374,11 @@ var Busy = (function (exports, Vue) {
       return {
         svgSprite: svgSprite
       };
-    })(window));
+    })());
 
     //
     /**
-     * @busy/icon
+     * @busyui/icon
      * @module Icon
      * @see {@link ../example/all/icons.html 实例}
      * @desc icon图标组件
@@ -772,15 +775,15 @@ var Busy = (function (exports, Vue) {
      * 
      * @example
      *  // use it in module tools
-     *   import Toast from '@busy/toast';
+     *   import Toast from '@busyui/toast';
      *   1, Toast.show('内容')
      *   2, Toast.show('内容', 5000)
      *   3, Toast.show('内容', 'top', 5000)
      *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
      * 
      *   // use it in html
-     *   <script src="busy.min.js"><\/script>
-     *   <link href="busy.min.css" rel="stylesheet" />
+     *   <script src="busyui.js"><\/script>
+     *   <link href="busyui.css" rel="stylesheet" />
      * 
      *   1, Busy.Toast.show('内容')
      *   2, Busy.Toast.show('内容', 5000)
@@ -908,15 +911,15 @@ var Busy = (function (exports, Vue) {
      * 
      * @example
      *  // use it in module tools
-     *   import Toast from '@busy/toast';
+     *   import Toast from '@busyui/toast';
      *   1, Toast.show('内容')
      *   2, Toast.show('内容', 5000)
      *   3, Toast.show('内容', 'top', 5000)
      *   4, Toast.show({content:'内容', pos: 'top', delay: 5000})
      * 
      *   // use it in html
-     *   <script src="busy.min.js"><\/script>
-     *   <link href="busy.min.css" rel="stylesheet" />
+     *   <script src="busyui.js"><\/script>
+     *   <link href="busyui.css" rel="stylesheet" />
      * 
      *   1, Busy.Toast.show('内容')
      *   2, Busy.Toast.show('内容', 5000)
@@ -1022,7 +1025,7 @@ var Busy = (function (exports, Vue) {
     //
 
     /**
-     * @busy/mask
+     * @busyui/mask
      * @module Mask
      * @desc 半透明遮罩层 <busy-mask></busy-mask>
      * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
@@ -1408,7 +1411,7 @@ var Busy = (function (exports, Vue) {
 
     var DialogClass = Vue.extend(Dialog);
     /**
-     * @busy/dialog
+     * @busyui/dialog
      * @module Dialog
      * @see {@link ../example/all/dialog.html 实例}
      * @desc 对话框组件22222 <busy-dialog />
@@ -1416,13 +1419,13 @@ var Busy = (function (exports, Vue) {
      * @param {Number} height=160 - 对话框高度
      * @param {String} content - 对话框内容, 必填
      * @param {String} title＝'' - 对话框标题
-     * @param {Function} show - 对话框标题
-     * @param {Function} hide - 对话框标题
+     * @param {Function} show - 显示
+     * @param {Function} hide - 隐藏
      * @param {Array<Object>} buttons=[{text:'确定'},{text:'取消'}] - 对话框标题
      * @param {Object} contentStyle - 对话框内容样式
      * @param {Boolean} showClose=false - 是否显示关闭按钮
      * @example
-     * import {Dialog} from '@busy/dialog';
+     * import {Dialog} from '@busyui/dialog';
      * 
      * Dialog.show({
      *      title: '提交信息',
@@ -1546,7 +1549,7 @@ var Busy = (function (exports, Vue) {
 
     var AlertClass = Vue.extend(Alert);
     /**
-     * @busy/alert
+     * @busyui/alert
      * @module Alert
      * @see {@link ../example/all/dialog.html 实例}
      * @desc alert对话框组件
@@ -1556,14 +1559,14 @@ var Busy = (function (exports, Vue) {
      * 
      * @example
      * // use it in html
-     * <script src="busy.min.js"><\/script>
-     * <link rel="stylesheet" href="busy.min.css" />
+     * <script src="busyui.js"><\/script>
+     * <link rel="stylesheet" href="busyui.css" />
      * 
      * Busy.Alert.show('提交申请成功');
      *
      * // use it in webpack or browserify, rollup
-     * import {Alert} from '@busy/dialog';
-     * // var Aler = require('@busy/dialog/alert.js');
+     * import {Alert} from '@busyui/dialog';
+     * // var Aler = require('@busyui/dialog/alert.js');
      *
      * Alert.show('提交申请成功');
      *
@@ -1716,14 +1719,14 @@ var Busy = (function (exports, Vue) {
      * @example
      *
      * // use it in html
-     * <script src="busy.min.js"><\/script>
-     * <link rel="stylesheet" href="busy.min.css" />
+     * <script src="busyui.js"><\/script>
+     * <link rel="stylesheet" href="busyui.css" />
      * 
      * Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
      * 
      * // use it in webpack or browserify, rollup
-     * import {Confirm} from '@busy/dialog';
-     * // var Confirm = require('@busy/dialog/confirm.js');
+     * import {Confirm} from '@busyui/dialog';
+     * // var Confirm = require('@busyui/dialog/confirm.js');
      *
      * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
      *
@@ -1912,7 +1915,7 @@ var Busy = (function (exports, Vue) {
 
     var PromptClass = Vue.extend(Prompt);
     /**
-     * @busy/prompt
+     * @busyui/prompt
      * @module Prompt
      * @see {@link ../example/all/dialog.html 实例}
      * @desc prompt对话框组件
@@ -1923,14 +1926,14 @@ var Busy = (function (exports, Vue) {
      * @example
      *
      * // use it in html
-     * <script src="busy.min.js"><\/script>
-     * <link rel="stylesheet" href="busy.min.css" />
+     * <script src="busyui.js"><\/script>
+     * <link rel="stylesheet" href="busyui.css" />
      * 
      * Busy.Prompt.show('请填写信息？', (val)=>{console.log(val)});
      * 
      * // use it in webpack or browserify, rollup
-     * import {Prompt} from '@busy/dialog';
-     * // var Prompt = require('@busy/dialog/prompt.js');
+     * import {Prompt} from '@busyui/dialog';
+     * // var Prompt = require('@busyui/dialog/prompt.js');
      *
      * Prompt.show('请填写信息？', (val)=>{console.log(val)});
      *
@@ -1996,7 +1999,7 @@ var Busy = (function (exports, Vue) {
 
     var DialogClass$1 = Vue.extend(Dialog$1);
     /**
-     * @busy/dialog
+     * @busyui/dialog
      * @module Dialog
      * @see {@link ../example/all/dialog.html 实例}
      * @desc 对话框组件11111 <busy-dialog />
@@ -2010,7 +2013,7 @@ var Busy = (function (exports, Vue) {
      * @param {Object} contentStyle - 对话框内容样式
      * @param {Boolean} showClose=false - 是否显示关闭按钮
      * @example
-     * import {Dialog} from '@busy/dialog';
+     * import {Dialog} from '@busyui/dialog';
      * 
      * Dialog.show({
      *      title: '提交信息',
@@ -3798,8 +3801,8 @@ var Busy = (function (exports, Vue) {
      * 
      * @example
      *  //  use it in html
-     *  <script src="busy.min.js"><\/script>
-     *  <link rel="stylesheet" href="busy.min.css">
+     *  <script src="busyui.js"><\/script>
+     *  <link rel="stylesheet" href="busyui.css">
      *
      *  Busy.ToastLoading.show();
      *  http.get('url').then(()=>{
@@ -3807,7 +3810,7 @@ var Busy = (function (exports, Vue) {
      *  });
      *
      *  // use it in module tools
-     *  import ToastLoading from '@busy/toast-loading';
+     *  import ToastLoading from '@busyui/toast-loading';
      *  ToastLoading.show({spinner:{type:2}, direction="row"});
      *  http.get('url').then(()=>{
      *    ToastLoading.hide();
@@ -4166,6 +4169,19 @@ var Busy = (function (exports, Vue) {
       staticRenderFns: __vue_staticRenderFns__$h
     }, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
 
+    /**
+     * @class
+     * @constructor
+     * @module Flexbox
+     * @desc Flexbox
+     * @param {Boolean} inline = false - display属性, flex 或者 inline-flex
+     * @param {Number|String} width - 宽度, 取值范围css单位尺寸,数字＋单位,单位限制px、em、rem, 还可以是%,inherit,auto.整数单位默认px
+     * @param {String} alignMain - 主轴(main axis)对齐方式, 取值start,end,around,between,center
+     * @param {String} alignCross - 侧轴(cross axis)对齐方式, 取值start,end,cneter,baseline,stretch,between,around
+     * @param {String} wrap - 换行, 取值nowrap,wrap, wrap-reverse
+     * @param {String} direction - 主轴方向, 取值row,row-reverse,column,column-reverse
+     */
+
     var script$i = {
       name: 'busy-flexbox',
       props: {
@@ -4188,10 +4204,10 @@ var Busy = (function (exports, Vue) {
             return val && 'row column'.split(/\s/).indexOf(String(val)) > -1;
           }
         },
-        alignH: {
+        alignMain: {
           type: String
         },
-        alignV: {
+        alignCross: {
           type: String
         }
       },
@@ -4201,10 +4217,10 @@ var Busy = (function (exports, Vue) {
       },
       computed: {
         classes: function classes() {
-          var ah = this.alignH,
-              av = this.alignV,
-              flag = ah || av;
-          return [this.inline ? "busy-flex--inline" : "busy-flex", flag ? "busy-flex--".concat(ah || 'start', "-").concat(av || 'start') : null, !this.direction ? '' : "busy-flex--".concat(this.direction)];
+          var am = this.alignMain,
+              ac = this.alignCross,
+              flag = am || ac;
+          return [this.inline ? "busy-flex--inline" : "busy-flex", flag ? "busy-flex--".concat(am || 'start', "-").concat(ac || 'start') : null, !this.direction ? '' : "busy-flex--".concat(this.direction)];
         },
         styles: function styles() {
           var h = this.height,
@@ -4220,6 +4236,12 @@ var Busy = (function (exports, Vue) {
       },
       methods: {
         handleClick: function handleClick(e) {
+          /**
+           * Flexbox event.
+           *
+           * @event Flexbox#click
+           * @type {Event}
+           */
           this.$emit('click', e);
         }
       }
@@ -4296,7 +4318,7 @@ var Busy = (function (exports, Vue) {
 
     }, 0);
     /**
-     * @busy/button
+     * @busyui/button
      * @module Button
      * @see {@link ../example/all/button.html 实例}
      * @desc 按钮组件 <busy-button />
@@ -4581,7 +4603,7 @@ var Busy = (function (exports, Vue) {
     //
 
     /**
-     * @busy/checkbox
+     * @busyui/checkbox
      * @desc 勾选框  <busy-checkbox />
      * @module Checkbox
      * @see {@link ../example/all/checkbox.html 实例}
@@ -5458,7 +5480,7 @@ var Busy = (function (exports, Vue) {
 
     var MessageClass = Vue.extend(Message);
     /**
-     * @busy/message
+     * @busyui/message
      * @module Message
      * @see {@link ../example/all/message.html 实例}
      * @desc 浮层提示信息组件 <busy-meesage></busy-meesage>
@@ -5471,14 +5493,14 @@ var Busy = (function (exports, Vue) {
      * @example
      * 
      *  // use it in module tools
-     *  import Message from '@busy/message';
+     *  import Message from '@busyui/message';
      *  Message.show('有新信息了');
      *  Message.info('有新信息了');
      *  Message.success('信息提交成功');
      *  Message.warning('内容包含非法词');
      * 
      *  // use it in html
-     *  <script src="busy.min.js"><\/script>
+     *  <script src="busyui.js"><\/script>
      *  <link rel="stylesheet" href="Busy.min.css">
      *  Busy.Message.show('有新信息了');
      *  Busy.Message.info('有新信息了');
@@ -6269,7 +6291,7 @@ var Busy = (function (exports, Vue) {
     }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
 
     /**
-     * @busy/loadmore
+     * @busyui/loadmore
      * @module Loadmore
      * @see {@link ../example/all/loadmore.html 实例}
      * @desc 加载更多组件
@@ -7237,7 +7259,7 @@ var Busy = (function (exports, Vue) {
 
     var ActionSheetClass, instance$3, vm$2;
     /**
-     * @busy/action-sheet
+     * @busyui/action-sheet
      * @module ActionSheet
      * @see {@link ../example/all/action-sheet.html 实例}
      * @desc ActionSheet框组件 <busy-action-sheet />
@@ -7251,7 +7273,7 @@ var Busy = (function (exports, Vue) {
      * @param {Event} visiable-change - 显示隐藏时都会触发
      * @param {Slot} slot - default - 组件slot
      * @example
-     * import ActionSheet from '@busy/action-sheet'
+     * import ActionSheet from '@busyui/action-sheet'
      * 
      * // 动态创建
      * ActionSheet.show({
@@ -8623,10 +8645,10 @@ var Busy = (function (exports, Vue) {
       vue.use(Input);
       vue.use(Switch);
       vue.use(Select);
-      vue.prototype.$busy = Busy;
+      vue.prototype.$busyui = Busyui;
     };
 
-    var Busy = {
+    var Busyui = {
       Border: Border,
       install: install,
       Toast: ToastComponent,
@@ -8654,11 +8676,13 @@ var Busy = (function (exports, Vue) {
       Busyjs: Busyjs
     };
 
-    if (window.Vue) {
+    if (window && window.Vue) {
       window.Vue.use(Busy);
     }
+    module.exports = Busyui;
 
     exports.Border = Border;
+    exports.install = install;
     exports.Toast = ToastComponent;
     exports.ToastLoading = ToastLoading$1;
     exports.Loading = Loading;
@@ -8682,8 +8706,7 @@ var Busy = (function (exports, Vue) {
     exports.Input = Input;
     exports.Switch = Switch;
     exports.Busyjs = Busyjs;
-    exports.default = Busy;
 
-    return exports;
+    Object.defineProperty(exports, '__esModule', { value: true });
 
-}({}, Vue));
+}));

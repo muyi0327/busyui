@@ -3,13 +3,13 @@ busy-dialog <busy-dialog /> is a mobile dialog component for busy library
 
 ## Installation
 
-First, install @busy/dialog from busy npm
+First, install @busyui/dialog from busy npm
 
-    npm install @busy/dialog --save -d  or npm install busy --save -d
+    npm install @busyui/dialog --save -d  or npm install busy --save -d
 
 Then use it:
 
-    import BusyDialog from '@busy/dialog';
+    import BusyDialog from '@busyui/dialog';
 
     // alert
     BusyDialog.Aler.show('submit sccess!');
@@ -21,8 +21,8 @@ Then use it:
 
 Or use it in html:
 
-    <script src = 'node_modules/busy/dist/busy.min.js'></script>
-    <link rel="stylesheet" href="node_modules/busy/dist/busy.min.css" />
+    <script src = 'node_modules/busy/dist/busyui.js'></script>
+    <link rel="stylesheet" href="node_modules/busy/dist/busyui.css" />
 
     // alert
     Busy.Alert.show('submit sccess!');

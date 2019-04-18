@@ -101,7 +101,7 @@
     import loadMoreBar from './loadmore-bar.vue';
 
     /**
-     * @busy/loadmore
+     * @busyui/loadmore
      * @module Loadmore
      * @see {@link ../example/all/loadmore.html 实例}
      * @desc 加载更多组件

@@ -14,3 +14,4 @@ example/**/node_modules/
 npm-debug.log
 reports/
 packages/border/
+.npmignore

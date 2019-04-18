@@ -23,7 +23,7 @@
 
 <script>
     /**
-     * @busy/mask
+     * @busyui/mask
      * @module Mask
      * @desc 半透明遮罩层 <busy-mask></busy-mask>
      * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color

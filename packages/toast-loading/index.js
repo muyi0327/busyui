@@ -18,8 +18,8 @@ var tlInstance, tlVm;
  * 
  * @example
  *  //  use it in html
- *  <script src="busy.min.js"><\/script>
- *  <link rel="stylesheet" href="busy.min.css">
+ *  <script src="busyui.js"><\/script>
+ *  <link rel="stylesheet" href="busyui.css">
  *
  *  Busy.ToastLoading.show();
  *  http.get('url').then(()=>{
@@ -27,7 +27,7 @@ var tlInstance, tlVm;
  *  });
  *
  *  // use it in module tools
- *  import ToastLoading from '@busy/toast-loading';
+ *  import ToastLoading from '@busyui/toast-loading';
  *  ToastLoading.show({spinner:{type:2}, direction="row"});
  *  http.get('url').then(()=>{
  *    ToastLoading.hide();

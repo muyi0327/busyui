@@ -1,5 +1,5 @@
 {
-    "name": "@busy/message",
+    "name": "@busyui/message",
     "description": "busyui vue component message",
     "main": "index.js",
     "scripts": {
@@ -20,5 +20,5 @@
         "url": "https://github.com/muyi0327/busyui/issues"
     },
     "homepage": "https://github.com/muyi0327/busyui#readme",
-    "version": "1.0.3"
+    "version": "1.0.13"
 }

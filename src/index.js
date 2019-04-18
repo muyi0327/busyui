@@ -29,7 +29,6 @@ import {
     ListItem
 } from '../packages/list/index.js';
 
-
 var install = function (vue) {
     vue.use(Border);
     vue.use(Toast);
@@ -55,11 +54,10 @@ var install = function (vue) {
     vue.use(Input);
     vue.use(Switch);
     vue.use(Select);
-    vue.prototype.$busy = Busy;
+    vue.prototype.$busyui = Busyui;
 }
 
-
-var Busy = {
+var Busyui = {
     Border,
     install,
     Toast,
@@ -87,12 +85,13 @@ var Busy = {
     Busyjs
 }
 
-if (window.Vue) {
+if (window && window.Vue) {
     window.Vue.use(Busy);
 }
 
 export {
     Border,
+    install,
     Toast,
     ToastLoading,
     Loading,
@@ -118,4 +117,4 @@ export {
     Busyjs
 }
 
-export default Busy;
+module.exports = Busyui;
