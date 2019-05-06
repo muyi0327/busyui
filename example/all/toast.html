@@ -34,18 +34,15 @@
             },
             methods: {
                 showToast: function () {
-                    var toast = Busyui.Toast.show('测试内容测试内容', {
+                    BusyUI.Toast.show('测试内容测试内容', {
                         pos: 'top',
                         delay: 3000,
                         iconType: 'info'
-                    })
+                    }).afterLeave(() => console.log('toast leave'))
 
-                    toast.$on('after-leave', () => {
-                        console.log('after leave event')
-                    })
                 },
                 hideToast() {
-                    Busyui.Toast.hide()
+                    BusyUI.Toast.hide()
                 },
                 showTagToast: function () {
                     this.isShow = true;

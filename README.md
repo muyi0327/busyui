@@ -1,4 +1,4 @@
-# Busyui
+# BusyUI
 基于vue2.0开发的一套，手机端组件库
 
 ## 准备工作
@@ -9,9 +9,9 @@
 
 ## 快速上手
     import Vue from 'vue';
-    import Busyui from 'busyui';
+    import BusyUI from 'busyui';
 
-    Vue.use(Busyui);
+    Vue.use(BusyUI);
 
     // or
     <script src="node_modules/busyui/dist/busyui.js"></sciprt>

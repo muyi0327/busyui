@@ -3,7 +3,7 @@
 
     .#{$prefixClass}-toast {
         position: fixed;
-        z-index: 1000;
+        z-index: $toast-default-z-index;
         width: 100%;
         text-align: center;
         pointer-events: none;
@@ -102,6 +102,9 @@
                 type: String,
                 default: 'top'
             },
+            zIndex: {
+                type: Number
+            },
             isShow: {
                 type: Boolean,
                 default: false
@@ -147,8 +150,8 @@
                 this.$emit('show');
             },
             hide() {
-                this.visiable = false;
-                this.$emit('hide');
+                this.visiable = false
+                this.$emit('hide')
             },
             _leave() {
                 this.$emit('after-leave', this)
@@ -156,7 +159,7 @@
                 if (this.isRemove) {
                     this.$destroy();
                     this.$emit('destroy', this)
-                    this.$el.parentNode.removeChild(this.$el);
+                    this.$el.remove();
                 }
 
             },
@@ -165,6 +168,9 @@
                     clearTimeout(this.timmer);
                     this.timmer = null;
                 }
+            },
+            afterLeave(cb) {
+                this.$on('after-leave', cb)
             }
         },
         watch: {

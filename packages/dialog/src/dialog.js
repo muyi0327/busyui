@@ -8,8 +8,8 @@ var DialogClass = Vue.extend(Dialog);
  * @busyui/dialog
  * @module Dialog
  * @see {@link ../example/all/dialog.html 实例}
- * @desc 对话框组件22222 <busy-dialog />
- * @param {Number} width=240 - 对话框宽度
+ * @desc 对话框组件
+ * @param {Number} width=80% - 对话框宽度
  * @param {Number} height=160 - 对话框高度
  * @param {String} content - 对话框内容, 必填
  * @param {String} title＝'' - 对话框标题
@@ -18,6 +18,10 @@ var DialogClass = Vue.extend(Dialog);
  * @param {Array<Object>} buttons=[{text:'确定'},{text:'取消'}] - 对话框标题
  * @param {Object} contentStyle - 对话框内容样式
  * @param {Boolean} showClose=false - 是否显示关闭按钮
+ * @param {Boolean} isRemove=false - 是否隐藏后移除,动态创建时会用到
+ * @param {Boolean} isShow=false - 是否显示
+ * @param {Number|String} zIndex=1000 - z-index值控制层叠
+ * @param {String} buttonDirection=row - 横向排列按钮(row)/纵向排列按钮(column)
  * @example
  * import {Dialog} from '@busyui/dialog';
  * 

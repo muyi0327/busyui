@@ -18,16 +18,6 @@
 </td>
     </tr>
 <tr>
-    <td><a href="#module_Dialog">Dialog</a></td>
-    <td><p>对话框组件11111 <busy-dialog /></p>
-</td>
-    </tr>
-<tr>
-    <td><a href="#module_Toast">Toast</a></td>
-    <td><p>Toast组件 <busy-toast></busy-toast></p>
-</td>
-    </tr>
-<tr>
     <td><a href="#module_Button">Button</a></td>
     <td><p>按钮组件 <busy-button /></p>
 </td>
@@ -49,7 +39,7 @@
     </tr>
 <tr>
     <td><a href="#module_Dialog">Dialog</a></td>
-    <td><p>对话框组件22222 <busy-dialog /></p>
+    <td><p>对话框组件</p>
 </td>
     </tr>
 <tr>
@@ -297,164 +287,6 @@ if （Busy.ActionSheet.isVisiable(){
 // 百分比圆角
 <div class="busy-border-1px" style="border-radius: 50%;">圆角</div>
 ```
-<a name="module_Dialog"></a>
-
-## Dialog
-对话框组件11111 <busy-dialog />
-
-**Busyui/dialog**:   
-**See**: [实例](../example/all/dialog.html)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| width | <code>Number</code> | <code>240</code> | 对话框宽度 |
-| height | <code>Number</code> | <code>160</code> | 对话框高度 |
-| content | <code>String</code> |  | 对话框内容, 必填 |
-| title＝'' | <code>String</code> |  | 对话框标题 |
-| show | <code>function</code> |  | 对话框标题 |
-| hide | <code>function</code> |  | 对话框标题 |
-| buttons | <code>Array.&lt;Object&gt;</code> | <code>[{text:&#x27;确定&#x27;},{text:&#x27;取消&#x27;}</code> | 对话框标题 |
-| contentStyle | <code>Object</code> |  | 对话框内容样式 |
-| showClose | <code>Boolean</code> | <code>false</code> | 是否显示关闭按钮 |
-
-**Example**  
-```js
-import {Dialog} from '@busyui/dialog';
-
-Dialog.show({
-     title: '提交信息',
-     content: '确定要提交吗？', 
-     buttons:[{text:'确定', action:function(){
-         // 确认提交
-     }},{text:'取消', action: function(){
-         // 不提交
-     }}]
-});
-```
-
-* [Dialog](#module_Dialog)
-    * _static_
-        * [.show(opts)](#module_Dialog.show) ⇒
-        * [.show(opts)](#module_Dialog.show) ⇒
-    * _inner_
-        * [~hide()](#module_Dialog..hide)
-
-<a name="module_Dialog.show"></a>
-
-### Dialog.show(opts) ⇒
-显示对话框Dialog
-
-**Kind**: static method of <code>[Dialog](#module_Dialog)</code>  
-**Returns**: DialogClass实例  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | <code>Object</code> | 配置项, <a href="#module_Dialog">参见</a> |
-
-**Example**  
-```js
-Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
-```
-<a name="module_Dialog.show"></a>
-
-### Dialog.show(opts) ⇒
-显示对话框Dialog
-
-**Kind**: static method of <code>[Dialog](#module_Dialog)</code>  
-**Returns**: DialogClass实例  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | <code>Object</code> | 配置项, <a href="#module_Dialog">参见</a> |
-
-**Example**  
-```js
-Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
-```
-<a name="module_Dialog..hide"></a>
-
-### Dialog~hide()
-隐藏对话框
-
-**Kind**: inner method of <code>[Dialog](#module_Dialog)</code>  
-<a name="module_Toast"></a>
-
-## Toast
-Toast组件 <busy-toast></busy-toast>
-
-**See**: [实例](../example/all/toast.html)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| opts | <code>Object</code> |  | 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'} |
-| content | <code>String</code> |  | 显示内容 |
-| pos | <code>String</code> | <code>&#x27;middle&#x27;</code> | 显示位置,可以是 'top', 'middle', 'bottom' |
-| delay | <code>Number</code> | <code>2000</code> | 显示时间，单位毫秒 |
-| type | <code>String</code> |  | icon类型 |
-| isShow | <code>Boolean</code> | <code>false</code> | 是否显示 |
-| isRemove | <code>Boolean</code> | <code>false</code> | 是否隐藏移除dom |
-| autoHide | <code>Boolean</code> | <code>true</code> | 是否自动隐藏 |
-| iconHeight | <code>Number</code> | <code>28</code> | 设置图标的高度 |
-| iconWidth | <code>Number</code> | <code>28</code> | 设置图标的宽度 |
-| color | <code>Number</code> | <code>#fff</code> | 设置图标的颜色 |
-| hide | <code>function</code> |  | 隐藏 |
-| show | <code>function</code> |  | 显示 |
-| hide | <code>Event</code> |  | 隐藏时触发 |
-| show | <code>Event</code> |  | 显示时触发 |
-| visiable-change | <code>Event</code> |  | 显示,隐藏都会触发 |
-| after-leave | <code>Event</code> |  | 隐藏动画结束时触发 |
-
-**Example**  
-```js
-// use it in module tools
-  import Toast from '@busyui/toast';
-  1, Toast.show('内容')
-  2, Toast.show('内容', 5000)
-  3, Toast.show('内容', 'top', 5000)
-  4, Toast.show({content:'内容', pos: 'top', delay: 5000})
-
-  // use it in html
-  <script src="busyui.js"><\/script>
-  <link href="busyui.css" rel="stylesheet" />
-
-  1, Busy.Toast.show('内容')
-  2, Busy.Toast.show('内容', 5000)
-  3, Busy.Toast.show('内容', 'top', 5000)
-  4, Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
-```
-
-* [Toast](#module_Toast)
-    * [.show(opts)](#module_Toast.show) ⇒
-    * [.show(opts)](#module_Toast.show) ⇒
-
-<a name="module_Toast.show"></a>
-
-### Toast.show(opts) ⇒
-**Kind**: static method of <code>[Toast](#module_Toast)</code>  
-**Returns**: ToastClass实例  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | <code>Object</code> | 配置项, <a href="#module_Toast">参见</a> |
-
-**Example**  
-```js
-Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
-```
-<a name="module_Toast.show"></a>
-
-### Toast.show(opts) ⇒
-**Kind**: static method of <code>[Toast](#module_Toast)</code>  
-**Returns**: ToastClass实例  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | <code>Object</code> | 配置项, <a href="#module_Toast">参见</a> |
-
-**Example**  
-```js
-Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
-```
 <a name="module_Button"></a>
 
 ## Button
@@ -576,7 +408,7 @@ Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('
 import {Confirm} from '@busyui/dialog';
 // var Confirm = require('@busyui/dialog/confirm.js');
 
-Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+Confirm.show('确定要提交吗？').then((result)=>{if (result) {console.log('提交')}});
 ```
 <a name="module_Confirm.show"></a>
 
@@ -600,14 +432,14 @@ confirm.doClose();
 <a name="module_Dialog"></a>
 
 ## Dialog
-对话框组件22222 <busy-dialog />
+对话框组件
 
 **Busyui/dialog**:   
 **See**: [实例](../example/all/dialog.html)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| width | <code>Number</code> | <code>240</code> | 对话框宽度 |
+| width | <code>Number</code> | <code>80%</code> | 对话框宽度 |
 | height | <code>Number</code> | <code>160</code> | 对话框高度 |
 | content | <code>String</code> |  | 对话框内容, 必填 |
 | title＝'' | <code>String</code> |  | 对话框标题 |
@@ -616,6 +448,10 @@ confirm.doClose();
 | buttons | <code>Array.&lt;Object&gt;</code> | <code>[{text:&#x27;确定&#x27;},{text:&#x27;取消&#x27;}</code> | 对话框标题 |
 | contentStyle | <code>Object</code> |  | 对话框内容样式 |
 | showClose | <code>Boolean</code> | <code>false</code> | 是否显示关闭按钮 |
+| isRemove | <code>Boolean</code> | <code>false</code> | 是否隐藏后移除,动态创建时会用到 |
+| isShow | <code>Boolean</code> | <code>false</code> | 是否显示 |
+| zIndex | <code>Number</code> &#124; <code>String</code> | <code>1000</code> | z-index值控制层叠 |
+| buttonDirection | <code>String</code> | <code>row</code> | 横向排列按钮(row)/纵向排列按钮(column) |
 
 **Example**  
 ```js
@@ -631,14 +467,6 @@ Dialog.show({
      }}]
 });
 ```
-
-* [Dialog](#module_Dialog)
-    * _static_
-        * [.show(opts)](#module_Dialog.show) ⇒
-        * [.show(opts)](#module_Dialog.show) ⇒
-    * _inner_
-        * [~hide()](#module_Dialog..hide)
-
 <a name="module_Dialog.show"></a>
 
 ### Dialog.show(opts) ⇒
@@ -655,28 +483,6 @@ Dialog.show({
 ```js
 Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
 ```
-<a name="module_Dialog.show"></a>
-
-### Dialog.show(opts) ⇒
-显示对话框Dialog
-
-**Kind**: static method of <code>[Dialog](#module_Dialog)</code>  
-**Returns**: DialogClass实例  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | <code>Object</code> | 配置项, <a href="#module_Dialog">参见</a> |
-
-**Example**  
-```js
-Busy.Dialog.show({content:'红包来了!',title:'发红包了'})
-```
-<a name="module_Dialog..hide"></a>
-
-### Dialog~hide()
-隐藏对话框
-
-**Kind**: inner method of <code>[Dialog](#module_Dialog)</code>  
 <a name="module_Prompt"></a>
 
 ## Prompt
@@ -775,7 +581,6 @@ loading component with mask
 | color | <code>String</code> | <code>#478f05</code> | spinner以及text颜色 |
 | bgColor | <code>String</code> | <code>rgba(255,</code> | 255, 255, 0.9) - spinner以及text颜色 |
 | text | <code>String</code> |  | 加载文字提示 |
-| fullPage | <code>Boolean</code> | <code>false</code> | 是否全屏显示 |
 | isShow | <code>Boolean</code> | <code>false</code> | 显示隐藏 |
 | isRemove | <code>Boolean</code> | <code>false</code> | 隐藏后是否清除 |
 
@@ -1111,25 +916,6 @@ Toast组件 <busy-toast></busy-toast>
 | visiable-change | <code>Event</code> |  | 显示,隐藏都会触发 |
 | after-leave | <code>Event</code> |  | 隐藏动画结束时触发 |
 
-
-* [Toast](#module_Toast)
-    * [.show(opts)](#module_Toast.show) ⇒
-    * [.show(opts)](#module_Toast.show) ⇒
-
-<a name="module_Toast.show"></a>
-
-### Toast.show(opts) ⇒
-**Kind**: static method of <code>[Toast](#module_Toast)</code>  
-**Returns**: ToastClass实例  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | <code>Object</code> | 配置项, <a href="#module_Toast">参见</a> |
-
-**Example**  
-```js
-Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
-```
 <a name="module_Toast.show"></a>
 
 ### Toast.show(opts) ⇒

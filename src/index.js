@@ -1,6 +1,5 @@
 import Border from '../packages/border/index.js'
 import Toast from '../packages/toast/index.js';
-import Busyjs from '../packages/busyjs';
 import ToastLoading from '../packages/toast-loading/index.js';
 import Loading from '../packages/loading/index.js';
 import Icons from '../packages/icon/index.js';
@@ -32,7 +31,7 @@ import {
     ListItem
 } from '../packages/list/index.js';
 
-var install = function (vue) {
+var install = function(vue) {
     vue.use(Border);
     vue.use(Toast);
     vue.use(FlexBox);
@@ -58,10 +57,10 @@ var install = function (vue) {
     vue.use(Input);
     vue.use(Switch);
     vue.use(Select);
-    vue.prototype.$busyui = Busyui;
+    vue.prototype.$busyui = BusyUI;
 }
 
-var Busyui = {
+var BusyUI = {
     Border,
     install,
     Toast,
@@ -86,12 +85,11 @@ var Busyui = {
     List,
     ListItem,
     Input,
-    Switch,
-    Busyjs
+    Switch
 }
 
 if (window && window.Vue) {
-    window.Vue.use(Busyui);
+    window.Vue.use(BusyUI);
 }
 
 export {
@@ -119,8 +117,7 @@ export {
     List,
     ListItem,
     Input,
-    Switch,
-    Busyjs
+    Switch
 }
 
-export default Busyui;
+export default BusyUI;

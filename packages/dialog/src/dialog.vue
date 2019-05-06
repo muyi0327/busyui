@@ -5,7 +5,7 @@
     .#{$prefixClass}-dialog {
         position: fixed;
         overflow: hidden;
-        z-index: 1000;
+        z-index: $dialog-default-z-index;
         width: 100%;
         height: 100%;
         top: 0;
@@ -15,8 +15,8 @@
         align-items: center;
 
         &__wrap {
-            border-radius: 12px;
-            background-color: #f7f7f7;
+            border-radius: 10px;
+            background-color: rgba(#ffffff, 0.9);
             box-sizing: border-box;
             width: $dialog-dfault-width;
             height: $dialog-dfault-height;
@@ -40,15 +40,14 @@
             font-size: 17px;
             color: #030303;
             text-align: center;
-            padding: 14px 0;
+            padding: 14px 0 6px;
         }
 
         &__header,
         &__footer {
             width: 100%;
             box-sizing: border-box;
-            flex-grow: 0;
-            flex-shrink: 0;
+            flex: none;
         }
 
         &__body {
@@ -74,7 +73,7 @@
         &__footer {
             display: flex;
             flex-wrap: no-wrap;
-            border-top: 1px solid #e7e7e7;
+            border-top: 1px solid #ddd;
         }
 
         &__footer_row {
@@ -82,18 +81,18 @@
         }
 
         &__footer_row &__button {
-            border-right: 1px solid #e7e7e7;
+            border-right: 1px solid #ddd;
             &:last-child {
                 border-right: 0;
             }
         }
 
-        &__footer_col {
+        &__footer_column {
             flex-direction: column;
         }
 
-        &__footer_col &__button {
-            border-bottom: 1px solid #e7e7e7;
+        &__footer_column &__button {
+            border-bottom: 1px solid #ddd;
             &:last-child {
                 border-bottom: 0;
             }
@@ -106,6 +105,8 @@
             text-align: center;
             color: $dialog-default-button-text-color;
             font-size: $dialog-default-button-font-size;
+            padding: 0;
+            margin: 0;
 
             &:active {
                 background-color: #eee;
@@ -119,19 +120,19 @@
         <transition name="busy-animate--scale" @after-leave="_leave">
             <div class="busy-dialog__wrap" v-show="visiable" :style="styles">
                 <p v-if="showClose" class="busy-dialog__close" @click.stop="hide">
-                    <busy-icon type="close" :width="20" :height="20" fill="#8a8a8a"></busy-icon>
+                    <Icon type="close" :width="20" :height="20" fill="#8a8a8a" />
                 </p>
                 <header class="busy-dialog__header" v-if="title">
                     <slot name="header">
                         <div class="busy-dialog__title">{{title}}</div>
                     </slot>
                 </header>
-                <div class="busy-dialog__body" v-if="content || $slots['body']">
-                    <slot name="body">
+                <div class="busy-dialog__body" v-if="content || $slots['default']">
+                    <slot>
                         <div :style="contentStyle" v-html="content"></div>
                     </slot>
                 </div>
-                <footer class="busy-dialog__footer" :style="footerStyles" :class="{'busy-dialog__footer_row':buttonDirection=='row', 'busy-dialog__footer_col':buttonDirection=='col'}">
+                <footer class="busy-dialog__footer" :class="{'busy-dialog__footer_row':buttonDirection=='row', 'busy-dialog__footer_column':buttonDirection=='column'}">
                     <slot name="footer">
                         <template v-for="(btn,$i) in bindButtons">
                             <p class="busy-dialog__button" :key="'btn-'+$i" :class="btn.class" :style="btn.style" @click.stop="btn.action">{{btn.text}}</p>
@@ -140,13 +141,13 @@
                 </footer>
             </div>
         </transition>
-        <busy-mask :is-show="visiable" :is-remove="isRemove" color="rgba(0,0,0,.5)"> </busy-mask>
+        <BusyMask :is-show="visiable" :is-remove="isRemove" color="rgba(0,0,0,.6)" />
     </div>
 
 </template>
 <script>
-    import Icon from '../../icon';
-    import Mask from '../../mask';
+    import Icon from '../../icon'
+    import Mask from '../../mask'
 
     export default {
         name: 'busy-dialog',
@@ -156,8 +157,10 @@
                 default: true
             },
             width: {
-                type: [Number, String],
-                default: '80%'
+                type: [Number, String]
+            },
+            zIndex: {
+                type: [Number, String]
             },
             content: {
                 type: [String, Number],
@@ -171,8 +174,7 @@
                 default: ''
             },
             height: {
-                type: [Number, String],
-                default: 0
+                type: [Number, String]
             },
             showClose: {
                 type: Boolean,
@@ -204,32 +206,30 @@
         data() {
             return {
                 visiable: this.isShow,
-                leave: true
+                leave: !this.isShow
             }
         },
         components: {
-            [Icon.name]: Icon,
-            [Mask.name]: Mask
+            Icon,
+            BusyMask: Mask
         },
         computed: {
             styles() {
-                let s = {}, w = this.width, h = this.height;
+                let w = this.width, h = this.height;
 
                 if (this.width) {
-                    s.width = /^\d+$/.test(w) ? w + 'px' : w
-                    //s.marginLeft = -1 * this.width * 0.5 + 'px';
+                    w = /^\d+$/.test(w) ? w + 'px' : w
                 }
 
                 if (this.height) {
-                    s.height = /^\d+$/.test(h) ? h + 'px' : h
-                    //s.marginTop = -1 * this.height * 0.5 + 'px';
+                    h = /^\d+$/.test(h) ? h + 'px' : h
                 }
-                return s;
-            },
-            footerStyles() {
+
                 return {
-                    height: (this.buttonDirection == 'row' ? 1 : this.buttons.length) * 44 + 'px'
-                }
+                    height: h,
+                    width: w,
+                    zIndex: this.zIndex
+                };
             },
             /**
              * 格式化button的回调
@@ -261,7 +261,7 @@
         methods: {
             hide() {
                 this.visiable = false;
-                this.$emit('close');
+                this.$emit('hide');
                 return this;
             },
 
@@ -273,14 +273,15 @@
 
             _leave() {
                 this.leave = true
+                this.$emit('after-leave')
                 // 动画结束，清除元素
                 if (this.isRemove) {
-                    this.$destroy();
-                    this.$el.parentNode.removeChild(this.$el);
+                    this.$destroy()
+                    this.$el.remove()
                     this.$emit('destroy', this)
                 }
                 this.$emit('hide-end', this)
-            },
+            }
         }
     }
 </script>    

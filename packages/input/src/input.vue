@@ -47,7 +47,7 @@
     import Clickoutside from '../../../src/directives/clickoutside.js';
     import Icon from '../../icon';
     import {
-        MNumber
+        BNumber
     } from '../../util';
 
 
@@ -152,12 +152,12 @@
             if (this.format) {
                 switch (this.format) {
                     case 'numberic':
-                        this.enFormatFunction = MNumber.enFormatNumberic;
-                        this.deFormatFunction = MNumber.deFormatNumberic;
+                        this.enFormatFunction = BNumber.enFormatNumberic;
+                        this.deFormatFunction = BNumber.deFormatNumberic;
                         break;
                     case 'bankcard':
-                        this.deFormatFunction = MNumber.deFormatBankCard;
-                        this.enFormatFunction = MNumber.enFormatBankCard;
+                        this.deFormatFunction = BNumber.deFormatBankCard;
+                        this.enFormatFunction = BNumber.enFormatBankCard;
                         this.dms = ' ';
                         break;
                     default:
@@ -165,7 +165,7 @@
                             let dms = this.format[1] || ' ';
                             let blocks = this.format[0];
                             this.enFormatFunction = function (n) {
-                                return MNumber.formatBlocks(n, blocks, dms)
+                                return BNumber.formatBlocks(n, blocks, dms)
                             }.bind(this);
 
                             this.deFormatFunction = function (n) {

@@ -46,7 +46,7 @@
             <busy-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></busy-action-sheet>
 
             <busy-action-sheet :is-show="true">
-                <busy-action-sheet-item @click="()=>{$busy.Toast.show('1111')}">
+                <busy-action-sheet-item @click="()=>{$busyui.Toast.show('1111')}">
                     <busy-flexbox :inline="false" align-v="center" align-h="center" height="inherit" style="line-height:18px;">
                         <busy-icon type="info" fill="#000000"></busy-icon>
                         <span style="margin-left:10px;">
@@ -54,8 +54,8 @@
                         </span>
                     </busy-flexbox>
                 </busy-action-sheet-item>
-                <busy-action-sheet-item @click="()=>{$busy.Toast.show('2222')}">slot动作二</busy-action-sheet-item>
-                <busy-action-sheet-item @click="()=>{$busy.Toast.show('3333')}">slot动作三</busy-action-sheet-item>
+                <busy-action-sheet-item @click="()=>{$busyui.Toast.show('2222')}">slot动作二</busy-action-sheet-item>
+                <busy-action-sheet-item @click="()=>{$busyui.Toast.show('3333')}">slot动作三</busy-action-sheet-item>
             </busy-action-sheet>
         </section>
     </section>
@@ -105,7 +105,7 @@
                     this.isShow = visiable;
                 },
                 showActionSheet: function () {
-                    Busyui.ActionSheet.show({
+                    BusyUI.ActionSheet.show({
                         actions: this.actions
                     });
                 }

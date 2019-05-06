@@ -1,6 +1,7 @@
 <template>
-    <busy-dialog ref="dialog" class="busy-alert" :show-close="false" :width="width" :height="height" :buttons="[{text:'确定'}]" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
-    </busy-dialog>
+    <BusyDialog ref="dialog" class="busy-alert" v-bind="datas" @visiable-change="handleVisiable">
+        <slot></slot>
+    </BusyDialog>
 </template>
 <script>
     import Dialog from './dialog.vue';
@@ -9,16 +10,11 @@
         name: 'busy-alert',
         extends: Dialog,
         components: {
-            [Dialog.name]: Dialog
+            BusyDialog: Dialog
         },
-        props: {
-            width: {
-                type: [String, Number],
-                default: '80%'
-            },
-            height: {
-                type: [String, Number],
-                default: 140
+        computed: {
+            datas() {
+                return { ...this.$props, isShow: this.visiable, buttons: [{ text: '确定' }] }
             }
         },
         methods: {

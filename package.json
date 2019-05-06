@@ -19,7 +19,7 @@
         "lint": "node_modelues/.bin/eslint -f checkstyle --ext .js,.vue src test > reports/eslint-report.xml",
         "fix": "node_modelues/.bin/eslint --fix --ext .js,.vue src test",
         "docs": "gulp api",
-        "start": "http-server -p 3022 -o"
+        "start": "http-server -p 3022 -d /example/all -o"
     },
     "repository": {
         "type": "git",
@@ -129,5 +129,5 @@
         "vue-template-compiler": "^2.6.9",
         "webpack": "^4.29.6"
     },
-    "version": "1.0.16"
+    "version": "1.0.19"
 }

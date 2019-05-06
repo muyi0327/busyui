@@ -10,6 +10,14 @@ import uglify from 'gulp-uglify'
 import csso from 'gulp-csso'
 import jdtomk from 'jsdoc-to-markdown'
 import colors from 'colors'
+import {
+    src,
+    dest,
+    libraryName,
+    packages,
+    docs,
+    globalName
+} from './src/config'
 
 import {
     rollup
@@ -18,21 +26,18 @@ import {
     exec
 } from 'child_process'
 import fs from 'fs'
-import {
-    connectLogger
-} from 'log4js';
 
 let buildTasks = [];
 let env = process.env.NODE_ENV;
-let name = 'busyui'
-let dist = './dist'
+let name = libraryName
+let dist = dest
 
 gulp.task('clear', (cb) => {
     del.sync([dist]);
     cb()
 });
 
-// 打包完整 busyui.js 和 busyui.css
+// 打包
 gulp.task('build-dev', series('clear', async function () {
     console.log('build dev...........');
     delete rollupConfig.output
@@ -57,7 +62,7 @@ gulp.task('build-dev', series('clear', async function () {
         await bundle.write({
             file: fileName,
             format: t,
-            name: 'Busyui',
+            name: globalName,
             exports: 'named',
             sourceMap: true,
             globals: {
@@ -69,7 +74,7 @@ gulp.task('build-dev', series('clear', async function () {
     }
 }))
 
-// 压缩 busyui.js 到 busyui.min.js
+// 压缩js
 gulp.task('compress', series('build-dev', () => {
     return gulp.src([`${dist}/${name}.js`, `${dist}/${name}.commonjs.js`, `${dist}/${name}.iife.js`])
         .pipe(uglify({
@@ -98,11 +103,11 @@ gulp.task('cssmin', () => {
 // 生成文档
 gulp.task('api', (cb) => {
     jdtomk.render({
-        files: './packages/**/*.{vue,js}',
+        files: `${packages}/**/*.{vue,js}`,
         configure: './jsdoc.conf.json',
         'module-index-format': 'table'
     }).then(rst => {
-        fs.writeFileSync('./docs/api.md', rst);
+        fs.writeFileSync(`${docs}/api.md`, rst);
         cb()
     })
 })
@@ -119,14 +124,14 @@ gulp.task('build', series(...buildTasks))
 
 gulp.task('watch', () => {
     gulp.watch([
-        'src/**/*.{js,css,scss,sass,vue}',
-        'packages/**/*.{js,css,scss,sass,vue}',
-        '!packages/**/node_modules/**/*.{js,vue}'
+        `${src}/**/*.{js,css,scss,sass,vue}`,
+        `${packages}/**/*.{js,css,scss,sass,vue}`,
+        `!${packages}/**/node_modules/**/*.{js,vue}`
     ], series('build'))
 });
 
 gulp.task('watch-api', () => {
-    gulp.watch(['packages/**/*.{vue,js}'], series('api'))
+    gulp.watch([`${packages}/**/*.{vue,js}`], series('api'))
 });
 
 gulp.task('test', function (cb) {
@@ -141,7 +146,7 @@ gulp.task('test', function (cb) {
 gulp.task('vs', (cb) => {
     console.log(process.argv.slice(2))
     let version = process.argv.slice(2)[2];
-    let pkgs = glob.sync('./packages/**/package.json');
+    let pkgs = glob.sync(`${packages}/**/package.json`);
     pkgs.unshift('./package.json');
 
     //console.log(pkgs)

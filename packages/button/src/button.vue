@@ -1,6 +1,5 @@
-<style lang="scss">
+<style lang="scss" scoped>
     @import "../../../src/style/variable.scss";
-
     .#{$prefixClass}-button {
         -webkit-appearance: none;
         appearance: none;
@@ -8,16 +7,26 @@
         user-select: none;
         border-width: 0;
         border-style: solid;
-        box-sizing: content-box;
-        color: inherit;
+        border-color: $button-default-border-color;
+        box-sizing: border-box;
         display: inline-block;
         outline: 0;
         position: relative;
         text-align: center;
         padding: 0 12px;
         border-radius: $button-default-border-radius;
-        overflow: hidden;
+
         margin: 0;
+        background-color: $button-default-background-color;
+        color: $button-default-text-color;
+        height: $button-normal-height;
+        line-height: $button-normal-height;
+        font-size: $button-normal-font-size;
+
+        &.is-ghost {
+            color: $button-default-border-color;
+        }
+
         &.is-sharp {
             border-radius: 0;
             .busy-button__border {
@@ -42,6 +51,10 @@
             transform-origin: 0 0;
         }
 
+        &__border {
+            border-color: $button-default-border-color;
+        }
+
         &:after {
             content: " ";
             z-index: 1000;
@@ -57,19 +70,6 @@
 
         &.is-disabled:after {
             background-color: rgba(255, 255, 255, 0.6);
-        }
-
-        &--default {
-            background-color: $button-default-background-color;
-            color: $button-default-text-color;
-            border-color: $button-default-border-color;
-            &.is-ghost {
-                color: $button-default-border-color;
-            }
-        }
-
-        &--default &__border {
-            border-color: $button-default-border-color;
         }
 
         &--primary {
@@ -99,31 +99,22 @@
         }
 
         &--large {
-            height: $button-size-large-height;
-            line-height: $button-size-large-height;
-            font-size: 18px;
-        }
-
-        &--normal {
-            height: $button-size-normal-height;
-            line-height: $button-size-normal-height;
-            font-size: 14px;
+            height: $button-large-height;
+            line-height: $button-large-height;
+            font-size: $button-large-font-size;
         }
 
         &--small {
-            height: $button-size-small-height;
-            line-height: $button-size-small-height;
-            font-size: 14px;
+            height: $button-small-height;
+            line-height: $button-small-height;
+            font-size: $button-small-font-size;
         }
     }
 </style>
 
+
 <template>
-    <button :data-key="'busy-button-' + _uid" :type="nativeType" class="busy-button" :class="['busy-button--' + type, size ? 'busy-button--' + size : '', {
-      'is-disabled': disabled,
-      'is-block': block,
-      'is-ghost': ghost
-    }]" :style="styles" @click="handleClick" :disabled="disabled">
+    <button :type="nativeType" class="busy-button" :class="classes" :style="styles" @click="handleClick" :disabled="disabled">
         <label class="busy-button__text">
             <slot>{{content}}</slot>
         </label>
@@ -132,7 +123,7 @@
 </template>
 
 <script>
-    import { MNumber } from '../../util'
+    import { BNumber } from '../../util'
 
     setTimeout(() => {
         let dpr = window.devicePixelRatio;
@@ -210,8 +201,7 @@
             block: Boolean,
             fontSize: {
                 type: [Number, String],
-                default: 14,
-                validator: MNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             bgColor: String,
             borderColor: String,
@@ -220,14 +210,12 @@
             },
             borderWidth: {
                 type: [Number, String],
-                default: 1,
-                validator: MNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             fontColor: String,
             borderRadius: {
                 type: [Number, String],
-                default: 4,
-                validator: MNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             type: {
                 type: String,
@@ -246,27 +234,33 @@
             },
             height: {
                 type: [String, Number],
-                validator: MNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             width: {
                 type: [String, Number],
-                validator: MNumber.validateUnit
+                validator: BNumber.validateUnit
             },
             size: {
                 type: String,
                 default: 'normal',
                 validator(value) {
                     return [
-                        'small',
                         'normal',
+                        'small',
                         'large'
                     ].indexOf(value) > -1;
                 }
             }
         },
         data() {
+            let bw = this.borderWidth;
+
+            if (!bw && (this.type === 'default' || this.ghost) && !/^0(\w?|%)$/.test(bw)) {
+                bw = 1
+            }
+
             return {
-                isThin: this.borderWidth === 1 || this.borderWidth === '1px'
+                isThin: bw === 1 || bw === '1px'
             }
         },
         methods: {
@@ -275,18 +269,27 @@
             }
         },
         computed: {
+            classes() {
+                let { type = 'default', size = 'normal', disabled, block, ghost } = this
+                return [type === 'default' ? null : 'busy-button--' + type, size === 'normal' ? null : 'busy-button--' + size, {
+                    'is-disabled': disabled,
+                    'is-block': block,
+                    'is-ghost': ghost
+                }]
+            },
             thinBorder() {
-                if (!(this.borderWidth === 1 || this.borderWidth === '1px')) return null;
+                if (!this.isThin) return null;
 
-                let br = this.sharp ? 0 : this.borderRadius, regBr;
+                let br = this.sharp ? 0 : (this.borderRadius || 4), regBr;
                 let dpr = window.devicePixelRatio;
 
-
-                if (/^\d+$/.test(br)) {
-                    br = br * dpr + 'px'
-                } else if (!/%$/.test(br)) {
-                    regBr = String(br).match(/(\d+)([a-zA-Z]+)/)
-                    br = regBr[1] * dpr + regBr[2]
+                if (br) {
+                    if (/^\d+$/.test(br)) {
+                        br = br * dpr + 'px'
+                    } else if (!/%$/.test(br)) {
+                        regBr = String(br).match(/(\d+)([a-zA-Z]+)/)
+                        br = regBr[1] * dpr + regBr[2]
+                    }
                 }
 
                 return {
@@ -295,15 +298,14 @@
                 }
             },
             styles() {
-                let h = MNumber.cmpUnit(this.height),
-                    w = MNumber.cmpUnit(this.width),
-                    br = this.sharp ? 0 : this.borderRadius,
+                let h = BNumber.cmpUnit(this.height),
+                    w = BNumber.cmpUnit(this.width),
+                    br = this.sharp ? 0 : (this.borderRadius || null),
                     fs = this.fontSize,
                     size = this.size
 
                 let o = {
                     height: h,
-                    lineHeight: h,
                     borderWidth: !this.isThin ? this.borderWidth || null : null,
                     borderColor: !this.isThin ? this.borderColor : null,
                     width: w,

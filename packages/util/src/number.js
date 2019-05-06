@@ -122,3 +122,8 @@ export function validateUnit(u) {
     u = String(u)
     return REG.cssUnit.test(u) || /^auto|inherit$/.test(u)
 }
+
+
+export function gid(tail) {
+    return Math.floor(Math.random() * 100000).toString(36) + Date.now().toString(36).substr(0, 5)
+}

@@ -49,6 +49,7 @@ export default Object.assign(Alert, {
             opts = text;
             text = opts.content;
         }
+
         opts = opts || {};
         var instance = new AlertClass({
             el: document.createElement('div'),

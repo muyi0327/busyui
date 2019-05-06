@@ -86,7 +86,7 @@
     </div>
 </template>
 <script>
-    import { MNumber } from '../../util';
+    import { BNumber } from '../../util';
     const VERTICAL = 'vertical';
     const HORIZONTAL = 'horizontal';
 
@@ -300,7 +300,7 @@
             },
             goIndex(index) {
                 // 保证不超出0~this.size-1
-                index = MNumber.limit(index, 0, this.size - 1);
+                index = BNumber.limit(index, 0, this.size - 1);
                 // 转页才有动画
                 if (index !== this.index) {
                     this.status = 'transition';

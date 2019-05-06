@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import { MNumber } from '../../util'
+    import { BNumber } from '../../util'
 
     export default {
         name: 'busy-flexitem',
@@ -23,8 +23,8 @@
         computed: {
             styles() {
                 let w = this.width, h = this.height;
-                w = MNumber.cmpUnit(w)
-                h = MNumber.cmpUnit(h)
+                w = BNumber.cmpUnit(w)
+                h = BNumber.cmpUnit(h)
 
                 return {
                     flex: this.flex,

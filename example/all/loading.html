@@ -9,18 +9,68 @@
     <script src="../vue.js"></script>
     <script src="../../dist/busyui.js"></script>
 
-    <style>
+    <style type="text/css">
         * {
             padding: 0;
             margin: 0;
-            list-style: none;
+            list-style-type: none;
         }
 
+        .loading-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100px;
+            width: 100px;
+        }
+
+        .circular {
+            width: 20px;
+            height: 20px;
+            animation: loading-rotate 2s linear infinite;
+        }
+
+        .path {
+            animation: loading-dash 1.5s ease-in-out infinite;
+            stroke-dasharray: 90 120;
+            stroke-dashoffset: 0;
+            stroke-width: 4;
+            stroke: #222;
+            stroke-linecap: round;
+        }
+
+        @keyframes loading-dash {
+            0% {
+                stroke-dasharray: 1 200;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 90 150;
+                stroke-dashoffset: -40px;
+            }
+
+            100% {
+                stroke-dasharray: 90 150;
+                stroke-dashoffset: -120px;
+            }
+        }
+
+        @keyframes loading-rotate {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+    </style>
+
+    <style>
         html,
         body {
             padding: 0;
             margin: 0;
             height: 100%;
+            font-size: 14px;
         }
 
         .wrap {
@@ -67,9 +117,10 @@
             <busy-button :plain="true" @click="create">动态创建</busy-button>
             <div class="box2">
                 看到某些网站的动画效果很棒，特别是有一种动画，像是一点一点画出来的那种，经过仔细查看源代码和自己实验，发现其实是利用SVG制作的描边动画，感觉非常的神奇，现在分享给大家制作方法，希望您也能通过本文的介绍，制作出绚丽的SVG描边动画。
-                <busy-loading :is-show="visiable" :full-page="fullPage">客官请稍等，马上就来</busy-loading>
+                <busy-loading :is-show="visiable" spinner-type="circle-dash" spinner-width="24" spinner-height="24" :position="position">客官请稍等，马上就来</busy-loading>
             </div>
         </section>
+
     </section>
 
     <script>
@@ -79,13 +130,13 @@
                 data: function () {
                     return {
                         visiable: false,
-                        fullPage: false
+                        position: undefined
                     }
                 },
                 methods: {
                     show: function () {
                         this.visiable = true;
-                        // Busyui.Loading.show({
+                        // BusyUI.Loading.show({
                         //     color: '#999',
                         //     spinnerWidth: 30,
                         //     spinnerHeight: 30,
@@ -97,16 +148,20 @@
                     },
                     hide: function () {
                         this.visiable = false;
-                        //Busyui.Loading.show({direction: 'row'});
+                        //BusyUI.Loading.show({direction: 'row'});
                     },
                     fullpage: function () {
                         this.visiable = true;
-                        this.fullPage = true;
-                        //Busyui.Loading.hide();
+                        this.position = 'fixed';
+                        //BusyUI.Loading.hide();
                     },
                     create: function () {
-                        Busyui.Loading.show({
-                            fullPage: true
+                        BusyUI.Loading.show({
+                            text: '正在加载',
+                            spinnerType: 'circle-dash',
+                            spinnerWidth: 16,
+                            spinnerHeight: 16,
+                            direction: 'column'
                         })
                     }
                 }

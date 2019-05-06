@@ -50,6 +50,9 @@
             zIndex: {
                 type: Number,
                 default: 1000
+            },
+            position: {
+                type: String
             }
         },
         data() {
@@ -61,7 +64,8 @@
             styles() {
                 return {
                     backgroundColor: this.color,
-                    zIndex: this.zIndex
+                    zIndex: this.zIndex,
+                    position: this.position
                 }
             }
         },

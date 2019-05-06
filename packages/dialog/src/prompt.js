@@ -3,6 +3,7 @@ import Prompt from './prompt.vue';
 
 
 const PromptClass = Vue.extend(Prompt);
+var instance
 
 /**
  * @busyui/prompt
@@ -48,40 +49,45 @@ export default Object.assign(Prompt, {
      * prompt.doClose();
      * 
      */
-    show(text, opts, callback) {
-        if (typeof text === 'object') {
-            callback = opts;
-            opts = text;
-            text = opts.placeholder;
+    show(placeholder, opts) {
+        if (typeof placeholder === 'object') {
+            opts = placeholder;
+            placeholder = opts.placeholder;
         }
 
-        if (typeof text === 'function') {
-            opts = {};
-            callback = text;
-            text = '';
+        opts = opts || {};
+
+        let val = '';
+
+        if (instance) {
+            this.hide()
         }
 
-        if (typeof text === 'string' && typeof opts === 'function') {
-            callback = opts;
-            opts = {};
-        }
-
-        callback = callback || function () {};
-        var instance = new PromptClass({
+        instance = new PromptClass({
             el: document.createElement('div'),
             propsData: Object.assign(opts, {
-                placeholder: text,
-                callback: callback,
-                isRemove: true
+                placeholder: placeholder,
+                isRemove: true,
+                value: val
             })
         });
 
-        Vue.nextTick(() => {
-            var vm = instance.$mount();
-            document.body.appendChild(vm.$el);
-            instance.show();
-        });
+        return new Promise((resolve, reject) => {
+            Vue.nextTick(() => {
+                var vm = instance.$mount();
+                document.body.appendChild(vm.$el);
+                instance.show();
+            });
 
-        return instance;
+            instance.$on('confirm', () => resolve(val))
+            instance.$on('cancel', () => reject())
+            instance.$on('input', (newVal) => val = newVal)
+        })
+    },
+    hide() {
+        if (instance) {
+            instance.hide();
+            instance = null
+        }
     }
 });

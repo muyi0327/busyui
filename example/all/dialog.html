@@ -28,8 +28,9 @@
 
         .wrap {
             height: 100%;
-            width: 100%;
+            width: 90%;
             overflow: hidden;
+            margin: 0 auto;
         }
 
         .loadings {
@@ -46,20 +47,27 @@
             align-items: center;
             margin-top: 20px;
         }
+
+        .mt12 {
+            margin-top: 12px !important;
+        }
     </style>
 </head>
 
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <busy-button :plain="true" class="dlg" @click="showDefault">默 认</busy-button>
-            <busy-button :plain="true" class="alt" @click="shwoAlert">Alert</busy-button>
-            <busy-button :plain="true" class="cfm" @click="showConfirm">confirm</busy-button>
-            <busy-button :plain="true" class="prompt" @click="showPrompt">prompt</busy-button>
-            <busy-button :plain="true" class="custom" @click="showCustom">自定义</busy-button>
-            <busy-confirm @visiable-change="handleConfirmStatus" :is-show="isShowConfirm" :content="confirmContent" :callback="handleConfirm"></busy-confirm>
-            <busy-prompt @visiable-change="handlePromptStatus" :is-show="isShowPrompt" :content="propmtContent" :callback="handlePrompt"></busy-prompt>
-            <busy-alert @visiable-change="handleAlertStatus" :is-show="isShowAlert" :content="alertContent"></busy-alert>
+            <busy-button type="primary" width="100%" class="mt12" @click="showDefault">默 认</busy-button>
+            <busy-button type="primary" width="100%" class="mt12" @click="shwoAlert">Alert</busy-button>
+            <busy-button type="primary" width="100%" class="mt12" @click="showConfirm">confirm</busy-button>
+            <busy-button type="primary" width="100%" class="mt12" @click="showConfirm1">confirm promise</busy-button>
+            <busy-button type="primary" width="100%" class="mt12" @click="showPrompt">prompt</busy-button>
+            <busy-button type="primary" width="100%" class="mt12" @click="showPrompt1">prompt promise</busy-button>
+            <busy-button type="primary" width="100%" class="mt12" @click="showCustom">自定义</busy-button>
+            <busy-dialog :is-show="true">sssss</busy-dialog>
+            <busy-confirm @visiable-change="handleConfirmStatus" :is-show="isShowConfirm" :content="confirmContent" @cancel="handleCancel" @confirm="handleConfirm"></busy-confirm>
+            <busy-prompt @visiable-change="handlePromptStatus" :is-show="isShowPrompt" title="个人信息查询" content="输入您等手机号" :placeholder="propmtContent"></busy-prompt>
+            <busy-alert @visiable-change="handleAlertStatus" :is-show="isShowAlert" :content="alertContent" :title="alertTitle"></busy-alert>
         </section>
     </section>
     <script>
@@ -71,52 +79,70 @@
                         content: '内容测试',
                         confirmContent: '是不是要跳转？',
                         propmtContent: '请填写你要跳转的url',
-                        alertContent: '111111',
+                        alertContent: '确定要离开吗？',
+                        alertTitle: '这是标题',
                         isShowConfirm: false,
                         isShowPrompt: false,
                         isShowAlert: false
                     }
                 },
                 methods: {
-                    handleConfirm: function (rst) {
-                        if (rst === true) {
-                            console.log('ok')
-                        } else {
-                            console.log('no ok')
-                        }
+                    handleConfirm: function () {
+                        console.log('confirm')
+                    },
+                    handleCancel: function () {
+                        console.log('cancel')
                     },
                     handlePrompt: function (text) {
                         console.log(text)
                     },
                     showDefault: function () {
-                        Busyui.Dialog.show({
-                            content: '<div style="color: red;">' + this.content + '</div>',
-                            title: '对话'
+                        BusyUI.Dialog.show({
+                            content: this.content
                         });
                     },
                     shwoAlert: function () {
                         this.isShowAlert = true;
-                        //Busyui.Alert.show('11111');
+                        //BusyUI.Alert.show('11111');
                     },
                     showConfirm: function () {
                         this.isShowConfirm = true;
-                        //var c = Busyui.Confirm.show(this.confirmContent,  this.handleConfirm);
+                        //var c = BusyUI.Confirm.show(this.confirmContent,  this.handleConfirm);
 
                         // setTimeout(function(){
                         //     c.hide();
                         // }, 2000)
                     },
+                    showConfirm1: function () {
+                        BusyUI.Confirm.show('Promise用法').then(function () {
+                            console.log('promise confirm')
+                        }, function () {
+                            console.log('promise cancel')
+                        })
+                    },
                     showPrompt: function () {
                         this.isShowPrompt = true;
-                        // Busyui.Prompt.show(this.propmtContent, function(text){
+                        // BusyUI.Prompt.show(this.propmtContent, function(text){
                         //     console.log(text)
                         // });
                     },
+                    showPrompt1: function () {
+                        BusyUI.Prompt.show('请输入您的手机号', {
+                                title: '手机验证'
+                            })
+                            .then(function (val) {
+                                console.log(val)
+                            })
+                            .catch(function () {
+                                console.log('cancel')
+                            })
+                    },
                     showCustom: function () {
-                        Busyui.Dialog.show({
-
+                        BusyUI.Dialog.show({
+                            title: '发大奖拉！速来！',
                             content: '确认要发出100000万元红包？',
-                            buttonDirection: 'col',
+                            buttonDirection: 'column',
+                            showClose: true,
                             height: 300,
                             buttons: [{
                                 text: 'Click me please!'
@@ -125,7 +151,7 @@
                             }, {
                                 text: '有钱，就是任性',
                                 class: 'btn-cutom-blue',
-                                action() {
+                                action: function () {
                                     console.log('撒钱啦！！')
                                 }
                             }]
@@ -143,7 +169,7 @@
                         this.isShowAlert = val;
                     }
                 },
-                mounted() {
+                mounted: function () {
 
                 }
             });

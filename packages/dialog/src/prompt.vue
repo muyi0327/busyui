@@ -3,27 +3,33 @@
     .#{$prefixClass}-prompt {
         &__text {
             width: 100%;
+            padding: 0 0 10px;
         }
 
         &__input {
             width: 80%;
-            height: 28px;
-            border: 1px solid #eee;
+            height: 32px;
+            -webkit-appearance: none;
+            border: 1px solid #ddd;
             box-sizing: border-box;
             padding-left: 5px;
             color: #8a8a8a;
+            background: transparent;
         }
     }
 </style>
 
 <template>
-    <busy-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" @visiable-change="handleVisiable">
-        <div slot="body">
-            <div class="busy-prompt__text">
-                <input type="text" v-model="content" :placeholder="placeholder" class="busy-prompt__input" />
+    <BusyDialog ref="dialog" v-bind="datas" @visiable-change="handleVisiable">
+        <div>
+            <div v-if="content" class="busy-prompt__text">
+                {{content}}
+            </div>
+            <div class="busy-prompt__input_box">
+                <input type="text" v-model="currentVal" :placeholder="placeholder" class="busy-prompt__input" />
             </div>
         </div>
-    </busy-dialog>
+    </BusyDialog>
 </template>
 <script>
     import Dialog from './dialog.vue';
@@ -32,40 +38,50 @@
         name: 'busy-prompt',
         extends: Dialog,
         components: {
-            [Dialog.name]: Dialog
+            BusyDialog: Dialog
         },
         props: {
             placeholder: String,
             height: {
                 type: [String, Number],
-                default: 120
+                default: 180
             },
-            width: {
-                type: [String, Number],
-                default: '80%'
+            content: String,
+            value: [String, Number]
+        },
+        data() {
+            return {
+                currentVal: this.value
+            }
+        },
+        watch: {
+            value(val) {
+                this.currentVal = val
             },
-            callback: {
-                type: Function
+            currentVal(val) {
+                this.$emit('input', val)
             }
         },
         computed: {
             _buttons() {
                 return [{
                     text: '取消',
-                    action: this._doCancel
+                    action: this.handleCancel
                 }, {
                     text: '确定',
-                    action: this._doSure
+                    action: this.handleConfirm
                 }]
+            },
+            datas() {
+                return { ...this.$props, isShow: this.visiable, buttons: this._buttons }
             }
         },
 
         methods: {
-            _doSure() {
-                typeof this.callback == 'function' && this.callback(this.content);
-                this.$emit('confirm');
+            handleConfirm() {
+                this.$emit('confirm', this.currentVal);
             },
-            _doCancel() {
+            handleCancel() {
                 this.$emit('cancel');
             },
             handleVisiable(visiable) {

@@ -54,16 +54,6 @@
             justify-content: center;
         }
     }
-
-    .loading-opacity-fade-enter,
-    .loading-opacity-fade-leave-active {
-        opacity: 0;
-    }
-
-    .loading-opacity-fade-leave-active,
-    .loading-opacity-fade-enter-active {
-        transition: all 0.5s ease;
-    }
 </style>
 
 <template>

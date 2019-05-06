@@ -3,6 +3,7 @@ import Confirm from './confirm.vue';
 
 
 const ConfirmClass = Vue.extend(Confirm);
+var instance;
 
 /**
  * busy-confirm
@@ -25,7 +26,7 @@ const ConfirmClass = Vue.extend(Confirm);
  * import {Confirm} from '@busyui/dialog';
  * // var Confirm = require('@busyui/dialog/confirm.js');
  *
- * Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
+ * Confirm.show('确定要提交吗？').then((result)=>{if (result) {console.log('提交')}});
  *
  */
 export default Object.assign(Confirm, {
@@ -48,40 +49,37 @@ export default Object.assign(Confirm, {
      * confirm.doClose();
      * 
      */
-    show(text, opts, callback) {
+    show(text, opts) {
         if (typeof text === 'object') {
-            callback = opts;
             opts = text;
             text = opts.content;
         }
 
-        if (typeof text === 'function') {
-            opts = {};
-            callback = text;
-            text = '';
-        }
+        opts = opts || {}
 
-        if (typeof text === 'string' && typeof opts === 'function') {
-            callback = opts;
-            opts = {}
-        }
-
-        callback = callback || function () {};
-        var instance = new ConfirmClass({
+        instance = new ConfirmClass({
             el: document.createElement('div'),
             propsData: Object.assign(opts, {
                 content: text,
-                callback: callback,
                 isRemove: true
             })
         });
 
-        Vue.nextTick(() => {
-            var vm = instance.$mount();
-            document.body.appendChild(vm.$el);
-            instance.show();
-        });
+        return new Promise((resolve, reject) => {
+            Vue.nextTick(() => {
+                var vm = instance.$mount();
+                document.body.appendChild(vm.$el);
+                instance.show();
+            })
 
-        return instance;
+            instance.$on('confirm', () => resolve())
+            instance.$on('cancel', () => reject())
+        })
+    },
+    hide() {
+        if (instance) {
+            instance.hide()
+            instance = null
+        }
     }
 });

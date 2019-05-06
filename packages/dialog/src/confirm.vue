@@ -1,6 +1,7 @@
 <template>
-    <busy-dialog ref="dialog" :show-close="false" :width="width" :height="height" :buttons="_buttons" :is-show="visiable" :is-remove="isRemove" :content="content" @visiable-change="handleVisiable">
-    </busy-dialog>
+    <BusyDialog ref="dialog" v-bind="datas" @visiable-change="handleVisiable">
+        <slot></slot>
+    </BusyDialog>
 </template>
 <script>
     import Dialog from './dialog.vue';
@@ -9,42 +10,28 @@
         name: 'busy-confirm',
         extends: Dialog,
         components: {
-            [Dialog.name]: Dialog
+            BusyDialog: Dialog
         },
-
-        props: {
-            height: {
-                type: [String, Number],
-                default: 140
-            },
-            width: {
-                type: [String, Number],
-                default: '80%'
-            },
-            callback: {
-                type: Function
-            }
-        },
-
         computed: {
             _buttons() {
                 return [{
                     text: '取消',
-                    action: this._doCancel
+                    action: this.handleCancel
                 }, {
                     text: '确定',
-                    action: this._doSure
+                    action: this.handleConfirm
                 }]
+            },
+            datas() {
+                return { ...this.$props, isShow: this.visiable, buttons: this._buttons }
             }
         },
 
         methods: {
-            _doSure() {
-                typeof this.callback == 'function' && this.callback(true);
+            handleConfirm() {
                 this.$emit('confirm');
             },
-            _doCancel() {
-                typeof this.callback == 'function' && this.callback(false);
+            handleCancel() {
                 this.$emit('cancel');
             },
             handleVisiable(visiable) {

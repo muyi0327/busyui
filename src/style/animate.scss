@@ -1,5 +1,13 @@
 @import './variable.scss';
 
+%zoom-enter {
+    transition: all 0.3s cubic-bezier(.28, .56, 0, 1.04);
+}
+
+%zoom-leave {
+    transition: all 0.3s cubic-bezier(.28, .56, 0, 1.04);
+}
+
 .#{$prefixClass}-animate {
 
     &--fade-enter,
@@ -75,6 +83,14 @@
         height: 0;
     }
 
+    &--scale-enter-active {
+        @extend %zoom-enter;
+    }
+
+    &--scale-leave-active {
+        @extend %zoom-leave;
+    }
+
     &--tito-leave-active,
     &--tito-enter-active,
     &--tibo-leave-active,
@@ -89,10 +105,46 @@
     &--liro-enter-active,
     &--fade-leave-active,
     &--fade-enter-active,
-    &--scale-leave-active,
-    &--scale-enter-active,
     &--slide-down-leave-active,
     &--slide-down-enter-active {
-        transition: all 0.5s ease;
+        transition: all 0.3s ease;
+    }
+
+    $rotate:#{$prefixClass}-animate--rotate;
+    $rotate-1turn:#{$prefixClass}-animate--rotate-1turn;
+    $fade:#{$prefixClass}-animate--fade;
+
+    @keyframes #{$rotate} {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes #{$rotate-1turn} {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+
+    @keyframes #{$fade} {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: .6;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 }

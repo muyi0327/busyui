@@ -15,10 +15,7 @@ $primary-color: #478df5 !default;
 $global-default-border-color: #e7e7e7 !default;
 
 /* Button Component */
-$button-default-border-radius: 8px !default;
-$button-size-normal-height: 36px !default;
-$button-size-large-height: 48px !default;
-$button-size-small-height: 24px !default;
+$button-default-border-radius: 4px !default;
 
 $button-default-background-color: #f8f8f8 !default;
 $button-default-text-color: #333 !default;
@@ -32,6 +29,14 @@ $button-warning-background-color: #ff6331 !default;
 $button-warning-border-color: #ff6331 !default;
 $button-warning-text-color: #ffffff !default;
 
+$button-normal-height: 36px !default;
+$button-large-height: 48px !default;
+$button-small-height: 24px !default;
+$button-size-small-height: 24px !default;
+$button-normal-font-size:16px !default;
+$button-small-font-size:14px !default;
+$button-large-font-size: 22px !default;
+
 
 /* Field Component */
 $field-value-color: #888888 !default;
@@ -44,12 +49,13 @@ $message-error-icon-color: #f44336 !default;
 
 /** Dialog Component **/
 $dialog-default-button-text-color: #0076ff !default;
-$dialog-default-button-font-size: 17px !default;
+$dialog-default-button-font-size: 18px !default;
 $dialog-default-content-text-color: #030303 !default;
-$dialog-default-content-font-size: 13px !default;
-$dialog-default-button-height: 44px !default;
-$dialog-dfault-width: 240px !default;
+$dialog-default-content-font-size: 14px !default;
+$dialog-default-button-height: 48px !default;
+$dialog-dfault-width: 84% !default;
 $dialog-dfault-height: 160px !default;
+$dialog-default-z-index: 1000 !default;
 
 
 /** Swipe Component **/
@@ -64,3 +70,4 @@ $progress-line-width: 6px !default;
 /*** toast component **/
 
 $toast-default-font-size:16px !default;
+$toast-default-z-index:1000 !default;

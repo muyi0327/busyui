@@ -1,23 +1,16 @@
-import lineSpinFade from './line-spin-fade/index.js';
-import ballScaleMultiple from './ball-scale-multiple/index.js';
-import ballClipRotatePulse from './ball-clip-rotate-pulse/index.js';
-import lineScalePulseOut from './line-scale-pulse-out/index.js';
-import ballSpinFade from './ball-spin-fade/index.js';
-import ballBeat from './ball-beat/index.js';
-import circleRotate from './circle-rotate/index.js';
 //import svgCircleRotate from './svg-circle-rotate/index.js';
-import Spinner from './src/spinner.vue';
+import CircleDash from './src/circle-dash.vue'
+import CircleGradient from './src/circle-gradient.vue'
+import CircleLine from './src/circle-line.vue'
+import CircleRotate from './src/circle-rotate.vue'
+import Spinner from './src/index.vue'
 
 Spinner.install = function (vue) {
-    vue.use(lineSpinFade);
-    vue.use(ballScaleMultiple);
-    vue.use(ballClipRotatePulse);
-    vue.use(lineScalePulseOut);
-    vue.use(ballSpinFade);
-    vue.use(ballBeat);
-    vue.use(circleRotate);
-    //vue.use(svgCircleRotate);
-    vue.component(Spinner.name, Spinner);
+    vue.component(CircleDash.name, CircleDash)
+    vue.component(CircleGradient.name, CircleGradient)
+    vue.component(CircleLine.name, CircleLine)
+    vue.component(Spinner.name, Spinner)
+    vue.component(CircleRotate.name, CircleRotate)
 }
 
 export default Spinner;

@@ -1,6 +1,6 @@
 <style lang="scss">
     @import "../../../src/style/variable";
-    @import "../../../src/style/flex";
+    @import "../../../src/style/flexbox";
 
     .#{$prefixClass}-loadmore {
         -webkit-overflow-scrolling: touch;
@@ -96,7 +96,7 @@
 </template>
 <script>
     import {
-        MString
+        BString
     } from '../../util';
     import loadMoreBar from './loadmore-bar.vue';
 

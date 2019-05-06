@@ -20,7 +20,6 @@
             padding: 0;
             margin: 0;
             height: 100%;
-            background-color: #000;
         }
 
         .wrap {
@@ -54,32 +53,16 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <ul class="loadings">
-                <li>
-                    <busy-line-spin-fade :width="20" :height="20"></busy-line-spin-fade>
-                </li>
-                <li>
-                    <busy-ball-scale-multiple></busy-ball-scale-multiple>
-                </li>
-                <li>
-                    <busy-line-scale-pulse-out :item-width="2" :item-height="20"></busy-line-scale-pulse-out>
-                </li>
-                <li>
-                    <busy-ball-beat></busy-ball-beat>
-                </li>
-                <li>
-                    <busy-ball-clip-rotate-pulse></busy-ball-clip-rotate-pulse>
-                </li>
-                <li>
-                    <busy-circle-rotate></busy-circle-rotate>
-                </li>
-                <li>
-                    <busy-spinner :type="0"></busy-spinner>
-                </li>
-                <li>
-                    <busy-spinner :type="7" :width="30" :height="30" :stroke-width="3"></busy-spinner>
-                </li>
-            </ul>
+            <busy-spinner-circle-dash width="36" height="36"></busy-spinner-circle-dash>
+            <busy-spinner color="#008b8b" type="circle-dash" width="36" height="36"></busy-spinner>
+            <busy-spinner-circle-gradient width="36" height="36"></busy-spinner-circle-gradient>
+            <busy-spinner type="circle-gradient" stroke-width="6" color="orange" width="36" height="36"></busy-spinner>
+            <busy-spinner-circle-line width="36" height="36"></busy-spinner-circle-line>
+            <busy-spinner type="circle-line" stroke-width="6" color="#008B8B" width="36" height="36"></busy-spinner>
+            <busy-spinner-circle-rotate width="36" height="36"></busy-spinner-circle-rotate>
+            <busy-spinner type="circle-rotate" width="150" height="150" color="#008B8B"></busy-spinner>
+            <busy-spinner type="circle-half" width="150" height="150" color="#008B8B"></busy-spinner>
+            <busy-spinner type="circle-gradient" width="150" height="150" color="#008B8B"></busy-spinner>
         </section>
     </section>
     <script>

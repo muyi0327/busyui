@@ -1,7 +1,7 @@
-import * as MColor from './src/color.js';
-import * as MString from './src/string';
-import * as MNumber from './src/number';
-import * as MRegexp from './src/reg';
+import * as BColor from './src/color.js';
+import * as BString from './src/string';
+import * as BNumber from './src/number';
+import * as BRegexp from './src/reg';
 
 setTimeout(() => {
     var dpr = window.devicePixelRatio;
@@ -9,8 +9,8 @@ setTimeout(() => {
 }, 0);
 
 export {
-    MColor,
-    MString,
-    MNumber,
-    MRegexp
+    BColor,
+    BString,
+    BNumber,
+    BRegexp
 }

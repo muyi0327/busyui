@@ -1,4 +1,3 @@
-import path from 'path'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
@@ -9,17 +8,19 @@ import replace from 'rollup-plugin-replace'
 //import serve from 'rollup-plugin-serve'
 import autoprefixer from 'autoprefixer'
 import pkg from './package.json'
+import {
+    src,
+    libraryName,
+    dest,
+    globalName,
+    packages
+} from './src/config'
 
 // 自定义样式
-import variables from './themes/variables.js'
-
-let name = 'busyui'
-let globalName = 'Busyui'
-let banner = `/**\n * busyui.js framework version ${pkg.version} \n **/`;
-let dist = './dist'
-let src = './src'
-let destCss = `${dist}/${name}.css`
-let destJs = `${dist}/${name}.js`
+let banner = `/**\n * ${globalName} framework version ${pkg.version} \n **/`;
+let dist = dest
+let destCss = `${dist}/${libraryName}.css`
+let destJs = `${dist}/${libraryName}.js`
 
 
 // format json to sass varible
@@ -33,7 +34,7 @@ const parseJsonToSass = (data) => {
 }
 
 export default {
-    input: 'src/index.js',
+    input: `${src}/index.js`,
     output: {
         file: destJs,
         format: 'iife',
@@ -48,7 +49,7 @@ export default {
     },
     watch: {
         clearScreen: false,
-        include: ['src/**', 'packages/**']
+        include: [`${src}/**`, `${packages}/**`]
     },
     external: [
         'vue',
@@ -113,7 +114,7 @@ export default {
                 '@babel/plugin-proposal-class-properties'
             ],
             exclude: '/node_modules/**',
-            include: ['./src/**', 'packages/**']
+            include: [`${src}/**`, `${packages}/**`]
         }),
         // serve({
         //     open: true, // 是否打开浏览器
