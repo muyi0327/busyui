@@ -1,9 +1,9 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-spinner-circle-rotate {
+    .#{$prefixCls}-spinner-circle-rotate {
         display: inline-block;
-        $rotate: #{$prefixClass}-animate--rotate-1turn;
+        $rotate: #{$prefixCls}-animate--rotate-1turn;
         &__wrap {
             animation: $rotate 0.5s linear infinite;
             transform-origin: center;

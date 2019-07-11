@@ -6,6 +6,6 @@
 
 <script>
     export default {
-        name: 'busy-swipe__item'
+        name: 'busy-swipe-item'
     }
 </script>

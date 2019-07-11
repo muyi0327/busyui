@@ -1,7 +1,7 @@
 <style lang="scss" scoped>
     @import "../../../src/style/variable";
 
-    @keyframes #{$prefixClass}-loading-dash {
+    @keyframes #{$prefixCls}-loading-dash {
         0% {
             stroke-dasharray: 1 175;
             stroke-dashoffset: 0;
@@ -18,13 +18,13 @@
         }
     }
 
-    .#{$prefixClass}-spinner-circle-dash {
+    .#{$prefixCls}-spinner-circle-dash {
         display: inline-block;
         font-size: 0;
         line-height: 0;
 
-        $dash: #{$prefixClass}-loading-dash;
-        $rotate: #{$prefixClass}-animate--rotate-1turn;
+        $dash: #{$prefixCls}-loading-dash;
+        $rotate: #{$prefixCls}-animate--rotate-1turn;
 
         &__wrap {
             stroke-width: 6;

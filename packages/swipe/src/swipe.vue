@@ -1,6 +1,6 @@
 <style lang="scss">
     @import "../../../src/style/variable.scss";
-    .#{$prefixClass}-swipe {
+    .#{$prefixCls}-swipe {
         overflow: hidden;
         position: relative;
         -moz-user-select: none;
@@ -76,22 +76,23 @@
     }
 </style>
 <template>
-    <div class="busy-swipe" :style="styles" v-on:click="handleClick">
-        <div class="busy-swipe__wrap" :class="classes" :style="wrapStyles">
+    <div :class="`${prefixCls}-swipe`" :style="styles" @click="handleClick">
+        <div :class="[`${prefixCls}-swipe__wrap`,classes]" :style="wrapStyles">
             <slot></slot>
         </div>
-        <div class="busy-swpier__dotes" :class="dotesClass" v-if="showDotes">
+        <div :class="[`${prefixCls}-swpier__dotes`,dotesClass]" v-if="showDotes">
             <span :key="'swiper-'+i" v-for="(item, i) in items" @click.stop="goIndex(i)" :class="['busy-swipe__dot', i == index ? 'busy-swipe__dot--cur':'']" :style="[dotStyles, i == index ? {backgroundColor: curDotColor} : {}]"></span>
         </div>
     </div>
 </template>
 <script>
-    import { BNumber } from '../../util';
+    import { BNumber, initName, baseMixins } from '../../util';
     const VERTICAL = 'vertical';
     const HORIZONTAL = 'horizontal';
 
     /**
-     * busy-swipe
+     * @class
+     * @constructor
      * @module Swipe
      * @see {@link ../example/all/swipe.html 实例}
      * @desc 切换组件
@@ -104,15 +105,10 @@
      * @param {Boolean} showDotes=true - 是否显示切换点
      * @param {Boolean} autoPlay=false - 是否自动播放
      * @param {Number} interval=2000 - 自动播放间隔时间 毫秒
-     * 
-     * @example
-     *  <busy-swipe :interval="3000" :auto-play="true" :height="320">
-     *      <busy-swipe__item>内容</busy-swipe__item>
-     *      <busy-swipe__item>内容</busy-swipe__item>
-     * </busy-swipe>
      */
     export default {
-        name: 'busy-swipe',
+        name: initName('swipe'),
+        mixins: [baseMixins],
         props: {
             height: {
                 type: Number,

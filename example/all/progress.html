@@ -10,9 +10,15 @@
     <script src="../../dist/busyui.js"></script>
     <style>
         .abcd {
-            transform: rotate(-90deg);
             width: 85px;
             height: 85px;
+        }
+
+        .box {
+            margin: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid orange;
         }
     </style>
 </head>
@@ -21,11 +27,24 @@
     <section class="wrap">
         <section id="app" class="app">
             <div @click="handle">
-                <busy-progress :percent="val" :track-width="stroke"></busy-progress>
+                <busy-progress height="30" :value="val" :track-width="stroke" line-color="green">
+                    <span slot="end" v-if="val<100">{{val}}%</span>
+                    <busy-icon v-else name="yes" slot="end" color="green" />
+                </busy-progress>
                 <p></p>
-                <busy-progress direction="1" class="abcd" :percent="val" :track-width="stroke" type="ring"></busy-progress>
+                <busy-progress direction="1" class="abcd" line-color="green" :value="val" :track-width="stroke" type="ring">
+                    <span v-if="val<100">{{val}}%</span>
+                    <busy-icon v-else name="yes" color="green" width="36" height="36" />
+                </busy-progress>
                 <p></p>
-                <busy-progress :percent="val" :track-width="10" track-color="#00bdd9" :bar-color="['90deg', '#74ffea 4%', '#a1f9fb 88%', '#ffffff 100%']"></busy-progress>
+                <busy-progress :value="val" :track-width="5" track-color="#eeeeee" line-color="linear-gradient(to right, #0d5 4%, #05d 88%)"></busy-progress>
+
+                <div class="box">
+                    <busy-progress-line height="28" :value="val" line-color="linear-gradient(to right, #0d5 4%, #05d 88%)">
+                        <span slot="end" v-if="val<100">{{val}}%</span>
+                        <busy-icon v-else name="yes" slot="end" color="green" />
+                    </busy-progress-line>
+                </div>
             </div>
         </section>
     </section>
@@ -41,7 +60,15 @@
             },
             methods: {
                 handle: function () {
-                    this.val = Math.min(100, Math.max(0, this.val + 10));
+                    let interval = setInterval(() => {
+                        this.val++
+                        if (this.val == 100) {
+                            clearInterval(interval)
+                        } else if (this.val > 100) {
+                            this.val = 0
+                        }
+                    }, 10)
+
                 }
             }
         });

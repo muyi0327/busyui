@@ -80,7 +80,7 @@ export default Object.assign(Message, {
      */
     info(text, opts) {
         return this.show(Object.assign(opts || {}, {
-            type: 'info',
+            mode: 'info',
             text: text
         }));
     },
@@ -98,7 +98,7 @@ export default Object.assign(Message, {
      */
     success(text, opts) {
         return this.show(Object.assign(opts || {}, {
-            type: 'success',
+            mode: 'success',
             text: text
         }));
     },
@@ -116,7 +116,7 @@ export default Object.assign(Message, {
      */
     warning(text, opts) {
         return this.show(Object.assign(opts || {}, {
-            type: 'warning',
+            mode: 'warning',
             text: text
         }));
     },
@@ -134,7 +134,7 @@ export default Object.assign(Message, {
      */
     error(text, opts) {
         return this.show(Object.assign(opts || {}, {
-            type: 'error',
+            mode: 'error',
             text: text
         }));
     }

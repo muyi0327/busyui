@@ -5,7 +5,6 @@ import Dialog from './dialog.vue';
 var DialogClass = Vue.extend(Dialog);
 
 /**
- * @busyui/dialog
  * @module Dialog
  * @see {@link ../example/all/dialog.html 实例}
  * @desc 对话框组件
@@ -17,24 +16,11 @@ var DialogClass = Vue.extend(Dialog);
  * @param {Function} hide - 隐藏
  * @param {Array<Object>} buttons=[{text:'确定'},{text:'取消'}] - 对话框标题
  * @param {Object} contentStyle - 对话框内容样式
- * @param {Boolean} showClose=false - 是否显示关闭按钮
+ * @param {Boolean} closable=false - 是否显示关闭按钮
  * @param {Boolean} isRemove=false - 是否隐藏后移除,动态创建时会用到
  * @param {Boolean} isShow=false - 是否显示
  * @param {Number|String} zIndex=1000 - z-index值控制层叠
  * @param {String} buttonDirection=row - 横向排列按钮(row)/纵向排列按钮(column)
- * @example
- * import {Dialog} from '@busyui/dialog';
- * 
- * Dialog.show({
- *      title: '提交信息',
- *      content: '确定要提交吗？', 
- *      buttons:[{text:'确定', action:function(){
- *          // 确认提交
- *      }},{text:'取消', action: function(){
- *          // 不提交
- *      }}]
- * });
- *
  */
 export default Object.assign(Dialog, {
     install(vue) {

@@ -2,7 +2,7 @@
     @import "../../../src/style/variable";
     @import "../../../src/style/flexbox";
 
-    .#{$prefixClass}-loadmore {
+    .#{$prefixCls}-loadmore {
         -webkit-overflow-scrolling: touch;
         overflow: auto;
         position: relative;
@@ -34,6 +34,7 @@
             height: 50px;
             line-height: 50px;
             text-align: center;
+            display: flex;
         }
 
         &__spinner {
@@ -77,35 +78,38 @@
     }
 </style>
 <template>
-    <div class="busy-loadmore">
-        <div class="busy-loadmore__content" :style="styles">
+    <div :class="`${prefixCls}-loadmore`">
+        <div :class="`${prefixCls}-loadmore__content`" :style="styles">
             <slot name="top">
-                <busy-loadmore-bar class="busy-loadmore__top" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></busy-loadmore-bar>
+                <busy-loadmore-bar :class="`${prefixCls}-loadmore__top`" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></busy-loadmore-bar>
             </slot>
-            <div class="busy-loadmore__content">
+            <div :class="`${prefixCls}-loadmore__content`">
                 <slot></slot>
             </div>
             <slot name="bottom" v-if="onInfinite">
-                <busy-loadmore-bar class="busy-loadmore__bottom" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></busy-loadmore-bar>
+                <busy-loadmore-bar :class="`${prefixCls}-loadmore__bottom`" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></busy-loadmore-bar>
             </slot>
             <slot name="no-more" v-if="noMore">
-                <div class="busy-loadmore__nomore">{{noMoreText}}</div>
+                <div :class="`${prefixCls}-loadmore__nomore`">{{noMoreText}}</div>
             </slot>
         </div>
     </div>
 </template>
 <script>
     import {
-        BString
+        BString,
+        BNumber,
+        initName,
+        baseMixins
     } from '../../util';
-    import loadMoreBar from './loadmore-bar.vue';
+    import loadMoreBar from './loadmore-bar.vue'
 
     /**
-     * @busyui/loadmore
+     * @class
+     * @constructor
      * @module Loadmore
      * @see {@link ../example/all/loadmore.html 实例}
      * @desc 加载更多组件
-     * 
      * @param {String} topPullText - 内容上方loading拖动时显示文字
      * @param {String} topLoadingText - 内容上方loading拖动释放开始加载数据显示文字
      * @param {String} topDropText - 内容上方loading拖动超出指定距离，释放可加载时显示文字
@@ -119,12 +123,10 @@
      * @param {String} topStatus - 内容上方组件状态
      * @param {String} bottomStatus - 内容下方组件状态
      * @param {Boolean} listenScroll - 是否监听scroll
-     * 
-     * @example
-     *  <busy-loadmore>content list</busy-loadmore>
      */
     export default {
-        name: 'busy-loadmore',
+        name: initName('loadmore'),
+        mixins: [baseMixins],
         props: {
             topPullText: {
                 type: String,

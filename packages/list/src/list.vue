@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-list {
+    .#{$prefixCls}-list {
         display: block;
         background: #fff;
         box-sizing: border-box;
@@ -11,16 +11,18 @@
 </style>
 
 <template>
-    <div class="busy-list busy-border-1px busy-border-tb">
+    <div :class="[`${prefixCls}-list`, `${prefixCls}-border-1px`, `${prefixCls}-border-tb`]">
         <slot></slot>
     </div>
 </template>
 
 <script>
-    import ListItem from './list-item.vue';
+    import ListItem from './list-item.vue'
+    import { initName, baseMixins } from '../../util'
 
     export default {
-        name: 'busy-list',
+        name: initName('list'),
+        mixins: [baseMixins],
         props: {
             items: {
                 type: Array,
@@ -30,7 +32,7 @@
             }
         },
         components: {
-            [ListItem.name]: ListItem
+            ListItem
         }
     }
 </script>

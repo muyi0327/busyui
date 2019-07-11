@@ -34,9 +34,6 @@ module.exports = function (config) {
             'karma-chrome-launcher',
             'karma-safari-launcher'
         ],
-
-
-
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
@@ -88,23 +85,23 @@ module.exports = function (config) {
 
         coverageReporter: {
             reporters: [{
-                    'type': 'text'
-                }, {
-                    type: 'html',
-                    subdir: 'report-html'
-                }, {
-                    'type': 'lcovonly',
-                    subdir: 'lcovonly'
-                }, {
-                    type: 'text',
-                    subdir: '.',
-                    file: 'text.txt'
-                },
-                {
-                    type: 'text-summary',
-                    subdir: '.',
-                    file: 'text-summary.txt'
-                },
+                'type': 'text'
+            }, {
+                type: 'html',
+                subdir: 'report-html'
+            }, {
+                'type': 'lcovonly',
+                subdir: 'lcovonly'
+            }, {
+                type: 'text',
+                subdir: '.',
+                file: 'text.txt'
+            },
+            {
+                type: 'text-summary',
+                subdir: '.',
+                file: 'text-summary.txt'
+            },
             ]
         },
 

@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-toast-loading {
+    .#{$prefixCls}-toast-loading {
         display: flex;
         border-radius: 10px;
         position: absolute;
@@ -61,7 +61,7 @@
         <transition name="loading-opacity-fade">
             <div v-show="visiable" class="busy-toast-loading" :class="classes" :style="styles">
                 <div class="busy-toast-loading__icon">
-                    <busy-spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color"></busy-spinner>
+                    <Spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color" />
                 </div>
                 <div v-if="text" class="busy-toast-loading__text" :style="{color: color,fontSize: fontSize+'px'}">
                     <slot>{{text}}</slot>
@@ -122,7 +122,7 @@
             }
         },
         components: {
-            [Spinner.name]: Spinner
+            Spinner
         },
         data() {
             return {

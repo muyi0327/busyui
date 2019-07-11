@@ -1,5 +1,5 @@
 $prefix:busy !default;
-$prefixClass: busy !default;
+$prefixCls: busy !default;
 /* Color */
 $color-blue: #478df5 !default;
 $color-orange: #ff6331 !default;
@@ -29,9 +29,9 @@ $button-warning-background-color: #ff6331 !default;
 $button-warning-border-color: #ff6331 !default;
 $button-warning-text-color: #ffffff !default;
 
-$button-normal-height: 36px !default;
+$button-normal-height: 42px !default;
 $button-large-height: 48px !default;
-$button-small-height: 24px !default;
+$button-small-height: 36px !default;
 $button-size-small-height: 24px !default;
 $button-normal-font-size:16px !default;
 $button-small-font-size:14px !default;
@@ -64,7 +64,7 @@ $swipe-normal-dot-color: #d9d9d9 !default;
 
 /** progress Component **/
 $progress-background-color: #d9d9d9 !default;
-$progress-line-color: #ff6331 !default;
+$progress-line-color: $color-blue !default;
 $progress-line-width: 6px !default;
 
 /*** toast component **/

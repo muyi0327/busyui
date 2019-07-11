@@ -1,22 +1,22 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-message {
+    .#{$prefixCls}-message {
         position: fixed;
         z-index: 10001;
-        border-radius: 5px;
-        background-color: #fff;
+        opacity: 1;
         overflow: hidden;
-        box-shadow: 0px 0px 4px #ccc;
         display: flex;
-        padding: 6px 0px;
-        color: #646464;
-        font-size: 12px;
+        font-size: 16px;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        background: #e4f6ff;
+        color: #0a97e4;
 
         &--pos-top {
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
         }
 
         &--pos-middle {
@@ -26,9 +26,23 @@
         }
 
         &--pos-bottom {
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 0;
+            left: 0;
+        }
+
+        &--success {
+            background: #edffe7;
+            color: #57c986;
+        }
+
+        &--warning {
+            background: #fef4d4;
+            color: #fb6700;
+        }
+
+        &--error {
+            background: #fdf2ee;
+            color: #f63e4b;
         }
 
         &__icon {
@@ -36,6 +50,7 @@
             align-items: center;
             display: flex;
             padding: 0 15px;
+            flex: none;
         }
         &__text {
             flex-grow: 1;
@@ -45,46 +60,45 @@
             justify-content: flex-start;
             align-items: center;
         }
+
         &__close {
-            position: absolute;
-            z-index: 10;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex: none;
+            padding: 0 10px;
         }
-    }
-
-    .msg-scale-enter-active,
-    .msg-scale-leave-active {
-        transition: all 0.25s linear;
-    }
-
-    .msg-scale-enter,
-    .msg-scale-leave-active {
-        opacity: 0.3;
     }
 </style>
 
 <template>
-    <transition name="msg-scale" v-on:after-leave="_leave">
-        <div v-show="visiable" class="busy-message" :class="_posClass" :style="styles">
-            <div class="busy-message__icon" v-if="type">
-                <busy-icon :type="_iconStyles.t" :fill="_iconStyles.c"></busy-icon>
+    <transition :name="animation" v-on:after-leave="_leave">
+        <div v-show="visiable" :class="classes" :style="styles">
+            <div :class="`${prefixCls}-message__icon`">
+                <Icon :name="_statusStyles.icon" width="24" height="24" :color="_statusStyles.color" />
             </div>
-            <div class="busy-message__text">
+            <div :class="`${prefixCls}-message__text`">
                 <slot>{{text}}</slot>
+            </div>
+            <div v-show="closable" :class="`${prefixCls}-message__close`" @click="hide">
+                <Icon name="close" width="24" height="24" :color="_statusStyles.color" />
             </div>
         </div>
     </transition>
 </template>
 <script>
-    import Icon from '../../icon';
+    import Icon from '../../icon'
+    import { BNumber, initName, baseMixins } from '../../util'
 
     export default {
-        name: 'busy-message',
+        name: initName('message'),
+        mixins: [baseMixins],
         props: {
             pos: {
                 type: String,
                 default: 'top'
             },
-            type: {
+            mode: {
                 type: String,
                 default: ''
             },
@@ -93,12 +107,23 @@
                 default: ''
             },
             bgColor: {
-                type: String,
-                default: '#ffffff'
+                type: String
+            },
+            height: {
+                type: [String, Number],
+                validator: BNumber.validateUnit
+            },
+            width: {
+                type: [String, Number],
+                validator: BNumber.validateUnit
             },
             delay: {
                 type: Number,
                 default: 3000
+            },
+            closable: {
+                type: Boolean,
+                default: false
             },
             isShow: {
                 type: Boolean,
@@ -120,7 +145,7 @@
             }
         },
         components: {
-            [Icon.name]: Icon
+            Icon
         },
         watch: {
             isShow(val) {
@@ -131,6 +156,8 @@
                     this.timmer && clearTimeout(this.timmer);
                     this.timmer = null;
                 }
+
+                this.$emit('visiable-change', val)
             }
         },
         methods: {
@@ -152,34 +179,45 @@
         },
         computed: {
             styles() {
+                let h = BNumber.cmpUnit(this.height)
+                let w = BNumber.cmpUnit(this.width)
                 return {
-                    backgroundColor: this.bgColor
+                    backgroundColor: this.bgColor,
+                    height: h,
+                    width: w,
+                    lineHeight: h,
                 }
             },
 
-            _posClass() {
-                return 'busy-message--pos-' + this.pos;
+            classes() {
+                let { prefixCls, pos, mode } = this
+                return [
+                    `${prefixCls}-message`,
+                    `${prefixCls}-message--pos-${pos}`,
+                    `${prefixCls}-message--${mode}`
+                ]
             },
 
-            _iconStyles() {
+            animation() {
+                let m = this.pos == 'bottom' ? 'bibo' : 'tito'
+                return `${this.prefixCls}-animate--${m}`
+            },
+
+            _statusStyles() {
                 let t = '',
                     c = '';
-                switch (this.type) {
-                    case 'info':
-                        t = 'infofill';
-                        c = '#0275d8';
-                        break;
+                switch (this.mode) {
                     case 'success':
-                        t = 'roundcheckfill';
-                        c = '#5cb85c';
+                        t = 'check-circle';
+                        c = '#57c986';
                         break;
                     case 'error':
-                        t = 'roundclosefill';
-                        c = '#d9534f';
+                        t = 'close-circle';
+                        c = '#f63e4b';
                         break;
                     case 'warning':
-                        t = 'warnfill';
-                        c = '#f0ad4e';
+                        t = 'info-circle';
+                        c = '#fb6700';
                         break;
                     default:
                         t = '';
@@ -187,8 +225,8 @@
                 }
 
                 return {
-                    t: t,
-                    c: c
+                    icon: t,
+                    color: c
                 };
             }
         },

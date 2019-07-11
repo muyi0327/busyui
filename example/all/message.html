@@ -32,6 +32,10 @@
             display: flex;
         }
 
+        .mt-10 {
+            margin-top: 10px;
+        }
+
         .loadings li {
             flex-grow: 1;
             width: 25%;
@@ -48,11 +52,14 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <div>
-                <busy-button :plain="true" class="default" @click="showDefault">默认</busy-button>
-                <busy-button :plain="true" class="success" @click="showSuccess">成功</busy-button>
-                <busy-button :plain="true" class="warning" @click="showWarning">警告</busy-button>
-                <busy-button :plain="true" class="error" @click="showError">错误</busy-button>
+            <div style="width: 95%;margin:12px auto;">
+                <busy-button type="primary" size="large" width="100%" @click="showDefault">默认</busy-button>
+                <busy-button type="primary" size="large" width="100%" class="mt-10" @click="showSuccess">成功</busy-button>
+                <busy-button type="primary" size="large" width="100%" class="mt-10" @click="showWarning">警告</busy-button>
+                <busy-button type="primary" size="large" width="100%" class="mt-10" @click="showError">错误</busy-button>
+            </div>
+            <div style="width: 95%; margin:12px auto; border:2px solid #ccc;position: relative;height:120px;overflow: hidden;">
+                <busy-message height="30" :style="{position: 'absolute'}" mode="success" :is-show="true" :auto-hide="false" pos="bottom">局部使用</busy-message>
             </div>
         </section>
     </section>
@@ -67,7 +74,10 @@
                         this.$busyui.Message.info('普通信息提示');
                     },
                     showSuccess: function () {
-                        BusyUI.Message.success('操作成功信息');
+                        BusyUI.Message.success('操作成功信息', {
+                            pos: 'bottom',
+                            closable: true
+                        });
                     },
                     showWarning: function () {
                         BusyUI.Message.warning('警告信息');

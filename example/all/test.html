@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        :root {
+            --primary-color: green;
+        }
+
+        body {
+            --primary-color: blue;
+            font-size: 36px;
+        }
+
+        .box {
+            --primary-color: orange;
+            font-size: 24px;
+        }
+
+        .box-1 {
+
+            font-size: 36px;
+        }
+
+        .box__text {
+            color: var(--primary-color);
+        }
+
+        .pie {
+            --p: 25;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(#ab3e5b calc(var(--p)*1%), #ef746f 0%);
+            transition: --p .5s;
+            position: relative;
+        }
+
+        .pie:after {
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            counter-reset: p var(--p);
+            content: counter(p) '%';
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<div>
+    <div id="pie" class="pie" style="--p:25"></div>
+    <button id="increment">add 10</button>
+    <div class="box box-1">
+        <span class="box__text">CSS变量</span>
+    </div>
+    <script>
+        //setTimeout(() => document.body.style.setProperty('--primary-color', 'red'), 3000)
+
+        window.addEventListener('DOMContentLoaded', function () {
+            var p = 25;
+            // let box = document.querySelector('.box')
+
+            // let s = getComputedStyle(box)
+
+            // console.log(s.getPropertyValue('--primary-color').trim())
+
+            // s.setProperty('--primary-color', 'red')
+
+            // //box.style.removeProperty('--primary-color')
+
+            // Array.prototype.forEach.call(document.querySelectorAll('div'), function (el) {
+            //     console.log(el)
+            // })
+
+            // var style = document.createElement("style");
+            // style.type = 'text/css';
+            // style.appendChild(document.createTextNode(""));
+            // document.head.appendChild(style);
+            // sheet = style.sheet || style.styleSheet;
+
+            // sheet.inserRule(`:root{
+            //     --global-color: orange;
+            // }`, 0)
+
+            var pie = document.getElementById('pie')
+            pie.style.setProperty('--p', p)
+            document.querySelector('#increment').addEventListener('click', function () {
+                p = p + 10
+                pie.style.setProperty('--p', p)
+            })
+        }, false)
+    </script>
+</div>
+
+</html>

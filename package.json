@@ -13,13 +13,13 @@
     },
     "scripts": {
         "test": "karma start",
-        "dev": "rollup -c -w",
-        "build": "cross-env NODE_ENV=development gulp build",
-        "build-all": "cross-env NODE_ENV=production gulp build && gulp watch",
+        "dev-rp": "rollup -c -w",
+        "build": "cross-env NODE_ENV=production gulp build",
+        "dev": "cross-env NODE_ENV=development gulp build && gulp watch",
         "lint": "node_modelues/.bin/eslint -f checkstyle --ext .js,.vue src test > reports/eslint-report.xml",
         "fix": "node_modelues/.bin/eslint --fix --ext .js,.vue src test",
         "docs": "gulp api",
-        "start": "http-server -p 3022 -d /example/all -o"
+        "start": "http-server -p 3022 -o"
     },
     "repository": {
         "type": "git",
@@ -33,13 +33,13 @@
     "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
     "dependencies": {
-        "@babel/plugin-proposal-class-properties": "^7.4.0",
         "vue": "^2.6.9"
     },
     "devDependencies": {
         "@babel/cli": "^7.2.3",
         "@babel/core": "^7.3.4",
         "@babel/plugin-external-helpers": "^7.2.0",
+        "@babel/plugin-proposal-class-properties": "^7.5.0",
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@babel/plugin-transform-async-to-generator": "^7.3.4",
         "@babel/plugin-transform-modules-commonjs": "^7.2.0",

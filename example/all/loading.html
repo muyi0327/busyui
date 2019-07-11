@@ -151,16 +151,16 @@
                         //BusyUI.Loading.show({direction: 'row'});
                     },
                     fullpage: function () {
-                        this.visiable = true;
                         this.position = 'fixed';
+                        this.visiable = true;
                         //BusyUI.Loading.hide();
                     },
                     create: function () {
                         BusyUI.Loading.show({
                             text: '正在加载',
                             spinnerType: 'circle-dash',
-                            spinnerWidth: 16,
-                            spinnerHeight: 16,
+                            spinnerWidth: 30,
+                            spinnerHeight: 30,
                             direction: 'column'
                         })
                     }

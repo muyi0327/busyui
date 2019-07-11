@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-select {
+    .#{$prefixCls}-select {
         width: inherit;
         &__content {
             height: inherit;
@@ -31,14 +31,14 @@
             text-align: center;
         }
 
-        &__options__list {
+        &__list {
             background: #fff;
             overflow: auto;
             -webkit-overflow-scrolling: touch;
             color: #999;
         }
 
-        &__options__item {
+        &__item {
             height: 40px;
             line-height: 40px;
         }
@@ -48,27 +48,25 @@
 <template>
     <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" class="busy-select" :style="styles">
         <div class="busy-select__content">
-            <input v-if="Object(currentValue).hasOwnProperty('label')" class="busy-select__input" type="text" :style="inputStyles" readonly v-model="currentValue.label" :placeholder="placeholder">
-            <input v-else class="busy-select__input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
+            <input class="busy-select__input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
         </div>
-        <busy-mask :is-show="visiable" @click.stop="closeOptions">
+        <NativeMask :is-show="visiable" @click.stop="closeOptions">
             <transition name="busy-animate--bibo">
                 <div v-show="visiable" class="busy-select__options" :style="optionStyles">
-                    <ul class="busy-select__options__list" @touchmove.stop="e=>{}" :class="['busy-select__options__list-' + _uid]">
+                    <ul class="busy-select__list" @touchmove.stop="e=>{}" :class="['busy-select__list-' + _uid]">
                         <slot>
-                            <busy-option :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</busy-option>
+                            <NativeOption :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</NativeOption>
                         </slot>
                     </ul>
                 </div>
             </transition>
 
-        </busy-mask>
+        </NativeMask>
     </div>
 </template>
 
 <script>
     import Mask from '../../mask'
-    import Input from '../../input'
     import Option from './option.vue'
 
     export default {
@@ -84,6 +82,14 @@
             },
             inputStyles: Object,
             placeholder: String,
+            multiple: {
+                type: Boolean,
+                default: false
+            },
+            autofocus: {
+                type: Boolean,
+                default: false
+            },
             options: {
                 type: Array,
                 default() {
@@ -115,9 +121,8 @@
             }
         },
         components: {
-            [Mask.name]: Mask,
-            [Input.name]: Input,
-            [Option.name]: Option
+            NativeMask: Mask,
+            NativeOption: Option
         },
         computed: {
             styles() {

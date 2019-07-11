@@ -1,14 +1,14 @@
 
 
 <template>
-    <li class="busy-select__options__item" @click.stop="handleClick">
+    <li class="busy-select__item" @click.stop="handleClick">
         <slot></slot>
     </li>
 </template>
 
 <script>
     export default {
-        name: 'busy-option',
+        name: 'busy-select-option',
         props: {
             value: [Array, String, Object, Number],
             checked: {

@@ -1,11 +1,11 @@
 <style lang="scss" scoped>
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-spinner-circle-half {
+    .#{$prefixCls}-spinner-circle-half {
         display: inline-block;
 
         &__wrap {
-            animation: #{$prefixClass}-animate--rotate 0.7s linear infinite;
+            animation: #{$prefixCls}-animate--rotate 0.7s linear infinite;
             stroke-width: 6;
             stroke: #222222;
             transform-origin: center;

@@ -13,9 +13,12 @@ import colors from 'colors'
 import {
     src,
     dest,
-    libraryName,
     packages,
     docs,
+} from './src/base'
+
+import {
+    libraryName,
     globalName
 } from './src/config'
 

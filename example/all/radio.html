@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>busy toast demo</title>
+    <link rel="stylesheet" href="../../dist/busyui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/busyui.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+
+        }
+
+        .wrap,
+        .app {
+            height: 500%;
+            width: 100%;
+            padding: 10px 0 0;
+            box-sizing: border-box;
+        }
+
+        .t1 {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 32px;
+        }
+
+        .t2 {
+            font-size: 12px;
+            color: #9a9a9a;
+            line-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wrap">
+        <section id="app" class="app">
+            <busy-radio v-model="value" color="orange" value="apple">苹果</busy-radio>
+            <busy-radio v-model="value" color="orange" value="peach">桃子</busy-radio>
+            <div>value:{{value}}</div>
+
+            <div>
+                <busy-radio v-for="(f,$i) in fruits" v-model="value1" color="#c03" :disabled="f.disabled" :value="f.value">{{f.label}}</busy-radio>
+            </div>
+            <div>{{value1}}</div>
+        </section>
+
+    </section>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    value: 'apple',
+                    value1: ['aaa'],
+                    fruits: [{
+                        value: ['aaa'],
+                        label: '苹果',
+                        disabled: true,
+                    }, {
+                        value: ['bbb', 'ccc'],
+                        label: '桃子'
+                    }, {
+                        value: ['eee', 'fff', 'ggg'],
+                        label: '葡萄'
+                    }]
+                }
+            },
+            watch: {
+                value(val) {
+                    console.log(val)
+                }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

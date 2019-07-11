@@ -10,7 +10,7 @@
         <CircleDash v-bind="$props" v-else-if="type==='circle-dash'"></CircleDash>
         <CircleGradient v-bind="$props" v-else-if="type==='circle-gradient'"></CircleGradient>
         <CircleRotate v-bind="$props" v-else-if="type==='circle-rotate'"></CircleRotate>
-        <CircleHalf v-bind="$props" v-else="type==='circle-half'"></CircleHalf>
+        <CircleHalf v-bind="$props" v-else-if="type==='circle-half'"></CircleHalf>
     </div>
 </template>
 
@@ -26,7 +26,7 @@
      * @module Spinner
      * @see {@link ../example/all/spinner.html 实例}
      * @desc spinner组件
-     * @param {Number} type=0 - spinner动画类型,取值 0-6
+     * @param {Number} type=circle-line - spinner动画类型,取值 0-6
      * @param {Number} width=32 - spinner宽度
      * @param {Number} height=32 - spinner高度
      * @param {String} color="#ffffff" - spinner颜色, css color

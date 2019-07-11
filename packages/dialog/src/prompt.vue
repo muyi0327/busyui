@@ -1,6 +1,6 @@
 <style lang="scss">
     @import "../../../src/style/variable";
-    .#{$prefixClass}-prompt {
+    .#{$prefixCls}-prompt {
         &__text {
             width: 100%;
             padding: 0 0 10px;
@@ -22,20 +22,21 @@
 <template>
     <BusyDialog ref="dialog" v-bind="datas" @visiable-change="handleVisiable">
         <div>
-            <div v-if="content" class="busy-prompt__text">
+            <div v-if="content" :class="`${prefixCls}-prompt__text`">
                 {{content}}
             </div>
-            <div class="busy-prompt__input_box">
-                <input type="text" v-model="currentVal" :placeholder="placeholder" class="busy-prompt__input" />
+            <div :class="`${prefix}-prompt__input_box`">
+                <input type="text" v-model="currentVal" :placeholder="placeholder" :class="`${prefixCls}-prompt__input`" />
             </div>
         </div>
     </BusyDialog>
 </template>
 <script>
-    import Dialog from './dialog.vue';
+    import Dialog from './dialog.vue'
+    import { initName } from '../../util'
 
     export default {
-        name: 'busy-prompt',
+        name: initName('prompt'),
         extends: Dialog,
         components: {
             BusyDialog: Dialog

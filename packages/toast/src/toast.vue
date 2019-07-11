@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-toast {
+    .#{$prefixCls}-toast {
         position: fixed;
         z-index: $toast-default-z-index;
         width: 100%;
@@ -59,8 +59,8 @@
     <transition name="busy-animate--fade" v-on:after-leave="_leave">
         <article v-show="visiable" class="busy-toast" :class="posClass">
             <div class="busy-toast__wrap">
-                <span v-if="iconType" class="busy-toast__icon">
-                    <busy-icon :type="iconType" :width="iconWidth" :height="iconHeight" fill="#ffffff"></busy-icon>
+                <span v-if="iconName" class="busy-toast__icon">
+                    <Icon :name="iconName" :width="iconWidth" :height="iconHeight" color="#ffffff" />
                 </span>
                 <p class="busy-toast__text">
                     <slot>
@@ -82,7 +82,7 @@
                 type: Number,
                 default: 2500
             },
-            iconType: {
+            iconName: {
                 type: String,
                 default: ''
             },
@@ -125,7 +125,7 @@
             }
         },
         components: {
-            [Icon.name]: Icon
+            Icon
         },
         computed: {
             posClass() {

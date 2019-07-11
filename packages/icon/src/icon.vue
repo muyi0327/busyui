@@ -2,50 +2,49 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-icon {
+    .#{$prefixCls}-icon {
         display: inline-block;
     }
 </style>
 
 <template>
-    <svg class="busy-icon" :style="styles" @click="handleClick">
-        <use :xlink:href="itype"></use>
+    <svg :class="`${prefixCls}-icon`" :style="styles" @click="handleClick">
+        <use :xlink:href="iconName"></use>
     </svg>
 </template>
 
 <script>
-    import './iconfont.js';
+    import './iconfont.js'
+    import { BNumber, initName, baseMixins } from '../../util'
 
     /**
-     * @busyui/icon
+     * @class
+     * @constructor
      * @module Icon
      * @see {@link ../example/all/icons.html 实例}
-     * @desc icon图标组件
+     * @desc Icon 图标组件
      * @param {String} type - icon名称
      * @param {Number} width=18 - 组件宽度
      * @param {Number} height=18 - 组件高度
      * @param {String} fill='#fff' - 组件颜色,css color
-     * 
-     * @example
-     *  <busy-icon type="guanbi" fill="#8a8a8a"></busy-icon>
-     * 
      */
     export default {
-        name: 'busy-icon',
+        name: initName('icon'),
+        mixins: [baseMixins],
         props: {
-            type: {
+            name: {
                 type: String,
                 default: ''
             },
             width: {
-                type: Number,
+                type: [Number, String],
                 default: 18
             },
             height: {
-                type: Number,
+                type: [Number, String],
                 default: 18
             },
-            fill: {
+            color: {
                 type: String,
                 default: '#fff'
             }
@@ -53,13 +52,13 @@
         computed: {
             styles() {
                 return {
-                    width: this.width + 'px',
-                    height: this.height + 'px',
-                    fill: this.fill
+                    width: BNumber.cmpUnit(this.width),
+                    height: BNumber.cmpUnit(this.height),
+                    fill: this.color
                 }
             },
-            itype() {
-                return '#icon-' + this.type;
+            iconName() {
+                return `#${this.prefix}-${this.name}`
             }
         },
         methods: {

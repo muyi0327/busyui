@@ -10,6 +10,7 @@
 
 <script>
     import FlexItem from './flex-item.vue'
+    import { initName, baseMixins, BNumber } from '../../util'
 
     /**
      * @class
@@ -24,7 +25,8 @@
      * @param {String} direction - 主轴方向, 取值row,row-reverse,column,column-reverse
      */
     export default {
-        name: 'busy-flexbox',
+        name: initName('flexbox'),
+        mixins: [baseMixins],
         props: {
             inline: {
                 type: Boolean,
@@ -62,23 +64,24 @@
         },
         computed: {
             classes() {
-                let am = this.alignMain, ac = this.alignCross, flag = am || ac;
+                let am = this.alignMain, ac = this.alignCross, flag = am || ac, prefixCls = this.prefixCls;
                 return [
-                    this.inline ? `busy-flex--inline` : `busy-flex`,
-                    flag ? `busy-flex--${am || 'start'}-${ac || 'start'}` : null,
-                    !this.direction ? '' : `busy-flex--${this.direction}`
+                    this.inline ? `${prefixCls}-flex--inline` : `${prefixCls}-flex`,
+                    flag ? `${prefixCls}-flex--${am || 'start'}-${ac || 'start'}` : null,
+                    !this.direction ? '' : `${prefixCls}-flex--${this.direction}`
                 ]
             },
             styles() {
                 let h = this.height, w = this.width
 
-                h = /^\d+$/.test(h) ? h + 'px' : h
-                w = /^\d+$/.test(w) ? w + 'px' : w
+                h = BNumber.cmpUnit(h)
+                w = BNumber.cmpUnit(w)
 
                 return {
                     height: h,
                     width: w,
                     flexWrap: this.wrap,
+                    ['-wekit-flex-wrap']: this.wrap
                 }
             }
         },

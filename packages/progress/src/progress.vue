@@ -1,16 +1,27 @@
 <template>
     <div class="busy-progress" v-on:click="handleClick">
-        <busy-progress-line ref="child-line" v-if="type==='line'" :width="width" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :show-text="showText" :duration="duration"></busy-progress-line>
-        <busy-progress-ring ref="child-ring" v-if="type==='ring'" :size="size" :bar-color="barColor" :track-color="trackColor" :track-width="trackWidth" :percent="percent" :direction="direction" :show-text="showText" :duration="duration">{{mycontent}}</busy-progress-ring>
+        <ProgressLine ref="child-line" v-if="type==='line'" v-bind="lineModel">
+            <template slot="start">
+                <slot name="start"></slot>
+            </template>
+
+            <template slot="end">
+                <slot name="end"></slot>
+            </template>
+        </ProgressLine>
+        <ProgressRing ref="child-ring" v-if="type==='ring'" v-bind="ringModel">
+            <slot>11111</slot>
+        </ProgressRing>
     </div>
 </template>
 
 <script>
-    import ProgressLine from './progress-line.vue';
-    import ProgressRing from './progress-ring.vue';
+    import ProgressLine from './progress-line.vue'
+    import ProgressRing from './progress-ring.vue'
+    import { initName, BNumber } from '../../util'
+    import mixins from './mixins'
 
     /**
-     * busy-progress
      * @module Progress
      * @see {@link ../example/all/progress.html 实例}
      * @des 进度条组件
@@ -19,74 +30,57 @@
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
      * @param {Number} trackWidth - 进度槽的宽度, 默认值5<px>
      * @param {String} trackColor - 进度槽颜色, 取值范围 css color <hex, rgb, rgba>
-     * @param {String} barColor - 进度条颜色, 取值范围 css color <hex, rgb, rgba>
+     * @param {String} lineColor - 进度条颜色, 取值范围 css color <hex, rgb, rgba>
      * @param {String} content - 显示内容, 默认''
-     * @param {String} type - 进度条组件类型, 可取值 'line' [<busy-progress-line />], 'ring' [<busy-progress-ring />], 默认 'line'
-     * @example
-     *      <busy-progress type="ring" :size="50" :track-width="5"></busy-progress>
+     * @param {String} type - 进度条组件类型, 可取值 'line', 'ring', 默认 'line'
      **/
     export default {
-        name: 'busy-progress',
+        name: initName('progress'),
+        mixins: [mixins],
         props: {
             size: {
                 type: Number,
                 default: 80
             },
-            width: {
-                type: [Number, String],
-                default: '100%'
-            },
-            trackColor: {
-                type: [Array, String],
-                default: ''
-            },
-            barColor: {
-                type: [Array, String],
-                default: ''
-            },
-            trackWidth: {
-                type: Number,
-                default: 0
-            },
-            duration: {
-                type: Number,
-                default: 500
-            },
-            content: {
-                type: String,
-                default: ''
-            },
             direction: String,
-            percent: {
-                default: 0,
-                validator(val) {
-                    return typeof val === 'number' && val >= 0 && val <= 100;
-                }
-            },
             type: {
                 type: String,
                 default: 'line'
             },
-            showText: {
-                type: Boolean,
-                default: false
+            height: {
+                type: [Number, String]
+            },
+            width: {
+                type: [Number, String]
             }
         },
-        component: {
-            [ProgressLine.name]: ProgressLine,
-            [ProgressRing.name]: ProgressRing
+        components: {
+            ProgressLine,
+            ProgressRing
         },
-        watch: {
-            percent() {
-                this.$emit('percent-change', this.percent);
-            }
-        },
-        mounted() {
-            this.$emit('percent-change', this.percent);
-        },
-        methods: {
-            handleClick($evt) {
-                this.$emit('click', $evt);
+        computed: {
+            lineModel() {
+                let { width, height, lineColor, trackWidth, trackColor, value } = this
+                return {
+                    width,
+                    height,
+                    lineColor,
+                    trackWidth,
+                    trackColor,
+                    value
+                }
+            },
+            ringModel() {
+                let { size, lineColor, trackWidth, trackColor, value, direction, linecap } = this
+                return {
+                    size,
+                    lineColor,
+                    trackWidth,
+                    trackColor,
+                    value,
+                    direction,
+                    linecap
+                }
             }
         }
     }

@@ -5,16 +5,22 @@ import vue from 'rollup-plugin-vue'
 import scss from 'rollup-plugin-scss'
 import babel from 'rollup-plugin-babel'
 import replace from 'rollup-plugin-replace'
-//import serve from 'rollup-plugin-serve'
+import serve from 'rollup-plugin-serve'
 import autoprefixer from 'autoprefixer'
 import pkg from './package.json'
+
+import {
+    libraryName,
+    globalName,
+    prefix,
+    prefixCls
+} from './src/config'
+
 import {
     src,
-    libraryName,
     dest,
-    globalName,
     packages
-} from './src/config'
+} from './src/base'
 
 // 自定义样式
 let banner = `/**\n * ${globalName} framework version ${pkg.version} \n **/`;
@@ -26,7 +32,6 @@ let destJs = `${dist}/${libraryName}.js`
 // format json to sass varible
 const parseJsonToSass = (data) => {
     data = typeof data === 'string' ? JSON.parse(data) : data;
-
     return Object.keys(data).map((d) => {
         //return '$' + d + ':' + data[d] + ';\n'
         return `$${d}:${data[d]};\n`
@@ -78,7 +83,10 @@ export default {
             style: {
                 preprocessOptions: {
                     scss: {
-                        //data: parseJsonToSass(variables)
+                        data: parseJsonToSass({
+                            prefix,
+                            prefixCls
+                        })
                     }
                 },
                 postcssPlugins: [

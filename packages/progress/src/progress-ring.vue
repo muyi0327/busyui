@@ -1,12 +1,10 @@
 <style lang="scss">
     @import "../../../src/style/variable.scss";
 
-    .#{$prefixClass}-progress-ring {
+    .#{$prefixCls}-progress-ring {
         position: relative;
+        text-align: center;
         svg &__bar {
-            transition-property: stroke-dashoffset;
-            transition-duration: 1s;
-            transition-timing-function: linear;
             stroke: $progress-line-color;
             stroke-width: #{$progress-line-width}px;
         }
@@ -15,57 +13,54 @@
             stroke: $progress-background-color;
             stroke-width: #{$progress-line-width}px;
         }
+
+        &__text {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
     }
 </style>
 <template>
-    <div class="busy-progress-ring" v-on:click="handleClick">
+    <div :class="`${prefixCls}-progress-ring`" v-on:click="handleClick">
         <svg :width="size" :height="size" :viewport="viewport" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <circle class="busy-progress-ring__track" :cx="radius" :cy="radius" :r="sRdius" :style="trackStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="0">
+            <circle :class="`${prefixCls}-progress-ring__track`" :cx="radius" :cy="radius" :r="sRdius" :style="trackStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="0">
             </circle>
 
-            <circle class="busy-progress-ring__bar" :cx="radius" :cy="radius" :r="sRdius" :style="barStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="dashoffset">
+            <circle :class="`${prefixCls}-progress-ring__bar`" :cx="radius" :cy="radius" :r="sRdius" :style="barStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="dashoffset">
             </circle>
         </svg>
+        <div :class="`${prefixCls}-progress-ring__text`">
+            <slot></slot>
+        </div>
     </div>
 </template>
 <script>
+    import { initName, BNumber } from '../../util'
+    import mixins from './mixins'
     /**
-     * busy-progress-ring
+     * @class
+     * @constructor
      * @des 环形进度条组件
      * @param {Number} size - 组件直径大小,默认 100<px>
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
      * @param {Number | String} trackWidth - 进度槽的宽度, 默认值5<px>
      * @param {String} trackColor - 进度槽颜色, 取值范围 css color
-     * @param {String} barColor - 进度条颜色, 取值范围 css color
+     * @param {String} lineColor - 进度条颜色, 取值范围 css color
      * @param {String} linecap=round - 进度条终结形半, 取值范围 butt, round, square
      * @param {String} direction = '1' - 顺时针还是逆时针, 取值范围 '1','-1'
-     * @param {String} content - 显示内容，this.percent + '%'
-     * @example
-     *      <busy-progress-ring :size="50" :track-width="10"></busy-progress-ring>
+     * @param {String} content - 显示内容，this.value + '%'
      **/
     export default {
-        name: 'busy-progress-ring',
+        name: initName('progress-ring'),
+        mixins: [mixins],
         props: {
             size: {
                 type: Number,
                 default: 100
-            },
-            duration: {
-                type: Number,
-                default: 500
-            },
-            trackWidth: {
-                type: Number
-            },
-            trackColor: {
-                type: String
-            },
-            barColor: {
-                type: String
-            },
-            showText: {
-                type: Boolean,
-                default: false
             },
             direction: {
                 type: [Number, String],
@@ -74,12 +69,6 @@
             linecap: {
                 type: String,
                 default: 'round'
-            },
-            percent: {
-                default: 0,
-                validator(val) {
-                    return typeof val === 'number' && val >= 0 && val <= 100;
-                }
             }
         },
 
@@ -89,7 +78,7 @@
             },
             dashoffset() {
                 var d = Number(this.direction);
-                var p = (100 + (-1 * d) * this.percent) / 100;
+                var p = (100 + (-1 * d) * this.value) / 100;
                 return (this.size - 2 * this.trackWidth) * Math.PI * p;
             },
             radius() {
@@ -104,11 +93,11 @@
             trackStyles() {
                 var s = {};
                 if (this.trackWidth) {
-                    s.strokeWidth = this.trackWidth + 'px';
+                    s.strokeWidth = BNumber.cmpUnit(this.trackWidth)
                 }
 
                 if (this.trackColor) {
-                    s.stroke = this.trackColor;
+                    s.stroke = this.trackColor
                 }
 
                 return s;
@@ -116,19 +105,14 @@
             barStyles() {
                 var s = {};
                 if (this.trackWidth) {
-                    s.strokeWidth = this.trackWidth + 'px';
+                    s.strokeWidth = BNumber.cmpUnit(this.trackWidth)
                 }
 
-                if (this.barColor) {
-                    s.stroke = this.barColor;
+                if (this.lineColor) {
+                    s.stroke = this.lineColor
                 }
 
                 return s;
-            }
-        },
-        methods: {
-            handleClick($evt) {
-                this.$emit('click', $evt);
             }
         }
     }

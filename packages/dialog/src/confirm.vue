@@ -4,10 +4,11 @@
     </BusyDialog>
 </template>
 <script>
-    import Dialog from './dialog.vue';
+    import Dialog from './dialog.vue'
+    import { initName } from '../../util'
 
     export default {
-        name: 'busy-confirm',
+        name: initName('confirm'),
         extends: Dialog,
         components: {
             BusyDialog: Dialog

@@ -1,12 +1,12 @@
 
 <template>
-    <div class="busy-loadmore__bar busy-al-cm" v-show="pos=='top' || pos=='bottom' && status=='loading'">
-        <p class="busy-loadmore__spinner">
-            <busy-spinner :style="{verticalAlign: 'middle'}" v-show="status==='loading'" :size="size" :type="6" color="#aaa"></busy-spinner>
+    <div :class="`${prefixCls}-loadmore__bar ${prefixCls}-flex--center-center`" v-show="pos=='top' || pos=='bottom' && status=='loading'">
+        <p :class="`${prefixCls}-loadmore__spinner`">
+            <Spinner v-show="status==='loading'" :width="size" :height="size" type="circle-rotate" color="#aaa"></Spinner>
         </p>
-        <p class="busy-loadmore__text" :class="['busy-loadmore--' + status]">
-            <span v-if="pos=='top'" class="busy-loadmore__arrow">
-                <busy-icon :height="30" type="refresharrow" fill="#000"></busy-icon>
+        <p :class="[`${prefixCls}-loadmore__text`, `${prefixCls}-loadmore--${status}`]">
+            <span v-if="pos=='top'" :class="`${prefixCls}-loadmore__arrow`">
+                <Icon :height="30" name="arrowdown" color="#000" />
             </span>
             <span>{{loadText}}</span>
         </p>
@@ -14,10 +14,13 @@
 </template>
 
 <script>
-    import Spinner from '../../spinner';
-    import Icon from '../../icon';
+    import Spinner from '../../spinner'
+    import Icon from '../../icon'
+    import { initName, baseMixins } from '../../util'
+
     export default {
-        name: 'busy-loadmore-bar',
+        name: initName('loadmore-bar'),
+        mixins: [baseMixins],
         props: {
             size: {
                 type: Number,
@@ -50,8 +53,8 @@
             }
         },
         components: {
-            [Spinner.name]: Spinner,
-            [Icon.name]: Icon
+            Spinner,
+            Icon
         },
         computed: {
             loadText() {

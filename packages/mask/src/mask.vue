@@ -2,7 +2,7 @@
     @import "../../../src/style/variable";
     @import "../../../src/style/animate";
 
-    .#{$prefixClass}-mask {
+    .#{$prefixCls}-mask {
         height: 100%;
         width: 100%;
         position: fixed;
@@ -14,26 +14,27 @@
 </style>
 
 <template>
-    <transition name="busy-animate--fade" v-on:after-leave="_leave">
-        <div v-show="visiable" @touchmove="handleTouchmove" class="busy-mask" v-on:click="handleClick" :style="styles">
+    <transition :name="`${prefixCls}-animate--fade`" v-on:after-leave="_leave">
+        <div v-show="visiable" :class="`${prefixCls}-mask`" v-on:click="handleClick" :style="styles">
             <slot></slot>
         </div>
     </transition>
 </template>
 
 <script>
+    import { initName, baseMixins } from '../../util'
     /**
-     * @busyui/mask
+     * @class
+     * @constructor
      * @module Mask
-     * @desc 半透明遮罩层 <busy-mask></busy-mask>
+     * @desc 遮罩层
      * @param {String} color=rgba(0,0,0, 0.6) - 遮罩颜色, css color
      * @param {Boolean} isRemove=false - 是否隐藏动画完成从dom中清除
      * @param {Boolean} isShow=false - 显示隐藏
-     * @example 
-     *      <busy-mask color="yellow"></busy-mask>
      **/
     export default {
-        name: 'busy-mask',
+        name: initName('mask'),
+        mixins: [baseMixins],
         props: {
             color: {
                 type: String,
@@ -91,10 +92,6 @@
             },
             handleClick($evt) {
                 this.$emit('click', $evt);
-            },
-            handleTouchmove($evt) {
-                $evt && $evt.preventDefault && $evt.preventDefault();
-                this.$emit('touchmove', $evt);
             }
         }
     }

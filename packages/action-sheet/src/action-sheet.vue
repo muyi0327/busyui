@@ -2,15 +2,15 @@
     @import "../../../src/style/variable";
     @import "../../../src/style/animate";
 
-    .#{$prefixClass}-action-sheet {
+    .#{$prefixCls}-action-sheet {
         position: absolute;
         left: 2%;
         bottom: 5px;
         right: 2%;
+        z-index: 1;
+        opacity: 1;
 
         &__box {
-            position: absolute;
-            bottom: 0;
             width: 100%;
         }
 
@@ -38,29 +38,31 @@
 </style>
 
 <template>
-    <busy-mask :is-show="visiable" @click.stop="hide" :is-remove="isRemove">
-        <transition name="busy-animate_bibo" v-on:after-enter="_enter" v-on:after-leave="_leave">
-            <div ref="oel" v-show="visiable" class="busy-action-sheet" :style="styles">
-                <div class="busy-action-sheet__box">
-                    <div class="busy-action-sheet__list">
+    <BusyMask :is-show="visiable" @click.stop="hide" :is-remove="isRemove">
+        <transition :name="`${prefixCls}-animate--bibo`" v-on:after-enter="_enter" v-on:after-leave="_leave">
+            <div v-show="visiable" :class="`${prefixCls}-action-sheet`">
+                <div :class="`${prefixCls}-action-sheet__box`">
+                    <div :class="`${prefixCls}-action-sheet__list`">
                         <slot>
-                            <busy-action-sheet-item :key="'as-'+$i" v-for="(ac,$i) in actions" @click="ac.action">{{ac.text}}</busy-action-sheet-item>
+                            <ActionSheetItem :key="'as-'+$i" v-for="(ac,$i) in actions" @click="ac.action">{{ac.text}}</ActionSheetItem>
                         </slot>
                     </div>
-
-                    <div class="busy-action-sheet__button" @click="hide">取消</div>
+                    <div :class="`${prefixCls}-action-sheet__button`" @click="hide">取消</div>
                 </div>
             </div>
         </transition>
-    </busy-mask>
+    </BusyMask>
 </template>
 
 <script>
-    import Mask from '../../mask';
+    import BusyMask from '../../mask';
     import ActionSheetItem from './action-sheet-item.vue'
+    import { prefixCls, prefix } from '../../../src/config'
+    import { initName, baseMixins } from '../../util'
 
     export default {
-        name: 'busy-action-sheet',
+        name: initName('action-sheet'),
+        mixins: [baseMixins],
         props: {
             isShow: {
                 type: Boolean,
@@ -83,8 +85,8 @@
             }
         },
         components: {
-            [Mask.name]: Mask,
-            [ActionSheetItem.name]: ActionSheetItem
+            BusyMask,
+            ActionSheetItem
         },
         watch: {
             isShow(val) {
@@ -97,7 +99,6 @@
         computed: {
             styles() {
                 return {
-
                 }
             }
         },
@@ -122,9 +123,7 @@
             }
         },
         mounted() {
-            this.$nextTick(() => {
-                console.log(this.$refs['oel'].offsetHeight)
-            })
+
         }
     }
 </script>

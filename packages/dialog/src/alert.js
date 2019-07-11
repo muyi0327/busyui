@@ -5,26 +5,12 @@ import Alert from './Alert.vue';
 const AlertClass = Vue.extend(Alert);
 
 /**
- * @busyui/alert
  * @module Alert
  * @see {@link ../example/all/dialog.html 实例}
  * @desc alert对话框组件
  * @param {String} content - 显示信息
  * @param {Number} height=140 - 组件高度
  * @param {Number} width=240 - 组件高度
- * 
- * @example
- * // use it in html
- * <script src="busyui.js"><\/script>
- * <link rel="stylesheet" href="busyui.css" />
- * 
- * Busy.Alert.show('提交申请成功');
- *
- * // use it in webpack or browserify, rollup
- * import {Alert} from '@busyui/dialog';
- * // var Aler = require('@busyui/dialog/alert.js');
- *
- * Alert.show('提交申请成功');
  *
  */
 export default Object.assign(Alert, {

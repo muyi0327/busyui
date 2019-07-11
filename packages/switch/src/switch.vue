@@ -12,7 +12,7 @@
     $duration: 0.4s;
     $checkedColor: #44db5e;
 
-    .#{$prefixClass}-switch {
+    .#{$prefixCls}-switch {
         width: 52px;
         height: 31px;
         position: relative;

@@ -2,8 +2,8 @@
     @import "../../../src/style/variable";
     @import "../../../src/style/animate";
 
-    .#{$prefixClass}-spinner-circle-gradient {
-        $rotate: #{$prefixClass}-animate--rotate-1turn;
+    .#{$prefixCls}-spinner-circle-gradient {
+        $rotate: #{$prefixCls}-animate--rotate-1turn;
 
         display: inline-block;
 

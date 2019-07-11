@@ -1,6 +1,6 @@
 <style lang="scss">
     @import "../../../src/style/variable";
-    .#{$prefixClass}-loading {
+    .#{$prefixCls}-loading {
         position: absolute;
         z-index: 1000;
         left: 0;
@@ -19,10 +19,10 @@
     }
 </style>
 <template>
-    <div class="busy-loading" :style="styles">
-        <BusyMask :isShow="showMask && visiable" position="absolute" :z-index="1"></BusyMask>
-        <transition name="busy-animate--fade" v-on:after-leave="_leave">
-            <div class="busy-loading__wrap" v-show="visiable">
+    <div :class="`${prefixCls}-loading`" :style="styles">
+        <BusyMask :isShow="showMask && visiable" :position="position" :z-index="1"></BusyMask>
+        <transition :name="`${prefixCls}-animate--fade`" v-on:after-leave="_leave">
+            <div :class="`${prefixCls}-loading__wrap`" v-show="visiable">
                 <InlineLoading v-bind="ILProps">
                     <slot>{{text}}</slot>
                 </InlineLoading>
@@ -34,9 +34,10 @@
 <script>
     import BusyMask from '../../mask'
     import InlineLoading from './inline-loading.vue'
+    import { initName } from '../../util'
 
     export default {
-        name: 'busy-loading',
+        name: initName('loading'),
         extends: InlineLoading,
         props: {
             showMask: {
@@ -54,6 +55,10 @@
             color: {
                 type: String,
                 default: '#ffffff'
+            },
+            position: {
+                type: String,
+                default: 'absolute'
             }
         },
         data() {

@@ -5,138 +5,98 @@
         font-size: 0;
     }
 
-    .#{$prefixClass}-progress-line {
+    .#{$prefixCls}-progress-line {
         border-radius: 3px;
-        height: $progress-line-width;
-        position: relative;
-        transition: all 1s linear;
-        background-color: $progress-background-color;
-        @extend %small-height;
+        display: flex;
+        align-items: center;
+
+        &__wrap {
+            position: relative;
+            flex: 1;
+            background-color: $progress-background-color;
+            @extend %small-height;
+        }
+
+        &__start,
+        &__end {
+            flex: none;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        &__start {
+            padding-right: 5px;
+        }
+
+        &__end {
+            padding-left: 5px;
+        }
 
         &__bar {
             height: 100%;
             @extend %small-height;
+
             border-radius: 3px;
             background-color: $progress-line-color;
-        }
-
-        &__text {
-            position: absolute;
-            top: 100%;
-            z-index: 10;
-            font-size: 12px;
-            line-height: 1.5;
-            transition: all 1s linear;
         }
     }
 </style>
 <template>
-    <div class="busy-progress-line" v-on:click="handleClick" :style="styles">
-        <div class="busy-progress-line__bar" :style="barStyles"></div>
-        <div v-if="showText" class="busy-progtress-line__text" :style="textStyle">{{percent}}%</div>
+    <div :class="`${prefixCls}-progress-line`" v-on:click="handleClick" :style="styles">
+        <div :class="`${prefixCls}-progress-line__start`" v-show="$slots['start']">
+            <slot name="start"></slot>
+        </div>
+        <div :class="`${prefixCls}-progress-line__wrap`" :style="trackStyles">
+            <div :class="`${prefixCls}-progress-line__bar`" :style="barStyles"></div>
+        </div>
+        <div :class="`${prefixCls}-progress-line__end`" v-show="$slots['end']">
+            <slot name="end"></slot>
+        </div>
     </div>
 </template>
 <script>
+    import { initName, BNumber } from '../../util'
+    import mixins from './mixins'
     /**
-     * busy-progress-line
      * @des 线形进度条组件
      * @param {Number} width - 组件长度,默认 100%
      * @param {Number} duration - 动画持续时间<transition-duration>,默认值500<ms>
      * @param {Number | String} trackWidth - 进度槽的宽度, 默认值5<px>
      * @param {String} trackColor - 进度槽颜色, 取值范围 css color
-     * @param {String} barColor - 进度条颜色, 取值范围 css color
+     * @param {String} lineColor - 进度条颜色, 取值范围 css color
      * @param {String} showText - 是否显示进度数值, 默认 false
-     * @example
-     *      <busy-progress-line :percent="45" :width="150" :track-width="4"></busy-progress-line>
-     *      <busy-progress-ring :percent="45" :width="150" :track-width="4"></busy-progress-ring>
      **/
     export default {
-        name: 'busy-progress-line',
+        name: initName('progress-line'),
+        mixins: [mixins],
         props: {
-            trackWidth: {
-                type: Number,
-                default: 0
+            height: {
+                type: [Number, String]
             },
             width: {
-                default: '100%',
-                validator(val) {
-                    return /\d+%?$/.test(String(val));
-                }
-            },
-            trackColor: {
-                type: [String, Array],
-                default: ''
-            },
-            barColor: {
-                type: [String, Array],
-                default: ''
-            },
-            duration: {
-                type: Number,
-                default: 500
-            },
-            showText: {
-                type: Boolean,
-                default: false
-            },
-            percent: {
-                default: 0,
-                validator(val) {
-                    return typeof val === 'number' && val >= 0 && val <= 100;
-                }
+                type: [Number, String]
             }
         },
         computed: {
             styles() {
-                var s = {
-                    width: typeof this.width == 'number' ? (this.width + 'px') : this.width
+                return {
+                    width: BNumber.cmpUnit(this.width),
+                    height: BNumber.cmpUnit(this.height)
                 }
-
-                if (this.trackColor) {
-                    if (Array.isArray(this.trackColor)) {
-                        var linear = this.trackColor.join(',');
-                        s.backgroundImage = '-webkit-linear-gradient(' + linear + ')';
-                        s.backgroundImage = 'linear-gradient(' + linear + ')';
-                    } else {
-                        s.backgroundColor = this.trackColor;
-                    }
-
+            },
+            trackStyles() {
+                return {
+                    background: this.trackColor,
+                    height: BNumber.cmpUnit(this.trackWidth)
                 }
-
-                if (this.trackWidth) {
-                    s.height = this.trackWidth + 'px'
-                }
-
-                return s;
             },
             barStyles() {
-                var s = {
-                    width: this.percent + '%',
-                    webkitTransitionDuration: this.duration + 'ms',
-                    transitionDuration: this.duration + 'ms'
-                }
 
-                if (this.barColor) {
-                    if (Array.isArray(this.barColor)) {
-                        var linear = this.barColor.join(',');
-                        s.backgroundImage = '-webkit-linear-gradient(' + linear + ')';
-                        s.backgroundImage = 'linear-gradient(' + linear + ')';
-                    } else {
-                        s.backgroundColor = this.barColor;
-                    }
-                }
-
-                return s;
-            },
-            textStyle() {
                 return {
-                    left: this.percent + '%'
+                    width: this.value + '%',
+                    background: this.lineColor
                 }
-            }
-        },
-        methods: {
-            handleClick($evt) {
-                this.$emit('click', $evt);
             }
         }
     }

@@ -1,23 +1,19 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-checkbox {
-        font-size: 14px;
-        line-height: 20px;
+    .#{$prefixCls}-checkbox {
         display: inline-block;
+        vertical-align: middle;
+        height: 16px;
 
         &__input {
             display: none;
         }
 
         &__label {
-            display: inline-block;
-            vertical-align: top;
-
-            > span {
-                display: inline-block;
-                vertical-align: middle;
-            }
+            display: flex;
+            height: 100%;
+            align-items: center;
         }
 
         &__core {
@@ -28,101 +24,131 @@
             height: 16px;
             border-radius: 4px;
             border: 1px solid #c0c0c0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-            &:before {
-                border: 2px solid transparent;
-                border-right: 0;
-                border-top: 0;
-                content: " ";
-                position: absolute;
-                left: 20%;
-                top: 25%;
-                z-index: 2;
-                width: 60%;
-                height: 30%;
-                -webkit-transform: rotate(-45deg) scale(0.25);
-                transform: rotate(-45deg) scale(0.25);
-                transform-origin: 50% 50%;
-                transition: transform 0.2s;
-                box-sizing: border-box;
-            }
+        &__icon {
+            opacity: 1;
         }
 
         &__input:checked + &__core {
-            background-color: #c0c0c0;
-        }
-
-        &__input:checked + &__core:before {
-            border-color: #fff;
-            -webkit-transform: rotate(-45deg) scale(1);
-            transform: rotate(-45deg) scale(1);
+            background-color: $color-blue;
+            border: none;
         }
 
         &__input[disabled] + &__core {
-            opacity: 0.6;
+            background: #e7e7e7;
+            border: 1px solid #c6c6c6;
+            cursor: not-allowed;
         }
 
-        &__content {
-            padding-left: 5px;
+        &__text {
+            padding-left: 10px;
         }
     }
 </style>
 <template>
-    <div class="busy-checkbox">
-        <label class="busy-checkbox__label">
-            <input v-model="currentValue" class="busy-checkbox__input" type="checkbox" :disabled="disabled">
-            <span class="busy-checkbox__core" :style="styles"></span>
-            <span class="busy-checkbox__content" v-if="label||$slots.default">
+    <div @click.stop="()=>{}" :class="`${prefixCls}-checkbox`" :style="styles">
+        <label :class="[`${prefixCls}-checkbox__label`]">
+            <input ref="native-checkbox" v-model="currentValue" :class="`${prefixCls}-checkbox__input`" type="checkbox" :value="value" :disabled="disabled">
+            <span :class="`${prefixCls}-checkbox__core`" :style="coreStyles">
+                <transition :name="`${prefixCls}-animate--scalein`">
+                    <Icon v-show="isChecked" v-bind="iconModel" :class="`${prefixCls}-checkbox__icon`" />
+                </transition>
+            </span>
+            <span :class="`${prefixCls}-checkbox__text`" v-if="label || $slots.default">
                 <slot>{{label}}</slot>
             </span>
         </label>
     </div>
 </template>
 <script>
+    import { initName, baseMixins, BNumber } from '../../util'
+    import Icon from '../../icon'
+
+    const iconProps = {
+        color: '#ffffff',
+        width: '70%',
+        height: '70%',
+        name: 'yes'
+    }
     /**
-     * @busyui/checkbox
-     * @desc 勾选框  <busy-checkbox />
+     * @class
+     * @constructor
+     * @desc Checkbox 复选框
      * @module Checkbox
      * @see {@link ../example/all/checkbox.html 实例}
-     * @param {string} label 显示在右侧的内容
-     * @param {boolean} disabled 是否禁用
-     *
-     * @example
-     * <busy-checkbox v-model="checked" label="这个位置是标签1"></busy-checkbox>
-     * <busy-checkbox v-model="disable" label="是否禁用下面的按钮"></busy-checkbox>
+     * @param {String} label 显示在右侧的内容
+     * @param {Boolean} disabled 是否禁用
+     * @param {Number | String} size 尺寸
+     * @param {String} color 颜色
      */
 
     export default {
-        name: 'busy-checkbox',
+        name: initName('checkbox'),
+        mixins: [baseMixins],
+        model: {
+            prop: 'modelVal',
+            event: 'change'
+        },
         props: {
             label: String,
-            value: Boolean,
+            value: [Boolean, String, Array, Number, Object],
             disabled: Boolean,
-            size: [Number, String],
-            color: String
+            modelVal: [Boolean, String, Array],
+            width: [Number, String],
+            height: [Number, String],
+            color: String,
+            icon: {
+                type: Object,
+                default() {
+                    return iconProps
+                }
+            },
+            borderRadius: {
+                type: [Number, String]
+            }
         },
         data() {
             return {
-                currentValue: this.value
+                currentValue: this.modelVal
             }
         },
+        components: {
+            Icon
+        },
         watch: {
-            value(val) {
+            modelVal(val) {
                 this.currentValue = val;
             },
             currentValue(val) {
-                this.$emit('input', val);
+                this.$emit('change', val);
             }
         },
         computed: {
+            coreStyles() {
+                let color = this.disabled ? '#dadada' : this.color
+                return {
+                    width: BNumber.cmpUnit(this.width),
+                    height: BNumber.cmpUnit(this.height),
+                    background: this.isChecked && color || null,
+                    borderRadius: BNumber.cmpUnit(this.borderRadius)
+                }
+            },
             styles() {
                 return {
-                    width: this.size ? this.size + 'px' : '',
-                    height: this.size ? this.size + 'px' : '',
-                    borderColor: this.color || '',
-                    backgroundColor: this.currentValue && this.color || ''
+                    height: BNumber.cmpUnit(this.height)
                 }
-
+            },
+            iconModel() {
+                return { ...iconProps, ...this.icon }
+            },
+            isChecked() {
+                return Array.isArray(this.currentValue)
+                    ? this.currentValue.some(c => c === this.value || JSON.stringify(c) === JSON.stringify(this.value))
+                    : !!this.currentValue
             }
         }
     }

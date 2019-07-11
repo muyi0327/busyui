@@ -14,11 +14,24 @@
             padding: 0;
             margin: 0;
             height: 100%;
+            font-size: 12px;
         }
 
         .wrap {
             height: 100%;
             width: 100%;
+            color: #999;
+        }
+
+        .item {
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            box-sizing: border-box;
+        }
+
+        .name {
+            border-top: 1px solid #eee;
+            line-height: 24px;
         }
     </style>
 </head>
@@ -26,30 +39,33 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <section>
-                <busy-icon type="roundcheck" fill="#000" :width="36" :height="36"></busy-icon>
-                <busy-icon type="move" fill="orange" :width="36" :height="36"></busy-icon>
-                <busy-icon type="add" fill="green" :width="36" :height="36"></busy-icon>
-                <busy-icon type="refresharrow" fill="blue" :width="36" :height="36"></busy-icon>
-                <busy-icon type="info" fill="gray" :width="36" :height="36"></busy-icon>
-                <busy-icon type="infofill" fill="green" :width="36" :height="36"></busy-icon>
-                <busy-icon type="question" fill="green" :width="36" :height="36"></busy-icon>
-                <busy-icon type="questionfill" fill="green"></busy-icon>
-                <busy-icon type="back" fill="green" :width="36" :height="36"></busy-icon>
-                <busy-icon type="warn" fill="green" :width="36" :height="36"></busy-icon>
-                <busy-icon type="warnfill" fill="green" :width="36" :height="36"></busy-icon>
-                <busy-icon type="roundclose" fill="green" :width="36" :height="36"></busy-icon>
-            </section>
+            <busy-flexbox wrap="wrap">
+                <busy-flexitem v-for="icon in icons" :key="icon" class="busy-flex busy-flex--column item" flex="none" width="33.33%" height="90">
+                    <busy-flexitem class="busy-flex busy-flex--center-center">
+                        <busy-icon :name="icon" color="#666" :width="36" :height="36"></busy-icon>
+                    </busy-flexitem>
+                    <busy-flexitem class="name" flex="none" height="24">{{icon}}</busy-flexitem>
+                </busy-flexitem>
+            </busy-flexbox>
         </section>
-    </section>
 
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            var vm = new Vue({
-                el: '#app'
-            });
-        }, false)
-    </script>
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                var vm = new Vue({
+                    el: '#app',
+                    data() {
+                        return {
+                            icons: []
+                        }
+                    },
+                    mounted() {
+                        const context = document.getElementsByTagName('svg')
+                        let icons = context[0].getElementsByTagName('symbol')
+                        this.icons = [].slice.call(icons).map(icon => icon.id.replace('busy-', ''))
+                    }
+                });
+            }, false)
+        </script>
 </body>
 
 </html>

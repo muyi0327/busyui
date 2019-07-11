@@ -2,7 +2,7 @@
     @import "../../../src/style/variable";
     @import "../../../src/style/animate";
 
-    .#{$prefixClass}-dialog {
+    .#{$prefixCls}-dialog {
         position: fixed;
         overflow: hidden;
         z-index: $dialog-default-z-index;
@@ -109,33 +109,33 @@
             margin: 0;
 
             &:active {
-                background-color: #eee;
+                background-color: rgba(0, 0, 0, 0.1);
             }
         }
     }
 </style>
 
 <template>
-    <div class="busy-dialog" v-show="!leave">
-        <transition name="busy-animate--scale" @after-leave="_leave">
-            <div class="busy-dialog__wrap" v-show="visiable" :style="styles">
-                <p v-if="showClose" class="busy-dialog__close" @click.stop="hide">
-                    <Icon type="close" :width="20" :height="20" fill="#8a8a8a" />
+    <div :class="`${prefixCls}-dialog`" v-show="!leave">
+        <transition :name="`${prefixCls}-animate--scale`" @after-leave="_leave">
+            <div :class="`${prefixCls}-dialog__wrap`" v-show="visiable" :style="styles">
+                <p v-if="closable" :class="`${prefixCls}-dialog__close`" @click.stop="hide">
+                    <Icon name="close" :width="20" :height="20" color="#8a8a8a" />
                 </p>
-                <header class="busy-dialog__header" v-if="title">
+                <header :class="`${prefixCls}-dialog__header`" v-if="title">
                     <slot name="header">
-                        <div class="busy-dialog__title">{{title}}</div>
+                        <div :class="`${prefixCls}-dialog__title`">{{title}}</div>
                     </slot>
                 </header>
-                <div class="busy-dialog__body" v-if="content || $slots['default']">
+                <div :class="`${prefixCls}-dialog__body`" v-if="content || $slots['default']">
                     <slot>
-                        <div :style="contentStyle" v-html="content"></div>
+                        <div :class="`${prefixCls}-dialog__content`" :style="contentStyle" v-html="content"></div>
                     </slot>
                 </div>
-                <footer class="busy-dialog__footer" :class="{'busy-dialog__footer_row':buttonDirection=='row', 'busy-dialog__footer_column':buttonDirection=='column'}">
+                <footer :class="footerClasses">
                     <slot name="footer">
                         <template v-for="(btn,$i) in bindButtons">
-                            <p class="busy-dialog__button" :key="'btn-'+$i" :class="btn.class" :style="btn.style" @click.stop="btn.action">{{btn.text}}</p>
+                            <p :class="[`${prefixCls}-dialog__button`, btn.class]" :key="'btn-'+$i" :style="btn.style" @click.stop="btn.action">{{btn.text}}</p>
                         </template>
                     </slot>
                 </footer>
@@ -148,9 +148,11 @@
 <script>
     import Icon from '../../icon'
     import Mask from '../../mask'
+    import { initName, baseMixins, BNumber } from '../../util'
 
     export default {
-        name: 'busy-dialog',
+        name: initName('dialog'),
+        mixins: [baseMixins],
         props: {
             mask: {
                 type: Boolean,
@@ -176,7 +178,7 @@
             height: {
                 type: [Number, String]
             },
-            showClose: {
+            closable: {
                 type: Boolean,
                 default: false
             },
@@ -216,18 +218,9 @@
         computed: {
             styles() {
                 let w = this.width, h = this.height;
-
-                if (this.width) {
-                    w = /^\d+$/.test(w) ? w + 'px' : w
-                }
-
-                if (this.height) {
-                    h = /^\d+$/.test(h) ? h + 'px' : h
-                }
-
                 return {
-                    height: h,
-                    width: w,
+                    height: BNumber.cmpUnit(h),
+                    width: BNumber.cmpUnit(w),
                     zIndex: this.zIndex
                 };
             },
@@ -245,6 +238,16 @@
 
                     return button;
                 });
+            },
+            footerClasses() {
+                let { prefixCls, buttonDirection } = this
+                return [
+                    `${prefixCls}-dialog__footer`,
+                    {
+                        [`${prefixCls}-dialog__footer_row`]: buttonDirection === 'row',
+                        [`${prefixCls}-dialog__footer_column`]: buttonDirection === 'column'
+                    }
+                ]
             }
         },
         watch: {

@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-inline-loading {
+    .#{$prefixCls}-inline-loading {
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -28,12 +28,12 @@
     }
 </style>
 <template>
-    <transition name="busy-animate--fade" v-on:after-leave="_leave">
-        <div class="busy-inline-loading" v-show="visiable" :class="[classes]">
-            <div class="busy-inline-loading__spinner">
+    <transition :name="`${prefixCls}-animate--fade`" v-on:after-leave="_leave">
+        <div v-show="visiable" :class="classes">
+            <div :class="`${prefixCls}-inline-loading__spinner`">
                 <Spinner v-bind="spinnerProps"></Spinner>
             </div>
-            <div class="busy-inline-loading__text" :style="textStyle">
+            <div :class="`${prefixCls}-inline-loading__text`" :style="textStyle">
                 <slot>{{text}}</slot>
             </div>
         </div>
@@ -41,12 +41,13 @@
 </template>
 <script>
     import Spinner from '../../spinner'
-    import { BNumber } from '../../util'
+    import { BNumber, baseMixins, initName } from '../../util'
 
     /**
-     * loading component
+     * @class
+     * @constructor
      * @module Loading
-     * @desc loading component with mask
+     * @desc Loading
      * @see {@link ../example/all/loading.html 实例}
      * @param {Number} spinnerSize=30 - spinner直径
      * @param {Number} spinnerStroke=3 - spinner描边宽度
@@ -58,12 +59,10 @@
      * @param {String} text - 加载文字提示
      * @param {Boolean} isShow=false - 显示隐藏
      * @param {Boolean} isRemove=false - 隐藏后是否清除
-     * 
-     * @example
-     *  <busy-loading>正在加载...</busy-loading>
      */
     export default {
-        name: 'busy-inline-loading',
+        name: initName('inline-loading'),
+        mixins: [baseMixins],
         props: {
             spinnerType: {
                 type: String
@@ -126,9 +125,12 @@
         },
         computed: {
             classes() {
-                return {
-                    'busy-inline-loading--column': this.direction === 'column'
-                }
+                let { prefixCls } = this
+                return [
+                    `${prefixCls}-inline-loading`,
+                    {
+                        [`${prefixCls}-inline-loading--column`]: this.direction === 'column'
+                    }]
             },
             spinnerProps() {
                 let { spinnerType, spinnerWidth, spinnerHeight, color } = this

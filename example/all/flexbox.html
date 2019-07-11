@@ -47,13 +47,13 @@
 <body>
     <section id="app">
         <div class="box">
-            <busy-flexbox height="100" width="100%" align-v="center" align-h="center" class="bg-eee">
+            <busy-flexbox height="100" width="100%" align-cross="center" align-main="center" class="bg-eee">
                 内容水平垂直居中
             </busy-flexbox>
         </div>
 
         <div class="box bg-eee">
-            <busy-flexbox align-h="center" align-v="center" wrap="wrap" height="90" style="line-height:90px;text-align: center;">
+            <busy-flexbox align-main="center" align-cross="center" wrap="wrap" height="90" style="line-height:90px;text-align: center;">
                 <busy-flexitem flex="none" height="inherit" width="90px" class="border-r">90px</busy-flexitem>
                 <busy-flexitem flex="1" height="inherit" class="border-r">自适应宽度</busy-flexitem>
                 <busy-flexitem flex="none" height="inherit" width="90px">90px</busy-flexitem>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="box border-eee">
-            <busy-flexbox align-h="center" align-v="around" wrap="wrap" height="120" style="line-height: 45px">
+            <busy-flexbox align-main="center" align-cross="center" wrap="wrap" height="120" style="line-height: 45px">
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平居中</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
@@ -80,7 +80,7 @@
         </div>
 
         <div class="box border-eee">
-            <busy-flexbox align-h="start" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+            <busy-flexbox align-main="start" align-cross="center" wrap="wrap" height="90" style="line-height: 45px">
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平居左</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="box border-eee">
-            <busy-flexbox align-h="end" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+            <busy-flexbox align-main="end" align-cross="center" wrap="wrap" height="90" style="line-height: 45px">
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平居右</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="box border-eee">
-            <busy-flexbox align-h="between" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+            <busy-flexbox align-main="between" align-cross="center" wrap="wrap" height="90" style="line-height: 45px">
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平between</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
@@ -105,10 +105,28 @@
         </div>
 
         <div class="box border-eee">
-            <busy-flexbox align-h="around" align-v="center" wrap="wrap" height="90" style="line-height: 45px">
+            <busy-flexbox align-main="around" align-cross="center" wrap="wrap" height="90" style="line-height: 45px">
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">90px</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="border-r bg-eee">水平around</busy-flexitem>
                 <busy-flexitem flex="none" height="45" width="90" class="bg-eee">90px</busy-flexitem>
+            </busy-flexbox>
+        </div>
+
+        <div class="box border-eee" @click="()=>this.width+=5">
+            <busy-flexbox direction="column" height="190" align-cross="end" style="line-height: 45px">
+                <busy-flexitem flex="none" height="45" width="100%" class="border-b bg-eee">90px</busy-flexitem>
+                <busy-flexitem width="100%" :flexible="true" class="border-b bg-eee">
+                    <busy-flexitem flex="none" class="border-r" :width="width">
+                        {{width}}px
+                    </busy-flexitem>
+                    <busy-flexitem class="border-r" :flexible="true" align-main="center" align-cross="center">
+                        flexible=true使其flex化
+                    </busy-flexitem>
+                    <busy-flexitem flex="none" :width="width">
+                        {{width}}px
+                    </busy-flexitem>
+                </busy-flexitem>
+                <busy-flexitem flex="none" width="100%" height="45" class="bg-eee">90px</busy-flexitem>
             </busy-flexbox>
         </div>
 
@@ -117,7 +135,12 @@
 
     <script>
         var vm = new Vue({
-            el: '#app'
+            el: '#app',
+            data() {
+                return {
+                    width: 50
+                }
+            }
         })
     </script>
 </body>

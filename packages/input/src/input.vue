@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-input {
+    .#{$prefixCls}-input {
         display: flex;
         width: 100%;
 
@@ -10,7 +10,8 @@
         }
 
         &__clear {
-            flex: 0 0 24px;
+            flex: none;
+            width: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -32,27 +33,25 @@
 </style>
 
 <template>
-    <div class="busy-input" v-clickoutside="unActive">
-        <div class="busy-input__content">
-            <input :placeholder="placeholder" :disabled="disabled" :readonly="readonly" :type="type" :name="name" :maxlength="maxlength" class="busy-input__input" :style="styles" :pattern="pattern" v-model="currentValue" @keyup.enter="handleEnter" @focus="handleFocus" @blur="handleBlur" @input="handleInput" @change="handleChange" />
+    <div :class="`${prefixCls}-input`" v-clickoutside="unActive">
+        <div :class="`${prefixCls}-input__content`">
+            <input v-bind="datas" :class="`${prefixCls}-input__input`" :style="styles" v-model="currentValue" @keyup.enter="handleEnter" @focus="handleFocus" @blur="handleBlur" @input="handleInput" @change="handleChange" />
         </div>
-        <div class="busy-input__clear" v-show="active && currentValue" @click="handleClear">
-            <busy-icon type="roundclosefill" fill="#d8d8d8" :width="16" :height="16"></busy-icon>
+        <div :class="`${prefixCls}-input__clear`" v-show="active && currentValue" @click="handleClear">
+            <Icon name="close-circle-fill" color="#d8d8d8" :width="16" :height="16" />
         </div>
     </div>
 
 </template>
 
 <script>
-    import Clickoutside from '../../../src/directives/clickoutside.js';
-    import Icon from '../../icon';
-    import {
-        BNumber
-    } from '../../util';
-
+    import Clickoutside from '../../../src/directives/clickoutside.js'
+    import Icon from '../../icon'
+    import { BNumber, initName, baseMixins } from '../../util'
 
     export default {
-        name: 'busy-input',
+        name: initName('input'),
+        mixins: [baseMixins],
         props: {
             placeholder: String,
             disabled: Boolean,
@@ -85,6 +84,28 @@
         },
         directives: {
             Clickoutside
+        },
+        components: {
+            Icon
+        },
+        computed: {
+            datas() {
+                let { placeholder, readonly, autofocus, disabled, type, name, maxlength, pattern, value } = this;
+                return {
+                    placeholder,
+                    readonly,
+                    autofocus,
+                    disabled,
+                    type,
+                    name,
+                    maxlength,
+                    pattern,
+                    value
+                }
+            },
+            listeners() {
+                return this.$listeners
+            }
         },
         watch: {
             value(val) {

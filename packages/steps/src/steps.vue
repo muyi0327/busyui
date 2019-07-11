@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-steps {
+    .#{$prefixCls}-steps {
         position: relative;
         margin: 0 auto;
         background: #fff;
@@ -89,7 +89,7 @@
         <div class="busy-steps__box">
             <div v-for="(step,$i) in steps" class="busy-steps__item" :key="`step_${$i}`" :class="{'is-current': step.current, 'is-disable': step.disable}">
                 <span class="busy-steps__icon">
-                    <w-icon :width="16" :height="16" :fill="step.current ? '#fff' : '#c0c0c0'" :type="step.iconName"></w-icon>
+                    <Icon :width="16" :height="16" :color="step.current ? '#fff' : '#c0c0c0'" :name="step.iconName" />
                 </span>
                 <span class="busy-steps__label">{{step.text}}</span>
             </div>
@@ -104,11 +104,15 @@
 
 
 <script>
+    import Icon from '../../icon'
     export default {
         name: 'busy-steps',
         props: {
             steps: Array,
             width: Number
+        },
+        components: {
+            Icon
         },
 
         methods: {

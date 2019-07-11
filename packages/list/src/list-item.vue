@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-list-item {
+    .#{$prefixCls}-list-item {
         font-size: 14px;
         color: #666;
         width: inherit;
@@ -23,37 +23,38 @@
 </style>
 
 <template>
-    <busy-flexbox class="busy-list-item busy-border-1px busy-border-b" :style="styles" @click="handleClick">
-        <busy-flexitem v-if="showLabel" :style="labelStyle" :flex="labelFlex" @click="handleLabelClick" :class="labelClass">
-            <slot name="label"><label class="busy-list-item__label_text">{{label}}</label></slot>
-        </busy-flexitem>
-        <busy-flexitem class="busy-list-item__content busy-flex busy-flex--start-center">
+    <FlexBox :class="`${prefixCls}-list-item ${prefixCls}-border-1px ${prefixCls}-border-b`" :style="styles" @click="handleClick">
+        <FlexItem :class="labelClass" v-if="showLabel" flex="none" :width="labelWidth" @click="handleLabelClick">
+            <slot name="label"><label :class="`${prefixCls}-list-item__label_text`">{{label}}</label></slot>
+        </FlexItem>
+        <FlexItem :class="`${prefixCls}-list-item__content ${prefixCls}-flex ${prefixCls}-flex--start-center`">
             <slot>
-                <div class="busy-list-item__content_text">{{content}}</div>
+                <div :class="`${prefixCls}-list-item__content_text`">{{content}}</div>
             </slot>
-        </busy-flexitem>
-        <busy-flexitem v-if="showIcon" :style="iconStyle" :flex="iconFlex" @click="handleIconClick" :class="iconClass">
+        </FlexItem>
+        <FlexItem :class="iconClass" v-if="showIcon" flex="none" :width="iconWidth" @click="handleIconClick">
             <slot name="icon">
-                <busy-icon v-show="icon.type" :type="icon.type" :fill="icon.fill" :width="icon.width" :height="icon.height" :style="iconStyle"></busy-icon>
+                <Icon v-show="iconModel.name" v-bind="iconModel" />
             </slot>
-        </busy-flexitem>
-    </busy-flexbox>
+        </FlexItem>
+    </FlexBox>
 </template>
 
 <script>
-    import { FlexBox, FlexItem } from '../../flexbox';
-    import Icon from '../../icon';
-
+    import { FlexBox, FlexItem } from '../../flexbox'
+    import Icon from '../../icon'
+    import { initName, BNumber, baseMixins } from '../../util'
 
     var iconProps = {
-        fill: '#c0c0c0',
+        color: '#c0c0c0',
         width: 18,
         height: 18,
-        type: 'right'
+        name: 'right'
     }
 
     export default {
-        name: 'busy-list-item',
+        name: initName('list-item'),
+        mixins: [baseMixins],
         props: {
             height: {
                 type: [Number, String],
@@ -73,14 +74,10 @@
                 type: String,
                 default: 'center'
             },
-
-            labelStyle: Object,
-
             showLabel: {
                 type: Boolean,
-                default: true
+                default: false
             },
-
             iconWidth: {
                 type: [Number, String],
                 default: 28
@@ -93,54 +90,50 @@
                 type: String,
                 default: 'center'
             },
-
-            iconStyle: Object,
-
             showIcon: {
                 type: Boolean,
                 default: true
             },
             icon: {
-                type: Object,
-                default: function () {
-                    return iconProps;
-                }
-            },
+                type: Object
+            }
         },
         data() {
             return {
-                _icon: this.icon
+                iconModel: { ...iconProps, ...this.icon }
             }
         },
         components: {
-            [FlexBox.name]: FlexBox,
-            [FlexItem.name]: FlexItem,
-            [Icon.name]: Icon
+            FlexBox,
+            FlexItem,
+            Icon
         },
         computed: {
             styles() {
                 return {
-                    height: /^\d+$/.test(String(this.height)) ? this.height + 'px' : this.height
+                    height: BNumber.cmpUnit(this.height)
                 }
             },
-            labelFlex() {
-                return `0 0 ${this.labelWidth}px`
-            },
-            iconFlex() {
-                return `0 0 ${this.iconWidth}px`
-            },
             labelClass() {
-                let ah = this.labelAlignH, av = this.labelAlignV;
-                return ['busy-list-item__label', `busy-flex busy-flex--${ah}-${av}`]
+                let { prefixCls, labelAlignH, labelAlignV } = this
+                return [
+                    `${prefixCls}-list-item__label`,
+                    `${prefixCls}-flex`,
+                    `${prefixCls}-flex--${labelAlignH}-${labelAlignV}`
+                ]
             },
             iconClass() {
-                let ah = this.iconAlignH, av = this.iconAlignV;
-                return ['busy-list-item__icon', `busy-flex busy-flex--${ah}-${av}`]
+                let { prefixCls, iconAlignH, iconAlignV } = this
+                return [
+                    `${prefixCls}-list-item__icon`,
+                    `${prefixCls}-flex`,
+                    `${prefixCls}-flex--${iconAlignH}-${iconAlignV}`
+                ]
             }
         },
         watch: {
             icon(val) {
-                this._icon = Object.assign(iconProps, val || {})
+                this._icon = { ...conProps, ...val }
             }
         },
         methods: {

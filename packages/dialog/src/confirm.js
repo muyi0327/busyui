@@ -6,28 +6,12 @@ const ConfirmClass = Vue.extend(Confirm);
 var instance;
 
 /**
- * busy-confirm
  * @module Confirm
  * @see {@link ../example/all/dialog.html 实例}
  * @desc confirm对话框组件
  * @param {String} content - 显示信息
  * @param {Number} height=140 - 组件高度
  * @param {Number} width=260 - 组件高度
- * 
- * @example
- *
- * // use it in html
- * <script src="busyui.js"><\/script>
- * <link rel="stylesheet" href="busyui.css" />
- * 
- * Busy.Confirm.show('确定要提交吗？', (result)=>{if (result) {console.log('提交')}});
- * 
- * // use it in webpack or browserify, rollup
- * import {Confirm} from '@busyui/dialog';
- * // var Confirm = require('@busyui/dialog/confirm.js');
- *
- * Confirm.show('确定要提交吗？').then((result)=>{if (result) {console.log('提交')}});
- *
  */
 export default Object.assign(Confirm, {
     $type: 'confirm',

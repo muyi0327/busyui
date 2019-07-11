@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>busy toast demo</title>
+    <link rel="stylesheet" href="../../dist/busyui.css" />
+    <script src="../vue.js"></script>
+    <script src="../../dist/busyui.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+
+        }
+
+        .wrap,
+        .app {
+            height: 500%;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+
+        }
+
+        .t1 {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 32px;
+        }
+
+        .t2 {
+            font-size: 12px;
+            color: #9a9a9a;
+            line-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wrap">
+        <section id="app" class="app">
+            <busy-flexbox direction="column">
+                <busy-flexitem flex="none" height="50">
+                    <busy-segment :options="fruits" v-model="value1"></busy-segment>
+                </busy-flexitem>
+
+                <busy-flexitem flex="none" height="50">
+                    <busy-segment color="#c03" border-radius="18">
+                        <busy-segment-item v-for="item in fruits" :disabled="!!item.disabled" :value="item.value" v-model="value1">
+                            {{item.text}}
+                        </busy-segment-item>
+                    </busy-segment>
+                </busy-flexitem>
+
+                <busy-flexitem flex="none" height="50">
+                    <busy-segment :options="letters" color="#639" v-model="value"></busy-segment>
+                </busy-flexitem>
+            </busy-flexbox>
+
+        </section>
+    </section>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    value: 'bbb',
+                    value1: ['aaa'],
+                    letters: ['aaa', 'bbb', 'ccc', {
+                        value: ['eee'],
+                        text: 'eee'
+                    }, {
+                        value: 'fff',
+                        text: 'fff'
+                    }],
+                    fruits: [{
+                        value: ['aaa'],
+                        text: '苹果',
+                        disabled: true,
+                    }, {
+                        value: ['bbb', 'ccc'],
+                        text: '桃子'
+                    }, {
+                        value: ['eee', 'fff', 'ggg'],
+                        text: '葡萄'
+                    }]
+                }
+            },
+            watch: {
+                value(val) {
+                    console.log(val)
+                }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

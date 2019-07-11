@@ -1,27 +1,36 @@
 <style lang="scss" scoped>
     @import "../../../src/style/variable.scss";
-    .#{$prefixClass}-button {
-        -webkit-appearance: none;
-        appearance: none;
-        -webkit-user-select: none;
-        user-select: none;
-        border-width: 0;
+    .#{$prefixCls}-button {
         border-style: solid;
         border-color: $button-default-border-color;
         box-sizing: border-box;
-        display: inline-block;
-        outline: 0;
+        display: inline-flex;
         position: relative;
         text-align: center;
-        padding: 0 12px;
         border-radius: $button-default-border-radius;
-
-        margin: 0;
         background-color: $button-default-background-color;
         color: $button-default-text-color;
         height: $button-normal-height;
         line-height: $button-normal-height;
         font-size: $button-normal-font-size;
+        border-width: 0;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+
+        &__button {
+            appearance: none;
+            user-select: none;
+            border-width: 0;
+            outline: 0;
+            margin: 0;
+            padding: 0 12px;
+            height: inherit;
+            background: transparent;
+            color: inherit;
+            font-size: inherit;
+            text-align: center;
+        }
 
         &.is-ghost {
             color: $button-default-border-color;
@@ -29,9 +38,6 @@
 
         &.is-sharp {
             border-radius: 0;
-            .busy-button__border {
-                border-radius: 0;
-            }
         }
 
         &.is-block {
@@ -53,6 +59,9 @@
 
         &__border {
             border-color: $button-default-border-color;
+            .is-sharp & {
+                border-radius: 0;
+            }
         }
 
         &:after {
@@ -114,53 +123,57 @@
 
 
 <template>
-    <button :type="nativeType" class="busy-button" :class="classes" :style="styles" @click="handleClick" :disabled="disabled">
-        <label class="busy-button__text">
+    <div :class="[`${prefixCls}-button`, classes]" :style="styles" @click="handleClick">
+        <span v-if="icon || $slots['icon']" :class="`${prefixCls}-button__icon`">
+            <slot name="icon">{{icon}}</slot>
+        </span>
+        <button :class="`${prefixCls}-button__button`" :type="nativeType" :disabled="disabled">
             <slot>{{content}}</slot>
-        </label>
-        <span v-if="isThin" class="busy-button__border" :style="thinBorder"></span>
-    </button>
+        </button>
+        <span v-if="isThin" :class="`${prefixCls}-button__border`" :style="thinBorder"></span>
+    </div>
 </template>
 
 <script>
-    import { BNumber } from '../../util'
+    import { BNumber, initName, baseMixins } from '../../util'
 
     setTimeout(() => {
         let dpr = window.devicePixelRatio;
+        let id = initName('button-border-1px')
+        let className = initName('button__border')
 
         //if (this.borderColor) {
-        var styleTag = document.getElementById('busy-button-border-1px');
+        var styleTag = document.getElementById(id);
         var sheet = styleTag ? (styleTag.sheet || styleTag.styleSheet) : null;
         if (!sheet) {
-            var style = document.createElement("style");
-            style.id = 'busy-button-border-1px';
-            style.type = 'text/css';
-            style.appendChild(document.createTextNode(""));
+            var style = document.createElement("style")
+            style.id = id
+            style.type = 'text/css'
+            style.appendChild(document.createTextNode(""))
             document.head.appendChild(style);
-            sheet = style.sheet;
+            sheet = style.sheet
         }
 
         if (sheet.addRule) {
-            sheet.addRule('button > .busy-button__border',
+            sheet.addRule(`.${className}`,
                 'width: ' + dpr * 100 + '%;' +
                 'height: ' + dpr * 100 + '%;' +
                 'transform: scale(' + 1 / dpr + ');'
-            );
+            )
         } else if (sheet.insertRule) {
-            sheet.insertRule('button > .busy-button__border' +
+            sheet.insertRule(`.${className}` +
                 'width: ' + dpr * 100 + '%;' +
                 'height: ' + dpr * 100 + '%;' +
-                'transform: scale(' + 1 / dpr + ');', 0);
+                'transform: scale(' + 1 / dpr + ');}', 0)
         }
-
-        //}
-    }, 0);
+    }, 0)
 
     /**
-     * @busyui/button
-     * @module Button
+     * @class
+     * @constructor
+     * @module Button 
      * @see {@link ../example/all/button.html 实例}
-     * @desc 按钮组件 <busy-button />
+     * @desc Button 按钮组件
      * @param {string} type=default - 显示类型，接受 default, primary, warning
      * @param {string} nativeType=button - 按钮类型， button, reset, submit
      * @param {boolean} disabled=false - 禁用
@@ -177,16 +190,10 @@
      * @param {String} borderColor - 边框颜色
      * @param {String} borderWidth - 边框宽度
      * @param {String} borderRadius - 圆角
-     *
-     * @example
-     *  <busy-button size="large" type="primary">按钮</busy-button>
-     *
-     *  <busy-button size="small" type="warning">删除</busy-button>
-     *
      */
     export default {
-        name: 'busy-button',
-
+        name: initName('button'),
+        mixins: [baseMixins],
         props: {
             disabled: Boolean,
             nativeType: {
@@ -250,7 +257,8 @@
                         'large'
                     ].indexOf(value) > -1;
                 }
-            }
+            },
+            icon: String
         },
         data() {
             let bw = this.borderWidth;
@@ -265,17 +273,21 @@
         },
         methods: {
             handleClick(evt) {
-                this.$emit('click', evt);
+                if (!this.disabled) {
+                    this.$emit('click', evt);
+                }
             }
         },
         computed: {
             classes() {
-                let { type = 'default', size = 'normal', disabled, block, ghost } = this
-                return [type === 'default' ? null : 'busy-button--' + type, size === 'normal' ? null : 'busy-button--' + size, {
-                    'is-disabled': disabled,
-                    'is-block': block,
-                    'is-ghost': ghost
-                }]
+                let { type = 'default', size = 'normal', disabled, block, ghost, prefixCls } = this
+                return [
+                    type === 'default' ? null : `${prefixCls}-button--${type}`,
+                    size === 'normal' ? null : `${prefixCls}-button--${size}`, {
+                        'is-disabled': disabled,
+                        'is-block': block,
+                        'is-ghost': ghost
+                    }]
             },
             thinBorder() {
                 if (!this.isThin) return null;
@@ -310,7 +322,7 @@
                     borderColor: !this.isThin ? this.borderColor : null,
                     width: w,
                     fontSize: /^\d+$/.test(fs) ? fs + 'px' : (fs || null),
-                    backgroundColor: this.ghost ? 'transparent' : this.bgColor,
+                    background: this.ghost ? 'transparent' : this.bgColor,
                     color: this.fontColor,
                     borderRadius: /^\d+$/.test(br) ? br + 'px' : br
                 }

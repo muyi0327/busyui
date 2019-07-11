@@ -8,7 +8,7 @@
     transition: all 0.3s cubic-bezier(.28, .56, 0, 1.04);
 }
 
-.#{$prefixClass}-animate {
+.#{$prefixCls}-animate {
 
     &--fade-enter,
     &--fade-leave-to {
@@ -23,6 +23,11 @@
     &--scale-leave-to {
         opacity: 0;
         transform: scale(0.7) !important;
+    }
+
+    &--scalein-enter,
+    &--scalein-leave-to {
+        transform: scale(0.1) !important;
     }
 
     /*上进上出*/
@@ -83,11 +88,13 @@
         height: 0;
     }
 
-    &--scale-enter-active {
+    &--scale-enter-active,
+    &--scalein-enter-active {
         @extend %zoom-enter;
     }
 
-    &--scale-leave-active {
+    &--scale-leave-active,
+    &--scalein-leave-active {
         @extend %zoom-leave;
     }
 
@@ -110,9 +117,9 @@
         transition: all 0.3s ease;
     }
 
-    $rotate:#{$prefixClass}-animate--rotate;
-    $rotate-1turn:#{$prefixClass}-animate--rotate-1turn;
-    $fade:#{$prefixClass}-animate--fade;
+    $rotate:#{$prefixCls}-animate--rotate;
+    $rotate-1turn:#{$prefixCls}-animate--rotate-1turn;
+    $fade:#{$prefixCls}-animate--fade;
 
     @keyframes #{$rotate} {
         0% {

@@ -1,7 +1,7 @@
 <style lang="scss">
     @import "../../../src/style/variable";
 
-    .#{$prefixClass}-action-sheet__item {
+    .#{$prefixCls}-action-sheet__item {
         height: 48px;
         line-height: 48px;
         background-color: rgba(255, 255, 255, 0.9);
@@ -9,7 +9,7 @@
         position: relative;
         font-size: 18px;
         color: #000;
-        font-size: 14px;
+        font-size: 18px;
 
         &:active {
             background: #f2f2f2;
@@ -23,14 +23,19 @@
 
 
 <template>
-    <div class="busy-action-sheet__item busy-border-1px busy-border-b" @click="handleClick">
+    <div :class="[
+        `${prefixCls}-action-sheet__item`,
+        `${prefixCls}-border-1px`, 
+        `${prefixCls}-border-b`]" @click="handleClick">
         <slot></slot>
     </div>
 </template>
 
 <script>
+    import { initName, baseMixins } from '../../util'
     export default {
-        name: 'busy-action-sheet-item',
+        name: initName('action-sheet-item'),
+        mixins: [baseMixins],
         props: {
             action: Function
         },
