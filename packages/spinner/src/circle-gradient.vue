@@ -4,8 +4,10 @@
 
     .#{$prefixCls}-spinner-circle-gradient {
         $rotate: #{$prefixCls}-animate--rotate-1turn;
-
         display: inline-block;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
 
         &__wrap {
             stroke-linecap: round;
@@ -17,9 +19,9 @@
 </style>
 
 <template>
-    <span class="busy-spinner-circle-gradient">
-        <svg viewBox="0 0 64 64" class="busy-spinner-circle-gradient__svg" :style="styles">
-            <g :style="svgStyles" class="busy-spinner-circle-gradient__wrap">
+    <span :class="`${prefixCls}-spinner-circle-gradient`">
+        <svg viewBox="0 0 64 64" :class="`${prefixCls}-spinner-circle-gradient__svg`" :style="styles">
+            <g :style="svgStyles" :class="`${prefixCls}-spinner-circle-gradient__wrap`">
                 <defs>
                     <linearGradient :id="gid" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="10%" :stop-color="color" stop-opacity="0" />
@@ -34,9 +36,11 @@
 </template>
 
 <script>
-    import { BNumber } from '../../util'
+    import { BNumber, initName, baseMixins } from '../../util'
     export default {
-        name: 'busy-spinner-circle-gradient',
+        name: initName('spinner-circle-gradient'),
+        mixins: [baseMixins],
+        inheritAttrs: false,
         props: {
             color: {
                 type: String,

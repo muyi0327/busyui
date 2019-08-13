@@ -4,33 +4,17 @@ import Message from './src/message.vue';
 const MessageClass = Vue.extend(Message);
 
 /**
- * @busyui/message
+ * @class
+ * @constructor
  * @module Message
  * @see {@link ../example/all/message.html 实例}
- * @desc 浮层提示信息组件 <busy-meesage></busy-meesage>
+ * @desc 浮层提示信息组件
  * @param {String} pos='top' - 显示位置,可取值 'top', 'middle', 'bottom'
  * @param {String} type='info' - 提示框类型, 可取值 'info', 'success', 'error', 'warning'
  * @param {String} text - 提示信息内容, 也可以slot方式传入
  * @param {Number} delay=3000 - 显示多长时间，单位 ms<毫秒>
  * @param {Boolean} isRemove=false - 是否隐藏后移除dom
  * @param {Boolean} autoHide=false - 是否自动隐藏
- * @example
- * 
- *  // use it in module tools
- *  import Message from '@busyui/message';
- *  Message.show('有新信息了');
- *  Message.info('有新信息了');
- *  Message.success('信息提交成功');
- *  Message.warning('内容包含非法词');
- * 
- *  // use it in html
- *  <script src="busyui.js"><\/script>
- *  <link rel="stylesheet" href="Busy.min.css">
- *  Busy.Message.show('有新信息了');
- *  Busy.Message.info('有新信息了');
- *  Busy.Message.success('信息提交成功');
- *  Busy.Message.warning('内容包含非法词');
- * 
  */
 export default Object.assign(Message, {
     install(vue) {
@@ -49,7 +33,6 @@ export default Object.assign(Message, {
      */
     show(opts) {
         opts = opts || {};
-        let text, type, delay;
 
         var msg = new MessageClass({
             el: document.createElement('div'),
@@ -73,10 +56,6 @@ export default Object.assign(Message, {
      * @param {String} text - 提示信息
      * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
      * @returns MessageClass实例
-     * 
-     * @example
-     *  Busy.Message.info('收到一个优惠券');
-     * 
      */
     info(text, opts) {
         return this.show(Object.assign(opts || {}, {
@@ -91,10 +70,6 @@ export default Object.assign(Message, {
      * @param {String} text - 提示信息
      * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
      * @returns MessageClass实例
-     * 
-     * @example
-     *  Busy.Message.success('提交成功');
-     * 
      */
     success(text, opts) {
         return this.show(Object.assign(opts || {}, {
@@ -109,10 +84,6 @@ export default Object.assign(Message, {
      * @param {String} text - 提示信息
      * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
      * @returns MessageClass实例
-     * 
-     * @example
-     *  Busy.Message.warning('内容包含非法词');
-     * 
      */
     warning(text, opts) {
         return this.show(Object.assign(opts || {}, {
@@ -127,10 +98,6 @@ export default Object.assign(Message, {
      * @param {String} text - 提示信息
      * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
      * @returns MessageClass实例
-     * 
-     * @example
-     *  Busy.Message.error('内容包含非法词');
-     * 
      */
     error(text, opts) {
         return this.show(Object.assign(opts || {}, {

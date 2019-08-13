@@ -1,7 +1,5 @@
-
-
-import Icon from '../../../packages/icon/index.js';
-import Vue from 'vue';
+import Vue from 'vue'
+import Icon from '../../../packages/icon/index.js'
 
 Vue.use(Icon);
 var expect = chai.expect;
@@ -18,7 +16,7 @@ describe('Icon Module:', function () {
     });
 
     describe('create instance of Icon:', function () {
-        const vm = new Vue(Icon).$mount()
+        var vm = new Vue(Icon).$mount()
 
         it('is the classList of the instance contain busy-icon', function () {
             expect(vm.$el.classList.contains('busy-icon')).to.be.true;

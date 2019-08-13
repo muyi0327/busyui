@@ -3,13 +3,14 @@
 
     .#{$prefixCls}-toast-loading {
         display: flex;
-        border-radius: 10px;
+        border-radius: 6px;
         position: absolute;
-        z-index: 10001;
+        z-index: 1001;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         opacity: 1;
+        box-sizing: border-box;
 
         &__icon {
             display: flex;
@@ -24,9 +25,9 @@
 
         &--dir-row {
             flex-direction: row;
-            width: 160px;
-            height: 80px;
+            height: 60px;
             justify-content: center;
+            padding: 0 16px;
         }
 
         &--dir-row &__icon {
@@ -57,45 +58,46 @@
 </style>
 
 <template>
-    <busy-mask v-show="visiable">
-        <transition name="loading-opacity-fade">
-            <div v-show="visiable" class="busy-toast-loading" :class="classes" :style="styles">
-                <div class="busy-toast-loading__icon">
-                    <Spinner :type="spinner.type" :height="spinner.height" :width="spinner.width" :color="spinner.color" />
-                </div>
-                <div v-if="text" class="busy-toast-loading__text" :style="{color: color,fontSize: fontSize+'px'}">
-                    <slot>{{text}}</slot>
-                </div>
+    <NativeMask v-show="visiable" @click="handleClick" :color="maskColor">
+        <div v-show="visiable" :class="[`${prefixCls}-toast-loading`,classes]" :style="styles">
+            <div :class="`${prefixCls}-toast-loading__icon`">
+                <Spinner v-bind="spinnerData" />
             </div>
-        </transition>
-    </busy-mask>
+            <div v-if="text || $slots['default']" :class="`${prefixCls}-toast-loading__text`" :style="textStyles">
+                <slot>{{text}}</slot>
+            </div>
+        </div>
+    </NativeMask>
 </template>
 
 <script>
-    import Spinner from '../../spinner';
+    import Spinner from '../../spinner'
+    import NativeMask from '../../mask'
+    import { initName, baseMixins, BNumber } from '../../util'
+
+    const spinnerProps = {
+        width: 24,
+        height: 24,
+        color: '#fff',
+        type: 'circle-line'
+    }
 
     export default {
-        name: 'busy-toast-loading',
+        name: initName('toast-loading'),
+        mixins: [baseMixins],
         props: {
             width: {
-                type: Number,
-                default: 0
+                type: [Number, String],
             },
             height: {
-                type: Number,
-                default: 0
+                type: [Number, String]
             },
             color: {
                 type: String,
                 default: '#ffffff'
             },
             bgColor: {
-                type: String,
-                default: 'rgba(0,0,0, .6)'
-            },
-            gColor: {
-                type: String,
-                default: 'rgba(0,0,0, .6)'
+                type: String
             },
             direction: {
                 type: String,
@@ -104,12 +106,7 @@
             spinner: {
                 type: Object,
                 default() {
-                    return {
-                        width: 24,
-                        height: 24,
-                        color: '#fff',
-                        type: 0
-                    }
+                    return spinnerProps
                 }
             },
             text: {
@@ -117,12 +114,20 @@
                 default: ''
             },
             fontSize: {
-                type: Number,
+                type: [Number, String],
                 default: 12
+            },
+            closable: {
+                type: Boolean,
+                default: false
+            },
+            maskColor: {
+                type: String
             }
         },
         components: {
-            Spinner
+            Spinner,
+            NativeMask
         },
         data() {
             return {
@@ -135,27 +140,36 @@
                 this.$emit('show');
             },
             hide() {
-                this.visiable = true;
+                this.visiable = false;
                 this.$emit('hide');
+            },
+            handleClick(e) {
+                this.closable && this.hide.call(this, e)
             }
         },
         computed: {
             styles() {
-                var s = {
+                let width = BNumber.cmpUnit(this.width)
+                let height = BNumber.cmpUnit(this.height)
+                return {
+                    height,
+                    width,
                     backgroundColor: this.bgColor
-                };
-
-                if (this.width) {
-                    s.width = this.width + 'px';
                 }
-
-                if (this.height) {
-                    s.height = this.height + 'px';
-                }
-                return s;
+            },
+            textStyles() {
+                let fontSize = BNumber.cmpUnit(this.fontSize)
+                let color = this.color
+                return { color, fontSize }
             },
             classes() {
-                return [this.direction == 'row' ? 'busy-toast-loading--dir-row' : 'busy-toast-loading--dir-column']
+                return [this.direction == 'row' ? `${this.prefixCls}-toast-loading--dir-row` : `${this.prefixCls}-toast-loading--dir-column`]
+            },
+            spinnerData() {
+                return {
+                    ...spinnerProps,
+                    ...this.spinner
+                }
             }
         },
         watch: {

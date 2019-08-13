@@ -1,11 +1,11 @@
-# busy-dialog
-busy-dialog <busy-dialog /> is a mobile dialog component for busy library
+# Dialog
+Dialog is a mobile dialog component for library
 
 ## Installation
 
-First, install @busyui/dialog from busy npm
+First, install busyuifrom by npm
 
-    npm install @busyui/dialog --save -d  or npm install busy --save -d
+    npm install busyui --save -d  or npm install busyui --save -d
 
 Then use it:
 

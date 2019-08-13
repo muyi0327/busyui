@@ -84,6 +84,7 @@ module.exports = function (config) {
         },
 
         coverageReporter: {
+            instrumenters: { isparta: require('isparta') },
             reporters: [{
                 'type': 'text'
             }, {
@@ -101,7 +102,7 @@ module.exports = function (config) {
                 type: 'text-summary',
                 subdir: '.',
                 file: 'text-summary.txt'
-            },
+            }
             ]
         },
 

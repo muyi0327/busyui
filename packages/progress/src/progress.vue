@@ -1,16 +1,15 @@
 <template>
-    <div class="busy-progress" v-on:click="handleClick">
+    <div :class="`${prefixCls}-progress`" v-on:click="handleClick">
         <ProgressLine ref="child-line" v-if="type==='line'" v-bind="lineModel">
             <template slot="start">
                 <slot name="start"></slot>
             </template>
-
             <template slot="end">
                 <slot name="end"></slot>
             </template>
         </ProgressLine>
         <ProgressRing ref="child-ring" v-if="type==='ring'" v-bind="ringModel">
-            <slot>11111</slot>
+            <slot></slot>
         </ProgressRing>
     </div>
 </template>

@@ -41,10 +41,10 @@
 </style>
 
 <template>
-    <span class="busy-spinner-circle-dash">
-        <svg viewBox="0 0 64 64" class="busy-spinner-circle-dash__svg" :style="styles">
-            <g class="busy-spinner-circle-dash__wrap" :style="svgStyles">
-                <circle cx="32" cy="32" r="28" fill="none" class="busy-spinner-circle-dash__path"></circle>
+    <span :class="`${prefixCls}-spinner-circle-dash`">
+        <svg viewBox="0 0 64 64" :class="`${prefixCls}-spinner-circle-dash__svg`" :style="styles">
+            <g :class="`${prefixCls}-spinner-circle-dash__wrap`" :style="svgStyles">
+                <circle cx="32" cy="32" r="28" fill="none" :class="`${prefixCls}-spinner-circle-dash__path`"></circle>
             </g>
         </svg>
     </span>
@@ -52,10 +52,11 @@
 
 
 <script>
-    import { BNumber } from '../../util'
+    import { BNumber, initName, baseMixins } from '../../util'
 
     export default {
-        name: 'busy-spinner-circle-dash',
+        name: initName('spinner-circle-dash'),
+        mixins: [baseMixins],
         props: {
             color: {
                 type: String

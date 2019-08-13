@@ -17,6 +17,8 @@
             <busy-flexbox direction="column">
                 <busy-button type="primary" @click="showToast">动态创建</busy-button>
                 <busy-button type="primary" class="mt-12" @click="hideToast">动态隐藏</busy-button>
+                <busy-button type="primary" class="mt-12" @click="showSuccess">success</busy-button>
+                <busy-button type="primary" class="mt-12" @click="showFail">fail</busy-button>
                 <busy-button type="primary" class="mt-12" @click="showTagToast">Tag创建</busy-button>
                 <busy-toast :auto-hide="true" @visiable-change="visiableChange" pos="bottom" :is-show="isShow" content="aa"></busy-toast>
             </busy-flexbox>
@@ -46,6 +48,18 @@
                 },
                 showTagToast: function () {
                     this.isShow = true;
+                },
+                showSuccess() {
+                    BusyUI.Toast.success('成功', {
+                        delay: 3000,
+                    }).afterLeave(() => console.log('toast leave'))
+
+                },
+                showFail() {
+                    BusyUI.Toast.fail('信息发送失败', {
+                        delay: 3000,
+                    }).afterLeave(() => console.log('toast leave'))
+
                 },
                 visiableChange: function (visiable) {
                     this.isShow = visiable;

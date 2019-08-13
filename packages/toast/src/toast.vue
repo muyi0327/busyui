@@ -4,25 +4,23 @@
     .#{$prefixCls}-toast {
         position: fixed;
         z-index: $toast-default-z-index;
-        width: 100%;
+        left: 0;
+        right: 0;
         text-align: center;
         pointer-events: none;
         font-size: #{$toast-default-font-size};
 
         &--pos-top {
             top: 50px;
-            left: 0;
         }
 
         &--pos-middle {
             transform: translate3d(0, -50%, 0);
-            left: 0;
             top: 50%;
         }
 
         &--pos-bottom {
             bottom: 50px;
-            left: 0;
         }
 
         &__wrap {
@@ -36,12 +34,33 @@
             padding: 10px 20px;
             box-sizing: border-box;
             max-width: 80%;
+            min-width: 90px;
+        }
+
+        &--row {
+            flex-direction: row;
+        }
+
+        &--row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        &--column {
+            flex-direction: column;
+        }
+
+        &--column-reverse {
+            flex-direction: column;
         }
 
         &__icon {
             padding: 0;
-            margin: 0 10px 0 0;
             line-height: 1px;
+            margin: 0 0 0 10px;
+        }
+
+        &--column &__icon {
+            margin: 0 0 10px 0;
         }
 
         &__text {
@@ -49,20 +68,19 @@
             text-align: center;
             line-height: 1.5;
             font-weight: normal;
-            padding: 0;
             margin: 0;
         }
     }
 </style>
 
 <template>
-    <transition name="busy-animate--fade" v-on:after-leave="_leave">
-        <article v-show="visiable" class="busy-toast" :class="posClass">
-            <div class="busy-toast__wrap">
-                <span v-if="iconName" class="busy-toast__icon">
-                    <Icon :name="iconName" :width="iconWidth" :height="iconHeight" color="#ffffff" />
+    <transition :name="`${prefixCls}-animate--fade`" v-on:after-leave="_leave">
+        <article v-show="visiable" :class="[`${prefixCls}-toast`, posClass]">
+            <div :class="classess" :style="styles">
+                <span v-if="iconName" :class="`${prefixCls}-toast__icon`">
+                    <Icon :name="iconName" :width="iconWidth" :height="iconHeight" :color="color" />
                 </span>
-                <p class="busy-toast__text">
+                <p :class="`${prefixCls}-toast__text`">
                     <slot>
                         {{contentString}}
                     </slot>
@@ -73,11 +91,19 @@
 </template>
 
 <script>
-    import Icon from '../../icon';
+    import Icon from '../../icon'
+    import { initName, baseMixins, BNumber } from '../../util'
 
     export default {
-        name: 'busy-toast',
+        name: initName('toast'),
+        mixins: [baseMixins],
         props: {
+            width: {
+                type: [String, Number]
+            },
+            height: {
+                type: [String, Number]
+            },
             delay: {
                 type: Number,
                 default: 2500
@@ -87,11 +113,11 @@
                 default: ''
             },
             iconHeight: {
-                type: Number,
+                type: [Number, String],
                 default: 24
             },
             iconWidth: {
-                type: Number,
+                type: [Number, String],
                 default: 24
             },
             content: {
@@ -116,6 +142,14 @@
             autoHide: {
                 type: Boolean,
                 default: false
+            },
+            direction: {
+                type: String,
+                default: ''
+            },
+            color: {
+                type: String,
+                default: '#fff'
             }
         },
         data() {
@@ -129,7 +163,21 @@
         },
         computed: {
             posClass() {
-                return [`busy-toast--pos-${this.pos}`];
+                return ['top,middle,bottom'.split(',').indexOf(this.pos) > -1 ? `${this.prefixCls}-toast--pos-${this.pos}` : ''];
+            },
+
+            styles() {
+                let width = BNumber.cmpUnit(this.width)
+                let height = BNumber.cmpUnit(this.height)
+                return {
+                    color: this.color,
+                    width,
+                    height
+                }
+            },
+
+            classess() {
+                return [`${this.prefixCls}-toast__wrap`, this.direction ? `${this.prefixCls}-toast--${this.direction}` : null]
             },
             contentString() {
                 var content = this.content, t = typeof content;
@@ -141,7 +189,7 @@
                     return content.toString ? content.toString() : String(content)
                 }
 
-                return content;
+                return content
             }
         },
         methods: {

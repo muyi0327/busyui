@@ -61,15 +61,24 @@
                 el: '#app',
                 methods: {
                     showDefault: function () {
-                        BusyUI.ToastLoading.show();
+                        BusyUI.ToastLoading.show({
+                            spinner: {
+                                type: 'circle-dash'
+                            },
+                            bgColor: 'rgba(0,0,0, .6)',
+                            maskColor: 'transparent',
+                            closable: true
+                        })
                     },
                     showV: function () {
                         BusyUI.ToastLoading.show({
-                            direction: 'row'
+                            direction: 'row',
+                            bgColor: 'rgba(0,0,0, .6)',
+                            text: '正在加载'
                         });
                     },
                     hide: function () {
-                        BusyUI.ToastLoading.hide();
+                        BusyUI.ToastLoading.hide()
                     }
                 }
             });

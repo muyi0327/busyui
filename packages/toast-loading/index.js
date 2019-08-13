@@ -4,10 +4,9 @@ import ToastLoading from './src/toast-loading.vue';
 var ToastLoadingClass = Vue.extend(ToastLoading);
 var tlInstance, tlVm;
 /**
- * busy-toast-loading
  * @module ToastLoading
  * @see {@link ../example/all/toast-loading.html 实例}
- * @desc 页面toastloading组件 <busy-toast-loading />
+ * @desc ToastLoading
  * @param {Number} height=100 - 高度(px)
  * @param {Number} width=100 - 宽度(px)
  * @param {String} color='#fff' - spinner和文字颜色, css color
@@ -15,27 +14,10 @@ var tlInstance, tlVm;
  * @param {String} direction='column' - spinner和文字排列方向, column 垂直方向, row 水平方向
  * @param {Object} spinner - 设置spinner格式
  * @param {String} text - loading文字
- * 
- * @example
- *  //  use it in html
- *  <script src="busyui.js"><\/script>
- *  <link rel="stylesheet" href="busyui.css">
- *
- *  Busy.ToastLoading.show();
- *  http.get('url').then(()=>{
- *    Busy.ToastLoading.hide();
- *  });
- *
- *  // use it in module tools
- *  import ToastLoading from '@busyui/toast-loading';
- *  ToastLoading.show({spinner:{type:2}, direction="row"});
- *  http.get('url').then(()=>{
- *    ToastLoading.hide();
- *  });
  **/
 export default Object.assign(ToastLoading, {
     install(vue) {
-        vue.component('busy-toast-loading', ToastLoading);
+        vue.component(ToastLoading.name, ToastLoading);
     },
     /**
      * 隐藏loading
@@ -56,9 +38,6 @@ export default Object.assign(ToastLoading, {
      * @static
      * @returns LoadingClass实例
      * 
-     * @example
-     * Busy.ToastLoading.show();
-     * 
      */
     show(opts) {
         opts = opts || {};
@@ -70,12 +49,12 @@ export default Object.assign(ToastLoading, {
         tlInstance = new ToastLoadingClass({
             el: document.createElement('div'),
             propsData: opts
-        });
+        })
 
         Vue.nextTick(() => {
             tlVm = tlInstance.$mount();
             document.body.appendChild(tlVm.$el);
             tlInstance.show();
-        });
+        })
     }
 });

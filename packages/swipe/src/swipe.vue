@@ -81,7 +81,7 @@
             <slot></slot>
         </div>
         <div :class="[`${prefixCls}-swpier__dotes`,dotesClass]" v-if="showDotes">
-            <span :key="'swiper-'+i" v-for="(item, i) in items" @click.stop="goIndex(i)" :class="['busy-swipe__dot', i == index ? 'busy-swipe__dot--cur':'']" :style="[dotStyles, i == index ? {backgroundColor: curDotColor} : {}]"></span>
+            <span :key="'swiper-'+i" v-for="(item, i) in items" @click.stop="goIndex(i)" :class="[`${prefixCls}-swipe__dot`, i == index ? `${prefixCls}-swipe__dot--cur`:'']" :style="[dotStyles, i == index ? {backgroundColor: curDotColor} : {}]"></span>
         </div>
     </div>
 </template>
@@ -164,8 +164,8 @@
         computed: {
             styles() {
                 return {
-                    height: this.height + 'px',
-                    width: this.width + 'px'
+                    height: BNumber.cmpUnit(this.height),
+                    width: BNumber.cmpUnit(this.width)
                 }
             },
             wrapStyles() {
@@ -189,12 +189,12 @@
                 }
             },
             dotesClass() {
-                return [`busy-swipe__dots--pos-${this.dotesPos}`]
+                return [`${this.prefixCls}-swipe__dots--pos-${this.dotesPos}`]
             },
             classes() {
                 return [
-                    this.status == "transition" ? 'busy-swipe--transition' : '',
-                    this.dirType == HORIZONTAL ? 'busy-swipe--horizontal' : 'busy-swipe--vertical'
+                    this.status == "transition" ? `${this.prefixCls}-swipe--transition` : '',
+                    this.dirType == HORIZONTAL ? `${this.prefixCls}-swipe--horizontal` : `${this.prefixCls}-swipe--vertical`
                 ]
             }
         },
@@ -343,7 +343,7 @@
         },
         mounted() {
             // 初始化
-            this.items = [].slice.call(this.$el.querySelectorAll('.busy-swipe__item'));
+            this.items = [].slice.call(this.$el.querySelectorAll(`.${this.prefixCls}-swipe__item`));
             this.size = this.items.length;
             if (this.index < 0 || this.index >= this.size) {
                 this.index = 0;

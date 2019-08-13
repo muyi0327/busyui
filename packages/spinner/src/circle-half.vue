@@ -3,6 +3,9 @@
 
     .#{$prefixCls}-spinner-circle-half {
         display: inline-block;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
 
         &__wrap {
             animation: #{$prefixCls}-animate--rotate 0.7s linear infinite;
@@ -20,10 +23,10 @@
 
 
 <template>
-    <span class="busy-spinner-circle-half">
-        <svg viewBox="0 0 64 64" class="busy-spinner-circle-half__svg" :style="styles">
-            <g class="busy-spinner-circle-half__wrap" :style="svgStyles">
-                <circle cx="32" cy="32" r="28" fill="none" class="busy-spinner-circle-half__path"></circle>
+    <span :class="`${prefixCls}-spinner-circle-half`">
+        <svg viewBox="0 0 64 64" :class="`${prefixCls}-spinner-circle-half__svg`" :style="styles">
+            <g :class="`${prefixCls}-spinner-circle-half__wrap`" :style="svgStyles">
+                <circle cx="32" cy="32" r="28" fill="none" :class="`${prefixCls}-spinner-circle-half__path`"></circle>
             </g>
         </svg>
     </span>
@@ -31,10 +34,11 @@
 
 
 <script>
-    import { BNumber } from '../../util'
+    import { BNumber, initName, baseMixins } from '../../util'
 
     export default {
-        name: 'busy-spinner-circle-half',
+        name: initName('spinner-circle-half'),
+        mixins: [baseMixins],
         props: {
             color: {
                 type: String

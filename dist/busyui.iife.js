@@ -120,42 +120,12 @@ var BusyUI = (function (exports, Vue) {
     }
 
     /**
-     * 1像素边框
-     * @module @busyui/border
+     * @class
+     * @constructor
+     * @module Border
      * @see {@link ../example/all/border1px.html 实例}
      * @desc 1像素边框样式
      * @param {String} side = '', 设置哪个边框, t=上,b=下,r=右,l=左, lr=左右,tb=上下,no-r=无右,no-l=无左,no-t=无上,no-b=无下
-     * 
-     * @example
-     * 
-     *  <div class="busy-border-1px">四边框</div>
-     *
-     *  <div class="busy-border-1px busy-border-t">上边框</div>
-     *
-     *  <div class="busy-border-1px busy-border-b">下边框</div>
-     *
-     *  <div class="busy-border-1px busy-border-tb">上下边框</div>
-     *
-     *  <div class="busy-border-1px busy-border-l">左边框</div>
-     *
-     *  <div class="busy-border-1px busy-border-r">右边框</div>
-     *
-     *  <div class="busy-border-1px busy-border-lr">左右边框</div>
-     *
-     * <div class="busy-border-1px busy-border-no-r">无右边框</div>
-     *
-     * <div class="busy-border-1px busy-border-no-l">无左边框</div>
-     *
-     * <div class="busy-border-1px busy-border-no-t">无上边框</div>
-     *
-     * <div class="busy-border-1px busy-border-no-b">无下边框</div>
-     *
-     * // 取值1~10px
-     * <div class="busy-border-1px busy-border-radius-4px">圆角</div>
-     *
-     * // 百分比圆角
-     * <div class="busy-border-1px" style="border-radius: 50%;">圆角</div>
-     * 
      */
 
     var Border = {
@@ -283,20 +253,35 @@ var BusyUI = (function (exports, Vue) {
       return _extends.apply(this, arguments);
     }
 
-    function _objectSpread(target) {
+    function ownKeys(object, enumerableOnly) {
+      var keys = Object.keys(object);
+
+      if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) symbols = symbols.filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+        keys.push.apply(keys, symbols);
+      }
+
+      return keys;
+    }
+
+    function _objectSpread2(target) {
       for (var i = 1; i < arguments.length; i++) {
         var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
 
-        if (typeof Object.getOwnPropertySymbols === 'function') {
-          ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-            return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-          }));
+        if (i % 2) {
+          ownKeys(source, true).forEach(function (key) {
+            _defineProperty(target, key, source[key]);
+          });
+        } else if (Object.getOwnPropertyDescriptors) {
+          Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+        } else {
+          ownKeys(source).forEach(function (key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+          });
         }
-
-        ownKeys.forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        });
       }
 
       return target;
@@ -360,7 +345,7 @@ var BusyUI = (function (exports, Vue) {
     var base = function base(config) {
       return {
         data: function data() {
-          return _objectSpread({}, config);
+          return _objectSpread2({}, config);
         }
       };
     };
@@ -398,19 +383,19 @@ var BusyUI = (function (exports, Vue) {
       props: {
         name: {
           type: String,
-          default: ''
+          "default": ''
         },
         width: {
           type: [Number, String],
-          default: 18
+          "default": 18
         },
         height: {
           type: [Number, String],
-          default: 18
+          "default": 18
         },
         color: {
           type: String,
-          default: '#fff'
+          "default": '#fff'
         }
       },
       computed: {
@@ -529,7 +514,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("svg", {
-        class: _vm.prefixCls + "-icon",
+        "class": _vm.prefixCls + "-icon",
         style: _vm.styles,
         on: {
           click: _vm.handleClick
@@ -569,46 +554,61 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var script$1 = {
-      name: 'busy-toast',
+      name: initName('toast'),
+      mixins: [baseMixins],
       props: {
+        width: {
+          type: [String, Number]
+        },
+        height: {
+          type: [String, Number]
+        },
         delay: {
           type: Number,
-          default: 2500
+          "default": 2500
         },
         iconName: {
           type: String,
-          default: ''
+          "default": ''
         },
         iconHeight: {
-          type: Number,
-          default: 24
+          type: [Number, String],
+          "default": 24
         },
         iconWidth: {
-          type: Number,
-          default: 24
+          type: [Number, String],
+          "default": 24
         },
         content: {
           type: [String, Number],
-          default: ''
+          "default": ''
         },
         pos: {
           type: String,
-          default: 'top'
+          "default": 'top'
         },
         zIndex: {
           type: Number
         },
         isShow: {
           type: Boolean,
-          default: false
+          "default": false
         },
         isRemove: {
           type: Boolean,
-          default: false
+          "default": false
         },
         autoHide: {
           type: Boolean,
-          default: false
+          "default": false
+        },
+        direction: {
+          type: String,
+          "default": ''
+        },
+        color: {
+          type: String,
+          "default": '#fff'
         }
       },
       data: function data() {
@@ -622,7 +622,19 @@ var BusyUI = (function (exports, Vue) {
       },
       computed: {
         posClass: function posClass() {
-          return ["busy-toast--pos-".concat(this.pos)];
+          return ['top,middle,bottom'.split(',').indexOf(this.pos) > -1 ? "".concat(this.prefixCls, "-toast--pos-").concat(this.pos) : ''];
+        },
+        styles: function styles() {
+          var width = cmpUnit(this.width);
+          var height = cmpUnit(this.height);
+          return {
+            color: this.color,
+            width: width,
+            height: height
+          };
+        },
+        classess: function classess() {
+          return ["".concat(this.prefixCls, "-toast__wrap"), this.direction ? "".concat(this.prefixCls, "-toast--").concat(this.direction) : null];
         },
         contentString: function contentString() {
           var content = this.content,
@@ -700,7 +712,7 @@ var BusyUI = (function (exports, Vue) {
 
       return _c("transition", {
         attrs: {
-          name: "busy-animate--fade"
+          name: _vm.prefixCls + "-animate--fade"
         },
         on: {
           "after-leave": _vm._leave
@@ -712,21 +724,21 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        staticClass: "busy-toast",
-        class: _vm.posClass
+        "class": [_vm.prefixCls + "-toast", _vm.posClass]
       }, [_c("div", {
-        staticClass: "busy-toast__wrap"
+        "class": _vm.classess,
+        style: _vm.styles
       }, [_vm.iconName ? _c("span", {
-        staticClass: "busy-toast__icon"
+        "class": _vm.prefixCls + "-toast__icon"
       }, [_c("Icon", {
         attrs: {
           name: _vm.iconName,
           width: _vm.iconWidth,
           height: _vm.iconHeight,
-          color: "#ffffff"
+          color: _vm.color
         }
       })], 1) : _vm._e(), _vm._v(" "), _c("p", {
-        staticClass: "busy-toast__text"
+        "class": _vm.prefixCls + "-toast__text"
       }, [_vm._t("default", [_vm._v("\n                    " + _vm._s(_vm.contentString) + "\n                ")])], 2)])])]);
     };
 
@@ -759,7 +771,7 @@ var BusyUI = (function (exports, Vue) {
      * Toast component
      * @module Toast
      * @see {@link ../example/all/toast.html 实例}
-     * @desc Toast组件 <busy-toast></busy-toast>
+     * @desc Toast组件
      * @param {Object} opts - 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'}
      * @param {String} content - 显示内容
      * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
@@ -788,11 +800,7 @@ var BusyUI = (function (exports, Vue) {
        * @method show
        * @param {Object} opts - 配置项, <a href="#module_Toast">参见</a>
        * @static
-       * @returns ToastClass实例
-       * 
-       * @example
-       * Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
-       * 
+       * @returns ToastClass实例 
        */
       show: function show(content, opts) {
         if (instance) {
@@ -805,14 +813,14 @@ var BusyUI = (function (exports, Vue) {
           opts = content;
           content = opts.content;
         } else if (type == 'string' || type === 'number') {
-          opts = _objectSpread({}, opts, {
+          opts = _objectSpread2({}, opts, {
             content: content
           });
         }
 
         instance = new ToastClass({
           el: document.createElement('div'),
-          propsData: _objectSpread({
+          propsData: _objectSpread2({
             isRemove: true,
             autoHide: true
           }, opts)
@@ -824,6 +832,22 @@ var BusyUI = (function (exports, Vue) {
         });
         return instance;
       },
+      success: function success(content, opts) {
+        return this.show.apply(this, [content, _objectSpread2({
+          iconHeight: 30,
+          iconWidth: 30,
+          iconName: 'yes',
+          direction: 'column'
+        }, opts)]);
+      },
+      fail: function fail(content, opts) {
+        return this.show.apply(this, [content, _objectSpread2({
+          iconHeight: 30,
+          iconWidth: 30,
+          iconName: 'close',
+          direction: 'column'
+        }, opts)]);
+      },
       hide: function hide() {
         if (instance) {
           instance.hide();
@@ -834,18 +858,19 @@ var BusyUI = (function (exports, Vue) {
 
     //
     var script$2 = {
-      name: 'busy-spinner-circle-dash',
+      name: initName('spinner-circle-dash'),
+      mixins: [baseMixins],
       props: {
         color: {
           type: String
         },
         width: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         height: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         strokeWidth: [Number, String]
       },
@@ -881,18 +906,18 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("span", {
-        staticClass: "busy-spinner-circle-dash"
+        "class": _vm.prefixCls + "-spinner-circle-dash"
       }, [_c("svg", {
-        staticClass: "busy-spinner-circle-dash__svg",
+        "class": _vm.prefixCls + "-spinner-circle-dash__svg",
         style: _vm.styles,
         attrs: {
           viewBox: "0 0 64 64"
         }
       }, [_c("g", {
-        staticClass: "busy-spinner-circle-dash__wrap",
+        "class": _vm.prefixCls + "-spinner-circle-dash__wrap",
         style: _vm.svgStyles
       }, [_c("circle", {
-        staticClass: "busy-spinner-circle-dash__path",
+        "class": _vm.prefixCls + "-spinner-circle-dash__path",
         attrs: {
           cx: "32",
           cy: "32",
@@ -909,7 +934,7 @@ var BusyUI = (function (exports, Vue) {
     var __vue_inject_styles__$2 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$2 = "data-v-a6fe9c10";
+    var __vue_scope_id__$2 = "data-v-297d50de";
     /* module identifier */
 
     var __vue_module_identifier__$2 = undefined;
@@ -927,23 +952,25 @@ var BusyUI = (function (exports, Vue) {
 
     //
     var script$3 = {
-      name: 'busy-spinner-circle-gradient',
+      name: initName('spinner-circle-gradient'),
+      mixins: [baseMixins],
+      inheritAttrs: false,
       props: {
         color: {
           type: String,
-          default: '#008b8b'
+          "default": '#008b8b'
         },
         width: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         height: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         strokeWidth: {
           type: [Number, String],
-          default: 6
+          "default": 6
         }
       },
       data: function data() {
@@ -989,15 +1016,15 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("span", {
-        staticClass: "busy-spinner-circle-gradient"
+        "class": _vm.prefixCls + "-spinner-circle-gradient"
       }, [_c("svg", {
-        staticClass: "busy-spinner-circle-gradient__svg",
+        "class": _vm.prefixCls + "-spinner-circle-gradient__svg",
         style: _vm.styles,
         attrs: {
           viewBox: "0 0 64 64"
         }
       }, [_c("g", {
-        staticClass: "busy-spinner-circle-gradient__wrap",
+        "class": _vm.prefixCls + "-spinner-circle-gradient__wrap",
         style: _vm.svgStyles
       }, [_c("defs", [_c("linearGradient", {
         attrs: {
@@ -1051,7 +1078,7 @@ var BusyUI = (function (exports, Vue) {
     var __vue_inject_styles__$3 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$3 = "data-v-880ba5a0";
+    var __vue_scope_id__$3 = "data-v-7e18d17c";
     /* module identifier */
 
     var __vue_module_identifier__$3 = undefined;
@@ -1069,18 +1096,20 @@ var BusyUI = (function (exports, Vue) {
 
     //
     var script$4 = {
-      name: 'busy-spinner-circle-line',
+      name: initName('spinner-circle-line'),
+      mixins: [baseMixins],
+      inheritAttrs: false,
       props: {
         color: {
           type: String
         },
         width: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         height: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         strokeWidth: [Number, String]
       },
@@ -1117,15 +1146,15 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("span", {
-        staticClass: "busy-spinner-circle-line"
+        "class": _vm.prefixCls + "-spinner-circle-line"
       }, [_c("svg", {
-        staticClass: "busy-spinner-circle-line__svg",
+        "class": _vm.prefixCls + "-spinner-circle-line__svg",
         style: _vm.styles,
         attrs: {
           viewBox: "0 0 64 64"
         }
       }, [_c("g", {
-        staticClass: "busy-spinner-circle-line__wrap",
+        "class": _vm.prefixCls + "-spinner-circle-line__wrap",
         style: _vm.svgStyles,
         attrs: {
           "stroke-linecap": "round"
@@ -1212,7 +1241,7 @@ var BusyUI = (function (exports, Vue) {
     var __vue_inject_styles__$4 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$4 = "data-v-398c3bbc";
+    var __vue_scope_id__$4 = "data-v-13dde612";
     /* module identifier */
 
     var __vue_module_identifier__$4 = undefined;
@@ -1230,33 +1259,33 @@ var BusyUI = (function (exports, Vue) {
 
     //
     /**
-     * busy-circle-rotate
+     * @class
+     * @constructor
      * @desc 旋转圆环动画
      * @param {Number} width=24 - 组件宽度
      * @param {Number} height=24 - 组件高度
      * @param {String} color="#ffffff" - 组件颜色
      * @param {Number} strokeWidth=3 - 描边宽度
-     * @example
-     *      <busy-circle-rotate color="red"></busy-circle-rotate>
      **/
 
     var script$5 = {
-      name: 'busy-spinner-circle-rotate',
+      name: initName('spinner-circle-rotate'),
+      mixins: [baseMixins],
       props: {
         height: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         width: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         color: {
           type: String
         },
         strokeWidth: {
           type: [Number, String],
-          default: 6
+          "default": 6
         }
       },
       data: function data() {
@@ -1300,9 +1329,9 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("span", {
-        staticClass: "busy-spinner-circle-rotate"
+        "class": _vm.prefixCls + "-spinner-circle-rotate"
       }, [_c("svg", {
-        staticClass: "busy-spinner-circle-rotate__svg",
+        "class": _vm.prefixCls + "-spinner-circle-rotate__svg",
         style: _vm.styles,
         attrs: {
           version: "1.1",
@@ -1310,7 +1339,7 @@ var BusyUI = (function (exports, Vue) {
           "xml:space": "preserve"
         }
       }, [_c("g", {
-        staticClass: "busy-spinner-circle-rotate__wrap",
+        "class": _vm.prefixCls + "-spinner-circle-rotate__wrap",
         style: _vm.svgStyles,
         attrs: {
           "stroke-linecap": "round"
@@ -1360,22 +1389,23 @@ var BusyUI = (function (exports, Vue) {
 
     //
     var script$6 = {
-      name: 'busy-spinner-circle-half',
+      name: initName('spinner-circle-half'),
+      mixins: [baseMixins],
       props: {
         color: {
           type: String
         },
         width: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         height: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         strokeWidth: {
           type: [Number, String],
-          default: 6
+          "default": 6
         }
       },
       computed: {
@@ -1410,18 +1440,18 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("span", {
-        staticClass: "busy-spinner-circle-half"
+        "class": _vm.prefixCls + "-spinner-circle-half"
       }, [_c("svg", {
-        staticClass: "busy-spinner-circle-half__svg",
+        "class": _vm.prefixCls + "-spinner-circle-half__svg",
         style: _vm.styles,
         attrs: {
           viewBox: "0 0 64 64"
         }
       }, [_c("g", {
-        staticClass: "busy-spinner-circle-half__wrap",
+        "class": _vm.prefixCls + "-spinner-circle-half__wrap",
         style: _vm.svgStyles
       }, [_c("circle", {
-        staticClass: "busy-spinner-circle-half__path",
+        "class": _vm.prefixCls + "-spinner-circle-half__path",
         attrs: {
           cx: "32",
           cy: "32",
@@ -1438,7 +1468,7 @@ var BusyUI = (function (exports, Vue) {
     var __vue_inject_styles__$6 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$6 = "data-v-d46f75c8";
+    var __vue_scope_id__$6 = "data-v-21c355b7";
     /* module identifier */
 
     var __vue_module_identifier__$6 = undefined;
@@ -1475,18 +1505,18 @@ var BusyUI = (function (exports, Vue) {
 
     var script$7 = {
       name: 'busy-spinner',
+      inheritAttrs: false,
       props: {
         type: {
-          type: String,
-          default: 'circle-line'
+          type: String
         },
         height: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         width: {
           type: [Number, String],
-          default: 64
+          "default": 64
         },
         color: {
           type: String
@@ -1509,6 +1539,26 @@ var BusyUI = (function (exports, Vue) {
         visiable: function visiable(val, old) {
           this.$emit('visiable-change', val);
         }
+      },
+      computed: {
+        currentComponent: function currentComponent() {
+          switch (this.type) {
+            case 'circle-gradient':
+              return CircleGradient;
+
+            case 'circle-dash':
+              return CircleDash;
+
+            case 'circle-rotate':
+              return CircleRotate;
+
+            case 'circle-half':
+              return CircleHalf;
+
+            default:
+              return CircleLine;
+          }
+        }
       }
     };
 
@@ -1523,9 +1573,9 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
-        staticClass: "busy-spinner"
-      }, [_vm.type === "circle-line" ? _c("CircleLine", _vm._b({}, "CircleLine", _vm.$props, false)) : _vm.type === "circle-dash" ? _c("CircleDash", _vm._b({}, "CircleDash", _vm.$props, false)) : _vm.type === "circle-gradient" ? _c("CircleGradient", _vm._b({}, "CircleGradient", _vm.$props, false)) : _vm.type === "circle-rotate" ? _c("CircleRotate", _vm._b({}, "CircleRotate", _vm.$props, false)) : _vm.type === "circle-half" ? _c("CircleHalf", _vm._b({}, "CircleHalf", _vm.$props, false)) : _vm._e()], 1);
+      return _c(_vm.currentComponent, _vm._b({
+        tag: "component"
+      }, "component", _vm.$props, false));
     };
 
     var __vue_staticRenderFns__$7 = [];
@@ -1562,253 +1612,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     //
-    var script$8 = {
-      name: 'busy-toast-loading',
-      props: {
-        width: {
-          type: Number,
-          default: 0
-        },
-        height: {
-          type: Number,
-          default: 0
-        },
-        color: {
-          type: String,
-          default: '#ffffff'
-        },
-        bgColor: {
-          type: String,
-          default: 'rgba(0,0,0, .6)'
-        },
-        gColor: {
-          type: String,
-          default: 'rgba(0,0,0, .6)'
-        },
-        direction: {
-          type: String,
-          default: 'column'
-        },
-        spinner: {
-          type: Object,
-          default: function _default() {
-            return {
-              width: 24,
-              height: 24,
-              color: '#fff',
-              type: 0
-            };
-          }
-        },
-        text: {
-          type: String,
-          default: ''
-        },
-        fontSize: {
-          type: Number,
-          default: 12
-        }
-      },
-      components: {
-        Spinner: Spinner
-      },
-      data: function data() {
-        return {
-          visiable: false
-        };
-      },
-      methods: {
-        show: function show() {
-          this.visiable = true;
-          this.$emit('show');
-        },
-        hide: function hide() {
-          this.visiable = true;
-          this.$emit('hide');
-        }
-      },
-      computed: {
-        styles: function styles() {
-          var s = {
-            backgroundColor: this.bgColor
-          };
-
-          if (this.width) {
-            s.width = this.width + 'px';
-          }
-
-          if (this.height) {
-            s.height = this.height + 'px';
-          }
-
-          return s;
-        },
-        classes: function classes() {
-          return [this.direction == 'row' ? 'busy-toast-loading--dir-row' : 'busy-toast-loading--dir-column'];
-        }
-      },
-      watch: {
-        visiable: function visiable(val, old) {
-          this.$emit('visiable-change', val);
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$8 = script$8;
-    /* template */
-
-    var __vue_render__$8 = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c("busy-mask", {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: _vm.visiable,
-          expression: "visiable"
-        }]
-      }, [_c("transition", {
-        attrs: {
-          name: "loading-opacity-fade"
-        }
-      }, [_c("div", {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: _vm.visiable,
-          expression: "visiable"
-        }],
-        staticClass: "busy-toast-loading",
-        class: _vm.classes,
-        style: _vm.styles
-      }, [_c("div", {
-        staticClass: "busy-toast-loading__icon"
-      }, [_c("Spinner", {
-        attrs: {
-          type: _vm.spinner.type,
-          height: _vm.spinner.height,
-          width: _vm.spinner.width,
-          color: _vm.spinner.color
-        }
-      })], 1), _vm._v(" "), _vm.text ? _c("div", {
-        staticClass: "busy-toast-loading__text",
-        style: {
-          color: _vm.color,
-          fontSize: _vm.fontSize + "px"
-        }
-      }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2) : _vm._e()])])], 1);
-    };
-
-    var __vue_staticRenderFns__$8 = [];
-    __vue_render__$8._withStripped = true;
-    /* style */
-
-    var __vue_inject_styles__$8 = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$8 = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$8 = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$8 = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var ToastLoading = normalizeComponent_1({
-      render: __vue_render__$8,
-      staticRenderFns: __vue_staticRenderFns__$8
-    }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, undefined, undefined);
-
-    var ToastLoadingClass = Vue.extend(ToastLoading);
-    var tlInstance, tlVm;
-    /**
-     * busy-toast-loading
-     * @module ToastLoading
-     * @see {@link ../example/all/toast-loading.html 实例}
-     * @desc 页面toastloading组件 <busy-toast-loading />
-     * @param {Number} height=100 - 高度(px)
-     * @param {Number} width=100 - 宽度(px)
-     * @param {String} color='#fff' - spinner和文字颜色, css color
-     * @param {String} bgColor='rgba(0,0,0,0.6)' - 背景色, css color
-     * @param {String} direction='column' - spinner和文字排列方向, column 垂直方向, row 水平方向
-     * @param {Object} spinner - 设置spinner格式
-     * @param {String} text - loading文字
-     * 
-     * @example
-     *  //  use it in html
-     *  <script src="busyui.js"><\/script>
-     *  <link rel="stylesheet" href="busyui.css">
-     *
-     *  Busy.ToastLoading.show();
-     *  http.get('url').then(()=>{
-     *    Busy.ToastLoading.hide();
-     *  });
-     *
-     *  // use it in module tools
-     *  import ToastLoading from '@busyui/toast-loading';
-     *  ToastLoading.show({spinner:{type:2}, direction="row"});
-     *  http.get('url').then(()=>{
-     *    ToastLoading.hide();
-     *  });
-     **/
-
-    var ToastLoading$1 = _extends(ToastLoading, {
-      install: function install(vue) {
-        vue.component('busy-toast-loading', ToastLoading);
-      },
-
-      /**
-       * 隐藏loading
-       * @method hide
-       * @static
-       * 
-       */
-      hide: function hide() {
-        tlInstance && tlInstance.$destroy();
-        tlVm && document.body.removeChild(tlVm.$el);
-        tlVm = null;
-        tlInstance = null;
-      },
-
-      /**
-       * 显示loading
-       * @method show
-       * @param {Object} opts - 配置信息, <a href="#module_Loading">参考</a>
-       * @static
-       * @returns LoadingClass实例
-       * 
-       * @example
-       * Busy.ToastLoading.show();
-       * 
-       */
-      show: function show(opts) {
-        opts = opts || {};
-
-        if (tlInstance) {
-          this.hide();
-        }
-
-        tlInstance = new ToastLoadingClass({
-          el: document.createElement('div'),
-          propsData: opts
-        });
-        Vue.nextTick(function () {
-          tlVm = tlInstance.$mount();
-          document.body.appendChild(tlVm.$el);
-          tlInstance.show();
-        });
-      }
-    });
-
-    //
     /**
      * @class
      * @constructor
@@ -1819,25 +1622,25 @@ var BusyUI = (function (exports, Vue) {
      * @param {Boolean} isShow=false - 显示隐藏
      **/
 
-    var script$9 = {
+    var script$8 = {
       name: initName('mask'),
       mixins: [baseMixins],
       props: {
         color: {
           type: String,
-          default: 'rgba(0,0,0, 0.6)'
+          "default": 'rgba(0,0,0, 0.6)'
         },
         isRemove: {
           type: Boolean,
-          default: false
+          "default": false
         },
         isShow: {
           type: Boolean,
-          default: false
+          "default": false
         },
         zIndex: {
           type: Number,
-          default: 1000
+          "default": 1000
         },
         position: {
           type: String
@@ -1884,10 +1687,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$9 = script$9;
+    var __vue_script__$8 = script$8;
     /* template */
 
-    var __vue_render__$9 = function __vue_render__() {
+    var __vue_render__$8 = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -1908,12 +1711,183 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        class: _vm.prefixCls + "-mask",
+        "class": _vm.prefixCls + "-mask",
         style: _vm.styles,
         on: {
           click: _vm.handleClick
         }
       }, [_vm._t("default")], 2)]);
+    };
+
+    var __vue_staticRenderFns__$8 = [];
+    __vue_render__$8._withStripped = true;
+    /* style */
+
+    var __vue_inject_styles__$8 = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$8 = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$8 = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$8 = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Mask = normalizeComponent_1({
+      render: __vue_render__$8,
+      staticRenderFns: __vue_staticRenderFns__$8
+    }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, undefined, undefined);
+
+    Mask.install = function (vue) {
+      vue.component(Mask.name, Mask);
+    };
+
+    var spinnerProps = {
+      width: 24,
+      height: 24,
+      color: '#fff',
+      type: 'circle-line'
+    };
+    var script$9 = {
+      name: initName('toast-loading'),
+      mixins: [baseMixins],
+      props: {
+        width: {
+          type: [Number, String]
+        },
+        height: {
+          type: [Number, String]
+        },
+        color: {
+          type: String,
+          "default": '#ffffff'
+        },
+        bgColor: {
+          type: String
+        },
+        direction: {
+          type: String,
+          "default": 'column'
+        },
+        spinner: {
+          type: Object,
+          "default": function _default() {
+            return spinnerProps;
+          }
+        },
+        text: {
+          type: String,
+          "default": ''
+        },
+        fontSize: {
+          type: [Number, String],
+          "default": 12
+        },
+        closable: {
+          type: Boolean,
+          "default": false
+        },
+        maskColor: {
+          type: String
+        }
+      },
+      components: {
+        Spinner: Spinner,
+        NativeMask: Mask
+      },
+      data: function data() {
+        return {
+          visiable: false
+        };
+      },
+      methods: {
+        show: function show() {
+          this.visiable = true;
+          this.$emit('show');
+        },
+        hide: function hide() {
+          this.visiable = false;
+          this.$emit('hide');
+        },
+        handleClick: function handleClick(e) {
+          this.closable && this.hide.call(this, e);
+        }
+      },
+      computed: {
+        styles: function styles() {
+          var width = cmpUnit(this.width);
+          var height = cmpUnit(this.height);
+          return {
+            height: height,
+            width: width,
+            backgroundColor: this.bgColor
+          };
+        },
+        textStyles: function textStyles() {
+          var fontSize = cmpUnit(this.fontSize);
+          var color = this.color;
+          return {
+            color: color,
+            fontSize: fontSize
+          };
+        },
+        classes: function classes() {
+          return [this.direction == 'row' ? "".concat(this.prefixCls, "-toast-loading--dir-row") : "".concat(this.prefixCls, "-toast-loading--dir-column")];
+        },
+        spinnerData: function spinnerData() {
+          return _objectSpread2({}, spinnerProps, {}, this.spinner);
+        }
+      },
+      watch: {
+        visiable: function visiable(val, old) {
+          this.$emit('visiable-change', val);
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$9 = script$9;
+    /* template */
+
+    var __vue_render__$9 = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c("NativeMask", {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: _vm.visiable,
+          expression: "visiable"
+        }],
+        attrs: {
+          color: _vm.maskColor
+        },
+        on: {
+          click: _vm.handleClick
+        }
+      }, [_c("div", {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: _vm.visiable,
+          expression: "visiable"
+        }],
+        "class": [_vm.prefixCls + "-toast-loading", _vm.classes],
+        style: _vm.styles
+      }, [_c("div", {
+        "class": _vm.prefixCls + "-toast-loading__icon"
+      }, [_c("Spinner", _vm._b({}, "Spinner", _vm.spinnerData, false))], 1), _vm._v(" "), _vm.text || _vm.$slots["default"] ? _c("div", {
+        "class": _vm.prefixCls + "-toast-loading__text",
+        style: _vm.textStyles
+      }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2) : _vm._e()])]);
     };
 
     var __vue_staticRenderFns__$9 = [];
@@ -1934,14 +1908,70 @@ var BusyUI = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var Mask = normalizeComponent_1({
+    var ToastLoading = normalizeComponent_1({
       render: __vue_render__$9,
       staticRenderFns: __vue_staticRenderFns__$9
     }, __vue_inject_styles__$9, __vue_script__$9, __vue_scope_id__$9, __vue_is_functional_template__$9, __vue_module_identifier__$9, undefined, undefined);
 
-    Mask.install = function (vue) {
-      vue.component(Mask.name, Mask);
-    };
+    var ToastLoadingClass = Vue.extend(ToastLoading);
+    var tlInstance, tlVm;
+    /**
+     * @module ToastLoading
+     * @see {@link ../example/all/toast-loading.html 实例}
+     * @desc ToastLoading
+     * @param {Number} height=100 - 高度(px)
+     * @param {Number} width=100 - 宽度(px)
+     * @param {String} color='#fff' - spinner和文字颜色, css color
+     * @param {String} bgColor='rgba(0,0,0,0.6)' - 背景色, css color
+     * @param {String} direction='column' - spinner和文字排列方向, column 垂直方向, row 水平方向
+     * @param {Object} spinner - 设置spinner格式
+     * @param {String} text - loading文字
+     **/
+
+    var ToastLoading$1 = _extends(ToastLoading, {
+      install: function install(vue) {
+        vue.component(ToastLoading.name, ToastLoading);
+      },
+
+      /**
+       * 隐藏loading
+       * @method hide
+       * @static
+       * 
+       */
+      hide: function hide() {
+        tlInstance && tlInstance.$destroy();
+        tlVm && document.body.removeChild(tlVm.$el);
+        tlVm = null;
+        tlInstance = null;
+      },
+
+      /**
+       * 显示loading
+       * @method show
+       * @param {Object} opts - 配置信息, <a href="#module_Loading">参考</a>
+       * @static
+       * @returns LoadingClass实例
+       * 
+       */
+      show: function show(opts) {
+        opts = opts || {};
+
+        if (tlInstance) {
+          this.hide();
+        }
+
+        tlInstance = new ToastLoadingClass({
+          el: document.createElement('div'),
+          propsData: opts
+        });
+        Vue.nextTick(function () {
+          tlVm = tlInstance.$mount();
+          document.body.appendChild(tlVm.$el);
+          tlInstance.show();
+        });
+      }
+    });
 
     /**
      * @class
@@ -1970,30 +2000,30 @@ var BusyUI = (function (exports, Vue) {
         },
         spinnerWidth: {
           type: [String, Number],
-          default: 24
+          "default": 24
         },
         spinnerHeight: {
           type: [String, Number],
-          default: 24
+          "default": 24
         },
         color: {
           type: String,
-          default: '#222222'
+          "default": '#222222'
         },
         text: {
           type: String,
-          default: ''
+          "default": ''
         },
         fontSize: {
           type: Number
         },
         isShow: {
           type: Boolean,
-          default: false
+          "default": false
         },
         isRemove: {
           type: Boolean,
-          default: false
+          "default": false
         },
         direction: {
           type: String
@@ -2086,11 +2116,11 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        class: _vm.classes
+        "class": _vm.classes
       }, [_c("div", {
-        class: _vm.prefixCls + "-inline-loading__spinner"
+        "class": _vm.prefixCls + "-inline-loading__spinner"
       }, [_c("Spinner", _vm._b({}, "Spinner", _vm.spinnerProps, false))], 1), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-inline-loading__text",
+        "class": _vm.prefixCls + "-inline-loading__text",
         style: _vm.textStyle
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
     };
@@ -2121,27 +2151,27 @@ var BusyUI = (function (exports, Vue) {
     //
     var script$b = {
       name: initName('loading'),
-      extends: InlineLoading,
+      "extends": InlineLoading,
       props: {
         showMask: {
           type: Boolean,
-          default: true
+          "default": true
         },
         spinnerWidth: {
           type: [Number, String],
-          default: 36
+          "default": 36
         },
         spinnerHeight: {
           type: [Number, String],
-          default: 36
+          "default": 36
         },
         color: {
           type: String,
-          default: '#ffffff'
+          "default": '#ffffff'
         },
         position: {
           type: String,
-          default: 'absolute'
+          "default": 'absolute'
         }
       },
       data: function data() {
@@ -2202,7 +2232,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.prefixCls + "-loading",
+        "class": _vm.prefixCls + "-loading",
         style: _vm.styles
       }, [_c("BusyMask", {
         attrs: {
@@ -2224,7 +2254,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        class: _vm.prefixCls + "-loading__wrap"
+        "class": _vm.prefixCls + "-loading__wrap"
       }, [_c("InlineLoading", _vm._b({}, "InlineLoading", _vm.ILProps, false), [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)], 1)])], 1);
     };
 
@@ -2302,7 +2332,7 @@ var BusyUI = (function (exports, Vue) {
         height: [String, Number],
         flexible: {
           type: Boolean,
-          default: false
+          "default": false
         },
         alignMain: String,
         alignCross: String,
@@ -2352,7 +2382,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.classes,
+        "class": _vm.classes,
         style: _vm.styles,
         on: {
           click: _vm.handleClick
@@ -2402,7 +2432,7 @@ var BusyUI = (function (exports, Vue) {
       props: {
         inline: {
           type: Boolean,
-          default: false
+          "default": false
         },
         width: {
           type: [Number, String]
@@ -2475,7 +2505,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.classes,
+        "class": _vm.classes,
         style: _vm.styles,
         on: {
           click: _vm.handleClick
@@ -2566,7 +2596,7 @@ var BusyUI = (function (exports, Vue) {
         disabled: Boolean,
         nativeType: {
           type: String,
-          default: 'button'
+          "default": 'button'
         },
         content: {
           type: String
@@ -2594,14 +2624,14 @@ var BusyUI = (function (exports, Vue) {
         },
         type: {
           type: String,
-          default: 'default',
+          "default": 'default',
           validator: function validator(value) {
             return ['default', 'primary', 'warning'].indexOf(value) > -1;
           }
         },
         ghost: {
           type: Boolean,
-          default: false
+          "default": false
         },
         height: {
           type: [String, Number],
@@ -2613,7 +2643,7 @@ var BusyUI = (function (exports, Vue) {
         },
         size: {
           type: String,
-          default: 'normal',
+          "default": 'normal',
           validator: function validator(value) {
             return ['normal', 'small', 'large'].indexOf(value) > -1;
           }
@@ -2708,21 +2738,21 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: [_vm.prefixCls + "-button", _vm.classes],
+        "class": [_vm.prefixCls + "-button", _vm.classes],
         style: _vm.styles,
         on: {
           click: _vm.handleClick
         }
       }, [_vm.icon || _vm.$slots["icon"] ? _c("span", {
-        class: _vm.prefixCls + "-button__icon"
+        "class": _vm.prefixCls + "-button__icon"
       }, [_vm._t("icon", [_vm._v(_vm._s(_vm.icon))])], 2) : _vm._e(), _vm._v(" "), _c("button", {
-        class: _vm.prefixCls + "-button__button",
+        "class": _vm.prefixCls + "-button__button",
         attrs: {
           type: _vm.nativeType,
           disabled: _vm.disabled
         }
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2), _vm._v(" "), _vm.isThin ? _c("span", {
-        class: _vm.prefixCls + "-button__border",
+        "class": _vm.prefixCls + "-button__border",
         style: _vm.thinBorder
       }) : _vm._e()]);
     };
@@ -2789,7 +2819,7 @@ var BusyUI = (function (exports, Vue) {
         color: String,
         icon: {
           type: Object,
-          default: function _default() {
+          "default": function _default() {
             return iconProps;
           }
         },
@@ -2829,7 +2859,7 @@ var BusyUI = (function (exports, Vue) {
           };
         },
         iconModel: function iconModel() {
-          return _objectSpread({}, iconProps, this.icon);
+          return _objectSpread2({}, iconProps, {}, this.icon);
         },
         isChecked: function isChecked() {
           var _this = this;
@@ -2853,16 +2883,16 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.prefixCls + "-checkbox",
+        "class": _vm.prefixCls + "-checkbox",
         style: _vm.styles,
         on: {
           click: function click($event) {
             $event.stopPropagation();
-            return function () {}($event);
+            return function () {}();
           }
         }
       }, [_c("label", {
-        class: [_vm.prefixCls + "-checkbox__label"]
+        "class": [_vm.prefixCls + "-checkbox__label"]
       }, [_c("input", {
         directives: [{
           name: "model",
@@ -2871,7 +2901,7 @@ var BusyUI = (function (exports, Vue) {
           expression: "currentValue"
         }],
         ref: "native-checkbox",
-        class: _vm.prefixCls + "-checkbox__input",
+        "class": _vm.prefixCls + "-checkbox__input",
         attrs: {
           type: "checkbox",
           disabled: _vm.disabled
@@ -2901,7 +2931,7 @@ var BusyUI = (function (exports, Vue) {
           }
         }
       }), _vm._v(" "), _c("span", {
-        class: _vm.prefixCls + "-checkbox__core",
+        "class": _vm.prefixCls + "-checkbox__core",
         style: _vm.coreStyles
       }, [_c("transition", {
         attrs: {
@@ -2914,9 +2944,9 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.isChecked,
           expression: "isChecked"
         }],
-        class: _vm.prefixCls + "-checkbox__icon"
-      }, "Icon", _vm.iconModel, false))], 1)], 1), _vm._v(" "), _vm.label || _vm.$slots.default ? _c("span", {
-        class: _vm.prefixCls + "-checkbox__text"
+        "class": _vm.prefixCls + "-checkbox__icon"
+      }, "Icon", _vm.iconModel, false))], 1)], 1), _vm._v(" "), _vm.label || _vm.$slots["default"] ? _c("span", {
+        "class": _vm.prefixCls + "-checkbox__text"
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.label))])], 2) : _vm._e()])]);
     };
 
@@ -2964,17 +2994,17 @@ var BusyUI = (function (exports, Vue) {
         text: String,
         disabled: {
           type: Boolean,
-          default: false
+          "default": false
         },
         color: String,
         disabledColor: String,
         iconColor: {
           type: String,
-          default: '#ffffff'
+          "default": '#ffffff'
         },
         checked: {
           type: Boolean,
-          default: false
+          "default": false
         }
       },
       data: function data() {
@@ -3034,10 +3064,10 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.prefixCls + "-radio",
+        "class": _vm.prefixCls + "-radio",
         style: _vm.styles
       }, [_c("label", {
-        class: _vm.prefixCls + "-radio__label"
+        "class": _vm.prefixCls + "-radio__label"
       }, [_c("input", {
         directives: [{
           name: "model",
@@ -3046,7 +3076,7 @@ var BusyUI = (function (exports, Vue) {
           expression: "currentValue"
         }],
         ref: "nativeRadio",
-        class: _vm.prefixCls + "-radio__input",
+        "class": _vm.prefixCls + "-radio__input",
         attrs: {
           name: _vm.name,
           disabled: _vm.disabled,
@@ -3062,7 +3092,7 @@ var BusyUI = (function (exports, Vue) {
           }, _vm.handleChange]
         }
       }), _vm._v(" "), _c("span", {
-        class: _vm.prefixCls + "-radio__radio",
+        "class": _vm.prefixCls + "-radio__radio",
         style: _vm.radioStyles
       }, [_c("transition", {
         attrs: {
@@ -3082,7 +3112,7 @@ var BusyUI = (function (exports, Vue) {
           name: "yes"
         }
       })], 1)], 1), _vm._v(" "), _c("span", {
-        class: _vm.prefixCls + "-radio__text"
+        "class": _vm.prefixCls + "-radio__text"
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
     };
 
@@ -3114,20 +3144,121 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var script$h = {
-      name: initName('picker'),
+      name: initName('picker-wheel'),
       mixins: [baseMixins],
       props: {
-        columns: {
-          type: Array
+        items: Array,
+        value: '',
+        index: {
+          type: Number,
+          "default": 0
         }
       },
       data: function data() {
         return {
-          cols: ['选项xx', '选项xx', '选项xx', '选项xx', '选项xx', '选项xx', '选项xx']
+          startY: 0,
+          startTime: 0,
+          top: 0,
+          itemHeight: 40,
+          curIndex: 0,
+          transition: false,
+          allHeight: 0,
+          startPoint: 0,
+          currentValue: this.value
         };
       },
-      components: _defineProperty({}, Mask.name, Mask),
-      mounted: function mounted() {}
+      computed: {
+        styles: function styles() {
+          return {
+            marginTop: "".concat(this.itemHeight * 2, "px"),
+            transform: "translate3d(0, ".concat(this.top, "px, 0)")
+          };
+        },
+        classess: function classess() {
+          return _defineProperty({}, "".concat(this.prefixCls, "-picker__transition"), this.transition);
+        }
+      },
+      watch: {
+        curIndex: function curIndex(val) {
+          this.currentValue = this.items[val];
+        },
+        value: function value(val) {
+          this.currentValue = val;
+        },
+        currentValue: function currentValue(val) {
+          this.$emit('change', val);
+        }
+      },
+      methods: {
+        enforceLimit: function enforceLimit(t) {
+          if (t > 0) {
+            t = 0;
+          } else if (Math.abs(t) > this.allHeight) {
+            t = this.allHeight * -1;
+          }
+
+          console.log(t);
+          return t;
+        },
+        transitionTo: function transitionTo(i) {
+          this.transition = true;
+          this.top = this.enforceLimit(i * this.itemHeight);
+        },
+        _transitionEnd: function _transitionEnd(e) {
+          this.transition = false;
+          this.curIndex = Math.abs(this.top / this.itemHeight);
+        },
+        isOutLimit: function isOutLimit(t) {
+          var b = t > 0 || Math.abs(t) > this.allHeight;
+          return b;
+        },
+        _start: function _start(e) {
+          var pageX = e.touches[0].pageX,
+              pageY = e.touches[0].pageY;
+          this.transition = false;
+          this.startY = pageY;
+          this.startTime = e.timeStamp || Date.now();
+          this.startPoint = pageY;
+          this.top = new WebKitCSSMatrix(this.$el.style.transform).m42;
+          this.startTop = this.top;
+          this.allHeight = this.$el.scrollHeight - this.$el.clientHeight + this.itemHeight * 2;
+        },
+        _move: function _move(e) {
+          var PY = e.touches[0].pageY;
+          var distance = PY - this.startY;
+          var top = this.startTop + distance,
+              durantion;
+          this.direction = distance < 0 ? 'up' : 'down';
+
+          if (top > 0 || Math.abs(top) > this.allHeight) {
+            distance = distance / 2;
+          }
+
+          this.top = this.startTop + distance;
+          this.status = 'moving';
+          var endTime = e.timeStamp || Date.now();
+          durantion = endTime - this.startTime;
+
+          if (durantion > 100) {
+            this.speed = (PY - this.startPoint) * 1000 / durantion;
+            this.startTime = endTime;
+            this.startPoint = PY;
+          }
+        },
+        _end: function _end(e) {
+          var _this = this;
+
+          this.status = 'end';
+          var top = this.top,
+              endTime = e.timeStamp || Date.now();
+          this.$nextTick(function () {
+            var top = _this.top;
+            top += _this.speed * 0.2;
+            _this.transition = true;
+            _this.top = _this.enforceLimit(Math.round(top / _this.itemHeight) * _this.itemHeight);
+          });
+        }
+      }
     };
 
     /* script */
@@ -3141,49 +3272,24 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("busy-mask", {
-        attrs: {
-          "is-show": true
+      return _c("ul", {
+        "class": [_vm.prefixCls + "-picker__wheel", _vm.classess],
+        style: _vm.styles,
+        on: {
+          touchstart: _vm._start,
+          "&touchmove": function touchmove($event) {
+            return _vm._move($event);
+          },
+          touchend: _vm._end,
+          touchcancel: _vm._end,
+          transitionend: _vm._transitionEnd
         }
-      }, [_c("div", {
-        class: _vm.prefixCls + "-picker"
-      }, [_c("div", {
-        class: _vm.prefixCls + "-picker__header"
-      }, [_c("span", {
-        class: _vm.prefixCls + "-picker__cancel"
-      }, [_vm._v("取消")]), _vm._v(" "), _c("span", {
-        class: _vm.prefixCls + "-picker__title"
-      }), _vm._v(" "), _c("span", {
-        class: _vm.prefixCls + "-picker__confirm"
-      }, [_vm._v("确定")])]), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-picker__wrap",
-        attrs: {
-          id: "wrapper"
-        }
-      }, [_c("div", {
-        class: _vm.prefixCls + "-picker__box"
-      }, [_c("div", {
-        class: _vm.prefixCls + "-picker__column"
-      }, [_c("div", {
-        class: _vm.prefixCls + "-picker_scoll",
-        attrs: {
-          id: "aa"
-        }
-      }, _vm._l(_vm.cols, function (col) {
-        return _c("div", {
-          key: col,
-          class: _vm.prefixCls + "-picker__item"
-        }, [_c("span", [_vm._v(_vm._s(col))])]);
-      }), 0)]), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-picker__column"
-      }, _vm._l(_vm.cols, function (col) {
-        return _c("div", {
-          key: col,
-          class: _vm.prefixCls + "-picker__item"
-        }, [_c("span", [_vm._v(_vm._s(col))])]);
-      }), 0)]), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-picker__mask"
-      })])])]);
+      }, _vm._l(_vm.items, function (item, $i) {
+        return _c("li", {
+          key: $i,
+          "class": _vm.prefixCls + "-picker__item"
+        }, [_c("span", [_vm._v(_vm._s(item.label || item))])]);
+      }), 0);
     };
 
     var __vue_staticRenderFns__$h = [];
@@ -3193,7 +3299,7 @@ var BusyUI = (function (exports, Vue) {
     var __vue_inject_styles__$h = undefined;
     /* scoped */
 
-    var __vue_scope_id__$h = "data-v-4214fe14";
+    var __vue_scope_id__$h = undefined;
     /* module identifier */
 
     var __vue_module_identifier__$h = undefined;
@@ -3204,22 +3310,171 @@ var BusyUI = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var Picker = normalizeComponent_1({
+    var Wheel = normalizeComponent_1({
       render: __vue_render__$h,
       staticRenderFns: __vue_staticRenderFns__$h
     }, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
+
+    //
+    var script$i = {
+      name: initName('picker'),
+      mixins: [baseMixins],
+      model: {
+        prop: 'value',
+        event: 'change'
+      },
+      props: {
+        columns: {
+          type: Array
+        },
+        value: Array,
+        isShow: {
+          type: Boolean,
+          "default": true
+        }
+      },
+      data: function data() {
+        return {
+          currentValue: this.value,
+          visiable: this.isShow
+        };
+      },
+      components: {
+        NativeMask: Mask,
+        Wheel: Wheel
+      },
+      watch: {
+        value: function value(val) {
+          this.currentValue = val;
+        },
+        isShow: function isShow(val) {
+          this.visiable = val;
+        },
+        visiable: function visiable(val) {
+          this.$emit('visiable', val);
+        }
+      },
+      methods: {
+        handleChange: function handleChange(val, i) {
+          // 解除引用关联
+          var v = this.currentValue.slice();
+          v.splice(i, 1, val);
+          this.currentValue = v;
+        },
+        confirm: function confirm() {
+          this.hide();
+          this.$emit('change', this.currentValue);
+        },
+        cancel: function cancel() {
+          this.hide();
+        },
+        hide: function hide() {
+          this.visiable = false;
+        }
+      },
+      mounted: function mounted() {}
+    };
+
+    /* script */
+    var __vue_script__$i = script$i;
+    /* template */
+
+    var __vue_render__$i = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c("NativeMask", {
+        attrs: {
+          "is-show": _vm.visiable
+        }
+      }, [_c("transition", {
+        attrs: {
+          name: _vm.prefixCls + "-animation--bibo"
+        }
+      }, [_c("div", {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: _vm.visiable,
+          expression: "visiable"
+        }],
+        "class": _vm.prefixCls + "-picker"
+      }, [_c("div", {
+        "class": _vm.prefixCls + "-picker__header"
+      }, [_c("span", {
+        "class": _vm.prefixCls + "-picker__cancel",
+        on: {
+          click: _vm.cancel
+        }
+      }, [_vm._v("取消")]), _vm._v(" "), _c("span", {
+        "class": _vm.prefixCls + "-picker__title"
+      }), _vm._v(" "), _c("span", {
+        "class": _vm.prefixCls + "-picker__confirm",
+        on: {
+          click: _vm.confirm
+        }
+      }, [_vm._v("确定")])]), _vm._v(" "), _c("div", {
+        "class": _vm.prefixCls + "-picker__box"
+      }, [_vm._t("default", _vm._l(_vm.columns, function (col, $i) {
+        return _c("Wheel", {
+          key: $i,
+          attrs: {
+            value: _vm.currentValue && _vm.currentValue[$i],
+            index: $i,
+            items: col
+          },
+          on: {
+            change: function () {
+              return function (val) {
+                return _vm.handleChange(val, $i);
+              };
+            }()
+          }
+        });
+      })), _vm._v(" "), _c("div", {
+        "class": _vm.prefixCls + "-picker__mask_top"
+      }), _vm._v(" "), _c("div", {
+        "class": _vm.prefixCls + "-picker__mask_bottom"
+      })], 2)])])], 1);
+    };
+
+    var __vue_staticRenderFns__$i = [];
+    __vue_render__$i._withStripped = true;
+    /* style */
+
+    var __vue_inject_styles__$i = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$i = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$i = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$i = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Picker = normalizeComponent_1({
+      render: __vue_render__$i,
+      staticRenderFns: __vue_staticRenderFns__$i
+    }, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
 
     Picker.install = function (vue) {
       vue.component(Picker.name, Picker);
     };
 
-    var script$i = {
+    var script$j = {
       name: initName('dialog'),
       mixins: [baseMixins],
       props: {
         mask: {
           type: Boolean,
-          default: true
+          "default": true
         },
         width: {
           type: [Number, String]
@@ -3229,25 +3484,25 @@ var BusyUI = (function (exports, Vue) {
         },
         content: {
           type: [String, Number],
-          default: ''
+          "default": ''
         },
         contentStyle: {
           type: Object
         },
         title: {
           type: String,
-          default: ''
+          "default": ''
         },
         height: {
           type: [Number, String]
         },
         closable: {
           type: Boolean,
-          default: false
+          "default": false
         },
         buttons: {
           type: Array,
-          default: function _default() {
+          "default": function _default() {
             return [{
               text: '取消'
             }, {
@@ -3257,15 +3512,15 @@ var BusyUI = (function (exports, Vue) {
         },
         buttonDirection: {
           type: String,
-          default: 'row'
+          "default": 'row'
         },
         isShow: {
           type: Boolean,
-          default: false
+          "default": false
         },
         isRemove: {
           type: Boolean,
-          default: false
+          "default": false
         }
       },
       data: function data() {
@@ -3355,10 +3610,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$i = script$i;
+    var __vue_script__$j = script$j;
     /* template */
 
-    var __vue_render__$i = function __vue_render__() {
+    var __vue_render__$j = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -3372,7 +3627,7 @@ var BusyUI = (function (exports, Vue) {
           value: !_vm.leave,
           expression: "!leave"
         }],
-        class: _vm.prefixCls + "-dialog"
+        "class": _vm.prefixCls + "-dialog"
       }, [_c("transition", {
         attrs: {
           name: _vm.prefixCls + "-animate--scale"
@@ -3387,10 +3642,10 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        class: _vm.prefixCls + "-dialog__wrap",
+        "class": _vm.prefixCls + "-dialog__wrap",
         style: _vm.styles
       }, [_vm.closable ? _c("p", {
-        class: _vm.prefixCls + "-dialog__close",
+        "class": _vm.prefixCls + "-dialog__close",
         on: {
           click: function click($event) {
             $event.stopPropagation();
@@ -3405,23 +3660,23 @@ var BusyUI = (function (exports, Vue) {
           color: "#8a8a8a"
         }
       })], 1) : _vm._e(), _vm._v(" "), _vm.title ? _c("header", {
-        class: _vm.prefixCls + "-dialog__header"
+        "class": _vm.prefixCls + "-dialog__header"
       }, [_vm._t("header", [_c("div", {
-        class: _vm.prefixCls + "-dialog__title"
+        "class": _vm.prefixCls + "-dialog__title"
       }, [_vm._v(_vm._s(_vm.title))])])], 2) : _vm._e(), _vm._v(" "), _vm.content || _vm.$slots["default"] ? _c("div", {
-        class: _vm.prefixCls + "-dialog__body"
+        "class": _vm.prefixCls + "-dialog__body"
       }, [_vm._t("default", [_c("div", {
-        class: _vm.prefixCls + "-dialog__content",
+        "class": _vm.prefixCls + "-dialog__content",
         style: _vm.contentStyle,
         domProps: {
           innerHTML: _vm._s(_vm.content)
         }
       })])], 2) : _vm._e(), _vm._v(" "), _c("footer", {
-        class: _vm.footerClasses
+        "class": _vm.footerClasses
       }, [_vm._t("footer", [_vm._l(_vm.bindButtons, function (btn, $i) {
         return [_c("p", {
           key: "btn-" + $i,
-          class: [_vm.prefixCls + "-dialog__button", btn.class],
+          "class": [_vm.prefixCls + "-dialog__button", btn["class"]],
           style: btn.style,
           on: {
             click: function click($event) {
@@ -3439,28 +3694,28 @@ var BusyUI = (function (exports, Vue) {
       })], 1);
     };
 
-    var __vue_staticRenderFns__$i = [];
-    __vue_render__$i._withStripped = true;
+    var __vue_staticRenderFns__$j = [];
+    __vue_render__$j._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$i = undefined;
+    var __vue_inject_styles__$j = undefined;
     /* scoped */
 
-    var __vue_scope_id__$i = undefined;
+    var __vue_scope_id__$j = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$i = undefined;
+    var __vue_module_identifier__$j = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$i = false;
+    var __vue_is_functional_template__$j = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Dialog = normalizeComponent_1({
-      render: __vue_render__$i,
-      staticRenderFns: __vue_staticRenderFns__$i
-    }, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
+      render: __vue_render__$j,
+      staticRenderFns: __vue_staticRenderFns__$j
+    }, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
 
     var DialogClass = Vue.extend(Dialog);
     /**
@@ -3516,9 +3771,9 @@ var BusyUI = (function (exports, Vue) {
       }
     });
 
-    var script$j = {
+    var script$k = {
       name: initName('alert'),
-      extends: Dialog,
+      "extends": Dialog,
       props: {
         action: Function
       },
@@ -3527,7 +3782,7 @@ var BusyUI = (function (exports, Vue) {
       },
       computed: {
         datas: function datas() {
-          return _objectSpread({}, this.$props, {
+          return _objectSpread2({}, this.$props, {
             isShow: this.visiable,
             buttons: [{
               text: '确定',
@@ -3544,10 +3799,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$j = script$j;
+    var __vue_script__$k = script$k;
     /* template */
 
-    var __vue_render__$j = function __vue_render__() {
+    var __vue_render__$k = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -3556,35 +3811,35 @@ var BusyUI = (function (exports, Vue) {
 
       return _c("BusyDialog", _vm._b({
         ref: "dialog",
-        class: _vm.prefixCls + "-alert",
+        "class": _vm.prefixCls + "-alert",
         on: {
           "visiable-change": _vm.handleVisiable
         }
       }, "BusyDialog", _vm.datas, false), [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$j = [];
-    __vue_render__$j._withStripped = true;
+    var __vue_staticRenderFns__$k = [];
+    __vue_render__$k._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$j = undefined;
+    var __vue_inject_styles__$k = undefined;
     /* scoped */
 
-    var __vue_scope_id__$j = undefined;
+    var __vue_scope_id__$k = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$j = undefined;
+    var __vue_module_identifier__$k = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$j = false;
+    var __vue_is_functional_template__$k = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Alert = normalizeComponent_1({
-      render: __vue_render__$j,
-      staticRenderFns: __vue_staticRenderFns__$j
-    }, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
+      render: __vue_render__$k,
+      staticRenderFns: __vue_staticRenderFns__$k
+    }, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
 
     var AlertClass = Vue.extend(Alert);
     /**
@@ -3611,9 +3866,6 @@ var BusyUI = (function (exports, Vue) {
        * @param {Object} opts - 配置项, <a href="#module_Alert">参见</a>
        * @static
        * @returns AlertClass实例
-       * 
-       * @example
-       * busy.Alert.show('提交申请成功');
        */
       show: function show(text, opts) {
         if (_typeof(text) === 'object') {
@@ -3638,9 +3890,9 @@ var BusyUI = (function (exports, Vue) {
       }
     });
 
-    var script$k = {
+    var script$l = {
       name: initName('confirm'),
-      extends: Dialog,
+      "extends": Dialog,
       components: {
         BusyDialog: Dialog
       },
@@ -3655,7 +3907,7 @@ var BusyUI = (function (exports, Vue) {
           }];
         },
         datas: function datas() {
-          return _objectSpread({}, this.$props, {
+          return _objectSpread2({}, this.$props, {
             isShow: this.visiable,
             buttons: this._buttons
           });
@@ -3675,10 +3927,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$k = script$k;
+    var __vue_script__$l = script$l;
     /* template */
 
-    var __vue_render__$k = function __vue_render__() {
+    var __vue_render__$l = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -3693,28 +3945,28 @@ var BusyUI = (function (exports, Vue) {
       }, "BusyDialog", _vm.datas, false), [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$k = [];
-    __vue_render__$k._withStripped = true;
+    var __vue_staticRenderFns__$l = [];
+    __vue_render__$l._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$k = undefined;
+    var __vue_inject_styles__$l = undefined;
     /* scoped */
 
-    var __vue_scope_id__$k = undefined;
+    var __vue_scope_id__$l = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$k = undefined;
+    var __vue_module_identifier__$l = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$k = false;
+    var __vue_is_functional_template__$l = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Confirm = normalizeComponent_1({
-      render: __vue_render__$k,
-      staticRenderFns: __vue_staticRenderFns__$k
-    }, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
+      render: __vue_render__$l,
+      staticRenderFns: __vue_staticRenderFns__$l
+    }, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
 
     var ConfirmClass = Vue.extend(Confirm);
     var instance$2;
@@ -3784,9 +4036,9 @@ var BusyUI = (function (exports, Vue) {
       }
     });
 
-    var script$l = {
+    var script$m = {
       name: initName('prompt'),
-      extends: Dialog,
+      "extends": Dialog,
       components: {
         BusyDialog: Dialog
       },
@@ -3794,7 +4046,7 @@ var BusyUI = (function (exports, Vue) {
         placeholder: String,
         height: {
           type: [String, Number],
-          default: 180
+          "default": 180
         },
         content: String,
         value: [String, Number]
@@ -3823,7 +4075,7 @@ var BusyUI = (function (exports, Vue) {
           }];
         },
         datas: function datas() {
-          return _objectSpread({}, this.$props, {
+          return _objectSpread2({}, this.$props, {
             isShow: this.visiable,
             buttons: this._buttons
           });
@@ -3843,10 +4095,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$l = script$l;
+    var __vue_script__$m = script$m;
     /* template */
 
-    var __vue_render__$l = function __vue_render__() {
+    var __vue_render__$m = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -3859,9 +4111,9 @@ var BusyUI = (function (exports, Vue) {
           "visiable-change": _vm.handleVisiable
         }
       }, "BusyDialog", _vm.datas, false), [_c("div", [_vm.content ? _c("div", {
-        class: _vm.prefixCls + "-prompt__text"
+        "class": _vm.prefixCls + "-prompt__text"
       }, [_vm._v("\n            " + _vm._s(_vm.content) + "\n        ")]) : _vm._e(), _vm._v(" "), _c("div", {
-        class: _vm.prefix + "-prompt__input_box"
+        "class": _vm.prefix + "-prompt__input_box"
       }, [_c("input", {
         directives: [{
           name: "model",
@@ -3869,7 +4121,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.currentVal,
           expression: "currentVal"
         }],
-        class: _vm.prefixCls + "-prompt__input",
+        "class": _vm.prefixCls + "-prompt__input",
         attrs: {
           type: "text",
           placeholder: _vm.placeholder
@@ -3889,28 +4141,28 @@ var BusyUI = (function (exports, Vue) {
       })])])]);
     };
 
-    var __vue_staticRenderFns__$l = [];
-    __vue_render__$l._withStripped = true;
+    var __vue_staticRenderFns__$m = [];
+    __vue_render__$m._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$l = undefined;
+    var __vue_inject_styles__$m = undefined;
     /* scoped */
 
-    var __vue_scope_id__$l = undefined;
+    var __vue_scope_id__$m = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$l = undefined;
+    var __vue_module_identifier__$m = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$l = false;
+    var __vue_is_functional_template__$m = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Prompt = normalizeComponent_1({
-      render: __vue_render__$l,
-      staticRenderFns: __vue_staticRenderFns__$l
-    }, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
+      render: __vue_render__$m,
+      staticRenderFns: __vue_staticRenderFns__$m
+    }, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
 
     var PromptClass = Vue.extend(Prompt);
     var instance$3;
@@ -3985,21 +4237,21 @@ var BusyUI = (function (exports, Vue) {
     });
 
     //
-    var script$m = {
+    var script$n = {
       name: initName('message'),
       mixins: [baseMixins],
       props: {
         pos: {
           type: String,
-          default: 'top'
+          "default": 'top'
         },
         mode: {
           type: String,
-          default: ''
+          "default": ''
         },
         text: {
           type: String,
-          default: ''
+          "default": ''
         },
         bgColor: {
           type: String
@@ -4014,23 +4266,23 @@ var BusyUI = (function (exports, Vue) {
         },
         delay: {
           type: Number,
-          default: 3000
+          "default": 3000
         },
         closable: {
           type: Boolean,
-          default: false
+          "default": false
         },
         isShow: {
           type: Boolean,
-          default: false
+          "default": false
         },
         isRemove: {
           type: Boolean,
-          default: false
+          "default": false
         },
         autoHide: {
           type: Boolean,
-          default: true
+          "default": true
         }
       },
       data: function data() {
@@ -4136,10 +4388,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$m = script$m;
+    var __vue_script__$n = script$n;
     /* template */
 
-    var __vue_render__$m = function __vue_render__() {
+    var __vue_render__$n = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -4160,10 +4412,10 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        class: _vm.classes,
+        "class": _vm.classes,
         style: _vm.styles
       }, [_c("div", {
-        class: _vm.prefixCls + "-message__icon"
+        "class": _vm.prefixCls + "-message__icon"
       }, [_c("Icon", {
         attrs: {
           name: _vm._statusStyles.icon,
@@ -4172,7 +4424,7 @@ var BusyUI = (function (exports, Vue) {
           color: _vm._statusStyles.color
         }
       })], 1), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-message__text"
+        "class": _vm.prefixCls + "-message__text"
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2), _vm._v(" "), _c("div", {
         directives: [{
           name: "show",
@@ -4180,7 +4432,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.closable,
           expression: "closable"
         }],
-        class: _vm.prefixCls + "-message__close",
+        "class": _vm.prefixCls + "-message__close",
         on: {
           click: _vm.hide
         }
@@ -4194,58 +4446,42 @@ var BusyUI = (function (exports, Vue) {
       })], 1)])]);
     };
 
-    var __vue_staticRenderFns__$m = [];
-    __vue_render__$m._withStripped = true;
+    var __vue_staticRenderFns__$n = [];
+    __vue_render__$n._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$m = undefined;
+    var __vue_inject_styles__$n = undefined;
     /* scoped */
 
-    var __vue_scope_id__$m = undefined;
+    var __vue_scope_id__$n = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$m = undefined;
+    var __vue_module_identifier__$n = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$m = false;
+    var __vue_is_functional_template__$n = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Message = normalizeComponent_1({
-      render: __vue_render__$m,
-      staticRenderFns: __vue_staticRenderFns__$m
-    }, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
+      render: __vue_render__$n,
+      staticRenderFns: __vue_staticRenderFns__$n
+    }, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
 
     var MessageClass = Vue.extend(Message);
     /**
-     * @busyui/message
+     * @class
+     * @constructor
      * @module Message
      * @see {@link ../example/all/message.html 实例}
-     * @desc 浮层提示信息组件 <busy-meesage></busy-meesage>
+     * @desc 浮层提示信息组件
      * @param {String} pos='top' - 显示位置,可取值 'top', 'middle', 'bottom'
      * @param {String} type='info' - 提示框类型, 可取值 'info', 'success', 'error', 'warning'
      * @param {String} text - 提示信息内容, 也可以slot方式传入
      * @param {Number} delay=3000 - 显示多长时间，单位 ms<毫秒>
      * @param {Boolean} isRemove=false - 是否隐藏后移除dom
      * @param {Boolean} autoHide=false - 是否自动隐藏
-     * @example
-     * 
-     *  // use it in module tools
-     *  import Message from '@busyui/message';
-     *  Message.show('有新信息了');
-     *  Message.info('有新信息了');
-     *  Message.success('信息提交成功');
-     *  Message.warning('内容包含非法词');
-     * 
-     *  // use it in html
-     *  <script src="busyui.js"><\/script>
-     *  <link rel="stylesheet" href="Busy.min.css">
-     *  Busy.Message.show('有新信息了');
-     *  Busy.Message.info('有新信息了');
-     *  Busy.Message.success('信息提交成功');
-     *  Busy.Message.warning('内容包含非法词');
-     * 
      */
 
     var Message$1 = _extends(Message, {
@@ -4287,10 +4523,6 @@ var BusyUI = (function (exports, Vue) {
        * @param {String} text - 提示信息
        * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
        * @returns MessageClass实例
-       * 
-       * @example
-       *  Busy.Message.info('收到一个优惠券');
-       * 
        */
       info: function info(text, opts) {
         return this.show(_extends(opts || {}, {
@@ -4306,10 +4538,6 @@ var BusyUI = (function (exports, Vue) {
        * @param {String} text - 提示信息
        * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
        * @returns MessageClass实例
-       * 
-       * @example
-       *  Busy.Message.success('提交成功');
-       * 
        */
       success: function success(text, opts) {
         return this.show(_extends(opts || {}, {
@@ -4325,10 +4553,6 @@ var BusyUI = (function (exports, Vue) {
        * @param {String} text - 提示信息
        * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
        * @returns MessageClass实例
-       * 
-       * @example
-       *  Busy.Message.warning('内容包含非法词');
-       * 
        */
       warning: function warning(text, opts) {
         return this.show(_extends(opts || {}, {
@@ -4344,10 +4568,6 @@ var BusyUI = (function (exports, Vue) {
        * @param {String} text - 提示信息
        * @param {Object} opts - 配置项, <a href="#module_Message">参考</a>
        * @returns MessageClass实例
-       * 
-       * @example
-       *  Busy.Message.error('内容包含非法词');
-       * 
        */
       error: function error(text, opts) {
         return this.show(_extends(opts || {}, {
@@ -4362,18 +4582,18 @@ var BusyUI = (function (exports, Vue) {
       props: {
         trackWidth: {
           type: Number,
-          default: 1
+          "default": 1
         },
         trackColor: {
           type: [String, Array],
-          default: ''
+          "default": ''
         },
         lineColor: {
           type: [String, Array],
-          default: ''
+          "default": ''
         },
         value: {
-          default: 0,
+          "default": 0,
           validator: function validator(val) {
             return typeof val === 'number' && val >= 0 && val <= 100;
           }
@@ -4401,21 +4621,21 @@ var BusyUI = (function (exports, Vue) {
      * @param {String} content - 显示内容，this.value + '%'
      **/
 
-    var script$n = {
+    var script$o = {
       name: initName('progress-ring'),
       mixins: [mixins],
       props: {
         size: {
           type: Number,
-          default: 100
+          "default": 100
         },
         direction: {
           type: [Number, String],
-          default: 1
+          "default": 1
         },
         linecap: {
           type: String,
-          default: 'round'
+          "default": 'round'
         }
       },
       computed: {
@@ -4466,10 +4686,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$n = script$n;
+    var __vue_script__$o = script$o;
     /* template */
 
-    var __vue_render__$n = function __vue_render__() {
+    var __vue_render__$o = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -4477,7 +4697,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.prefixCls + "-progress-ring",
+        "class": _vm.prefixCls + "-progress-ring",
         on: {
           click: _vm.handleClick
         }
@@ -4490,7 +4710,7 @@ var BusyUI = (function (exports, Vue) {
           xmlns: "http://www.w3.org/2000/svg"
         }
       }, [_c("circle", {
-        class: _vm.prefixCls + "-progress-ring__track",
+        "class": _vm.prefixCls + "-progress-ring__track",
         style: _vm.trackStyles,
         attrs: {
           cx: _vm.radius,
@@ -4502,7 +4722,7 @@ var BusyUI = (function (exports, Vue) {
           "stroke-dashoffset": 0
         }
       }), _vm._v(" "), _c("circle", {
-        class: _vm.prefixCls + "-progress-ring__bar",
+        "class": _vm.prefixCls + "-progress-ring__bar",
         style: _vm.barStyles,
         attrs: {
           cx: _vm.radius,
@@ -4514,32 +4734,32 @@ var BusyUI = (function (exports, Vue) {
           "stroke-dashoffset": _vm.dashoffset
         }
       })]), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-progress-ring__text"
+        "class": _vm.prefixCls + "-progress-ring__text"
       }, [_vm._t("default")], 2)]);
     };
 
-    var __vue_staticRenderFns__$n = [];
-    __vue_render__$n._withStripped = true;
+    var __vue_staticRenderFns__$o = [];
+    __vue_render__$o._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$n = undefined;
+    var __vue_inject_styles__$o = undefined;
     /* scoped */
 
-    var __vue_scope_id__$n = undefined;
+    var __vue_scope_id__$o = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$n = undefined;
+    var __vue_module_identifier__$o = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$n = false;
+    var __vue_is_functional_template__$o = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ProgressRing = normalizeComponent_1({
-      render: __vue_render__$n,
-      staticRenderFns: __vue_staticRenderFns__$n
-    }, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
+      render: __vue_render__$o,
+      staticRenderFns: __vue_staticRenderFns__$o
+    }, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
 
     //
     /**
@@ -4552,7 +4772,7 @@ var BusyUI = (function (exports, Vue) {
      * @param {String} showText - 是否显示进度数值, 默认 false
      **/
 
-    var script$o = {
+    var script$p = {
       name: initName('progress-line'),
       mixins: [mixins],
       props: {
@@ -4586,10 +4806,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$o = script$o;
+    var __vue_script__$p = script$p;
     /* template */
 
-    var __vue_render__$o = function __vue_render__() {
+    var __vue_render__$p = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -4597,7 +4817,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.prefixCls + "-progress-line",
+        "class": _vm.prefixCls + "-progress-line",
         style: _vm.styles,
         on: {
           click: _vm.handleClick
@@ -4609,12 +4829,12 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.$slots["start"],
           expression: "$slots['start']"
         }],
-        class: _vm.prefixCls + "-progress-line__start"
+        "class": _vm.prefixCls + "-progress-line__start"
       }, [_vm._t("start")], 2), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-progress-line__wrap",
+        "class": _vm.prefixCls + "-progress-line__wrap",
         style: _vm.trackStyles
       }, [_c("div", {
-        class: _vm.prefixCls + "-progress-line__bar",
+        "class": _vm.prefixCls + "-progress-line__bar",
         style: _vm.barStyles
       })]), _vm._v(" "), _c("div", {
         directives: [{
@@ -4623,32 +4843,32 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.$slots["end"],
           expression: "$slots['end']"
         }],
-        class: _vm.prefixCls + "-progress-line__end"
+        "class": _vm.prefixCls + "-progress-line__end"
       }, [_vm._t("end")], 2)]);
     };
 
-    var __vue_staticRenderFns__$o = [];
-    __vue_render__$o._withStripped = true;
+    var __vue_staticRenderFns__$p = [];
+    __vue_render__$p._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$o = undefined;
+    var __vue_inject_styles__$p = undefined;
     /* scoped */
 
-    var __vue_scope_id__$o = undefined;
+    var __vue_scope_id__$p = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$o = undefined;
+    var __vue_module_identifier__$p = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$o = false;
+    var __vue_is_functional_template__$p = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ProgressLine = normalizeComponent_1({
-      render: __vue_render__$o,
-      staticRenderFns: __vue_staticRenderFns__$o
-    }, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
+      render: __vue_render__$p,
+      staticRenderFns: __vue_staticRenderFns__$p
+    }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
 
     //
     /**
@@ -4665,18 +4885,18 @@ var BusyUI = (function (exports, Vue) {
      * @param {String} type - 进度条组件类型, 可取值 'line', 'ring', 默认 'line'
      **/
 
-    var script$p = {
+    var script$q = {
       name: initName('progress'),
       mixins: [mixins],
       props: {
         size: {
           type: Number,
-          default: 80
+          "default": 80
         },
         direction: String,
         type: {
           type: String,
-          default: 'line'
+          "default": 'line'
         },
         height: {
           type: [Number, String]
@@ -4728,10 +4948,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$p = script$p;
+    var __vue_script__$q = script$q;
     /* template */
 
-    var __vue_render__$p = function __vue_render__() {
+    var __vue_render__$q = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -4739,7 +4959,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        staticClass: "busy-progress",
+        "class": _vm.prefixCls + "-progress",
         on: {
           click: _vm.handleClick
         }
@@ -4751,31 +4971,31 @@ var BusyUI = (function (exports, Vue) {
         slot: "end"
       }, [_vm._t("end")], 2)], 2) : _vm._e(), _vm._v(" "), _vm.type === "ring" ? _c("ProgressRing", _vm._b({
         ref: "child-ring"
-      }, "ProgressRing", _vm.ringModel, false), [_vm._t("default", [_vm._v("11111")])], 2) : _vm._e()], 1);
+      }, "ProgressRing", _vm.ringModel, false), [_vm._t("default")], 2) : _vm._e()], 1);
     };
 
-    var __vue_staticRenderFns__$p = [];
-    __vue_render__$p._withStripped = true;
+    var __vue_staticRenderFns__$q = [];
+    __vue_render__$q._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$p = undefined;
+    var __vue_inject_styles__$q = undefined;
     /* scoped */
 
-    var __vue_scope_id__$p = undefined;
+    var __vue_scope_id__$q = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$p = undefined;
+    var __vue_module_identifier__$q = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$p = false;
+    var __vue_is_functional_template__$q = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Progress = normalizeComponent_1({
-      render: __vue_render__$p,
-      staticRenderFns: __vue_staticRenderFns__$p
-    }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
+      render: __vue_render__$q,
+      staticRenderFns: __vue_staticRenderFns__$q
+    }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
 
     Progress.install = function (vue) {
       vue.component(ProgressRing.name, ProgressRing);
@@ -4784,33 +5004,33 @@ var BusyUI = (function (exports, Vue) {
     };
 
     //
-    var script$q = {
+    var script$r = {
       name: initName('loadmore-bar'),
       mixins: [baseMixins],
       props: {
         size: {
           type: Number,
-          default: 20
+          "default": 20
         },
         pullText: {
           type: String,
-          default: '刷新加载'
+          "default": '刷新加载'
         },
         loadingText: {
           type: String,
-          default: '加载中...'
+          "default": '加载中...'
         },
         dropText: {
           type: String,
-          default: '释放刷新'
+          "default": '释放刷新'
         },
         pos: {
           type: String,
-          default: ''
+          "default": ''
         },
         showStatus: {
           type: String,
-          default: 'init'
+          "default": 'init'
         }
       },
       data: function data() {
@@ -4838,10 +5058,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$q = script$q;
+    var __vue_script__$r = script$r;
     /* template */
 
-    var __vue_render__$q = function __vue_render__() {
+    var __vue_render__$r = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -4855,9 +5075,9 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.pos == "top" || _vm.pos == "bottom" && _vm.status == "loading",
           expression: "pos=='top' || pos=='bottom' && status=='loading'"
         }],
-        class: _vm.prefixCls + "-loadmore__bar " + _vm.prefixCls + "-flex--center-center"
+        "class": _vm.prefixCls + "-loadmore__bar " + _vm.prefixCls + "-flex--center-center"
       }, [_c("p", {
-        class: _vm.prefixCls + "-loadmore__spinner"
+        "class": _vm.prefixCls + "-loadmore__spinner"
       }, [_c("Spinner", {
         directives: [{
           name: "show",
@@ -4872,9 +5092,9 @@ var BusyUI = (function (exports, Vue) {
           color: "#aaa"
         }
       })], 1), _vm._v(" "), _c("p", {
-        class: [_vm.prefixCls + "-loadmore__text", _vm.prefixCls + "-loadmore--" + _vm.status]
+        "class": [_vm.prefixCls + "-loadmore__text", _vm.prefixCls + "-loadmore--" + _vm.status]
       }, [_vm.pos == "top" ? _c("span", {
-        class: _vm.prefixCls + "-loadmore__arrow"
+        "class": _vm.prefixCls + "-loadmore__arrow"
       }, [_c("Icon", {
         attrs: {
           height: 30,
@@ -4884,29 +5104,30 @@ var BusyUI = (function (exports, Vue) {
       })], 1) : _vm._e(), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.loadText))])])]);
     };
 
-    var __vue_staticRenderFns__$q = [];
-    __vue_render__$q._withStripped = true;
+    var __vue_staticRenderFns__$r = [];
+    __vue_render__$r._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$q = undefined;
+    var __vue_inject_styles__$r = undefined;
     /* scoped */
 
-    var __vue_scope_id__$q = undefined;
+    var __vue_scope_id__$r = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$q = undefined;
+    var __vue_module_identifier__$r = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$q = false;
+    var __vue_is_functional_template__$r = false;
     /* style inject */
 
     /* style inject SSR */
 
-    var loadMoreBar = normalizeComponent_1({
-      render: __vue_render__$q,
-      staticRenderFns: __vue_staticRenderFns__$q
-    }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
+    var LoadMoreBar = normalizeComponent_1({
+      render: __vue_render__$r,
+      staticRenderFns: __vue_staticRenderFns__$r
+    }, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
 
+    //
     /**
      * @class
      * @constructor
@@ -4928,37 +5149,37 @@ var BusyUI = (function (exports, Vue) {
      * @param {Boolean} listenScroll - 是否监听scroll
      */
 
-    var script$r = {
+    var script$s = {
       name: initName('loadmore'),
       mixins: [baseMixins],
       props: {
         topPullText: {
           type: String,
-          default: '下拉刷新'
+          "default": '下拉刷新'
         },
         topLoadingText: {
           type: String,
-          default: '正在加载新数据'
+          "default": '正在加载新数据'
         },
         topDropText: {
           type: String,
-          default: '释放加载'
+          "default": '释放加载'
         },
         bottomPullText: {
           type: String,
-          default: '上拉刷新'
+          "default": '上拉刷新'
         },
         bottomLoadingText: {
           type: String,
-          default: '加载中...'
+          "default": '加载中...'
         },
         bottomDropText: {
           type: String,
-          default: '释放加载'
+          "default": '释放加载'
         },
         noMoreText: {
           type: String,
-          default: '全部数据已加载'
+          "default": '全部数据已加载'
         },
         onInfinite: {
           type: Function
@@ -4968,27 +5189,27 @@ var BusyUI = (function (exports, Vue) {
         },
         topLimit: {
           type: Number,
-          default: 60
+          "default": 60
         },
         bottomLimit: {
           type: Number,
-          default: 120
+          "default": 120
         },
         topStatus: {
           type: String,
-          default: 'init'
+          "default": 'init'
         },
         bottomStatus: {
           type: String,
-          default: 'init'
+          "default": 'init'
         },
         noMoreData: {
           type: Boolean,
-          default: false
+          "default": false
         },
         listenScroll: {
           type: Boolean,
-          default: true
+          "default": true
         }
       },
       data: function data() {
@@ -5004,7 +5225,9 @@ var BusyUI = (function (exports, Vue) {
           noData: false
         };
       },
-      components: _defineProperty({}, loadMoreBar.name, loadMoreBar),
+      components: {
+        LoadMoreBar: LoadMoreBar
+      },
       computed: {
         styles: function styles() {
           return {
@@ -5175,10 +5398,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$r = script$r;
+    var __vue_script__$s = script$s;
     /* template */
 
-    var __vue_render__$r = function __vue_render__() {
+    var __vue_render__$s = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -5186,13 +5409,13 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.prefixCls + "-loadmore"
+        "class": _vm.prefixCls + "-loadmore"
       }, [_c("div", {
-        class: _vm.prefixCls + "-loadmore__content",
+        "class": _vm.prefixCls + "-loadmore__content",
         style: _vm.styles
-      }, [_vm._t("top", [_vm.onRefresh ? _c("busy-loadmore-bar", {
+      }, [_vm._t("top", [_vm.onRefresh ? _c("LoadMoreBar", {
         ref: "top",
-        class: _vm.prefixCls + "-loadmore__top",
+        "class": _vm.prefixCls + "-loadmore__top",
         attrs: {
           "pull-text": _vm.topPullText,
           "loading-text": _vm.topLoadingText,
@@ -5201,10 +5424,10 @@ var BusyUI = (function (exports, Vue) {
           pos: "top"
         }
       }) : _vm._e()]), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-loadmore__content"
-      }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c("busy-loadmore-bar", {
+        "class": _vm.prefixCls + "-loadmore__content"
+      }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c("LoadMoreBar", {
         ref: "bottom",
-        class: _vm.prefixCls + "-loadmore__bottom",
+        "class": _vm.prefixCls + "-loadmore__bottom",
         attrs: {
           "pull-text": _vm.bottomPullText,
           "loading-text": _vm.bottomLoadingText,
@@ -5213,32 +5436,32 @@ var BusyUI = (function (exports, Vue) {
           pos: "bottom"
         }
       })]) : _vm._e(), _vm._v(" "), _vm.noMore ? _vm._t("no-more", [_c("div", {
-        class: _vm.prefixCls + "-loadmore__nomore"
+        "class": _vm.prefixCls + "-loadmore__nomore"
       }, [_vm._v(_vm._s(_vm.noMoreText))])]) : _vm._e()], 2)]);
     };
 
-    var __vue_staticRenderFns__$r = [];
-    __vue_render__$r._withStripped = true;
+    var __vue_staticRenderFns__$s = [];
+    __vue_render__$s._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$r = undefined;
+    var __vue_inject_styles__$s = undefined;
     /* scoped */
 
-    var __vue_scope_id__$r = undefined;
+    var __vue_scope_id__$s = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$r = undefined;
+    var __vue_module_identifier__$s = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$r = false;
+    var __vue_is_functional_template__$s = false;
     /* style inject */
 
     /* style inject SSR */
 
     var LoadMore = normalizeComponent_1({
-      render: __vue_render__$r,
-      staticRenderFns: __vue_staticRenderFns__$r
-    }, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
+      render: __vue_render__$s,
+      staticRenderFns: __vue_staticRenderFns__$s
+    }, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
 
     LoadMore.install = function (vue) {
       vue.component(LoadMore.name, LoadMore);
@@ -5264,20 +5487,20 @@ var BusyUI = (function (exports, Vue) {
      * @param {Number} interval=2000 - 自动播放间隔时间 毫秒
      */
 
-    var script$s = {
+    var script$t = {
       name: initName('swipe'),
       mixins: [baseMixins],
       props: {
         height: {
           type: Number,
-          default: 200
+          "default": 200
         },
         width: {
           type: Number
         },
         defaultIndex: {
           type: Number,
-          default: 0
+          "default": 0
         },
         dotColor: {
           type: String
@@ -5287,23 +5510,23 @@ var BusyUI = (function (exports, Vue) {
         },
         dirType: {
           type: String,
-          default: HORIZONTAL
+          "default": HORIZONTAL
         },
         showDotes: {
           type: Boolean,
-          default: true
+          "default": true
         },
         dotesPos: {
           type: String,
-          default: 'bottom'
+          "default": 'bottom'
         },
         autoPlay: {
           type: Boolean,
-          default: false
+          "default": false
         },
         interval: {
           type: Number,
-          default: 2000
+          "default": 2000
         }
       },
       data: function data() {
@@ -5322,8 +5545,8 @@ var BusyUI = (function (exports, Vue) {
       computed: {
         styles: function styles() {
           return {
-            height: this.height + 'px',
-            width: this.width + 'px'
+            height: cmpUnit(this.height),
+            width: cmpUnit(this.width)
           };
         },
         wrapStyles: function wrapStyles() {
@@ -5348,10 +5571,10 @@ var BusyUI = (function (exports, Vue) {
           };
         },
         dotesClass: function dotesClass() {
-          return ["busy-swipe__dots--pos-".concat(this.dotesPos)];
+          return ["".concat(this.prefixCls, "-swipe__dots--pos-").concat(this.dotesPos)];
         },
         classes: function classes() {
-          return [this.status == "transition" ? 'busy-swipe--transition' : '', this.dirType == HORIZONTAL ? 'busy-swipe--horizontal' : 'busy-swipe--vertical'];
+          return [this.status == "transition" ? "".concat(this.prefixCls, "-swipe--transition") : '', this.dirType == HORIZONTAL ? "".concat(this.prefixCls, "-swipe--horizontal") : "".concat(this.prefixCls, "-swipe--vertical")];
         }
       },
       watch: {
@@ -5506,7 +5729,7 @@ var BusyUI = (function (exports, Vue) {
       },
       mounted: function mounted() {
         // 初始化
-        this.items = [].slice.call(this.$el.querySelectorAll('.busy-swipe__item'));
+        this.items = [].slice.call(this.$el.querySelectorAll(".".concat(this.prefixCls, "-swipe__item")));
         this.size = this.items.length;
 
         if (this.index < 0 || this.index >= this.size) {
@@ -5522,78 +5745,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$s = script$s;
-    /* template */
-
-    var __vue_render__$s = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c("div", {
-        class: _vm.prefixCls + "-swipe",
-        style: _vm.styles,
-        on: {
-          click: _vm.handleClick
-        }
-      }, [_c("div", {
-        class: [_vm.prefixCls + "-swipe__wrap", _vm.classes],
-        style: _vm.wrapStyles
-      }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c("div", {
-        class: [_vm.prefixCls + "-swpier__dotes", _vm.dotesClass]
-      }, _vm._l(_vm.items, function (item, i) {
-        return _c("span", {
-          key: "swiper-" + i,
-          class: ["busy-swipe__dot", i == _vm.index ? "busy-swipe__dot--cur" : ""],
-          style: [_vm.dotStyles, i == _vm.index ? {
-            backgroundColor: _vm.curDotColor
-          } : {}],
-          on: {
-            click: function click($event) {
-              $event.stopPropagation();
-              return _vm.goIndex(i);
-            }
-          }
-        });
-      }), 0) : _vm._e()]);
-    };
-
-    var __vue_staticRenderFns__$s = [];
-    __vue_render__$s._withStripped = true;
-    /* style */
-
-    var __vue_inject_styles__$s = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$s = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$s = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$s = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Swipe = normalizeComponent_1({
-      render: __vue_render__$s,
-      staticRenderFns: __vue_staticRenderFns__$s
-    }, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
-
-    //
-    //
-    //
-    //
-    //
-    //
-    var script$t = {
-      name: 'busy-swipe-item'
-    };
-
-    /* script */
     var __vue_script__$t = script$t;
     /* template */
 
@@ -5605,8 +5756,31 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        staticClass: "busy-swipe__item"
-      }, [_vm._t("default")], 2);
+        "class": _vm.prefixCls + "-swipe",
+        style: _vm.styles,
+        on: {
+          click: _vm.handleClick
+        }
+      }, [_c("div", {
+        "class": [_vm.prefixCls + "-swipe__wrap", _vm.classes],
+        style: _vm.wrapStyles
+      }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c("div", {
+        "class": [_vm.prefixCls + "-swpier__dotes", _vm.dotesClass]
+      }, _vm._l(_vm.items, function (item, i) {
+        return _c("span", {
+          key: "swiper-" + i,
+          "class": [_vm.prefixCls + "-swipe__dot", i == _vm.index ? _vm.prefixCls + "-swipe__dot--cur" : ""],
+          style: [_vm.dotStyles, i == _vm.index ? {
+            backgroundColor: _vm.curDotColor
+          } : {}],
+          on: {
+            click: function click($event) {
+              $event.stopPropagation();
+              return _vm.goIndex(i);
+            }
+          }
+        });
+      }), 0) : _vm._e()]);
     };
 
     var __vue_staticRenderFns__$t = [];
@@ -5627,28 +5801,15 @@ var BusyUI = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var SwipeItem = normalizeComponent_1({
+    var Swipe = normalizeComponent_1({
       render: __vue_render__$t,
       staticRenderFns: __vue_staticRenderFns__$t
     }, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
 
-    Swipe.install = function (vue) {
-      vue.component(SwipeItem.name, SwipeItem);
-      vue.component(Swipe.name, Swipe);
-    };
-
     //
     var script$u = {
-      name: initName('action-sheet-item'),
-      mixins: [baseMixins],
-      props: {
-        action: Function
-      },
-      methods: {
-        handleClick: function handleClick(e) {
-          this.$emit('click', e);
-        }
-      }
+      name: initName('swipe-item'),
+      mixins: [baseMixins]
     };
 
     /* script */
@@ -5663,10 +5824,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: [_vm.prefixCls + "-action-sheet__item", _vm.prefixCls + "-border-1px", _vm.prefixCls + "-border-b"],
-        on: {
-          click: _vm.handleClick
-        }
+        "class": _vm.prefixCls + "-swipe__item"
       }, [_vm._t("default")], 2);
     };
 
@@ -5688,29 +5846,90 @@ var BusyUI = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var ActionSheetItem = normalizeComponent_1({
+    var SwipeItem = normalizeComponent_1({
       render: __vue_render__$u,
       staticRenderFns: __vue_staticRenderFns__$u
     }, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
 
+    Swipe.install = function (vue) {
+      vue.component(SwipeItem.name, SwipeItem);
+      vue.component(Swipe.name, Swipe);
+    };
+
     //
     var script$v = {
+      name: initName('action-sheet-item'),
+      mixins: [baseMixins],
+      props: {
+        action: Function
+      },
+      methods: {
+        handleClick: function handleClick(e) {
+          this.$emit('click', e);
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$v = script$v;
+    /* template */
+
+    var __vue_render__$v = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c("div", {
+        "class": [_vm.prefixCls + "-action-sheet__item", _vm.prefixCls + "-border-1px", _vm.prefixCls + "-border-b"],
+        on: {
+          click: _vm.handleClick
+        }
+      }, [_vm._t("default")], 2);
+    };
+
+    var __vue_staticRenderFns__$v = [];
+    __vue_render__$v._withStripped = true;
+    /* style */
+
+    var __vue_inject_styles__$v = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$v = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$v = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$v = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var ActionSheetItem = normalizeComponent_1({
+      render: __vue_render__$v,
+      staticRenderFns: __vue_staticRenderFns__$v
+    }, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
+
+    //
+    var script$w = {
       name: initName('action-sheet'),
       mixins: [baseMixins],
       props: {
         isShow: {
           type: Boolean,
-          default: false
+          "default": false
         },
         actions: {
           type: Array,
-          default: function _default() {
+          "default": function _default() {
             return [];
           }
         },
         isRemove: {
           type: Boolean,
-          default: false
+          "default": false
         }
       },
       data: function data() {
@@ -5760,10 +5979,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$v = script$v;
+    var __vue_script__$w = script$w;
     /* template */
 
-    var __vue_render__$v = function __vue_render__() {
+    var __vue_render__$w = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -5796,11 +6015,11 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        class: _vm.prefixCls + "-action-sheet"
+        "class": _vm.prefixCls + "-action-sheet"
       }, [_c("div", {
-        class: _vm.prefixCls + "-action-sheet__box"
+        "class": _vm.prefixCls + "-action-sheet__box"
       }, [_c("div", {
-        class: _vm.prefixCls + "-action-sheet__list"
+        "class": _vm.prefixCls + "-action-sheet__list"
       }, [_vm._t("default", _vm._l(_vm.actions, function (ac, $i) {
         return _c("ActionSheetItem", {
           key: "as-" + $i,
@@ -5809,42 +6028,43 @@ var BusyUI = (function (exports, Vue) {
           }
         }, [_vm._v(_vm._s(ac.text))]);
       }))], 2), _vm._v(" "), _c("div", {
-        class: _vm.prefixCls + "-action-sheet__button",
+        "class": _vm.prefixCls + "-action-sheet__button",
         on: {
           click: _vm.hide
         }
       }, [_vm._v("取消")])])])])], 1);
     };
 
-    var __vue_staticRenderFns__$v = [];
-    __vue_render__$v._withStripped = true;
+    var __vue_staticRenderFns__$w = [];
+    __vue_render__$w._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$v = undefined;
+    var __vue_inject_styles__$w = undefined;
     /* scoped */
 
-    var __vue_scope_id__$v = undefined;
+    var __vue_scope_id__$w = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$v = undefined;
+    var __vue_module_identifier__$w = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$v = false;
+    var __vue_is_functional_template__$w = false;
     /* style inject */
 
     /* style inject SSR */
 
     var ActionSheet = normalizeComponent_1({
-      render: __vue_render__$v,
-      staticRenderFns: __vue_staticRenderFns__$v
-    }, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
+      render: __vue_render__$w,
+      staticRenderFns: __vue_staticRenderFns__$w
+    }, __vue_inject_styles__$w, __vue_script__$w, __vue_scope_id__$w, __vue_is_functional_template__$w, __vue_module_identifier__$w, undefined, undefined);
 
     var ActionSheetClass, instance$4, vm;
     /**
-     * @busyui/action-sheet
+     * @class
+     * @constructor
      * @module ActionSheet
      * @see {@link ../example/all/action-sheet.html 实例}
-     * @desc ActionSheet框组件 <busy-action-sheet />
+     * @desc ActionSheet框组件
      * @param {Array} actions - 动作菜单项
      * @param {Boolean} isShow=false - 是否显示
      * @param {Boolean} isRemove=false - 是否隐藏后删除
@@ -5854,65 +6074,6 @@ var BusyUI = (function (exports, Vue) {
      * @param {Event} hide - 隐藏时触发
      * @param {Event} visiable-change - 显示隐藏时都会触发
      * @param {Slot} slot - default - 组件slot
-     * @example
-     * import ActionSheet from '@busyui/action-sheet'
-     * 
-     * // 动态创建
-     * ActionSheet.show({
-     *  actions:[{
-     *      text:'执行动作一',
-     *      action(){
-     *          console.log('执行动作一')
-     *      }
-     *  },{
-     *      text:'执行动作二',
-     *      action(){
-     *          console.log('执行动作二')
-     *      }
-     *  }]
-     * });
-     * 
-     * // 标签方式
-     * vue.use(ActionSheet);
-     * 
-     * <busy-action-sheet @visiable-change="visiableChange" :is-show="isShow" :actions="actions"></busy-action-sheet>
-     * 
-     * 
-     * new Vue({
-     *      el:'#app',
-     *      data:function(){
-     *          return {
-     *              isShow: false,
-     *              actions:[{
-     *                  text:'执行动作一',
-     *                  action(){
-     *                      console.log('执行动作一')
-     *                  }
-     *              },{
-     *                  text:'执行动作二',
-     *                  action(){
-     *                      console.log('执行动作二')
-     *                  }
-     *              }]
-     *          }
-     *      },
-     *      methods:{
-     *          show: function(){
-     *              this.isShow = true;
-     *          },
-     *          hide: function(){
-     *              this.isShow = false;
-     *          },
-     *          visiableChange: function(visiable){
-     *              this.isShow = visiable;
-     *          },
-     *          showActionSheet:function(){
-     *              Busy.ActionSheet.show({
-     *                 actions: this.actions
-     *              });
-     *          }
-     *     }
-     * })
      *
      */
 
@@ -6020,7 +6181,7 @@ var BusyUI = (function (exports, Vue) {
     };
 
     //
-    var script$w = {
+    var script$x = {
       name: initName('input'),
       mixins: [baseMixins],
       props: {
@@ -6029,12 +6190,12 @@ var BusyUI = (function (exports, Vue) {
         readonly: Boolean,
         type: {
           type: String,
-          default: 'text'
+          "default": 'text'
         },
         name: String,
         maxlength: {
           type: [Number, String],
-          default: 50
+          "default": 50
         },
         pattern: String,
         format: [String, Array],
@@ -6186,10 +6347,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$w = script$w;
+    var __vue_script__$x = script$x;
     /* template */
 
-    var __vue_render__$w = function __vue_render__() {
+    var __vue_render__$x = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -6203,9 +6364,9 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.unActive,
           expression: "unActive"
         }],
-        class: _vm.prefixCls + "-input"
+        "class": _vm.prefixCls + "-input"
       }, [_c("div", {
-        class: _vm.prefixCls + "-input__content"
+        "class": _vm.prefixCls + "-input__content"
       }, [_vm.datas.type === "checkbox" ? _c("input", _vm._b({
         directives: [{
           name: "model",
@@ -6213,7 +6374,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        class: _vm.prefixCls + "-input__input",
+        "class": _vm.prefixCls + "-input__input",
         style: _vm.styles,
         attrs: {
           type: "checkbox"
@@ -6258,7 +6419,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        class: _vm.prefixCls + "-input__input",
+        "class": _vm.prefixCls + "-input__input",
         style: _vm.styles,
         attrs: {
           type: "radio"
@@ -6288,7 +6449,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        class: _vm.prefixCls + "-input__input",
+        "class": _vm.prefixCls + "-input__input",
         style: _vm.styles,
         attrs: {
           type: _vm.datas.type
@@ -6322,7 +6483,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.active && _vm.currentValue,
           expression: "active && currentValue"
         }],
-        class: _vm.prefixCls + "-input__clear",
+        "class": _vm.prefixCls + "-input__clear",
         on: {
           click: _vm.handleClear
         }
@@ -6336,139 +6497,54 @@ var BusyUI = (function (exports, Vue) {
       })], 1)]);
     };
 
-    var __vue_staticRenderFns__$w = [];
-    __vue_render__$w._withStripped = true;
+    var __vue_staticRenderFns__$x = [];
+    __vue_render__$x._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$w = undefined;
+    var __vue_inject_styles__$x = undefined;
     /* scoped */
 
-    var __vue_scope_id__$w = undefined;
+    var __vue_scope_id__$x = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$w = undefined;
+    var __vue_module_identifier__$x = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$w = false;
+    var __vue_is_functional_template__$x = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Input = normalizeComponent_1({
-      render: __vue_render__$w,
-      staticRenderFns: __vue_staticRenderFns__$w
-    }, __vue_inject_styles__$w, __vue_script__$w, __vue_scope_id__$w, __vue_is_functional_template__$w, __vue_module_identifier__$w, undefined, undefined);
+      render: __vue_render__$x,
+      staticRenderFns: __vue_staticRenderFns__$x
+    }, __vue_inject_styles__$x, __vue_script__$x, __vue_scope_id__$x, __vue_is_functional_template__$x, __vue_module_identifier__$x, undefined, undefined);
 
     Input.install = function (vue) {
       vue.component(Input.name, Input);
     };
 
     //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    var script$x = {
-      name: 'busy-switch',
+    var script$y = {
+      name: initName('switch'),
+      mixins: [baseMixins],
       props: {
         value: Boolean,
         disabled: {
           type: Boolean,
-          default: false
+          "default": false
         },
         color: {
           type: String,
-          default: ''
+          "default": ''
         },
         width: {
           type: [Number, String],
-          default: 52
+          "default": 52
         },
         height: {
           type: [Number, String],
-          default: 32
+          "default": 32
         }
       },
       data: function data() {
@@ -6487,10 +6563,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$x = script$x;
+    var __vue_script__$y = script$y;
     /* template */
 
-    var __vue_render__$x = function __vue_render__() {
+    var __vue_render__$y = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -6504,7 +6580,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "busy-switch busy-switch__animbg",
+        "class": _vm.prefixCls + "-switch " + _vm.prefixCls + "-switch__animbg",
         attrs: {
           type: "checkbox"
         },
@@ -6534,88 +6610,6 @@ var BusyUI = (function (exports, Vue) {
       })]);
     };
 
-    var __vue_staticRenderFns__$x = [];
-    __vue_render__$x._withStripped = true;
-    /* style */
-
-    var __vue_inject_styles__$x = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$x = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$x = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$x = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Switch = normalizeComponent_1({
-      render: __vue_render__$x,
-      staticRenderFns: __vue_staticRenderFns__$x
-    }, __vue_inject_styles__$x, __vue_script__$x, __vue_scope_id__$x, __vue_is_functional_template__$x, __vue_module_identifier__$x, undefined, undefined);
-
-    Switch.install = function (vue) {
-      vue.component(Switch.name, Switch);
-    };
-
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    var script$y = {
-      name: 'busy-select-option',
-      props: {
-        value: [Array, String, Object, Number],
-        checked: {
-          type: Boolean,
-          default: false
-        },
-        Disabled: {
-          type: Boolean,
-          default: false
-        }
-      },
-      data: function data() {
-        return {
-          currentValue: this.value
-        };
-      },
-      methods: {
-        handleClick: function handleClick($e) {
-          this.$parent.$parent.$emit('change', this.value);
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$y = script$y;
-    /* template */
-
-    var __vue_render__$y = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c("li", {
-        staticClass: "busy-select__item",
-        on: {
-          click: function click($event) {
-            $event.stopPropagation();
-            return _vm.handleClick($event);
-          }
-        }
-      }, [_vm._t("default")], 2);
-    };
-
     var __vue_staticRenderFns__$y = [];
     __vue_render__$y._withStripped = true;
     /* style */
@@ -6634,35 +6628,112 @@ var BusyUI = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var Option = normalizeComponent_1({
+    var Switch = normalizeComponent_1({
       render: __vue_render__$y,
       staticRenderFns: __vue_staticRenderFns__$y
     }, __vue_inject_styles__$y, __vue_script__$y, __vue_scope_id__$y, __vue_is_functional_template__$y, __vue_module_identifier__$y, undefined, undefined);
 
+    Switch.install = function (vue) {
+      vue.component(Switch.name, Switch);
+    };
+
+    //
     var script$z = {
-      name: 'busy-select',
+      name: initName('select-option'),
+      mixins: [baseMixins],
+      props: {
+        value: [Array, String, Object, Number],
+        checked: {
+          type: Boolean,
+          "default": false
+        },
+        Disabled: {
+          type: Boolean,
+          "default": false
+        }
+      },
+      data: function data() {
+        return {
+          currentValue: this.value
+        };
+      },
+      methods: {
+        handleClick: function handleClick($e) {
+          this.$parent.$parent.$emit('change', this.value);
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$z = script$z;
+    /* template */
+
+    var __vue_render__$z = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c("li", {
+        "class": _vm.prefix + "-select__item",
+        on: {
+          click: function click($event) {
+            $event.stopPropagation();
+            return _vm.handleClick($event);
+          }
+        }
+      }, [_vm._t("default")], 2);
+    };
+
+    var __vue_staticRenderFns__$z = [];
+    __vue_render__$z._withStripped = true;
+    /* style */
+
+    var __vue_inject_styles__$z = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$z = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$z = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$z = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Option = normalizeComponent_1({
+      render: __vue_render__$z,
+      staticRenderFns: __vue_staticRenderFns__$z
+    }, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, undefined, undefined);
+
+    var script$A = {
+      name: initName('select'),
+      mixins: [baseMixins],
       props: {
         width: {
           type: [Number, String],
-          default: ''
+          "default": ''
         },
         height: {
           type: [Number, String],
-          default: ''
+          "default": ''
         },
         inputStyles: Object,
         placeholder: String,
         multiple: {
           type: Boolean,
-          default: false
+          "default": false
         },
         autofocus: {
           type: Boolean,
-          default: false
+          "default": false
         },
         options: {
           type: Array,
-          default: function _default() {
+          "default": function _default() {
             return [];
           },
           validator: function validator(val) {
@@ -6681,7 +6752,7 @@ var BusyUI = (function (exports, Vue) {
         value: [Object, String, Number],
         isShow: {
           type: Boolean,
-          default: false
+          "default": false
         }
       },
       data: function data() {
@@ -6697,29 +6768,15 @@ var BusyUI = (function (exports, Vue) {
       },
       computed: {
         styles: function styles() {
-          var o = {},
-              w = this.width,
-              h = this.height;
-
-          if (h) {
-            o.height = /^\d+$/.test(h) ? h + 'px' : h;
-          }
-
-          if (this.width) {
-            o.width = /^\d+$/.test(w) ? w + 'px' : w;
-          }
-
-          return o;
+          return {
+            width: cmpUnit(this.width),
+            height: cmpUnit(this.height)
+          };
         },
         optionStyles: function optionStyles() {
-          var oh = this.optionHeight,
-              o = {};
-
-          if (oh) {
-            o.height = /^\d+$/.test(oh) ? oh + 'px' : oh;
-          }
-
-          return o;
+          return {
+            height: cmpUnit(this.optionHeight)
+          };
         }
       },
       watch: {
@@ -6766,10 +6823,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$z = script$z;
+    var __vue_script__$A = script$A;
     /* template */
 
-    var __vue_render__$z = function __vue_render__() {
+    var __vue_render__$A = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -6777,7 +6834,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        staticClass: "busy-select",
+        "class": _vm.prefixClas + "-select",
         style: _vm.styles,
         on: {
           "touch-move": function touchMove($evt) {
@@ -6789,7 +6846,7 @@ var BusyUI = (function (exports, Vue) {
           }
         }
       }, [_c("div", {
-        staticClass: "busy-select__content"
+        "class": _vm.prefixClas + "-select__content"
       }, [_c("input", {
         directives: [{
           name: "model",
@@ -6797,7 +6854,7 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.currentValue,
           expression: "currentValue"
         }],
-        staticClass: "busy-select__input",
+        "class": _vm.prefixClas + "-select__input",
         style: _vm.inputStyles,
         attrs: {
           type: "text",
@@ -6828,7 +6885,7 @@ var BusyUI = (function (exports, Vue) {
         }
       }, [_c("transition", {
         attrs: {
-          name: "busy-animate--bibo"
+          name: _vm.prefixClas + "-animate--bibo"
         }
       }, [_c("div", {
         directives: [{
@@ -6837,15 +6894,14 @@ var BusyUI = (function (exports, Vue) {
           value: _vm.visiable,
           expression: "visiable"
         }],
-        staticClass: "busy-select__options",
+        "class": _vm.prefixClas + "-select__options",
         style: _vm.optionStyles
       }, [_c("ul", {
-        staticClass: "busy-select__list",
-        class: ["busy-select__list-" + _vm._uid],
+        "class": [_vm.prefixClas + "-select__list", _vm.prefixCls + "-select__list- + " + _vm._uid],
         on: {
           touchmove: function touchmove($event) {
             $event.stopPropagation();
-            return function (e) {}($event);
+            return function (e) {}();
           }
         }
       }, [_vm._t("default", _vm._l(_vm.options, function (option, $index) {
@@ -6856,84 +6912,6 @@ var BusyUI = (function (exports, Vue) {
           }
         }, [_vm._v(_vm._s(option.hasOwnProperty("label") ? option.label : option))]);
       }))], 2)])])], 1)], 1);
-    };
-
-    var __vue_staticRenderFns__$z = [];
-    __vue_render__$z._withStripped = true;
-    /* style */
-
-    var __vue_inject_styles__$z = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$z = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$z = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$z = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var Select = normalizeComponent_1({
-      render: __vue_render__$z,
-      staticRenderFns: __vue_staticRenderFns__$z
-    }, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, undefined, undefined);
-
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    var script$A = {
-      name: 'busy-select-option',
-      props: {
-        value: [Array, String, Object, Number],
-        checked: {
-          type: Boolean,
-          default: false
-        },
-        Disabled: {
-          type: Boolean,
-          default: false
-        }
-      },
-      data: function data() {
-        return {
-          currentValue: this.value
-        };
-      },
-      methods: {
-        handleClick: function handleClick($e) {
-          this.$parent.$parent.$emit('change', this.value);
-        }
-      }
-    };
-
-    /* script */
-    var __vue_script__$A = script$A;
-    /* template */
-
-    var __vue_render__$A = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c("li", {
-        staticClass: "busy-select__item",
-        on: {
-          click: function click($event) {
-            $event.stopPropagation();
-            return _vm.handleClick($event);
-          }
-        }
-      }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$A = [];
@@ -6954,17 +6932,89 @@ var BusyUI = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var Option$1 = normalizeComponent_1({
+    var Select = normalizeComponent_1({
       render: __vue_render__$A,
       staticRenderFns: __vue_staticRenderFns__$A
     }, __vue_inject_styles__$A, __vue_script__$A, __vue_scope_id__$A, __vue_is_functional_template__$A, __vue_module_identifier__$A, undefined, undefined);
+
+    //
+    var script$B = {
+      name: initName('select-option'),
+      mixins: [baseMixins],
+      props: {
+        value: [Array, String, Object, Number],
+        checked: {
+          type: Boolean,
+          "default": false
+        },
+        Disabled: {
+          type: Boolean,
+          "default": false
+        }
+      },
+      data: function data() {
+        return {
+          currentValue: this.value
+        };
+      },
+      methods: {
+        handleClick: function handleClick($e) {
+          this.$parent.$parent.$emit('change', this.value);
+        }
+      }
+    };
+
+    /* script */
+    var __vue_script__$B = script$B;
+    /* template */
+
+    var __vue_render__$B = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c("li", {
+        "class": _vm.prefix + "-select__item",
+        on: {
+          click: function click($event) {
+            $event.stopPropagation();
+            return _vm.handleClick($event);
+          }
+        }
+      }, [_vm._t("default")], 2);
+    };
+
+    var __vue_staticRenderFns__$B = [];
+    __vue_render__$B._withStripped = true;
+    /* style */
+
+    var __vue_inject_styles__$B = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$B = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$B = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$B = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var Option$1 = normalizeComponent_1({
+      render: __vue_render__$B,
+      staticRenderFns: __vue_staticRenderFns__$B
+    }, __vue_inject_styles__$B, __vue_script__$B, __vue_scope_id__$B, __vue_is_functional_template__$B, __vue_module_identifier__$B, undefined, undefined);
 
     Select.install = function (vue) {
       vue.component(Option$1.name, Option$1);
       vue.component(Select.name, Select);
     };
 
-    var script$B = {
+    var script$C = {
       name: initName('segment-item'),
       mixins: [baseMixins],
       model: {
@@ -6976,7 +7026,7 @@ var BusyUI = (function (exports, Vue) {
         modelValue: null,
         disabled: {
           type: Boolean,
-          default: false
+          "default": false
         }
       },
       data: function data() {
@@ -7011,10 +7061,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$B = script$B;
+    var __vue_script__$C = script$C;
     /* template */
 
-    var __vue_render__$B = function __vue_render__() {
+    var __vue_render__$C = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -7022,7 +7072,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.classes,
+        "class": _vm.classes,
         style: _vm.styles,
         on: {
           click: _vm.handleChange
@@ -7030,31 +7080,31 @@ var BusyUI = (function (exports, Vue) {
       }, [_vm._t("default")], 2);
     };
 
-    var __vue_staticRenderFns__$B = [];
-    __vue_render__$B._withStripped = true;
+    var __vue_staticRenderFns__$C = [];
+    __vue_render__$C._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$B = undefined;
+    var __vue_inject_styles__$C = undefined;
     /* scoped */
 
-    var __vue_scope_id__$B = undefined;
+    var __vue_scope_id__$C = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$B = undefined;
+    var __vue_module_identifier__$C = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$B = false;
+    var __vue_is_functional_template__$C = false;
     /* style inject */
 
     /* style inject SSR */
 
     var SegmentItem = normalizeComponent_1({
-      render: __vue_render__$B,
-      staticRenderFns: __vue_staticRenderFns__$B
-    }, __vue_inject_styles__$B, __vue_script__$B, __vue_scope_id__$B, __vue_is_functional_template__$B, __vue_module_identifier__$B, undefined, undefined);
+      render: __vue_render__$C,
+      staticRenderFns: __vue_staticRenderFns__$C
+    }, __vue_inject_styles__$C, __vue_script__$C, __vue_scope_id__$C, __vue_is_functional_template__$C, __vue_module_identifier__$C, undefined, undefined);
 
     //
-    var script$C = {
+    var script$D = {
       name: initName('segment'),
       mixins: [baseMixins],
       model: {
@@ -7100,10 +7150,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$C = script$C;
+    var __vue_script__$D = script$D;
     /* template */
 
-    var __vue_render__$C = function __vue_render__() {
+    var __vue_render__$D = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -7111,7 +7161,7 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("div", {
-        class: _vm.prefixCls + "-segment",
+        "class": _vm.prefixCls + "-segment",
         style: _vm.styles
       }, [_vm._t("default", _vm._l(_vm.options, function (opt) {
         return _c("SegmentItem", {
@@ -7130,28 +7180,28 @@ var BusyUI = (function (exports, Vue) {
       }))], 2);
     };
 
-    var __vue_staticRenderFns__$C = [];
-    __vue_render__$C._withStripped = true;
+    var __vue_staticRenderFns__$D = [];
+    __vue_render__$D._withStripped = true;
     /* style */
 
-    var __vue_inject_styles__$C = undefined;
+    var __vue_inject_styles__$D = undefined;
     /* scoped */
 
-    var __vue_scope_id__$C = undefined;
+    var __vue_scope_id__$D = undefined;
     /* module identifier */
 
-    var __vue_module_identifier__$C = undefined;
+    var __vue_module_identifier__$D = undefined;
     /* functional template */
 
-    var __vue_is_functional_template__$C = false;
+    var __vue_is_functional_template__$D = false;
     /* style inject */
 
     /* style inject SSR */
 
     var Segment = normalizeComponent_1({
-      render: __vue_render__$C,
-      staticRenderFns: __vue_staticRenderFns__$C
-    }, __vue_inject_styles__$C, __vue_script__$C, __vue_scope_id__$C, __vue_is_functional_template__$C, __vue_module_identifier__$C, undefined, undefined);
+      render: __vue_render__$D,
+      staticRenderFns: __vue_staticRenderFns__$D
+    }, __vue_inject_styles__$D, __vue_script__$D, __vue_scope_id__$D, __vue_is_functional_template__$D, __vue_module_identifier__$D, undefined, undefined);
 
     Segment.install = function (vue) {
       vue.component(SegmentItem.name, SegmentItem);
@@ -7164,47 +7214,47 @@ var BusyUI = (function (exports, Vue) {
       height: 18,
       name: 'right'
     };
-    var script$D = {
+    var script$E = {
       name: initName('list-item'),
       mixins: [baseMixins],
       props: {
         height: {
           type: [Number, String],
-          default: 42
+          "default": 42
         },
         label: String,
         content: String,
         labelWidth: {
           type: [Number, String],
-          default: 80
+          "default": 80
         },
         labelAlignH: {
           type: String,
-          default: 'start'
+          "default": 'start'
         },
         labelAlignV: {
           type: String,
-          default: 'center'
+          "default": 'center'
         },
         showLabel: {
           type: Boolean,
-          default: false
+          "default": false
         },
         iconWidth: {
           type: [Number, String],
-          default: 28
+          "default": 28
         },
         iconAlignH: {
           type: String,
-          default: 'center'
+          "default": 'center'
         },
         iconAlignV: {
           type: String,
-          default: 'center'
+          "default": 'center'
         },
         showIcon: {
           type: Boolean,
-          default: true
+          "default": true
         },
         icon: {
           type: Object
@@ -7212,7 +7262,7 @@ var BusyUI = (function (exports, Vue) {
       },
       data: function data() {
         return {
-          iconModel: _objectSpread({}, iconProps$1, this.icon)
+          iconModel: _objectSpread2({}, iconProps$1, {}, this.icon)
         };
       },
       components: {
@@ -7241,7 +7291,7 @@ var BusyUI = (function (exports, Vue) {
       },
       watch: {
         icon: function icon(val) {
-          this._icon = _objectSpread({}, conProps, val);
+          this._icon = _objectSpread2({}, iconProps$1, {}, val);
         }
       },
       methods: {
@@ -7258,10 +7308,10 @@ var BusyUI = (function (exports, Vue) {
     };
 
     /* script */
-    var __vue_script__$D = script$D;
+    var __vue_script__$E = script$E;
     /* template */
 
-    var __vue_render__$D = function __vue_render__() {
+    var __vue_render__$E = function __vue_render__() {
       var _vm = this;
 
       var _h = _vm.$createElement;
@@ -7269,13 +7319,13 @@ var BusyUI = (function (exports, Vue) {
       var _c = _vm._self._c || _h;
 
       return _c("FlexBox", {
-        class: _vm.prefixCls + "-list-item " + _vm.prefixCls + "-border-1px " + _vm.prefixCls + "-border-b",
+        "class": _vm.prefixCls + "-list-item " + _vm.prefixCls + "-border-1px " + _vm.prefixCls + "-border-b",
         style: _vm.styles,
         on: {
           click: _vm.handleClick
         }
       }, [_vm.showLabel ? _c("FlexItem", {
-        class: _vm.labelClass,
+        "class": _vm.labelClass,
         attrs: {
           flex: "none",
           width: _vm.labelWidth
@@ -7284,13 +7334,13 @@ var BusyUI = (function (exports, Vue) {
           click: _vm.handleLabelClick
         }
       }, [_vm._t("label", [_c("label", {
-        class: _vm.prefixCls + "-list-item__label_text"
+        "class": _vm.prefixCls + "-list-item__label_text"
       }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c("FlexItem", {
-        class: _vm.prefixCls + "-list-item__content " + _vm.prefixCls + "-flex " + _vm.prefixCls + "-flex--start-center"
+        "class": _vm.prefixCls + "-list-item__content " + _vm.prefixCls + "-flex " + _vm.prefixCls + "-flex--start-center"
       }, [_vm._t("default", [_c("div", {
-        class: _vm.prefixCls + "-list-item__content_text"
+        "class": _vm.prefixCls + "-list-item__content_text"
       }, [_vm._v(_vm._s(_vm.content))])])], 2), _vm._v(" "), _vm.showIcon ? _c("FlexItem", {
-        class: _vm.iconClass,
+        "class": _vm.iconClass,
         attrs: {
           flex: "none",
           width: _vm.iconWidth
@@ -7306,62 +7356,6 @@ var BusyUI = (function (exports, Vue) {
           expression: "iconModel.name"
         }]
       }, "Icon", _vm.iconModel, false))])], 2) : _vm._e()], 1);
-    };
-
-    var __vue_staticRenderFns__$D = [];
-    __vue_render__$D._withStripped = true;
-    /* style */
-
-    var __vue_inject_styles__$D = undefined;
-    /* scoped */
-
-    var __vue_scope_id__$D = undefined;
-    /* module identifier */
-
-    var __vue_module_identifier__$D = undefined;
-    /* functional template */
-
-    var __vue_is_functional_template__$D = false;
-    /* style inject */
-
-    /* style inject SSR */
-
-    var ListItem = normalizeComponent_1({
-      render: __vue_render__$D,
-      staticRenderFns: __vue_staticRenderFns__$D
-    }, __vue_inject_styles__$D, __vue_script__$D, __vue_scope_id__$D, __vue_is_functional_template__$D, __vue_module_identifier__$D, undefined, undefined);
-
-    //
-    var script$E = {
-      name: initName('list'),
-      mixins: [baseMixins],
-      props: {
-        items: {
-          type: Array,
-          default: function _default() {
-            return [];
-          }
-        }
-      },
-      components: {
-        ListItem: ListItem
-      }
-    };
-
-    /* script */
-    var __vue_script__$E = script$E;
-    /* template */
-
-    var __vue_render__$E = function __vue_render__() {
-      var _vm = this;
-
-      var _h = _vm.$createElement;
-
-      var _c = _vm._self._c || _h;
-
-      return _c("div", {
-        class: [_vm.prefixCls + "-list", _vm.prefixCls + "-border-1px", _vm.prefixCls + "-border-tb"]
-      }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$E = [];
@@ -7382,10 +7376,66 @@ var BusyUI = (function (exports, Vue) {
 
     /* style inject SSR */
 
-    var List = normalizeComponent_1({
+    var ListItem = normalizeComponent_1({
       render: __vue_render__$E,
       staticRenderFns: __vue_staticRenderFns__$E
     }, __vue_inject_styles__$E, __vue_script__$E, __vue_scope_id__$E, __vue_is_functional_template__$E, __vue_module_identifier__$E, undefined, undefined);
+
+    //
+    var script$F = {
+      name: initName('list'),
+      mixins: [baseMixins],
+      props: {
+        items: {
+          type: Array,
+          "default": function _default() {
+            return [];
+          }
+        }
+      },
+      components: {
+        ListItem: ListItem
+      }
+    };
+
+    /* script */
+    var __vue_script__$F = script$F;
+    /* template */
+
+    var __vue_render__$F = function __vue_render__() {
+      var _vm = this;
+
+      var _h = _vm.$createElement;
+
+      var _c = _vm._self._c || _h;
+
+      return _c("div", {
+        "class": [_vm.prefixCls + "-list", _vm.prefixCls + "-border-1px", _vm.prefixCls + "-border-tb"]
+      }, [_vm._t("default")], 2);
+    };
+
+    var __vue_staticRenderFns__$F = [];
+    __vue_render__$F._withStripped = true;
+    /* style */
+
+    var __vue_inject_styles__$F = undefined;
+    /* scoped */
+
+    var __vue_scope_id__$F = undefined;
+    /* module identifier */
+
+    var __vue_module_identifier__$F = undefined;
+    /* functional template */
+
+    var __vue_is_functional_template__$F = false;
+    /* style inject */
+
+    /* style inject SSR */
+
+    var List = normalizeComponent_1({
+      render: __vue_render__$F,
+      staticRenderFns: __vue_staticRenderFns__$F
+    }, __vue_inject_styles__$F, __vue_script__$F, __vue_scope_id__$F, __vue_is_functional_template__$F, __vue_module_identifier__$F, undefined, undefined);
 
     List.install = function (vue) {
       vue.component(ListItem.name, ListItem);
@@ -7457,33 +7507,33 @@ var BusyUI = (function (exports, Vue) {
       window.Vue.use(ALL);
     }
 
+    exports.ActionSheet = ActionSheet;
+    exports.Alert = Alert$1;
     exports.Border = Border;
-    exports.install = install;
-    exports.Toast = Toast$1;
-    exports.ToastLoading = ToastLoading$1;
-    exports.Loading = Loading;
-    exports.Icons = Icon;
-    exports.FlexBox = FlexBox;
-    exports.FlexItem = FlexItem;
     exports.Button = Button;
     exports.Checkbox = Checkbox;
-    exports.Picker = Picker;
-    exports.Dialog = Dialog$1;
-    exports.Alert = Alert$1;
     exports.Confirm = Confirm$1;
-    exports.Prompt = Prompt$1;
-    exports.Mask = Mask;
-    exports.Message = Message$1;
-    exports.Progress = Progress;
-    exports.LoadMore = LoadMore;
-    exports.Swipe = Swipe;
-    exports.ActionSheet = ActionSheet;
+    exports.Dialog = Dialog$1;
+    exports.FlexBox = FlexBox;
+    exports.FlexItem = FlexItem;
+    exports.Icons = Icon;
+    exports.Input = Input;
     exports.List = List;
     exports.ListItem = ListItem;
-    exports.Input = Input;
-    exports.Switch = Switch;
+    exports.LoadMore = LoadMore;
+    exports.Loading = Loading;
+    exports.Mask = Mask;
+    exports.Message = Message$1;
+    exports.Picker = Picker;
+    exports.Progress = Progress;
+    exports.Prompt = Prompt$1;
     exports.Select = Select;
+    exports.Swipe = Swipe;
+    exports.Switch = Switch;
+    exports.Toast = Toast$1;
+    exports.ToastLoading = ToastLoading$1;
     exports.default = ALL;
+    exports.install = install;
 
     return exports;
 

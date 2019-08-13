@@ -133,7 +133,7 @@
         },
         watch: {
             icon(val) {
-                this._icon = { ...conProps, ...val }
+                this._icon = { ...iconProps, ...val }
             }
         },
         methods: {

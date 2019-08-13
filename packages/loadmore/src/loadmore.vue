@@ -81,13 +81,13 @@
     <div :class="`${prefixCls}-loadmore`">
         <div :class="`${prefixCls}-loadmore__content`" :style="styles">
             <slot name="top">
-                <busy-loadmore-bar :class="`${prefixCls}-loadmore__top`" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></busy-loadmore-bar>
+                <LoadMoreBar :class="`${prefixCls}-loadmore__top`" v-if="onRefresh" :pull-text="topPullText" :loading-text="topLoadingText" :drop-text="topDropText" :show-status="tStatus" pos="top" ref="top"></LoadMoreBar>
             </slot>
             <div :class="`${prefixCls}-loadmore__content`">
                 <slot></slot>
             </div>
             <slot name="bottom" v-if="onInfinite">
-                <busy-loadmore-bar :class="`${prefixCls}-loadmore__bottom`" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></busy-loadmore-bar>
+                <LoadMoreBar :class="`${prefixCls}-loadmore__bottom`" :pull-text="bottomPullText" :loading-text="bottomLoadingText" :drop-text="bottomDropText" :show-status="bStatus" pos="bottom" ref="bottom"></LoadMoreBar>
             </slot>
             <slot name="no-more" v-if="noMore">
                 <div :class="`${prefixCls}-loadmore__nomore`">{{noMoreText}}</div>
@@ -101,8 +101,9 @@
         BNumber,
         initName,
         baseMixins
-    } from '../../util';
-    import loadMoreBar from './loadmore-bar.vue'
+    } from '../../util'
+
+    import LoadMoreBar from './loadmore-bar.vue'
 
     /**
      * @class
@@ -201,7 +202,7 @@
             }
         },
         components: {
-            [loadMoreBar.name]: loadMoreBar
+            LoadMoreBar
         },
         computed: {
             styles() {
@@ -219,7 +220,6 @@
 
                 this.touchesY = e.touches[0].pageY;
                 this.draging = true;
-
             },
             _handleTouchMove(e) {
                 e.stopPropagation();

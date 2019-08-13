@@ -8,7 +8,7 @@ var ToastClass = Vue.extend(Toast),
  * Toast component
  * @module Toast
  * @see {@link ../example/all/toast.html 实例}
- * @desc Toast组件 <busy-toast></busy-toast>
+ * @desc Toast组件
  * @param {Object} opts - 选项 可选{content:'显示内容', pos: '显示位置', delay: '显示多长时间隐藏', type: 'icon类型'}
  * @param {String} content - 显示内容
  * @param {String} pos='middle' - 显示位置,可以是 'top', 'middle', 'bottom'
@@ -36,11 +36,7 @@ export default Object.assign(Toast, {
      * @method show
      * @param {Object} opts - 配置项, <a href="#module_Toast">参见</a>
      * @static
-     * @returns ToastClass实例
-     * 
-     * @example
-     * Busy.Toast.show({content:'内容', pos: 'top', delay: 5000})
-     * 
+     * @returns ToastClass实例 
      */
     show(content, opts) {
         if (instance) {
@@ -75,6 +71,24 @@ export default Object.assign(Toast, {
         })
 
         return instance
+    },
+    success(content, opts) {
+        return this.show.apply(this, [content, {
+            iconHeight: 30,
+            iconWidth: 30,
+            iconName: 'yes',
+            direction: 'column',
+            ...opts
+        }])
+    },
+    fail(content, opts) {
+        return this.show.apply(this, [content, {
+            iconHeight: 30,
+            iconWidth: 30,
+            iconName: 'close',
+            direction: 'column',
+            ...opts
+        }])
     },
     hide() {
         if (instance) {

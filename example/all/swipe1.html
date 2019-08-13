@@ -34,19 +34,59 @@
 
         .swipe {
             width: 100%;
-            height: 200px;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background: #e0e0e0;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            display: flex;
         }
 
         .swipe__wrap {
+            flex: 1;
             height: 100%;
             white-space: nowrap;
+            margin-top: 100px;
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
         .swipe__item {
-            color: #fff;
+            color: #222;
             font-size: 30px;
             text-align: center;
-            height: 100%;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .swipe__mask {
+            flex: none;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+            background-image: linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0.8),
+                    rgba(255, 255, 255, 0.4) 40%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0.8));
+
+        }
+
+        .swipe__mask::after {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            left: 0;
+            right: 0;
+            top: 40%;
+            content: '';
+            border: 1px solid #ccc;
+            border-width: 1px 0;
+            height: 20%;
+            box-sizing: border-box;
         }
 
         .btn-bars {
@@ -58,20 +98,8 @@
             width: 100%;
         }
 
-        .orange {
-            background-color: orange;
-        }
-
-        .green {
-            background-color: mediumseagreen;
-        }
-
-        .blue {
-            background-color: cornflowerblue;
-        }
-
-        .red {
-            background-color: indianred;
+        .transition {
+            transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
     </style>
 </head>
@@ -80,12 +108,14 @@
     <section class="wrap">
         <section id="app" class="app">
             <div class="swipe">
-                <div class="swipe__wrap">
-                    <div class="swipe__item orange">1</div>
-                    <div class="swipe__item green">2</div>
-                    <div class="swipe__item blue">3</div>
-                    <div class="swipe__item red">4</div>
+                <div ref="el" :class="['swipe__wrap', classess]" :style="styles" @touchstart="_start" @touchmove.passive="_move" @touchend="_end" @touchcancel="_end">
+                    <div v-for="(k,i) in items" class="swipe__item">{{i+1}}</div>
                 </div>
+                <div ref="el" :class="['swipe__wrap', classess]" :style="styles" @touchstart="_start" @touchmove.passive="_move" @touchend="_end" @touchcancel="_end">
+                    <div v-for="(k,i) in items" class="swipe__item">{{i+1}}</div>
+                </div>
+
+                <div class="swipe__mask"></div>
             </div>
         </section>
     </section>
@@ -98,33 +128,98 @@
                         height: 200,
                         width: document.body.offsetWidth || document.documentElement.offsetWidth,
                         direction: 'horizontal',
-                        autoplay: false,
-                        interval: 3500,
-                        dotesPos: 'bottom'
+                        startX: 0,
+                        startY: 0,
+                        top: 0,
+                        direction: '',
+                        transition: false,
+                        status: 'end',
+                        startTime: 0,
+                        startTop: 0,
+                        speed: 0,
+                        itemHeight: 50,
+                        allHeight: 0,
+                        curIndex: 0,
+                        items: new Array(12)
+                    }
+                },
+                computed: {
+                    styles() {
+                        return {
+                            transform: `translate3d(0, ${this.top}px, 0)`
+                        }
+                    },
+                    classess() {
+                        return {
+                            transition: this.transition
+                        }
                     }
                 },
                 methods: {
-                    showVertical: function () {
-                        this.height = 300;
-                        this.direction = 'vertical';
-                        this.dotesPos = 'right';
+                    enforceLimit(t) {
+                        if (t > 0) {
+                            t = 0
+                        } else if (Math.abs(t) > this.allHeight) {
+                            t = this.allHeight * -1
+                        }
+                        return t
                     },
-                    showHorizontal: function () {
-                        this.height = 200;
-                        this.direction = 'horizontal';
-                        this.dotesPos = 'bottom';
+                    isOutLimit(t) {
+                        return t > 0 || Math.abs(t) > this.allHeight
                     },
-                    showFullpage: function () {
-                        this.height = document.body.offsetHeight || document.documentElement.offsetHeight;
-                        this.direction = 'vertical';
-                        this.dotesPos = 'right';
+                    _start(e) {
+                        var pageX = e.touches[0].pageX,
+                            pageY = e.touches[0].pageY
+                        this.startX = pageX
+                        this.startY = pageY
+                        this.status = 'start'
+                        this.transition = false
+                        this.startTime = e.timeStamp || Date.now()
+                        this.startPoint = pageY
+                        let transform = this.$refs['el'].style.transform
+                        this.top = new WebKitCSSMatrix(transform).m42
+                        this.startTop = this.top
                     },
-                    startPlay: function () {
-                        this.autoplay = true;
+                    _move(e) {
+                        let PY = e.touches[0].pageY
+                        let distance = PY - this.startY
+                        let top = this.startTop + distance
+
+                        this.direction = distance < 0 ? 'up' : 'down'
+
+                        if (top > 0 || Math.abs(top) > this.allHeight) {
+                            distance = distance / 2
+                        }
+
+                        this.top = this.startTop + distance
+
+                        this.status = 'moving'
+                        var endTime = e.timeStamp || Date.now()
+                        if (endTime - this.startTime > 300) {
+                            this.startTime = endTime
+                            this.startPoint = PY
+                        }
                     },
-                    stopPlay: function () {
-                        this.autoplay = false;
+                    _end(e) {
+                        this.status = 'end'
+                        let top = this.top,
+                            endTime = e.timeStamp || Date.now()
+                        this.top = this.enforceLimit(this.top)
+
+                        if (!this.isOutLimit(top)) {
+                            this.speed = (e.changedTouches[0].pageY - this.startPoint) * 1000 / (endTime - this.startTime)
+                            this.$nextTick(() => {
+                                let top = this.top
+                                this.transition = true
+                                top += this.speed * 0.6667
+                                this.top = this.enforceLimit(Math.round(top / this.itemHeight) * this.itemHeight)
+                            })
+                        }
+
                     }
+                },
+                mounted() {
+                    this.allHeight = this.$refs['el'].scrollHeight - this.$refs['el'].clientHeight + this.itemHeight * 4
                 }
             });
 

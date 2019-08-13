@@ -26,9 +26,6 @@ export default Object.assign(Alert, {
      * @param {Object} opts - 配置项, <a href="#module_Alert">参见</a>
      * @static
      * @returns AlertClass实例
-     * 
-     * @example
-     * busy.Alert.show('提交申请成功');
      */
     show(text, opts) {
         if (typeof text === 'object') {

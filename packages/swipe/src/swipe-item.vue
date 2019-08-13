@@ -1,11 +1,13 @@
 <template>
-    <div class="busy-swipe__item">
+    <div :class="`${prefixCls}-swipe__item`">
         <slot></slot>
     </div>
 </template>
 
 <script>
+    import { initName, baseMixins } from '../../util'
     export default {
-        name: 'busy-swipe-item'
+        name: initName('swipe-item'),
+        mixins: [baseMixins]
     }
 </script>

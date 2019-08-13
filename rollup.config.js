@@ -90,9 +90,7 @@ export default {
                     }
                 },
                 postcssPlugins: [
-                    autoprefixer({
-                        browsers: ['iOS > 7', 'Android > 4', 'last 4 Chrome versions']
-                    })
+                    autoprefixer()
                 ]
             }
         }),

@@ -48,7 +48,9 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <busy-picker></busy-picker>
+            <div @click="togglePicker">打开选择器</div>
+            <div>{{rst}}</div>
+            <busy-picker v-model="rst" :is-show="show" @visiable="(val)=>show=val" :columns="columns"></busy-picker>
         </section>
     </section>
 
@@ -57,11 +59,19 @@
             el: '#app',
             data: function () {
                 return {
-
+                    show: false,
+                    rst: ['三', 5],
+                    columns: [
+                        '一,二,三,四,五,六,七,八,九,十,十一,十二'.split(','),
+                        new Array(30).fill('').map((v, k) => k + 1)
+                    ]
                 }
             },
-            methods: {
 
+            methods: {
+                togglePicker() {
+                    this.show = !this.show
+                }
             }
         });
     </script>

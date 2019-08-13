@@ -1,17 +1,5 @@
-
-<style lang="scss">
-    .busy-spinner {
-        display: inline-block;
-    }
-</style>
 <template>
-    <div class="busy-spinner">
-        <CircleLine v-bind="$props" v-if="type==='circle-line'"></CircleLine>
-        <CircleDash v-bind="$props" v-else-if="type==='circle-dash'"></CircleDash>
-        <CircleGradient v-bind="$props" v-else-if="type==='circle-gradient'"></CircleGradient>
-        <CircleRotate v-bind="$props" v-else-if="type==='circle-rotate'"></CircleRotate>
-        <CircleHalf v-bind="$props" v-else-if="type==='circle-half'"></CircleHalf>
-    </div>
+    <component v-bind="$props" :is="currentComponent"></component>
 </template>
 
 <script>
@@ -40,10 +28,10 @@
      */
     export default {
         name: 'busy-spinner',
+        inheritAttrs: false,
         props: {
             type: {
-                type: String,
-                default: 'circle-line'
+                type: String
             },
             height: {
                 type: [Number, String],
@@ -73,6 +61,22 @@
         watch: {
             visiable(val, old) {
                 this.$emit('visiable-change', val);
+            }
+        },
+        computed: {
+            currentComponent() {
+                switch (this.type) {
+                    case 'circle-gradient':
+                        return CircleGradient
+                    case 'circle-dash':
+                        return CircleDash
+                    case 'circle-rotate':
+                        return CircleRotate
+                    case 'circle-half':
+                        return CircleHalf
+                    default:
+                        return CircleLine
+                }
             }
         }
     }

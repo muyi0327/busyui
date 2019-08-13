@@ -1,14 +1,16 @@
 
 
 <template>
-    <li class="busy-select__item" @click.stop="handleClick">
+    <li :class="`${prefix}-select__item`" @click.stop="handleClick">
         <slot></slot>
     </li>
 </template>
 
 <script>
+    import { initName, baseMixins } from '../../util'
     export default {
-        name: 'busy-select-option',
+        name: initName('select-option'),
+        mixins: [baseMixins],
         props: {
             value: [Array, String, Object, Number],
             checked: {

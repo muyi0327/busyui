@@ -8,7 +8,7 @@ describe('Button Module', () => {
 
     describe('sets the correct default props', () => {
         it('sets the correct default data', () => {
-            let vm = new Vue(Button).$mount()
+            var vm = new Vue(Button).$mount()
             var data = Button.data()
             expect(typeof Button.data).to.equal('function')
             expect(data.isThin).to.false
@@ -21,7 +21,7 @@ describe('Button Module', () => {
 
     describe('#props', () => {
         it('render the correct borderWidth to 1', () => {
-            let vm = new ButtonConstructor({
+            var vm = new ButtonConstructor({
                 propsData: {
                     borderWidth: 1
                 }
@@ -31,7 +31,7 @@ describe('Button Module', () => {
         })
 
         it('render the correct height or width', () => {
-            let vm = new ButtonConstructor({
+            var vm = new ButtonConstructor({
                 propsData: {
                     width: 90,
                     height: 40
@@ -45,7 +45,7 @@ describe('Button Module', () => {
         })
 
         it('render correctly with content', () => {
-            let vm = new ButtonConstructor({
+            var vm = new ButtonConstructor({
                 propsData: {
                     content: '测试'
                 }

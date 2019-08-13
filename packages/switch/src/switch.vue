@@ -82,12 +82,14 @@
 </style>
 
 <template>
-    <label><input type="checkbox" v-model="currentValue" class="busy-switch busy-switch__animbg"></label>
+    <label><input type="checkbox" v-model="currentValue" :class="`${prefixCls}-switch ${prefixCls}-switch__animbg`"></label>
 </template>
 
 <script>
+    import { initName, baseMixins } from '../../util'
     export default {
-        name: 'busy-switch',
+        name: initName('switch'),
+        mixins:[baseMixins],
         props: {
             value: Boolean,
             disabled: {

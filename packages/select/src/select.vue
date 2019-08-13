@@ -46,14 +46,14 @@
 </style>
 
 <template>
-    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" class="busy-select" :style="styles">
-        <div class="busy-select__content">
-            <input class="busy-select__input" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
+    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" :class="`${prefixClas}-select`" :style="styles">
+        <div :class="`${prefixClas}-select__content`">
+            <input :class="`${prefixClas}-select__input`" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
         </div>
         <NativeMask :is-show="visiable" @click.stop="closeOptions">
-            <transition name="busy-animate--bibo">
-                <div v-show="visiable" class="busy-select__options" :style="optionStyles">
-                    <ul class="busy-select__list" @touchmove.stop="e=>{}" :class="['busy-select__list-' + _uid]">
+            <transition :name="`${prefixClas}-animate--bibo`">
+                <div v-show="visiable" :class="`${prefixClas}-select__options`" :style="optionStyles">
+                    <ul @touchmove.stop="e=>{}" :class="[`${prefixClas}-select__list`,`${prefixCls}-select__list- + ${_uid}`]">
                         <slot>
                             <NativeOption :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</NativeOption>
                         </slot>
@@ -68,9 +68,11 @@
 <script>
     import Mask from '../../mask'
     import Option from './option.vue'
+    import { initName, baseMixins, BNumber } from '../../util'
 
     export default {
-        name: 'busy-select',
+        name: initName('select'),
+        mixins: [baseMixins],
         props: {
             width: {
                 type: [Number, String],
@@ -126,25 +128,15 @@
         },
         computed: {
             styles() {
-                var o = {}, w = this.width, h = this.height;
-                if (h) {
-                    o.height = /^\d+$/.test(h) ? h + 'px' : h
+                return {
+                    width: BNumber.cmpUnit(this.width),
+                    height: BNumber.cmpUnit(this.height)
                 }
-
-                if (this.width) {
-                    o.width = /^\d+$/.test(w) ? w + 'px' : w
-                }
-
-                return o;
             },
             optionStyles() {
-                var oh = this.optionHeight, o = {}
-
-                if (oh) {
-                    o.height = /^\d+$/.test(oh) ? oh + 'px' : oh
+                return {
+                    height: BNumber.cmpUnit(this.optionHeight)
                 }
-
-                return o;
             }
 
         },

@@ -85,18 +85,18 @@
 </style>
 
 <template>
-    <div class="busy-steps" :style="{width: width + 'px'}">
-        <div class="busy-steps__box">
-            <div v-for="(step,$i) in steps" class="busy-steps__item" :key="`step_${$i}`" :class="{'is-current': step.current, 'is-disable': step.disable}">
-                <span class="busy-steps__icon">
+    <div :class="`${prefixCls}-steps`" :style="{width: width + 'px'}">
+        <div :class="`${prefixCls}-steps__box`">
+            <div v-for="(step,$i) in steps" :key="`step_${$i}`" :class="[`${prefixCls}-steps__item`,{'is-current': step.current, 'is-disable': step.disable}]">
+                <span :class="`${prefixCls}-steps__icon`">
                     <Icon :width="16" :height="16" :color="step.current ? '#fff' : '#c0c0c0'" :name="step.iconName" />
                 </span>
-                <span class="busy-steps__label">{{step.text}}</span>
+                <span :class="`${prefixCls}-steps__label`">{{step.text}}</span>
             </div>
         </div>
 
-        <div class="busy-steps__line-box">
-            <span v-for="$i in steps.length" :key="`step_line_${$i}`" :class="{'is-current': steps[$i].current, 'is-disable': steps[$i].disable}" :style="lineStyle($i)" class="busy-steps__line"></span>
+        <div :class="`${prefixCls}-steps__line-box`">
+            <span v-for="$i in steps.length" :key="`step_line_${$i}`" :class="[`${prefixCls}-steps__line`,{'is-current': steps[$i].current, 'is-disable': steps[$i].disable}]" :style="lineStyle($i)"></span>
         </div>
 
     </div>
@@ -105,8 +105,10 @@
 
 <script>
     import Icon from '../../icon'
+    import { initName, baseMixins } from '../../util'
     export default {
-        name: 'busy-steps',
+        name: initName('steps'),
+        mixins: [baseMixins],
         props: {
             steps: Array,
             width: Number
