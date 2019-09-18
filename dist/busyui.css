@@ -85,6 +85,144 @@
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
+.busy-toast-loading {
+  display: flex;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1001;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  box-sizing: border-box; }
+
+.busy-toast-loading__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.busy-toast-loading__text {
+  font-size: 12px;
+  display: flex; }
+
+.busy-toast-loading--dir-row {
+  flex-direction: row;
+  height: 60px;
+  justify-content: center;
+  padding: 0 16px; }
+
+.busy-toast-loading--dir-row .busy-toast-loading__icon {
+  margin-right: 10px; }
+
+.busy-toast-loading--dir-row .busy-toast-loading__text {
+  align-items: center;
+  justify-content: flex-start; }
+
+.busy-toast-loading--dir-column {
+  flex-direction: column;
+  height: 80px;
+  width: 80px; }
+
+.busy-toast-loading--dir-column .busy-toast-loading__icon {
+  flex-grow: 2; }
+
+.busy-toast-loading--dir-column .busy-toast-loading__text {
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: center; }
+
+/*# sourceMappingURL=toast-loading.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-toast {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+  font-size: 14px; }
+
+.busy-toast--pos-top {
+  top: 50px; }
+
+.busy-toast--pos-middle {
+  transform: translate3d(0, -50%, 0);
+  top: 50%; }
+
+.busy-toast--pos-bottom {
+  bottom: 50px; }
+
+.busy-toast__wrap {
+  background-color: #262728;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  max-width: 80%;
+  min-width: 90px; }
+
+.busy-toast--row {
+  flex-direction: row; }
+
+.busy-toast--row-reverse {
+  flex-direction: row-reverse; }
+
+.busy-toast--column {
+  flex-direction: column; }
+
+.busy-toast--column-reverse {
+  flex-direction: column; }
+
+.busy-toast__icon {
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 0 10px; }
+
+.busy-toast--column .busy-toast__icon {
+  margin: 0 0 10px 0; }
+
+.busy-toast__text {
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+  font-weight: normal;
+  margin: 0; }
+
+/*# sourceMappingURL=toast.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-icon {
+  display: inline-block; }
+
+/*# sourceMappingURL=icon.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
 .busy-flex {
   display: flex; }
 
@@ -292,19 +430,6 @@
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-icon {
-  display: inline-block; }
-
-/*# sourceMappingURL=icon.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-checkbox {
   display: inline-block;
   vertical-align: middle;
@@ -355,53 +480,46 @@
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-toast-loading {
-  display: flex;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1001;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  box-sizing: border-box; }
+.busy-radio[data-v-7470d86e] {
+  display: inline-block;
+  vertical-align: middle; }
 
-.busy-toast-loading__icon {
+.busy-radio__label[data-v-7470d86e] {
+  display: flex;
+  height: 16px;
+  align-items: center; }
+
+.busy-radio__input[data-v-7470d86e] {
+  display: none; }
+
+.busy-radio__radio[data-v-7470d86e] {
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  line-height: 0;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
   display: flex;
   justify-content: center;
   align-items: center; }
 
-.busy-toast-loading__text {
-  font-size: 12px;
-  display: flex; }
+.busy-radio__input:checked + .busy-radio__radio[data-v-7470d86e] {
+  background: #00a1f4;
+  border: none; }
 
-.busy-toast-loading--dir-row {
-  flex-direction: row;
-  height: 60px;
-  justify-content: center;
-  padding: 0 16px; }
+.busy-radio__input[disabled] + .busy-radio__radio[data-v-7470d86e] {
+  border: 1px solid #c6c6c6;
+  background: #e7e7e7;
+  cursor: not-allowed; }
 
-.busy-toast-loading--dir-row .busy-toast-loading__icon {
-  margin-right: 10px; }
+.busy-radio__text[data-v-7470d86e] {
+  padding-left: 6px;
+  font-size: inherit;
+  line-height: 1; }
 
-.busy-toast-loading--dir-row .busy-toast-loading__text {
-  align-items: center;
-  justify-content: flex-start; }
-
-.busy-toast-loading--dir-column {
-  flex-direction: column;
-  height: 80px;
-  width: 80px; }
-
-.busy-toast-loading--dir-column .busy-toast-loading__icon {
-  flex-grow: 2; }
-
-.busy-toast-loading--dir-column .busy-toast-loading__text {
-  flex-grow: 1;
-  align-items: flex-start;
-  justify-content: center; }
-
-/*# sourceMappingURL=toast-loading.vue.map */
+/*# sourceMappingURL=radio.vue.map */
 /* Color */
 /** global **/
 /* Button Component */
@@ -411,173 +529,132 @@
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-toast {
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-animate--scale-enter-active, .busy-animate--scalein-enter-active {
+  transition: all 0.3s cubic-bezier(0.28, 0.56, 0, 1.04); }
+
+.busy-animate--scale-leave-active, .busy-animate--scalein-leave-active {
+  transition: all 0.3s cubic-bezier(0.28, 0.56, 0, 1.04); }
+
+.busy-animate {
+  /*上进上出*/
+  /*上进下出*/
+  /*下进下出*/
+  /*左进左出*/
+  /*右进右出*/
+  /*左进右出*/
+  /*slide down*/ }
+
+.busy-animate--fade-enter, .busy-animate--fade-leave-to {
+  opacity: 0; }
+
+.busy-animate--scale-enter {
+  opacity: 0;
+  transform: scale(1.5) !important; }
+
+.busy-animate--scale-leave-to {
+  opacity: 0;
+  transform: scale(0.7) !important; }
+
+.busy-animate--scalein-enter, .busy-animate--scalein-leave-to {
+  transform: scale(0.1) !important; }
+
+.busy-animate--tito-enter, .busy-animate--tito-leave-to {
+  opacity: 0;
+  margin-top: -50px; }
+
+.busy-animate--tibo-enter {
+  opacity: 0;
+  margin-top: -50px; }
+
+.busy-animate--tibo-leave-to {
+  opacity: 0;
+  margin-top: 50px; }
+
+.busy-animate--bibo-enter, .busy-animate--bibo-leave-to {
+  opacity: 0;
+  margin-bottom: -50px; }
+
+.busy-animate--lilo-enter, .busy-animate--lilo-leave-to {
+  opacity: 0;
+  margin-left: -50px; }
+
+.busy-animate--riro-enter, .busy-animate--riro-leave-to {
+  opacity: 0;
+  margin-right: -50px; }
+
+.busy-animate--liro-enter, .busy-animate--liro-leave-to {
+  opacity: 0;
+  margin-left: -50px; }
+
+.busy-animate--liro-leave-to {
+  margin-right: -50px; }
+
+.busy-animate--slide-down-enter, .busy-animate--slide-down-leave-to {
+  opacity: 0;
+  height: 0; }
+
+.busy-animate--tito-leave-active, .busy-animate--tito-enter-active, .busy-animate--tibo-leave-active, .busy-animate--tibo-enter-active, .busy-animate--bibo-leave-active, .busy-animate--bibo-enter-active, .busy-animate--riro-leave-active, .busy-animate--riro-enter-active, .busy-animate--lilo-leave-active, .busy-animate--lilo-enter-active, .busy-animate--liro-leave-active, .busy-animate--liro-enter-active, .busy-animate--fade-leave-active, .busy-animate--fade-enter-active, .busy-animate--slide-down-leave-active, .busy-animate--slide-down-enter-active {
+  transition: all 0.3s ease; }
+
+@-webkit-keyframes busy-animate--rotate {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes busy-animate--rotate {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@-webkit-keyframes busy-animate--rotate-1turn {
+  to {
+    transform: rotate(1turn); } }
+
+@keyframes busy-animate--rotate-1turn {
+  to {
+    transform: rotate(1turn); } }
+
+@-webkit-keyframes busy-animate--fade {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: .6; }
+  100% {
+    opacity: 1; } }
+
+@keyframes busy-animate--fade {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: .6; }
+  100% {
+    opacity: 1; } }
+
+.busy-mask {
+  height: 100%;
+  width: 100%;
   position: fixed;
   z-index: 1000;
   left: 0;
-  right: 0;
-  text-align: center;
-  pointer-events: none;
-  font-size: 14px; }
-
-.busy-toast--pos-top {
-  top: 50px; }
-
-.busy-toast--pos-middle {
-  transform: translate3d(0, -50%, 0);
-  top: 50%; }
-
-.busy-toast--pos-bottom {
-  bottom: 50px; }
-
-.busy-toast__wrap {
-  background-color: #262728;
-  border-radius: 4px;
-  overflow: hidden;
-  display: inline-flex;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  max-width: 80%;
-  min-width: 90px; }
-
-.busy-toast--row {
-  flex-direction: row; }
-
-.busy-toast--row-reverse {
-  flex-direction: row-reverse; }
-
-.busy-toast--column {
-  flex-direction: column; }
-
-.busy-toast--column-reverse {
-  flex-direction: column; }
-
-.busy-toast__icon {
-  padding: 0;
-  line-height: 1px;
-  margin: 0 0 0 10px; }
-
-.busy-toast--column .busy-toast__icon {
-  margin: 0 0 10px 0; }
-
-.busy-toast__text {
-  color: #fff;
-  text-align: center;
-  line-height: 1.5;
-  font-weight: normal;
-  margin: 0; }
-
-/*# sourceMappingURL=toast.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-picker {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: 40px;
-  z-index: 1;
-  color: #222;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-.busy-picker__header {
-  height: 40px;
-  background: #f1f2f4;
-  display: flex;
-  line-height: 40px;
-  font-size: 18px;
-  border: 1px solid #e0e0e0;
-  border-width: 1px 0; }
-
-.busy-picker__title {
-  flex: 1; }
-
-.busy-picker__cancel, .busy-picker__confirm {
-  color: #478df5;
-  flex: none;
-  width: 60px;
-  text-align: center; }
-
-.busy-picker__box {
-  height: 5em;
-  background: #eeeeee;
-  position: relative;
-  overflow: hidden;
-  display: flex; }
-
-.busy-picker__box::after {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-  left: 0;
-  top: 40%;
-  right: 0;
-  content: "";
-  border: 1px solid #ccc;
-  border-width: 1px 0;
-  box-sizing: border-box;
-  height: 20%; }
-
-.busy-picker__wheel {
-  flex: 1;
-  padding: 0;
-  margin: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-.busy-picker__item {
-  list-style: none;
-  height: 1em;
-  color: #222;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-.busy-picker__item > span {
-  font-size: 20px; }
-
-.busy-picker__transition {
-  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1); }
-
-.busy-picker__mask_top {
-  flex: none;
-  flex: none;
   top: 0;
-  bottom: 60%;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); }
+  opacity: 1; }
 
-.busy-picker__mask_bottom {
-  flex: none;
-  flex: none;
-  top: 60%;
-  bottom: 0;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); }
-
-/*# sourceMappingURL=picker.vue.map */
+/*# sourceMappingURL=mask.vue.map */
 /* Color */
 /** global **/
 /* Button Component */
@@ -775,6 +852,29 @@
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
+.busy-spinner-circle-rotate {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden; }
+
+.busy-spinner-circle-rotate__wrap {
+  -webkit-animation: busy-animate--rotate-1turn 0.5s linear infinite;
+  animation: busy-animate--rotate-1turn 0.5s linear infinite;
+  transform-origin: center;
+  stroke: #222222;
+  stroke-width: 6; }
+
+/*# sourceMappingURL=circle-rotate.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
 .busy-spinner-circle-line[data-v-13dde612] {
   display: inline-block;
   font-size: 0;
@@ -843,91 +943,23 @@
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-spinner-circle-rotate {
-  display: inline-block;
-  font-size: 0;
-  line-height: 0;
-  overflow: hidden; }
-
-.busy-spinner-circle-rotate__wrap {
-  -webkit-animation: busy-animate--rotate-1turn 0.5s linear infinite;
-  animation: busy-animate--rotate-1turn 0.5s linear infinite;
-  transform-origin: center;
-  stroke: #222222;
-  stroke-width: 6; }
-
-/*# sourceMappingURL=circle-rotate.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-progress-line__wrap, .busy-progress-line__bar {
-  line-height: 0;
-  font-size: 0; }
-
-.busy-progress-line {
-  border-radius: 3px;
-  display: flex;
-  align-items: center; }
-
-.busy-progress-line__wrap {
-  position: relative;
-  flex: 1;
-  background-color: #d9d9d9; }
-
-.busy-progress-line__start, .busy-progress-line__end {
-  flex: none;
-  display: flex;
-  align-items: center;
-  line-height: 1; }
-
-.busy-progress-line__start {
-  padding-right: 5px; }
-
-.busy-progress-line__end {
-  padding-left: 5px; }
-
-.busy-progress-line__bar {
-  height: 100%;
-  border-radius: 3px;
-  background-color: #478df5; }
-
-/*# sourceMappingURL=progress-line.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-progress-ring {
-  position: relative;
-  text-align: center; }
-
-svg .busy-progress-ring__bar {
-  stroke: #478df5;
-  stroke-width: 6pxpx; }
-
-svg .busy-progress-ring__track {
-  stroke: #d9d9d9;
-  stroke-width: 6pxpx; }
-
-.busy-progress-ring__text {
-  position: absolute;
-  top: 50%;
-  width: 100%;
+.busy-action-sheet__item {
+  height: 48px;
+  line-height: 48px;
+  background-color: rgba(255, 255, 255, 0.9);
   text-align: center;
-  z-index: 1;
-  transform: translateY(-50%); }
+  position: relative;
+  font-size: 18px;
+  color: #000;
+  font-size: 18px; }
 
-/*# sourceMappingURL=progress-ring.vue.map */
+.busy-action-sheet__item:active {
+  background: #f2f2f2; }
+
+.busy-action-sheet__item:after {
+  border-color: #dae3e7; }
+
+/*# sourceMappingURL=action-sheet-item.vue.map */
 /* Color */
 /** global **/
 /* Button Component */
@@ -1092,23 +1124,104 @@ svg .busy-progress-ring__track {
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-action-sheet__item {
-  height: 48px;
-  line-height: 48px;
-  background-color: rgba(255, 255, 255, 0.9);
-  text-align: center;
-  position: relative;
+.busy-picker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 40px;
+  z-index: 1;
+  color: #222;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.busy-picker__header {
+  height: 40px;
+  background: #f1f2f4;
+  display: flex;
+  line-height: 40px;
   font-size: 18px;
-  color: #000;
-  font-size: 18px; }
+  border: 1px solid #e0e0e0;
+  border-width: 1px 0; }
 
-.busy-action-sheet__item:active {
-  background: #f2f2f2; }
+.busy-picker__title {
+  flex: 1; }
 
-.busy-action-sheet__item:after {
-  border-color: #dae3e7; }
+.busy-picker__cancel, .busy-picker__confirm {
+  color: #478df5;
+  flex: none;
+  width: 60px;
+  text-align: center; }
 
-/*# sourceMappingURL=action-sheet-item.vue.map */
+.busy-picker__box {
+  height: 5em;
+  background: #eeeeee;
+  position: relative;
+  overflow: hidden;
+  display: flex; }
+
+.busy-picker__box::after {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  left: 0;
+  top: 40%;
+  right: 0;
+  content: "";
+  border: 1px solid #ccc;
+  border-width: 1px 0;
+  box-sizing: border-box;
+  height: 20%; }
+
+.busy-picker__wheel {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.busy-picker__item {
+  list-style: none;
+  height: 1em;
+  color: #222;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.busy-picker__item > span {
+  font-size: 20px; }
+
+.busy-picker__transition {
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1); }
+
+.busy-picker__mask_top {
+  flex: none;
+  flex: none;
+  top: 0;
+  bottom: 60%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); }
+
+.busy-picker__mask_bottom {
+  flex: none;
+  flex: none;
+  top: 60%;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); }
+
+/*# sourceMappingURL=picker.vue.map */
 /* Color */
 /** global **/
 /* Button Component */
@@ -1118,181 +1231,175 @@ svg .busy-progress-ring__track {
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-radio[data-v-7470d86e] {
-  display: inline-block;
-  vertical-align: middle; }
-
-.busy-radio__label[data-v-7470d86e] {
-  display: flex;
-  height: 16px;
-  align-items: center; }
-
-.busy-radio__input[data-v-7470d86e] {
-  display: none; }
-
-.busy-radio__radio[data-v-7470d86e] {
-  width: 16px;
-  height: 16px;
+.busy-message {
+  position: fixed;
+  z-index: 10001;
+  opacity: 1;
   overflow: hidden;
-  position: relative;
-  border-radius: 50%;
-  line-height: 0;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
   display: flex;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  background: #e4f6ff;
+  color: #0a97e4; }
+
+.busy-message--pos-top {
+  top: 0;
+  left: 0; }
+
+.busy-message--pos-middle {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); }
+
+.busy-message--pos-bottom {
+  bottom: 0;
+  left: 0; }
+
+.busy-message--success {
+  background: #edffe7;
+  color: #57c986; }
+
+.busy-message--warning {
+  background: #fef4d4;
+  color: #fb6700; }
+
+.busy-message--error {
+  background: #fdf2ee;
+  color: #f63e4b; }
+
+.busy-message__icon {
   justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0 15px;
+  flex: none; }
+
+.busy-message__text {
+  flex-grow: 1;
+  text-align: left;
+  padding: 0 15px 0 0;
+  display: flex;
+  justify-content: flex-start;
   align-items: center; }
 
-.busy-radio__input:checked + .busy-radio__radio[data-v-7470d86e] {
-  background: #00a1f4;
-  border: none; }
+.busy-message__close {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: none;
+  padding: 0 10px; }
 
-.busy-radio__input[disabled] + .busy-radio__radio[data-v-7470d86e] {
-  border: 1px solid #c6c6c6;
-  background: #e7e7e7;
-  cursor: not-allowed; }
+/*# sourceMappingURL=message.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-progress-ring {
+  position: relative;
+  text-align: center; }
 
-.busy-radio__text[data-v-7470d86e] {
-  padding-left: 6px;
-  font-size: inherit;
+svg .busy-progress-ring__bar {
+  stroke: #478df5;
+  stroke-width: 6pxpx; }
+
+svg .busy-progress-ring__track {
+  stroke: #d9d9d9;
+  stroke-width: 6pxpx; }
+
+.busy-progress-ring__text {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  transform: translateY(-50%); }
+
+/*# sourceMappingURL=progress-ring.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-progress-line__wrap, .busy-progress-line__bar {
+  line-height: 0;
+  font-size: 0; }
+
+.busy-progress-line {
+  border-radius: 3px;
+  display: flex;
+  align-items: center; }
+
+.busy-progress-line__wrap {
+  position: relative;
+  flex: 1;
+  background-color: #d9d9d9; }
+
+.busy-progress-line__start, .busy-progress-line__end {
+  flex: none;
+  display: flex;
+  align-items: center;
   line-height: 1; }
 
-/*# sourceMappingURL=radio.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-animate--scale-enter-active, .busy-animate--scalein-enter-active {
-  transition: all 0.3s cubic-bezier(0.28, 0.56, 0, 1.04); }
+.busy-progress-line__start {
+  padding-right: 5px; }
 
-.busy-animate--scale-leave-active, .busy-animate--scalein-leave-active {
-  transition: all 0.3s cubic-bezier(0.28, 0.56, 0, 1.04); }
+.busy-progress-line__end {
+  padding-left: 5px; }
 
-.busy-animate {
-  /*上进上出*/
-  /*上进下出*/
-  /*下进下出*/
-  /*左进左出*/
-  /*右进右出*/
-  /*左进右出*/
-  /*slide down*/ }
-
-.busy-animate--fade-enter, .busy-animate--fade-leave-to {
-  opacity: 0; }
-
-.busy-animate--scale-enter {
-  opacity: 0;
-  transform: scale(1.5) !important; }
-
-.busy-animate--scale-leave-to {
-  opacity: 0;
-  transform: scale(0.7) !important; }
-
-.busy-animate--scalein-enter, .busy-animate--scalein-leave-to {
-  transform: scale(0.1) !important; }
-
-.busy-animate--tito-enter, .busy-animate--tito-leave-to {
-  opacity: 0;
-  margin-top: -50px; }
-
-.busy-animate--tibo-enter {
-  opacity: 0;
-  margin-top: -50px; }
-
-.busy-animate--tibo-leave-to {
-  opacity: 0;
-  margin-top: 50px; }
-
-.busy-animate--bibo-enter, .busy-animate--bibo-leave-to {
-  opacity: 0;
-  margin-bottom: -50px; }
-
-.busy-animate--lilo-enter, .busy-animate--lilo-leave-to {
-  opacity: 0;
-  margin-left: -50px; }
-
-.busy-animate--riro-enter, .busy-animate--riro-leave-to {
-  opacity: 0;
-  margin-right: -50px; }
-
-.busy-animate--liro-enter, .busy-animate--liro-leave-to {
-  opacity: 0;
-  margin-left: -50px; }
-
-.busy-animate--liro-leave-to {
-  margin-right: -50px; }
-
-.busy-animate--slide-down-enter, .busy-animate--slide-down-leave-to {
-  opacity: 0;
-  height: 0; }
-
-.busy-animate--tito-leave-active, .busy-animate--tito-enter-active, .busy-animate--tibo-leave-active, .busy-animate--tibo-enter-active, .busy-animate--bibo-leave-active, .busy-animate--bibo-enter-active, .busy-animate--riro-leave-active, .busy-animate--riro-enter-active, .busy-animate--lilo-leave-active, .busy-animate--lilo-enter-active, .busy-animate--liro-leave-active, .busy-animate--liro-enter-active, .busy-animate--fade-leave-active, .busy-animate--fade-enter-active, .busy-animate--slide-down-leave-active, .busy-animate--slide-down-enter-active {
-  transition: all 0.3s ease; }
-
-@-webkit-keyframes busy-animate--rotate {
-  0% {
-    transform: rotate(0deg); }
-  50% {
-    transform: rotate(180deg); }
-  100% {
-    transform: rotate(360deg); } }
-
-@keyframes busy-animate--rotate {
-  0% {
-    transform: rotate(0deg); }
-  50% {
-    transform: rotate(180deg); }
-  100% {
-    transform: rotate(360deg); } }
-
-@-webkit-keyframes busy-animate--rotate-1turn {
-  to {
-    transform: rotate(1turn); } }
-
-@keyframes busy-animate--rotate-1turn {
-  to {
-    transform: rotate(1turn); } }
-
-@-webkit-keyframes busy-animate--fade {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: .6; }
-  100% {
-    opacity: 1; } }
-
-@keyframes busy-animate--fade {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: .6; }
-  100% {
-    opacity: 1; } }
-
-.busy-mask {
+.busy-progress-line__bar {
   height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  opacity: 1; }
+  border-radius: 3px;
+  background-color: #478df5; }
 
-/*# sourceMappingURL=mask.vue.map */
+/*# sourceMappingURL=progress-line.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-input {
+  display: flex;
+  width: 100%; }
+
+.busy-input__content {
+  flex: 1; }
+
+.busy-input__clear {
+  flex: none;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.busy-input__input {
+  width: 100%;
+  height: 24px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 0;
+  font-size: inherit; }
+
+.busy-input__input::-webkit-input-placeholder {
+  color: #b2b2b2; }
+
+/*# sourceMappingURL=input.vue.map */
 /* Color */
 /** global **/
 /* Button Component */
@@ -1427,157 +1534,79 @@ svg .busy-progress-ring__track {
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-segment {
-  display: flex;
-  border: 1px solid #478df5;
-  border-radius: 5px;
-  height: 36px;
-  box-sizing: border-box;
-  text-align: center;
-  color: #478df5;
-  overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-.busy-segment__item {
-  border-right: 1px solid #478df5;
-  height: 100%;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.busy-switch {
+  width: 52px;
+  height: 31px;
   position: relative;
+  border: 1px solid #dfdfdf;
+  background-color: #fdfdfd;
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-clip: content-box;
+  display: inline-block;
+  -webkit-appearance: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color: transparent;
-  transition: background-color 200ms ease-in; }
+  outline: none; }
 
-.busy-segment__item:last-child {
-  border: none; }
+.busy-switch:before {
+  content: "";
+  width: 29px;
+  height: 29px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
 
-.busy-segment__item--checked {
-  background: #478df5;
-  color: #fff; }
+.busy-switch:checked {
+  border-color: #44db5e;
+  box-shadow: #44db5e 0 0 0 16px inset;
+  background-color: #44db5e; }
 
-.busy-segment__item--disabled {
-  opacity: 0.6; }
+.busy-switch:checked:before {
+  left: 21px; }
 
-/*# sourceMappingURL=segment.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-list {
-  display: block;
-  background: #fff;
-  box-sizing: border-box;
-  padding-left: 12px;
-  width: 100%; }
+.busy-switch__animbg {
+  transition: background-color ease 0.4s; }
 
-/*# sourceMappingURL=list.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-list-item {
-  font-size: 14px;
-  color: #666;
-  width: inherit; }
+.busy-switch__animbg:before {
+  transition: left 0.3s; }
 
-.busy-list-item__label, .busy-list-item__icon, .busy-list-item__content {
-  height: inherit; }
+.busy-switch__animbg:checked {
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  background-color: #44db5e;
+  transition: border-color 0.4s, background-color ease 0.4s; }
 
-.busy-list-item__label_text {
-  font-weight: 500; }
+.busy-switch__animbg:checked:before {
+  transition: left 0.3s; }
 
-.busy-list-item__content_text {
-  color: #999; }
+.busy-switch__anim {
+  transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s; }
 
-/*# sourceMappingURL=list-item.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-message {
-  position: fixed;
-  z-index: 10001;
-  opacity: 1;
-  overflow: hidden;
-  display: flex;
-  font-size: 16px;
-  height: 40px;
-  line-height: 40px;
-  width: 100%;
-  background: #e4f6ff;
-  color: #0a97e4; }
+.busy-switch__anim:before {
+  transition: left 0.3s; }
 
-.busy-message--pos-top {
-  top: 0;
-  left: 0; }
+.busy-switch__anim:checked {
+  box-shadow: #44db5e 0 0 0 16px inset;
+  background-color: #44db5e;
+  transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s; }
 
-.busy-message--pos-middle {
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%); }
+.busy-switch__anim:checked:before {
+  transition: left 0.3s; }
 
-.busy-message--pos-bottom {
-  bottom: 0;
-  left: 0; }
-
-.busy-message--success {
-  background: #edffe7;
-  color: #57c986; }
-
-.busy-message--warning {
-  background: #fef4d4;
-  color: #fb6700; }
-
-.busy-message--error {
-  background: #fdf2ee;
-  color: #f63e4b; }
-
-.busy-message__icon {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding: 0 15px;
-  flex: none; }
-
-.busy-message__text {
-  flex-grow: 1;
-  text-align: left;
-  padding: 0 15px 0 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center; }
-
-.busy-message__close {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex: none;
-  padding: 0 10px; }
-
-/*# sourceMappingURL=message.vue.map */
+/*# sourceMappingURL=switch.vue.map */
 /* Color */
 /** global **/
 /* Button Component */
@@ -1704,116 +1733,46 @@ svg .busy-progress-ring__track {
 /** Swipe Component **/
 /** progress Component **/
 /*** toast component **/
-.busy-input {
+.busy-segment {
   display: flex;
-  width: 100%; }
+  border: 1px solid #478df5;
+  border-radius: 5px;
+  height: 36px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #478df5;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
 
-.busy-input__content {
-  flex: 1; }
-
-.busy-input__clear {
-  flex: none;
-  width: 24px;
+.busy-segment__item {
+  border-right: 1px solid #478df5;
+  height: 100%;
+  flex: 1;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: center; }
-
-.busy-input__input {
-  width: 100%;
-  height: 24px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: 0;
-  border: 0;
-  font-size: inherit; }
-
-.busy-input__input::-webkit-input-placeholder {
-  color: #b2b2b2; }
-
-/*# sourceMappingURL=input.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-switch {
-  width: 52px;
-  height: 31px;
   position: relative;
-  border: 1px solid #dfdfdf;
-  background-color: #fdfdfd;
-  box-shadow: #dfdfdf 0 0 0 0 inset;
-  border-radius: 20px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  background-clip: content-box;
-  display: inline-block;
-  -webkit-appearance: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  outline: none; }
+  background-color: transparent;
+  transition: background-color 200ms ease-in; }
 
-.busy-switch:before {
-  content: "";
-  width: 29px;
-  height: 29px;
-  position: absolute;
-  top: 0px;
-  left: 0;
-  border-radius: 20px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
+.busy-segment__item:last-child {
+  border: none; }
 
-.busy-switch:checked {
-  border-color: #44db5e;
-  box-shadow: #44db5e 0 0 0 16px inset;
-  background-color: #44db5e; }
+.busy-segment__item--checked {
+  background: #478df5;
+  color: #fff; }
 
-.busy-switch:checked:before {
-  left: 21px; }
+.busy-segment__item--disabled {
+  opacity: 0.6; }
 
-.busy-switch__animbg {
-  transition: background-color ease 0.4s; }
-
-.busy-switch__animbg:before {
-  transition: left 0.3s; }
-
-.busy-switch__animbg:checked {
-  box-shadow: #dfdfdf 0 0 0 0 inset;
-  background-color: #44db5e;
-  transition: border-color 0.4s, background-color ease 0.4s; }
-
-.busy-switch__animbg:checked:before {
-  transition: left 0.3s; }
-
-.busy-switch__anim {
-  transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s; }
-
-.busy-switch__anim:before {
-  transition: left 0.3s; }
-
-.busy-switch__anim:checked {
-  box-shadow: #44db5e 0 0 0 16px inset;
-  background-color: #44db5e;
-  transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s; }
-
-.busy-switch__anim:checked:before {
-  transition: left 0.3s; }
-
-/*# sourceMappingURL=switch.vue.map */
+/*# sourceMappingURL=segment.vue.map */
 /* Color */
 /** global **/
 /* Button Component */
@@ -2090,6 +2049,47 @@ svg .busy-progress-ring__track {
   display: none; }
 
 /*# sourceMappingURL=loadmore.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-list {
+  display: block;
+  background: #fff;
+  box-sizing: border-box;
+  padding-left: 12px;
+  width: 100%; }
+
+/*# sourceMappingURL=list.vue.map */
+/* Color */
+/** global **/
+/* Button Component */
+/* Field Component */
+/** Message Component **/
+/** Dialog Component **/
+/** Swipe Component **/
+/** progress Component **/
+/*** toast component **/
+.busy-list-item {
+  font-size: 14px;
+  color: #666;
+  width: inherit; }
+
+.busy-list-item__label, .busy-list-item__icon, .busy-list-item__content {
+  height: inherit; }
+
+.busy-list-item__label_text {
+  font-weight: 500; }
+
+.busy-list-item__content_text {
+  color: #999; }
+
+/*# sourceMappingURL=list-item.vue.map */
 /* Color */
 /** global **/
 /* Button Component */

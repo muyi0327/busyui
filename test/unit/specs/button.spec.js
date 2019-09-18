@@ -51,7 +51,7 @@ describe('Button Module', () => {
                 }
             }).$mount()
 
-            expect(vm.$el.querySelector('label').innerText).to.be.equal('测试')
+            expect(vm.$el.querySelector('button').innerText).to.be.equal('测试')
         })
     })
 })

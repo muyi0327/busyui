@@ -9,6 +9,11 @@
             "forceAllTransforms": true
         }]
     ],
+    "env": {
+        "test": {
+            "plugins": ["istanbul"]
+        }
+    },
     "plugins": [
         "@babel/plugin-transform-modules-commonjs",
         "@babel/plugin-transform-runtime",

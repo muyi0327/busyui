@@ -13,8 +13,6 @@ module.exports = function (config) {
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['mocha', 'chai'],
-
-
         // list of files / patterns to load in the browser
         files: [
             './test/unit/**/*.spec.js'
@@ -29,7 +27,9 @@ module.exports = function (config) {
             'karma-mocha',
             'karma-webpack',
             'karma-chai',
+            'karma-spec-reporter',
             'karma-mocha-reporter',
+            'karma-sourcemap-loader',
             'karma-jsdom-launcher',
             'karma-chrome-launcher',
             'karma-safari-launcher'
@@ -37,14 +37,14 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            './test/unit/**/*.spec.js': ['webpack', 'coverage']
+            './test/unit/**/*.spec.js': ['webpack']
         },
 
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['mocha', 'coverage'],
+        reporters: ['mocha', 'spec', 'coverage'],
 
 
         // web server port

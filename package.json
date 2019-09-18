@@ -12,7 +12,7 @@
         "test": "test"
     },
     "scripts": {
-        "test": "karma start",
+        "test": "cross-env BABEL_ENV=test karma start",
         "dev-rp": "rollup -c -w",
         "build": "cross-env NODE_ENV=production gulp build",
         "dev": "cross-env NODE_ENV=development gulp build && gulp watch",
@@ -33,7 +33,10 @@
     "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
     "license": "MIT",
     "dependencies": {
+        "@vue/test-utils": "^1.0.0-beta.29",
         "isparta": "^4.1.1",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-spec-reporter": "^0.0.32",
         "vue": "^2.6.9"
     },
     "devDependencies": {
@@ -56,7 +59,7 @@
         "babel-jest": "^24.5.0",
         "babel-loader": "^8.0.5",
         "babel-plugin-external-helpers": "^6.22.0",
-        "babel-plugin-istanbul": "^5.1.1",
+        "babel-plugin-istanbul": "^5.2.0",
         "babel-preset-env": "^1.7.0",
         "babel-register": "^6.26.0",
         "brfs": "^1.4.3",
