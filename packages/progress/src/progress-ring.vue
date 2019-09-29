@@ -4,6 +4,7 @@
     .#{$prefixCls}-progress-ring {
         position: relative;
         text-align: center;
+        font-size: 0;
         svg &__bar {
             stroke: $progress-line-color;
             stroke-width: #{$progress-line-width}px;
@@ -33,7 +34,7 @@
             <circle :class="`${prefixCls}-progress-ring__bar`" :cx="radius" :cy="radius" :r="sRdius" :style="barStyles" fill="transparent" :stroke-linecap="linecap" :stroke-dasharray="dasharray" :stroke-dashoffset="dashoffset">
             </circle>
         </svg>
-        <div :class="`${prefixCls}-progress-ring__text`">
+        <div v-if="$slots.default" :class="`${prefixCls}-progress-ring__text`">
             <slot></slot>
         </div>
     </div>
@@ -59,7 +60,7 @@
         mixins: [mixins],
         props: {
             size: {
-                type: Number,
+                type: [Number, String],
                 default: 100
             },
             direction: {

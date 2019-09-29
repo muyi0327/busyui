@@ -38,7 +38,7 @@
         mixins: [mixins],
         props: {
             size: {
-                type: Number,
+                type: [Number, String],
                 default: 80
             },
             direction: String,

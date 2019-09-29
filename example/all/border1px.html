@@ -34,9 +34,9 @@
         .box {
             width: 90%;
             margin: 20px auto;
-            height: 30px;
+            height: 36px;
             text-align: center;
-            line-height: 30px;
+            line-height: 36px;
             color: #999;
         }
 
@@ -63,15 +63,11 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <div class="inline-flex">
-                <div style="width:50px;">一</div>
-                <div>二二二二二二二</div>
-            </div>
-            <div class="box" v-busy-border-1px="{radius:0,side:'lr', color:'red'}">1像素边框</div>
-            <div class="box" v-busy-border-1px="{radius:10, color:'#dd3'}">1像素上边框</div>
-            <div class="box" v-busy-border-1px="{radius:'10rem', color:'orange'}">1像素下边框</div>
-            <div class="box" v-busy-border-1px="{radius:'50%', color:'orange'}">1像素下边框</div>
-            <div class="box">1像素左边框</div>
+            <div class="box" v-busy-border-1px="{radius:0,side:'no-b', color:'red'}">1像素边框</div>
+            <div class="box" v-busy-border-1px="{radius:10,color:'#05f'}">10px圆角1像素边框</div>
+            <div class="box" v-busy-border-1px="{radius:'10 10 0 0', color:'orange'}">10p上圆角1像素边框</div>
+            <div class="box" v-busy-border-1px="{radius:'18', color:'orange'}">胶囊圆角1像素边框</div>
+            <div class="box busy-border-1px busy-border-l">1像素左边框</div>
             <div class="box busy-border-1px busy-border-r">1像素右边框</div>
             <div class="box busy-border-1px busy-border-lr">1像素左右边框</div>
             <div class="box busy-border-1px busy-border-tb">1像素上下边框</div>

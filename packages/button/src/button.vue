@@ -296,12 +296,7 @@
                 let dpr = window.devicePixelRatio;
 
                 if (br) {
-                    if (/^\d+$/.test(br)) {
-                        br = br * dpr + 'px'
-                    } else if (!/%$/.test(br)) {
-                        regBr = String(br).match(/(\d+)([a-zA-Z]+)/)
-                        br = regBr[1] * dpr + regBr[2]
-                    }
+                    br = BNumber.getDPRUnit(br)
                 }
 
                 return {

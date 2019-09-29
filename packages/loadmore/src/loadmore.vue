@@ -1,6 +1,5 @@
 <style lang="scss">
-    @import "../../../src/style/variable";
-    @import "../../../src/style/flexbox";
+    @import "../../../src/style/variable.scss";
 
     .#{$prefixCls}-loadmore {
         -webkit-overflow-scrolling: touch;

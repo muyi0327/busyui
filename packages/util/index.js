@@ -22,5 +22,7 @@ export {
     BNumber,
     BRegexp,
     initName,
-    baseMixins
+    baseMixins,
+    prefix,
+    prefixCls
 }

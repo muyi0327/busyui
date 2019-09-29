@@ -45,16 +45,7 @@ export function enFormatNumberic(n) {
         return '';
     }
 
-    n = String(n).replace(/[^-\d.]/g, '');
-
-    var i = n.indexOf('.'),
-        t = '';
-    if (i >= 0) {
-        t = n.slice(i);
-        n = n.slice(0, i);
-    }
-
-    return format(n, 3, ',', true) + (i >= 0 ? t.slice(0, 3) : '');
+    return String(n).trim().replace(/[^-\d.]/g, '').replace(/(\d{1,3})(?=(\d{3})+(?:$|\.))/g, "$1,")
 }
 
 /**
@@ -65,14 +56,7 @@ export function deFormatNumberic(n) {
     if (!n) {
         return '';
     }
-    n = String(n);
-    var i = n.indexOf('.'),
-        t = '';
-    if (i >= 0) {
-        t = n.slice(i);
-        n = n.slice(0, i);
-    }
-    return String(n).replace(/,/g, '') + (i >= 0 ? t.slice(0, 3) : '');
+    return String(n).trim().replace(/,/g, '')
 }
 
 export function enFormatBankCard(n) {
@@ -85,16 +69,23 @@ export function deFormatBankCard(n) {
 }
 
 export function getDPRUnit(n) {
+    n = String(n).trim()
+    n = n.split(/\s/)
     let dpr = window.devicePixelRatio;
-    let regMatch = String(n).match(/^(\d+)([a-z]+)$/)
+    let reg = /^(\d+)([a-z]+)$/
+    n = n.map(item => {
+        let regMatch = String(item).match(reg)
 
-    if (regMatch) {
-        n = `${Number(dpr) * regMatch[1]}${regMatch[2]}`
-    } else if (/^\d+$/.test(n)) {
-        n = `${Number(dpr) * n}px`
-    }
+        if (regMatch) {
+            return `${Number(dpr) * regMatch[1]}${regMatch[2]}`
+        } else if (REG.pureNumber.test(item)) {
+            return `${Number(dpr) * item}px`
+        }
 
-    return n;
+        return item
+    })
+
+    return n.join(' ');
 }
 
 /**
@@ -102,7 +93,10 @@ export function getDPRUnit(n) {
  * @param {*} u - 传入单位
  */
 export function cmpUnit(u) {
-    return REG.pureNumber.test(String(u)) ? u + 'px' : u
+    if (!u && u !== '0' && u !== '0') return u;
+    u = String(u).split(/\s+/)
+    u = u.map(item => REG.pureNumber.test(String(item)) ? item + 'px' : item)
+    return u.join(' ')
 }
 
 /**

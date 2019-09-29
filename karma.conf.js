@@ -32,19 +32,22 @@ module.exports = function (config) {
             'karma-sourcemap-loader',
             'karma-jsdom-launcher',
             'karma-chrome-launcher',
-            'karma-safari-launcher'
+            'karma-safari-launcher',
+            'karma-coverage-istanbul-reporter',
+            'istanbul-instrumenter-loader'
+
         ],
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            './test/unit/**/*.spec.js': ['webpack']
+            './test/unit/**/*.spec.js': ['webpack', 'sourcemap']
         },
 
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['mocha', 'spec', 'coverage'],
+        reporters: ['mocha', 'coverage', 'coverage-istanbul'],
 
 
         // web server port

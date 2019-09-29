@@ -7,6 +7,7 @@ import babel from 'rollup-plugin-babel'
 import replace from 'rollup-plugin-replace'
 import serve from 'rollup-plugin-serve'
 import autoprefixer from 'autoprefixer'
+import onceImporter from 'node-sass-once-importer'
 import pkg from './package.json'
 
 import {
@@ -61,6 +62,27 @@ export default {
         'vue-router'
     ],
     plugins: [
+        vue({
+            css: false,
+            defaultLang: {
+                style: 'scss'
+            },
+            style: {
+                preprocessOptions: {
+                    scss: {
+                        data: parseJsonToSass({
+                            prefix,
+                            prefixCls
+                        }),
+                        importer: onceImporter()
+                    }
+                },
+                postcssPlugins: [
+                    autoprefixer()
+                ]
+            }
+        }),
+
         resolve({
             jsnext: true,
             main: true,
@@ -73,26 +95,6 @@ export default {
 
         scss({
             output: destCss
-        }),
-
-        vue({
-            css: false,
-            defaultLang: {
-                style: 'scss'
-            },
-            style: {
-                preprocessOptions: {
-                    scss: {
-                        data: parseJsonToSass({
-                            prefix,
-                            prefixCls
-                        })
-                    }
-                },
-                postcssPlugins: [
-                    autoprefixer()
-                ]
-            }
         }),
 
         replace({

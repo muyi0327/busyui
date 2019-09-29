@@ -51,11 +51,36 @@
     }
 }
 
+.#{$prefixCls}-border-tr {
+    &::after {
+        border-width: 1px 1px 0 0;
+    }
+}
+
+.#{$prefixCls}-border-tl {
+    &::after {
+        border-width: 1px 0 0 1px;
+    }
+}
+
+.#{$prefixCls}-border-br {
+    &::after {
+        border-width: 0 1px 1px 0x;
+    }
+}
+
+.#{$prefixCls}-border-bl {
+    &::after {
+        border-width: 0 0 1px 1px;
+    }
+}
+
 .#{$prefixCls}-border-no-t {
     &::after {
         border-width: 0 1px 1px;
     }
 }
+
 
 .#{$prefixCls}-border-no-b {
     &::after {

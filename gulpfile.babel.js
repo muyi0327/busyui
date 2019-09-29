@@ -1,7 +1,4 @@
-import gulp, {
-    series,
-    parallel
-} from 'gulp'
+import gulp, { series, parallel } from 'gulp'
 import glob from 'glob'
 import del from 'del'
 import rename from 'gulp-rename'
@@ -10,25 +7,13 @@ import uglify from 'gulp-uglify'
 import csso from 'gulp-csso'
 import jdtomk from 'jsdoc-to-markdown'
 import colors from 'colors'
-import {
-    src,
-    dest,
-    packages,
-    docs,
-} from './src/base'
-
-import {
-    libraryName,
-    globalName
-} from './src/config'
-
-import {
-    rollup
-} from 'rollup'
-import {
-    exec
-} from 'child_process'
+import { src, dest, packages, docs, } from './src/base'
+import { libraryName, globalName } from './src/config'
+import { rollup } from 'rollup'
+import { exec } from 'child_process'
 import fs from 'fs'
+import path from 'path'
+import nodeSass from 'node-sass'
 
 let buildTasks = [];
 let env = process.env.NODE_ENV;
@@ -144,6 +129,28 @@ gulp.task('test', function (cb) {
         cb();
     });
 });
+
+gulp.task('get-sass', () => {
+    var sass = fs.readFileSync('./a.txt', 'utf-8'),
+        datas = ''
+    sass = JSON.parse(sass)
+    for (var item in sass) {
+        datas += sass[item]
+    }
+    datas = datas.replace(/\n/g, '')
+    fs.writeFileSync('./b.sass', datas)
+    datas = sass = nodeSass.renderSync({
+        data: datas,
+        vars: {
+            prefix: 'beer',
+            prefixCls: 'beer'
+        },
+        includePaths: [path.resolve(__dirname, './src/style/')]
+    })
+
+    console.log(datas)
+
+})
 
 // execute gulp version --version 0.x.x
 gulp.task('vs', (cb) => {

@@ -1,6 +1,5 @@
 <style lang="scss" scoped>
     @import "../../../src/style/variable";
-    @import "../../../src/style/animate";
 
     .#{$prefixCls}-spinner-circle-gradient {
         $rotate: #{$prefixCls}-animate--rotate-1turn;

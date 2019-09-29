@@ -1,3 +1,4 @@
+import './style/animate.scss'
 import Border from '../packages/border/index.js'
 import Toast from '../packages/toast/index.js'
 import ToastLoading from '../packages/toast-loading/index.js'

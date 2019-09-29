@@ -74,7 +74,7 @@
 
             <busy-list height="40" class="busy-border-1px busy-border-tb">
                 <busy-list-item label-width="100" label="自定义分隔">
-                    <busy-input v-model="code" pattern="[A-Z]*" :format="[[4,2,3],'**']" placeholder="请输入大写字母"></busy-input>
+                    <busy-input v-model="code" pattern="[A-Z]*" :de-format="(val)=>val.replace(/\s/g,'')" placeholder="请输入大写字母"></busy-input>
                 </busy-list-item>
             </busy-list>
         </section>

@@ -1,6 +1,5 @@
 <style lang="scss">
     @import "../../../src/style/variable";
-    @import "../../../src/style/animate";
 
     .#{$prefixCls}-mask {
         height: 100%;

@@ -20,6 +20,35 @@
             box-sizing: border-box;
             border: 1px solid orange;
         }
+
+        .circle-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: orchid;
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-box .center-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .3);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-progress {
+            position: absolute;
+            z-index: 1;
+            left: 2px;
+            top: 2px;
+            transform: rotate(-90deg)
+        }
     </style>
 </head>
 
@@ -28,11 +57,12 @@
         <section id="app" class="app">
             <div @click="handle">
                 <busy-progress height="30" :value="val" :track-width="stroke" line-color="green">
+                    <span slot="start">lading</span>
                     <span slot="end" v-if="val<100">{{val}}%</span>
                     <busy-icon v-else name="yes" slot="end" color="green" />
                 </busy-progress>
                 <p></p>
-                <busy-progress direction="1" class="abcd" line-color="green" :value="val" :track-width="stroke" type="ring">
+                <busy-progress type="ring" direction="1" class="abcd" line-color="green" :value="val" :track-width="stroke">
                     <span v-if="val<100">{{val}}%</span>
                     <busy-icon v-else name="yes" color="green" width="36" height="36" />
                 </busy-progress>
@@ -44,6 +74,35 @@
                         <span slot="end" v-if="val<100">{{val}}%</span>
                         <busy-icon v-else name="yes" slot="end" color="green" />
                     </busy-progress-line>
+                </div>
+
+                <div class="circle-box">
+                    <div class="center-box">
+                        <busy-icon color="rgba(255,255,255,0.8)" width="40" height="40" name="customerservice"></busy-icon>
+                    </div>
+                    <busy-progress class="circle-progress" :value="val" type="ring" size="96" line-color="#ffffff" track-color="transparent" :track-width="3"></busy-progress>
+                </div>
+
+                <div class="circle-box">
+                    <div class="center-box">
+                        <busy-icon color="rgba(255,255,255,0.8)" width="40" height="40" name="setting"></busy-icon>
+                    </div>
+                    <busy-progress class="circle-progress" :value="val" type="ring" size="96" line-color="#ffffff" track-color="transparent" :track-width="3"></busy-progress>
+                </div>
+
+                <div class="circle-box">
+                    <div class="center-box">
+                        <busy-icon color="rgba(255,255,255,0.8)" width="40" height="40" name="barcode"></busy-icon>
+                    </div>
+                    <busy-progress class="circle-progress" :value="val" type="ring" size="96" line-color="#ffffff" track-color="transparent" :track-width="3"></busy-progress>
+                </div>
+
+                <div class="circle-box">
+                    <div class="center-box">
+                        <busy-spinner v-if="val<100" type="circle-line" color="#fff" width="40" height="40"></busy-spinner>
+                        <busy-icon v-else name="yes" color="#fff" width="40" height="40" />
+                    </div>
+                    <busy-progress class="circle-progress" :value="val" type="ring" size="96" line-color="#ffffff" track-color="transparent" :track-width="3"></busy-progress>
                 </div>
             </div>
         </section>
