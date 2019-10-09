@@ -144,15 +144,6 @@
 .busy-border-no-l::after {
   border-width: 1px 1px 1px 0; }
 
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-toast {
   position: fixed;
   z-index: 1000;
@@ -209,19 +200,9 @@
   color: #fff;
   text-align: center;
   line-height: 1.5;
-  font-weight: normal;
+  font-weight: 400;
   margin: 0; }
 
-/*# sourceMappingURL=toast.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-toast-loading {
   display: flex;
   border-radius: 6px;
@@ -268,16 +249,6 @@
   align-items: flex-start;
   justify-content: center; }
 
-/*# sourceMappingURL=toast-loading.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-loading {
   position: absolute;
   z-index: 1000;
@@ -294,29 +265,9 @@
   position: relative;
   z-index: 2; }
 
-/*# sourceMappingURL=Loading.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-icon {
   display: inline-block; }
 
-/*# sourceMappingURL=icon.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-flex {
   display: flex; }
 
@@ -514,16 +465,6 @@
   justify-content: space-around;
   align-items: stretch; }
 
-/*# sourceMappingURL=flexbox.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-checkbox {
   display: inline-block;
   vertical-align: middle;
@@ -544,7 +485,7 @@
   width: 16px;
   height: 16px;
   border-radius: 4px;
-  border: 1px solid #c0c0c0;
+  border: 1px solid silver;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -564,29 +505,19 @@
 .busy-checkbox__text {
   padding-left: 10px; }
 
-/*# sourceMappingURL=checkbox.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-radio[data-v-7470d86e] {
+.busy-radio[data-v-5bf4df58] {
   display: inline-block;
   vertical-align: middle; }
 
-.busy-radio__label[data-v-7470d86e] {
+.busy-radio__label[data-v-5bf4df58] {
   display: flex;
   height: 16px;
   align-items: center; }
 
-.busy-radio__input[data-v-7470d86e] {
+.busy-radio__input[data-v-5bf4df58] {
   display: none; }
 
-.busy-radio__radio[data-v-7470d86e] {
+.busy-radio__radio[data-v-5bf4df58] {
   width: 16px;
   height: 16px;
   overflow: hidden;
@@ -599,30 +530,20 @@
   justify-content: center;
   align-items: center; }
 
-.busy-radio__input:checked + .busy-radio__radio[data-v-7470d86e] {
+.busy-radio__input:checked + .busy-radio__radio[data-v-5bf4df58] {
   background: #00a1f4;
   border: none; }
 
-.busy-radio__input[disabled] + .busy-radio__radio[data-v-7470d86e] {
+.busy-radio__input[disabled] + .busy-radio__radio[data-v-5bf4df58] {
   border: 1px solid #c6c6c6;
   background: #e7e7e7;
   cursor: not-allowed; }
 
-.busy-radio__text[data-v-7470d86e] {
+.busy-radio__text[data-v-5bf4df58] {
   padding-left: 6px;
   font-size: inherit;
   line-height: 1; }
 
-/*# sourceMappingURL=radio.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-picker {
   position: absolute;
   bottom: 0;
@@ -635,7 +556,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif; }
 
 .busy-picker__header {
   height: 40px;
@@ -657,7 +578,7 @@
 
 .busy-picker__box {
   height: 5em;
-  background: #eeeeee;
+  background: #eee;
   position: relative;
   overflow: hidden;
   display: flex; }
@@ -679,7 +600,7 @@
   flex: 1;
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif; }
 
 .busy-picker__item {
   list-style: none;
@@ -720,16 +641,6 @@
   pointer-events: none;
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4)); }
 
-/*# sourceMappingURL=picker.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-mask {
   height: 100%;
   width: 100%;
@@ -739,17 +650,7 @@
   top: 0;
   opacity: 1; }
 
-/*# sourceMappingURL=mask.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-@-webkit-keyframes busy-loading-dash-data-v-297d50de {
+@-webkit-keyframes busy-loading-dash-data-v-16abeac0 {
   0% {
     stroke-dasharray: 1 175;
     stroke-dashoffset: 0; }
@@ -760,7 +661,7 @@
     stroke-dasharray: 170 300;
     stroke-dashoffset: -175; } }
 
-@keyframes busy-loading-dash-data-v-297d50de {
+@keyframes busy-loading-dash-data-v-16abeac0 {
   0% {
     stroke-dasharray: 1 175;
     stroke-dashoffset: 0; }
@@ -771,124 +672,94 @@
     stroke-dasharray: 170 300;
     stroke-dashoffset: -175; } }
 
-.busy-spinner-circle-dash[data-v-297d50de] {
+.busy-spinner-circle-dash[data-v-16abeac0] {
   display: inline-block;
   font-size: 0;
   line-height: 0; }
 
-.busy-spinner-circle-dash__wrap[data-v-297d50de] {
+.busy-spinner-circle-dash__wrap[data-v-16abeac0] {
   stroke-width: 6;
   transform-origin: center;
   -webkit-animation: busy-animate--rotate-1turn 2.75s linear infinite;
   animation: busy-animate--rotate-1turn 2.75s linear infinite;
-  stroke: #222222; }
+  stroke: #222; }
 
-.busy-spinner-circle-dash__path[data-v-297d50de] {
-  -webkit-animation: busy-loading-dash-data-v-297d50de 1.5s ease-in-out infinite;
-  animation: busy-loading-dash-data-v-297d50de 1.5s ease-in-out infinite;
+.busy-spinner-circle-dash__path[data-v-16abeac0] {
+  -webkit-animation: busy-loading-dash-data-v-16abeac0 1.5s ease-in-out infinite;
+  animation: busy-loading-dash-data-v-16abeac0 1.5s ease-in-out infinite;
   stroke-dashoffset: 0; }
 
-/*# sourceMappingURL=circle-dash.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-spinner-circle-gradient[data-v-9ed423fe] {
+.busy-spinner-circle-gradient[data-v-3135c9b2] {
   display: inline-block;
   font-size: 0;
   line-height: 0;
   overflow: hidden; }
 
-.busy-spinner-circle-gradient__wrap[data-v-9ed423fe] {
+.busy-spinner-circle-gradient__wrap[data-v-3135c9b2] {
   stroke-linecap: round;
   stroke-width: 6;
-  -webkit-animation: busy-animate--rotate-1turn 0.8s linear infinite;
-  animation: busy-animate--rotate-1turn 0.8s linear infinite;
+  -webkit-animation: busy-animate--rotate-1turn .8s linear infinite;
+  animation: busy-animate--rotate-1turn .8s linear infinite;
   transform-origin: center center; }
 
-/*# sourceMappingURL=circle-gradient.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-spinner-circle-line[data-v-13dde612] {
+.busy-spinner-circle-line[data-v-abbb51fa] {
   display: inline-block;
   font-size: 0;
   line-height: 0;
   overflow: hidden; }
 
-.busy-spinner-circle-line__wrap[data-v-13dde612] {
-  stroke: #222222;
+.busy-spinner-circle-line__wrap[data-v-abbb51fa] {
+  stroke: #222;
   stroke-width: 4; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(1) {
-  -webkit-animation: busy-animate--fade 0.96s 0s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(1) {
+  -webkit-animation: busy-animate--fade .96s 0s infinite ease-in-out;
+  animation: busy-animate--fade .96s 0s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(2) {
-  -webkit-animation: busy-animate--fade 0.96s 0.08s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.08s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(2) {
+  -webkit-animation: busy-animate--fade .96s 80ms infinite ease-in-out;
+  animation: busy-animate--fade .96s 80ms infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(3) {
-  -webkit-animation: busy-animate--fade 0.96s 0.16s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.16s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(3) {
+  -webkit-animation: busy-animate--fade .96s .16s infinite ease-in-out;
+  animation: busy-animate--fade .96s .16s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(4) {
-  -webkit-animation: busy-animate--fade 0.96s 0.24s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.24s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(4) {
+  -webkit-animation: busy-animate--fade .96s .24s infinite ease-in-out;
+  animation: busy-animate--fade .96s .24s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(5) {
-  -webkit-animation: busy-animate--fade 0.96s 0.32s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.32s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(5) {
+  -webkit-animation: busy-animate--fade .96s .32s infinite ease-in-out;
+  animation: busy-animate--fade .96s .32s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(6) {
-  -webkit-animation: busy-animate--fade 0.96s 0.4s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.4s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(6) {
+  -webkit-animation: busy-animate--fade .96s .4s infinite ease-in-out;
+  animation: busy-animate--fade .96s .4s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(7) {
-  -webkit-animation: busy-animate--fade 0.96s 0.48s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.48s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(7) {
+  -webkit-animation: busy-animate--fade .96s .48s infinite ease-in-out;
+  animation: busy-animate--fade .96s .48s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(8) {
-  -webkit-animation: busy-animate--fade 0.96s 0.56s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.56s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(8) {
+  -webkit-animation: busy-animate--fade .96s .56s infinite ease-in-out;
+  animation: busy-animate--fade .96s .56s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(9) {
-  -webkit-animation: busy-animate--fade 0.96s 0.64s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.64s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(9) {
+  -webkit-animation: busy-animate--fade .96s .64s infinite ease-in-out;
+  animation: busy-animate--fade .96s .64s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(10) {
-  -webkit-animation: busy-animate--fade 0.96s 0.72s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.72s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(10) {
+  -webkit-animation: busy-animate--fade .96s .72s infinite ease-in-out;
+  animation: busy-animate--fade .96s .72s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(11) {
-  -webkit-animation: busy-animate--fade 0.96s 0.8s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.8s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(11) {
+  -webkit-animation: busy-animate--fade .96s .8s infinite ease-in-out;
+  animation: busy-animate--fade .96s .8s infinite ease-in-out; }
 
-.busy-spinner-circle-line__wrap > line[data-v-13dde612]:nth-child(12) {
-  -webkit-animation: busy-animate--fade 0.96s 0.88s infinite ease-in-out;
-  animation: busy-animate--fade 0.96s 0.88s infinite ease-in-out; }
+.busy-spinner-circle-line__wrap > line[data-v-abbb51fa]:nth-child(12) {
+  -webkit-animation: busy-animate--fade .96s .88s infinite ease-in-out;
+  animation: busy-animate--fade .96s .88s infinite ease-in-out; }
 
-/*# sourceMappingURL=circle-line.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-spinner-circle-rotate {
   display: inline-block;
   font-size: 0;
@@ -896,22 +767,64 @@
   overflow: hidden; }
 
 .busy-spinner-circle-rotate__wrap {
-  -webkit-animation: busy-animate--rotate-1turn 0.5s linear infinite;
-  animation: busy-animate--rotate-1turn 0.5s linear infinite;
+  -webkit-animation: busy-animate--rotate-1turn .5s linear infinite;
+  animation: busy-animate--rotate-1turn .5s linear infinite;
   transform-origin: center;
-  stroke: #222222;
+  stroke: #222;
   stroke-width: 6; }
 
-/*# sourceMappingURL=circle-rotate.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
+.busy-progress-ring {
+  position: relative;
+  text-align: center;
+  font-size: 0; }
+
+svg .busy-progress-ring__bar {
+  stroke: #478df5;
+  stroke-width: 6pxpx; }
+
+svg .busy-progress-ring__track {
+  stroke: #d9d9d9;
+  stroke-width: 6pxpx; }
+
+.busy-progress-ring__text {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  transform: translateY(-50%); }
+
+.busy-progress-line__bar, .busy-progress-line__wrap {
+  line-height: 0;
+  font-size: 0; }
+
+.busy-progress-line {
+  border-radius: 3px;
+  display: flex;
+  align-items: center; }
+
+.busy-progress-line__wrap {
+  position: relative;
+  flex: 1;
+  background-color: #d9d9d9; }
+
+.busy-progress-line__end, .busy-progress-line__start {
+  flex: none;
+  display: flex;
+  align-items: center;
+  line-height: 1; }
+
+.busy-progress-line__start {
+  padding-right: 5px; }
+
+.busy-progress-line__end {
+  padding-left: 5px; }
+
+.busy-progress-line__bar {
+  height: 100%;
+  border-radius: 3px;
+  background-color: #478df5; }
+
 .busy-message {
   position: fixed;
   z-index: 10001;
@@ -972,88 +885,6 @@
   flex: none;
   padding: 0 10px; }
 
-/*# sourceMappingURL=message.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-progress-ring {
-  position: relative;
-  text-align: center;
-  font-size: 0; }
-
-svg .busy-progress-ring__bar {
-  stroke: #478df5;
-  stroke-width: 6pxpx; }
-
-svg .busy-progress-ring__track {
-  stroke: #d9d9d9;
-  stroke-width: 6pxpx; }
-
-.busy-progress-ring__text {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  z-index: 1;
-  transform: translateY(-50%); }
-
-/*# sourceMappingURL=progress-ring.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-progress-line__bar, .busy-progress-line__wrap {
-  line-height: 0;
-  font-size: 0; }
-
-.busy-progress-line {
-  border-radius: 3px;
-  display: flex;
-  align-items: center; }
-
-.busy-progress-line__wrap {
-  position: relative;
-  flex: 1;
-  background-color: #d9d9d9; }
-
-.busy-progress-line__start, .busy-progress-line__end {
-  flex: none;
-  display: flex;
-  align-items: center;
-  line-height: 1; }
-
-.busy-progress-line__start {
-  padding-right: 5px; }
-
-.busy-progress-line__end {
-  padding-left: 5px; }
-
-.busy-progress-line__bar {
-  height: 100%;
-  border-radius: 3px;
-  background-color: #478df5; }
-
-/*# sourceMappingURL=progress-line.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-action-sheet {
   position: absolute;
   left: 2%;
@@ -1083,16 +914,6 @@ svg .busy-progress-ring__track {
 .busy-action-sheet__button:active {
   background: #f2f2f2; }
 
-/*# sourceMappingURL=action-sheet.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-action-sheet__item {
   height: 48px;
   line-height: 48px;
@@ -1109,16 +930,6 @@ svg .busy-progress-ring__track {
 .busy-action-sheet__item:after {
   border-color: #dae3e7; }
 
-/*# sourceMappingURL=action-sheet-item.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-input {
   display: flex;
   width: 100%; }
@@ -1146,16 +957,6 @@ svg .busy-progress-ring__track {
 .busy-input__input::-webkit-input-placeholder {
   color: #b2b2b2; }
 
-/*# sourceMappingURL=input.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-switch {
   width: 52px;
   height: 31px;
@@ -1175,14 +976,14 @@ svg .busy-progress-ring__track {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  outline: none; }
+  outline: 0; }
 
 .busy-switch:before {
   content: "";
   width: 29px;
   height: 29px;
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
   border-radius: 20px;
   border-top-left-radius: 20px;
@@ -1201,43 +1002,33 @@ svg .busy-progress-ring__track {
   left: 21px; }
 
 .busy-switch__animbg {
-  transition: background-color ease 0.4s; }
+  transition: background-color ease .4s; }
 
 .busy-switch__animbg:before {
-  transition: left 0.3s; }
+  transition: left .3s; }
 
 .busy-switch__animbg:checked {
   box-shadow: #dfdfdf 0 0 0 0 inset;
   background-color: #44db5e;
-  transition: border-color 0.4s, background-color ease 0.4s; }
+  transition: border-color .4s,background-color ease .4s; }
 
 .busy-switch__animbg:checked:before {
-  transition: left 0.3s; }
+  transition: left .3s; }
 
 .busy-switch__anim {
   transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s; }
 
 .busy-switch__anim:before {
-  transition: left 0.3s; }
+  transition: left .3s; }
 
 .busy-switch__anim:checked {
   box-shadow: #44db5e 0 0 0 16px inset;
   background-color: #44db5e;
-  transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s; }
+  transition: border ease .4s,box-shadow ease .4s,background-color ease 1.2s; }
 
 .busy-switch__anim:checked:before {
-  transition: left 0.3s; }
+  transition: left .3s; }
 
-/*# sourceMappingURL=switch.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-select {
   width: inherit; }
 
@@ -1276,16 +1067,6 @@ svg .busy-progress-ring__track {
   height: 40px;
   line-height: 40px; }
 
-/*# sourceMappingURL=select.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-segment {
   display: flex;
   border: 1px solid #478df5;
@@ -1313,7 +1094,7 @@ svg .busy-progress-ring__track {
   -ms-user-select: none;
   user-select: none;
   background-color: transparent;
-  transition: background-color 200ms ease-in; }
+  transition: background-color .2s ease-in; }
 
 .busy-segment__item:last-child {
   border: none; }
@@ -1323,18 +1104,8 @@ svg .busy-progress-ring__track {
   color: #fff; }
 
 .busy-segment__item--disabled {
-  opacity: 0.6; }
+  opacity: .6; }
 
-/*# sourceMappingURL=segment.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-list {
   display: block;
   background: #fff;
@@ -1342,22 +1113,12 @@ svg .busy-progress-ring__track {
   padding-left: 12px;
   width: 100%; }
 
-/*# sourceMappingURL=list.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-list-item {
   font-size: 14px;
   color: #666;
   width: inherit; }
 
-.busy-list-item__label, .busy-list-item__icon, .busy-list-item__content {
+.busy-list-item__content, .busy-list-item__icon, .busy-list-item__label {
   height: inherit; }
 
 .busy-list-item__label_text {
@@ -1366,17 +1127,7 @@ svg .busy-progress-ring__track {
 .busy-list-item__content_text {
   color: #999; }
 
-/*# sourceMappingURL=list-item.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-button[data-v-6d60a8c8] {
+.busy-button[data-v-34c9f8a8] {
   border-style: solid;
   border-color: #999;
   box-sizing: border-box;
@@ -1394,7 +1145,7 @@ svg .busy-progress-ring__track {
   justify-content: center;
   align-items: center; }
 
-.busy-button__button[data-v-6d60a8c8] {
+.busy-button__button[data-v-34c9f8a8] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1407,22 +1158,22 @@ svg .busy-progress-ring__track {
   margin: 0;
   padding: 0 12px;
   height: inherit;
-  background: transparent;
+  background: 0 0;
   color: inherit;
   font-size: inherit;
   text-align: center; }
 
-.busy-button.is-ghost[data-v-6d60a8c8] {
+.busy-button.is-ghost[data-v-34c9f8a8] {
   background-color: transparent;
   color: #999; }
 
-.busy-button.is-sharp[data-v-6d60a8c8] {
+.busy-button.is-sharp[data-v-34c9f8a8] {
   border-radius: 0; }
 
-.busy-button.is-block[data-v-6d60a8c8] {
+.busy-button.is-block[data-v-34c9f8a8] {
   width: 100%; }
 
-.busy-button__border[data-v-6d60a8c8], .busy-button[data-v-6d60a8c8]:after {
+.busy-button[data-v-34c9f8a8]:after, .busy-button__border[data-v-34c9f8a8] {
   background-color: transparent;
   position: absolute;
   top: 0;
@@ -1433,64 +1184,54 @@ svg .busy-progress-ring__track {
   border: 1px solid transparent;
   transform-origin: 0 0; }
 
-.busy-button__border[data-v-6d60a8c8] {
+.busy-button__border[data-v-34c9f8a8] {
   border-color: inherit; }
 
-.is-sharp .busy-button__border[data-v-6d60a8c8] {
+.is-sharp .busy-button__border[data-v-34c9f8a8] {
   border-radius: 0; }
 
-.busy-button[data-v-6d60a8c8]:after {
+.busy-button[data-v-34c9f8a8]:after {
   content: " ";
   z-index: 1000; }
 
-.busy-button.is-disabled[data-v-6d60a8c8] {
+.busy-button.is-disabled[data-v-34c9f8a8] {
   cursor: not-allowed; }
 
-.busy-button[data-v-6d60a8c8]:not(.is-disabled):active:after {
+.busy-button[data-v-34c9f8a8]:not(.is-disabled):active:after {
   background-color: rgba(0, 0, 0, 0.1); }
 
-.busy-button.is-disabled[data-v-6d60a8c8]:after {
+.busy-button.is-disabled[data-v-34c9f8a8]:after {
   background-color: rgba(255, 255, 255, 0.6); }
 
-.busy-button--primary[data-v-6d60a8c8] {
+.busy-button--primary[data-v-34c9f8a8] {
   background-color: #478df5;
-  color: #ffffff;
+  color: #fff;
   border-color: #478df5; }
 
-.busy-button--primary.is-ghost[data-v-6d60a8c8] {
+.busy-button--primary.is-ghost[data-v-34c9f8a8] {
   color: #478df5; }
 
-.busy-button--warning[data-v-6d60a8c8] {
+.busy-button--warning[data-v-34c9f8a8] {
   background-color: #ff6331;
-  color: #ffffff;
+  color: #fff;
   border-color: #ff6331; }
 
-.busy-button--warning.is-ghost[data-v-6d60a8c8] {
+.busy-button--warning.is-ghost[data-v-34c9f8a8] {
   color: #ff6331; }
 
-.busy-button--large[data-v-6d60a8c8] {
+.busy-button--large[data-v-34c9f8a8] {
   height: 48px;
   line-height: 48px;
   font-size: 22px; }
 
-.busy-button--small[data-v-6d60a8c8] {
+.busy-button--small[data-v-34c9f8a8] {
   height: 36px;
   line-height: 36px;
   font-size: 14px; }
 
-.busy-button__icon[data-v-6d60a8c8] {
+.busy-button__icon[data-v-34c9f8a8] {
   flex: none; }
 
-/*# sourceMappingURL=button.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-loadmore {
   -webkit-overflow-scrolling: touch;
   overflow: auto;
@@ -1498,7 +1239,7 @@ svg .busy-progress-ring__track {
   height: 100%;
   transform: translate3d(0, 0, 0); }
 
-.busy-loadmore__top, .busy-loadmore__bottom {
+.busy-loadmore__bottom, .busy-loadmore__top {
   text-align: center;
   height: 50px;
   height: 50px; }
@@ -1539,27 +1280,17 @@ svg .busy-progress-ring__track {
   margin-right: 10px;
   height: 30px;
   line-height: 30px;
-  transition: transform 0.2s linear; }
+  transition: transform .2s linear; }
 
 .busy-loadmore--pull .busy-loadmore__arrow {
-  transform: rotate(0deg); }
+  transform: rotate(0); }
 
 .busy-loadmore--drop .busy-loadmore__arrow {
   transform: rotate(180deg); }
 
-.busy-loadmore--loading .busy-loadmore__arrow, .busy-loadmore--init .busy-loadmore__arrow {
+.busy-loadmore--init .busy-loadmore__arrow, .busy-loadmore--loading .busy-loadmore__arrow {
   display: none; }
 
-/*# sourceMappingURL=loadmore.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-swipe {
   overflow: hidden;
   position: relative;
@@ -1621,22 +1352,12 @@ svg .busy-progress-ring__track {
   border-radius: 50%;
   margin: 5px;
   box-sizing: border-box;
-  transition: all 0.5s linear;
+  transition: all .5s linear;
   background-color: #d9d9d9; }
 
 .busy-swipe__dot--cur {
   background-color: #fff; }
 
-/*# sourceMappingURL=swipe.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-inline-loading {
   display: inline-flex;
   justify-content: center;
@@ -1648,7 +1369,7 @@ svg .busy-progress-ring__track {
   margin-right: 10px; }
 
 .busy-inline-loading__text {
-  color: #222222;
+  color: #222;
   font-size: inherit; }
 
 .busy-inline-loading--column {
@@ -1658,16 +1379,6 @@ svg .busy-progress-ring__track {
   margin-right: 0;
   margin-bottom: 10px; }
 
-/*# sourceMappingURL=inline-loading.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-prompt__text {
   width: 100%;
   padding: 0 0 10px; }
@@ -1680,45 +1391,25 @@ svg .busy-progress-ring__track {
   box-sizing: border-box;
   padding-left: 5px;
   color: #8a8a8a;
-  background: transparent; }
+  background: 0 0; }
 
-/*# sourceMappingURL=prompt.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
-.busy-spinner-circle-half[data-v-21c355b7] {
+.busy-spinner-circle-half[data-v-6aa0d830] {
   display: inline-block;
   font-size: 0;
   line-height: 0;
   overflow: hidden; }
 
-.busy-spinner-circle-half__wrap[data-v-21c355b7] {
-  -webkit-animation: busy-animate--rotate 0.7s linear infinite;
-  animation: busy-animate--rotate 0.7s linear infinite;
+.busy-spinner-circle-half__wrap[data-v-6aa0d830] {
+  -webkit-animation: busy-animate--rotate .7s linear infinite;
+  animation: busy-animate--rotate .7s linear infinite;
   stroke-width: 6;
-  stroke: #222222;
+  stroke: #222;
   transform-origin: center; }
 
-.busy-spinner-circle-half__path[data-v-21c355b7] {
+.busy-spinner-circle-half__path[data-v-6aa0d830] {
   stroke-dasharray: 65 175;
   stroke-dashoffset: 0; }
 
-/*# sourceMappingURL=circle-half.vue.map */
-/* Color */
-/** global **/
-/* Button Component */
-/* Field Component */
-/** Message Component **/
-/** Dialog Component **/
-/** Swipe Component **/
-/** progress Component **/
-/*** toast component **/
 .busy-dialog {
   position: fixed;
   overflow: hidden;
@@ -1757,7 +1448,7 @@ svg .busy-progress-ring__track {
   text-align: center;
   padding: 14px 0 6px; }
 
-.busy-dialog__header, .busy-dialog__footer {
+.busy-dialog__footer, .busy-dialog__header {
   width: 100%;
   box-sizing: border-box;
   flex: none; }
@@ -1815,5 +1506,3 @@ svg .busy-progress-ring__track {
 
 .busy-dialog__button:active {
   background-color: rgba(0, 0, 0, 0.1); }
-
-/*# sourceMappingURL=dialog.vue.map */

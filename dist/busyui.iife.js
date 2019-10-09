@@ -502,13 +502,13 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("svg", {
+      return _c('svg', {
         "class": _vm.prefixCls + "-icon",
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_c("use", {
+      }, [_c('use', {
         attrs: {
           "xlink:href": _vm.iconName
         }
@@ -516,7 +516,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__ = [];
-    __vue_render__._withStripped = true;
     /* style */
 
     var __vue_inject_styles__ = undefined;
@@ -699,14 +698,14 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("transition", {
+      return _c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--fade"
+          "name": _vm.prefixCls + "-animate--fade"
         },
         on: {
           "after-leave": _vm._leave
         }
-      }, [_c("article", {
+      }, [_c('article', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -714,25 +713,24 @@ var BusyUI = (function (exports, Vue) {
           expression: "visiable"
         }],
         "class": [_vm.prefixCls + "-toast", _vm.posClass]
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.classess,
         style: _vm.styles
-      }, [_vm.iconName ? _c("span", {
+      }, [_vm.iconName ? _c('span', {
         "class": _vm.prefixCls + "-toast__icon"
-      }, [_c("Icon", {
+      }, [_c('Icon', {
         attrs: {
-          name: _vm.iconName,
-          width: _vm.iconWidth,
-          height: _vm.iconHeight,
-          color: _vm.color
+          "name": _vm.iconName,
+          "width": _vm.iconWidth,
+          "height": _vm.iconHeight,
+          "color": _vm.color
         }
-      })], 1) : _vm._e(), _vm._v(" "), _c("p", {
+      })], 1) : _vm._e(), _vm._v(" "), _c('p', {
         "class": _vm.prefixCls + "-toast__text"
       }, [_vm._t("default", [_vm._v("\n                    " + _vm._s(_vm.contentString) + "\n                ")])], 2)])])]);
     };
 
     var __vue_staticRenderFns__$1 = [];
-    __vue_render__$1._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$1 = undefined;
@@ -894,36 +892,35 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("span", {
+      return _c('span', {
         "class": _vm.prefixCls + "-spinner-circle-dash"
-      }, [_c("svg", {
+      }, [_c('svg', {
         "class": _vm.prefixCls + "-spinner-circle-dash__svg",
         style: _vm.styles,
         attrs: {
-          viewBox: "0 0 64 64"
+          "viewBox": "0 0 64 64"
         }
-      }, [_c("g", {
+      }, [_c('g', {
         "class": _vm.prefixCls + "-spinner-circle-dash__wrap",
         style: _vm.svgStyles
-      }, [_c("circle", {
+      }, [_c('circle', {
         "class": _vm.prefixCls + "-spinner-circle-dash__path",
         attrs: {
-          cx: "32",
-          cy: "32",
-          r: "28",
-          fill: "none"
+          "cx": "32",
+          "cy": "32",
+          "r": "28",
+          "fill": "none"
         }
       })])])]);
     };
 
     var __vue_staticRenderFns__$2 = [];
-    __vue_render__$2._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$2 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$2 = "data-v-297d50de";
+    var __vue_scope_id__$2 = "data-v-16abeac0";
     /* module identifier */
 
     var __vue_module_identifier__$2 = undefined;
@@ -1004,70 +1001,69 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("span", {
+      return _c('span', {
         "class": _vm.prefixCls + "-spinner-circle-gradient"
-      }, [_c("svg", {
+      }, [_c('svg', {
         "class": _vm.prefixCls + "-spinner-circle-gradient__svg",
         style: _vm.styles,
         attrs: {
-          viewBox: "0 0 64 64"
+          "viewBox": "0 0 64 64"
         }
-      }, [_c("g", {
+      }, [_c('g', {
         "class": _vm.prefixCls + "-spinner-circle-gradient__wrap",
         style: _vm.svgStyles
-      }, [_c("defs", [_c("linearGradient", {
+      }, [_c('defs', [_c('linearGradient', {
         attrs: {
-          id: _vm.gid,
-          x1: "0%",
-          y1: "0%",
-          x2: "0%",
-          y2: "100%"
+          "id": _vm.gid,
+          "x1": "0%",
+          "y1": "0%",
+          "x2": "0%",
+          "y2": "100%"
         }
-      }, [_c("stop", {
+      }, [_c('stop', {
         attrs: {
-          offset: "10%",
+          "offset": "10%",
           "stop-color": _vm.color,
           "stop-opacity": "0"
         }
-      }), _vm._v(" "), _c("stop", {
+      }), _vm._v(" "), _c('stop', {
         attrs: {
-          offset: "100%",
+          "offset": "100%",
           "stop-color": _vm.color
         }
-      })], 1)], 1), _vm._v(" "), _c("circle", {
+      })], 1)], 1), _vm._v(" "), _c('circle', {
         staticStyle: {
           "transform-origin": "center",
-          transform: "rotate(110deg)"
+          "transform": "rotate(110deg)"
         },
         attrs: {
           "stroke-linecap": "round",
-          cx: "32",
-          cy: "32",
+          "cx": "32",
+          "cy": "32",
           "stroke-dasharray": "83 175",
-          r: "28",
-          stroke: _vm.color,
-          fill: "none"
+          "r": "28",
+          "stroke": _vm.color,
+          "fill": "none"
         }
-      }), _vm._v(" "), _c("circle", {
+      }), _vm._v(" "), _c('circle', {
         attrs: {
-          cx: "32",
-          cy: "32",
+          "cx": "32",
+          "cy": "32",
           "stroke-dasharray": "60",
-          r: "28",
-          stroke: "url(#" + _vm.gid + ")",
-          fill: "none"
+          "r": "28",
+          "stroke": "url(#" + _vm.gid + ")",
+          "fill": "none"
         }
       })])])]);
     };
 
     var __vue_staticRenderFns__$3 = [];
-    __vue_render__$3._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$3 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$3 = "data-v-9ed423fe";
+    var __vue_scope_id__$3 = "data-v-3135c9b2";
     /* module identifier */
 
     var __vue_module_identifier__$3 = undefined;
@@ -1134,103 +1130,102 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("span", {
+      return _c('span', {
         "class": _vm.prefixCls + "-spinner-circle-line"
-      }, [_c("svg", {
+      }, [_c('svg', {
         "class": _vm.prefixCls + "-spinner-circle-line__svg",
         style: _vm.styles,
         attrs: {
-          viewBox: "0 0 64 64"
+          "viewBox": "0 0 64 64"
         }
-      }, [_c("g", {
+      }, [_c('g', {
         "class": _vm.prefixCls + "-spinner-circle-line__wrap",
         style: _vm.svgStyles,
         attrs: {
           "stroke-linecap": "round"
         }
-      }, [_c("line", {
+      }, [_c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(180)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(180)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(210)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(210)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(240)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(240)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(270)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(270)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(300)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(300)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(330)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(330)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(0)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(0)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(30)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(30)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(60)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(60)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(90)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(90)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(120)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(120)"
         }
-      }), _vm._v(" "), _c("line", {
+      }), _vm._v(" "), _c('line', {
         attrs: {
-          y1: "17",
-          y2: "29",
-          transform: "translate(32,32) rotate(150)"
+          "y1": "17",
+          "y2": "29",
+          "transform": "translate(32,32) rotate(150)"
         }
       })])])]);
     };
 
     var __vue_staticRenderFns__$4 = [];
-    __vue_render__$4._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$4 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$4 = "data-v-13dde612";
+    var __vue_scope_id__$4 = "data-v-abbb51fa";
     /* module identifier */
 
     var __vue_module_identifier__$4 = undefined;
@@ -1317,44 +1312,43 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("span", {
+      return _c('span', {
         "class": _vm.prefixCls + "-spinner-circle-rotate"
-      }, [_c("svg", {
+      }, [_c('svg', {
         "class": _vm.prefixCls + "-spinner-circle-rotate__svg",
         style: _vm.styles,
         attrs: {
-          version: "1.1",
-          viewBox: "0 0 64 64",
+          "version": "1.1",
+          "viewBox": "0 0 64 64",
           "xml:space": "preserve"
         }
-      }, [_c("g", {
+      }, [_c('g', {
         "class": _vm.prefixCls + "-spinner-circle-rotate__wrap",
         style: _vm.svgStyles,
         attrs: {
           "stroke-linecap": "round"
         }
-      }, [_c("circle", {
+      }, [_c('circle', {
         attrs: {
-          cx: "32",
-          cy: "32",
-          r: _vm.r,
-          opacity: "0.5",
-          fill: "none"
+          "cx": "32",
+          "cy": "32",
+          "r": _vm.r,
+          "opacity": "0.5",
+          "fill": "none"
         }
-      }), _vm._v(" "), _c("circle", {
+      }), _vm._v(" "), _c('circle', {
         attrs: {
-          cx: "32",
-          cy: "32",
-          r: _vm.r,
+          "cx": "32",
+          "cy": "32",
+          "r": _vm.r,
           "stroke-dasharray": "20 175",
           "stroke-dashoffset": "0",
-          fill: "none"
+          "fill": "none"
         }
       })])])]);
     };
 
     var __vue_staticRenderFns__$5 = [];
-    __vue_render__$5._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$5 = undefined;
@@ -1428,36 +1422,35 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("span", {
+      return _c('span', {
         "class": _vm.prefixCls + "-spinner-circle-half"
-      }, [_c("svg", {
+      }, [_c('svg', {
         "class": _vm.prefixCls + "-spinner-circle-half__svg",
         style: _vm.styles,
         attrs: {
-          viewBox: "0 0 64 64"
+          "viewBox": "0 0 64 64"
         }
-      }, [_c("g", {
+      }, [_c('g', {
         "class": _vm.prefixCls + "-spinner-circle-half__wrap",
         style: _vm.svgStyles
-      }, [_c("circle", {
+      }, [_c('circle', {
         "class": _vm.prefixCls + "-spinner-circle-half__path",
         attrs: {
-          cx: "32",
-          cy: "32",
-          r: "28",
-          fill: "none"
+          "cx": "32",
+          "cy": "32",
+          "r": "28",
+          "fill": "none"
         }
       })])])]);
     };
 
     var __vue_staticRenderFns__$6 = [];
-    __vue_render__$6._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$6 = undefined;
     /* scoped */
 
-    var __vue_scope_id__$6 = "data-v-21c355b7";
+    var __vue_scope_id__$6 = "data-v-6aa0d830";
     /* module identifier */
 
     var __vue_module_identifier__$6 = undefined;
@@ -1564,11 +1557,10 @@ var BusyUI = (function (exports, Vue) {
 
       return _c(_vm.currentComponent, _vm._b({
         tag: "component"
-      }, "component", _vm.$props, false));
+      }, 'component', _vm.$props, false));
     };
 
     var __vue_staticRenderFns__$7 = [];
-    __vue_render__$7._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$7 = undefined;
@@ -1686,14 +1678,14 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("transition", {
+      return _c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--fade"
+          "name": _vm.prefixCls + "-animate--fade"
         },
         on: {
           "after-leave": _vm._leave
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -1703,13 +1695,12 @@ var BusyUI = (function (exports, Vue) {
         "class": _vm.prefixCls + "-mask",
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
       }, [_vm._t("default")], 2)]);
     };
 
     var __vue_staticRenderFns__$8 = [];
-    __vue_render__$8._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$8 = undefined;
@@ -1849,7 +1840,7 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("NativeMask", {
+      return _c('NativeMask', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -1857,12 +1848,12 @@ var BusyUI = (function (exports, Vue) {
           expression: "visiable"
         }],
         attrs: {
-          color: _vm.maskColor
+          "color": _vm.maskColor
         },
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -1871,16 +1862,15 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": [_vm.prefixCls + "-toast-loading", _vm.classes],
         style: _vm.styles
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-toast-loading__icon"
-      }, [_c("Spinner", _vm._b({}, "Spinner", _vm.spinnerData, false))], 1), _vm._v(" "), _vm.text || _vm.$slots["default"] ? _c("div", {
+      }, [_c('Spinner', _vm._b({}, 'Spinner', _vm.spinnerData, false))], 1), _vm._v(" "), _vm.text || _vm.$slots['default'] ? _c('div', {
         "class": _vm.prefixCls + "-toast-loading__text",
         style: _vm.textStyles
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2) : _vm._e()])]);
     };
 
     var __vue_staticRenderFns__$9 = [];
-    __vue_render__$9._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$9 = undefined;
@@ -2091,14 +2081,14 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("transition", {
+      return _c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--fade"
+          "name": _vm.prefixCls + "-animate--fade"
         },
         on: {
           "after-leave": _vm._leave
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -2106,16 +2096,15 @@ var BusyUI = (function (exports, Vue) {
           expression: "visiable"
         }],
         "class": _vm.classes
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-inline-loading__spinner"
-      }, [_c("Spinner", _vm._b({}, "Spinner", _vm.spinnerProps, false))], 1), _vm._v(" "), _c("div", {
+      }, [_c('Spinner', _vm._b({}, 'Spinner', _vm.spinnerProps, false))], 1), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-inline-loading__text",
         style: _vm.textStyle
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
     };
 
     var __vue_staticRenderFns__$a = [];
-    __vue_render__$a._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$a = undefined;
@@ -2220,23 +2209,23 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-loading",
         style: _vm.styles
-      }, [_c("BusyMask", {
+      }, [_c('BusyMask', {
         attrs: {
-          isShow: _vm.showMask && _vm.visiable,
-          position: _vm.position,
+          "isShow": _vm.showMask && _vm.visiable,
+          "position": _vm.position,
           "z-index": 1
         }
-      }), _vm._v(" "), _c("transition", {
+      }), _vm._v(" "), _c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--fade"
+          "name": _vm.prefixCls + "-animate--fade"
         },
         on: {
           "after-leave": _vm._leave
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -2244,11 +2233,10 @@ var BusyUI = (function (exports, Vue) {
           expression: "visiable"
         }],
         "class": _vm.prefixCls + "-loading__wrap"
-      }, [_c("InlineLoading", _vm._b({}, "InlineLoading", _vm.ILProps, false), [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)], 1)])], 1);
+      }, [_c('InlineLoading', _vm._b({}, 'InlineLoading', _vm.ILProps, false), [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)], 1)])], 1);
     };
 
     var __vue_staticRenderFns__$b = [];
-    __vue_render__$b._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$b = undefined;
@@ -2370,17 +2358,16 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.classes,
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
       }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$c = [];
-    __vue_render__$c._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$c = undefined;
@@ -2493,17 +2480,16 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.classes,
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
       }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$d = [];
-    __vue_render__$d._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$d = undefined;
@@ -2676,32 +2662,31 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": [_vm.prefixCls + "-button", _vm.classes],
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_vm.icon || _vm.$slots["icon"] ? [_vm._t("icon", [_vm._v(_vm._s(_vm.icon))])] : _vm._e(), _vm._v(" "), _c("button", {
+      }, [_vm.icon || _vm.$slots['icon'] ? [_vm._t("icon", [_vm._v(_vm._s(_vm.icon))])] : _vm._e(), _vm._v(" "), _c('button', {
         "class": _vm.prefixCls + "-button__button",
         attrs: {
-          type: _vm.nativeType,
-          disabled: _vm.disabled
+          "type": _vm.nativeType,
+          "disabled": _vm.disabled
         }
-      }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2), _vm._v(" "), _vm.isThin ? _c("span", {
+      }, [_vm._t("default", [_vm._v(_vm._s(_vm.content))])], 2), _vm._v(" "), _vm.isThin ? _c('span', {
         "class": _vm.prefixCls + "-button__border",
         style: _vm.thinBorder
       }) : _vm._e()], 2);
     };
 
     var __vue_staticRenderFns__$e = [];
-    __vue_render__$e._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$e = undefined;
     /* scoped */
 
-    var __vue_scope_id__$e = "data-v-6d60a8c8";
+    var __vue_scope_id__$e = "data-v-34c9f8a8";
     /* module identifier */
 
     var __vue_module_identifier__$e = undefined;
@@ -2819,18 +2804,18 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-checkbox",
         style: _vm.styles,
         on: {
-          click: function click($event) {
+          "click": function click($event) {
             $event.stopPropagation();
             return function () {}();
           }
         }
-      }, [_c("label", {
+      }, [_c('label', {
         "class": [_vm.prefixCls + "-checkbox__label"]
-      }, [_c("input", {
+      }, [_c('input', {
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -2840,15 +2825,15 @@ var BusyUI = (function (exports, Vue) {
         ref: "native-checkbox",
         "class": _vm.prefixCls + "-checkbox__input",
         attrs: {
-          type: "checkbox",
-          disabled: _vm.disabled
+          "type": "checkbox",
+          "disabled": _vm.disabled
         },
         domProps: {
-          value: _vm.value,
-          checked: Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, _vm.value) > -1 : _vm.currentValue
+          "value": _vm.value,
+          "checked": Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, _vm.value) > -1 : _vm.currentValue
         },
         on: {
-          change: function change($event) {
+          "change": function change($event) {
             var $$a = _vm.currentValue,
                 $$el = $event.target,
                 $$c = $$el.checked ? true : false;
@@ -2867,14 +2852,14 @@ var BusyUI = (function (exports, Vue) {
             }
           }
         }
-      }), _vm._v(" "), _c("span", {
+      }), _vm._v(" "), _c('span', {
         "class": _vm.prefixCls + "-checkbox__core",
         style: _vm.coreStyles
-      }, [_c("transition", {
+      }, [_c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--scalein"
+          "name": _vm.prefixCls + "-animate--scalein"
         }
-      }, [_c("Icon", _vm._b({
+      }, [_c('Icon', _vm._b({
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -2882,13 +2867,12 @@ var BusyUI = (function (exports, Vue) {
           expression: "isChecked"
         }],
         "class": _vm.prefixCls + "-checkbox__icon"
-      }, "Icon", _vm.iconModel, false))], 1)], 1), _vm._v(" "), _vm.label || _vm.$slots["default"] ? _c("span", {
+      }, 'Icon', _vm.iconModel, false))], 1)], 1), _vm._v(" "), _vm.label || _vm.$slots["default"] ? _c('span', {
         "class": _vm.prefixCls + "-checkbox__text"
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.label))])], 2) : _vm._e()])]);
     };
 
     var __vue_staticRenderFns__$f = [];
-    __vue_render__$f._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$f = undefined;
@@ -3000,12 +2984,12 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-radio",
         style: _vm.styles
-      }, [_c("label", {
+      }, [_c('label', {
         "class": _vm.prefixCls + "-radio__label"
-      }, [_c("input", {
+      }, [_c('input', {
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -3015,27 +2999,27 @@ var BusyUI = (function (exports, Vue) {
         ref: "nativeRadio",
         "class": _vm.prefixCls + "-radio__input",
         attrs: {
-          name: _vm.name,
-          disabled: _vm.disabled,
-          type: "radio"
+          "name": _vm.name,
+          "disabled": _vm.disabled,
+          "type": "radio"
         },
         domProps: _defineProperty({
-          value: _vm.value,
-          checked: _vm.checked
+          "value": _vm.value,
+          "checked": _vm.checked
         }, "checked", _vm._q(_vm.currentValue, _vm.value)),
         on: {
-          change: [function ($event) {
+          "change": [function ($event) {
             _vm.currentValue = _vm.value;
           }, _vm.handleChange]
         }
-      }), _vm._v(" "), _c("span", {
+      }), _vm._v(" "), _c('span', {
         "class": _vm.prefixCls + "-radio__radio",
         style: _vm.radioStyles
-      }, [_c("transition", {
+      }, [_c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--scalein"
+          "name": _vm.prefixCls + "-animate--scalein"
         }
-      }, [_c("Icon", {
+      }, [_c('Icon', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -3043,24 +3027,23 @@ var BusyUI = (function (exports, Vue) {
           expression: "isChecked"
         }],
         attrs: {
-          width: "70%",
-          height: "70%",
-          color: _vm.iconColor,
-          name: "yes"
+          "width": "70%",
+          "height": "70%",
+          "color": _vm.iconColor,
+          "name": "yes"
         }
-      })], 1)], 1), _vm._v(" "), _c("span", {
+      })], 1)], 1), _vm._v(" "), _c('span', {
         "class": _vm.prefixCls + "-radio__text"
       }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2)])]);
     };
 
     var __vue_staticRenderFns__$g = [];
-    __vue_render__$g._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$g = undefined;
     /* scoped */
 
-    var __vue_scope_id__$g = "data-v-7470d86e";
+    var __vue_scope_id__$g = "data-v-5bf4df58";
     /* module identifier */
 
     var __vue_module_identifier__$g = undefined;
@@ -3209,28 +3192,27 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("ul", {
+      return _c('ul', {
         "class": [_vm.prefixCls + "-picker__wheel", _vm.classess],
         style: _vm.styles,
         on: {
-          touchstart: _vm._start,
+          "touchstart": _vm._start,
           "&touchmove": function touchmove($event) {
             return _vm._move($event);
           },
-          touchend: _vm._end,
-          touchcancel: _vm._end,
-          transitionend: _vm._transitionEnd
+          "touchend": _vm._end,
+          "touchcancel": _vm._end,
+          "transitionend": _vm._transitionEnd
         }
       }, _vm._l(_vm.items, function (item, $i) {
-        return _c("li", {
+        return _c('li', {
           key: $i,
           "class": _vm.prefixCls + "-picker__item"
-        }, [_c("span", [_vm._v(_vm._s(item.label || item))])]);
+        }, [_c('span', [_vm._v(_vm._s(item.label || item))])]);
       }), 0);
     };
 
     var __vue_staticRenderFns__$h = [];
-    __vue_render__$h._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$h = undefined;
@@ -3323,15 +3305,15 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("NativeMask", {
+      return _c('NativeMask', {
         attrs: {
           "is-show": _vm.visiable
         }
-      }, [_c("transition", {
+      }, [_c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animation--bibo"
+          "name": _vm.prefixCls + "-animation--bibo"
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -3339,47 +3321,46 @@ var BusyUI = (function (exports, Vue) {
           expression: "visiable"
         }],
         "class": _vm.prefixCls + "-picker"
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-picker__header"
-      }, [_c("span", {
+      }, [_c('span', {
         "class": _vm.prefixCls + "-picker__cancel",
         on: {
-          click: _vm.cancel
+          "click": _vm.cancel
         }
-      }, [_vm._v("取消")]), _vm._v(" "), _c("span", {
+      }, [_vm._v("取消")]), _vm._v(" "), _c('span', {
         "class": _vm.prefixCls + "-picker__title"
-      }), _vm._v(" "), _c("span", {
+      }), _vm._v(" "), _c('span', {
         "class": _vm.prefixCls + "-picker__confirm",
         on: {
-          click: _vm.confirm
+          "click": _vm.confirm
         }
-      }, [_vm._v("确定")])]), _vm._v(" "), _c("div", {
+      }, [_vm._v("确定")])]), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-picker__box"
       }, [_vm._t("default", _vm._l(_vm.columns, function (col, $i) {
-        return _c("Wheel", {
+        return _c('Wheel', {
           key: $i,
           attrs: {
-            value: _vm.currentValue && _vm.currentValue[$i],
-            index: $i,
-            items: col
+            "value": _vm.currentValue && _vm.currentValue[$i],
+            "index": $i,
+            "items": col
           },
           on: {
-            change: function () {
+            "change": function () {
               return function (val) {
                 return _vm.handleChange(val, $i);
               };
             }()
           }
         });
-      })), _vm._v(" "), _c("div", {
+      })), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-picker__mask_top"
-      }), _vm._v(" "), _c("div", {
+      }), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-picker__mask_bottom"
       })], 2)])])], 1);
     };
 
     var __vue_staticRenderFns__$i = [];
-    __vue_render__$i._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$i = undefined;
@@ -3557,7 +3538,7 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -3565,14 +3546,14 @@ var BusyUI = (function (exports, Vue) {
           expression: "!leave"
         }],
         "class": _vm.prefixCls + "-dialog"
-      }, [_c("transition", {
+      }, [_c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--scale"
+          "name": _vm.prefixCls + "-animate--scale"
         },
         on: {
           "after-leave": _vm._leave
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -3581,58 +3562,57 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": _vm.prefixCls + "-dialog__wrap",
         style: _vm.styles
-      }, [_vm.closable ? _c("p", {
+      }, [_vm.closable ? _c('p', {
         "class": _vm.prefixCls + "-dialog__close",
         on: {
-          click: function click($event) {
+          "click": function click($event) {
             $event.stopPropagation();
             return _vm.hide($event);
           }
         }
-      }, [_c("Icon", {
+      }, [_c('Icon', {
         attrs: {
-          name: "close",
-          width: 20,
-          height: 20,
-          color: "#8a8a8a"
+          "name": "close",
+          "width": 20,
+          "height": 20,
+          "color": "#8a8a8a"
         }
-      })], 1) : _vm._e(), _vm._v(" "), _vm.title ? _c("header", {
+      })], 1) : _vm._e(), _vm._v(" "), _vm.title ? _c('header', {
         "class": _vm.prefixCls + "-dialog__header"
-      }, [_vm._t("header", [_c("div", {
+      }, [_vm._t("header", [_c('div', {
         "class": _vm.prefixCls + "-dialog__title"
-      }, [_vm._v(_vm._s(_vm.title))])])], 2) : _vm._e(), _vm._v(" "), _vm.content || _vm.$slots["default"] ? _c("div", {
+      }, [_vm._v(_vm._s(_vm.title))])])], 2) : _vm._e(), _vm._v(" "), _vm.content || _vm.$slots['default'] ? _c('div', {
         "class": _vm.prefixCls + "-dialog__body"
-      }, [_vm._t("default", [_c("div", {
+      }, [_vm._t("default", [_c('div', {
         "class": _vm.prefixCls + "-dialog__content",
         style: _vm.contentStyle,
         domProps: {
-          innerHTML: _vm._s(_vm.content)
+          "innerHTML": _vm._s(_vm.content)
         }
-      })])], 2) : _vm._e(), _vm._v(" "), _c("footer", {
+      })])], 2) : _vm._e(), _vm._v(" "), _c('footer', {
         "class": _vm.footerClasses
       }, [_vm._t("footer", [_vm._l(_vm.bindButtons, function (btn, $i) {
-        return [_c("p", {
-          key: "btn-" + $i,
+        return [_c('p', {
+          key: 'btn-' + $i,
           "class": [_vm.prefixCls + "-dialog__button", btn["class"]],
           style: btn.style,
           on: {
-            click: function click($event) {
+            "click": function click($event) {
               $event.stopPropagation();
               return btn.action($event);
             }
           }
         }, [_vm._v(_vm._s(btn.text))])];
-      })])], 2)])]), _vm._v(" "), _c("BusyMask", {
+      })])], 2)])]), _vm._v(" "), _c('BusyMask', {
         attrs: {
           "is-show": _vm.visiable,
           "is-remove": _vm.isRemove,
-          color: "rgba(0,0,0,.6)"
+          "color": "rgba(0,0,0,.6)"
         }
       })], 1);
     };
 
     var __vue_staticRenderFns__$j = [];
-    __vue_render__$j._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$j = undefined;
@@ -3746,17 +3726,16 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("BusyDialog", _vm._b({
+      return _c('BusyDialog', _vm._b({
         ref: "dialog",
         "class": _vm.prefixCls + "-alert",
         on: {
           "visiable-change": _vm.handleVisiable
         }
-      }, "BusyDialog", _vm.datas, false), [_vm._t("default")], 2);
+      }, 'BusyDialog', _vm.datas, false), [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$k = [];
-    __vue_render__$k._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$k = undefined;
@@ -3874,16 +3853,15 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("BusyDialog", _vm._b({
+      return _c('BusyDialog', _vm._b({
         ref: "dialog",
         on: {
           "visiable-change": _vm.handleVisiable
         }
-      }, "BusyDialog", _vm.datas, false), [_vm._t("default")], 2);
+      }, 'BusyDialog', _vm.datas, false), [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$l = [];
-    __vue_render__$l._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$l = undefined;
@@ -4042,16 +4020,16 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("BusyDialog", _vm._b({
+      return _c('BusyDialog', _vm._b({
         ref: "dialog",
         on: {
           "visiable-change": _vm.handleVisiable
         }
-      }, "BusyDialog", _vm.datas, false), [_c("div", [_vm.content ? _c("div", {
+      }, 'BusyDialog', _vm.datas, false), [_c('div', [_vm.content ? _c('div', {
         "class": _vm.prefixCls + "-prompt__text"
-      }, [_vm._v("\n            " + _vm._s(_vm.content) + "\n        ")]) : _vm._e(), _vm._v(" "), _c("div", {
+      }, [_vm._v("\n            " + _vm._s(_vm.content) + "\n        ")]) : _vm._e(), _vm._v(" "), _c('div', {
         "class": _vm.prefix + "-prompt__input_box"
-      }, [_c("input", {
+      }, [_c('input', {
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -4060,14 +4038,14 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": _vm.prefixCls + "-prompt__input",
         attrs: {
-          type: "text",
-          placeholder: _vm.placeholder
+          "type": "text",
+          "placeholder": _vm.placeholder
         },
         domProps: {
-          value: _vm.currentVal
+          "value": _vm.currentVal
         },
         on: {
-          input: function input($event) {
+          "input": function input($event) {
             if ($event.target.composing) {
               return;
             }
@@ -4079,7 +4057,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__$m = [];
-    __vue_render__$m._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$m = undefined;
@@ -4335,14 +4312,14 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("transition", {
+      return _c('transition', {
         attrs: {
-          name: _vm.animation
+          "name": _vm.animation
         },
         on: {
           "after-leave": _vm._leave
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -4351,18 +4328,18 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": _vm.classes,
         style: _vm.styles
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-message__icon"
-      }, [_c("Icon", {
+      }, [_c('Icon', {
         attrs: {
-          name: _vm._statusStyles.icon,
-          width: "24",
-          height: "24",
-          color: _vm._statusStyles.color
+          "name": _vm._statusStyles.icon,
+          "width": "24",
+          "height": "24",
+          "color": _vm._statusStyles.color
         }
-      })], 1), _vm._v(" "), _c("div", {
+      })], 1), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-message__text"
-      }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2), _vm._v(" "), _c("div", {
+      }, [_vm._t("default", [_vm._v(_vm._s(_vm.text))])], 2), _vm._v(" "), _c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -4371,20 +4348,19 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": _vm.prefixCls + "-message__close",
         on: {
-          click: _vm.hide
+          "click": _vm.hide
         }
-      }, [_c("Icon", {
+      }, [_c('Icon', {
         attrs: {
-          name: "close",
-          width: "24",
-          height: "24",
-          color: _vm._statusStyles.color
+          "name": "close",
+          "width": "24",
+          "height": "24",
+          "color": _vm._statusStyles.color
         }
       })], 1)])]);
     };
 
     var __vue_staticRenderFns__$n = [];
-    __vue_render__$n._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$n = undefined;
@@ -4633,50 +4609,49 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-progress-ring",
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_c("svg", {
+      }, [_c('svg', {
         attrs: {
-          width: _vm.size,
-          height: _vm.size,
-          viewport: _vm.viewport,
-          version: "1.1",
-          xmlns: "http://www.w3.org/2000/svg"
+          "width": _vm.size,
+          "height": _vm.size,
+          "viewport": _vm.viewport,
+          "version": "1.1",
+          "xmlns": "http://www.w3.org/2000/svg"
         }
-      }, [_c("circle", {
+      }, [_c('circle', {
         "class": _vm.prefixCls + "-progress-ring__track",
         style: _vm.trackStyles,
         attrs: {
-          cx: _vm.radius,
-          cy: _vm.radius,
-          r: _vm.sRdius,
-          fill: "transparent",
+          "cx": _vm.radius,
+          "cy": _vm.radius,
+          "r": _vm.sRdius,
+          "fill": "transparent",
           "stroke-linecap": _vm.linecap,
           "stroke-dasharray": _vm.dasharray,
           "stroke-dashoffset": 0
         }
-      }), _vm._v(" "), _c("circle", {
+      }), _vm._v(" "), _c('circle', {
         "class": _vm.prefixCls + "-progress-ring__bar",
         style: _vm.barStyles,
         attrs: {
-          cx: _vm.radius,
-          cy: _vm.radius,
-          r: _vm.sRdius,
-          fill: "transparent",
+          "cx": _vm.radius,
+          "cy": _vm.radius,
+          "r": _vm.sRdius,
+          "fill": "transparent",
           "stroke-linecap": _vm.linecap,
           "stroke-dasharray": _vm.dasharray,
           "stroke-dashoffset": _vm.dashoffset
         }
-      })]), _vm._v(" "), _vm.$slots["default"] ? _c("div", {
+      })]), _vm._v(" "), _vm.$slots["default"] ? _c('div', {
         "class": _vm.prefixCls + "-progress-ring__text"
       }, [_vm._t("default")], 2) : _vm._e()]);
     };
 
     var __vue_staticRenderFns__$o = [];
-    __vue_render__$o._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$o = undefined;
@@ -4753,31 +4728,31 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-progress-line",
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
-          value: _vm.$slots["start"],
+          value: _vm.$slots['start'],
           expression: "$slots['start']"
         }],
         "class": _vm.prefixCls + "-progress-line__start"
-      }, [_vm._t("start")], 2), _vm._v(" "), _c("div", {
+      }, [_vm._t("start")], 2), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-progress-line__wrap",
         style: _vm.trackStyles
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-progress-line__bar",
         style: _vm.barStyles
-      })]), _vm._v(" "), _c("div", {
+      })]), _vm._v(" "), _c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
-          value: _vm.$slots["end"],
+          value: _vm.$slots['end'],
           expression: "$slots['end']"
         }],
         "class": _vm.prefixCls + "-progress-line__end"
@@ -4785,7 +4760,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__$p = [];
-    __vue_render__$p._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$p = undefined;
@@ -4895,24 +4869,23 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-progress",
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_vm.type === "line" ? _c("ProgressLine", _vm._b({
+      }, [_vm.type === 'line' ? _c('ProgressLine', _vm._b({
         ref: "child-line"
-      }, "ProgressLine", _vm.lineModel, false), [_c("template", {
+      }, 'ProgressLine', _vm.lineModel, false), [_c('template', {
         slot: "start"
-      }, [_vm._t("start")], 2), _vm._v(" "), _c("template", {
+      }, [_vm._t("start")], 2), _vm._v(" "), _c('template', {
         slot: "end"
-      }, [_vm._t("end")], 2)], 2) : _vm._e(), _vm._v(" "), _vm.type === "ring" ? _c("ProgressRing", _vm._b({
+      }, [_vm._t("end")], 2)], 2) : _vm._e(), _vm._v(" "), _vm.type === 'ring' ? _c('ProgressRing', _vm._b({
         ref: "child-ring"
-      }, "ProgressRing", _vm.ringModel, false), [_vm._t("default")], 2) : _vm._e()], 1);
+      }, 'ProgressRing', _vm.ringModel, false), [_vm._t("default")], 2) : _vm._e()], 1);
     };
 
     var __vue_staticRenderFns__$q = [];
-    __vue_render__$q._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$q = undefined;
@@ -5005,44 +4978,43 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
-          value: _vm.pos == "top" || _vm.pos == "bottom" && _vm.status == "loading",
+          value: _vm.pos == 'top' || _vm.pos == 'bottom' && _vm.status == 'loading',
           expression: "pos=='top' || pos=='bottom' && status=='loading'"
         }],
         "class": _vm.prefixCls + "-loadmore__bar " + _vm.prefixCls + "-flex--center-center"
-      }, [_c("p", {
+      }, [_c('p', {
         "class": _vm.prefixCls + "-loadmore__spinner"
-      }, [_c("Spinner", {
+      }, [_c('Spinner', {
         directives: [{
           name: "show",
           rawName: "v-show",
-          value: _vm.status === "loading",
+          value: _vm.status === 'loading',
           expression: "status==='loading'"
         }],
         attrs: {
-          width: _vm.size,
-          height: _vm.size,
-          type: "circle-rotate",
-          color: "#aaa"
+          "width": _vm.size,
+          "height": _vm.size,
+          "type": "circle-rotate",
+          "color": "#aaa"
         }
-      })], 1), _vm._v(" "), _c("p", {
+      })], 1), _vm._v(" "), _c('p', {
         "class": [_vm.prefixCls + "-loadmore__text", _vm.prefixCls + "-loadmore--" + _vm.status]
-      }, [_vm.pos == "top" ? _c("span", {
+      }, [_vm.pos == 'top' ? _c('span', {
         "class": _vm.prefixCls + "-loadmore__arrow"
-      }, [_c("Icon", {
+      }, [_c('Icon', {
         attrs: {
-          height: 30,
-          name: "arrowdown",
-          color: "#000"
+          "height": 30,
+          "name": "arrowdown",
+          "color": "#000"
         }
-      })], 1) : _vm._e(), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.loadText))])])]);
+      })], 1) : _vm._e(), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.loadText))])])]);
     };
 
     var __vue_staticRenderFns__$r = [];
-    __vue_render__$r._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$r = undefined;
@@ -5345,12 +5317,12 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-loadmore"
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-loadmore__content",
         style: _vm.styles
-      }, [_vm._t("top", [_vm.onRefresh ? _c("LoadMoreBar", {
+      }, [_vm._t("top", [_vm.onRefresh ? _c('LoadMoreBar', {
         ref: "top",
         "class": _vm.prefixCls + "-loadmore__top",
         attrs: {
@@ -5358,11 +5330,11 @@ var BusyUI = (function (exports, Vue) {
           "loading-text": _vm.topLoadingText,
           "drop-text": _vm.topDropText,
           "show-status": _vm.tStatus,
-          pos: "top"
+          "pos": "top"
         }
-      }) : _vm._e()]), _vm._v(" "), _c("div", {
+      }) : _vm._e()]), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-loadmore__content"
-      }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c("LoadMoreBar", {
+      }, [_vm._t("default")], 2), _vm._v(" "), _vm.onInfinite ? _vm._t("bottom", [_c('LoadMoreBar', {
         ref: "bottom",
         "class": _vm.prefixCls + "-loadmore__bottom",
         attrs: {
@@ -5370,15 +5342,14 @@ var BusyUI = (function (exports, Vue) {
           "loading-text": _vm.bottomLoadingText,
           "drop-text": _vm.bottomDropText,
           "show-status": _vm.bStatus,
-          pos: "bottom"
+          "pos": "bottom"
         }
-      })]) : _vm._e(), _vm._v(" "), _vm.noMore ? _vm._t("no-more", [_c("div", {
+      })]) : _vm._e(), _vm._v(" "), _vm.noMore ? _vm._t("no-more", [_c('div', {
         "class": _vm.prefixCls + "-loadmore__nomore"
       }, [_vm._v(_vm._s(_vm.noMoreText))])]) : _vm._e()], 2)]);
     };
 
     var __vue_staticRenderFns__$s = [];
-    __vue_render__$s._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$s = undefined;
@@ -5692,26 +5663,26 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-swipe",
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_c("div", {
+      }, [_c('div', {
         "class": [_vm.prefixCls + "-swipe__wrap", _vm.classes],
         style: _vm.wrapStyles
-      }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c("div", {
+      }, [_vm._t("default")], 2), _vm._v(" "), _vm.showDotes ? _c('div', {
         "class": [_vm.prefixCls + "-swpier__dotes", _vm.dotesClass]
       }, _vm._l(_vm.items, function (item, i) {
-        return _c("span", {
-          key: "swiper-" + i,
-          "class": [_vm.prefixCls + "-swipe__dot", i == _vm.index ? _vm.prefixCls + "-swipe__dot--cur" : ""],
+        return _c('span', {
+          key: 'swiper-' + i,
+          "class": [_vm.prefixCls + "-swipe__dot", i == _vm.index ? _vm.prefixCls + "-swipe__dot--cur" : ''],
           style: [_vm.dotStyles, i == _vm.index ? {
             backgroundColor: _vm.curDotColor
           } : {}],
           on: {
-            click: function click($event) {
+            "click": function click($event) {
               $event.stopPropagation();
               return _vm.goIndex(i);
             }
@@ -5721,7 +5692,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__$t = [];
-    __vue_render__$t._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$t = undefined;
@@ -5760,13 +5730,12 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-swipe__item"
       }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$u = [];
-    __vue_render__$u._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$u = undefined;
@@ -5818,16 +5787,15 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": [_vm.prefixCls + "-action-sheet__item", _vm.prefixCls + "-border-1px", _vm.prefixCls + "-border-b"],
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
       }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$v = [];
-    __vue_render__$v._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$v = undefined;
@@ -5926,26 +5894,26 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("BusyMask", {
+      return _c('BusyMask', {
         attrs: {
           "is-show": _vm.visiable,
           "is-remove": _vm.isRemove
         },
         on: {
-          click: function click($event) {
+          "click": function click($event) {
             $event.stopPropagation();
             return _vm.hide($event);
           }
         }
-      }, [_c("transition", {
+      }, [_c('transition', {
         attrs: {
-          name: _vm.prefixCls + "-animate--bibo"
+          "name": _vm.prefixCls + "-animate--bibo"
         },
         on: {
           "after-enter": _vm._enter,
           "after-leave": _vm._leave
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -5953,27 +5921,26 @@ var BusyUI = (function (exports, Vue) {
           expression: "visiable"
         }],
         "class": _vm.prefixCls + "-action-sheet"
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-action-sheet__box"
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-action-sheet__list"
       }, [_vm._t("default", _vm._l(_vm.actions, function (ac, $i) {
-        return _c("ActionSheetItem", {
-          key: "as-" + $i,
+        return _c('ActionSheetItem', {
+          key: 'as-' + $i,
           on: {
-            click: ac.action
+            "click": ac.action
           }
         }, [_vm._v(_vm._s(ac.text))]);
-      }))], 2), _vm._v(" "), _c("div", {
+      }))], 2), _vm._v(" "), _c('div', {
         "class": _vm.prefixCls + "-action-sheet__button",
         on: {
-          click: _vm.hide
+          "click": _vm.hide
         }
       }, [_vm._v("取消")])])])])], 1);
     };
 
     var __vue_staticRenderFns__$w = [];
-    __vue_render__$w._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$w = undefined;
@@ -6294,7 +6261,7 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         directives: [{
           name: "clickoutside",
           rawName: "v-clickoutside",
@@ -6302,9 +6269,9 @@ var BusyUI = (function (exports, Vue) {
           expression: "unActive"
         }],
         "class": _vm.prefixCls + "-input"
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixCls + "-input__content"
-      }, [_vm.datas.type === "checkbox" ? _c("input", _vm._b({
+      }, [_vm.datas.type === 'checkbox' ? _c('input', _vm._b({
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -6314,23 +6281,23 @@ var BusyUI = (function (exports, Vue) {
         "class": _vm.prefixCls + "-input__input",
         style: _vm.styles,
         attrs: {
-          type: "checkbox"
+          "type": "checkbox"
         },
         domProps: {
-          checked: Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
+          "checked": Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
         },
         on: {
-          keyup: function keyup($event) {
-            if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
+          "keyup": function keyup($event) {
+            if (!$event.type.indexOf('key') && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
               return null;
             }
 
             return _vm.handleEnter($event);
           },
-          focus: _vm.handleFocus,
-          blur: _vm.handleBlur,
-          input: _vm.handleInput,
-          change: [function ($event) {
+          "focus": _vm.handleFocus,
+          "blur": _vm.handleBlur,
+          "input": _vm.handleInput,
+          "change": [function ($event) {
             var $$a = _vm.currentValue,
                 $$el = $event.target,
                 $$c = $$el.checked ? true : false;
@@ -6349,7 +6316,7 @@ var BusyUI = (function (exports, Vue) {
             }
           }, _vm.handleChange]
         }
-      }, "input", _vm.datas, false)) : _vm.datas.type === "radio" ? _c("input", _vm._b({
+      }, 'input', _vm.datas, false)) : _vm.datas.type === 'radio' ? _c('input', _vm._b({
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -6359,27 +6326,27 @@ var BusyUI = (function (exports, Vue) {
         "class": _vm.prefixCls + "-input__input",
         style: _vm.styles,
         attrs: {
-          type: "radio"
+          "type": "radio"
         },
         domProps: {
-          checked: _vm._q(_vm.currentValue, null)
+          "checked": _vm._q(_vm.currentValue, null)
         },
         on: {
-          keyup: function keyup($event) {
-            if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
+          "keyup": function keyup($event) {
+            if (!$event.type.indexOf('key') && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
               return null;
             }
 
             return _vm.handleEnter($event);
           },
-          focus: _vm.handleFocus,
-          blur: _vm.handleBlur,
-          input: _vm.handleInput,
-          change: [function ($event) {
+          "focus": _vm.handleFocus,
+          "blur": _vm.handleBlur,
+          "input": _vm.handleInput,
+          "change": [function ($event) {
             _vm.currentValue = null;
           }, _vm.handleChange]
         }
-      }, "input", _vm.datas, false)) : _c("input", _vm._b({
+      }, 'input', _vm.datas, false)) : _c('input', _vm._b({
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -6389,31 +6356,31 @@ var BusyUI = (function (exports, Vue) {
         "class": _vm.prefixCls + "-input__input",
         style: _vm.styles,
         attrs: {
-          type: _vm.datas.type
+          "type": _vm.datas.type
         },
         domProps: {
-          value: _vm.currentValue
+          "value": _vm.currentValue
         },
         on: {
-          keyup: function keyup($event) {
-            if (!$event.type.indexOf("key") && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
+          "keyup": function keyup($event) {
+            if (!$event.type.indexOf('key') && _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")) {
               return null;
             }
 
             return _vm.handleEnter($event);
           },
-          focus: _vm.handleFocus,
-          blur: _vm.handleBlur,
-          input: [function ($event) {
+          "focus": _vm.handleFocus,
+          "blur": _vm.handleBlur,
+          "input": [function ($event) {
             if ($event.target.composing) {
               return;
             }
 
             _vm.currentValue = $event.target.value;
           }, _vm.handleInput],
-          change: _vm.handleChange
+          "change": _vm.handleChange
         }
-      }, "input", _vm.datas, false))]), _vm._v(" "), _c("div", {
+      }, 'input', _vm.datas, false))]), _vm._v(" "), _c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -6422,20 +6389,19 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": _vm.prefixCls + "-input__clear",
         on: {
-          click: _vm.handleClear
+          "click": _vm.handleClear
         }
-      }, [_c("Icon", {
+      }, [_c('Icon', {
         attrs: {
-          name: "close-circle-fill",
-          color: "#d8d8d8",
-          width: 16,
-          height: 16
+          "name": "close-circle-fill",
+          "color": "#d8d8d8",
+          "width": 16,
+          "height": 16
         }
       })], 1)]);
     };
 
     var __vue_staticRenderFns__$x = [];
-    __vue_render__$x._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$x = undefined;
@@ -6510,7 +6476,7 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("label", [_c("input", {
+      return _c('label', [_c('input', {
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -6519,13 +6485,13 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": _vm.prefixCls + "-switch " + _vm.prefixCls + "-switch__animbg",
         attrs: {
-          type: "checkbox"
+          "type": "checkbox"
         },
         domProps: {
-          checked: Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
+          "checked": Array.isArray(_vm.currentValue) ? _vm._i(_vm.currentValue, null) > -1 : _vm.currentValue
         },
         on: {
-          change: function change($event) {
+          "change": function change($event) {
             var $$a = _vm.currentValue,
                 $$el = $event.target,
                 $$c = $$el.checked ? true : false;
@@ -6548,7 +6514,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__$y = [];
-    __vue_render__$y._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$y = undefined;
@@ -6612,10 +6577,10 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("li", {
+      return _c('li', {
         "class": _vm.prefix + "-select__item",
         on: {
-          click: function click($event) {
+          "click": function click($event) {
             $event.stopPropagation();
             return _vm.handleClick($event);
           }
@@ -6624,7 +6589,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__$z = [];
-    __vue_render__$z._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$z = undefined;
@@ -6770,21 +6734,21 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixClas + "-select",
         style: _vm.styles,
         on: {
           "touch-move": function touchMove($evt) {
             return $evt.preventDefault();
           },
-          click: function click($event) {
+          "click": function click($event) {
             $event.stopPropagation();
             return _vm.handleClick($event);
           }
         }
-      }, [_c("div", {
+      }, [_c('div', {
         "class": _vm.prefixClas + "-select__content"
-      }, [_c("input", {
+      }, [_c('input', {
         directives: [{
           name: "model",
           rawName: "v-model",
@@ -6794,15 +6758,15 @@ var BusyUI = (function (exports, Vue) {
         "class": _vm.prefixClas + "-select__input",
         style: _vm.inputStyles,
         attrs: {
-          type: "text",
-          readonly: "",
-          placeholder: _vm.placeholder
+          "type": "text",
+          "readonly": "",
+          "placeholder": _vm.placeholder
         },
         domProps: {
-          value: _vm.currentValue
+          "value": _vm.currentValue
         },
         on: {
-          input: function input($event) {
+          "input": function input($event) {
             if ($event.target.composing) {
               return;
             }
@@ -6810,21 +6774,21 @@ var BusyUI = (function (exports, Vue) {
             _vm.currentValue = $event.target.value;
           }
         }
-      })]), _vm._v(" "), _c("NativeMask", {
+      })]), _vm._v(" "), _c('NativeMask', {
         attrs: {
           "is-show": _vm.visiable
         },
         on: {
-          click: function click($event) {
+          "click": function click($event) {
             $event.stopPropagation();
             return _vm.closeOptions($event);
           }
         }
-      }, [_c("transition", {
+      }, [_c('transition', {
         attrs: {
-          name: _vm.prefixClas + "-animate--bibo"
+          "name": _vm.prefixClas + "-animate--bibo"
         }
-      }, [_c("div", {
+      }, [_c('div', {
         directives: [{
           name: "show",
           rawName: "v-show",
@@ -6833,26 +6797,25 @@ var BusyUI = (function (exports, Vue) {
         }],
         "class": _vm.prefixClas + "-select__options",
         style: _vm.optionStyles
-      }, [_c("ul", {
+      }, [_c('ul', {
         "class": [_vm.prefixClas + "-select__list", _vm.prefixCls + "-select__list- + " + _vm._uid],
         on: {
-          touchmove: function touchmove($event) {
+          "touchmove": function touchmove($event) {
             $event.stopPropagation();
             return function (e) {}();
           }
         }
       }, [_vm._t("default", _vm._l(_vm.options, function (option, $index) {
-        return _c("NativeOption", {
-          key: "select_" + $index,
+        return _c('NativeOption', {
+          key: 'select_' + $index,
           attrs: {
-            value: option
+            "value": option
           }
-        }, [_vm._v(_vm._s(option.hasOwnProperty("label") ? option.label : option))]);
+        }, [_vm._v(_vm._s(option.hasOwnProperty('label') ? option.label : option))]);
       }))], 2)])])], 1)], 1);
     };
 
     var __vue_staticRenderFns__$A = [];
-    __vue_render__$A._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$A = undefined;
@@ -6912,10 +6875,10 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("li", {
+      return _c('li', {
         "class": _vm.prefix + "-select__item",
         on: {
-          click: function click($event) {
+          "click": function click($event) {
             $event.stopPropagation();
             return _vm.handleClick($event);
           }
@@ -6924,7 +6887,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__$B = [];
-    __vue_render__$B._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$B = undefined;
@@ -7008,17 +6970,16 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.classes,
         style: _vm.styles,
         on: {
-          click: _vm.handleChange
+          "click": _vm.handleChange
         }
       }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$C = [];
-    __vue_render__$C._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$C = undefined;
@@ -7097,14 +7058,14 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": _vm.prefixCls + "-segment",
         style: _vm.styles
       }, [_vm._t("default", _vm._l(_vm.options, function (opt) {
-        return _c("SegmentItem", {
+        return _c('SegmentItem', {
           key: opt.value || opt,
           attrs: {
-            value: opt.value || opt
+            "value": opt.value || opt
           },
           model: {
             value: _vm.currentValue,
@@ -7118,7 +7079,6 @@ var BusyUI = (function (exports, Vue) {
     };
 
     var __vue_staticRenderFns__$D = [];
-    __vue_render__$D._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$D = undefined;
@@ -7255,48 +7215,47 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("FlexBox", {
+      return _c('FlexBox', {
         "class": _vm.prefixCls + "-list-item " + _vm.prefixCls + "-border-1px " + _vm.prefixCls + "-border-b",
         style: _vm.styles,
         on: {
-          click: _vm.handleClick
+          "click": _vm.handleClick
         }
-      }, [_vm.showLabel ? _c("FlexItem", {
+      }, [_vm.showLabel ? _c('FlexItem', {
         "class": _vm.labelClass,
         attrs: {
-          flex: "none",
-          width: _vm.labelWidth
+          "flex": "none",
+          "width": _vm.labelWidth
         },
         on: {
-          click: _vm.handleLabelClick
+          "click": _vm.handleLabelClick
         }
-      }, [_vm._t("label", [_c("label", {
+      }, [_vm._t("label", [_c('label', {
         "class": _vm.prefixCls + "-list-item__label_text"
-      }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c("FlexItem", {
+      }, [_vm._v(_vm._s(_vm.label))])])], 2) : _vm._e(), _vm._v(" "), _c('FlexItem', {
         "class": _vm.prefixCls + "-list-item__content " + _vm.prefixCls + "-flex " + _vm.prefixCls + "-flex--start-center"
-      }, [_vm._t("default", [_c("div", {
+      }, [_vm._t("default", [_c('div', {
         "class": _vm.prefixCls + "-list-item__content_text"
-      }, [_vm._v(_vm._s(_vm.content))])])], 2), _vm._v(" "), _vm.showIcon ? _c("FlexItem", {
+      }, [_vm._v(_vm._s(_vm.content))])])], 2), _vm._v(" "), _vm.showIcon ? _c('FlexItem', {
         "class": _vm.iconClass,
         attrs: {
-          flex: "none",
-          width: _vm.iconWidth
+          "flex": "none",
+          "width": _vm.iconWidth
         },
         on: {
-          click: _vm.handleIconClick
+          "click": _vm.handleIconClick
         }
-      }, [_vm._t("icon", [_c("Icon", _vm._b({
+      }, [_vm._t("icon", [_c('Icon', _vm._b({
         directives: [{
           name: "show",
           rawName: "v-show",
           value: _vm.iconModel.name,
           expression: "iconModel.name"
         }]
-      }, "Icon", _vm.iconModel, false))])], 2) : _vm._e()], 1);
+      }, 'Icon', _vm.iconModel, false))])], 2) : _vm._e()], 1);
     };
 
     var __vue_staticRenderFns__$E = [];
-    __vue_render__$E._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$E = undefined;
@@ -7346,13 +7305,12 @@ var BusyUI = (function (exports, Vue) {
 
       var _c = _vm._self._c || _h;
 
-      return _c("div", {
+      return _c('div', {
         "class": [_vm.prefixCls + "-list", _vm.prefixCls + "-border-1px", _vm.prefixCls + "-border-tb"]
       }, [_vm._t("default")], 2);
     };
 
     var __vue_staticRenderFns__$F = [];
-    __vue_render__$F._withStripped = true;
     /* style */
 
     var __vue_inject_styles__$F = undefined;
