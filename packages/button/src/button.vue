@@ -33,6 +33,7 @@
         }
 
         &.is-ghost {
+            background-color: transparent;
             color: $button-default-border-color;
         }
 
@@ -58,7 +59,7 @@
         }
 
         &__border {
-            border-color: $button-default-border-color;
+            border-color: inherit;
             .is-sharp & {
                 border-radius: 0;
             }
@@ -90,10 +91,6 @@
             }
         }
 
-        &--primary &__border {
-            border-color: $button-primary-border-color;
-        }
-
         &--warning {
             background-color: $button-warning-background-color;
             color: $button-warning-text-color;
@@ -101,10 +98,6 @@
             &.is-ghost {
                 color: $button-warning-border-color;
             }
-        }
-
-        &--warning &__border {
-            border-color: $button-warning-border-color;
         }
 
         &--large {
@@ -118,15 +111,19 @@
             line-height: $button-small-height;
             font-size: $button-small-font-size;
         }
+
+        &__icon {
+            flex: none;
+        }
     }
 </style>
 
 
 <template>
     <div :class="[`${prefixCls}-button`, classes]" :style="styles" @click="handleClick">
-        <span v-if="icon || $slots['icon']" :class="`${prefixCls}-button__icon`">
+        <template v-if="icon || $slots['icon']">
             <slot name="icon">{{icon}}</slot>
-        </span>
+        </template>
         <button :class="`${prefixCls}-button__button`" :type="nativeType" :disabled="disabled">
             <slot>{{content}}</slot>
         </button>
@@ -177,19 +174,12 @@
      * @param {string} type=default - 显示类型，接受 default, primary, warning
      * @param {string} nativeType=button - 按钮类型， button, reset, submit
      * @param {boolean} disabled=false - 禁用
-     * @param {boolean} plain=false - 镂空按钮
      * @param {ghost} ghost=false - 幽灵按钮
      * @param {boolean} block=false - 是否100%宽
      * @param {string} size=normal - 尺寸，接受 normal, small, large
      * @param {Boolean} sharp=false - 是否尖角
-     * @param {Number} height - 高度
-     * @param {Number} width - 宽度
      * @param {String} slot - 显示文本
-     * @param {String} bgColor - 按钮背景色
-     * @param {String} fontColor - 字体颜色
-     * @param {String} borderColor - 边框颜色
-     * @param {String} borderWidth - 边框宽度
-     * @param {String} borderRadius - 圆角
+     * @param {String} radius - 圆角
      */
     export default {
         name: initName('button'),
@@ -203,24 +193,9 @@
             content: {
                 type: String
             },
-            plain: Boolean,
             sharp: Boolean,
             block: Boolean,
-            fontSize: {
-                type: [Number, String],
-                validator: BNumber.validateUnit
-            },
-            bgColor: String,
-            borderColor: String,
-            borderStyle: {
-                type: String
-            },
-            borderWidth: {
-                type: [Number, String],
-                validator: BNumber.validateUnit
-            },
-            fontColor: String,
-            borderRadius: {
+            radius: {
                 type: [Number, String],
                 validator: BNumber.validateUnit
             },
@@ -239,13 +214,8 @@
                 type: Boolean,
                 default: false
             },
-            height: {
-                type: [String, Number],
-                validator: BNumber.validateUnit
-            },
-            width: {
-                type: [String, Number],
-                validator: BNumber.validateUnit
+            thin: {
+                type: Boolean
             },
             size: {
                 type: String,
@@ -260,17 +230,7 @@
             },
             icon: String
         },
-        data() {
-            let bw = this.borderWidth;
 
-            if (!bw && (this.type === 'default' || this.ghost) && !/^0(\w?|%)$/.test(bw)) {
-                bw = 1
-            }
-
-            return {
-                isThin: bw === 1 || bw === '1px'
-            }
-        },
         methods: {
             handleClick(evt) {
                 if (!this.disabled) {
@@ -280,6 +240,7 @@
         },
         computed: {
             classes() {
+
                 let { type = 'default', size = 'normal', disabled, block, ghost, prefixCls } = this
                 return [
                     type === 'default' ? null : `${prefixCls}-button--${type}`,
@@ -289,10 +250,13 @@
                         'is-ghost': ghost
                     }]
             },
+            isThin() {
+                return this.thin || this.ghost || this.type === 'default'
+            },
             thinBorder() {
                 if (!this.isThin) return null;
 
-                let br = this.sharp ? 0 : (this.borderRadius || 4), regBr;
+                let br = this.sharp ? 0 : (this.radius || 4), regBr;
                 let dpr = window.devicePixelRatio;
 
                 if (br) {
@@ -300,25 +264,16 @@
                 }
 
                 return {
-                    borderRadius: br,
-                    borderColor: this.borderColor
+                    borderRadius: br
                 }
             },
             styles() {
                 let h = BNumber.cmpUnit(this.height),
                     w = BNumber.cmpUnit(this.width),
-                    br = this.sharp ? 0 : (this.borderRadius || null),
-                    fs = this.fontSize,
+                    br = this.sharp ? 0 : (this.radius || null),
                     size = this.size
 
                 let o = {
-                    height: h,
-                    borderWidth: !this.isThin ? this.borderWidth || null : null,
-                    borderColor: !this.isThin ? this.borderColor : null,
-                    width: w,
-                    fontSize: /^\d+$/.test(fs) ? fs + 'px' : (fs || null),
-                    background: this.ghost ? 'transparent' : this.bgColor,
-                    color: this.fontColor,
                     borderRadius: /^\d+$/.test(br) ? br + 'px' : br
                 }
 

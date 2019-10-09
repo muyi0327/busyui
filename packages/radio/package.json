@@ -1,25 +1,25 @@
 {
-  "name": "@busyui/radio",
-  "description": "busyui vue component radio",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": "https://github.com/muyi0327/busyui/tree/master/packages/radio",
-  "keywords": [
-    "busyui",
-    "vue",
-    "component",
-    "radio"
-  ],
-  "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/muyi0327/busyui/issues"
-  },
-  "homepage": "https://github.com/muyi0327/busyui#readme",
-  "version": "1.0.19"
+    "name": "@busyui/radio",
+    "description": "busyui vue component radio",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": "https://github.com/muyi0327/busyui/tree/master/packages/radio",
+    "keywords": [
+        "busyui",
+        "vue",
+        "component",
+        "radio"
+    ],
+    "author": "muyi0327 <yfdezhuye@163.com> (https://github.com/muyi0327)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/muyi0327/busyui/issues"
+    },
+    "homepage": "https://github.com/muyi0327/busyui#readme",
+    "version": "1.1.0"
 }
