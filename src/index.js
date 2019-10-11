@@ -3,7 +3,7 @@ import Border from '../packages/border/index.js'
 import Toast from '../packages/toast/index.js'
 import ToastLoading from '../packages/toast-loading/index.js'
 import Loading from '../packages/loading/index.js'
-import Icons from '../packages/icon/index.js'
+import Icon from '../packages/icon/index.js'
 import { FlexBox, FlexItem } from '../packages/flexbox/index.js'
 import Button from '../packages/button/index.js'
 import Checkbox from '../packages/checkbox/index.js'
@@ -30,7 +30,7 @@ var install = function (vue) {
     vue.use(Toast)
     vue.use(FlexBox)
     vue.use(FlexItem)
-    vue.use(Icons)
+    vue.use(Icon)
     vue.use(Button)
     vue.use(Checkbox)
     vue.use(Radio)
@@ -62,7 +62,7 @@ var ALL = {
     Toast,
     ToastLoading,
     Loading,
-    Icons,
+    Icon,
     FlexBox,
     FlexItem,
     Button,
@@ -96,7 +96,7 @@ export {
     Toast,
     ToastLoading,
     Loading,
-    Icons,
+    Icon,
     FlexBox,
     FlexItem,
     Button,

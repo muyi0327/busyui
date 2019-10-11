@@ -7377,7 +7377,7 @@
       Toast: Toast$1,
       ToastLoading: ToastLoading$1,
       Loading: Loading,
-      Icons: Icon,
+      Icon: Icon,
       FlexBox: FlexBox,
       FlexItem: FlexItem,
       Button: Button,
@@ -7414,7 +7414,7 @@
     exports.Dialog = Dialog$1;
     exports.FlexBox = FlexBox;
     exports.FlexItem = FlexItem;
-    exports.Icons = Icon;
+    exports.Icon = Icon;
     exports.Input = Input;
     exports.List = List;
     exports.ListItem = ListItem;
