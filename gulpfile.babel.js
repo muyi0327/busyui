@@ -2,12 +2,12 @@ import gulp, { series, parallel } from 'gulp'
 import glob from 'glob'
 import del from 'del'
 import rename from 'gulp-rename'
-import rollupConfig from './rollup.config.js'
+import { getConfig } from './rollup.config.js'
 import uglify from 'gulp-uglify'
 import csso from 'gulp-csso'
 import jdtomk from 'jsdoc-to-markdown'
 import colors from 'colors'
-import { src, dest, packages, docs, } from './src/base'
+import { src, dest, packages, docs } from './src/base'
 import { libraryName, globalName } from './src/config'
 import { rollup } from 'rollup'
 import { exec } from 'child_process'
@@ -20,18 +20,48 @@ let env = process.env.NODE_ENV;
 let name = libraryName
 let dist = dest
 
+
+let pgs = glob.sync(`${packages}/**/index.js`)
+
 gulp.task('clear', (cb) => {
     del.sync([dist]);
     cb()
 });
 
-// 打包
-gulp.task('build-dev', series('clear', async function () {
-    console.log('build dev...........');
-    delete rollupConfig.output
-    let bundle = await rollup(rollupConfig);
 
-    for (let t of ['cjs', 'umd', 'iife']) {
+
+// 打包
+gulp.task('dev', series('clear', async function () {
+    let { output, ...conf } = getConfig('dev')
+    let bundle = await rollup(conf);
+
+    await bundle.write({
+        file: `${dist}/${name}.js`,
+        format: 'umd',
+        name: globalName,
+        exports: 'named',
+        sourceMap: true,
+        globals: {
+            vue: 'Vue'
+        }
+    })
+}))
+
+gulp.task('libs', series('clear', async () => {
+    let configs = getConfig('libs')
+    for (let config of configs) {
+        let { output, ...conf } = config
+        let bundle = await rollup(conf)
+        await bundle.write(output)
+    }
+}))
+
+// 打包
+gulp.task('build-js', series('clear', 'libs', async function () {
+    let { output, ...conf } = getConfig('build')
+    let bundle = await rollup(conf);
+
+    for (let t of ['cjs', 'umd', 'iife', 'es']) {
         var n = '',
             fileName;
         switch (t) {
@@ -57,13 +87,11 @@ gulp.task('build-dev', series('clear', async function () {
                 vue: 'Vue'
             }
         })
-
-        console.log(fileName.green)
     }
 }))
 
 // 压缩js
-gulp.task('compress', series('build-dev', () => {
+gulp.task('compress', series('build-js', () => {
     return gulp.src([`${dist}/${name}.js`, `${dist}/${name}.commonjs.js`, `${dist}/${name}.iife.js`])
         .pipe(uglify({
             sourceMap: true
@@ -100,7 +128,7 @@ gulp.task('api', (cb) => {
     })
 })
 
-buildTasks.push('build-dev');
+buildTasks.push('build-js');
 
 // 加入压缩作务
 if (env === 'production') {
@@ -115,7 +143,7 @@ gulp.task('watch', () => {
         `${src}/**/*.{js,css,scss,sass,vue}`,
         `${packages}/**/*.{js,css,scss,sass,vue}`,
         `!${packages}/**/node_modules/**/*.{js,vue}`
-    ], series('build'))
+    ], series('dev'))
 });
 
 gulp.task('watch-api', () => {
@@ -158,8 +186,6 @@ gulp.task('vs', (cb) => {
     let version = process.argv.slice(2)[2];
     let pkgs = glob.sync(`${packages}/**/package.json`);
     pkgs.unshift('./package.json');
-
-    //console.log(pkgs)
 
     pkgs.forEach(p => {
         let pkgString = fs.readFileSync(p);

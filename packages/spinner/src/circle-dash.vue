@@ -24,7 +24,7 @@
         line-height: 0;
 
         $dash: #{$prefixCls}-loading-dash;
-        $rotate: #{$prefixCls}-animate--rotate-1turn;
+        $rotate: #{$prefixCls}-animate--rotate;
 
         &__wrap {
             stroke-width: 6;

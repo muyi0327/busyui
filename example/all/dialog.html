@@ -57,13 +57,13 @@
 <body>
     <section class="wrap">
         <section id="app" class="app">
-            <busy-button type="primary" width="100%" class="mt12" @click="showDefault">默 认</busy-button>
-            <busy-button type="primary" width="100%" class="mt12" @click="shwoAlert">Alert</busy-button>
-            <busy-button type="primary" width="100%" class="mt12" @click="showConfirm">confirm</busy-button>
-            <busy-button type="primary" width="100%" class="mt12" @click="showConfirm1">confirm promise</busy-button>
-            <busy-button type="primary" width="100%" class="mt12" @click="showPrompt">prompt</busy-button>
-            <busy-button type="primary" width="100%" class="mt12" @click="showPrompt1">prompt promise</busy-button>
-            <busy-button type="primary" width="100%" class="mt12" @click="showCustom">自定义</busy-button>
+            <busy-button type="primary" style="width:100%" class="mt12" @click="showDefault">默 认</busy-button>
+            <busy-button type="primary" style="width:100%" class="mt12" @click="shwoAlert">Alert</busy-button>
+            <busy-button type="primary" style="width:100%" class="mt12" @click="showConfirm">confirm</busy-button>
+            <busy-button type="primary" style="width:100%" class="mt12" @click="showConfirm1">confirm promise</busy-button>
+            <busy-button type="primary" style="width:100%" class="mt12" @click="showPrompt">prompt</busy-button>
+            <busy-button type="primary" style="width:100%" class="mt12" @click="showPrompt1">prompt promise</busy-button>
+            <busy-button type="primary" style="width:100%" class="mt12" @click="showCustom">自定义</busy-button>
             <busy-dialog :is-show="true">sssss</busy-dialog>
             <busy-confirm @visiable-change="handleConfirmStatus" :is-show="isShowConfirm" :content="confirmContent" @cancel="handleCancel" @confirm="handleConfirm"></busy-confirm>
             <busy-prompt @visiable-change="handlePromptStatus" :is-show="isShowPrompt" title="个人信息查询" content="输入您等手机号" :placeholder="propmtContent"></busy-prompt>

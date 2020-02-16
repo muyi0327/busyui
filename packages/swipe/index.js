@@ -6,4 +6,5 @@ Swipe.install = function (vue) {
     vue.component(Swipe.name, Swipe);
 }
 
+export { Swipe, SwipeItem }
 export default Swipe;

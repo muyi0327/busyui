@@ -17,7 +17,7 @@
 <script>
     import ProgressLine from './progress-line.vue'
     import ProgressRing from './progress-ring.vue'
-    import { initName, BNumber } from '../../util'
+    import { initName } from '../../util'
     import mixins from './mixins'
 
     /**

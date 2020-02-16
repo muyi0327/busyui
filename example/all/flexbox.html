@@ -112,7 +112,7 @@
             </busy-flexbox>
         </div>
 
-        <div class="box border-eee" @click="()=>this.width+=5">
+        <div class="box border-eee" @click="add">
             <busy-flexbox direction="column" height="190" align-cross="end" style="line-height: 45px">
                 <busy-flexitem flex="none" height="45" width="100%" class="border-b bg-eee">90px</busy-flexitem>
                 <busy-flexitem width="100%" :flexible="true" class="border-b bg-eee">
@@ -136,11 +136,16 @@
     <script>
         var vm = new Vue({
             el: '#app',
-            data() {
+            data: function () {
                 return {
                     width: 50
                 }
-            }
+            },
+            methods: {
+                add: function () {
+                    this.width += 5
+                }
+            },
         })
     </script>
 </body>

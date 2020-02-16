@@ -47,7 +47,7 @@
         <section id="app" class="app">
             <busy-list>
                 <busy-list-item label="联系方式" content="请填写真实名字" :icon="{name:'home'}"></busy-list-item>
-                <busy-list-item content="自定义label">
+                <busy-list-item content="自定义label" :show-label="true">
                     <div slot="label" style="color:red;">联系方式</div>
                 </busy-list-item>
                 <busy-list-item label="姓名">
@@ -56,7 +56,7 @@
 
                 <busy-list-item label="邮箱" content="自定义icon" icon-width="90">
                     <div slot="icon">
-                        <busy-button :plain="true" type="primary" height="24">发送</busy-button>
+                        <busy-button size="small" type="primary" height="24">发送</busy-button>
                     </div>
                 </busy-list-item>
 
@@ -65,13 +65,28 @@
                     <div>我想<span style="color:red;">{{!s?'显示':'隐藏'}}</span>个人信息</div>
                 </busy-list-item>
 
-                <busy-list-item height="70" label="邮箱" content="自定义icon">
-                    <div slot="label">
-                        <h1 class="t1">主标题</h1>
-                        <h2 class="t2">次标题</h2>
-                    </div>
+                <busy-list-item height="70" content="自定义icon">
+                    <template v-slot:label>
+                        <div style="display: flex;flex-direction: column;">
+                            <h1 class="t1">主标题</h1>
+                            <h2 class="t2">次标题</h2>
+                        </div>
+                    </template>
                 </busy-list-item>
             </busy-list>
+
+            <busy-list>
+                <busy-list-item content="选项一">
+                    <busy-checkbox slot="label" color="orange" border-radius="50%" width="20" height="20" v-model="sls" value='1'></busy-checkbox>
+                </busy-list-item>
+                <busy-list-item content="选项二">
+                    <busy-checkbox slot="label" color="#0a5" border-radius="50%" width="20" height="20" v-model="sls" value='2'></busy-checkbox>
+                </busy-list-item>
+                <busy-list-item content="选项三">
+                    <busy-checkbox slot="label" color="#05f" border-radius="50%" width="20" height="20" v-model="sls" value='3'></busy-checkbox>
+                </busy-list-item>
+            </busy-list>
+            {{sls}}
         </section>
     </section>
 
@@ -82,7 +97,8 @@
                 return {
                     s: false,
                     email: '',
-                    autofocus: false
+                    autofocus: false,
+                    sls: ['1']
                 }
             },
             computed: {

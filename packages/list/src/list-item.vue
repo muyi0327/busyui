@@ -12,6 +12,10 @@
             height: inherit;
         }
 
+        &__label {
+            margin-right: 8px;
+        }
+
         &__label_text {
             font-weight: 500;
         }
@@ -27,7 +31,7 @@
         <FlexItem :class="labelClass" v-if="showLabel" flex="none" :width="labelWidth" @click="handleLabelClick">
             <slot name="label"><label :class="`${prefixCls}-list-item__label_text`">{{label}}</label></slot>
         </FlexItem>
-        <FlexItem :class="`${prefixCls}-list-item__content ${prefixCls}-flex ${prefixCls}-flex--start-center`">
+        <FlexItem :class="`${prefixCls}-list-item__content`" :flexible="true" align-cross="center">
             <slot>
                 <div :class="`${prefixCls}-list-item__content_text`">{{content}}</div>
             </slot>
@@ -64,7 +68,7 @@
             content: String,
             labelWidth: {
                 type: [Number, String],
-                default: 80
+                default: 'auto'
             },
             labelAlignH: {
                 type: String,
@@ -76,7 +80,7 @@
             },
             showLabel: {
                 type: Boolean,
-                default: false
+                default: true
             },
             iconWidth: {
                 type: [Number, String],

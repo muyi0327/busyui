@@ -1,7 +1,7 @@
 
 
 <template>
-    <li :class="`${prefix}-select__item`" @click.stop="handleClick">
+    <li :class="`${prefixCls}-select__item`" @click.stop="handleClick">
         <slot></slot>
     </li>
 </template>
@@ -17,7 +17,7 @@
                 type: Boolean,
                 default: false
             },
-            Disabled: {
+            disabled: {
                 type: Boolean,
                 default: false
             }
@@ -29,7 +29,9 @@
         },
         methods: {
             handleClick($e) {
-                this.$parent.$parent.$emit('change', this.value)
+                if (!this.disabled) {
+                    this.$parent.$parent.$emit('change', this.value)
+                }
             }
         }
     }

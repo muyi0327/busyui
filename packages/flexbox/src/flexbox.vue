@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import FlexItem from './flex-item.vue'
+
     import { initName, baseMixins, BNumber } from '../../util'
 
     /**
@@ -53,9 +53,6 @@
             alignCross: {
                 type: String
             }
-        },
-        components: {
-            [FlexItem.name]: FlexItem
         },
         data() {
             return {

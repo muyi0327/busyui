@@ -31,7 +31,7 @@
 <body>
     <div id="app" class="app">
         <busy-list>
-            <busy-list-item @click="()=>this.isChecked=!isChecked">
+            <busy-list-item @click="function(){this.isChecked=!isChecked}">
                 <busy-checkbox v-model="isChecked">
                     {{isChecked?'选中':'取消'}} <span style="color:red">{{isChecked}}</span>
                 </busy-checkbox>
@@ -60,7 +60,7 @@
                 props: {
 
                 },
-                data() {
+                data: function () {
                     return {
                         isChecked: '',
                         fruits: [{
@@ -98,32 +98,32 @@
 
                 },
                 watch: {
-                    isChecked(val) {
+                    isChecked: function (val) {
                         console.log(arguments)
                         this.showString(val)
                     },
-                    fruits(val) {
+                    fruits: function (val) {
                         console.log(arguments)
                         this.showString(val)
                     },
-                    theBook(val) {
+                    theBook: function (val) {
                         this.showString(val)
                     }
                 },
                 methods: {
-                    click1($event) {
+                    click1: function ($event) {
                         $event.preventDefault();
                         console.log("你点击了一个连接")
                     },
-                    click2($event) {
+                    click2: function ($event) {
                         $event.preventDefault();
                         console.log("你点击了另一个连接")
                     },
-                    toggle(book) {
-                        let i = this.theBook.indexOf(book.id)
+                    toggle: function (book) {
+                        var i = this.theBook.indexOf(book.id)
                         i > -1 ? this.theBook.splice(i, 1) : this.theBook.push(book.id)
                     },
-                    showString(val) {
+                    showString: function (val) {
                         this.$busyui.Toast.show(JSON.stringify(val))
                     }
                 }

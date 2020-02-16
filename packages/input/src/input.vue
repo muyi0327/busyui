@@ -19,11 +19,11 @@
 
         &__input {
             width: 100%;
-            height: 24px;
             -webkit-appearance: none;
             appearance: none;
             outline: 0;
             border: 0;
+            color: inherit;
             font-size: inherit;
             &::-webkit-input-placeholder {
                 color: #b2b2b2;

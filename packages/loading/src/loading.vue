@@ -59,7 +59,8 @@
             position: {
                 type: String,
                 default: 'absolute'
-            }
+            },
+            clickHide: Boolean
         },
         data() {
             return {
@@ -74,6 +75,16 @@
         components: {
             BusyMask,
             InlineLoading
+        },
+        methods: {
+            show() {
+                this.visiable = true
+                this.$emit('show', this)
+            },
+            hide() {
+                this.visiable = false
+                this.$emit('hide', this)
+            }
         },
         computed: {
             ILProps() {
@@ -95,6 +106,11 @@
                 return {
                     position
                 }
+            }
+        },
+        mounted() {
+            if (this.clickHide) {
+                this.$on('click', this.hide())
             }
         }
     }

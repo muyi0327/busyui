@@ -1,5 +1,6 @@
 <style lang="scss" scoped>
     @import "../../../src/style/variable";
+    @import "../../../src/style/animate";
 
     .#{$prefixCls}-spinner-circle-half {
         display: inline-block;

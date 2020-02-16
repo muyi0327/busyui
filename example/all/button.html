@@ -48,35 +48,46 @@
 
     <section class="wrap">
         <section id="app" class="app">
-            <busy-flexbox direction="column" class="buttons" style="width:90%;margin:0 auto;">
+            <busy-flexbox direction="column" class="buttons" style="width:90%;margin:0 auto; border-color: red;">
                 <busy-button>
                     <busy-spinner type="circle-line" width="16" height="16" slot="icon"></busy-spinner>
                     <span>default with spinner</span>
                 </busy-button>
                 <busy-button :ghost="true">
                     <busy-icon name="like" color="#999" slot="icon"></busy-icon>
-                    default ghost
+                    default ghost with icon
+                </busy-button>
+                <busy-button :ghost="true" style="flex-direction: row-reverse;">
+                    <busy-icon name="like" color="#999" slot="icon"></busy-icon>
+                    default ghost with icon direction
                 </busy-button>
                 <busy-button :ghost="true" font-color="green" border-color="green">default ghost</busy-button>
                 <busy-button :disabled="true">default disabled</busy-button>
                 <busy-button type="primary">primary</busy-button>
+                <busy-button type="primary" radius="24px">primary</busy-button>
+                <busy-button type="primary" :ghost="true" radius="24px">primary </busy-button>
                 <busy-button type="primary" :disabled="true">primary disabled</busy-button>
-                <busy-button type="primary" :ghost="true">primary ghost</busy-button>
+                <busy-button type="primary" :ghost="true" :thin="false" style="border-radius:10px;border: 10px dashed blueviolet;">primary ghost</busy-button>
                 <busy-button type="primary" :ghost="true" :disabled="true">primary ghost disabled</busy-button>
                 <busy-button type="warning">warning</busy-button>
                 <busy-button type="warning" :ghost="true">warning ghost</busy-button>
                 <busy-button type="warning" :disabled="true">warning disabled</busy-button>
                 <busy-button type="primary" size="small">small</busy-button>
                 <busy-button type="primary" size="small" :disabled="true">small disabled</busy-button>
-                <busy-button type="primary" size="large">large</busy-button>
+                <busy-button type="primary" radius="10px 20px" ghost height="80" color="blueviolet" size="large">large</busy-button>
+                <busy-button type="primary" radius="10px 20px" size="large">large</busy-button>
                 <busy-button type="primary" size="large" :disabled="true">large disabled</busy-button>
-                <busy-button :disabled="true" @click="()=>$busyui.Alert.show(123)" border-color="green" radius="29px" border-width="5px" bg-color="yellow" font-color="green" height="48">
+                <busy-button type="primary" size="large" color="blueviolet">large disabled</busy-button>
+                <busy-button type="primary" size="large" color="blueviolet" ghost>large disabled</busy-button>
+                <busy-button size="large" color="#FEFAD3">large disabled</busy-button>
+                <busy-button size="large" color="green">large disabled</busy-button>
+                <busy-button :disabled="true" @click="function(){$busyui.Alert.show(123)}">
                     自定义按钮
                 </busy-button>
-                <busy-button type="primary" @click="()=>$busyui.Alert.show(456)" style="background-color:#00c2e0;color:#fff;height:68px;border:10px solid orange" radius="34">
+                <busy-button type="primary" :thin="false" @click="function(){$busyui.Alert.show(456)}" style="background-color:#00c2e0;color:#fff;height:68px;border:10px solid orange" radius="34">
                     自定义按钮
                 </busy-button>
-                <busy-button @click="()=>$busyui.Alert.show(789)" style="background:linear-gradient(to right bottom, #0d5, #05d);color:#fff;height:48px;" radius="24">
+                <busy-button @click="function(){$busyui.Alert.show(789)}" style="background:linear-gradient(to right bottom, #0d5, #05d);color:#fff;height:48px;" radius="24">
                     自定义按钮
                 </busy-button>
             </busy-flexbox>

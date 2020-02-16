@@ -96,8 +96,6 @@
 </template>
 <script>
     import {
-        BString,
-        BNumber,
         initName,
         baseMixins
     } from '../../util'

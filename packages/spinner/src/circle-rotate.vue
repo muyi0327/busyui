@@ -1,9 +1,10 @@
 <style lang="scss">
     @import "../../../src/style/variable";
+    @import "../../../src/style/animate";
 
     .#{$prefixCls}-spinner-circle-rotate {
         display: inline-block;
-        $rotate: #{$prefixCls}-animate--rotate-1turn;
+        $rotate: #{$prefixCls}-animate--rotate;
         font-size: 0;
         line-height: 0;
         overflow: hidden;
@@ -11,7 +12,7 @@
         &__wrap {
             animation: $rotate 0.5s linear infinite;
             transform-origin: center;
-            stroke: #222222;
+            stroke: #853131;
             stroke-width: 6;
         }
     }

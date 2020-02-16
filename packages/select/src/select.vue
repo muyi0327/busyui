@@ -46,14 +46,14 @@
 </style>
 
 <template>
-    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" :class="`${prefixClas}-select`" :style="styles">
-        <div :class="`${prefixClas}-select__content`">
-            <input :class="`${prefixClas}-select__input`" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
+    <div @touch-move="$evt=>$evt.preventDefault()" @click.stop="handleClick" :class="`${prefixCls}-select`" :style="styles">
+        <div :class="`${prefixCls}-select__content`">
+            <input :class="`${prefixCls}-select__input`" type="text" :style="inputStyles" readonly v-model="currentValue" :placeholder="placeholder">
         </div>
         <NativeMask :is-show="visiable" @click.stop="closeOptions">
-            <transition :name="`${prefixClas}-animate--bibo`">
-                <div v-show="visiable" :class="`${prefixClas}-select__options`" :style="optionStyles">
-                    <ul @touchmove.stop="e=>{}" :class="[`${prefixClas}-select__list`,`${prefixCls}-select__list- + ${_uid}`]">
+            <transition :name="`${prefixCls}-animate--bibo`">
+                <div v-show="visiable" :class="`${prefixCls}-select__options`" :style="optionStyles">
+                    <ul @touchmove.stop="e=>{}" :class="[`${prefixCls}-select__list`,`${prefixCls}-select__list- + ${_uid}`]">
                         <slot>
                             <NativeOption :value="option" v-for="(option, $index) in options" :key="'select_' + $index">{{option.hasOwnProperty('label')? option.label : option}}</NativeOption>
                         </slot>

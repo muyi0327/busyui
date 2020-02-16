@@ -8,4 +8,9 @@ Progress.install = function (vue) {
     vue.component(Progress.name, Progress);
 }
 
+export {
+    ProgressRing,
+    ProgressLine
+}
+
 export default Progress;

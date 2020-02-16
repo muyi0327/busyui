@@ -9,8 +9,16 @@ Spinner.install = function (vue) {
     vue.component(CircleDash.name, CircleDash)
     vue.component(CircleGradient.name, CircleGradient)
     vue.component(CircleLine.name, CircleLine)
-    vue.component(Spinner.name, Spinner)
     vue.component(CircleRotate.name, CircleRotate)
+    vue.component(Spinner.name, Spinner)
+}
+
+export {
+    CircleDash,
+    CircleGradient,
+    CircleLine,
+    CircleRotate,
+    Spinner
 }
 
 export default Spinner;

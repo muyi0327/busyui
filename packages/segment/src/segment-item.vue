@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import { initName, baseMixins, BNumber } from '../../util'
+    import { initName, baseMixins } from '../../util'
     export default {
         name: initName('segment-item'),
         mixins: [baseMixins],

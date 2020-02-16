@@ -24,35 +24,37 @@
 
         &__title {
             flex: 1;
+            padding-left: 10px;
         }
 
         &__cancel,
         &__confirm {
             color: $color-blue;
             flex: none;
-            width: 60px;
-            text-align: center;
+            padding: 0 10px;
         }
 
         &__box {
-            height: 5em;
+            height: 6em;
             background: #eeeeee;
             position: relative;
             overflow: hidden;
             display: flex;
+            box-sizing: border-box;
+            padding: 0.5em 0;
 
             &::after {
                 position: absolute;
                 pointer-events: none;
                 z-index: 1;
                 left: 0;
-                top: 40%;
+                top: 2.5em;
                 right: 0;
                 content: "";
                 border: 1px solid #ccc;
                 border-width: 1px 0;
                 box-sizing: border-box;
-                height: 20%;
+                height: 1em;
             }
         }
 
@@ -61,20 +63,38 @@
             padding: 0;
             margin: 0;
             font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            &-list {
+                height: 1em;
+                transform-style: preserve-3d;
+                margin-top: 2em;
+            }
         }
 
         &__item {
+            backface-visibility: hidden;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
             list-style: none;
             height: 1em;
+            line-height: 1em;
             color: #222;
             text-align: center;
             padding: 0;
             margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            > span {
-                font-size: 20px;
+            width: 100%;
+
+            > p {
+                padding: 0;
+                margin: 0;
+                height: 100%;
+                width: 100%;
+                font-size: 18px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
         }
 
@@ -84,9 +104,8 @@
 
         &__mask_top {
             flex: none;
-            flex: none;
             top: 0;
-            bottom: 60%;
+            height: 2.5em;
             width: 100%;
             position: absolute;
             z-index: 1;
@@ -100,9 +119,8 @@
 
         &__mask_bottom {
             flex: none;
-            flex: none;
-            top: 60%;
             bottom: 0;
+            height: 2.5em;
             width: 100%;
             position: absolute;
             z-index: 1;
@@ -118,16 +136,19 @@
 
 <template>
     <NativeMask :is-show="visiable">
-        <transition :name="`${prefixCls}-animation--bibo`">
+        <transition :name="`${prefixCls}-animate--bibo`">
             <div v-show="visiable" :class="`${prefixCls}-picker`">
                 <div :class="`${prefixCls}-picker__header`">
-                    <span :class="`${prefixCls}-picker__cancel`" @click="cancel">取消</span>
-                    <span :class="`${prefixCls}-picker__title`"></span>
-                    <span :class="`${prefixCls}-picker__confirm`" @click="confirm">确定</span>
+                    <span v-if="needConfirm" :class="`${prefixCls}-picker__cancel`" @click="cancel">取消</span>
+                    <span :class="`${prefixCls}-picker__title`">{{title}}</span>
+                    <span v-if="needConfirm" :class="`${prefixCls}-picker__confirm`" @click="confirm">确定</span>
+                    <span v-else :class="`${prefixCls}-picker__confirm`" @click="cancel">
+                        <Icon name="close" color="#999" width="20" height="20" />
+                    </span>
                 </div>
                 <div :class="`${prefixCls}-picker__box`">
                     <slot>
-                        <Wheel v-for="(col,$i) in columns" :key="$i" :value="currentValue && currentValue[$i]" :index="$i" :items="col" @change="(()=>(val)=>handleChange(val,$i))()"></Wheel>
+                        <Wheel v-for="(col,$i) in columns" :key="$i" :index="$i" :datas="col" v-model="cacheValue"></Wheel>
                     </slot>
                     <div :class="`${prefixCls}-picker__mask_top`"></div>
                     <div :class="`${prefixCls}-picker__mask_bottom`"></div>
@@ -140,7 +161,7 @@
 
 <script>
     import Mask from '../../mask'
-    import { FlexBox, FlexItem } from '../../flexbox'
+    import Icon from '../../icon'
     import Wheel from './picker-wheel.vue'
     import { initName, baseMixins } from '../../util'
 
@@ -155,53 +176,67 @@
             columns: {
                 type: Array
             },
-            value: Array,
+            value: [Array, String, Object, Number],
             isShow: {
                 type: Boolean,
+                default: false
+            },
+            needConfirm: {
+                type: Boolean,
                 default: true
+            },
+            title: {
+                type: String,
+                default: ''
             }
         },
         data() {
             return {
                 currentValue: this.value,
-                visiable: this.isShow
+                visiable: this.isShow,
+                cacheValue: []
             }
         },
         components: {
             NativeMask: Mask,
-            Wheel
+            Wheel,
+            Icon
         },
         watch: {
-            value(val) {
-                this.currentValue = val
-            },
             isShow(val) {
                 this.visiable = val
             },
             visiable(val) {
                 this.$emit('visiable', val)
+            },
+            currentValue(val) {
+                if (!this.needConfirm) {
+                    this.$emit('change', val)
+                }
+            },
+            cacheValue(val) {
+                console.log(val)
             }
         },
         methods: {
-            handleChange(val, i) {
-                // 解除引用关联
-                let v = this.currentValue.slice()
-                v.splice(i, 1, val)
-                this.currentValue = v
-            },
             confirm() {
                 this.hide()
+                this.currentValue = this.cacheValue
                 this.$emit('change', this.currentValue)
             },
             cancel() {
+                this.initCache()
                 this.hide()
             },
             hide() {
                 this.visiable = false
+            },
+            initCache() {
+                this.cacheValue = Array.isArray(this.currentValue) ? [...this.currentValue] : this.currentValue
             }
         },
         mounted() {
-
+            this.cacheValue = Array.isArray(this.currentValue) ? [...this.currentValue] : this.currentValue
         }
     }
 </script>

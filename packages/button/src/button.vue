@@ -3,7 +3,7 @@
     .#{$prefixCls}-button {
         border-style: solid;
         border-color: $button-default-border-color;
-        box-sizing: border-box;
+        box-sizing: content-box;
         display: inline-flex;
         position: relative;
         text-align: center;
@@ -13,8 +13,7 @@
         height: $button-normal-height;
         line-height: $button-normal-height;
         font-size: $button-normal-font-size;
-        border-width: 0;
-        overflow: hidden;
+        border: 0px solid $button-default-border-color;
         justify-content: center;
         align-items: center;
 
@@ -51,21 +50,24 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            box-sizing: border-box;
             border: 1px solid transparent;
             transform-origin: 0 0;
+            pointer-events: none;
+            box-sizing: border-box;
+            border-radius: inherit;
         }
 
         &__border {
             border-color: inherit;
+            border-style: inherit;
             .is-sharp & {
                 border-radius: 0;
             }
         }
 
         &:after {
+            right: 0;
+            bottom: 0;
             content: " ";
             z-index: 1000;
         }
@@ -120,14 +122,14 @@
 
 
 <template>
-    <div :class="[`${prefixCls}-button`, classes]" :style="styles" @click="handleClick">
+    <div :class="[`${prefixCls}-button`, classes]" @click="handleClick" :style="styles">
         <template v-if="icon || $slots['icon']">
             <slot name="icon">{{icon}}</slot>
         </template>
         <button :class="`${prefixCls}-button__button`" :type="nativeType" :disabled="disabled">
             <slot>{{content}}</slot>
         </button>
-        <span v-if="isThin" :class="`${prefixCls}-button__border`" :style="thinBorder"></span>
+        <span v-if="thin" :class="`${prefixCls}-button__border`" :style="borderStyles"></span>
     </div>
 </template>
 
@@ -195,10 +197,6 @@
             },
             sharp: Boolean,
             block: Boolean,
-            radius: {
-                type: [Number, String],
-                validator: BNumber.validateUnit
-            },
             type: {
                 type: String,
                 default: 'default',
@@ -215,7 +213,11 @@
                 default: false
             },
             thin: {
-                type: Boolean
+                type: Boolean,
+                default: true
+            },
+            color: {
+                type: String
             },
             size: {
                 type: String,
@@ -228,7 +230,23 @@
                     ].indexOf(value) > -1;
                 }
             },
-            icon: String
+            icon: String,
+            width: {
+                type: [Number, String]
+            },
+            height: {
+                type: [Number, String]
+            },
+            radius: {
+                type: [Number, String],
+                default: '4px'
+            }
+        },
+
+        data() {
+            return {
+
+            }
         },
 
         methods: {
@@ -250,14 +268,10 @@
                         'is-ghost': ghost
                     }]
             },
-            isThin() {
-                return this.thin || this.ghost || this.type === 'default'
-            },
-            thinBorder() {
-                if (!this.isThin) return null;
+            borderStyles() {
+                if (!this.thin) return null;
 
                 let br = this.sharp ? 0 : (this.radius || 4), regBr;
-                let dpr = window.devicePixelRatio;
 
                 if (br) {
                     br = BNumber.getDPRUnit(br)
@@ -268,16 +282,20 @@
                 }
             },
             styles() {
-                let h = BNumber.cmpUnit(this.height),
-                    w = BNumber.cmpUnit(this.width),
-                    br = this.sharp ? 0 : (this.radius || null),
-                    size = this.size
+                let { width, height, color, radius, ghost } = this
 
-                let o = {
-                    borderRadius: /^\d+$/.test(br) ? br + 'px' : br
+                width = BNumber.cmpUnit(width)
+                height = BNumber.cmpUnit(height)
+                radius = BNumber.cmpUnit(radius)
+
+                return {
+                    width,
+                    height,
+                    borderRadius: radius,
+                    backgroundColor: ghost ? null : color,
+                    borderColor: color,
+                    color: ghost ? color : null
                 }
-
-                return o
             }
         },
         mounted() {

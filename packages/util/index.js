@@ -1,5 +1,6 @@
 import * as BColor from './src/color.js';
 import * as BString from './src/string';
+import * as BOS from './src/os.js'
 import * as BNumber from './src/number';
 import * as BRegexp from './src/reg';
 import { prefix, prefixCls } from '../../src/config'
@@ -21,6 +22,7 @@ export {
     BString,
     BNumber,
     BRegexp,
+    BOS,
     initName,
     baseMixins,
     prefix,
